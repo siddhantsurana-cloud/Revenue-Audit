@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#0d9488">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="apollo_logo.png">
+    <link rel="apple-touch-icon" href="apollo_logo.jpg">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,6 +108,12 @@
         ::-webkit-scrollbar-thumb {
             background: var(--scrollbar-thumb);
             border-radius: 4px;
+        }
+
+        /* Fix white-on-white text in select dropdown options */
+        select option {
+            color: #0f172a !important;
+            background-color: #ffffff !important;
         }
 
         /* Container Layout */
@@ -1848,7 +1854,7 @@
     <div id="full-page-login" class="full-page-login">
         <div class="login-card">
             <div class="login-header">
-                <img src="apollo_logo.png" alt="Apollo Logo" class="login-logo">
+                <img src="apollo_logo.jpg" alt="Apollo Logo" class="login-logo">
                 <h2 class="login-title">Revenue Assurance Portal</h2>
                 <p class="login-subtitle">BRC Guwahati Console</p>
             </div>
@@ -1881,12 +1887,10 @@
                 <button type="submit" class="btn-login-submit">Sign In</button>
             </form>
             <div class="login-credentials-help">
-                <div class="help-title">Demo User Credentials:</div>
-                <div class="help-grid">
-                    <div>Viewer: <span class="cred-val">viewer</span> / <span class="cred-val">viewer</span></div>
-                    <div>Auditor: <span class="cred-val">auditor</span> / <span class="cred-val">auditor123</span></div>
-                    <div>Approver: <span class="cred-val">approver</span> / <span class="cred-val">approver123</span></div>
-                    <div>Admin: <span class="cred-val">admin</span> / <span class="cred-val">admin123</span></div>
+                <div class="help-title" style="text-align: center;">Authorized BRC Portal Access Only</div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center; margin-top: 0.4rem; line-height: 1.45;">
+                    Please enter your assigned BRC Guwahati credentials to log in. <br>
+                    Configured roles: <strong>Viewer</strong>, <strong>Auditor</strong>, <strong>Approval</strong>, and <strong>Administrator</strong>.
                 </div>
             </div>
         </div>
@@ -1944,7 +1948,7 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="sidebar-brand">
-            <img src="apollo_logo.png" alt="Apollo Logo" class="sidebar-logo">
+            <img src="apollo_logo.jpg" alt="Apollo Logo" class="sidebar-logo">
             <div class="sidebar-title-group">
                 <div class="sidebar-app-name">BRC - Guwahati</div>
                 <div class="sidebar-app-sub">Revenue Assurance</div>
@@ -10807,10 +10811,10 @@
             window.userCredentials = JSON.parse(savedCreds);
         } else {
             window.userCredentials = [
-                { username: 'viewer', password: 'viewer', role: 'Viewer' },
-                { username: 'auditor', password: 'auditor123', role: 'Auditor' },
-                { username: 'approver', password: 'approver123', role: 'Approver' },
-                { username: 'admin', password: 'admin123', role: 'Administrator' }
+                { username: 'Review', password: 'Apollo@123', role: 'Viewer' },
+                { username: 'BRC', password: 'Brc@2013', role: 'Auditor' },
+                { username: 'BRC1', password: 'Brc@2026', role: 'Approver' },
+                { username: 'admin', password: 'Siddhant@$26', role: 'Administrator' }
             ];
         }
     }

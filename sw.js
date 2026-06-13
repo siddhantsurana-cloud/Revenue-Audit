@@ -1,9 +1,9 @@
-const CACHE_NAME = "apollo-ra-cache-v18";
+const CACHE_NAME = "apollo-ra-cache-v20";
 const ASSETS_TO_CACHE = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./apollo_logo.png"
+  "./apollo_logo.jpg"
 ];
 
 // Install Event
