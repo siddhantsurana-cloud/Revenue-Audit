@@ -1,0 +1,29 @@
+{
+  "ONGC NAZIRA LIMITED": {
+    "A1045742": {
+      "tariff": 140,
+      "discount": 0,
+      "remarks": "Billed against SOC: 2023."
+    },
+    "A1087262": {
+      "tariff": 90,
+      "discount": 0,
+      "remarks": "Billed against SOC: 2023."
+    },
+    "A2103": {
+      "tariff": 24000,
+      "discount": 0,
+      "remarks": "Billed against SOC: 2023."
+    },
+    "A2122": {
+      "tariff": 8778,
+      "discount": 0,
+      "remarks": "Billed against SOC: 2023."
+    },
+    "A2123": {
+      "tariff": 8778,
+      "discount": 0,
+      "remarks": "Billed against SOC: 2023."
+    }
+  }
+}
