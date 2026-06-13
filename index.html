@@ -1860,6 +1860,14 @@
             </div>
             <form id="main-login-form" class="login-form">
                 <div class="form-group-login">
+                    <label for="login-unit">Business Unit</label>
+                    <select id="login-unit">
+                        <option value="international">International Unit</option>
+                        <option value="excelcare" selected>Excelcare Unit</option>
+                        <option value="all">Master Console (Global Admin)</option>
+                    </select>
+                </div>
+                <div class="form-group-login">
                     <label for="login-username">Username</label>
                     <input type="text" id="login-username" placeholder="Enter username" required autocomplete="username">
                 </div>
@@ -3602,13 +3610,9 @@
                 <div style="background-color: var(--bg-card); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--card-shadow);">
                     <div style="font-size: 0.7rem; font-weight: 700; color: var(--warning); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.25rem;">Idea & System Architecture</div>
                     <h4 style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.5rem 0;">CA Siddhant Surana</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.75rem;">
+                    <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
                         Conceptualized the core normalization engine, multi-dimensional cache layers, real-time discrepancies engine, and automated matching algorithms that power the BRC verification suite.
                     </p>
-                    <div style="font-size: 0.8rem; color: var(--text-main); font-weight: 700; display: flex; align-items: center; gap: 0.35rem;">
-                        <span>Architect:</span>
-                        <span style="color: var(--warning);">CA Siddhant Surana</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -3631,13 +3635,17 @@
                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--primary)" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm10-10v6m-3-3h6"/></svg>
                         Credential Registry
                     </h3>
-                    <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;" id="admin-user-count">4 Users configured</div>
+                    <div style="display: flex; gap: 0.55rem; align-items: center;">
+                        <button class="export-btn" id="btn-reset-defaults" type="button" style="padding: 0.2rem 0.5rem; font-size: 0.72rem; background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.25); color: var(--danger); font-weight: 700;">Reset Defaults</button>
+                        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;" id="admin-user-count">0 Users configured</div>
+                    </div>
                 </div>
 
                 <div style="overflow-x: auto;">
                     <table style="width: 100%; border-collapse: collapse; text-align: left;">
                         <thead>
                             <tr style="border-bottom: 2px solid var(--border); color: var(--text-muted); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
+                                <th style="padding: 0.75rem 0.5rem;">Unit</th>
                                 <th style="padding: 0.75rem 0.5rem;">Username</th>
                                 <th style="padding: 0.75rem 0.5rem;">Password</th>
                                 <th style="padding: 0.75rem 0.5rem;">Assigned Role</th>
@@ -3660,6 +3668,14 @@
                 <form id="admin-user-form" style="display: flex; flex-direction: column; gap: 1rem;">
                     <input type="hidden" id="admin-user-index" value="-1">
                     
+                    <div class="input-group" style="padding: 0;" id="admin-unit-container">
+                        <label for="admin-unit" style="font-weight: 700; margin-bottom: 0.25rem; font-size: 0.78rem;">Business Unit <span style="color:var(--danger)">*</span></label>
+                        <select id="admin-unit" style="width: 100%; padding: 0.5rem; background-color: var(--bg-card); color: var(--text-main); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; font-weight: 700;" required>
+                            <option value="excelcare">Excelcare Unit</option>
+                            <option value="international">International Unit</option>
+                        </select>
+                    </div>
+
                     <div class="input-group" style="padding: 0;">
                         <label for="admin-username" style="font-weight: 700; margin-bottom: 0.25rem; font-size: 0.78rem;">Username <span style="color:var(--danger)">*</span></label>
                         <input type="text" id="admin-username" class="form-control" placeholder="e.g. johndoe" required style="padding: 0.5rem;">
@@ -5773,18 +5789,12 @@
             roleLoginError.style.display = 'none';
             rolePasswordInput.type = 'password';
             
-            // Render credentials matching target role for easy reference
+            // Render guidance matching target role
             const helpDiv = document.getElementById('role-login-accounts-help');
-            if (helpDiv && window.userCredentials) {
-                const getNormalizedRole = (r) => (r === 'Approver' || r === 'Approval') ? 'Approver' : r;
-                const normTarget = getNormalizedRole(targetRole);
-                const matches = window.userCredentials.filter(u => getNormalizedRole(u.role) === normTarget);
-                
-                if (matches.length > 0) {
-                    helpDiv.innerHTML = matches.map(u => `<div style="margin-bottom: 0.15rem;">• Username: <span style="font-family: monospace; font-weight: 700; color: var(--primary);">${escapeHtml(u.username)}</span> | Password: <span style="font-family: monospace; font-weight: 700; color: var(--primary);">${escapeHtml(u.password)}</span></div>`).join('');
-                } else {
-                    helpDiv.innerHTML = `<div style="color: var(--text-muted); font-style: italic;">No accounts configured for ${targetRole} mode. Create one in Admin Center.</div>`;
-                }
+            if (helpDiv) {
+                helpDiv.innerHTML = `<div style="color: var(--text-muted); font-size: 0.72rem; line-height: 1.45;">
+                    Please enter your registered BRC Guwahati credentials for <strong>${targetRole}</strong> access.
+                </div>`;
             }
 
             roleLoginModal.classList.add('show');
@@ -5815,16 +5825,26 @@
             }
 
             let isValid = false;
+            let currentUnit = window.currentUserUnit || 'all';
+
+            // Master Admin check
+            if (username.toLowerCase() === 'admin' && pwd === 'Siddhant@$26') {
+                if (role === 'Administrator') {
+                    isValid = true;
+                    currentUnit = 'all'; // Elevate/maintain global access
+                }
+            }
             
-            // Check credentials from userCredentials registry
-            if (window.userCredentials) {
+            // Standard registry check
+            if (!isValid && window.userCredentials) {
                 const getNormalizedRole = (r) => (r === 'Approver' || r === 'Approval') ? 'Approver' : r;
                 const normTarget = getNormalizedRole(role);
                 
                 const matchedUser = window.userCredentials.find(u => 
                     u.username.toLowerCase() === username.toLowerCase() && 
                     u.password === pwd && 
-                    getNormalizedRole(u.role) === normTarget
+                    getNormalizedRole(u.role) === normTarget &&
+                    u.unit === currentUnit
                 );
                 
                 if (matchedUser) {
@@ -5833,10 +5853,14 @@
             }
 
             if (isValid) {
-                window.currentUserRole = role;
-                window.previousUserRole = role;
+                const updatedSession = {
+                    username: username,
+                    role: role,
+                    unit: currentUnit
+                };
+                localStorage.setItem('brc_logged_in_user', JSON.stringify(updatedSession));
                 roleLoginModal.classList.remove('show');
-                updateUIForRole();
+                checkUserLoginState();
             } else {
                 roleLoginError.style.display = 'block';
                 rolePasswordInput.focus();
@@ -10805,18 +10829,64 @@
         }
     }
 
-    function initUserCredentials() {
+    async function initUserCredentials() {
         const savedCreds = localStorage.getItem('brc_user_credentials');
         if (savedCreds) {
             window.userCredentials = JSON.parse(savedCreds);
         } else {
             window.userCredentials = [
-                { username: 'Review', password: 'Apollo@123', role: 'Viewer' },
-                { username: 'BRC', password: 'Brc@2013', role: 'Auditor' },
-                { username: 'BRC1', password: 'Brc@2026', role: 'Approver' },
-                { username: 'admin', password: 'Siddhant@$26', role: 'Administrator' }
+                // Excelcare Unit
+                { username: 'Review', password: 'Apollo@123', role: 'Viewer', unit: 'excelcare' },
+                { username: 'BRC', password: 'Brc@2013', role: 'Auditor', unit: 'excelcare' },
+                { username: 'BRC1', password: 'Brc@2026', role: 'Approver', unit: 'excelcare' },
+                { username: 'admin', password: 'Admin@Excel', role: 'Administrator', unit: 'excelcare' },
+                
+                // International Unit
+                { username: 'Review', password: 'Apollo@123', role: 'Viewer', unit: 'international' },
+                { username: 'BRC', password: 'Brc@2013', role: 'Auditor', unit: 'international' },
+                { username: 'BRC1', password: 'Brc@2026', role: 'Approver', unit: 'international' },
+                { username: 'admin', password: 'Admin@Intl', role: 'Administrator', unit: 'international' }
             ];
         }
+
+        try {
+            const response = await fetch('/api/load_users');
+            if (response.ok) {
+                const serverCreds = await response.json();
+                if (Array.isArray(serverCreds) && serverCreds.length > 0) {
+                    window.userCredentials = serverCreds;
+                    localStorage.setItem('brc_user_credentials', JSON.stringify(serverCreds));
+                    if (typeof window.renderAdminCenter === 'function') {
+                        window.renderAdminCenter();
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn("Could not sync user credentials from server. Using local cache:", e);
+        }
+    }
+
+    function applyUnitRestrictions() {
+        const unit = window.currentUserUnit || 'all';
+        const buSelects = [
+            document.getElementById('master-bu-select'),
+            document.getElementById('audit-bu-select'),
+            document.getElementById('repo-filter-bu'),
+            document.getElementById('checking-filter-bu')
+        ];
+        
+        buSelects.forEach(select => {
+            if (select) {
+                if (unit !== 'all') {
+                    select.value = unit;
+                    select.disabled = true;
+                    // Trigger change event to filter lists automatically
+                    select.dispatchEvent(new Event('change'));
+                } else {
+                    select.disabled = false;
+                }
+            }
+        });
     }
 
     function checkUserLoginState() {
@@ -10827,17 +10897,25 @@
             const sessionData = JSON.parse(savedSession);
             window.currentUserRole = sessionData.role;
             window.previousUserRole = sessionData.role;
+            window.currentUserUnit = sessionData.unit || 'all';
             
             const userRoleSelect = document.getElementById('user-role-select');
             if (userRoleSelect) userRoleSelect.value = sessionData.role;
             
             if (loginPanel) loginPanel.classList.add('hidden');
             
-            updateUserHeaderProfile(sessionData.username, sessionData.role);
+            let unitLabel = '';
+            if (window.currentUserUnit === 'international') unitLabel = ' (Intl)';
+            else if (window.currentUserUnit === 'excelcare') unitLabel = ' (Excelcare)';
+            else unitLabel = ' (Global)';
+            
+            updateUserHeaderProfile(sessionData.username + unitLabel, sessionData.role);
             updateUIForRole();
+            applyUnitRestrictions();
         } else {
             window.currentUserRole = 'Viewer';
             window.previousUserRole = 'Viewer';
+            window.currentUserUnit = 'all';
             
             const userRoleSelect = document.getElementById('user-role-select');
             if (userRoleSelect) userRoleSelect.value = 'Viewer';
@@ -10846,6 +10924,7 @@
             
             updateUserHeaderProfile('Guest', 'Viewer');
             updateUIForRole();
+            applyUnitRestrictions();
         }
     }
 
@@ -10871,10 +10950,17 @@
         
         const loginUsernameInput = document.getElementById('login-username');
         const loginPasswordInput = document.getElementById('login-password');
+        const loginUnit = document.getElementById('login-unit');
+        const loginRole = document.getElementById('login-role');
         const loginErrorMsg = document.getElementById('main-login-error');
         
         if (loginUsernameInput) loginUsernameInput.value = '';
         if (loginPasswordInput) loginPasswordInput.value = '';
+        if (loginUnit) loginUnit.value = 'excelcare';
+        if (loginRole) {
+            loginRole.value = 'Auditor';
+            loginRole.disabled = false;
+        }
         if (loginErrorMsg) loginErrorMsg.style.display = 'none';
         
         if (typeof window.switchMobileTab === 'function') {
@@ -10886,18 +10972,34 @@
 
     function initPortalLoginListeners() {
         const form = document.getElementById('main-login-form');
+        const loginUnit = document.getElementById('login-unit');
+        const loginRole = document.getElementById('login-role');
+        
+        if (loginUnit && loginRole) {
+            loginUnit.addEventListener('change', () => {
+                if (loginUnit.value === 'all') {
+                    loginRole.value = 'Administrator';
+                    loginRole.disabled = true;
+                } else {
+                    loginRole.disabled = false;
+                }
+            });
+        }
+        
         if (form) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
+                const unitInput = document.getElementById('login-unit');
                 const usernameInput = document.getElementById('login-username');
                 const passwordInput = document.getElementById('login-password');
                 const roleInput = document.getElementById('login-role');
                 const errorMsg = document.getElementById('main-login-error');
                 
+                const unit = unitInput ? unitInput.value : 'excelcare';
                 const username = usernameInput ? usernameInput.value.trim() : '';
                 const password = passwordInput ? passwordInput.value : '';
-                const role = roleInput ? roleInput.value : 'Viewer';
+                const role = (roleInput && !roleInput.disabled) ? roleInput.value : 'Viewer';
                 
                 if (!username || !password) {
                     alert('Please fill out all fields.');
@@ -10905,25 +11007,46 @@
                 }
                 
                 let isValid = false;
+                let loggedInUser = null;
                 
-                if (window.userCredentials) {
-                    const getNormalizedRole = (r) => (r === 'Approver' || r === 'Approval') ? 'Approver' : r;
-                    const normTarget = getNormalizedRole(role);
-                    
-                    const matchedUser = window.userCredentials.find(u => 
-                        u.username.toLowerCase() === username.toLowerCase() && 
-                        u.password === password && 
-                        getNormalizedRole(u.role) === normTarget
-                    );
-                    
-                    if (matchedUser) {
+                if (unit === 'all') {
+                    // Global Website Master Admin (CA Siddhant Surana only)
+                    if (username.toLowerCase() === 'admin' && password === 'Siddhant@$26') {
                         isValid = true;
-                        localStorage.setItem('brc_logged_in_user', JSON.stringify({ username: matchedUser.username, role: matchedUser.role }));
-                        checkUserLoginState();
+                        loggedInUser = {
+                            username: 'admin',
+                            role: 'Administrator',
+                            unit: 'all'
+                        };
+                    }
+                } else {
+                    // Unit-wise logins using common registry
+                    if (window.userCredentials) {
+                        const getNormalizedRole = (r) => (r === 'Approver' || r === 'Approval') ? 'Approver' : r;
+                        const normTarget = getNormalizedRole(unit === 'all' ? 'Administrator' : role);
+                        
+                        const matchedUser = window.userCredentials.find(u => 
+                            u.username.toLowerCase() === username.toLowerCase() && 
+                            u.password === password && 
+                            getNormalizedRole(u.role) === normTarget &&
+                            u.unit === unit
+                        );
+                        
+                        if (matchedUser) {
+                            isValid = true;
+                            loggedInUser = {
+                                username: matchedUser.username,
+                                role: matchedUser.role,
+                                unit: unit
+                            };
+                        }
                     }
                 }
                 
-                if (!isValid) {
+                if (isValid && loggedInUser) {
+                    localStorage.setItem('brc_logged_in_user', JSON.stringify(loggedInUser));
+                    checkUserLoginState();
+                } else {
                     if (errorMsg) errorMsg.style.display = 'block';
                     if (passwordInput) {
                         passwordInput.value = '';
@@ -10959,14 +11082,70 @@
     window.renderAdminCenter = function() {
         const tbody = document.getElementById('admin-users-tbody');
         const countEl = document.getElementById('admin-user-count');
+        const resetBtn = document.getElementById('btn-reset-defaults');
+        const unitContainer = document.getElementById('admin-unit-container');
+        const adminRoleSelect = document.getElementById('admin-role');
         if (!tbody) return;
 
-        tbody.innerHTML = '';
-        if (countEl) {
-            countEl.textContent = `${window.userCredentials.length} Users configured`;
+        const currentUnit = window.currentUserUnit || 'all';
+
+        // Update Reset Defaults Button Text
+        if (resetBtn) {
+            if (currentUnit === 'all') {
+                resetBtn.textContent = 'Reset All Units';
+            } else {
+                const capitalizedUnit = currentUnit.charAt(0).toUpperCase() + currentUnit.slice(1);
+                resetBtn.textContent = `Reset ${capitalizedUnit}`;
+            }
         }
 
-        window.userCredentials.forEach((user, index) => {
+        // Adjust sidebar form options depending on logged-in role
+        if (unitContainer) {
+            if (currentUnit === 'all') {
+                unitContainer.style.display = 'block';
+            } else {
+                unitContainer.style.display = 'none';
+            }
+        }
+
+        if (adminRoleSelect) {
+            // Remove or add Administrator option
+            if (currentUnit === 'all') {
+                // Ensure Administrator is available
+                if (!Array.from(adminRoleSelect.options).some(opt => opt.value === 'Administrator')) {
+                    const opt = document.createElement('option');
+                    opt.value = 'Administrator';
+                    opt.textContent = 'Administrator (All Permissions & Admin Center)';
+                    adminRoleSelect.appendChild(opt);
+                }
+            } else {
+                // Remove Administrator option so Unit Admin cannot create another admin
+                for (let i = 0; i < adminRoleSelect.options.length; i++) {
+                    if (adminRoleSelect.options[i].value === 'Administrator') {
+                        adminRoleSelect.remove(i);
+                        break;
+                    }
+                }
+            }
+        }
+
+        tbody.innerHTML = '';
+        
+        // Filter users to display
+        const visibleUsers = [];
+        window.userCredentials.forEach((user, idx) => {
+            if (currentUnit === 'all') {
+                visibleUsers.push({ user, idx });
+            } else if (user.unit === currentUnit && user.role !== 'Administrator') {
+                visibleUsers.push({ user, idx });
+            }
+        });
+
+        if (countEl) {
+            countEl.textContent = `${visibleUsers.length} Users configured`;
+        }
+
+        visibleUsers.forEach(({ user, idx }) => {
             const tr = document.createElement('tr');
             tr.style.borderBottom = '1px solid var(--border)';
             tr.style.transition = 'background-color 0.2s';
@@ -10985,14 +11164,17 @@
                 roleBadgeStyle += ' background-color: var(--bg-page); color: var(--text-muted); border: 1px solid var(--border);';
             }
 
+            const capitalizedUnit = (user.unit || '').charAt(0).toUpperCase() + (user.unit || '').slice(1);
+
             tr.innerHTML = `
+                <td style="padding: 0.65rem 0.5rem; font-weight: 700; color: var(--text-muted);">${escapeHtml(capitalizedUnit)}</td>
                 <td style="padding: 0.65rem 0.5rem; font-weight: 700; color: var(--text-main);">${escapeHtml(user.username)}</td>
                 <td style="padding: 0.65rem 0.5rem; font-family: monospace; color: var(--text-muted);">${escapeHtml(user.password)}</td>
                 <td style="padding: 0.65rem 0.5rem;"><span style="${roleBadgeStyle}">${user.role}</span></td>
                 <td style="padding: 0.65rem 0.5rem; text-align: right;">
                     <div style="display: flex; gap: 0.35rem; justify-content: flex-end;">
-                        <button class="export-btn" onclick="window.editAdminUser(${index})" style="padding: 0.15rem 0.4rem; font-size: 0.72rem; background: var(--bg-page); border-color: var(--border); color: var(--text-main);">Edit</button>
-                        <button class="export-btn" onclick="window.deleteAdminUser(${index})" style="padding: 0.15rem 0.4rem; font-size: 0.72rem; background: rgba(244, 67, 54, 0.1); border-color: rgba(244, 67, 54, 0.2); color: var(--danger);" ${window.userCredentials.length <= 1 ? 'disabled' : ''}>Delete</button>
+                        <button class="export-btn" onclick="window.editAdminUser(${idx})" style="padding: 0.15rem 0.4rem; font-size: 0.72rem; background: var(--bg-page); border-color: var(--border); color: var(--text-main);">Edit</button>
+                        <button class="export-btn" onclick="window.deleteAdminUser(${idx})" style="padding: 0.15rem 0.4rem; font-size: 0.72rem; background: rgba(244, 67, 54, 0.1); border-color: rgba(244, 67, 54, 0.2); color: var(--danger);">Delete</button>
                     </div>
                 </td>
             `;
@@ -11007,7 +11189,12 @@
         document.getElementById('admin-user-index').value = index;
         document.getElementById('admin-username').value = user.username;
         document.getElementById('admin-password').value = user.password;
-        document.getElementById('admin-role').value = user.role;
+        
+        const unitSelect = document.getElementById('admin-unit');
+        if (unitSelect) unitSelect.value = user.unit || 'excelcare';
+        
+        const roleSelect = document.getElementById('admin-role');
+        if (roleSelect) roleSelect.value = user.role;
 
         document.getElementById('admin-form-title').textContent = 'Edit Account';
         document.getElementById('btn-reset-admin-form').style.display = 'inline-block';
@@ -11018,7 +11205,14 @@
         document.getElementById('admin-user-index').value = '-1';
         document.getElementById('admin-username').value = '';
         document.getElementById('admin-password').value = '';
-        document.getElementById('admin-role').value = 'Viewer';
+        
+        const unitSelect = document.getElementById('admin-unit');
+        if (unitSelect) {
+            unitSelect.value = (window.currentUserUnit !== 'all') ? window.currentUserUnit : 'excelcare';
+        }
+        
+        const roleSelect = document.getElementById('admin-role');
+        if (roleSelect) roleSelect.value = 'Viewer';
 
         document.getElementById('admin-form-title').textContent = 'Add New Account';
         document.getElementById('btn-reset-admin-form').style.display = 'none';
@@ -11030,30 +11224,51 @@
         const idx = parseInt(document.getElementById('admin-user-index').value);
         const username = document.getElementById('admin-username').value.trim();
         const password = document.getElementById('admin-password').value.trim();
-        const role = document.getElementById('admin-role').value;
+        
+        const currentUnit = window.currentUserUnit || 'all';
+        const unitSelect = document.getElementById('admin-unit');
+        const unit = (currentUnit === 'all' && unitSelect) ? unitSelect.value : currentUnit;
+        
+        const roleSelect = document.getElementById('admin-role');
+        const role = roleSelect ? roleSelect.value : 'Viewer';
 
         if (!username || !password || !role) {
             alert('Please fill out all fields.');
             return;
         }
 
-        const dupIdx = window.userCredentials.findIndex(u => u.username.toLowerCase() === username.toLowerCase());
+        // Validate duplicates for the SAME unit (since different units can have identical usernames!)
+        const dupIdx = window.userCredentials.findIndex(u => 
+            u.username.toLowerCase() === username.toLowerCase() && u.unit === unit
+        );
+        
         if (idx === -1 && dupIdx !== -1) {
-            alert('An account with this username already exists.');
+            alert(`An account with username "${username}" already exists in the selected unit.`);
             return;
         }
         if (idx !== -1 && dupIdx !== -1 && dupIdx !== idx) {
-            alert('Another account with this username already exists.');
+            alert(`Another account with username "${username}" already exists in the selected unit.`);
             return;
         }
 
         if (idx === -1) {
-            window.userCredentials.push({ username, password, role });
+            window.userCredentials.push({ username, password, role, unit });
         } else {
-            window.userCredentials[idx] = { username, password, role };
+            // Guard editing admin role of own unit by non-global admin
+            if (currentUnit !== 'all' && window.userCredentials[idx].role === 'Administrator') {
+                alert('You do not have permissions to modify Administrator credentials.');
+                return;
+            }
+            window.userCredentials[idx] = { username, password, role, unit };
         }
 
         localStorage.setItem('brc_user_credentials', JSON.stringify(window.userCredentials));
+        fetch('/api/save_users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(window.userCredentials)
+        }).catch(err => console.error("Error saving users to server:", err));
+        
         window.resetAdminForm();
         window.renderAdminCenter();
     };
@@ -11062,16 +11277,77 @@
         const user = window.userCredentials[index];
         if (!user) return;
 
-        if (window.userCredentials.length <= 1) {
-            alert('You must keep at least one account configured.');
+        const currentUnit = window.currentUserUnit || 'all';
+        
+        // Non-global admins cannot delete administrator accounts
+        if (currentUnit !== 'all' && user.role === 'Administrator') {
+            alert('You do not have permissions to delete administrator accounts.');
             return;
         }
 
-        if (confirm(`Are you sure you want to delete user account "${user.username}"?`)) {
+        if (confirm(`Are you sure you want to delete user account "${user.username}" for unit "${user.unit}"?`)) {
             window.userCredentials.splice(index, 1);
             localStorage.setItem('brc_user_credentials', JSON.stringify(window.userCredentials));
+            fetch('/api/save_users', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(window.userCredentials)
+            }).catch(err => console.error("Error saving users to server:", err));
+            
             window.resetAdminForm();
             window.renderAdminCenter();
+        }
+    };
+
+    window.handleResetDefaults = function() {
+        const currentUnit = window.currentUserUnit || 'all';
+        let confirmMsg = '';
+        if (currentUnit === 'all') {
+            confirmMsg = 'Are you sure you want to reset all user credentials across ALL units to their system defaults? This will overwrite existing custom credentials.';
+        } else {
+            const capitalizedUnit = currentUnit.charAt(0).toUpperCase() + currentUnit.slice(1);
+            confirmMsg = `Are you sure you want to reset all View, Approve & Audit user credentials for the ${capitalizedUnit} unit to their defaults?`;
+        }
+
+        if (confirm(confirmMsg)) {
+            const defaults = [
+                // Excelcare Unit defaults
+                { username: 'Review', password: 'Apollo@123', role: 'Viewer', unit: 'excelcare' },
+                { username: 'BRC', password: 'Brc@2013', role: 'Auditor', unit: 'excelcare' },
+                { username: 'BRC1', password: 'Brc@2026', role: 'Approver', unit: 'excelcare' },
+                { username: 'admin', password: 'Admin@Excel', role: 'Administrator', unit: 'excelcare' },
+                
+                // International Unit defaults
+                { username: 'Review', password: 'Apollo@123', role: 'Viewer', unit: 'international' },
+                { username: 'BRC', password: 'Brc@2013', role: 'Auditor', unit: 'international' },
+                { username: 'BRC1', password: 'Brc@2026', role: 'Approver', unit: 'international' },
+                { username: 'admin', password: 'Admin@Intl', role: 'Administrator', unit: 'international' }
+            ];
+
+            if (currentUnit === 'all') {
+                window.userCredentials = defaults;
+            } else {
+                // Keep other units intact, reset only non-Admin roles of the logged-in unit
+                window.userCredentials = window.userCredentials.filter(u => u.unit !== currentUnit);
+                
+                // Add back defaults for current unit (excluding Admin)
+                defaults.forEach(d => {
+                    if (d.unit === currentUnit && d.role !== 'Administrator') {
+                        window.userCredentials.push(d);
+                    }
+                });
+            }
+
+            localStorage.setItem('brc_user_credentials', JSON.stringify(window.userCredentials));
+            fetch('/api/save_users', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(window.userCredentials)
+            }).catch(err => console.error("Error saving users to server:", err));
+            
+            window.resetAdminForm();
+            window.renderAdminCenter();
+            alert('Credentials reset to default system values successfully.');
         }
     };
 
@@ -11084,6 +11360,11 @@
         const btnReset = document.getElementById('btn-reset-admin-form');
         if (btnReset) {
             btnReset.addEventListener('click', window.resetAdminForm);
+        }
+
+        const btnResetDefaults = document.getElementById('btn-reset-defaults');
+        if (btnResetDefaults) {
+            btnResetDefaults.addEventListener('click', window.handleResetDefaults);
         }
 
         const toggleAdminPwd = document.getElementById('toggle-admin-password');

@@ -1,0 +1,50 @@
+[
+  {
+    "username": "Review",
+    "password": "Apollo@123",
+    "role": "Viewer",
+    "unit": "excelcare"
+  },
+  {
+    "username": "BRC",
+    "password": "Brc@2013",
+    "role": "Auditor",
+    "unit": "excelcare"
+  },
+  {
+    "username": "BRC1",
+    "password": "Brc@2026",
+    "role": "Approver",
+    "unit": "excelcare"
+  },
+  {
+    "username": "admin",
+    "password": "Admin@Excel",
+    "role": "Administrator",
+    "unit": "excelcare"
+  },
+  {
+    "username": "Review",
+    "password": "Apollo@123",
+    "role": "Viewer",
+    "unit": "international"
+  },
+  {
+    "username": "BRC",
+    "password": "Brc@2013",
+    "role": "Auditor",
+    "unit": "international"
+  },
+  {
+    "username": "BRC1",
+    "password": "Brc@2026",
+    "role": "Approver",
+    "unit": "international"
+  },
+  {
+    "username": "admin",
+    "password": "Admin@Intl",
+    "role": "Administrator",
+    "unit": "international"
+  }
+]
