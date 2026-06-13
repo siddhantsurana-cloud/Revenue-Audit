@@ -1684,9 +1684,213 @@
                 grid-template-columns: 1fr !important;
             }
         }
+
+        /* Full Page Login Panel Styling */
+        .full-page-login {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 30% 30%, var(--bg-app) 0%, var(--bg-card) 100%);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
+        .full-page-login.hidden {
+            display: none !important;
+        }
+        .login-card {
+            width: 100%;
+            max-width: 440px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+            padding: 2.25rem 2rem;
+            box-sizing: border-box;
+            animation: loginFadeIn 0.4s ease-out;
+        }
+        @keyframes loginFadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .login-logo {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 0.85rem;
+            padding: 0.25rem 0.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .login-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+        .login-subtitle {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin: 0.35rem 0 0 0;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .form-group-login {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+        .form-group-login label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .form-group-login input, .form-group-login select {
+            width: 100%;
+            padding: 0.65rem 0.75rem;
+            box-sizing: border-box;
+            background-color: var(--bg-app);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            font-weight: 600;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+        .form-group-login input:focus, .form-group-login select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.15);
+        }
+        .login-error-msg {
+            color: var(--danger);
+            font-size: 0.78rem;
+            font-weight: 700;
+            background-color: rgba(244, 67, 54, 0.08);
+            border: 1px solid rgba(244, 67, 54, 0.15);
+            padding: 0.6rem 0.75rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .btn-login-submit {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.25);
+        }
+        .btn-login-submit:hover {
+            background-color: #1976d2;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(33, 150, 243, 0.35);
+        }
+        .btn-login-submit:active {
+            transform: translateY(0);
+        }
+        .login-credentials-help {
+            margin-top: 1.75rem;
+            padding-top: 1.25rem;
+            border-top: 1px dashed var(--border);
+        }
+        .login-credentials-help .help-title {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .login-credentials-help .help-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.45rem;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+        .login-credentials-help .help-grid span {
+            font-weight: 600;
+        }
+        .login-credentials-help .help-grid .cred-val {
+            font-family: monospace;
+            font-weight: 700;
+            color: var(--primary);
+        }
     </style>
 </head>
 <body>
+
+    <!-- FULL PAGE PORTAL LOGIN -->
+    <div id="full-page-login" class="full-page-login">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="apollo_logo.png" alt="Apollo Logo" class="login-logo">
+                <h2 class="login-title">Revenue Assurance Portal</h2>
+                <p class="login-subtitle">BRC Guwahati Console</p>
+            </div>
+            <form id="main-login-form" class="login-form">
+                <div class="form-group-login">
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" placeholder="Enter username" required autocomplete="username">
+                </div>
+                <div class="form-group-login">
+                    <label for="login-password">Password</label>
+                    <div style="position: relative;">
+                        <input type="password" id="login-password" placeholder="Enter password" required autocomplete="current-password">
+                        <button type="button" id="toggle-main-login-password" style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; padding: 0.2rem;">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group-login">
+                    <label for="login-role">Session Role</label>
+                    <select id="login-role">
+                        <option value="Viewer">Viewer (Read-Only)</option>
+                        <option value="Auditor" selected>Auditor</option>
+                        <option value="Approver">Approval / Reviewer</option>
+                        <option value="Administrator">Administrator</option>
+                    </select>
+                </div>
+                <div id="main-login-error" class="login-error-msg" style="display: none;">
+                    Invalid username or password.
+                </div>
+                <button type="submit" class="btn-login-submit">Sign In</button>
+            </form>
+            <div class="login-credentials-help">
+                <div class="help-title">Demo User Credentials:</div>
+                <div class="help-grid">
+                    <div>Viewer: <span class="cred-val">viewer</span> / <span class="cred-val">viewer</span></div>
+                    <div>Auditor: <span class="cred-val">auditor</span> / <span class="cred-val">auditor123</span></div>
+                    <div>Approver: <span class="cred-val">approver</span> / <span class="cred-val">approver123</span></div>
+                    <div>Admin: <span class="cred-val">admin</span> / <span class="cred-val">admin123</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- MOBILE TOP BAR -->
     <div class="mobile-header">
@@ -1694,11 +1898,14 @@
             <div style="background-color: var(--primary-bg); color: var(--primary); padding: 0.35rem; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
             </div>
-            <span style="font-weight: 800; font-size: 0.95rem; letter-spacing: -0.01em; color: var(--text-main);">BRC - Guwahati | Revenue Assurance</span>
+            <span style="font-weight: 800; font-size: 0.95rem; letter-spacing: -0.01em; color: var(--text-main);">BRC - Guwahati</span>
         </div>
-        <button class="theme-toggle-btn" onclick="document.getElementById('theme-toggle').click()" style="padding: 0.4rem; border-radius: 8px; border: 1px solid var(--border); background: none; color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center;">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 18.36l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        </button>
+        <div style="display: flex; gap: 0.35rem; align-items: center;">
+            <button id="btn-mobile-logout" style="padding: 0.35rem 0.55rem; font-size: 0.72rem; font-weight: 700; border-radius: 6px; border: 1px solid rgba(244,67,54,0.25); background: rgba(244,67,54,0.1); color: var(--danger); cursor: pointer;">Sign Out</button>
+            <button class="theme-toggle-btn" onclick="document.getElementById('theme-toggle').click()" style="padding: 0.4rem; border-radius: 8px; border: 1px solid var(--border); background: none; color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 18.36l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </button>
+        </div>
     </div>
 
     <!-- MOBILE BOTTOM NAVIGATION -->
@@ -1744,14 +1951,21 @@
             </div>
         </div>
         <!-- SESSION ROLE SIMULATOR -->
-        <div class="user-role-card" style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); background-color: var(--bg-app); display: flex; flex-direction: column; gap: 0.35rem;">
-            <div style="font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Active Session Role</div>
+        <div class="user-role-card" style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); background-color: var(--bg-app); display: flex; flex-direction: column; gap: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;" id="active-user-avatar">A</div>
+                <div style="display: flex; flex-direction: column;">
+                    <span id="active-username-display" style="font-size: 0.8rem; font-weight: 700; color: var(--text-main);">auditor</span>
+                    <span id="active-role-display" style="font-size: 0.7rem; color: var(--text-muted);">Auditor</span>
+                </div>
+            </div>
             <select id="user-role-select" style="width: 100%; padding: 0.4rem 0.5rem; background-color: var(--bg-card); color: var(--text-main); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; outline: none; transition: border-color 0.2s;">
                 <option value="Viewer">Viewer</option>
                 <option value="Auditor" selected>Auditor</option>
                 <option value="Approver">Approval</option>
                 <option value="Administrator">Administrator</option>
             </select>
+            <button id="btn-sidebar-logout" class="export-btn" style="width: 100%; padding: 0.35rem; font-size: 0.72rem; background: rgba(244, 67, 54, 0.1); border-color: rgba(244, 67, 54, 0.2); color: var(--danger); font-weight: 700; border-radius: 6px; cursor: pointer;">Sign Out</button>
         </div>
         <nav class="sidebar-nav">
             <button class="tab-btn active" id="tab-dashboard-btn">
@@ -3997,6 +4211,14 @@
         }
         if (typeof initAdminCenterEventListeners === 'function') {
             initAdminCenterEventListeners();
+        }
+
+        // Initialize Portal Login Screen
+        if (typeof initPortalLoginListeners === 'function') {
+            initPortalLoginListeners();
+        }
+        if (typeof checkUserLoginState === 'function') {
+            checkUserLoginState();
         }
 
         // Draw startup database dashboard charts
@@ -10595,6 +10817,143 @@
                 { username: 'approver', password: 'approver123', role: 'Approver' },
                 { username: 'admin', password: 'admin123', role: 'Administrator' }
             ];
+        }
+    }
+
+    function checkUserLoginState() {
+        const savedSession = localStorage.getItem('brc_logged_in_user');
+        const loginPanel = document.getElementById('full-page-login');
+        
+        if (savedSession) {
+            const sessionData = JSON.parse(savedSession);
+            window.currentUserRole = sessionData.role;
+            window.previousUserRole = sessionData.role;
+            
+            const userRoleSelect = document.getElementById('user-role-select');
+            if (userRoleSelect) userRoleSelect.value = sessionData.role;
+            
+            if (loginPanel) loginPanel.classList.add('hidden');
+            
+            updateUserHeaderProfile(sessionData.username, sessionData.role);
+            updateUIForRole();
+        } else {
+            window.currentUserRole = 'Viewer';
+            window.previousUserRole = 'Viewer';
+            
+            const userRoleSelect = document.getElementById('user-role-select');
+            if (userRoleSelect) userRoleSelect.value = 'Viewer';
+            
+            if (loginPanel) loginPanel.classList.remove('hidden');
+            
+            updateUserHeaderProfile('Guest', 'Viewer');
+            updateUIForRole();
+        }
+    }
+
+    function updateUserHeaderProfile(username, role) {
+        const avatarEl = document.getElementById('active-user-avatar');
+        const usernameEl = document.getElementById('active-username-display');
+        const roleEl = document.getElementById('active-role-display');
+        
+        if (avatarEl) {
+            avatarEl.textContent = username.substring(0, 1).toUpperCase();
+        }
+        if (usernameEl) {
+            usernameEl.textContent = username;
+        }
+        if (roleEl) {
+            roleEl.textContent = role;
+        }
+    }
+
+    window.handlePortalLogout = function() {
+        localStorage.removeItem('brc_logged_in_user');
+        checkUserLoginState();
+        
+        const loginUsernameInput = document.getElementById('login-username');
+        const loginPasswordInput = document.getElementById('login-password');
+        const loginErrorMsg = document.getElementById('main-login-error');
+        
+        if (loginUsernameInput) loginUsernameInput.value = '';
+        if (loginPasswordInput) loginPasswordInput.value = '';
+        if (loginErrorMsg) loginErrorMsg.style.display = 'none';
+        
+        if (typeof window.switchMobileTab === 'function') {
+            window.switchMobileTab('dashboard');
+        }
+        const btnDashboard = document.getElementById('tab-dashboard-btn');
+        if (btnDashboard) btnDashboard.click();
+    };
+
+    function initPortalLoginListeners() {
+        const form = document.getElementById('main-login-form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const usernameInput = document.getElementById('login-username');
+                const passwordInput = document.getElementById('login-password');
+                const roleInput = document.getElementById('login-role');
+                const errorMsg = document.getElementById('main-login-error');
+                
+                const username = usernameInput ? usernameInput.value.trim() : '';
+                const password = passwordInput ? passwordInput.value : '';
+                const role = roleInput ? roleInput.value : 'Viewer';
+                
+                if (!username || !password) {
+                    alert('Please fill out all fields.');
+                    return;
+                }
+                
+                let isValid = false;
+                
+                if (window.userCredentials) {
+                    const getNormalizedRole = (r) => (r === 'Approver' || r === 'Approval') ? 'Approver' : r;
+                    const normTarget = getNormalizedRole(role);
+                    
+                    const matchedUser = window.userCredentials.find(u => 
+                        u.username.toLowerCase() === username.toLowerCase() && 
+                        u.password === password && 
+                        getNormalizedRole(u.role) === normTarget
+                    );
+                    
+                    if (matchedUser) {
+                        isValid = true;
+                        localStorage.setItem('brc_logged_in_user', JSON.stringify({ username: matchedUser.username, role: matchedUser.role }));
+                        checkUserLoginState();
+                    }
+                }
+                
+                if (!isValid) {
+                    if (errorMsg) errorMsg.style.display = 'block';
+                    if (passwordInput) {
+                        passwordInput.value = '';
+                        passwordInput.focus();
+                    }
+                }
+            });
+        }
+        
+        const togglePwdBtn = document.getElementById('toggle-main-login-password');
+        const loginPwdInput = document.getElementById('login-password');
+        if (togglePwdBtn && loginPwdInput) {
+            togglePwdBtn.addEventListener('click', () => {
+                if (loginPwdInput.type === 'password') {
+                    loginPwdInput.type = 'text';
+                } else {
+                    loginPwdInput.type = 'password';
+                }
+            });
+        }
+        
+        const btnSidebarLogout = document.getElementById('btn-sidebar-logout');
+        if (btnSidebarLogout) {
+            btnSidebarLogout.addEventListener('click', window.handlePortalLogout);
+        }
+        
+        const btnMobileLogout = document.getElementById('btn-mobile-logout');
+        if (btnMobileLogout) {
+            btnMobileLogout.addEventListener('click', window.handlePortalLogout);
         }
     }
 

@@ -1,4 +1,4 @@
-const CACHE_NAME = "apollo-ra-cache-v16";
+const CACHE_NAME = "apollo-ra-cache-v17";
 const ASSETS_TO_CACHE = [
   "./",
   "./index.html",
