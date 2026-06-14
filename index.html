@@ -9052,6 +9052,7 @@
         const isReviewer = role === 'Reviewer';
         const isApprover = role === 'Approver' || role === 'Approval';
         const isAdmin = role === 'Administrator';
+        const isGlobalAdmin = isAdmin && window.currentUserUnit === 'all';
 
         // Dropzone interactions
         if (isViewer) {
@@ -9105,11 +9106,11 @@
             btn.style.display = isAdmin ? 'flex' : 'none';
         });
 
-        // Hide/Show Admin Tab based on Administrator role
+        // Hide/Show Admin Tab based on Global Admin role
         if (typeof tabAdminBtn !== 'undefined' && tabAdminBtn) {
-            tabAdminBtn.style.display = isAdmin ? 'flex' : 'none';
+            tabAdminBtn.style.display = isGlobalAdmin ? 'flex' : 'none';
         }
-        if (!isAdmin && typeof tabAdminBtn !== 'undefined' && tabAdminBtn && tabAdminBtn.classList.contains('active')) {
+        if (!isGlobalAdmin && typeof tabAdminBtn !== 'undefined' && tabAdminBtn && tabAdminBtn.classList.contains('active')) {
             if (typeof tabDashboardBtn !== 'undefined' && tabDashboardBtn) {
                 tabDashboardBtn.click();
             }
@@ -11664,11 +11665,16 @@
     window.saveAdminUser = function(e) {
         if (e) e.preventDefault();
 
+        const currentUnit = window.currentUserUnit || 'all';
+        if (currentUnit !== 'all') {
+            alert('Access Denied: Only the Global Administrator is authorized to manage user credentials.');
+            return;
+        }
+
         const idx = parseInt(document.getElementById('admin-user-index').value);
         const username = document.getElementById('admin-username').value.trim();
         const password = document.getElementById('admin-password').value.trim();
         
-        const currentUnit = window.currentUserUnit || 'all';
         const unitSelect = document.getElementById('admin-unit');
         const unit = (currentUnit === 'all' && unitSelect) ? unitSelect.value : currentUnit;
         
@@ -11717,11 +11723,15 @@
     };
 
     window.deleteAdminUser = function(index) {
+        const currentUnit = window.currentUserUnit || 'all';
+        if (currentUnit !== 'all') {
+            alert('Access Denied: Only the Global Administrator is authorized to manage user credentials.');
+            return;
+        }
+
         const user = window.userCredentials[index];
         if (!user) return;
 
-        const currentUnit = window.currentUserUnit || 'all';
-        
         // Non-global admins cannot delete administrator accounts
         if (currentUnit !== 'all' && user.role === 'Administrator') {
             alert('You do not have permissions to delete administrator accounts.');
@@ -11744,6 +11754,11 @@
 
     window.handleResetDefaults = function() {
         const currentUnit = window.currentUserUnit || 'all';
+        if (currentUnit !== 'all') {
+            alert('Access Denied: Only the Global Administrator is authorized to manage user credentials.');
+            return;
+        }
+
         let confirmMsg = '';
         if (currentUnit === 'all') {
             confirmMsg = 'Are you sure you want to reset all user credentials across ALL units to their system defaults? This will overwrite existing custom credentials.';
