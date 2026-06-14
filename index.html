@@ -93,8 +93,8 @@
             transition: background-color 0.5s ease;
         }
 
-        /* Theme-specific body backgrounds */
-        :root[data-theme="dark"] body {
+        /* Theme-specific app-wrapper backgrounds */
+        :root[data-theme="dark"] .app-wrapper {
             background-color: var(--bg-page);
             background-image: none;
             background-repeat: no-repeat;
@@ -103,7 +103,7 @@
             animation: none;
         }
 
-        :root[data-theme="light"] body {
+        :root[data-theme="light"] .app-wrapper {
             background-color: var(--bg-page);
             background-image: var(--bg-image);
             background-repeat: repeat-x, repeat-x, repeat-x;
@@ -1291,6 +1291,7 @@
             height: 100vh;
             overflow: hidden;
             background-color: var(--bg-page);
+            transition: background 0.5s ease, background-color 0.5s ease;
         }
         
         /* Sidebar Layout styling */
