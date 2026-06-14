@@ -23,11 +23,11 @@
     <style>
         /* CSS variables for Dark and Light themes */
         :root[data-theme="dark"] {
-            --bg-page: #0b1329;
+            --bg-page: #050a15;
             --bg-image: none;
-            --bg-card: #1c2541;
-            --bg-hover: #222e50;
-            --border: #3a506b;
+            --bg-card: rgba(28, 37, 65, 0.45);
+            --bg-hover: rgba(34, 46, 80, 0.65);
+            --border: rgba(255, 255, 255, 0.08);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --primary: #0d9488;
@@ -43,9 +43,9 @@
             --info: #3b82f6;
             --info-bg: rgba(59, 130, 246, 0.1);
             
-            --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             --scrollbar-thumb: #3a506b;
-            --scrollbar-bg: #0b1329;
+            --scrollbar-bg: #050a15;
         }
 
         :root[data-theme="light"] {
@@ -53,9 +53,9 @@
             --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%23004b87' fill-opacity='0.07' d='M0,160L48,154.7C96,149,192,139,288,149.3C384,160,480,192,576,197.3C672,203,768,181,864,165.3C960,149,1056,139,1152,144C1248,149,1344,171,1392,181.3L1440,192L1440,0L1392,0L1152,0L864,0L576,0L288,0L0,0Z'%3E%3C/path%3E%3C/svg%3E"), 
                         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%233b82f6' fill-opacity='0.05' d='M0,96L48,112C96,128,192,160,288,181.3C384,203,480,213,576,197.3C672,181,768,139,864,122.7C960,107,1056,117,1152,138.7C1248,160,1344,192,1392,208L1440,224L1440,0L1392,0L1152,0L864,0L576,0L288,0L0,0Z'%3E%3C/path%3E%3C/svg%3E"),
                         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%2300a19c' fill-opacity='0.04' d='M0,224L48,218.7C96,213,192,203,288,181.3C384,160,480,128,576,138.7C672,149,768,203,864,213.3C960,224,1056,192,1152,170.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320L1152,320L864,320L576,320L288,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-            --bg-card: #ffffff;
-            --bg-hover: #f1f5f9;
-            --border: #e2e8f0;
+            --bg-card: rgba(255, 255, 255, 0.45);
+            --bg-hover: rgba(255, 255, 255, 0.65);
+            --border: rgba(255, 255, 255, 0.25);
             --text-main: #0f172a;
             --text-muted: #64748b;
             --primary: #0f766e;
@@ -71,9 +71,28 @@
             --info: #1d4ed8;
             --info-bg: rgba(37, 99, 235, 0.08);
             
-            --card-shadow: 0 10px 25px -15px rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
             --scrollbar-thumb: #cbd5e1;
             --scrollbar-bg: #f8fafc;
+        }
+
+        /* Global iOS Glassmorphism styling */
+        header, 
+        .sidebar, 
+        .controls-card, 
+        .metric-card, 
+        .audit-card, 
+        .explorer-card, 
+        .login-card, 
+        .modal-content,
+        .table-card,
+        .checking-card,
+        .manual-card,
+        .admin-card {
+            backdrop-filter: blur(16px) saturate(120%);
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            box-shadow: var(--card-shadow) !important;
+            border: 1px solid var(--border) !important;
         }
 
         /* Reset and Base Styles */
