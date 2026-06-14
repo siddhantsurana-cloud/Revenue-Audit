@@ -216,6 +216,8 @@ function Parse-MultiSheetFile($file) {
         $codeCol = 0
         $nameCol = 0
         $rateCol = 0
+        $fromCol = 0
+        $toCol = 0
         
         for ($r = 1; $r -le [Math]::Min(15, $rowCount); $r++) {
             for ($c = 1; $c -le $colCount; $c++) {
@@ -235,6 +237,12 @@ function Parse-MultiSheetFile($file) {
                     }
                     if ($v -match "TARIFF|RATE|AMT|PRICE|CHARGE") {
                         $rateCol = $c
+                    }
+                    if ($v -eq "FROM UNIT") {
+                        $fromCol = $c
+                    }
+                    if ($v -eq "TO UNIT") {
+                        $toCol = $c
                     }
                 }
                 break
@@ -283,14 +291,28 @@ function Parse-MultiSheetFile($file) {
                     }
                 }
             }
+
+            $fromUnit = 0
+            $toUnit = 0
+            if ($fromCol -gt 0) {
+                $fv = if ($values[$r, $fromCol] -ne $null) { $values[$r, $fromCol].ToString().Trim() } else { "" }
+                [double]::TryParse($fv, [ref]$fromUnit) | Out-Null
+            }
+            if ($toCol -gt 0) {
+                $tv = if ($values[$r, $toCol] -ne $null) { $values[$r, $toCol].ToString().Trim() } else { "" }
+                [double]::TryParse($tv, [ref]$toUnit) | Out-Null
+            }
             
-            $results.Add([PSCustomObject]@{
+            $obj = [PSCustomObject]@{
                 id = $code
                 name = $name
                 type = $sheetName
                 dept = $sheetName
                 rate = $rateNum
-            })
+            }
+            if ($fromCol -gt 0) { $obj | Add-Member -MemberType NoteProperty -Name "fromUnit" -Value $fromUnit }
+            if ($toCol -gt 0) { $obj | Add-Member -MemberType NoteProperty -Name "toUnit" -Value $toUnit }
+            $results.Add($obj)
         }
     }
     $wb.Close($false)

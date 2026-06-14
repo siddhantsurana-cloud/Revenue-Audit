@@ -5980,6 +5980,9 @@
         auditBuSelect.addEventListener('change', () => {
             updateValidationSourceOptions();
             populateRoomMappingSelects();
+            if (typeof window.loadUnitCustomDiscounts === 'function') {
+                window.loadUnitCustomDiscounts();
+            }
         });
 
         // Validation Source Type selector change listener
@@ -10923,8 +10926,17 @@
         }
     }
 
+    function getActiveOverrideUnit() {
+        const u = window.currentUserUnit || 'all';
+        if (u === 'all') {
+            const select = document.getElementById('audit-bu-select');
+            return (select && select.value) ? select.value : 'excelcare';
+        }
+        return u;
+    }
+
     window.loadUnitCustomDiscounts = function() {
-        const activeUnit = window.currentUserUnit || 'excelcare';
+        const activeUnit = getActiveOverrideUnit();
         try {
             window.customDeptDiscounts = JSON.parse(localStorage.getItem(`customDeptDiscounts_${activeUnit}`)) || {};
             window.customItemDiscounts = JSON.parse(localStorage.getItem(`customItemDiscounts_${activeUnit}`)) || {};
@@ -10983,7 +10995,7 @@
                 if (confirm("Are you sure you want to clear all custom department and item overrides for this unit?")) {
                     window.customDeptDiscounts = {};
                     window.customItemDiscounts = {};
-                    const activeUnit = window.currentUserUnit || 'excelcare';
+                    const activeUnit = getActiveOverrideUnit();
                     localStorage.removeItem(`customDeptDiscounts_${activeUnit}`);
                     localStorage.removeItem(`customItemDiscounts_${activeUnit}`);
                     
@@ -11008,12 +11020,12 @@
             listDeptDiv.addEventListener('input', e => {
                 if (e.target.classList.contains('dept-discount-input')) {
                     const dept = e.target.getAttribute('data-dept');
-                    const val = parseInt(e.target.value, 10);
-                    const activeUnit = window.currentUserUnit || 'excelcare';
-                    if (isNaN(val) || val <= 0) {
+                    const activeUnit = getActiveOverrideUnit();
+                    if (e.target.value === '') {
                         delete window.customDeptDiscounts[dept];
                     } else {
-                        window.customDeptDiscounts[dept] = Math.min(100, Math.max(0, val));
+                        const val = parseInt(e.target.value, 10);
+                        window.customDeptDiscounts[dept] = Math.min(100, Math.max(0, isNaN(val) ? 0 : val));
                     }
                     localStorage.setItem(`customDeptDiscounts_${activeUnit}`, JSON.stringify(window.customDeptDiscounts));
                 }
@@ -11054,7 +11066,7 @@
                                 const itemId = el.getAttribute('data-id');
                                 const itemName = el.getAttribute('data-name');
                                 const itemDept = el.getAttribute('data-dept');
-                                const activeUnit = window.currentUserUnit || 'excelcare';
+                                const activeUnit = getActiveOverrideUnit();
                                 window.customItemDiscounts[itemId] = {
                                     name: itemName,
                                     dept: itemDept,
@@ -11083,10 +11095,14 @@
             listItemDiv.addEventListener('input', e => {
                 if (e.target.classList.contains('item-discount-input')) {
                     const id = e.target.getAttribute('data-id');
-                    const val = parseInt(e.target.value, 10);
-                    const activeUnit = window.currentUserUnit || 'excelcare';
+                    const activeUnit = getActiveOverrideUnit();
                     if (window.customItemDiscounts[id]) {
-                        window.customItemDiscounts[id].discount = isNaN(val) ? 0 : Math.min(100, Math.max(0, val));
+                        if (e.target.value === '') {
+                            window.customItemDiscounts[id].discount = 0;
+                        } else {
+                            const val = parseInt(e.target.value, 10);
+                            window.customItemDiscounts[id].discount = Math.min(100, Math.max(0, isNaN(val) ? 0 : val));
+                        }
                         localStorage.setItem(`customItemDiscounts_${activeUnit}`, JSON.stringify(window.customItemDiscounts));
                     }
                 }
@@ -11096,7 +11112,7 @@
                 const btn = e.target.closest('.btn-delete-item-discount');
                 if (btn) {
                     const id = btn.getAttribute('data-id');
-                    const activeUnit = window.currentUserUnit || 'excelcare';
+                    const activeUnit = getActiveOverrideUnit();
                     delete window.customItemDiscounts[id];
                     localStorage.setItem(`customItemDiscounts_${activeUnit}`, JSON.stringify(window.customItemDiscounts));
                     renderItemDiscounts();
