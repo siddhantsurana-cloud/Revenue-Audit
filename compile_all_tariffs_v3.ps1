@@ -9,13 +9,13 @@ $excel = New-Object -ComObject Excel.Application
 $excel.Visible = $false
 $excel.DisplayAlerts = $false
 
-$gipsaFile = "s:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Tarrif Masterss/International/APOLLO GUWAHATI GIPSA TARIFF 2026.xlsx"
-$tpaFile = "s:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Tarrif Masterss/International/ERRICSON TPA.xlsx"
-$workingsFile = "s:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Tariff validation Workings-New.xlsx"
+$gipsaFile = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Other Related data/International/APOLLO GUWAHATI GIPSA TARIFF 2026.xlsx"
+$tpaFile = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Other Related data/International/ERRICSON TPA.xlsx"
+$workingsFile = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Tariff validation Workings-New.xlsx"
 $socDir = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/International/Base File/SOC's Use"
 $ergoDir = "C:\Users\siddh\Downloads\HDFC ERGO - Excelcare"
-$agreementFile = "s:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Tarrif Masterss/Agreements with following Tariffs- Hyderabad.xlsx"
-$outputFile = "s:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Tarrif Masterss/tariff_data.js"
+$agreementFile = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Other Related data/Agreements with following Tariffs- Hyderabad.xlsx"
+$outputFile = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Tarrif Masterss/tariff_data.js"
 
 $servicesHash = [ordered]@{}
 
@@ -518,7 +518,7 @@ if (Test-Path $agreementFile) {
 # 9. Parse Excelcare SOC 2025-26 (SOC FY26  CREDIT (1).xls)
 Log-Info "Parsing Excelcare SOC 2025-26..."
 $listExcelcare2025 = New-Object System.Collections.Generic.List[Object]
-$excelcareDir = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Tarrif Masterss/Execlcare - Tarrif"
+$excelcareDir = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Other Related data/Execlcare - Tarrif"
 $excelcareFile2025 = Join-Path $excelcareDir "SOC FY26  CREDIT (1).xls"
 
 if (Test-Path $excelcareFile2025) {
@@ -559,6 +559,7 @@ if (Test-Path $excelcareFile2024) {
     if ($sheet -ne $null) {
         $values = $sheet.UsedRange.Value2
         $rowCount = $sheet.UsedRange.Rows.Count
+        $colCount = $sheet.UsedRange.Columns.Count
         for ($r = 2; $r -le $rowCount; $r++) {
             # In 24-25 Merged sheet: Col 2 is Service ID, Col 3 is Service Name, Col 5 is standard rate
             $code = if ($values[$r, 2] -ne $null) { $values[$r, 2].ToString().Trim() } else { "" }
@@ -572,7 +573,7 @@ if (Test-Path $excelcareFile2024) {
                 # Found in Col 5
             } else {
                 # Fallback check columns 6 to 12
-                for ($c = 6; $c -le 12; $c++) {
+                for ($c = 6; $c -le $colCount; $c++) {
                     $rateStr = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
                     $valNum = 0
                     if ($rateStr -and [double]::TryParse($rateStr, [ref]$valNum)) {
@@ -597,7 +598,7 @@ if (Test-Path $excelcareFile2024) {
 # 11. Parse Excelcare 2026 - Cash SOC (SOC FY26  CASH.xls)
 Log-Info "Parsing Excelcare 2026 - Cash SOC..."
 $listExcelcareCash2025 = New-Object System.Collections.Generic.List[Object]
-$excelcareCashFile = Join-Path "s:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Tarrif Masterss/International/OP Bill Checking" "SOC FY26  CASH.xls"
+$excelcareCashFile = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Other Related data/International/OP Bill Checking/SOC FY26  CASH.xls"
 
 if (Test-Path $excelcareCashFile) {
     $wb = $excel.Workbooks.Open($excelcareCashFile, [Type]::Missing, $true)
@@ -708,6 +709,24 @@ $jsonExcelcareCash2025 = $listExcelcareCash2025 | ConvertTo-Json -Depth 5
 $jsonExcelcare2024 = $listExcelcare2024 | ConvertTo-Json -Depth 5
 $jsonHdfcErgo = $listHdfcErgo | ConvertTo-Json -Depth 5
 $jsonAgreements = $listAgreements | ConvertTo-Json -Depth 5
+
+# Safety guards to prevent empty/null assignments causing syntax errors in JS
+$jsonMaster = if ($jsonMaster) { $jsonMaster } else { "[]" }
+$jsonTpaRoom = if ($jsonTpaRoom) { $jsonTpaRoom } else { "{}" }
+$jsonGipsaRoom = if ($jsonGipsaRoom) { $jsonGipsaRoom } else { "{}" }
+$jsonNursing = if ($jsonNursing) { $jsonNursing } else { "{}" }
+$jsonMonitoring = if ($jsonMonitoring) { $jsonMonitoring } else { "{}" }
+$jsonVisit = if ($jsonVisit) { $jsonVisit } else { "{}" }
+
+$json2021 = if ($json2021) { $json2021 } else { "[]" }
+$json2023 = if ($json2023) { $json2023 } else { "[]" }
+$json2024 = if ($json2024) { $json2024 } else { "[]" }
+$json2025 = if ($json2025) { $json2025 } else { "[]" }
+$jsonExcelcare2025 = if ($jsonExcelcare2025) { $jsonExcelcare2025 } else { "[]" }
+$jsonExcelcareCash2025 = if ($jsonExcelcareCash2025) { $jsonExcelcareCash2025 } else { "[]" }
+$jsonExcelcare2024 = if ($jsonExcelcare2024) { $jsonExcelcare2024 } else { "[]" }
+$jsonHdfcErgo = if ($jsonHdfcErgo) { $jsonHdfcErgo } else { "[]" }
+$jsonAgreements = if ($jsonAgreements) { $jsonAgreements } else { "[]" }
 
 $jsContent = @"
 const TARIFF_DATA = $jsonMaster;

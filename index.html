@@ -7830,7 +7830,7 @@
                             const activeSOCMap = getActiveSOCMap(activeSOC);
                             const match = activeSOCMap[serviceId];
                             if (match) {
-                                expectedTariff = match.rate;
+                                expectedTariff = (activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate;
                             } else {
                                 expectedTariff = null;
                             }
@@ -7844,7 +7844,7 @@
                                     return nameVal === cleanBillName || (aliasNameVal && aliasNameVal === cleanBillName);
                                 });
                                 if (descMatches.length > 0) {
-                                    expectedTariff = descMatches[0].rate;
+                                    expectedTariff = (activeSOC === TARIFF_DATA) ? (isGipsa ? descMatches[0].gipsa_rate : descMatches[0].tpa_rate) : descMatches[0].rate;
                                     explanation += " Matched by description in active SOC.";
                                 }
                             }
@@ -7915,8 +7915,34 @@
                             status = "Matching"; // reset status from Not Found
                             explanation += ` Not found in Template; fetched ₹${expectedTariff} from ${activeYear} SOC` + (fallbackMatchedByDesc ? ` (Matched by Description: ${fallbackMatch.name})` : "") + ".";
                         } else {
-                            status = "Not Found in Master";
-                            explanation += ` Service Code not found in Template or ${activeYear} SOC.`;
+                            // As a final fallback, check the 2026 GIPSA/TPA Master database (TARIFF_DATA)
+                            let masterMatch = map2026[serviceId];
+                            let masterMatchedByDesc = false;
+                            if (!masterMatch) {
+                                const cleanBillName = nameUpper.trim();
+                                const descMatches = TARIFF_DATA.filter(x => {
+                                    const nameVal = (x.name || '').toUpperCase().trim();
+                                    const aliasNameVal = (x.aliasName || '').toUpperCase().trim();
+                                    return nameVal === cleanBillName || (aliasNameVal && aliasNameVal === cleanBillName);
+                                });
+                                if (descMatches.length > 0) {
+                                    masterMatch = descMatches[0];
+                                    masterMatchedByDesc = true;
+                                }
+                            }
+                            if (masterMatch) {
+                                expectedTariff = isGipsa ? masterMatch.gipsa_rate : masterMatch.tpa_rate;
+                                if (expectedTariff !== null && expectedTariff !== undefined) {
+                                    status = "Matching";
+                                    explanation += ` Not found in Template or ${activeYear} SOC; fetched ₹${expectedTariff} from 2026 Master (TPA/GIPSA)` + (masterMatchedByDesc ? ` (Matched by Description: ${masterMatch.name})` : "") + ".";
+                                } else {
+                                    status = "Not Found in Master";
+                                    explanation += ` Service Code found in 2026 Master but has no valid rate.`;
+                                }
+                            } else {
+                                status = "Not Found in Master";
+                                explanation += ` Service Code not found in Template or ${activeYear} SOC.`;
+                            }
                         }
                     }
                 } // close else of if (learnedOverride)
