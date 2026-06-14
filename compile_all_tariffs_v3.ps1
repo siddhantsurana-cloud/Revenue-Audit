@@ -211,108 +211,95 @@ function Parse-MultiSheetFile($file) {
         $colCount = $sheet.UsedRange.Columns.Count
         if ($rowCount -lt 3) { continue }
         
-        # Check first few rows for header "CODE"
-        $headerRow = 0
-        $codeCol = 0
-        $nameCol = 0
-        $rateCol = 0
         $fromCol = 0
         $toCol = 0
         
-        for ($r = 1; $r -le [Math]::Min(15, $rowCount); $r++) {
+        for ($r = 1; $r -le $rowCount; $r++) {
+            # 1. Collect non-empty cells in the row and identify headers/units dynamically
+            $cells = New-Object System.Collections.Generic.List[Object]
+            $isHeader = $false
             for ($c = 1; $c -le $colCount; $c++) {
-                $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim().ToUpper() } else { "" }
-                if ($v -eq "CODE" -or $v -eq "SERVICE CODE" -or $v -eq "SERVICEID" -or $v -eq "SERVICE CODE") {
-                    $headerRow = $r
-                    $codeCol = $c
-                }
-            }
-            if ($headerRow -gt 0) {
-                for ($c = 1; $c -le $colCount; $c++) {
-                    $v = if ($values[$headerRow, $c] -ne $null) { $values[$headerRow, $c].ToString().Trim().ToUpper() } else { "" }
-                    if ($v -match "NAME|PROCEDURE|SERVICE|PARTICULARS|BED CATEGORY|DESCRIPTION") {
-                        if ($v -notmatch "TYPE|GROUP|CATEGORYNAME|DEPT|DEPARTMENT") {
-                            if ($c -ne $codeCol) { $nameCol = $c }
-                        }
-                    }
-                    if ($v -match "TARIFF|RATE|AMT|PRICE|CHARGE") {
-                        $rateCol = $c
-                    }
-                    if ($v -eq "FROM UNIT") {
-                        $fromCol = $c
-                    }
-                    if ($v -eq "TO UNIT") {
-                        $toCol = $c
+                $val = $values[$r, $c]
+                if ($val -ne $null) {
+                    $valStr = $val.ToString().Trim()
+                    $cells.Add([PSCustomObject]@{ index = $c; value = $valStr })
+                    
+                    $valUpper = $valStr.ToUpper()
+                    if ($valUpper -eq "FROM UNIT") { $fromCol = $c }
+                    if ($valUpper -eq "TO UNIT") { $toCol = $c }
+                    if ($valUpper -in @("CODE", "SERVICE CODE", "SERVICEID", "NEW CODE", "MEDMANTRA")) {
+                        $isHeader = $true
                     }
                 }
-                break
             }
-        }
-        
-        if ($codeCol -eq 0) { $codeCol = 1 }
-        if ($nameCol -eq 0) { $nameCol = 2 }
-        if ($rateCol -eq 0) { $rateCol = 3 }
-        $startRow = if ($headerRow -gt 0) { $headerRow + 1 } else { 1 }
-        
-        for ($r = $startRow; $r -le $rowCount; $r++) {
-            $code = if ($values[$r, $codeCol] -ne $null) { $values[$r, $codeCol].ToString().Trim() } else { "" }
-            if ([string]::IsNullOrEmpty($code) -or $code -eq "CODE" -or $code -eq "SERVICE CODE") { continue }
+            if ($cells.Count -eq 0 -or $isHeader) { continue }
             
-            # Row-by-row scanning of adjacent cells for name & rate to handle merged headings dynamically
-            $name = if ($values[$r, $nameCol] -ne $null) { $values[$r, $nameCol].ToString().Trim() } else { "" }
-            if ([string]::IsNullOrEmpty($name)) {
-                for ($colOffset = -2; $colOffset -le 2; $colOffset++) {
-                    $adjCol = $nameCol + $colOffset
-                    if ($adjCol -gt 0 -and $adjCol -le $colCount -and $adjCol -ne $codeCol -and $adjCol -ne $rateCol) {
-                        $v = if ($values[$r, $adjCol] -ne $null) { $values[$r, $adjCol].ToString().Trim() } else { "" }
-                        if ($v -and $v.Length -gt 3 -and $v -notmatch '^\d+$') {
-                            $name = $v
-                            break
-                        }
-                    }
-                }
-            }
-            if ([string]::IsNullOrEmpty($name)) { continue }
+            # Check if this row looks like a header from string content
+            $rowStr = ($cells | ForEach-Object { $_.value.ToUpper() }) -join " "
+            if ($rowStr -match "NEW CODE|SERVICE CODE|SERVICEID|SL-NO\.|SL\.NO\.") { continue }
+            if ($rowStr -match "CODE" -and $rowStr -match "SERVICE") { continue }
             
-            $rateStr = if ($values[$r, $rateCol] -ne $null) { $values[$r, $rateCol].ToString().Trim() } else { "" }
+            # Code is the first non-empty cell value
+            $codeObj = $cells[0]
+            $code = $codeObj.value
+            $codeUpper = $code.ToUpper()
+            
+            if ($codeUpper -in @("CODE", "SERVICE", "RATE", "TARIFF", "PRICE", "AMT", "AMOUNT", "SL-NO.", "SL.NO.", "NOTE:", "GENERAL", "INVESTIGATION", "PARTICULARS")) {
+                continue
+            }
+            if ($code.Length -gt 30) { continue }
+            
+            # Find name and rate from remaining cells
+            $name = ""
             $rateNum = 0
+            $foundRate = $false
             
-            if ([string]::IsNullOrEmpty($rateStr) -or -not [double]::TryParse($rateStr, [ref]$rateNum)) {
-                $rateNum = 0
-                for ($colOffset = -2; $colOffset -le 2; $colOffset++) {
-                    $adjCol = $rateCol + $colOffset
-                    if ($adjCol -gt 0 -and $adjCol -le $colCount -and $adjCol -ne $codeCol -and $adjCol -ne $nameCol) {
-                        $v = if ($values[$r, $adjCol] -ne $null) { $values[$r, $adjCol].ToString().Trim() } else { "" }
-                        $valNum = 0
-                        if ($v -and [double]::TryParse($v, [ref]$valNum)) {
-                            $rateNum = $valNum
-                            break
-                        }
+            for ($idx = 1; $idx -lt $cells.Count; $idx++) {
+                $cellObj = $cells[$idx]
+                $valStr = $cellObj.value
+                
+                # Check if it's numeric
+                $valDouble = 0
+                if (-not $foundRate -and [double]::TryParse($valStr, [ref]$valDouble)) {
+                    $rateNum = $valDouble
+                    $foundRate = $true
+                } else {
+                    if ([string]::IsNullOrEmpty($name) -and $valStr.Length -gt 3 -and $valStr -notmatch '^\d+$') {
+                        $name = $valStr
                     }
                 }
             }
-
-            $fromUnit = 0
-            $toUnit = 0
-            if ($fromCol -gt 0) {
-                $fv = if ($values[$r, $fromCol] -ne $null) { $values[$r, $fromCol].ToString().Trim() } else { "" }
-                [double]::TryParse($fv, [ref]$fromUnit) | Out-Null
-            }
-            if ($toCol -gt 0) {
-                $tv = if ($values[$r, $toCol] -ne $null) { $values[$r, $toCol].ToString().Trim() } else { "" }
-                [double]::TryParse($tv, [ref]$toUnit) | Out-Null
-            }
             
-            $obj = [PSCustomObject]@{
-                id = $code
-                name = $name
-                type = $sheetName
-                dept = $sheetName
-                rate = $rateNum
+            if (-not [string]::IsNullOrEmpty($name)) {
+                $nameUpper = $name.ToUpper()
+                if ($nameUpper -in @("SERVICE", "PARTICULARS", "PROCEDURE", "DESCRIPTION", "RATE", "CODE")) { continue }
+                
+                $fromUnit = 0
+                $toUnit = 0
+                if ($fromCol -gt 0) {
+                    $fromVal = $values[$r, $fromCol]
+                    if ($fromVal -ne $null) {
+                        [double]::TryParse($fromVal.ToString().Trim(), [ref]$fromUnit) | Out-Null
+                    }
+                }
+                if ($toCol -gt 0) {
+                    $toVal = $values[$r, $toCol]
+                    if ($toVal -ne $null) {
+                        [double]::TryParse($toVal.ToString().Trim(), [ref]$toUnit) | Out-Null
+                    }
+                }
+                
+                $obj = [PSCustomObject]@{
+                    id = $code
+                    name = $name
+                    type = $sheetName
+                    dept = $sheetName
+                    rate = $rateNum
+                }
+                if ($fromCol -gt 0) { $obj | Add-Member -MemberType NoteProperty -Name "fromUnit" -Value $fromUnit }
+                if ($toCol -gt 0) { $obj | Add-Member -MemberType NoteProperty -Name "toUnit" -Value $toUnit }
+                $results.Add($obj)
             }
-            if ($fromCol -gt 0) { $obj | Add-Member -MemberType NoteProperty -Name "fromUnit" -Value $fromUnit }
-            if ($toCol -gt 0) { $obj | Add-Member -MemberType NoteProperty -Name "toUnit" -Value $toUnit }
-            $results.Add($obj)
         }
     }
     $wb.Close($false)
