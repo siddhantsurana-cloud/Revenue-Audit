@@ -71,9 +71,41 @@
             --info: #1d4ed8;
             --info-bg: rgba(37, 99, 235, 0.08);
             
-            --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+            --card-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.04);
             --scrollbar-thumb: #cbd5e1;
             --scrollbar-bg: #f8fafc;
+        }
+
+        /* Sandbox Mode Styling */
+        body.sandbox-active::before {
+            content: "TEST SANDBOX ENVIRONMENT ACTIVE - PRODUCTION TRANSACTIONS BYPASSED";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 24px;
+            background: repeating-linear-gradient(45deg, #d97706, #d97706 10px, #b45309 10px, #b45309 20px);
+            z-index: 100000;
+            color: #ffffff;
+            font-size: 0.68rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-align: center;
+            line-height: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body.sandbox-active .app-wrapper {
+            margin-top: 24px;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.4; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         /* Global iOS Glassmorphism styling */
@@ -2022,6 +2054,16 @@
                 <option value="Approver">Approval</option>
                 <option value="Administrator">Administrator</option>
             </select>
+            
+            <!-- Sandbox Mode Switcher -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.1rem; background: rgba(59, 130, 246, 0.08); padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                <span id="env-badge" style="font-size: 0.68rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 0.25rem;">
+                    <span style="display: inline-block; width: 6px; height: 6px; background: var(--primary); border-radius: 50%;"></span>
+                    PRODUCTION
+                </span>
+                <button id="btn-toggle-env" type="button" style="background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); font-size: 0.65rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 4px; cursor: pointer; transition: all 0.2s;">Switch to Test</button>
+            </div>
+
             <button id="btn-sidebar-logout" class="export-btn" style="width: 100%; padding: 0.35rem; font-size: 0.72rem; background: rgba(244, 67, 54, 0.1); border-color: rgba(244, 67, 54, 0.2); color: var(--danger); font-weight: 700; border-radius: 6px; cursor: pointer;">Sign Out</button>
         </div>
         <nav class="sidebar-nav">
@@ -3437,201 +3479,206 @@
     <!-- PANEL 7: PROCESS MANUAL -->
     <div class="tab-panel" id="panel-manual">
         <div class="controls-card" style="background: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%); border-left: none; color: white; padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem;">
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
-                <div style="background: rgba(255,255,255,0.15); padding: 0.6rem; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 0.6rem; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; font-weight: 800; color: white; margin: 0;">Interactive Operations Manual & Roadmap</h3>
+                        <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.9rem; margin: 0.25rem 0 0 0;">
+                            Interactive operational guidelines and version control center for BRC Guwahati - Revenue Assurance.
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    <h3 style="font-size: 1.5rem; font-weight: 800; color: white; margin: 0;">Interactive Process & Operations Manual</h3>
-                    <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.9rem; margin: 0.25rem 0 0 0;">
-                        Operational guidelines for BRC Guwahati - Revenue Assurance, Billing Audit lifecycle, and verification workflow.
-                    </p>
+                <!-- Version Badge -->
+                <div style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; backdrop-filter: blur(4px);">
+                    LOCKED VERSION: V1.0.0
                 </div>
             </div>
         </div>
 
-        <!-- WORKFLOW STEPPER DIAGRAM -->
-        <div class="controls-card" style="margin-bottom: 1.5rem; background-color: var(--bg-card); display: flex; flex-direction: column; gap: 1.5rem;">
-            <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Standard Billing Audit Workflow</div>
+        <!-- TWO COLUMN LAYOUT: MANUAL & ROADMAP -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; align-items: start; margin-bottom: 1.5rem;">
             
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; gap: 1rem; position: relative;">
-                <!-- Step 1 -->
-                <div style="flex: 1; min-width: 200px; background-color: var(--bg-page); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border); position: relative;">
-                    <div style="position: absolute; top: -10px; left: 15px; background: var(--primary); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800;">1</div>
-                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin: 0.5rem 0 0.5rem 0;">Download Report</h4>
-                    <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
-                        Auditors extract the current billing log spreadsheet by clicking <strong style="color:var(--text-main)">Download Excel Report</strong> in the workflow bar.
-                    </p>
+            <!-- LEFT COLUMN: INTERACTIVE OPERATIONS MANUAL -->
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                
+                <!-- WORKFLOW STEPPER -->
+                <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 1.25rem;">
+                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Standard Billing Audit Workflow</div>
+                    <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; gap: 1rem; position: relative;">
+                        <!-- Step 1 -->
+                        <div style="flex: 1; min-width: 180px; background-color: var(--bg-page); padding: 1rem; border-radius: 8px; border: 1px solid var(--border); position: relative;">
+                            <div style="position: absolute; top: -10px; left: 15px; background: var(--primary); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800;">1</div>
+                            <h4 style="font-size: 0.88rem; font-weight: 700; color: var(--primary); margin: 0.5rem 0 0.35rem 0;">Import Files</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
+                                Drag audited sheets into the <a href="#" onclick="window.switchMobileTab('audit'); return false;" style="color: var(--info); font-weight: 700; text-decoration: none;">Uploader Dropzone</a>.
+                            </p>
+                        </div>
+                        <!-- Step 2 -->
+                        <div style="flex: 1; min-width: 180px; background-color: var(--bg-page); padding: 1rem; border-radius: 8px; border: 1px solid var(--border); position: relative;">
+                            <div style="position: absolute; top: -10px; left: 15px; background: var(--primary); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800;">2</div>
+                            <h4 style="font-size: 0.88rem; font-weight: 700; color: var(--primary); margin: 0.5rem 0 0.35rem 0;">Adjust Discounts</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
+                                Enter granular discounts per department or item ID in the <strong style="color: var(--text-main);">Adjustments Sidebar</strong>.
+                            </p>
+                        </div>
+                        <!-- Step 3 -->
+                        <div style="flex: 1; min-width: 180px; background-color: var(--bg-page); padding: 1rem; border-radius: 8px; border: 1px solid var(--border); position: relative;">
+                            <div style="position: absolute; top: -10px; left: 15px; background: var(--primary); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800;">3</div>
+                            <h4 style="font-size: 0.88rem; font-weight: 700; color: var(--primary); margin: 0.5rem 0 0.35rem 0;">Validate Cleanliness</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
+                                Click <strong style="color:var(--text-main);">Validate Audit</strong> to catch alphanumeric errors or invalid units.
+                            </p>
+                        </div>
+                        <!-- Step 4 -->
+                        <div style="flex: 1; min-width: 180px; background-color: var(--bg-page); padding: 1rem; border-radius: 8px; border: 1px solid var(--border); position: relative;">
+                            <div style="position: absolute; top: -10px; left: 15px; background: var(--success); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800;">4</div>
+                            <h4 style="font-size: 0.88rem; font-weight: 700; color: var(--success); margin: 0.5rem 0 0.35rem 0;">Approve & Save</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
+                                Approver locks rows. Click <strong style="color:var(--text-main);">Save Audit</strong> to push database update.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <!-- Step 2 -->
-                <div style="flex: 1; min-width: 200px; background-color: var(--bg-page); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border); position: relative;">
-                    <div style="position: absolute; top: -10px; left: 15px; background: var(--primary); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800;">2</div>
-                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin: 0.5rem 0 0.5rem 0;">Manual Correction</h4>
-                    <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
-                        Correct discrepancies in Excel (or inline) by entering proper numeric rate details or adjustment codes.
-                    </p>
-                </div>
-                <!-- Step 3 -->
-                <div style="flex: 1; min-width: 200px; background-color: var(--bg-page); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border); position: relative;">
-                    <div style="position: absolute; top: -10px; left: 15px; background: var(--primary); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800;">3</div>
-                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin: 0.5rem 0 0.5rem 0;">Re-Upload & Verify</h4>
-                    <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
-                        Drag the updated sheet back into the uploader and click <strong style="color:var(--text-main)">Run Billing Audit</strong> to load modifications.
-                    </p>
-                </div>
-                <!-- Step 4 -->
-                <div style="flex: 1; min-width: 200px; background-color: var(--bg-page); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border); position: relative;">
-                    <div style="position: absolute; top: -10px; left: 15px; background: var(--primary); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800;">4</div>
-                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin: 0.5rem 0 0.5rem 0;">Formatting Check</h4>
-                    <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
-                        Click <strong style="color:var(--text-main)">Validate Audit</strong>. The system scans and flags invalid formatting (like alphanumeric strings) in key columns.
-                    </p>
-                </div>
-                <!-- Step 5 -->
-                <div style="flex: 1; min-width: 200px; background-color: var(--bg-page); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border); position: relative;">
-                    <div style="position: absolute; top: -10px; left: 15px; background: var(--success); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800;">5</div>
-                    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--success); margin: 0.5rem 0 0.5rem 0;">Approve & Save</h4>
-                    <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
-                        Approver signs off, locking audit results. Click <strong style="color:var(--text-main)">Save Audit</strong> to archive to the repository.
-                    </p>
+
+                <!-- COLLAPSIBLE DOCUMENTATION ACCORDION -->
+                <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Interactive Operational Guidelines</div>
+                    
+                    <div class="manual-accordion-group" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        
+                        <!-- Section 1 -->
+                        <details style="background-color: var(--bg-page); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;" open>
+                            <summary style="padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; color: var(--text-main); cursor: pointer; user-select: none; background: rgba(59, 130, 246, 0.03); display: flex; align-items: center; justify-content: space-between;">
+                                <span>1. Ignored Services & Billing Exclusions (Pharmacy, Packages, Zero-rates)</span>
+                                <span style="font-size: 0.7rem; color: var(--text-muted);">▼</span>
+                            </summary>
+                            <div style="padding: 1rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.5rem;">
+                                <p style="margin: 0;">By default, the audit engine processes all line items except:</p>
+                                <ul style="margin: 0 0 0.5rem 0; padding-left: 1.25rem;">
+                                    <li><strong>Pharmacy & Consumables:</strong> Checked off by exclusion rules to prevent auditing items that do not fall under standard contract service structures.</li>
+                                    <li><strong>Inside Package:</strong> Items with service names containing "pkg" or billed under package rates are ignored to prevent double auditing.</li>
+                                    <li><strong>Zero Rates:</strong> Services charged at ₹0.00 are ignored unless marked specifically as discrepancies.</li>
+                                    <li><strong>General Exclusions:</strong> Items like Oxygen charges and Cardiac monitors which are marked with editable rates are set to be bypassed.</li>
+                                </ul>
+                                <p style="margin: 0;">You can customize exclusions in real-time under the <strong style="color:var(--text-main);">Ignore Config</strong> card inside the Audit panel.</p>
+                            </div>
+                        </details>
+
+                        <!-- Section 2 -->
+                        <details style="background-color: var(--bg-page); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+                            <summary style="padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; color: var(--text-main); cursor: pointer; user-select: none; background: rgba(59, 130, 246, 0.03); display: flex; align-items: center; justify-content: space-between;">
+                                <span>2. Custom Category and Item ID Discount Overrides</span>
+                                <span style="font-size: 0.7rem; color: var(--text-muted);">▼</span>
+                            </summary>
+                            <div style="padding: 1rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.5rem;">
+                                <p style="margin: 0;">In V1, we replaced the generic "Others" discount input with a dynamic search widget:</p>
+                                <ul style="margin: 0 0 0.5rem 0; padding-left: 1.25rem;">
+                                    <li><strong>Department-level discounts:</strong> You can choose from all 160+ unique departments and apply a custom percentage.</li>
+                                    <li><strong>Item ID discounts:</strong> Enter a specific item ID (e.g. `1639`) to override default category rules.</li>
+                                    <li><strong>Unit Scoping:</strong> Overrides are fully isolated. Discounts applied while logged in under "Excelcare" do not bleed into "International" audits.</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <!-- Section 3 -->
+                        <details style="background-color: var(--bg-page); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+                            <summary style="padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; color: var(--text-main); cursor: pointer; user-select: none; background: rgba(59, 130, 246, 0.03); display: flex; align-items: center; justify-content: space-between;">
+                                <span>3. Formatting Validator Rules (Preventing corrupt sheets)</span>
+                                <span style="font-size: 0.7rem; color: var(--text-muted);">▼</span>
+                            </summary>
+                            <div style="padding: 1rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; border-top: 1px solid var(--border);">
+                                <table style="width: 100%; font-size: 0.75rem; border-collapse: collapse; text-align: left;">
+                                    <thead>
+                                        <tr style="border-bottom: 1px solid var(--border); background-color: var(--bg-page);">
+                                            <th style="padding: 0.4rem; color: var(--text-muted);">Field Type</th>
+                                            <th style="padding: 0.4rem; color: var(--danger);">Invalid Examples</th>
+                                            <th style="padding: 0.4rem; color: var(--success);">Valid Examples</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="border-bottom: 1px solid var(--border);">
+                                            <td style="padding: 0.4rem; font-weight: 700;">Discount %</td>
+                                            <td style="padding: 0.4rem; color: var(--danger);">10%, ten, 0.1</td>
+                                            <td style="padding: 0.4rem; color: var(--success);">10, 0, 15.5</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid var(--border);">
+                                            <td style="padding: 0.4rem; font-weight: 700;">Billed Rates</td>
+                                            <td style="padding: 0.4rem; color: var(--danger);">₹1,200, N/A, -</td>
+                                            <td style="padding: 0.4rem; color: var(--success);">1200, 0, 450.75</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
-            <!-- ROLE-BASED CONTROLS REFERENCE -->
-            <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 1rem; margin: 0;">
-                <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Role & Permissions Matrix</div>
-                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                    <div style="padding: 0.75rem; border-radius: 6px; background-color: var(--bg-page); border-left: 4px solid var(--primary);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
-                            <strong style="font-size: 0.85rem; color: var(--text-main);">Auditor Profile</strong>
-                            <span style="font-size: 0.65rem; padding: 0.15rem 0.4rem; background: var(--primary-bg); color: var(--primary); border-radius: 10px; font-weight: 700;">ACTIVE</span>
-                        </div>
-                        <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.4;">
-                            Authorized to upload billing sheets, change pricing inputs, run audits, download reports, validate, save audits to the repository (as Draft or Validated), and check formatting errors.
-                        </p>
-                    </div>
-                    <div style="padding: 0.75rem; border-radius: 6px; background-color: var(--bg-page); border-left: 4px solid var(--success);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
-                            <strong style="font-size: 0.85rem; color: var(--text-main);">Approval Profile</strong>
-                            <span style="font-size: 0.65rem; padding: 0.15rem 0.4rem; background: var(--success-bg); color: var(--success); border-radius: 10px; font-weight: 700;">MANAGEMENT</span>
-                        </div>
-                        <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.4;">
-                            Authorized to load saved audits, review remarks, enter signatory approval details (which locks audit rows), and save finalized audits (status transitions to Saved).
-                        </p>
-                    </div>
-                    <div style="padding: 0.75rem; border-radius: 6px; background-color: var(--bg-page); border-left: 4px solid var(--secondary);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
-                            <strong style="font-size: 0.85rem; color: var(--text-main);">Administrator Profile</strong>
-                            <span style="font-size: 0.65rem; padding: 0.15rem 0.4rem; background: var(--border); color: var(--text-muted); border-radius: 10px; font-weight: 700;">SYSTEM</span>
-                        </div>
-                        <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.4;">
-                            Full platform access, including running audits, saving files, locking/unlocking rows, approval actions, and purging historical records from the database.
-                        </p>
-                    </div>
-                    <div style="padding: 0.75rem; border-radius: 6px; background-color: var(--bg-page); border-left: 4px solid var(--warning);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
-                            <strong style="font-size: 0.85rem; color: var(--text-main);">Viewer Profile</strong>
-                            <span style="font-size: 0.65rem; padding: 0.15rem 0.4rem; background: var(--warning-bg); color: var(--warning); border-radius: 10px; font-weight: 700;">READ ONLY</span>
-                        </div>
-                        <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.4;">
-                            Read-only access to all dashboards, interactive report metrics, and tariff contract details. Cannot upload, modify, approve, or save logs.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- VALUATION CONTROLS & RULES -->
-            <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 1rem; margin: 0;">
-                <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Strict Formatting Checker Rules</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">
-                    Validation controls block approval or saving if key numeric columns contain non-numeric/alphanumeric characters. Below is the quick reference guidelines:
-                </div>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; font-size: 0.75rem; border-collapse: collapse; text-align: left;">
-                        <thead>
-                            <tr style="border-bottom: 1px solid var(--border); background-color: var(--bg-page);">
-                                <th style="padding: 0.4rem; color: var(--text-muted);">Field Type</th>
-                                <th style="padding: 0.4rem; color: var(--danger);">Invalid Examples</th>
-                                <th style="padding: 0.4rem; color: var(--success);">Valid Examples</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="border-bottom: 1px solid var(--border);">
-                                <td style="padding: 0.4rem; font-weight: 700;">Discount %</td>
-                                <td style="padding: 0.4rem; color: var(--danger);">10%, ten, 0.1</td>
-                                <td style="padding: 0.4rem; color: var(--success);">10, 0, 15.5</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--border);">
-                                <td style="padding: 0.4rem; font-weight: 700;">Billed Rates</td>
-                                <td style="padding: 0.4rem; color: var(--danger);">₹1,200, N/A, -</td>
-                                <td style="padding: 0.4rem; color: var(--success);">1200, 0, 450.75</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--border);">
-                                <td style="padding: 0.4rem; font-weight: 700;">Expected Tariff</td>
-                                <td style="padding: 0.4rem; color: var(--danger);">100rs, free, null</td>
-                                <td style="padding: 0.4rem; color: var(--success);">100, 5000, 0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div style="padding: 0.5rem; background-color: var(--warning-bg); border: 1px solid var(--warning); border-radius: 6px; font-size: 0.7rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; margin-top: auto;">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--warning); flex-shrink: 0;"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                    <span><strong>Pro-Tip:</strong> Discrepancy Remarks/Comments are optional. Focus on correcting formatting blocks first!</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- ILLUSTRATIVE HOW-TO FOR AUDIT PRESCRIPTION AND EXECUTIONS -->
-        <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 1.25rem;">
-            <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Step-by-Step Operations & Best Practices</div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                <div>
-                    <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 0.35rem;">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                        1. Importing Audited Billing Files
-                    </h4>
-                    <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
-                        The uploader dropzone supports multiple workbooks concurrently. Ensure the target columns match standard formats (having columns like <strong>IP No / Bill ID</strong>, <strong>Service Name</strong>, <strong>Billed Rate</strong>). The system automatically aggregates rows and performs auto-payer normalized lookup against 995+ active contracts.
-                    </p>
+            <!-- RIGHT COLUMN: VERSION CONTROL & ROADMAP -->
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                
+                <!-- LOCK VERSION V1 CARD -->
+                <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; border: 1px solid rgba(16, 185, 129, 0.25); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--success); color: white; font-size: 0.55rem; font-weight: 900; padding: 0.2rem 0.6rem; border-bottom-left-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase;">
+                        LOCKED
+                    </div>
+                    <div style="font-size: 0.8rem; font-weight: 800; color: var(--success); display: flex; align-items: center; gap: 0.35rem;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        VERSION V1.0.0
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.45;">
+                        Current stable production release representing all tested core components, client overrides, and formatting verification engines.
+                    </div>
+                    
+                    <div style="border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.25rem;">
+                        <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">V1 Core Features:</div>
+                        <ul style="margin: 0; padding-left: 1rem; font-size: 0.72rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem;">
+                            <li>✓ Scoped rate overrides by Unit</li>
+                            <li>✓ Granular Department discount editor</li>
+                            <li>✓ Specific Item ID discount editor</li>
+                            <li>✓ Interactive uploader & excel parser</li>
+                            <li>✓ Formats Checker & Validator</li>
+                            <li>✓ 995 active agreement templates</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div>
-                    <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 0.35rem;">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-                        2. Validating Formatting Cleanliness
-                    </h4>
-                    <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
-                        Before signing off, click <strong>Validate Audit</strong>. The validation engine checks for numeric conformity. Any cells containing symbols, words, or standard units like % are highlighted. Correct these errors directly in Excel or within the system inline editor. Once clean, the "Approved" status is unlocked.
-                    </p>
-                </div>
+                <!-- ROADMAP V2 CARD -->
+                <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; border: 1px solid rgba(139, 92, 246, 0.25); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--info); color: white; font-size: 0.55rem; font-weight: 900; padding: 0.2rem 0.6rem; border-bottom-left-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase;">
+                        ROADMAP
+                    </div>
+                    <div style="font-size: 0.8rem; font-weight: 800; color: #8b5cf6; display: flex; align-items: center; gap: 0.35rem;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        FUTURE VERSION V2.0.0
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.45;">
+                        Upcoming updates enabling multi-user real-time review, scale optimizations, and dynamic template configuration for future SOC additions.
+                    </div>
+                    
+                    <div style="border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.25rem;">
+                        <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Planned V2 updates:</div>
+                        <ul style="margin: 0; padding-left: 1rem; font-size: 0.72rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem;">
+                            <li>• Real-time WebSockets collaboration</li>
+                            <li>• PostgreSQL central database integration</li>
+                            <li>• Virtual Scroll list (50k+ lines)</li>
+                            <li>• Custom SOC template creator inside UI</li>
+                            <li>• FastAPI high-performance backend</li>
+                        </ul>
+                    </div>
 
-                <div>
-                    <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 0.35rem;">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        3. Reviewing Historical Audits
-                    </h4>
-                    <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
-                        Navigate to the <strong>Audit Repository</strong> tab. Use the drop-down filters to select specific units, statuses, or years. You can search for payers to retrieve past audited runs. Click <strong>Reload Run</strong> to load all audited rows, workflow details, charts, and verification sheets back into the active workspace.
-                    </p>
-                </div>
-
-                <div>
-                    <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 0.35rem;">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm14 14v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        4. Counting Patients vs Line Items
-                    </h4>
-                    <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
-                        To give executive management clear overview statistics, the console represents <strong>Unique Bill Counts</strong> (aggregations of patients) instead of duplicate ledger lines. An audit with 10,000 billing ledger entries might represent exactly 5 unique patient admissions (IP Numbers). The dashboard matches this real clinical workload.
-                    </p>
+                    <div style="background: rgba(139, 92, 246, 0.08); padding: 0.5rem; border-radius: 6px; border: 1px solid rgba(139, 92, 246, 0.15); font-size: 0.7rem; color: var(--text-muted); line-height: 1.4;">
+                        <strong>Auto-Push Pipeline:</strong> Once changes are tested in the <strong style="color:var(--text-main)">Sandbox Environment</strong> and CA Siddhant Surana runs git validation, changes auto-compile and deploy.
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- BRC CREDITS AND GOVERNANCE CARD -->
-        <div class="controls-card" style="background: linear-gradient(135deg, rgba(13, 148, 136, 0.05) 0%, rgba(30, 58, 138, 0.05) 100%); border-left: 5px solid #004b87; display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+        <div class="controls-card" style="background: linear-gradient(135deg, rgba(13, 148, 136, 0.02) 0%, rgba(30, 58, 138, 0.02) 100%); border-left: 5px solid #004b87; display: flex; flex-direction: column; gap: 1rem;">
             <div style="font-size: 0.85rem; font-weight: 800; color: #004b87; text-transform: uppercase; letter-spacing: 0.8px; display: flex; align-items: center; gap: 0.5rem;">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 Design, Architecture & Governance Credits
@@ -3665,7 +3712,6 @@
 
     <!-- ADMIN CENTER PANEL -->
     <div class="tab-panel" id="panel-admin">
-        <div class="dashboard-header" style="margin-bottom: 1.5rem;">
             <div>
                 <h1 class="dashboard-title">Admin Center</h1>
                 <p class="dashboard-subtitle">Configure system users, passwords, and security role access permissions</p>
@@ -3875,6 +3921,42 @@
 <script src="tariff_data.js"></script>
 
 <script>
+    // Global Storage Interceptor for Sandbox Environment
+    window.sandboxEnvironment = false;
+    const originalGetItem = localStorage.getItem;
+    const originalSetItem = localStorage.setItem;
+    const originalRemoveItem = localStorage.removeItem;
+
+    localStorage.getItem = function(key) {
+        if (window.sandboxEnvironment) {
+            if (key === 'saved_audits') return originalGetItem.call(localStorage, 'saved_audits_sandbox');
+            if (key === 'customer_rate_overrides') return originalGetItem.call(localStorage, 'customer_rate_overrides_sandbox');
+            if (key.startsWith('customDeptDiscounts_')) return originalGetItem.call(localStorage, key + '_sandbox');
+            if (key.startsWith('customItemDiscounts_')) return originalGetItem.call(localStorage, key + '_sandbox');
+        }
+        return originalGetItem.call(localStorage, key);
+    };
+
+    localStorage.setItem = function(key, value) {
+        if (window.sandboxEnvironment) {
+            if (key === 'saved_audits') return originalSetItem.call(localStorage, 'saved_audits_sandbox', value);
+            if (key === 'customer_rate_overrides') return originalSetItem.call(localStorage, 'customer_rate_overrides_sandbox', value);
+            if (key.startsWith('customDeptDiscounts_')) return originalSetItem.call(localStorage, key + '_sandbox', value);
+            if (key.startsWith('customItemDiscounts_')) return originalSetItem.call(localStorage, key + '_sandbox', value);
+        }
+        return originalSetItem.call(localStorage, key, value);
+    };
+
+    localStorage.removeItem = function(key) {
+        if (window.sandboxEnvironment) {
+            if (key === 'saved_audits') return originalRemoveItem.call(localStorage, 'saved_audits_sandbox');
+            if (key === 'customer_rate_overrides') return originalRemoveItem.call(localStorage, 'customer_rate_overrides_sandbox');
+            if (key.startsWith('customDeptDiscounts_')) return originalRemoveItem.call(localStorage, key + '_sandbox');
+            if (key.startsWith('customItemDiscounts_')) return originalRemoveItem.call(localStorage, key + '_sandbox');
+        }
+        return originalRemoveItem.call(localStorage, key);
+    };
+
     // State management variables
     let UNIFIED_TARIFFS = [];
     let map2026 = {};
@@ -3889,6 +3971,10 @@
 
     // OneDrive Database Sync API Methods
     async function loadDatabaseFromServer() {
+        if (window.sandboxEnvironment) {
+            const stored = localStorage.getItem('saved_audits');
+            return stored ? JSON.parse(stored) : [];
+        }
         try {
             const res = await fetch('/api/load_audits');
             if (res.ok) {
@@ -3905,6 +3991,10 @@
     }
 
     async function loadOverridesFromServer() {
+        if (window.sandboxEnvironment) {
+            const stored = localStorage.getItem('customer_rate_overrides');
+            return stored ? JSON.parse(stored) : {};
+        }
         try {
             const res = await fetch('/api/load_overrides');
             if (res.ok) {
@@ -3921,6 +4011,10 @@
     }
 
     async function syncDatabaseToServer(db) {
+        if (window.sandboxEnvironment) {
+            console.log('Sandbox environment active: Skipping server db sync.');
+            return;
+        }
         try {
             await fetch('/api/save_audits', {
                 method: 'POST',
@@ -3934,6 +4028,10 @@
     }
 
     async function syncOverridesToServer(overrides) {
+        if (window.sandboxEnvironment) {
+            console.log('Sandbox environment active: Skipping server overrides sync.');
+            return;
+        }
         try {
             await fetch('/api/save_overrides', {
                 method: 'POST',
@@ -4120,6 +4218,127 @@
             updateCheckingDashboard();
         }
     });
+
+    // Environment Toggle Event Listener
+    const btnToggleEnv = document.getElementById('btn-toggle-env');
+    const envBadge = document.getElementById('env-badge');
+    if (btnToggleEnv && envBadge) {
+        btnToggleEnv.addEventListener('click', async () => {
+            window.sandboxEnvironment = !window.sandboxEnvironment;
+            if (window.sandboxEnvironment) {
+                // Update badge to Sandbox mode
+                envBadge.style.color = '#d97706'; // warm gold
+                envBadge.innerHTML = `
+                    <span style="display: inline-block; width: 6px; height: 6px; background: #d97706; border-radius: 50%; animation: pulse 1.5s infinite;"></span>
+                    TEST SANDBOX
+                `;
+                btnToggleEnv.textContent = 'Switch to Prod';
+                btnToggleEnv.style.borderColor = 'rgba(217, 119, 6, 0.3)';
+                btnToggleEnv.style.color = '#d97706';
+                
+                // Add class to body to show sandbox indicator banner at the top
+                document.body.classList.add('sandbox-active');
+                showToast('Switched to Test Sandbox Environment. Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
+            } else {
+                // Update badge to Production mode
+                envBadge.style.color = 'var(--primary)';
+                envBadge.innerHTML = `
+                    <span style="display: inline-block; width: 6px; height: 6px; background: var(--primary); border-radius: 50%;"></span>
+                    PRODUCTION
+                `;
+                btnToggleEnv.textContent = 'Switch to Test';
+                btnToggleEnv.style.borderColor = 'var(--border)';
+                btnToggleEnv.style.color = 'var(--text-main)';
+                
+                // Remove class from body
+                document.body.classList.remove('sandbox-active');
+                showToast('Switched back to Production Environment.', 'success');
+            }
+            
+            // Reload all audits and overrides state from correct storage namespace!
+            try {
+                // 1. Reload audits
+                const loadedAudits = await loadDatabaseFromServer();
+                // Find and update current audits if rendering repository
+                if (typeof renderRepositoryTable === 'function') {
+                    renderRepositoryTable();
+                }
+                
+                // 2. Reload overrides and refresh custom department discounts
+                await loadOverridesFromServer();
+                if (typeof window.loadUnitCustomDiscounts === 'function') {
+                    window.loadUnitCustomDiscounts();
+                }
+                
+                // 3. Update dashboard metrics
+                if (typeof updateDatabaseDashboard === 'function') {
+                    updateDatabaseDashboard();
+                }
+            } catch (e) {
+                console.error("Error toggling sandbox environment state reload:", e);
+            }
+        });
+    }
+
+    function showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = 'toast-alert';
+        toast.style.position = 'fixed';
+        toast.style.bottom = '20px';
+        toast.style.right = '20px';
+        toast.style.padding = '0.75rem 1.25rem';
+        toast.style.borderRadius = '8px';
+        toast.style.color = '#ffffff';
+        toast.style.fontSize = '0.82rem';
+        toast.style.fontWeight = '700';
+        toast.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15)';
+        toast.style.zIndex = '999999';
+        toast.style.display = 'flex';
+        toast.style.alignItems = 'center';
+        toast.style.gap = '0.5rem';
+        toast.style.transform = 'translateY(100px)';
+        toast.style.opacity = '0';
+        toast.style.transition = 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+        toast.style.backdropFilter = 'blur(8px)';
+        
+        let bgColor = 'rgba(30, 41, 59, 0.95)'; // default dark slate
+        let icon = '';
+        if (type === 'success') {
+            bgColor = 'rgba(16, 185, 129, 0.95)'; // emerald green
+            icon = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>';
+        } else if (type === 'warning') {
+            bgColor = 'rgba(217, 119, 6, 0.95)'; // amber yellow
+            icon = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01M3 21h18L12 3z"/></svg>';
+        } else if (type === 'danger') {
+            bgColor = 'rgba(239, 68, 68, 0.95)'; // rose red
+            icon = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>';
+        } else {
+            bgColor = 'rgba(59, 130, 246, 0.95)'; // blue info
+            icon = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>';
+        }
+        
+        toast.style.backgroundColor = bgColor;
+        toast.innerHTML = icon + `<span>${message}</span>`;
+        
+        document.body.appendChild(toast);
+        
+        // Trigger reflow
+        toast.offsetHeight;
+        
+        // Slide up & fade in
+        toast.style.transform = 'translateY(0)';
+        toast.style.opacity = '1';
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            toast.style.transform = 'translateY(100px)';
+            toast.style.opacity = '0';
+            setTimeout(() => {
+                toast.remove();
+            }, 350);
+        }, 5000);
+    }
+    window.showToast = showToast;
 
     // Tab Selector clicks
     const tabsList = [
