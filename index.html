@@ -9106,11 +9106,11 @@
             btn.style.display = isAdmin ? 'flex' : 'none';
         });
 
-        // Hide/Show Admin Tab based on Global Admin role
+        // Hide/Show Admin Tab based on Administrator role
         if (typeof tabAdminBtn !== 'undefined' && tabAdminBtn) {
-            tabAdminBtn.style.display = isGlobalAdmin ? 'flex' : 'none';
+            tabAdminBtn.style.display = isAdmin ? 'flex' : 'none';
         }
-        if (!isGlobalAdmin && typeof tabAdminBtn !== 'undefined' && tabAdminBtn && tabAdminBtn.classList.contains('active')) {
+        if (!isAdmin && typeof tabAdminBtn !== 'undefined' && tabAdminBtn && tabAdminBtn.classList.contains('active')) {
             if (typeof tabDashboardBtn !== 'undefined' && tabDashboardBtn) {
                 tabDashboardBtn.click();
             }
@@ -11665,12 +11665,13 @@
     window.saveAdminUser = function(e) {
         if (e) e.preventDefault();
 
-        const currentUnit = window.currentUserUnit || 'all';
-        if (currentUnit !== 'all') {
-            alert('Access Denied: Only the Global Administrator is authorized to manage user credentials.');
+        const currentRole = window.currentUserRole;
+        if (currentRole !== 'Administrator') {
+            alert('Access Denied: Only Administrators are authorized to manage user credentials.');
             return;
         }
 
+        const currentUnit = window.currentUserUnit || 'all';
         const idx = parseInt(document.getElementById('admin-user-index').value);
         const username = document.getElementById('admin-username').value.trim();
         const password = document.getElementById('admin-password').value.trim();
@@ -11680,6 +11681,11 @@
         
         const roleSelect = document.getElementById('admin-role');
         const role = roleSelect ? roleSelect.value : 'Viewer';
+
+        if (currentUnit !== 'all' && unit !== currentUnit) {
+            alert('Access Denied: You cannot manage user accounts for other units.');
+            return;
+        }
 
         if (!username || !password || !role) {
             alert('Please fill out all fields.');
@@ -11723,14 +11729,21 @@
     };
 
     window.deleteAdminUser = function(index) {
-        const currentUnit = window.currentUserUnit || 'all';
-        if (currentUnit !== 'all') {
-            alert('Access Denied: Only the Global Administrator is authorized to manage user credentials.');
+        const currentRole = window.currentUserRole;
+        if (currentRole !== 'Administrator') {
+            alert('Access Denied: Only Administrators are authorized to manage user credentials.');
             return;
         }
 
+        const currentUnit = window.currentUserUnit || 'all';
         const user = window.userCredentials[index];
         if (!user) return;
+
+        // Non-global admins cannot manage other units
+        if (currentUnit !== 'all' && user.unit !== currentUnit) {
+            alert('Access Denied: You cannot manage user accounts for other units.');
+            return;
+        }
 
         // Non-global admins cannot delete administrator accounts
         if (currentUnit !== 'all' && user.role === 'Administrator') {
@@ -11753,11 +11766,13 @@
     };
 
     window.handleResetDefaults = function() {
-        const currentUnit = window.currentUserUnit || 'all';
-        if (currentUnit !== 'all') {
-            alert('Access Denied: Only the Global Administrator is authorized to manage user credentials.');
+        const currentRole = window.currentUserRole;
+        if (currentRole !== 'Administrator') {
+            alert('Access Denied: Only Administrators are authorized to manage user credentials.');
             return;
         }
+
+        const currentUnit = window.currentUserUnit || 'all';
 
         let confirmMsg = '';
         if (currentUnit === 'all') {
