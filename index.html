@@ -7411,14 +7411,21 @@
             // 2. Lookup Expected Rate
             let isOverriddenByLearning = false;
             if (!isIgnored) {
-                // Check for persistent learned overrides for this customer
+                // Check for persistent learned overrides for this customer (scoped by unit)
                 let learnedOverride = null;
                 try {
                     const storedOverrides = localStorage.getItem('customer_rate_overrides');
                     if (storedOverrides) {
                         const overridesDb = JSON.parse(storedOverrides);
                         const custKey = customer || 'General';
-                        if (overridesDb[custKey] && overridesDb[custKey][serviceIdRaw]) {
+                        const activeUnit = window.currentUserUnit || 'excelcare';
+                        
+                        // Check unit-scoped first
+                        if (overridesDb[activeUnit] && overridesDb[activeUnit][custKey] && overridesDb[activeUnit][custKey][serviceIdRaw]) {
+                            learnedOverride = overridesDb[activeUnit][custKey][serviceIdRaw];
+                        } 
+                        // Fallback to legacy global override if activeUnit structure doesn't exist
+                        else if (overridesDb[custKey] && overridesDb[custKey][serviceIdRaw]) {
                             learnedOverride = overridesDb[custKey][serviceIdRaw];
                         }
                     }
@@ -9072,11 +9079,14 @@
             console.error('Error loading customer overrides:', e);
         }
 
+        const activeUnit = window.currentUserUnit || 'excelcare';
         auditedRows.forEach(r => {
             if (r.isManuallyOverridden) {
                 const custKey = r.customer || 'General';
-                if (!overridesDb[custKey]) overridesDb[custKey] = {};
-                overridesDb[custKey][r.serviceId] = {
+                const unitKey = r.unit || activeUnit;
+                if (!overridesDb[unitKey]) overridesDb[unitKey] = {};
+                if (!overridesDb[unitKey][custKey]) overridesDb[unitKey][custKey] = {};
+                overridesDb[unitKey][custKey][r.serviceId] = {
                     tariff: r.expectedTariff,
                     discount: r.discountApplied,
                     remarks: r.userRemarks || r.explanation || ''
@@ -10694,8 +10704,22 @@
         }
     }
 
-    window.customDeptDiscounts = JSON.parse(localStorage.getItem('customDeptDiscounts')) || {};
-    window.customItemDiscounts = JSON.parse(localStorage.getItem('customItemDiscounts')) || {};
+    window.loadUnitCustomDiscounts = function() {
+        const activeUnit = window.currentUserUnit || 'excelcare';
+        try {
+            window.customDeptDiscounts = JSON.parse(localStorage.getItem(`customDeptDiscounts_${activeUnit}`)) || {};
+            window.customItemDiscounts = JSON.parse(localStorage.getItem(`customItemDiscounts_${activeUnit}`)) || {};
+        } catch (e) {
+            console.error("Error loading unit custom discounts:", e);
+            window.customDeptDiscounts = {};
+            window.customItemDiscounts = {};
+        }
+        if (typeof renderDeptDiscounts === 'function') renderDeptDiscounts();
+        if (typeof renderItemDiscounts === 'function') renderItemDiscounts();
+    };
+
+    window.customDeptDiscounts = {};
+    window.customItemDiscounts = {};
     let allDepartmentsList = [];
 
     function initCustomOverrides() {
@@ -10737,11 +10761,12 @@
         const btnClearOverrides = document.getElementById('btn-clear-overrides');
         if (btnClearOverrides) {
             btnClearOverrides.addEventListener('click', () => {
-                if (confirm("Are you sure you want to clear all custom department and item overrides?")) {
+                if (confirm("Are you sure you want to clear all custom department and item overrides for this unit?")) {
                     window.customDeptDiscounts = {};
                     window.customItemDiscounts = {};
-                    localStorage.removeItem('customDeptDiscounts');
-                    localStorage.removeItem('customItemDiscounts');
+                    const activeUnit = window.currentUserUnit || 'excelcare';
+                    localStorage.removeItem(`customDeptDiscounts_${activeUnit}`);
+                    localStorage.removeItem(`customItemDiscounts_${activeUnit}`);
                     
                     const searchDeptInput = document.getElementById('search-override-dept');
                     if (searchDeptInput) searchDeptInput.value = '';
@@ -10765,12 +10790,13 @@
                 if (e.target.classList.contains('dept-discount-input')) {
                     const dept = e.target.getAttribute('data-dept');
                     const val = parseInt(e.target.value, 10);
+                    const activeUnit = window.currentUserUnit || 'excelcare';
                     if (isNaN(val) || val <= 0) {
                         delete window.customDeptDiscounts[dept];
                     } else {
                         window.customDeptDiscounts[dept] = Math.min(100, Math.max(0, val));
                     }
-                    localStorage.setItem('customDeptDiscounts', JSON.stringify(window.customDeptDiscounts));
+                    localStorage.setItem(`customDeptDiscounts_${activeUnit}`, JSON.stringify(window.customDeptDiscounts));
                 }
             });
         }
@@ -10809,12 +10835,13 @@
                                 const itemId = el.getAttribute('data-id');
                                 const itemName = el.getAttribute('data-name');
                                 const itemDept = el.getAttribute('data-dept');
+                                const activeUnit = window.currentUserUnit || 'excelcare';
                                 window.customItemDiscounts[itemId] = {
                                     name: itemName,
                                     dept: itemDept,
                                     discount: 0
                                 };
-                                localStorage.setItem('customItemDiscounts', JSON.stringify(window.customItemDiscounts));
+                                localStorage.setItem(`customItemDiscounts_${activeUnit}`, JSON.stringify(window.customItemDiscounts));
                                 searchItemInput.value = '';
                                 suggestionsDiv.style.display = 'none';
                                 renderItemDiscounts();
@@ -10838,9 +10865,10 @@
                 if (e.target.classList.contains('item-discount-input')) {
                     const id = e.target.getAttribute('data-id');
                     const val = parseInt(e.target.value, 10);
+                    const activeUnit = window.currentUserUnit || 'excelcare';
                     if (window.customItemDiscounts[id]) {
                         window.customItemDiscounts[id].discount = isNaN(val) ? 0 : Math.min(100, Math.max(0, val));
-                        localStorage.setItem('customItemDiscounts', JSON.stringify(window.customItemDiscounts));
+                        localStorage.setItem(`customItemDiscounts_${activeUnit}`, JSON.stringify(window.customItemDiscounts));
                     }
                 }
             });
@@ -10849,8 +10877,9 @@
                 const btn = e.target.closest('.btn-delete-item-discount');
                 if (btn) {
                     const id = btn.getAttribute('data-id');
+                    const activeUnit = window.currentUserUnit || 'excelcare';
                     delete window.customItemDiscounts[id];
-                    localStorage.setItem('customItemDiscounts', JSON.stringify(window.customItemDiscounts));
+                    localStorage.setItem(`customItemDiscounts_${activeUnit}`, JSON.stringify(window.customItemDiscounts));
                     renderItemDiscounts();
                 }
             });
@@ -11008,6 +11037,9 @@
             updateUserHeaderProfile(sessionData.username + unitLabel, sessionData.role);
             updateUIForRole();
             applyUnitRestrictions();
+            if (typeof window.loadUnitCustomDiscounts === 'function') {
+                window.loadUnitCustomDiscounts();
+            }
         } else {
             window.currentUserRole = 'Viewer';
             window.previousUserRole = 'Viewer';
@@ -11021,6 +11053,9 @@
             updateUserHeaderProfile('Guest', 'Viewer');
             updateUIForRole();
             applyUnitRestrictions();
+            if (typeof window.loadUnitCustomDiscounts === 'function') {
+                window.loadUnitCustomDiscounts();
+            }
         }
     }
 
