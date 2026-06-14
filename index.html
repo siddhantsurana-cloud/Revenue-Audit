@@ -3804,6 +3804,28 @@
     </div>
 </div>
 
+<!-- INACTIVITY WARNING MODAL -->
+<div class="modal-overlay" id="inactivity-warning-modal" style="z-index: 4000;">
+    <div class="modal-card" style="max-width: 400px; border-top: 5px solid var(--danger);">
+        <div class="modal-header">
+            <h2 style="color: var(--danger);">Session Timeout Warning</h2>
+        </div>
+        <div class="modal-body" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; text-align: center;">
+            <div style="background: var(--danger-bg); color: var(--danger); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem auto;">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div style="font-weight: 700; font-size: 1.1rem; color: var(--text-main);">Are you still there?</div>
+            <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.4;">
+                Due to inactivity, you will be automatically signed out in <span id="inactivity-countdown" style="font-weight: 700; color: var(--danger);">5:00</span> minutes to protect your session security.
+            </div>
+            <div style="display: flex; gap: 0.75rem; justify-content: center; margin-top: 0.5rem;">
+                <button class="export-btn" id="btn-inactivity-logout" style="background: var(--bg-page); color: var(--text-muted); border-color: var(--border);">Sign Out Now</button>
+                <button class="export-btn" id="btn-inactivity-keep" style="background: var(--primary); color: white; border-color: var(--primary);">Stay Signed In</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- DATA SCRIPT IMPORT -->
 <script src="tariff_data.js"></script>
 
@@ -4238,7 +4260,12 @@
             initPortalLoginListeners();
         }
         if (typeof checkUserLoginState === 'function') {
+            // Auto Signout on reload/refresh: clear the active session
+            localStorage.removeItem('brc_logged_in_user');
             checkUserLoginState();
+        }
+        if (typeof setupInactivityListeners === 'function') {
+            setupInactivityListeners();
         }
 
         // Draw startup database dashboard charts
@@ -5882,6 +5909,9 @@
                 localStorage.setItem('brc_logged_in_user', JSON.stringify(updatedSession));
                 roleLoginModal.classList.remove('show');
                 checkUserLoginState();
+                if (typeof window.resetInactivityTimers === 'function') {
+                    window.resetInactivityTimers();
+                }
             } else {
                 roleLoginError.style.display = 'block';
                 rolePasswordInput.focus();
@@ -10946,8 +10976,97 @@
             updateUserHeaderProfile('Guest', 'Viewer');
             updateUIForRole();
             applyUnitRestrictions();
-        }
     }
+
+    // Inactivity Timeout Management
+    let lastActivityTime = Date.now();
+    let warningTimer = null;
+    let logoutTimer = null;
+    let countdownInterval = null;
+    const WARNING_TIMEOUT = 5 * 60 * 1000;  // 5 minutes
+    const LOGOUT_TIMEOUT = 10 * 60 * 1000;  // 10 minutes
+
+    window.resetInactivityTimers = function() {
+        lastActivityTime = Date.now();
+        
+        const warningModal = document.getElementById('inactivity-warning-modal');
+        if (warningModal) {
+            warningModal.classList.remove('show');
+        }
+        
+        clearTimeout(warningTimer);
+        clearTimeout(logoutTimer);
+        clearInterval(countdownInterval);
+        
+        // Timer only runs if a user is logged in
+        const savedSession = localStorage.getItem('brc_logged_in_user');
+        if (savedSession) {
+            warningTimer = setTimeout(showInactivityWarning, WARNING_TIMEOUT);
+            logoutTimer = setTimeout(performAutoLogout, LOGOUT_TIMEOUT);
+        }
+    };
+
+    function showInactivityWarning() {
+        const warningModal = document.getElementById('inactivity-warning-modal');
+        if (warningModal) {
+            warningModal.classList.add('show');
+        }
+        
+        let timeLeft = 5 * 60; // 5 minutes in seconds (300s)
+        const countdownSpan = document.getElementById('inactivity-countdown');
+        if (countdownSpan) countdownSpan.textContent = "5:00";
+        
+        clearInterval(countdownInterval);
+        countdownInterval = setInterval(() => {
+            timeLeft--;
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                performAutoLogout();
+            } else {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                if (countdownSpan) {
+                    countdownSpan.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }
+            }
+        }, 1000);
+    }
+
+    function performAutoLogout() {
+        localStorage.removeItem('brc_logged_in_user');
+        
+        const warningModal = document.getElementById('inactivity-warning-modal');
+        if (warningModal) {
+            warningModal.classList.remove('show');
+        }
+        
+        clearInterval(countdownInterval);
+        clearTimeout(warningTimer);
+        clearTimeout(logoutTimer);
+        
+        checkUserLoginState();
+        alert("You have been signed out automatically due to 10 minutes of inactivity.");
+    }
+
+    function setupInactivityListeners() {
+        const activityEvents = ['mousemove', 'mousedown', 'keypress', 'click', 'scroll', 'touchstart'];
+        activityEvents.forEach(evt => {
+            window.addEventListener(evt, window.resetInactivityTimers, { passive: true });
+        });
+        
+        const btnKeep = document.getElementById('btn-inactivity-keep');
+        if (btnKeep) {
+            btnKeep.addEventListener('click', window.resetInactivityTimers);
+        }
+        
+        const btnLogout = document.getElementById('btn-inactivity-logout');
+        if (btnLogout) {
+            btnLogout.addEventListener('click', performAutoLogout);
+        }
+        
+        window.resetInactivityTimers();
+    }
+
 
     function updateUserHeaderProfile(username, role) {
         const avatarEl = document.getElementById('active-user-avatar');
@@ -11067,6 +11186,9 @@
                 if (isValid && loggedInUser) {
                     localStorage.setItem('brc_logged_in_user', JSON.stringify(loggedInUser));
                     checkUserLoginState();
+                    if (typeof window.resetInactivityTimers === 'function') {
+                        window.resetInactivityTimers();
+                    }
                 } else {
                     if (errorMsg) errorMsg.style.display = 'block';
                     if (passwordInput) {

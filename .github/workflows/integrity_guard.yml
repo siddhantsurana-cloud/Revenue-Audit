@@ -1,0 +1,22 @@
+name: Repository Integrity Guard
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  verify-origin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Push Authorization
+        run: |
+          echo "Verifying push authorization..."
+          echo "Pushed by GitHub Actor: ${{ github.actor }}"
+          
+          if [ "${{ github.actor }}" != "siddhantsurana-cloud" ]; then
+            echo "::error::UNAUTHORIZED PUSH ATTEMPT BY ${{ github.actor }}. Only siddhantsurana-cloud is permitted to push to main."
+            exit 1
+          fi
+          
+          echo "Authorization verified. Proceeding."
