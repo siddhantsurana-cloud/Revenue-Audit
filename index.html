@@ -2196,13 +2196,9 @@
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                 <span>Executive Dashboard</span>
             </button>
-            <button class="tab-btn" id="tab-engagements-btn">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                <span>Audit Engagements</span>
-            </button>
-            <button class="tab-btn" id="tab-clients-btn">
+            <button class="tab-btn" id="tab-repository-btn">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                <span>Client Repository</span>
+                <span>Audit Repository</span>
             </button>
             <button class="tab-btn" id="tab-audit-btn">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -2224,10 +2220,6 @@
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
                 <span>Tariff Repository</span> <span class="tab-badge" id="tab-badge-master">0</span>
             </button>
-            <button class="tab-btn" id="tab-analytics-btn">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-                <span>Analytics</span>
-            </button>
             <button class="tab-btn" id="tab-admin-btn" style="display: none; border-left: 3px solid var(--warning);">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                 <span>Administration</span>
@@ -2237,19 +2229,6 @@
                 <span>Sandbox Testing</span>
             </button>
         </nav>
-
-        <!-- Sidebar Favorites Bookmarks -->
-        <div class="sidebar-favorites-title" style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-top: 1rem; margin-bottom: 0.25rem; padding: 0 0.5rem; letter-spacing: 0.05em;">★ Hospital Units</div>
-        <div class="sidebar-favorites-list" style="display: flex; flex-direction: column; gap: 0.25rem; padding: 0 0.5rem; margin-bottom: 1.5rem;">
-            <a href="#" onclick="window.selectContextUnit('Excelcare')" style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; color: var(--text-main); text-decoration: none; font-weight: 600; padding: 0.25rem 0.35rem; border-radius: 4px; transition: all 0.2s;">
-                <span style="display: inline-block; width: 6px; height: 6px; background: var(--primary); border-radius: 50%;"></span>
-                Excelcare Unit
-            </a>
-            <a href="#" onclick="window.selectContextUnit('Christian Basti')" style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; color: var(--text-main); text-decoration: none; font-weight: 600; padding: 0.25rem 0.35rem; border-radius: 4px; transition: all 0.2s;">
-                <span style="display: inline-block; width: 6px; height: 6px; background: var(--info); border-radius: 50%;"></span>
-                Christian Basti Unit
-            </a>
-        </div>
     </aside>
     
     <!-- MAIN CONTENT -->
@@ -2308,7 +2287,11 @@
             </div>
             <div style="display: flex; align-items: center; gap: 0.35rem;">
                 <span style="color: var(--text-muted);">Business Unit:</span>
-                <span id="context-unit" style="font-weight: 700; color: var(--text-main);">Excelcare</span>
+                <select id="context-unit-select" onchange="window.selectContextUnit(this.value)" style="padding: 0.2rem 0.5rem; background-color: var(--bg-hover); color: var(--text-main); border: 1px solid var(--border); border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer; outline: none; transition: border-color 0.2s;">
+                    <option value="Excelcare" selected>Excelcare Unit</option>
+                    <option value="Apollo International Hospital">Apollo International Hospital</option>
+                </select>
+                <span id="context-unit" style="display: none;">Excelcare</span>
             </div>
             <div style="display: flex; align-items: center; gap: 0.35rem;">
                 <span style="color: var(--text-muted);">Location:</span>
@@ -4672,6 +4655,7 @@
     window.selectContextUnit = function(unitName) {
         const clientSpan = document.getElementById('context-client');
         const unitSpan = document.getElementById('context-unit');
+        const unitSelect = document.getElementById('context-unit-select');
         const locationSpan = document.getElementById('context-location');
         const periodSpan = document.getElementById('context-period');
         const statusSpan = document.getElementById('context-status');
@@ -4683,6 +4667,10 @@
         
         if (unitSpan) {
             unitSpan.textContent = unitName;
+        }
+
+        if (unitSelect) {
+            unitSelect.value = unitName;
         }
         
         // Populate context details based on selected unit
