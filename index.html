@@ -7277,6 +7277,13 @@
                     }
                     for (let cleanHeader in colMapping) {
                         for (let key of keysList) {
+                            // Prevent false positive loose matches for short keywords
+                            if (key === 'to' && cleanHeader !== 'to' && !cleanHeader.startsWith('to')) continue;
+                            if (key === 'end' && cleanHeader !== 'end' && !cleanHeader.startsWith('end')) continue;
+                            if (key === 'from' && cleanHeader !== 'from' && !cleanHeader.startsWith('from')) continue;
+                            if (key === 'start' && cleanHeader !== 'start' && !cleanHeader.startsWith('start')) continue;
+                            if (key === 'ip' && cleanHeader !== 'ip' && !cleanHeader.startsWith('ip')) continue;
+
                             if (cleanHeader.includes(key) || key.includes(cleanHeader)) return colMapping[cleanHeader];
                         }
                     }

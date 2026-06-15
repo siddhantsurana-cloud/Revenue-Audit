@@ -1,4 +1,4 @@
-const CACHE_NAME = "apollo-ra-cache-v34";
+const CACHE_NAME = "apollo-ra-cache-v35";
 const ASSETS_TO_CACHE = [
   "./",
   "./index.html",
@@ -12,7 +12,6 @@ self.addEventListener("install", event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log("[Service Worker] Pre-caching static assets");
-        // Using return inside map to verify cache addition, allowing failures of some optional assets safely
         return cache.addAll(ASSETS_TO_CACHE);
       })
       .then(() => self.skipWaiting())
@@ -35,7 +34,7 @@ self.addEventListener("activate", event => {
   );
 });
 
-// Fetch Event
+// Fetch Event - Network First Strategy
 self.addEventListener("fetch", event => {
   // Caching doesn't support file:// protocol. Check if self.location.origin is present and matches request origin.
   if (event.request.method !== "GET" || !event.request.url.startsWith(self.location.origin)) {
@@ -43,28 +42,20 @@ self.addEventListener("fetch", event => {
   }
 
   event.respondWith(
-    caches.match(event.request).then(cachedResponse => {
-      if (cachedResponse) {
-        // Return from cache
-        return cachedResponse;
-      }
-
-      return fetch(event.request).then(networkResponse => {
-        // Check if we received a valid response
-        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== "basic") {
-          return networkResponse;
+    fetch(event.request)
+      .then(networkResponse => {
+        // Check if we received a valid response to cache
+        if (networkResponse && networkResponse.status === 200 && networkResponse.type === "basic") {
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseToCache);
+          });
         }
-
-        // Cache on the fly
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, responseToCache);
-        });
-
         return networkResponse;
-      }).catch(err => {
-        console.error("[Service Worker] Fetch failed:", err);
-      });
-    })
+      })
+      .catch(() => {
+        // Fall back to cache when offline
+        return caches.match(event.request);
+      })
   );
 });
