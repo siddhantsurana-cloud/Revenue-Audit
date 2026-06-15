@@ -86,6 +86,7 @@ Process-StandardFile $tpaFile $false
 # 2. Parse room-specific sheets from workings file
 $tpaRoomRent = [ordered]@{}
 $gipsaRoomRent = [ordered]@{}
+$roomRent2021 = [ordered]@{}
 $nursingCharges = [ordered]@{}
 $monitoringCharges = [ordered]@{}
 $visitCharges = [ordered]@{}
@@ -147,6 +148,56 @@ if (Test-Path $file2122) {
     $values = $sheet.UsedRange.Value2
     $rowCount = $sheet.UsedRange.Rows.Count
     
+    # 3a. Extract 2021-22 Room Rents from Table 1 sheet
+    $table1Sheet = $null
+    try {
+        $table1Sheet = $wb.Worksheets.Item("Table 1")
+    } catch {
+        $table1Sheet = $wb.Worksheets.Item(1)
+    }
+    if ($table1Sheet -ne $null) {
+        $t1Values = $table1Sheet.UsedRange.Value2
+        for ($r = 27; $r -le 45; $r++) {
+            $cat = if ($t1Values[$r, 13] -ne $null) { $t1Values[$r, 13].ToString().Trim().ToUpper() } else { "" }
+            $rate = if ($t1Values[$r, 27] -ne $null) { $t1Values[$r, 27].ToString().Trim() } else { "" }
+            if ($cat) {
+                $valNum = 0
+                if ([double]::TryParse($rate, [ref]$valNum)) {
+                    $roomRent2021[$cat] = $valNum
+                }
+            }
+        }
+    }
+
+    # 3b. Pre-scan parent-row rate patterns (e.g. PDA CLOSURE Rs. 30,000/-)
+    $parentRowRates = @{}
+    for ($r = 24; $r -le $rowCount; $r++) {
+        $c1 = if ($values[$r, 1] -ne $null) { $values[$r, 1].ToString().Trim() } else { "" }
+        if ($c1 -and ($c1.Contains("Rs.") -or $c1.Contains("Rs"))) {
+            if ($c1 -match 'Rs\.?\s*(\d{1,3}(,\d{3})*)') {
+                $rateStr = $Matches[1].Replace(",", "")
+                $rateNum = 0
+                if ([double]::TryParse($rateStr, [ref]$rateNum)) {
+                    $name = $c1 -replace 'Rs\.?.*$', ''
+                    $name = $name.Trim()
+                    
+                    # Look for subsequent code in the next 4 rows
+                    for ($offset = 1; $offset -le 4; $offset++) {
+                        $targetRow = $r + $offset
+                        if ($targetRow -gt $rowCount) { break }
+                        $nextVal = if ($values[$targetRow, 1] -ne $null) { $values[$targetRow, 1].ToString().Trim() } else { "" }
+                        $nextNum = 0
+                        if ($nextVal -and [double]::TryParse($nextVal, [ref]$nextNum) -and $nextNum -ge 1) {
+                            $parentRowRates[$nextVal] = @{ name = $name; rate = $rateNum }
+                            break
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    # 3c. Parse standard sheet services (allowing codes >= 1)
     $section = "General"
     for ($r = 24; $r -le $rowCount; $r++) {
         $c1 = if ($values[$r, 1] -ne $null) { $values[$r, 1].ToString().Trim() } else { "" }
@@ -159,26 +210,37 @@ if (Test-Path $file2122) {
         }
         
         $codeVal = 0
-        if ([double]::TryParse($c1, [ref]$codeVal) -and $codeVal -ge 100) {
+        if ([double]::TryParse($c1, [ref]$codeVal) -and $codeVal -ge 1) {
             $name = ""
-            for ($c = 2; $c -le 15; $c++) {
-                $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
-                if ($v -and $v.Length -gt 3 -and $v -notmatch '^\d+$') {
-                    $name = $v
-                    break
-                }
-            }
             $rate = 0
-            for ($c = 15; $c -le 52; $c++) {
-                $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
-                $rateNum = 0
-                if ($v -and [double]::TryParse($v, [ref]$rateNum)) {
-                    $rate = $rateNum
-                    break
+            
+            if ($parentRowRates.ContainsKey($c1)) {
+                $name = $parentRowRates[$c1].name
+                $rate = $parentRowRates[$c1].rate
+            } else {
+                for ($c = 2; $c -le 15; $c++) {
+                    $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
+                    if ($v -and $v.Length -gt 1 -and $v -notmatch '^\d+$') {
+                        $name = $v
+                        break
+                    }
+                }
+                for ($c = 15; $c -le 52; $c++) {
+                    $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
+                    $rateNum = 0
+                    if ($v -and [double]::TryParse($v, [ref]$rateNum)) {
+                        $rate = $rateNum
+                        break
+                    }
                 }
             }
             
             if (-not [string]::IsNullOrEmpty($name)) {
+                # Skip comments/remarks/notes (which have code < 100 but no rate)
+                if ($codeVal -lt 100 -and $rate -eq 0) {
+                    continue
+                }
+                
                 $list2021.Add([PSCustomObject]@{
                     id = $c1
                     name = $name
@@ -702,6 +764,7 @@ $dataArray = @($servicesHash.Values)
 $jsonMaster = $dataArray | ConvertTo-Json -Depth 5
 $jsonTpaRoom = $tpaRoomRent | ConvertTo-Json
 $jsonGipsaRoom = $gipsaRoomRent | ConvertTo-Json
+$jsonRoomRent2021 = $roomRent2021 | ConvertTo-Json
 $jsonNursing = $nursingCharges | ConvertTo-Json
 $jsonMonitoring = $monitoringCharges | ConvertTo-Json
 $jsonVisit = $visitCharges | ConvertTo-Json
@@ -720,6 +783,7 @@ $jsonAgreements = $listAgreements | ConvertTo-Json -Depth 5
 $jsonMaster = if ($jsonMaster) { $jsonMaster } else { "[]" }
 $jsonTpaRoom = if ($jsonTpaRoom) { $jsonTpaRoom } else { "{}" }
 $jsonGipsaRoom = if ($jsonGipsaRoom) { $jsonGipsaRoom } else { "{}" }
+$jsonRoomRent2021 = if ($jsonRoomRent2021) { $jsonRoomRent2021 } else { "{}" }
 $jsonNursing = if ($jsonNursing) { $jsonNursing } else { "{}" }
 $jsonMonitoring = if ($jsonMonitoring) { $jsonMonitoring } else { "{}" }
 $jsonVisit = if ($jsonVisit) { $jsonVisit } else { "{}" }
@@ -739,6 +803,7 @@ const TARIFF_DATA = $jsonMaster;
 
 const ROOM_RENT_TPA = $jsonTpaRoom;
 const ROOM_RENT_GIPSA = $jsonGipsaRoom;
+const ROOM_RENT_2021_COMPILED = $jsonRoomRent2021;
 const NURSING_CHARGES = $jsonNursing;
 const MONITORING_CHARGES = $jsonMonitoring;
 const VISIT_CHARGES = $jsonVisit;
