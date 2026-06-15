@@ -8315,6 +8315,128 @@
             auditedRows.push(rowObj);
         });
 
+        // -------------------------------------------------------------
+        // ANESTHESIOLOGIST 35% FEE CROSS-VERIFICATION PROCESSOR
+        // -------------------------------------------------------------
+        const ipGroups = {};
+        auditedRows.forEach(row => {
+            if (row.isIgnored) return;
+            const ip = (row.ipNo || '').trim().toUpperCase();
+            if (!ip) return;
+            if (!ipGroups[ip]) ipGroups[ip] = [];
+            ipGroups[ip].push(row);
+        });
+
+        Object.keys(ipGroups).forEach(ip => {
+            const group = ipGroups[ip];
+
+            // 1. Identify Anesthesiologist fee rows
+            const anesthesiaRows = group.filter(row => {
+                const nameUpper = (row.serviceName || '').toUpperCase();
+                const code = (row.serviceId || '').replace(/^[a-zA-Z]/, '');
+                return code === '2122' || nameUpper.includes('ANAESTHESIOLOGIST FEES') || nameUpper.includes('ANAESTHETIST FEES');
+            });
+
+            if (anesthesiaRows.length === 0) return;
+
+            // 2. Identify Surgeon fee rows
+            const surgeonRows = group.filter(row => {
+                const nameUpper = (row.serviceName || '').toUpperCase();
+                const code = (row.serviceId || '').replace(/^[a-zA-Z]/, '');
+                return code === '2121' || nameUpper.includes('SURGEON FEES') || nameUpper.includes('SURGERY FEES');
+            });
+
+            // 3. Resolve the base surgeon/surgery fee for this case
+            let baseSurgeonBilled = 0;
+            let baseSurgeonExpected = 0;
+            let hasSurgeonFee = false;
+
+            // Try to get rates from Surgeon Fee rows (code 2121)
+            surgeonRows.forEach(row => {
+                if (row.billedRate > 0) {
+                    baseSurgeonBilled += row.billedRate;
+                    hasSurgeonFee = true;
+                }
+                if (row.expectedTariff > 0) {
+                    baseSurgeonExpected += row.expectedTariff;
+                }
+            });
+
+            // If Surgeon Fee is 0 or missing in the bill, look for surgery procedure rows in this case
+            if (!hasSurgeonFee || baseSurgeonBilled === 0) {
+                const surgeryProcRows = group.filter(row => {
+                    const nameUpper = (row.serviceName || '').toUpperCase();
+                    const code = (row.serviceId || '').replace(/^[a-zA-Z]/, '');
+                    const deptLower = (row.dept || '').toLowerCase();
+                    const isOT = code === '2103' || nameUpper.includes('THEATRE') || nameUpper.includes('OT CHARGE');
+                    const isAnes = code === '2122' || nameUpper.includes('ANAES') || nameUpper.includes('ANESTH');
+                    const isConsumable = deptLower.includes('consumable') || nameUpper.includes('HSN:') || nameUpper.includes('DRUG') || nameUpper.includes('IMPLANT');
+                    const isConsult = nameUpper.includes('CONSULTATION') || nameUpper.includes('PAC CHARGE');
+                    const isSurgeryWord = nameUpper.includes('SURGERY') || nameUpper.includes('SURGICAL') || nameUpper.includes('OPERATION') || row.rateType === 'Surgery Charges';
+                    
+                    return isSurgeryWord && !isOT && !isAnes && !isConsumable && !isConsult;
+                });
+
+                surgeryProcRows.forEach(row => {
+                    baseSurgeonBilled += row.billedRate;
+                    if (row.expectedTariff > 0) {
+                        baseSurgeonExpected += row.expectedTariff;
+                    }
+                });
+            }
+
+            // If we found a base surgery/surgeon charge, verify anesthesia rows against 35%
+            if (baseSurgeonBilled > 0 || baseSurgeonExpected > 0) {
+                anesthesiaRows.forEach(row => {
+                    const targetAnesBilled = Math.round(baseSurgeonBilled * 0.35);
+                    const targetAnesExpected = Math.round(baseSurgeonExpected * 0.35);
+
+                    // Update expected rate for anesthesia if logic says it's 35% of expected surgeon fees
+                    if (targetAnesExpected > 0) {
+                        row.expectedTariff = targetAnesExpected;
+                        row.rawExpectedTariffStr = String(targetAnesExpected);
+                        if (row.expectedDiscountedRate !== null) {
+                            row.expectedDiscountedRate = targetAnesExpected * (1 - row.discountApplied / 100);
+                        }
+                    }
+
+                    // Recalculate status and difference with the new expected rate
+                    const netExpected = row.expectedDiscountedRate !== null ? row.expectedDiscountedRate : row.expectedTariff;
+                    if (netExpected !== null) {
+                        row.diff = row.billedRate - netExpected;
+                        if (Math.abs(row.diff) < 0.1) {
+                            row.status = "Matching";
+                        } else if (Math.abs(row.diff) <= 10) {
+                            row.status = "Round Off Difference";
+                        } else if (row.diff > 0) {
+                            row.status = "Overcharged";
+                        } else {
+                            row.status = "Undercharged";
+                        }
+                    }
+
+                    // Add detailed verification remark
+                    let remark = ` [Anesthesia Audit] Verified 35% rate logic. Surgeon/Surgery Fee: Billed ₹${baseSurgeonBilled} (Expected ₹${baseSurgeonExpected}). Expected Anesthesia (35%): ₹${targetAnesExpected}.`;
+                    
+                    if (Math.abs(row.billedRate - targetAnesBilled) > 10) {
+                        remark += ` ⚠️ Billed Anesthesia ₹${row.billedRate} does not match 35% of Surgeon/Surgery Fee (₹${targetAnesBilled}).`;
+                    } else {
+                        remark += ` Check Passed: Billed Anesthesia matches 35% of Surgeon/Surgery Fee.`;
+                    }
+                    
+                    row.explanation += remark;
+                    row.baseExplanation += remark;
+                });
+            } else {
+                // We found anesthesia charges but no surgeon fee / surgery procedure at all!
+                anesthesiaRows.forEach(row => {
+                    const remark = ` [Anesthesia Audit] ⚠️ No surgeon fees or surgery procedures found for this case (${ip}). Cannot verify 35% logic.`;
+                    row.explanation += remark;
+                    row.baseExplanation += remark;
+                });
+            }
+        });
+
         updateAuditCharts();
         resetAuditBtn();
         updateTabBadges();
