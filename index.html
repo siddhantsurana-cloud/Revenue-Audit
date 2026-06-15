@@ -6854,6 +6854,21 @@
         return detailedToSimpleMap[upperKey] || upperKey;
     }
 
+    const simpleToDetailedMap = {
+        "STANDARD WARD": "GENERAL WARD",
+        "DELUXE": "DELUXE CABIN",
+        "ICU": "CRITICAL CARE UNIT",
+        "NICU": "NICU/PICU",
+        "HDU": "STEP DOWN ICU",
+        "ICCU": "CORONARY CARE UNIT (HCC)"
+    };
+
+    function toDetailedRoom(roomKey) {
+        if (!roomKey) return "GENERAL WARD";
+        const upperKey = roomKey.toUpperCase().trim();
+        return simpleToDetailedMap[upperKey] || upperKey;
+    }
+
     function lookupExcelcareRoomRent(cleanedRoom, activeSourceVal) {
         const rates2025 = {
             "SUITE": 13500,
@@ -7030,9 +7045,40 @@
         return null;
     }
 
-    function lookupActiveRoomRent(activeSourceVal, activeSOC, cleanedRoom, isGipsa, originalRoomCategory) {
+    const ROOM_RENT_SBI = {
+        "AC GENERAL WARD": 1500,
+        "DELUXE": 5500,
+        "DELUXE CABIN": 5500,
+        "HCC": 5000,
+        "CORONARY CARE UNIT (HCC)": 5000,
+        "ICU": 6000,
+        "CRITICAL CARE UNIT": 6000,
+        "NEURO ICU": 6000,
+        "PICU": 3100,
+        "NICU/PICU": 3100,
+        "PRIVATE -AC": 3400,
+        "AC CABIN": 3400,
+        "SDU": 3800,
+        "STEP DOWN ICU": 3800,
+        "SEMI PRIVATE-AC": 2600,
+        "AC SEMI CABIN": 2600,
+        "GENERAL WARD": 1200
+    };
+
+    function lookupActiveRoomRent(activeSourceVal, activeSOC, cleanedRoom, isGipsa, originalRoomCategory, agreement) {
         let year = "2024";
         const sourceVal = activeSourceVal || "";
+
+        if (agreement && agreement.agreementName && (agreement.agreementName.toUpperCase().includes("SBI") || agreement.agreementName.toUpperCase().includes("STATE BANK"))) {
+            const normRoom = originalRoomCategory ? originalRoomCategory.toUpperCase().trim().replace(/[-\s]+/g, ' ') : "";
+            if (normRoom) {
+                const rate = getRate(ROOM_RENT_SBI, normRoom);
+                if (rate !== null) return rate;
+            }
+            const rate = getRate(ROOM_RENT_SBI, cleanedRoom);
+            if (rate !== null) return rate;
+            return ROOM_RENT_SBI["DELUXE"] || 5500;
+        }
         
         if (sourceVal === "2025" || sourceVal === "excelcare_soc" || sourceVal === "excelcare_2025" || sourceVal === "excelcare_cash_2025" || sourceVal === "excelcare_soc_cash") {
             year = "2025";
@@ -7070,6 +7116,8 @@
             if (rentMap[roomKey] !== undefined) return rentMap[roomKey];
             const simpleKey = toSimpleRoom(roomKey);
             if (simpleKey && rentMap[simpleKey] !== undefined) return rentMap[simpleKey];
+            const detailedKey = toDetailedRoom(roomKey) || toDetailedRoom(simpleKey);
+            if (detailedKey && rentMap[detailedKey] !== undefined) return rentMap[detailedKey];
             return null;
         };
 
@@ -7389,6 +7437,7 @@
                     dept: getMappedColIndex(['dept', 'department', 'deptname'], 19),
                     rate: getMappedColIndex(['individualrate', 'billedrate', 'billedrates', 'rate', 'amount', 'charges', 'charge', 'price'], 21),
                     customer: getMappedColIndex(['customer', 'customertype', 'payer', 'sponsor', 'insurance', 'tpa'], 24),
+                    agreement: getMappedColIndex(['agreementname', 'agreement', 'contractname', 'contract'], -1),
                     doctor: getMappedColIndex(['primarydoctor', 'doctor', 'physician', 'docname', 'doctorid', 'doctorname'], 8),
                     template: getMappedColIndex(['templatename', 'tarifftemplate', 'template'], 0),
                     ratePreDiscount: getMappedColIndex(['grosstariffbilled', 'grossbilled', 'grosstariff', 'grossrate', 'billedrateprediscount', 'rateprediscount', 'prediscount'], -1),
@@ -7720,6 +7769,7 @@
             const roomCategory = String(rowToUse[colIdxToUse.category] || '').trim();
             const customer = String(rowToUse[colIdxToUse.customer] || '').trim();
             const doctor = String(rowToUse[colIdxToUse.doctor] || '').trim();
+            const agreementName = colIdxToUse.agreement !== undefined && colIdxToUse.agreement !== -1 && rowToUse[colIdxToUse.agreement] !== undefined ? String(rowToUse[colIdxToUse.agreement] || '').trim() : '';
             const billedRate = Number(rowToUse[colIdxToUse.rate]) || 0;
             const billedRatePreDiscount = colIdxToUse.ratePreDiscount !== undefined && rowToUse[colIdxToUse.ratePreDiscount] !== undefined ? (Number(rowToUse[colIdxToUse.ratePreDiscount]) || billedRate) : billedRate;
 
@@ -8023,7 +8073,7 @@
                                 expectedTariff = lookupExcelcareRoomRent(cleanedRoom, activeSourceVal);
                                 explanation += ` Resolved Excelcare Room Rent for ${cleanedRoom}.`;
                             } else {
-                                expectedTariff = lookupActiveRoomRent(activeSourceVal, activeSOC, cleanedRoom, isGipsa, roomCategory);
+                                expectedTariff = lookupActiveRoomRent(activeSourceVal, activeSOC, cleanedRoom, isGipsa, roomCategory, { agreementName: agreementName });
                                 explanation += ` Resolved Room Rent for ${cleanedRoom}.`;
                             }
                         } else if (serviceId === "2126" || nameUpper.includes("NURSING AND ALLIED CHARGES")) {
