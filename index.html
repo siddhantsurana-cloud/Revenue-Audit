@@ -6958,6 +6958,20 @@
         "DAYCARE": 1500
     };
 
+    function parseExcelDate(val) {
+        if (!val) return null;
+        if (val instanceof Date) return val;
+        if (typeof val === 'number') {
+            // Excel serial date to JS Date (25569 days between 1900 and 1970)
+            return new Date(Math.round((val - 25569) * 86400 * 1000));
+        }
+        if (typeof val === 'string') {
+            const parsed = Date.parse(val.replace(/-/g, '/')); // replace dash with slash for browser compat
+            if (!isNaN(parsed)) return new Date(parsed);
+        }
+        return null;
+    }
+
     function lookupActiveRoomRent(activeSourceVal, activeSOC, cleanedRoom, isGipsa, originalRoomCategory) {
         let year = "2024";
         const sourceVal = activeSourceVal || "";
@@ -7285,7 +7299,9 @@
                     ratePreDiscount: getMappedColIndex(['grosstariffbilled', 'grossbilled', 'grosstariff', 'grossrate', 'billedrateprediscount', 'rateprediscount', 'prediscount'], -1),
                     manualTariff: getMappedColIndex(['expectedrate', 'expectedtariff', 'expected', 'tariffrate', 'tariff', 'socrate'], -1),
                     manualDiscount: getMappedColIndex(['discount%', 'discountpercent', 'discountapplied', 'discount'], -1),
-                    manualRemarks: getMappedColIndex(['remarks', 'userremarks', 'comments', 'remark'], -1)
+                    manualRemarks: getMappedColIndex(['remarks', 'userremarks', 'comments', 'remark'], -1),
+                    startdate: getMappedColIndex(['startdate', 'start', 'fromdate', 'from'], -1),
+                    enddate: getMappedColIndex(['enddate', 'end', 'todate', 'to'], -1)
                 };
 
                 tempRowsMap[file.name] = { 
@@ -7616,6 +7632,8 @@
             let manualExcelTariff = null;
             let manualExcelDiscount = null;
             let manualExcelRemarks = null;
+            let startDateVal = null;
+            let endDateVal = null;
 
             if (colIdxToUse.manualTariff !== undefined && colIdxToUse.manualTariff !== -1 && rowToUse[colIdxToUse.manualTariff] !== undefined) {
                 manualExcelTariff = parseNumberCell(rowToUse[colIdxToUse.manualTariff]);
@@ -7625,6 +7643,12 @@
             }
             if (colIdxToUse.manualRemarks !== undefined && colIdxToUse.manualRemarks !== -1 && rowToUse[colIdxToUse.manualRemarks] !== undefined) {
                 manualExcelRemarks = String(rowToUse[colIdxToUse.manualRemarks] || '').trim();
+            }
+            if (colIdxToUse.startdate !== undefined && colIdxToUse.startdate !== -1 && rowToUse[colIdxToUse.startdate] !== undefined) {
+                startDateVal = rowToUse[colIdxToUse.startdate];
+            }
+            if (colIdxToUse.enddate !== undefined && colIdxToUse.enddate !== -1 && rowToUse[colIdxToUse.enddate] !== undefined) {
+                endDateVal = rowToUse[colIdxToUse.enddate];
             }
 
             // Overlay reuploadFields if present
@@ -7881,6 +7905,84 @@
                         } else if (serviceId === "1077592" || nameUpper.includes("MONITORING CHARGES")) {
                             expectedTariff = MONITORING_CHARGES[cleanedRoom];
                             explanation += ` Resolved Monitoring for ${cleanedRoom}.`;
+                        } else if (serviceId === "1087262" || nameUpper.includes("CARDIAC MONITOR")) {
+                            let start = parseExcelDate(startDateVal);
+                            let end = parseExcelDate(endDateVal);
+                            if (start && end && end >= start) {
+                                let durationHours = (end - start) / (3600 * 1000);
+                                let roundedHours = Math.ceil(durationHours);
+                                if (roundedHours < 1) roundedHours = 1;
+                                
+                                const activeSOCMap = getActiveSOCMap(activeSOC);
+                                const baseMatch = activeSOCMap["1087262"];
+                                const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 90;
+                                
+                                expectedTariff = roundedHours * baseRate;
+                                explanation += ` Resolved Cardiac Monitor dynamically: ${roundedHours} hours at ₹${baseRate}/hour.`;
+                            } else {
+                                const activeSOCMap = getActiveSOCMap(activeSOC);
+                                const match = activeSOCMap[serviceId];
+                                expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
+                            }
+                        } else if (serviceId === "1087267" || nameUpper.includes("BIPAP")) {
+                            let start = parseExcelDate(startDateVal);
+                            let end = parseExcelDate(endDateVal);
+                            if (start && end && end >= start) {
+                                let durationHours = (end - start) / (3600 * 1000);
+                                let roundedHours = Math.ceil(durationHours);
+                                if (roundedHours < 1) roundedHours = 1;
+                                
+                                const activeSOCMap = getActiveSOCMap(activeSOC);
+                                const baseMatch = activeSOCMap["1087267"];
+                                const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 80;
+                                
+                                expectedTariff = roundedHours * baseRate;
+                                explanation += ` Resolved BIPAP dynamically: ${roundedHours} hours at ₹${baseRate}/hour.`;
+                            } else {
+                                const activeSOCMap = getActiveSOCMap(activeSOC);
+                                const match = activeSOCMap[serviceId];
+                                expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
+                            }
+                        } else if (serviceId === "1045742" || nameUpper.includes("OXYGEN CHARGE")) {
+                            let start = parseExcelDate(startDateVal);
+                            let end = parseExcelDate(endDateVal);
+                            if (start && end && end >= start) {
+                                let durationHours = (end - start) / (3600 * 1000);
+                                let roundedHours = Math.ceil(durationHours);
+                                if (roundedHours < 1) roundedHours = 1;
+                                
+                                const activeSOCMap = getActiveSOCMap(activeSOC);
+                                const baseMatch = activeSOCMap["1045742"];
+                                const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 135;
+                                
+                                expectedTariff = roundedHours * baseRate;
+                                explanation += ` Resolved Oxygen dynamically: ${roundedHours} hours at ₹${baseRate}/hour.`;
+                            } else {
+                                const activeSOCMap = getActiveSOCMap(activeSOC);
+                                const match = activeSOCMap[serviceId] || activeSOCMap["1045742"];
+                                expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
+                            }
+                        } else if (serviceId === "2103" || nameUpper.includes("OPERATION THEATRE CHARGES") || nameUpper.includes("OPERATION THEATRE CHARGE")) {
+                            let start = parseExcelDate(startDateVal);
+                            let end = parseExcelDate(endDateVal);
+                            if (start && end && end >= start) {
+                                let durationMins = Math.round((end - start) / (60 * 1000));
+                                let baseOT = 10000;
+                                let slabRate = 2000;
+                                
+                                if (durationMins <= 60) {
+                                    expectedTariff = baseOT;
+                                } else {
+                                    let extraMins = durationMins - 60;
+                                    let extraSlabs = Math.ceil(extraMins / 15);
+                                    expectedTariff = baseOT + (extraSlabs * slabRate);
+                                }
+                                explanation += ` Resolved OT Charges dynamically: ${durationMins} minutes [Base: ₹${baseOT} + ₹${slabRate}/15m extra].`;
+                            } else {
+                                const activeSOCMap = getActiveSOCMap(activeSOC);
+                                const match = activeSOCMap[serviceId];
+                                expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
+                            }
                         } else if (serviceId === "3044188" || serviceId === "3044189" || nameUpper.includes("IP VISIT CHARGES") || nameUpper.includes("IPD VISIT")) {
                             expectedTariff = VISIT_CHARGES[cleanedRoom];
                             explanation += ` Resolved Visit Charge for ${cleanedRoom}.`;

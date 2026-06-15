@@ -201,7 +201,7 @@ function Parse-MultiSheetFile($file) {
     for ($i = 1; $i -le $wb.Worksheets.Count; $i++) {
         $sheet = $wb.Worksheets.Item($i)
         $sheetName = $sheet.Name
-        if ($sheetName -in @("Index", "cover page", "01 Billing terms", "1.1 Additional Terms", "Others", "Room Tariff", "Doctor Consultancy", "end page")) {
+        if ($sheetName -in @("Index", "cover page", "01 Billing terms", "1.1 Additional Terms", "Room Tariff", "end page")) {
             continue
         }
         
@@ -264,12 +264,18 @@ function Parse-MultiSheetFile($file) {
                     $rateNum = $valDouble
                     $foundRate = $true
                 } else {
-                    if ([string]::IsNullOrEmpty($name) -and $valStr.Length -gt 3 -and $valStr -notmatch '^\d+$') {
+                    if ([string]::IsNullOrEmpty($name) -and $valStr.Length -gt 1 -and $valStr -notmatch '^\d+$') {
                         $name = $valStr
                     }
                 }
             }
-            
+
+            if ([string]::IsNullOrEmpty($name) -and -not [string]::IsNullOrEmpty($code) -and $foundRate) {
+                if ($code -notmatch '^\d+$') {
+                    $name = $code
+                }
+            }
+
             if (-not [string]::IsNullOrEmpty($name)) {
                 $nameUpper = $name.ToUpper()
                 if ($nameUpper -in @("SERVICE", "PARTICULARS", "PROCEDURE", "DESCRIPTION", "RATE", "CODE")) { continue }
