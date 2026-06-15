@@ -6825,6 +6825,35 @@
         return 0;
     }
 
+    const detailedToSimpleMap = {
+        "GENERAL WARD": "STANDARD WARD",
+        "AC GENERAL WARD": "STANDARD WARD",
+        "NON AC SEMI CABIN": "SEMI PRIVATE",
+        "AC SEMI CABIN": "SEMI PRIVATE",
+        "AC CABIN": "SINGLE PRIVATE",
+        "PRIVATE CABIN (NON AC)": "SINGLE PRIVATE",
+        "DELUXE CABIN": "DELUXE",
+        "SUPER DELUXE": "DELUXE",
+        "CRITICAL CARE UNIT": "ICU",
+        "NICU/PICU": "NEONATAL ICU",
+        "STEP DOWN ICU": "HDU",
+        "CTVS ICU": "ICU",
+        "NEURO ICU": "ICU",
+        "CORONARY CARE UNIT (HCC)": "ICCU",
+        "CATH RECOVERY": "ICCU",
+        "CRITICAL CARE ISOLATION (ICU)": "ICU",
+        "EMERGENCY WARD": "STANDARD WARD",
+        "MOTHER OCCUPIED": "STANDARD WARD",
+        "NURSERY CARE": "NEONATAL ICU",
+        "DAYCARE": "DAYCARE"
+    };
+
+    function toSimpleRoom(roomKey) {
+        if (!roomKey) return "STANDARD WARD";
+        const upperKey = roomKey.toUpperCase().trim();
+        return detailedToSimpleMap[upperKey] || upperKey;
+    }
+
     function lookupExcelcareRoomRent(cleanedRoom, activeSourceVal) {
         const rates2025 = {
             "SUITE": 13500,
@@ -6854,7 +6883,10 @@
         };
         const is2024 = (activeSourceVal === "excelcare_2024" || activeSourceVal === "socexcelcare2024" || activeSourceVal === "excelcare_soc_2024");
         const rates = is2024 ? rates2024 : rates2025;
-        return rates[cleanedRoom] !== undefined ? rates[cleanedRoom] : (is2024 ? 1500 : 1600);
+        const simpleRoom = toSimpleRoom(cleanedRoom);
+        if (rates[cleanedRoom] !== undefined) return rates[cleanedRoom];
+        if (rates[simpleRoom] !== undefined) return rates[simpleRoom];
+        return is2024 ? 1500 : 1600;
     }
 
     function lookupExcelcareNursing(cleanedRoom) {
@@ -6871,7 +6903,8 @@
             "PICU": 1000,
             "DAYCARE": 500
         };
-        return rates[cleanedRoom] !== undefined ? rates[cleanedRoom] : 500;
+        const simpleRoom = toSimpleRoom(cleanedRoom);
+        return rates[cleanedRoom] !== undefined ? rates[cleanedRoom] : (rates[simpleRoom] !== undefined ? rates[simpleRoom] : 500);
     }
 
     const ROOM_RENT_2025 = {
@@ -7022,30 +7055,60 @@
                 year = "2021";
             } else {
                 if (isGipsa) {
-                    return ROOM_RENT_GIPSA[cleanedRoom] || ROOM_RENT_GIPSA["DELUXE"] || 1600;
+                    const simpleRoom = toSimpleRoom(cleanedRoom);
+                    return ROOM_RENT_GIPSA[cleanedRoom] || ROOM_RENT_GIPSA[simpleRoom] || ROOM_RENT_GIPSA["DELUXE"] || 1600;
                 } else {
-                    return ROOM_RENT_TPA[cleanedRoom] || ROOM_RENT_TPA["DELUXE"] || 1600;
+                    const simpleRoom = toSimpleRoom(cleanedRoom);
+                    return ROOM_RENT_TPA[cleanedRoom] || ROOM_RENT_TPA[simpleRoom] || ROOM_RENT_TPA["DELUXE"] || 1600;
                 }
             }
         }
 
-        const normRoom = originalRoomCategory ? originalRoomCategory.toUpperCase().trim() : "";
+        const normRoom = originalRoomCategory ? originalRoomCategory.toUpperCase().trim().replace(/[-\s]+/g, ' ') : "";
+
+        const getRate = (rentMap, roomKey) => {
+            if (rentMap[roomKey] !== undefined) return rentMap[roomKey];
+            const simpleKey = toSimpleRoom(roomKey);
+            if (simpleKey && rentMap[simpleKey] !== undefined) return rentMap[simpleKey];
+            return null;
+        };
 
         if (year === "2025") {
-            if (normRoom && ROOM_RENT_2025[normRoom] !== undefined) return ROOM_RENT_2025[normRoom];
-            return ROOM_RENT_2025[cleanedRoom] || ROOM_RENT_2025["DELUXE"] || 1600;
+            if (normRoom) {
+                const rate = getRate(ROOM_RENT_2025, normRoom);
+                if (rate !== null) return rate;
+            }
+            const rate = getRate(ROOM_RENT_2025, cleanedRoom);
+            if (rate !== null) return rate;
+            return ROOM_RENT_2025["DELUXE"] || 1600;
         } else if (year === "2024") {
-            if (normRoom && ROOM_RENT_2024[normRoom] !== undefined) return ROOM_RENT_2024[normRoom];
-            return ROOM_RENT_2024[cleanedRoom] || ROOM_RENT_2024["DELUXE"] || 1600;
+            if (normRoom) {
+                const rate = getRate(ROOM_RENT_2024, normRoom);
+                if (rate !== null) return rate;
+            }
+            const rate = getRate(ROOM_RENT_2024, cleanedRoom);
+            if (rate !== null) return rate;
+            return ROOM_RENT_2024["DELUXE"] || 1600;
         } else if (year === "2023") {
-            if (normRoom && ROOM_RENT_2023[normRoom] !== undefined) return ROOM_RENT_2023[normRoom];
-            return ROOM_RENT_2023[cleanedRoom] || ROOM_RENT_2023["DELUXE"] || 1600;
+            if (normRoom) {
+                const rate = getRate(ROOM_RENT_2023, normRoom);
+                if (rate !== null) return rate;
+            }
+            const rate = getRate(ROOM_RENT_2023, cleanedRoom);
+            if (rate !== null) return rate;
+            return ROOM_RENT_2023["DELUXE"] || 1600;
         } else if (year === "2021") {
-            if (normRoom && ROOM_RENT_2021[normRoom] !== undefined) return ROOM_RENT_2021[normRoom];
-            return ROOM_RENT_2021[cleanedRoom] || ROOM_RENT_2021["DELUXE"] || 1600;
+            if (normRoom) {
+                const rate = getRate(ROOM_RENT_2021, normRoom);
+                if (rate !== null) return rate;
+            }
+            const rate = getRate(ROOM_RENT_2021, cleanedRoom);
+            if (rate !== null) return rate;
+            return ROOM_RENT_2021["DELUXE"] || 1600;
         }
         
-        return ROOM_RENT_TPA[cleanedRoom] || ROOM_RENT_TPA["DELUXE"] || 1600;
+        const simpleRoom = toSimpleRoom(cleanedRoom);
+        return ROOM_RENT_TPA[cleanedRoom] || ROOM_RENT_TPA[simpleRoom] || ROOM_RENT_TPA["DELUXE"] || 1600;
     }
 
     function lookupSOCRoomRent(socArray, cleanedRoom, originalRoomCategory) {
@@ -7931,11 +7994,13 @@
                                 expectedTariff = lookupExcelcareNursing(cleanedRoom);
                                 explanation += ` Resolved Excelcare Nursing for ${cleanedRoom}.`;
                             } else {
-                                expectedTariff = NURSING_CHARGES[cleanedRoom];
+                                const simpleRoom = toSimpleRoom(cleanedRoom);
+                                expectedTariff = NURSING_CHARGES[cleanedRoom] || NURSING_CHARGES[simpleRoom];
                                 explanation += ` Resolved Nursing for ${cleanedRoom}.`;
                             }
                         } else if (serviceId === "1077592" || nameUpper.includes("MONITORING CHARGES")) {
-                            expectedTariff = MONITORING_CHARGES[cleanedRoom];
+                            const simpleRoom = toSimpleRoom(cleanedRoom);
+                            expectedTariff = MONITORING_CHARGES[cleanedRoom] || MONITORING_CHARGES[simpleRoom];
                             explanation += ` Resolved Monitoring for ${cleanedRoom}.`;
                         } else if (serviceId === "1087262" || nameUpper.includes("CARDIAC MONITOR")) {
                             let start = parseExcelDate(startDateVal);
@@ -8016,7 +8081,8 @@
                                 expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
                             }
                         } else if (serviceId === "3044188" || serviceId === "3044189" || nameUpper.includes("IP VISIT CHARGES") || nameUpper.includes("IPD VISIT")) {
-                            expectedTariff = VISIT_CHARGES[cleanedRoom];
+                            const simpleRoom = toSimpleRoom(cleanedRoom);
+                            expectedTariff = VISIT_CHARGES[cleanedRoom] || VISIT_CHARGES[simpleRoom];
                             explanation += ` Resolved Visit Charge for ${cleanedRoom}.`;
                         } else {
                             // Standard SOC lookup
