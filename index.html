@@ -7066,6 +7066,15 @@
     };
 
     function lookupActiveRoomRent(activeSourceVal, activeSOC, cleanedRoom, isGipsa, originalRoomCategory, agreement) {
+        const getRate = (rentMap, roomKey) => {
+            if (rentMap[roomKey] !== undefined) return rentMap[roomKey];
+            const simpleKey = toSimpleRoom(roomKey);
+            if (simpleKey && rentMap[simpleKey] !== undefined) return rentMap[simpleKey];
+            const detailedKey = toDetailedRoom(roomKey) || toDetailedRoom(simpleKey);
+            if (detailedKey && rentMap[detailedKey] !== undefined) return rentMap[detailedKey];
+            return null;
+        };
+
         let year = "2024";
         const sourceVal = activeSourceVal || "";
 
@@ -7111,15 +7120,6 @@
         }
 
         const normRoom = originalRoomCategory ? originalRoomCategory.toUpperCase().trim().replace(/[-\s]+/g, ' ') : "";
-
-        const getRate = (rentMap, roomKey) => {
-            if (rentMap[roomKey] !== undefined) return rentMap[roomKey];
-            const simpleKey = toSimpleRoom(roomKey);
-            if (simpleKey && rentMap[simpleKey] !== undefined) return rentMap[simpleKey];
-            const detailedKey = toDetailedRoom(roomKey) || toDetailedRoom(simpleKey);
-            if (detailedKey && rentMap[detailedKey] !== undefined) return rentMap[detailedKey];
-            return null;
-        };
 
         if (year === "2025") {
             if (normRoom) {
