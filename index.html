@@ -7445,7 +7445,8 @@
                     manualDiscount: getMappedColIndex(['discount%', 'discountpercent', 'discountapplied', 'discount'], -1),
                     manualRemarks: getMappedColIndex(['remarks', 'userremarks', 'comments', 'remark'], -1),
                     startdate: getMappedColIndex(['startdate', 'start', 'fromdate', 'from'], -1),
-                    enddate: getMappedColIndex(['enddate', 'end', 'todate', 'to'], -1)
+                    enddate: getMappedColIndex(['enddate', 'end', 'todate', 'to'], -1),
+                    quantity: getMappedColIndex(['quantity', 'qty', 'billedqty', 'units', 'vol', 'count', 'days', 'hours', 'duration'], -1)
                 };
 
                 tempRowsMap[file.name] = { 
@@ -7687,6 +7688,18 @@
             return map2026;
         }
         
+        function lookupSOCItemByName(activeSOCMap, keyword) {
+            if (!activeSOCMap) return null;
+            keyword = keyword.toUpperCase();
+            for (let id in activeSOCMap) {
+                const item = activeSOCMap[id];
+                if (item && item.name && item.name.toUpperCase().includes(keyword)) {
+                    return item;
+                }
+            }
+            return null;
+        }
+        
         const excludePharmacy = chkExcludePharmacy.checked;
         const excludePackage = chkExcludePackage.checked;
         const excludeConsumables = chkExcludeConsumables.checked;
@@ -7772,6 +7785,7 @@
             const agreementName = colIdxToUse.agreement !== undefined && colIdxToUse.agreement !== -1 && rowToUse[colIdxToUse.agreement] !== undefined ? String(rowToUse[colIdxToUse.agreement] || '').trim() : '';
             const billedRate = Number(rowToUse[colIdxToUse.rate]) || 0;
             const billedRatePreDiscount = colIdxToUse.ratePreDiscount !== undefined && rowToUse[colIdxToUse.ratePreDiscount] !== undefined ? (Number(rowToUse[colIdxToUse.ratePreDiscount]) || billedRate) : billedRate;
+            const quantity = colIdxToUse.quantity !== undefined && colIdxToUse.quantity !== -1 && rowToUse[colIdxToUse.quantity] !== undefined ? (Number(rowToUse[colIdxToUse.quantity]) || 1) : 1;
 
             // Extract manual feed values from sheet columns (if present)
             let manualExcelTariff = null;
@@ -8089,62 +8103,125 @@
                             const simpleRoom = toSimpleRoom(cleanedRoom);
                             expectedTariff = MONITORING_CHARGES[cleanedRoom] || MONITORING_CHARGES[simpleRoom];
                             explanation += ` Resolved Monitoring for ${cleanedRoom}.`;
-                        } else if (serviceId === "1087262" || nameUpper.includes("CARDIAC MONITOR")) {
+                        } else if (serviceId === "1087262" || nameUpper.includes("CARDIAC MONITOR") || nameUpper.includes("CARDIAC-MONITOR") || nameUpper.includes("CARDIAC MONITORING")) {
                             let start = parseExcelDate(startDateVal);
                             let end = parseExcelDate(endDateVal);
+                            
+                            const activeSOCMap = getActiveSOCMap(activeSOC);
+                            const nameMatch = lookupSOCItemByName(activeSOCMap, "CARDIAC MONITOR") || lookupSOCItemByName(activeSOCMap, "CARDIAC-MONITOR") || lookupSOCItemByName(activeSOCMap, "CARDIAC MONITORING");
+                            const baseMatch = activeSOCMap["1087262"] || nameMatch;
+                            const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 90;
+                            
                             if (start && end && end >= start) {
                                 let durationHours = (end - start) / (3600 * 1000);
                                 let roundedHours = Math.ceil(durationHours);
                                 if (roundedHours < 1) roundedHours = 1;
                                 
-                                const activeSOCMap = getActiveSOCMap(activeSOC);
-                                const baseMatch = activeSOCMap["1087262"];
-                                const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 90;
+                                let diffUnit = Math.abs(billedRate - baseRate);
+                                let diffTotal = Math.abs(billedRate - (roundedHours * baseRate));
                                 
-                                expectedTariff = roundedHours * baseRate;
-                                explanation += ` Resolved Cardiac Monitor dynamically: ${roundedHours} hours at ₹${baseRate}/hour.`;
+                                if (diffUnit < diffTotal) {
+                                    expectedTariff = baseRate;
+                                    explanation += ` Resolved Cardiac Monitor unit rate: ₹${baseRate}/hour (Duration: ${roundedHours} hours).`;
+                                } else {
+                                    expectedTariff = roundedHours * baseRate;
+                                    explanation += ` Resolved Cardiac Monitor: ${roundedHours} hours at ₹${baseRate}/hour.`;
+                                }
+                                if (Math.abs(quantity - roundedHours) > 0.1) {
+                                    explanation += ` [Note: Billed Qty ${quantity} vs Duration ${roundedHours}h].`;
+                                }
                             } else {
-                                const activeSOCMap = getActiveSOCMap(activeSOC);
-                                const match = activeSOCMap[serviceId];
-                                expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
+                                let checkQty = (quantity > 0) ? quantity : 1;
+                                let diffUnit = Math.abs(billedRate - baseRate);
+                                let diffTotal = Math.abs(billedRate - (checkQty * baseRate));
+                                
+                                if (diffUnit < diffTotal && checkQty > 1) {
+                                    expectedTariff = baseRate;
+                                    explanation += ` Resolved Cardiac Monitor unit rate: ₹${baseRate}/hour (Qty: ${checkQty}).`;
+                                } else {
+                                    expectedTariff = checkQty * baseRate;
+                                    explanation += ` Resolved Cardiac Monitor: ${checkQty} hours at ₹${baseRate}/hour.`;
+                                }
                             }
                         } else if (serviceId === "1087267" || nameUpper.includes("BIPAP")) {
                             let start = parseExcelDate(startDateVal);
                             let end = parseExcelDate(endDateVal);
+                            
+                            const activeSOCMap = getActiveSOCMap(activeSOC);
+                            const nameMatch = lookupSOCItemByName(activeSOCMap, "BIPAP");
+                            const baseMatch = activeSOCMap["1087267"] || nameMatch;
+                            const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 80;
+                            
                             if (start && end && end >= start) {
                                 let durationHours = (end - start) / (3600 * 1000);
                                 let roundedHours = Math.ceil(durationHours);
                                 if (roundedHours < 1) roundedHours = 1;
                                 
-                                const activeSOCMap = getActiveSOCMap(activeSOC);
-                                const baseMatch = activeSOCMap["1087267"];
-                                const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 80;
+                                let diffUnit = Math.abs(billedRate - baseRate);
+                                let diffTotal = Math.abs(billedRate - (roundedHours * baseRate));
                                 
-                                expectedTariff = roundedHours * baseRate;
-                                explanation += ` Resolved BIPAP dynamically: ${roundedHours} hours at ₹${baseRate}/hour.`;
+                                if (diffUnit < diffTotal) {
+                                    expectedTariff = baseRate;
+                                    explanation += ` Resolved BIPAP unit rate: ₹${baseRate}/hour (Duration: ${roundedHours} hours).`;
+                                } else {
+                                    expectedTariff = roundedHours * baseRate;
+                                    explanation += ` Resolved BIPAP: ${roundedHours} hours at ₹${baseRate}/hour.`;
+                                }
+                                if (Math.abs(quantity - roundedHours) > 0.1) {
+                                    explanation += ` [Note: Billed Qty ${quantity} vs Duration ${roundedHours}h].`;
+                                }
                             } else {
-                                const activeSOCMap = getActiveSOCMap(activeSOC);
-                                const match = activeSOCMap[serviceId];
-                                expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
+                                let checkQty = (quantity > 0) ? quantity : 1;
+                                let diffUnit = Math.abs(billedRate - baseRate);
+                                let diffTotal = Math.abs(billedRate - (checkQty * baseRate));
+                                
+                                if (diffUnit < diffTotal && checkQty > 1) {
+                                    expectedTariff = baseRate;
+                                    explanation += ` Resolved BIPAP unit rate: ₹${baseRate}/hour (Qty: ${checkQty}).`;
+                                } else {
+                                    expectedTariff = checkQty * baseRate;
+                                    explanation += ` Resolved BIPAP: ${checkQty} hours at ₹${baseRate}/hour.`;
+                                }
                             }
-                        } else if (serviceId === "1045742" || nameUpper.includes("OXYGEN CHARGE")) {
+                        } else if (serviceId === "1045742" || nameUpper.includes("OXYGEN CHARGE") || nameUpper.includes("OXYGEN CHARGES")) {
                             let start = parseExcelDate(startDateVal);
                             let end = parseExcelDate(endDateVal);
+                            
+                            const activeSOCMap = getActiveSOCMap(activeSOC);
+                            const nameMatch = lookupSOCItemByName(activeSOCMap, "OXYGEN CHARGE") || lookupSOCItemByName(activeSOCMap, "OXYGEN CHARGES");
+                            const baseMatch = activeSOCMap["1045742"] || nameMatch;
+                            const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 135;
+                            
                             if (start && end && end >= start) {
                                 let durationHours = (end - start) / (3600 * 1000);
                                 let roundedHours = Math.ceil(durationHours);
                                 if (roundedHours < 1) roundedHours = 1;
                                 
-                                const activeSOCMap = getActiveSOCMap(activeSOC);
-                                const baseMatch = activeSOCMap["1045742"];
-                                const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 135;
+                                let diffUnit = Math.abs(billedRate - baseRate);
+                                let diffTotal = Math.abs(billedRate - (roundedHours * baseRate));
                                 
-                                expectedTariff = roundedHours * baseRate;
-                                explanation += ` Resolved Oxygen dynamically: ${roundedHours} hours at ₹${baseRate}/hour.`;
+                                if (diffUnit < diffTotal) {
+                                    expectedTariff = baseRate;
+                                    explanation += ` Resolved Oxygen unit rate: ₹${baseRate}/hour (Duration: ${roundedHours} hours).`;
+                                } else {
+                                    expectedTariff = roundedHours * baseRate;
+                                    explanation += ` Resolved Oxygen: ${roundedHours} hours at ₹${baseRate}/hour.`;
+                                }
+                                if (Math.abs(quantity - roundedHours) > 0.1) {
+                                    explanation += ` [Note: Billed Qty ${quantity} vs Duration ${roundedHours}h].`;
+                                }
                             } else {
-                                const activeSOCMap = getActiveSOCMap(activeSOC);
-                                const match = activeSOCMap[serviceId] || activeSOCMap["1045742"];
-                                expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
+                                let checkQty = (quantity > 0) ? quantity : 1;
+                                let diffUnit = Math.abs(billedRate - baseRate);
+                                let diffTotal = Math.abs(billedRate - (checkQty * baseRate));
+                                
+                                if (diffUnit < diffTotal && checkQty > 1) {
+                                    expectedTariff = baseRate;
+                                    explanation += ` Resolved Oxygen unit rate: ₹${baseRate}/hour (Qty: ${checkQty}).`;
+                                } else {
+                                    expectedTariff = checkQty * baseRate;
+                                    explanation += ` Resolved Oxygen: ${checkQty} hours at ₹${baseRate}/hour.`;
+                                }
                             }
                         } else if (serviceId === "2103" || nameUpper.includes("OPERATION THEATRE CHARGES") || nameUpper.includes("OPERATION THEATRE CHARGE")) {
                             let start = parseExcelDate(startDateVal);
