@@ -3502,7 +3502,7 @@
                     </div>
                 </div>
                 <!-- Version Badge -->
-                <div style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; backdrop-filter: blur(4px);">
+                <div id="app-version-badge" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; backdrop-filter: blur(4px);">
                     LOCKED VERSION: V1.0.0
                 </div>
             </div>
@@ -3632,10 +3632,10 @@
                 
                 <!-- LOCK VERSION V1 CARD -->
                 <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; border: 1px solid rgba(16, 185, 129, 0.25); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 0; right: 0; background: var(--success); color: white; font-size: 0.55rem; font-weight: 900; padding: 0.2rem 0.6rem; border-bottom-left-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase;">
+                    <div id="version-card-status" style="position: absolute; top: 0; right: 0; background: var(--success); color: white; font-size: 0.55rem; font-weight: 900; padding: 0.2rem 0.6rem; border-bottom-left-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase;">
                         LOCKED
                     </div>
-                    <div style="font-size: 0.8rem; font-weight: 800; color: var(--success); display: flex; align-items: center; gap: 0.35rem;">
+                    <div id="version-card-title" style="font-size: 0.8rem; font-weight: 800; color: var(--success); display: flex; align-items: center; gap: 0.35rem;">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                         VERSION V1.0.0
                     </div>
@@ -4247,7 +4247,25 @@
                 
                 // Add class to body to show sandbox indicator banner at the top
                 document.body.classList.add('sandbox-active');
-                showToast('Switched to Test Sandbox Environment. Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
+                
+                // Update version UI
+                const vBadge = document.getElementById('app-version-badge');
+                if (vBadge) vBadge.textContent = 'TEST VERSION: V1.01.01 (RC)';
+                const vStatus = document.getElementById('version-card-status');
+                if (vStatus) {
+                    vStatus.textContent = 'TESTING';
+                    vStatus.style.background = '#d97706';
+                }
+                const vTitle = document.getElementById('version-card-title');
+                if (vTitle) {
+                    vTitle.style.color = '#d97706';
+                    vTitle.innerHTML = `
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        VERSION V1.01.01 (RC)
+                    `;
+                }
+                
+                showToast('Switched to Test Sandbox Environment (V1.01.01 RC). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
             } else {
                 // Update badge to Production mode
                 envBadge.style.color = 'var(--primary)';
@@ -4261,6 +4279,24 @@
                 
                 // Remove class from body
                 document.body.classList.remove('sandbox-active');
+                
+                // Reset version UI
+                const vBadge = document.getElementById('app-version-badge');
+                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V1.0.0';
+                const vStatus = document.getElementById('version-card-status');
+                if (vStatus) {
+                    vStatus.textContent = 'LOCKED';
+                    vStatus.style.background = 'var(--success)';
+                }
+                const vTitle = document.getElementById('version-card-title');
+                if (vTitle) {
+                    vTitle.style.color = 'var(--success)';
+                    vTitle.innerHTML = `
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        VERSION V1.0.0
+                    `;
+                }
+                
                 showToast('Switched back to Production Environment.', 'success');
             }
             
