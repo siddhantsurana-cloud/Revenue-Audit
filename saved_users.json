@@ -70,5 +70,29 @@
     "password": "Admin@Kolkata",
     "role": "Administrator",
     "unit": "kolkata"
+  },
+  {
+    "username": "kol_viewer",
+    "password": "Viewer@Kolkata",
+    "role": "Viewer",
+    "unit": "kolkata"
+  },
+  {
+    "username": "kol_auditor",
+    "password": "Auditor@Kolkata",
+    "role": "Auditor",
+    "unit": "kolkata"
+  },
+  {
+    "username": "kol_reviewer",
+    "password": "Reviewer@Kolkata",
+    "role": "Approver",
+    "unit": "kolkata"
+  },
+  {
+    "username": "kol_admin",
+    "password": "Admin@Kolkata",
+    "role": "Administrator",
+    "unit": "kolkata"
   }
 ]
