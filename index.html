@@ -3118,7 +3118,13 @@
     <!-- PANEL 3: AGREEMENT MANAGER -->
     <div class="tab-panel" id="panel-agreement">
         <div class="controls-card" style="background-color: var(--bg-card);">
-            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">Agreement & MOU Intelligence</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.75rem;">
+                <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin: 0;">Agreement & MOU Intelligence</h3>
+                <button class="export-btn" onclick="openCustomAgreementModal()" style="background: var(--primary); color: white; border-color: var(--primary); font-weight: 700; padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.35rem;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 0.15rem;"><path d="M12 5v14M5 12h14"/></svg>
+                    Add Custom Agreement
+                </button>
+            </div>
             <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.25rem;">Monitor active payer agreements, expected rate templates, validity periods, and negotiated discount clauses.</p>
             
             <!-- SUB-TABS FOR AGREEMENTS -->
@@ -3152,6 +3158,7 @@
                             <th style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); font-weight: 800; color: var(--text-main);">Scope</th>
                             <th style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); font-weight: 800; color: var(--text-main);">MOU Period</th>
                             <th style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); font-weight: 800; color: var(--text-main);">Negotiated Discount</th>
+                            <th style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); font-weight: 800; color: var(--text-main); text-align: center;">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="agreement-tbody">
@@ -4078,6 +4085,66 @@
     </div>
 </div>
 
+<!-- CUSTOM AGREEMENT MODAL -->
+<div class="modal-overlay" id="custom-agreement-modal" style="z-index: 2500;">
+    <div class="modal-card" style="max-width: 500px; border-top: 5px solid var(--primary);">
+        <div class="modal-header">
+            <h2 id="custom-agreement-modal-title">Add Custom Agreement</h2>
+            <button class="close-modal-btn" onclick="closeCustomAgreementModal()" title="Close modal">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="modal-body" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            <input type="hidden" id="custom-agreement-original-name">
+            <div>
+                <label style="display: block; font-weight: 700; font-size: 0.85rem; color: var(--text-main); margin-bottom: 0.35rem;">Agreement Name</label>
+                <input type="text" id="custom-agreement-name" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-page); color: var(--text-main); font-size: 0.9rem;" placeholder="e.g. 15% OFF - HDFC BANK CREDIT CARDS">
+            </div>
+            <div>
+                <label style="display: block; font-weight: 700; font-size: 0.85rem; color: var(--text-main); margin-bottom: 0.35rem;">Target/Mapped Tariff</label>
+                <input type="text" id="custom-agreement-tariff" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-page); color: var(--text-main); font-size: 0.9rem;" placeholder="e.g. APOLLO GUWAHATI OP CASH TARIFF 2025-26">
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <div style="flex: 1;">
+                    <label style="display: block; font-weight: 700; font-size: 0.85rem; color: var(--text-main); margin-bottom: 0.35rem;">MOU Start Date</label>
+                    <input type="date" id="custom-agreement-from" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-page); color: var(--text-main); font-size: 0.9rem;">
+                </div>
+                <div style="flex: 1;">
+                    <label style="display: block; font-weight: 700; font-size: 0.85rem; color: var(--text-main); margin-bottom: 0.35rem;">MOU End Date</label>
+                    <input type="date" id="custom-agreement-to" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-page); color: var(--text-main); font-size: 0.9rem;">
+                </div>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <div style="flex: 1;">
+                    <label style="display: block; font-weight: 700; font-size: 0.85rem; color: var(--text-main); margin-bottom: 0.35rem;">Status</label>
+                    <select id="custom-agreement-status" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-page); color: var(--text-main); font-size: 0.9rem;">
+                        <option value="Available/Valid">Available/Valid</option>
+                        <option value="Valid">Valid</option>
+                        <option value="Expired">Expired</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+                <div style="flex: 1;">
+                    <label style="display: block; font-weight: 700; font-size: 0.85rem; color: var(--text-main); margin-bottom: 0.35rem;">Scope</label>
+                    <select id="custom-agreement-scope" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-page); color: var(--text-main); font-size: 0.9rem;">
+                        <option value="both">Centralised (Both)</option>
+                        <option value="international">International Only</option>
+                        <option value="excelcare">Excelcare Only</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label style="display: block; font-weight: 700; font-size: 0.85rem; color: var(--text-main); margin-bottom: 0.35rem;">Negotiated Discount Details</label>
+                <textarea id="custom-agreement-discount" rows="2" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-page); color: var(--text-main); font-size: 0.9rem; resize: vertical;" placeholder="e.g. 15% discount on IP, 10% discount on OP AHC packages"></textarea>
+            </div>
+            <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 0.5rem;">
+                <button class="export-btn" onclick="closeCustomAgreementModal()" style="background: var(--bg-page); color: var(--text-muted); border-color: var(--border);">Cancel</button>
+                <button class="export-btn" onclick="saveCustomAgreement()" style="background: var(--primary); color: white; border-color: var(--primary); font-weight: 700;">Save Agreement</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- DATA SCRIPT IMPORT -->
 <script src="tariff_data.js"></script>
 
@@ -4238,16 +4305,7 @@
             }
         }
         window.customAgreements = loaded;
-
-        // Merge into AGREEMENT_DETAILS if not already present
-        if (typeof AGREEMENT_DETAILS !== 'undefined' && Array.isArray(AGREEMENT_DETAILS)) {
-            loaded.forEach(ag => {
-                const exists = AGREEMENT_DETAILS.some(x => x.agreementName === ag.agreementName);
-                if (!exists) {
-                    AGREEMENT_DETAILS.push(ag);
-                }
-            });
-        }
+        mergeCustomAgreementsIntoDetails(loaded);
 
         // Trigger UI updates
         if (typeof populateDropdowns === 'function') {
@@ -4284,6 +4342,10 @@
         window.customAgreements = agreements;
         localStorage.setItem('custom_customer_agreements', JSON.stringify(agreements));
         syncCustomAgreementsToServer(agreements);
+        mergeCustomAgreementsIntoDetails(agreements);
+        if (typeof populateDropdowns === 'function') {
+            populateDropdowns();
+        }
         renderAgreementManager(); // Refresh table
     };
 
@@ -11172,6 +11234,176 @@
         return "international";
     }
 
+    function mergeCustomAgreementsIntoDetails(customs) {
+        if (typeof AGREEMENT_DETAILS === 'undefined' || !Array.isArray(AGREEMENT_DETAILS)) return;
+        if (!window.staticAgreements) {
+            window.staticAgreements = [...AGREEMENT_DETAILS];
+        }
+        const merged = [...window.staticAgreements];
+        customs.forEach(cust => {
+            const idx = merged.findIndex(x => x.agreementName.toUpperCase() === cust.agreementName.toUpperCase());
+            if (idx !== -1) {
+                merged[idx] = { ...merged[idx], ...cust };
+            } else {
+                merged.push(cust);
+            }
+        });
+        AGREEMENT_DETAILS.length = 0;
+        merged.forEach(item => AGREEMENT_DETAILS.push(item));
+    }
+
+    function convertDateToDbFormat(dateStr) {
+        if (!dateStr) return '';
+        const parts = dateStr.split('-');
+        if (parts.length !== 3) return dateStr;
+        return `${parts[2]}-${parts[1]}-${parts[0]}`; // YYYY-MM-DD to DD-MM-YYYY
+    }
+
+    function convertDateToInputFormat(dateStr) {
+        if (!dateStr) return '';
+        if (dateStr.indexOf('-') === 4) return dateStr;
+        const parts = dateStr.split('-');
+        if (parts.length !== 3) return dateStr;
+        return `${parts[2]}-${parts[1]}-${parts[0]}`; // DD-MM-YYYY to YYYY-MM-DD
+    }
+
+    // Modal Helpers
+    window.openCustomAgreementModal = function() {
+        document.getElementById('custom-agreement-modal-title').textContent = "Add Custom Agreement";
+        document.getElementById('custom-agreement-original-name').value = "";
+        document.getElementById('custom-agreement-name').value = "";
+        document.getElementById('custom-agreement-tariff').value = "";
+        document.getElementById('custom-agreement-from').value = "";
+        document.getElementById('custom-agreement-to').value = "";
+        document.getElementById('custom-agreement-status').value = "Available/Valid";
+        document.getElementById('custom-agreement-scope').value = "both";
+        document.getElementById('custom-agreement-discount').value = "";
+        
+        document.getElementById('custom-agreement-modal').classList.add('show');
+    };
+
+    window.closeCustomAgreementModal = function() {
+        document.getElementById('custom-agreement-modal').classList.remove('show');
+    };
+
+    window.saveCustomAgreement = function() {
+        const origName = document.getElementById('custom-agreement-original-name').value;
+        const name = document.getElementById('custom-agreement-name').value.trim();
+        const tariff = document.getElementById('custom-agreement-tariff').value.trim();
+        const fromDateInput = document.getElementById('custom-agreement-from').value;
+        const toDateInput = document.getElementById('custom-agreement-to').value;
+        const status = document.getElementById('custom-agreement-status').value;
+        const scope = document.getElementById('custom-agreement-scope').value;
+        const discount = document.getElementById('custom-agreement-discount').value.trim();
+
+        if (!name) {
+            alert("Please enter the Agreement Name.");
+            return;
+        }
+
+        const fromDate = convertDateToDbFormat(fromDateInput);
+        const toDate = convertDateToDbFormat(toDateInput);
+
+        // Map scope to locations
+        let locations = '';
+        if (scope === 'international') {
+            locations = 'Assam Hospitals Limited – Guwahati';
+        } else if (scope === 'excelcare') {
+            locations = 'Apollo Excelcare Hospital – Guwahati';
+        } else {
+            locations = 'Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati';
+        }
+
+        const agObject = {
+            customerType: scope === 'excelcare' ? 'TPA' : 'Corporate', // default mapping
+            agreementName: name,
+            tariffMapped: tariff || "None",
+            discountMapped: discount || "None",
+            status: status,
+            fromDate: fromDate,
+            toDate: toDate,
+            discountAgreed: discount || "None",
+            locations: locations
+        };
+
+        let list = [...(window.customAgreements || [])];
+        if (origName) {
+            // Edit mode
+            const idx = list.findIndex(x => x.agreementName.toUpperCase() === origName.toUpperCase());
+            if (idx !== -1) {
+                list[idx] = agObject;
+            } else {
+                list.push(agObject);
+            }
+        } else {
+            // Add mode
+            const exists = list.some(x => x.agreementName.toUpperCase() === name.toUpperCase());
+            if (exists) {
+                alert("An agreement with this name already exists.");
+                return;
+            }
+            list.push(agObject);
+        }
+
+        window.saveAndSyncCustomAgreements(list);
+        window.closeCustomAgreementModal();
+    };
+
+    window.editCustomAgreement = function(escapedName) {
+        const list = window.customAgreements || [];
+        const ag = list.find(x => x.agreementName.toUpperCase() === escapedName.toUpperCase());
+        if (!ag) return;
+
+        document.getElementById('custom-agreement-modal-title').textContent = "Edit Custom Agreement";
+        document.getElementById('custom-agreement-original-name').value = ag.agreementName;
+        document.getElementById('custom-agreement-name').value = ag.agreementName;
+        document.getElementById('custom-agreement-tariff').value = ag.tariffMapped || "";
+        document.getElementById('custom-agreement-from').value = convertDateToInputFormat(ag.fromDate);
+        document.getElementById('custom-agreement-to').value = convertDateToInputFormat(ag.toDate);
+        document.getElementById('custom-agreement-status').value = ag.status || "Available/Valid";
+        
+        let scope = 'both';
+        if (ag.locations && ag.locations.includes('Guwahati') && !ag.locations.includes('Excelcare')) scope = 'international';
+        else if (ag.locations && ag.locations.includes('Excelcare') && !ag.locations.includes('Limited')) scope = 'excelcare';
+        document.getElementById('custom-agreement-scope').value = scope;
+        
+        document.getElementById('custom-agreement-discount').value = ag.discountAgreed || "";
+
+        document.getElementById('custom-agreement-modal').classList.add('show');
+    };
+
+    window.deleteCustomAgreement = function(escapedName) {
+        if (!confirm(`Are you sure you want to delete "${escapedName}"?`)) return;
+        
+        let list = window.customAgreements || [];
+        list = list.filter(x => x.agreementName.toUpperCase() !== escapedName.toUpperCase());
+        
+        window.saveAndSyncCustomAgreements(list);
+    };
+
+    window.customizeStaticAgreement = function(escapedName) {
+        if (typeof AGREEMENT_DETAILS === 'undefined') return;
+        const ag = AGREEMENT_DETAILS.find(x => x.agreementName.toUpperCase() === escapedName.toUpperCase());
+        if (!ag) return;
+
+        document.getElementById('custom-agreement-modal-title').textContent = "Customize Agreement";
+        document.getElementById('custom-agreement-original-name').value = ""; // Save as new customized agreement or override if name is unchanged
+        document.getElementById('custom-agreement-name').value = ag.agreementName;
+        document.getElementById('custom-agreement-tariff').value = ag.tariffMapped || "";
+        document.getElementById('custom-agreement-from').value = convertDateToInputFormat(ag.fromDate);
+        document.getElementById('custom-agreement-to').value = convertDateToInputFormat(ag.toDate);
+        document.getElementById('custom-agreement-status').value = ag.status || "Available/Valid";
+        
+        let scope = 'both';
+        if (ag.locations && ag.locations.includes('Guwahati') && !ag.locations.includes('Excelcare')) scope = 'international';
+        else if (ag.locations && ag.locations.includes('Excelcare') && !ag.locations.includes('Limited')) scope = 'excelcare';
+        document.getElementById('custom-agreement-scope').value = scope;
+        
+        document.getElementById('custom-agreement-discount').value = ag.discountAgreed || "";
+
+        document.getElementById('custom-agreement-modal').classList.add('show');
+    };
+
     function renderAgreementManager() {
         const tbody = document.getElementById('agreement-tbody');
         if (!tbody) return;
@@ -11255,14 +11487,39 @@
             }
 
             const statusClass = ag.status === 'Valid' || ag.status === 'Available' || ag.status === 'Available/Valid' ? 'badge-match' : 'badge-gray';
+            
+            // Determine if custom agreement (defined in window.customAgreements) or static
+            const isCustom = window.customAgreements && window.customAgreements.some(x => x.agreementName.toUpperCase() === ag.agreementName.toUpperCase());
+            const escapedName = ag.agreementName.replace(/['"\\]/g, '\\$&');
+            
+            let actionsHtml = '';
+            if (isCustom) {
+                actionsHtml = `
+                    <div style="display: flex; gap: 0.35rem; justify-content: center;">
+                        <button onclick="editCustomAgreement('${escapedName}')" class="export-btn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: rgba(13, 148, 136, 0.1); border: 1px solid rgba(13, 148, 136, 0.3); color: var(--primary);">Edit</button>
+                        <button onclick="deleteCustomAgreement('${escapedName}')" class="export-btn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: var(--danger);">Delete</button>
+                    </div>
+                `;
+            } else {
+                actionsHtml = `
+                    <div style="display: flex; justify-content: center;">
+                        <button onclick="customizeStaticAgreement('${escapedName}')" class="export-btn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); color: var(--text-main);">Customise</button>
+                    </div>
+                `;
+            }
+
             html += `
                 <tr>
-                    <td style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); font-weight: 700; color: var(--text-main);">${escapeHtml(ag.agreementName)}</td>
+                    <td style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); font-weight: 700; color: var(--text-main);">
+                        ${escapeHtml(ag.agreementName)}
+                        ${isCustom ? ' <span class="comparison-badge badge-match" style="font-size:0.65rem; padding:0.1rem 0.3rem; margin-left:0.4rem;">Custom</span>' : ''}
+                    </td>
                     <td style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); color: var(--text-main);">${escapeHtml(ag.tariffMapped)}</td>
                     <td style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border);"><span class="comparison-badge ${statusClass}">${escapeHtml(ag.status || 'Active')}</span></td>
                     <td style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border);"><span class="comparison-badge ${scopeClass}">${scopeLabel}</span></td>
                     <td style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); color: var(--text-muted); font-size: 0.8rem;">${escapeHtml(ag.fromDate)} to ${escapeHtml(ag.toDate)}</td>
                     <td style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); color: var(--primary); font-weight: 700;">${escapeHtml(ag.discountAgreed || 'None')}</td>
+                    <td style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); text-align: center;">${actionsHtml}</td>
                 </tr>
             `;
         });
