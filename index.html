@@ -2350,7 +2350,7 @@
                 </div>
             </div>
             <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 320px;">
-                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; align-self: flex-start;">Agreement Distribution by Unit</h4>
+                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; align-self: flex-start;">Agreement Distribution by Category</h4>
                 <div style="position: relative; width: 100%; height: 230px;">
                     <canvas id="chart-db-units"></canvas>
                 </div>
@@ -3897,11 +3897,11 @@
                         VERSION V1.2.1
                     </div>
                     <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.45;">
-                        Current stable production release representing all tested core components, client overrides, and formatting verification engines.
+                        Latest stable production release with IOCL 2021-22 and SOC 2023-24 V2 tariff master integration, full client overrides, and formatting validation.
                     </div>
                     
                     <div style="border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.25rem;">
-                        <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">V1 Core Features:</div>
+                        <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">V1.2.1 Features:</div>
                         <ul style="margin: 0; padding-left: 1rem; font-size: 0.72rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem;">
                             <li>✓ Scoped rate overrides by Unit</li>
                             <li>✓ Granular Department discount editor</li>
@@ -3909,6 +3909,10 @@
                             <li>✓ Interactive uploader & excel parser</li>
                             <li>✓ Formats Checker & Validator</li>
                             <li>✓ 995 active agreement templates</li>
+                            <li>✓ SOC 2021-22 IOCL Integrated</li>
+                            <li>✓ SOC 2023-24 V2 Integrated</li>
+                            <li>✓ Kolkata Apollo Multispeciality SOC & Pkg</li>
+                            <li>✓ SW v42 Cache-Eviction System</li>
                         </ul>
                     </div>
                 </div>
@@ -5540,32 +5544,41 @@
             });
         }
 
-        // 2. Unit Distribution Chart
-        let unitLabels = [];
-        let unitData = [];
-        let unitColors = [];
-        if (activeUnit === 'kolkata') {
-            unitLabels = ['Kolkata Only'];
-            unitData = [kolCount];
-            unitColors = ['rgba(168, 85, 247, 0.8)'];
-        } else if (activeUnit === 'excelcare') {
-            unitLabels = ['Excelcare Only'];
-            unitData = [ecCount];
-            unitColors = ['rgba(245, 158, 11, 0.8)'];
-        } else if (activeUnit === 'international') {
-            unitLabels = ['Christian Basti Only'];
-            unitData = [cbCount];
-            unitColors = ['rgba(59, 130, 246, 0.8)'];
-        } else {
-            unitLabels = ['Christian Basti Only', 'Excelcare Only', 'Centralised / Both', 'Kolkata Only'];
-            unitData = [cbCount, ecCount, centralisedCount, kolCount];
-            unitColors = [
-                'rgba(59, 130, 246, 0.8)',
-                'rgba(245, 158, 11, 0.8)',
-                'rgba(16, 185, 129, 0.8)',
-                'rgba(168, 85, 247, 0.8)'
-            ];
+        // 2. Agreement Distribution by Category Chart
+        const catMap = {};
+        if (typeof AGREEMENT_DETAILS !== 'undefined') {
+            AGREEMENT_DETAILS.forEach(ag => {
+                const scope = getAgreementScope(ag);
+                let match = false;
+                if (activeUnit === 'all') {
+                    match = true;
+                } else if (activeUnit === 'kolkata' && scope === 'kolkata') {
+                    match = true;
+                } else if (activeUnit === 'excelcare' && (scope === 'excelcare' || scope === 'centralised')) {
+                    match = true;
+                } else if (activeUnit === 'international' && (scope === 'international' || scope === 'centralised')) {
+                    match = true;
+                }
+                
+                if (match) {
+                    const cType = ag.customerType || 'Other';
+                    catMap[cType] = (catMap[cType] || 0) + 1;
+                }
+            });
         }
+
+        const sortedCats = Object.entries(catMap).sort((a, b) => b[1] - a[1]);
+        const unitLabels = sortedCats.map(x => x[0]);
+        const unitData = sortedCats.map(x => x[1]);
+        
+        const catColors = {
+            'Corporate': 'rgba(59, 130, 246, 0.8)',
+            'Insurance Company': 'rgba(16, 185, 129, 0.8)',
+            'Bank': 'rgba(245, 158, 11, 0.8)',
+            'State Govt. Organization': 'rgba(139, 92, 246, 0.8)',
+            'TPA': 'rgba(236, 72, 153, 0.8)'
+        };
+        const unitColors = unitLabels.map(l => catColors[l] || 'rgba(107, 114, 128, 0.8)');
 
         const ctxUnits = document.getElementById('chart-db-units');
         if (ctxUnits) {
