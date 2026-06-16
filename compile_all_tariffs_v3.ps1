@@ -214,25 +214,59 @@ if (Test-Path $file2122) {
             continue
         }
         
+        $cleanC1 = ""
+        if ($c1 -match '^(\d+)') { $cleanC1 = $Matches[1] }
+        $cleanC4 = ""
+        if ($c4 -match '^(\d+)') { $cleanC4 = $Matches[1] }
+
         $code = ""
         $codeVal = 0
         
-        if ([double]::TryParse($c1, [ref]$codeVal) -and $codeVal -ge 1) {
-            $code = $c1
-        } elseif ([double]::TryParse($c4, [ref]$codeVal) -and $codeVal -ge 1) {
-            $code = $c4
+        if ($cleanC1 -ne "" -and [double]::TryParse($cleanC1, [ref]$codeVal) -and $codeVal -ge 1) {
+            $code = $cleanC1
+        } elseif ($cleanC4 -ne "" -and [double]::TryParse($cleanC4, [ref]$codeVal) -and $codeVal -ge 1) {
+            $code = $cleanC4
         }
         
-        if ($code -ne "") {
-            $name = ""
+        if ($code -eq "") {
+            # Find the rate first by scanning Col 15 to 52
+            $rateCol = 0
             $rate = 0
-            
+            for ($c = 15; $c -le 52; $c++) {
+                $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
+                $rateNum = 0
+                if ($v -eq "No Charge") {
+                    $rate = 0
+                    $rateCol = $c
+                    break
+                } elseif ($v -and [double]::TryParse($v, [ref]$rateNum)) {
+                    $rate = $rateNum
+                    $rateCol = $c
+                    break
+                }
+            }
+            if ($rateCol -gt 0) {
+                # We have a rate but no numeric code. Scan Col 1 to 14 for a text description.
+                $nameParts = @()
+                for ($c = 1; $c -le 14; $c++) {
+                    $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
+                    if ($v -and $v.Length -gt 1 -and $v -notmatch '^\d+$') {
+                        $nameParts += $v
+                    }
+                }
+                $name = $nameParts -join " "
+                if ($name -ne "") {
+                    $code = $name
+                }
+            }
+        } else {
             if ($parentRowRates.ContainsKey($code)) {
                 $name = $parentRowRates[$code].name
                 $rate = $parentRowRates[$code].rate
             } else {
                 # Find the rate first by scanning Col 15 to 52
                 $rateCol = 0
+                $rate = 0
                 for ($c = 15; $c -le 52; $c++) {
                     $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
                     $rateNum = 0
@@ -249,7 +283,7 @@ if (Test-Path $file2122) {
                 
                 # Find the name by concatenating non-empty text cells between the code column and the rate column
                 $nameParts = @()
-                $startCol = if ($code -eq $c4) { 5 } else { 2 }
+                $startCol = if ($code -eq $cleanC4) { 5 } else { 2 }
                 $endCol = if ($rateCol -gt 0) { $rateCol - 1 } else { 18 }
                 if ($endCol -gt 18) { $endCol = 18 }
                 
@@ -261,37 +295,37 @@ if (Test-Path $file2122) {
                 }
                 $name = $nameParts -join " "
             }
-            
-            if (-not [string]::IsNullOrEmpty($name)) {
-                # Skip comments/remarks/notes (which have code < 100 but no rate)
-                if ($codeVal -lt 100 -and $rate -eq 0 -and $c1 -ne "" -and $values[$r, 19] -eq $null) {
-                    continue
-                }
-                
-                # Also populate the roomRent2021 hash if this is a DAY CARE rate
-                if ($section -eq "DAY CARE") {
-                    $key = ""
-                    if ($name -like "*0 to 1 hours*") { $key = "DAY CARE 0 TO 1 HOUR" }
-                    elseif ($name -like "*one hour*Two*") { $key = "DAY CARE 1 TO 2 HOURS" }
-                    elseif ($name -like "*Two*Three*") { $key = "DAY CARE 2 TO 3 HOURS" }
-                    elseif ($name -like "*Three*Four*") { $key = "DAY CARE 3 TO 4 HOURS" }
-                    elseif ($name -like "*Four*Five*") { $key = "DAY CARE 4 TO 5 HOURS" }
-                    elseif ($name -like "*Five*Six*") { $key = "DAY CARE 5 TO 6 HOURS" }
-                    elseif ($name -like "*Six*Twenty-three*") { $key = "DAY CARE 5 TO 24 HOURS" }
-                    
-                    if ($key) {
-                        $roomRent2021[$key] = $rate
-                    }
-                }
-                
-                $list2021.Add([PSCustomObject]@{
-                    id = $code
-                    name = $name
-                    type = $section
-                    dept = $section
-                    rate = $rate
-                })
+        }
+        
+        if ($code -ne "" -and -not [string]::IsNullOrEmpty($name)) {
+            # Skip comments/remarks/notes (which have code < 100 but no rate)
+            if ($codeVal -gt 0 -and $codeVal -lt 100 -and $rate -eq 0 -and $c1 -ne "" -and $values[$r, 19] -eq $null) {
+                continue
             }
+            
+            # Also populate the roomRent2021 hash if this is a DAY CARE rate
+            if ($section -eq "DAY CARE") {
+                $key = ""
+                if ($name -like "*0 to 1 hours*") { $key = "DAY CARE 0 TO 1 HOUR" }
+                elseif ($name -like "*one hour*Two*") { $key = "DAY CARE 1 TO 2 HOURS" }
+                elseif ($name -like "*Two*Three*") { $key = "DAY CARE 2 TO 3 HOURS" }
+                elseif ($name -like "*Three*Four*") { $key = "DAY CARE 3 TO 4 HOURS" }
+                elseif ($name -like "*Four*Five*") { $key = "DAY CARE 4 TO 5 HOURS" }
+                elseif ($name -like "*Five*Six*") { $key = "DAY CARE 5 TO 6 HOURS" }
+                elseif ($name -like "*Six*Twenty-three*") { $key = "DAY CARE 5 TO 24 HOURS" }
+                
+                if ($key) {
+                    $roomRent2021[$key] = $rate
+                }
+            }
+            
+            $list2021.Add([PSCustomObject]@{
+                id = $code
+                name = $name
+                type = $section
+                dept = $section
+                rate = $rate
+            })
         }
     }
     $wb.Close($false)
@@ -846,7 +880,7 @@ const TARIFF_DATA = $jsonMaster;
 
 const ROOM_RENT_TPA = $jsonTpaRoom;
 const ROOM_RENT_GIPSA = $jsonGipsaRoom;
-const ROOM_RENT_2021_COMPILED = $jsonRoomRent2021;
+const ROOM_RENT_2021 = $jsonRoomRent2021;
 const NURSING_CHARGES = $jsonNursing;
 const MONITORING_CHARGES = $jsonMonitoring;
 const VISIT_CHARGES = $jsonVisit;
