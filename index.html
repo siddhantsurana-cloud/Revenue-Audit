@@ -1927,11 +1927,11 @@
             color: var(--primary);
         }
         
-        /* Sandbox Prototype Upgrades (V1.01.03) */
+        /* Sandbox Prototype Upgrades (V1.01.05) */
         
         /* Permanent sandbox indicator strip */
         body.sandbox-active::before {
-            content: "TEST SANDBOX ENVIRONMENT ACTIVE • VERSION V1.01.03 • NO PRODUCTION DATA MODIFICATION" !important;
+            content: "TEST SANDBOX ENVIRONMENT ACTIVE • VERSION V1.01.05 • NO PRODUCTION DATA MODIFICATION" !important;
             height: 28px !important;
             background: repeating-linear-gradient(45deg, #f59e0b, #f59e0b 10px, #d97706 10px, #d97706 20px) !important;
             font-size: 0.72rem !important;
@@ -2079,6 +2079,7 @@
                     <select id="login-unit">
                         <option value="international">International Unit</option>
                         <option value="excelcare" selected>Excelcare Unit</option>
+                        <option value="kolkata">Kolkata - Apollo Multispeciality</option>
                         <option value="all">Master Console (Global Admin)</option>
                     </select>
                 </div>
@@ -2405,6 +2406,7 @@
                         <option value="all">All Units</option>
                         <option value="international">International</option>
                         <option value="excelcare">Excelcare</option>
+                        <option value="kolkata">Kolkata</option>
                     </select>
                 </div>
                 <div class="input-group">
@@ -2542,6 +2544,7 @@
                         <select id="audit-bu-select" class="form-control" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;">
                             <option value="international" selected>International</option>
                             <option value="excelcare">Excelcare</option>
+                            <option value="kolkata">Kolkata</option>
                         </select>
                     </div>
                     <div class="input-group" style="padding: 0;">
@@ -3141,6 +3144,9 @@
                 <button class="ag-subtab-btn" data-filter="centralised" style="background: transparent; border: none; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); cursor: pointer; transition: all 0.2s;">
                     Centralised / Both <span class="ag-subtab-badge" id="ag-badge-centralised" style="background: rgba(255, 255, 255, 0.1); padding: 0.1rem 0.35rem; border-radius: 6px; font-size: 0.65rem; margin-left: 0.25rem;">0</span>
                 </button>
+                <button class="ag-subtab-btn" data-filter="kolkata" style="background: transparent; border: none; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); cursor: pointer; transition: all 0.2s;">
+                    Kolkata <span class="ag-subtab-badge" id="ag-badge-kolkata" style="background: rgba(255, 255, 255, 0.1); padding: 0.1rem 0.35rem; border-radius: 6px; font-size: 0.65rem; margin-left: 0.25rem;">0</span>
+                </button>
             </div>
 
             <!-- EXPLANATORY DESCRIPTION BOX -->
@@ -3428,6 +3434,7 @@
                         <option value="all">All Units</option>
                         <option value="international">International</option>
                         <option value="excelcare">Excelcare</option>
+                        <option value="kolkata">Kolkata</option>
                     </select>
                 </div>
                 <div class="input-group" style="padding: 0;">
@@ -3662,7 +3669,7 @@
                 </div>
                 <!-- Version Badge -->
                 <div id="app-version-badge" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; backdrop-filter: blur(4px);">
-                    LOCKED VERSION: V1.01.03
+                    LOCKED VERSION: V1.01.05
                 </div>
             </div>
         </div>
@@ -3796,7 +3803,7 @@
                     </div>
                     <div id="version-card-title" style="font-size: 0.8rem; font-weight: 800; color: var(--success); display: flex; align-items: center; gap: 0.35rem;">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        VERSION V1.01.03
+                        VERSION V1.01.05
                     </div>
                     <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.45;">
                         Current stable production release representing all tested core components, client overrides, and formatting verification engines.
@@ -3932,6 +3939,7 @@
                         <select id="admin-unit" style="width: 100%; padding: 0.5rem; background-color: var(--bg-card); color: var(--text-main); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; font-weight: 700;" required>
                             <option value="excelcare">Excelcare Unit</option>
                             <option value="international">International Unit</option>
+                            <option value="kolkata">Kolkata Unit</option>
                         </select>
                     </div>
 
@@ -4130,6 +4138,7 @@
                         <option value="both">Centralised (Both)</option>
                         <option value="international">International Only</option>
                         <option value="excelcare">Excelcare Only</option>
+                        <option value="kolkata">Kolkata Only</option>
                     </select>
                 </div>
             </div>
@@ -4196,7 +4205,25 @@
     let mapExcelcareCash = {};
     let mapExcelcare2024 = {};
     let mapExcelcareGipsa2026 = {};
+    let mapKolkata = {};
     let mapHdfc = {}; // id -> Array of HDFC records
+
+    const KOLKATA_OT_SLABS = [
+        { from: 0, to: 30, rates: { "STANDARD": 15000, "SEMI-PRIVATE": 25000, "PRIVATE": 30000, "PRIVATE DELUXE": 30000, "DELUXE": 30000, "SUITE": 40000, "MAHARAJA SUITE": 45000 } },
+        { from: 31, to: 60, rates: { "STANDARD": 30000, "SEMI-PRIVATE": 60000, "PRIVATE": 80000, "PRIVATE DELUXE": 80000, "DELUXE": 80000, "SUITE": 100000, "MAHARAJA SUITE": 120000 } },
+        { from: 61, to: 90, rates: { "STANDARD": 40000, "SEMI-PRIVATE": 80000, "PRIVATE": 110000, "PRIVATE DELUXE": 110000, "DELUXE": 110000, "SUITE": 140000, "MAHARAJA SUITE": 165000 } },
+        { from: 91, to: 120, rates: { "STANDARD": 45000, "SEMI-PRIVATE": 90000, "PRIVATE": 120000, "PRIVATE DELUXE": 120000, "DELUXE": 120000, "SUITE": 150000, "MAHARAJA SUITE": 180000 } },
+        { from: 121, to: 150, rates: { "STANDARD": 50000, "SEMI-PRIVATE": 95000, "PRIVATE": 125000, "PRIVATE DELUXE": 125000, "DELUXE": 125000, "SUITE": 155000, "MAHARAJA SUITE": 190000 } },
+        { from: 151, to: 180, rates: { "STANDARD": 55000, "SEMI-PRIVATE": 100000, "PRIVATE": 130000, "PRIVATE DELUXE": 130000, "DELUXE": 130000, "SUITE": 165000, "MAHARAJA SUITE": 195000 } },
+        { from: 181, to: 210, rates: { "STANDARD": 60000, "SEMI-PRIVATE": 110000, "PRIVATE": 140000, "PRIVATE DELUXE": 140000, "DELUXE": 140000, "SUITE": 180000, "MAHARAJA SUITE": 215000 } },
+        { from: 211, to: 240, rates: { "STANDARD": 65000, "SEMI-PRIVATE": 115000, "PRIVATE": 145000, "PRIVATE DELUXE": 145000, "DELUXE": 145000, "SUITE": 185000, "MAHARAJA SUITE": 220000 } },
+        { from: 241, to: 270, rates: { "STANDARD": 70000, "SEMI-PRIVATE": 120000, "PRIVATE": 150000, "PRIVATE DELUXE": 150000, "DELUXE": 150000, "SUITE": 190000, "MAHARAJA SUITE": 230000 } },
+        { from: 271, to: 300, rates: { "STANDARD": 75000, "SEMI-PRIVATE": 125000, "PRIVATE": 155000, "PRIVATE DELUXE": 155000, "DELUXE": 155000, "SUITE": 195000, "MAHARAJA SUITE": 240000 } },
+        { from: 301, to: 330, rates: { "STANDARD": 80000, "SEMI-PRIVATE": 130000, "PRIVATE": 175000, "PRIVATE DELUXE": 175000, "DELUXE": 175000, "SUITE": 215000, "MAHARAJA SUITE": 260000 } },
+        { from: 331, to: 360, rates: { "STANDARD": 85000, "SEMI-PRIVATE": 135000, "PRIVATE": 180000, "PRIVATE DELUXE": 180000, "DELUXE": 180000, "SUITE": 220000, "MAHARAJA SUITE": 265000 } },
+        { from: 361, to: 390, rates: { "STANDARD": 90000, "SEMI-PRIVATE": 145000, "PRIVATE": 195000, "PRIVATE DELUXE": 195000, "DELUXE": 195000, "SUITE": 240000, "MAHARAJA SUITE": 290000 } },
+        { from: 391, to: 420, rates: { "STANDARD": 95000, "SEMI-PRIVATE": 150000, "PRIVATE": 200000, "PRIVATE DELUXE": 200000, "DELUXE": 200000, "SUITE": 245000, "MAHARAJA SUITE": 300000 } }
+    ];
 
     // OneDrive Database Sync API Methods
     async function loadDatabaseFromServer() {
@@ -4537,7 +4564,7 @@
                 
                 // Update version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'TEST VERSION: V1.01.03';
+                if (vBadge) vBadge.textContent = 'TEST VERSION: V1.01.05';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'TESTING';
@@ -4548,11 +4575,11 @@
                     vTitle.style.color = '#d97706';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        VERSION V1.01.03
+                        VERSION V1.01.05
                     `;
                 }
                 
-                showToast('Switched to Test Sandbox Environment (V1.01.03). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
+                showToast('Switched to Test Sandbox Environment (V1.01.05). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
             } else {
                 // Update badge to Production mode
                 envBadge.style.color = 'var(--primary)';
@@ -4569,7 +4596,7 @@
                 
                 // Reset version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V1.01.03';
+                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V1.01.05';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'LOCKED';
@@ -4580,7 +4607,7 @@
                     vTitle.style.color = 'var(--success)';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        VERSION V1.01.03
+                        VERSION V1.01.05
                     `;
                 }
                 
@@ -4842,6 +4869,9 @@
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') {
             TARIFF_EXCELCARE_GIPSA_2026.forEach(item => { mapExcelcareGipsa2026[item.id] = item; });
         }
+        if (typeof TARIFF_KOLKATA_SOC !== 'undefined') {
+            TARIFF_KOLKATA_SOC.forEach(item => { mapKolkata[item.id] = item; });
+        }
         if (typeof TARIFF_HDFC_ERGO_2024 !== 'undefined') {
             TARIFF_HDFC_ERGO_2024.forEach(item => {
                 if (!mapHdfc[item.id]) mapHdfc[item.id] = [];
@@ -4860,6 +4890,7 @@
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') TARIFF_EXCELCARE_CASH_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') TARIFF_EXCELCARE_2024.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') TARIFF_EXCELCARE_GIPSA_2026.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_KOLKATA_SOC !== 'undefined') TARIFF_KOLKATA_SOC.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_HDFC_ERGO_2024 !== 'undefined') TARIFF_HDFC_ERGO_2024.forEach(item => allIds.add(item.id));
 
         UNIFIED_TARIFFS = [];
@@ -4879,6 +4910,7 @@
             let mEcCash = mapExcelcareCash[id];
             let mEc24 = mapExcelcare2024[id];
             let mEcGipsa2026 = mapExcelcareGipsa2026[id];
+            let mKol = mapKolkata[id];
             let mHdfcList = mapHdfc[id] || [];
             let mHdfc = mHdfcList.length > 0 ? mHdfcList[0] : null;
 
@@ -4894,6 +4926,8 @@
                 name = m23.name; dept = m23.dept; type = m23.type;
             } else if (m21) {
                 name = m21.name; dept = m21.dept; type = m21.type;
+            } else if (mKol) {
+                name = mKol.name; dept = mKol.dept; type = mKol.type;
             } else if (mEcGipsa2026) {
                 name = mEcGipsa2026.name; dept = 'Excelcare SOC'; type = 'Excelcare GIPSA';
             } else if (mEc) {
@@ -4921,7 +4955,8 @@
                 rateExcelcare: mEc ? mEc.rate : null,
                 rateExcelcareCash: mEcCash ? mEcCash.rate : null,
                 rateExcelcare2024: mEc24 ? mEc24.rate : null,
-                rateExcelcareGipsa2026: mEcGipsa2026 ? mEcGipsa2026.rate : null
+                rateExcelcareGipsa2026: mEcGipsa2026 ? mEcGipsa2026.rate : null,
+                rateKolkata: mKol ? mKol.rates : null
             });
         });
     }
@@ -4932,6 +4967,15 @@
             console.error('TARIFF_DATA is not defined. Make sure tariff_data.js is compiled.');
             tariffTbody.innerHTML = '<tr><td colspan="11" style="text-align: center; color: var(--danger); font-weight: 700; padding: 2rem;">Error: tariff_data.js not found. Please compile the files first.</td></tr>';
             return;
+        }
+
+        // Merge Kolkata agreements into AGREEMENT_DETAILS
+        if (typeof AGREEMENT_KOLKATA !== 'undefined' && typeof AGREEMENT_DETAILS !== 'undefined') {
+            AGREEMENT_KOLKATA.forEach(ag => {
+                if (!AGREEMENT_DETAILS.some(x => x.agreementName === ag.agreementName)) {
+                    AGREEMENT_DETAILS.push(ag);
+                }
+            });
         }
 
         // Load database & overrides from server (with LocalStorage fallbacks) asynchronously
@@ -5035,6 +5079,8 @@
         let countExcelcare2024 = 0;
         let countExcelcareGipsa2026 = 0;
         let count2026 = 0;
+        let countKolkataSoc = 0;
+        let countKolkataPkg = 0;
 
         if (typeof TARIFF_2021 !== 'undefined') count2021 = TARIFF_2021.length;
         if (typeof TARIFF_2023 !== 'undefined') count2023 = TARIFF_2023.length;
@@ -5045,10 +5091,13 @@
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') countExcelcare2024 = TARIFF_EXCELCARE_2024.length;
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') countExcelcareGipsa2026 = TARIFF_EXCELCARE_GIPSA_2026.length;
         if (typeof TARIFF_DATA !== 'undefined') count2026 = TARIFF_DATA.length;
+        if (typeof TARIFF_KOLKATA_SOC !== 'undefined') countKolkataSoc = TARIFF_KOLKATA_SOC.length;
+        if (typeof TARIFF_KOLKATA_PKG !== 'undefined') countKolkataPkg = TARIFF_KOLKATA_PKG.length;
 
         let cbCount = 0;
         let ecCount = 0;
         let centralisedCount = 0;
+        let kolCount = 0;
         let totalMOUs = 0;
 
         if (typeof AGREEMENT_DETAILS !== 'undefined') {
@@ -5057,8 +5106,11 @@
                 const loc = (ag.locations || '').toLowerCase();
                 const hasExcelcare = loc.includes('excelcare');
                 const hasGuwahatiOrSubham = loc.includes('guwahati') || loc.includes('subham');
+                const hasKolkata = loc.includes('kolkata') || (ag.tariffMapped && ag.tariffMapped.toLowerCase().includes('kolkata'));
                 
-                if (hasExcelcare && hasGuwahatiOrSubham) {
+                if (hasKolkata) {
+                    kolCount++;
+                } else if (hasExcelcare && hasGuwahatiOrSubham) {
                     centralisedCount++;
                 } else if (hasExcelcare) {
                     ecCount++;
@@ -5076,10 +5128,28 @@
         const dbCbEl = document.getElementById('db-cb-count');
         const dbEcEl = document.getElementById('db-ec-count');
 
-        if (dbMouEl) dbMouEl.textContent = totalMOUs.toLocaleString();
-        if (dbMasterEl) dbMasterEl.textContent = count2026.toLocaleString();
-        if (dbCbEl) dbCbEl.textContent = cbCount.toLocaleString();
-        if (dbEcEl) dbEcEl.textContent = ecCount.toLocaleString();
+        const activeUnit = window.currentUserUnit || 'all';
+        if (activeUnit === 'kolkata') {
+            if (dbMouEl) dbMouEl.textContent = kolCount.toLocaleString();
+            if (dbMasterEl) dbMasterEl.textContent = countKolkataSoc.toLocaleString();
+            if (dbCbEl) dbCbEl.textContent = "0";
+            if (dbEcEl) dbEcEl.textContent = "0";
+        } else if (activeUnit === 'excelcare') {
+            if (dbMouEl) dbMouEl.textContent = ecCount.toLocaleString();
+            if (dbMasterEl) dbMasterEl.textContent = (countExcelcare + countExcelcareCash + countExcelcare2024 + countExcelcareGipsa2026).toLocaleString();
+            if (dbCbEl) dbCbEl.textContent = "0";
+            if (dbEcEl) dbEcEl.textContent = ecCount.toLocaleString();
+        } else if (activeUnit === 'international') {
+            if (dbMouEl) dbMouEl.textContent = cbCount.toLocaleString();
+            if (dbMasterEl) dbMasterEl.textContent = (count2021 + count2023 + count2024 + count2025).toLocaleString();
+            if (dbCbEl) dbCbEl.textContent = cbCount.toLocaleString();
+            if (dbEcEl) dbEcEl.textContent = "0";
+        } else {
+            if (dbMouEl) dbMouEl.textContent = totalMOUs.toLocaleString();
+            if (dbMasterEl) dbMasterEl.textContent = (count2026 + countKolkataSoc).toLocaleString();
+            if (dbCbEl) dbCbEl.textContent = cbCount.toLocaleString();
+            if (dbEcEl) dbEcEl.textContent = ecCount.toLocaleString();
+        }
 
         // Chart styling depending on theme
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -5087,6 +5157,22 @@
         const gridColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.05)';
 
         // 1. Tariffs by Year Chart
+        let labels = [];
+        let data = [];
+        if (activeUnit === 'kolkata') {
+            labels = ['Kolkata SOC', 'Kolkata Pkg'];
+            data = [countKolkataSoc, countKolkataPkg];
+        } else if (activeUnit === 'excelcare') {
+            labels = ['Excelcare 24', 'Excelcare 25', 'Excelcare Cash', 'Excelcare GIPSA'];
+            data = [countExcelcare2024, countExcelcare, countExcelcareCash, countExcelcareGipsa2026];
+        } else if (activeUnit === 'international') {
+            labels = ['2021-22', '2023-24', '2024-25', '2025-26'];
+            data = [count2021, count2023, count2024, count2025];
+        } else {
+            labels = ['2021-22', '2023-24', '2024-25', '2025-26', 'Excelcare 24', 'Excelcare 25', 'Excelcare Cash', 'Excelcare GIPSA', 'Kolkata SOC', 'Kolkata Pkg', '2026 Master'];
+            data = [count2021, count2023, count2024, count2025, countExcelcare2024, countExcelcare, countExcelcareCash, countExcelcareGipsa2026, countKolkataSoc, countKolkataPkg, count2026];
+        }
+
         const ctxYears = document.getElementById('chart-db-years');
         if (ctxYears) {
             if (dbYearsChartInstance) {
@@ -5095,10 +5181,10 @@
             dbYearsChartInstance = new Chart(ctxYears.getContext('2d'), {
                 type: 'bar',
                 data: {
-                    labels: ['2021-22', '2023-24', '2024-25', '2025-26', 'Excelcare 2024', 'Excelcare 2025', 'Excelcare 2026 - Cash', 'Excelcare GIPSA 2026', '2026 Master'],
+                    labels: labels,
                     datasets: [{
                         label: 'Tariff Codes',
-                        data: [count2021, count2023, count2024, count2025, countExcelcare2024, countExcelcare, countExcelcareCash, countExcelcareGipsa2026, count2026],
+                        data: data,
                         backgroundColor: isDark ? 'rgba(13, 148, 136, 0.8)' : 'rgba(15, 118, 110, 0.85)',
                         borderColor: isDark ? '#0d9488' : '#0f766e',
                         borderWidth: 1.5,
@@ -5133,6 +5219,32 @@
         }
 
         // 2. Unit Distribution Chart
+        let unitLabels = [];
+        let unitData = [];
+        let unitColors = [];
+        if (activeUnit === 'kolkata') {
+            unitLabels = ['Kolkata Only'];
+            unitData = [kolCount];
+            unitColors = ['rgba(168, 85, 247, 0.8)'];
+        } else if (activeUnit === 'excelcare') {
+            unitLabels = ['Excelcare Only'];
+            unitData = [ecCount];
+            unitColors = ['rgba(245, 158, 11, 0.8)'];
+        } else if (activeUnit === 'international') {
+            unitLabels = ['Christian Basti Only'];
+            unitData = [cbCount];
+            unitColors = ['rgba(59, 130, 246, 0.8)'];
+        } else {
+            unitLabels = ['Christian Basti Only', 'Excelcare Only', 'Centralised / Both', 'Kolkata Only'];
+            unitData = [cbCount, ecCount, centralisedCount, kolCount];
+            unitColors = [
+                'rgba(59, 130, 246, 0.8)',
+                'rgba(245, 158, 11, 0.8)',
+                'rgba(16, 185, 129, 0.8)',
+                'rgba(168, 85, 247, 0.8)'
+            ];
+        }
+
         const ctxUnits = document.getElementById('chart-db-units');
         if (ctxUnits) {
             if (dbUnitsChartInstance) {
@@ -5141,14 +5253,10 @@
             dbUnitsChartInstance = new Chart(ctxUnits.getContext('2d'), {
                 type: 'doughnut',
                 data: {
-                    labels: ['Christian Basti Only', 'Excelcare Only', 'Centralised / Both'],
+                    labels: unitLabels,
                     datasets: [{
-                        data: [cbCount, ecCount, centralisedCount],
-                        backgroundColor: [
-                            'rgba(59, 130, 246, 0.8)',
-                            'rgba(245, 158, 11, 0.8)',
-                            'rgba(16, 185, 129, 0.8)'
-                        ],
+                        data: unitData,
+                        backgroundColor: unitColors,
                         borderColor: isDark ? '#1c2541' : '#ffffff',
                         borderWidth: 2
                     }]
@@ -5178,7 +5286,6 @@
             });
         }
     }
-
     // Editable Expected Tariff handler
     window.updateRowTariff = function(uid, value) {
         let valNum = parseFloat(value);
@@ -5453,6 +5560,12 @@
                 <option value="hdfcergo">2024 HDFC ERGO Template</option>
             `;
         }
+        if (bu === 'all' || bu === 'kolkata') {
+            sourceSelect.innerHTML += `
+                <option value="sockolkata">2023-24 SOC (Kolkata)</option>
+                <option value="pkgkolkata">2023-24 Packages (Kolkata)</option>
+            `;
+        }
         
         // Restore selected value if still exists in the new options list
         const optionExists = Array.from(sourceSelect.options).some(opt => opt.value === currentSource);
@@ -5468,8 +5581,9 @@
             AGREEMENT_DETAILS.forEach(ag => {
                 const mappedTariffUpper = ag.tariffMapped.toUpperCase();
                 const isExcelcareAg = mappedTariffUpper.includes("HDFC") || mappedTariffUpper.includes("ERGO") || mappedTariffUpper.includes("EXCELCARE");
+                const isKolkataAg = mappedTariffUpper.includes("KOLKATA") || (ag.locations && ag.locations.includes("Kolkata"));
                 
-                if (bu === 'all' || (bu === 'excelcare' && isExcelcareAg) || (bu === 'international' && !isExcelcareAg)) {
+                if (bu === 'all' || (bu === 'excelcare' && isExcelcareAg && !isKolkataAg) || (bu === 'international' && !isExcelcareAg && !isKolkataAg) || (bu === 'kolkata' && isKolkataAg)) {
                     const opt = document.createElement('option');
                     opt.value = ag.agreementName;
                     opt.textContent = ag.agreementName;
@@ -5682,6 +5796,9 @@
                                              item.rateExcelcare2024 !== null ||
                                              (mapHdfc[item.id] !== undefined && mapHdfc[item.id].length > 0);
                     if (!hasExcelcareRate) return false;
+                } else if (bu === 'kolkata') {
+                    const hasKolkataRate = item.rateKolkata !== null || (typeof TARIFF_KOLKATA_SOC !== 'undefined' && mapKolkata[item.id] !== undefined);
+                    if (!hasKolkataRate) return false;
                 }
             }
 
@@ -5697,6 +5814,8 @@
                 if (source === 'socexcelcarecash' && item.rateExcelcareCash === null) return false;
                 if (source === 'socexcelcare2024' && item.rateExcelcare2024 === null) return false;
                 if (source === 'hdfcergo' && (!mapHdfc[item.id] || mapHdfc[item.id].length === 0)) return false;
+                if (source === 'sockolkata' && item.rateKolkata === null) return false;
+                if (source === 'pkgkolkata' && (typeof TARIFF_KOLKATA_PKG === 'undefined' || !TARIFF_KOLKATA_PKG.some(pkg => pkg.id === item.id))) return false;
             }
 
             // 3. Customer Agreement Filter
@@ -6151,6 +6270,37 @@
         return html;
     }
 
+    function formatKolkataRatesHTML(rateKolkata) {
+        if (!rateKolkata) return '';
+        let html = `
+            <div class="modal-section">
+                <div class="modal-section-title">Kolkata SOC Category-Specific Rates</div>
+                <table class="summary-report-table" style="width:100%; border-collapse:collapse; margin-top:0.5rem; background-color: var(--bg-page); border-radius: 8px; border: 1px solid var(--border);">
+                    <thead>
+                        <tr style="background-color: var(--bg-hover);">
+                            <th style="padding: 0.5rem; border-bottom: 1px solid var(--border); font-size: 0.75rem; text-align: left;">Room Category</th>
+                            <th style="padding: 0.5rem; border-bottom: 1px solid var(--border); text-align: right; font-size: 0.75rem;">Rate (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+        for (const room in rateKolkata) {
+            const val = rateKolkata[room];
+            html += `
+                        <tr>
+                            <td style="padding: 0.5rem; border-bottom: 1px solid var(--border); font-size: 0.8rem; text-align: left;">\${escapeHtml(room)}</td>
+                            <td style="padding: 0.5rem; border-bottom: 1px solid var(--border); text-align: right; font-family: monospace; font-size: 0.85rem; font-weight: 700;">₹\${Number(val).toLocaleString('en-IN')}</td>
+                        </tr>
+            `;
+        }
+        html += `
+                    </tbody>
+                </table>
+            </div>
+        `;
+        return html;
+    }
+
     // Modal popup details
     function showDetails(id) {
         const item = UNIFIED_TARIFFS.find(x => x.id === id);
@@ -6275,6 +6425,7 @@
                 </table>
             </div>
             ${evolutionHtml}
+            ${formatKolkataRatesHTML(item.rateKolkata)}
         `;
         detailsModal.classList.add('show');
     }
@@ -6741,6 +6892,16 @@
                     <option value="tpa" selected>2024 TPA Deluxe Tariff Template</option>
                 `;
             }
+        } else if (bu === 'kolkata') {
+            if (type === 'soc') {
+                sourceSelect.innerHTML = `
+                    <option value="sockolkata" selected>2023-24 SOC (Kolkata)</option>
+                `;
+            } else {
+                sourceSelect.innerHTML = `
+                    <option value="pkgkolkata" selected>2023-24 Packages (Kolkata)</option>
+                `;
+            }
         } else {
             // excelcare
             if (type === 'soc') {
@@ -6762,6 +6923,15 @@
                 `;
             }
         }
+        
+        // Restore selected value if still exists in the new options list
+        const optionExists = Array.from(sourceSelect.options).some(opt => opt.value === currentSource);
+        if (optionExists && currentSource) {
+            sourceSelect.value = currentSource;
+        } else {
+            // Otherwise fire change for default selected
+            sourceSelect.dispatchEvent(new Event('change'));
+        }
     }
 
     function populateRoomMappingSelects() {
@@ -6769,7 +6939,12 @@
         const selects = ['map-room-ward', 'map-room-semi', 'map-room-private', 'map-room-suite', 'map-room-daycare'];
         
         let html = '';
-        if (bu === 'international') {
+        if (bu === 'kolkata') {
+            html = `
+                <option value="sockolkata" selected>2023-24 SOC (Kolkata)</option>
+                <option value="pkgkolkata">2023-24 Packages (Kolkata)</option>
+            `;
+        } else if (bu === 'international') {
             html = `
                 <option value="gipsa">GIPSA Tariff (2026)</option>
                 <option value="tpa">TPA Deluxe Tariff (2024)</option>
@@ -6795,16 +6970,6 @@
             const el = document.getElementById(id);
             if (el) {
                 el.innerHTML = html;
-                // set defaults for room-wise mappings
-                if (bu === 'excelcare') {
-                    if (id === 'map-room-ward') el.value = 'hdfc_gen';
-                    else if (id === 'map-room-semi') el.value = 'hdfc_twin';
-                    else if (id === 'map-room-private') el.value = 'hdfc_single';
-                    else if (id === 'map-room-suite') el.value = 'hdfc_suite';
-                    else if (id === 'map-room-daycare') el.value = 'hdfc_daycare';
-                } else {
-                    el.value = 'tpa'; // default to TPA Deluxe for room mappings in International
-                }
             }
         });
     }
@@ -7229,7 +7394,29 @@
     }
 
     function parseAgreementDiscountForCategory(ag, deptLower, nameUpper) {
-        if (!ag || !ag.discountAgreed) return 0;
+        if (!ag) return 0;
+        const isKolkata = (ag.locations && ag.locations.includes("Kolkata")) || (ag.tariffMapped && ag.tariffMapped.toUpperCase().includes("KOLKATA"));
+        if (isKolkata) {
+            if (deptLower.includes("health check") || deptLower.includes("ahc") || nameUpper.includes("HEALTH CHECK") || nameUpper.includes("AHC") || deptLower.includes("package")) {
+                return 20;
+            }
+            const serviceCat = getDiscountCategory(deptLower, nameUpper);
+            if (
+                serviceCat === "Room" || 
+                serviceCat === "Procedures" || 
+                serviceCat === "Lab" || 
+                serviceCat === "Radiology" ||
+                deptLower.includes("nursing") ||
+                deptLower.includes("room rent") ||
+                deptLower.includes("operation theatre") ||
+                deptLower.includes("investigation")
+            ) {
+                return 12;
+            }
+            return 0;
+        }
+
+        if (!ag.discountAgreed) return 0;
         const discStr = ag.discountAgreed.toUpperCase();
         const serviceCat = getDiscountCategory(deptLower, nameUpper);
         
@@ -7262,7 +7449,6 @@
         if (matchAll) return Number(matchAll[1]);
         return 0;
     }
-
     const detailedToSimpleMap = {
         "GENERAL WARD": "STANDARD WARD",
         "AC GENERAL WARD": "STANDARD WARD",
@@ -7540,6 +7726,36 @@
     };
 
     function lookupActiveRoomRent(activeSourceVal, activeSOC, cleanedRoom, isGipsa, originalRoomCategory, agreement) {
+        // Kolkata room rent lookup
+        if (activeSourceVal === "sockolkata" || activeSOC === TARIFF_KOLKATA_SOC || (window.currentUserUnit === 'kolkata' && activeSOC === undefined)) {
+            if (typeof TARIFF_KOLKATA_SOC !== 'undefined' && mapKolkata && mapKolkata["2127"]) {
+                let normRoom = originalRoomCategory ? originalRoomCategory.toUpperCase().trim() : "";
+                if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
+                else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
+                else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
+                else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
+                else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
+                else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
+                else if (normRoom.includes("SUITE")) normRoom = "SUITE";
+                else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
+                else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
+                else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
+
+                const rates = mapKolkata["2127"].rates;
+                if (rates[normRoom] !== undefined) {
+                    return rates[normRoom];
+                }
+                for (const key in rates) {
+                    if (normRoom.includes(key) || key.includes(normRoom)) {
+                        return rates[key];
+                    }
+                }
+                const cleanedUpper = cleanedRoom ? cleanedRoom.toUpperCase().trim() : "";
+                if (rates[cleanedUpper] !== undefined) return rates[cleanedUpper];
+                return rates["STANDARD"] || 4400;
+            }
+        }
+
         const getRate = (rentMap, roomKey) => {
             if (rentMap[roomKey] !== undefined) return rentMap[roomKey];
             const simpleKey = toSimpleRoom(roomKey);
@@ -7602,7 +7818,7 @@
             }
             const rate = getRate(ROOM_RENT_2025, cleanedRoom);
             if (rate !== null) return rate;
-            return ROOM_RENT_2025["DELUXE"] || 1600;
+            return ROOM_RENT_2025["DELUXE"] || 1650;
         } else if (year === "2024") {
             if (normRoom) {
                 const rate = getRate(ROOM_RENT_2024, normRoom);
@@ -7618,7 +7834,7 @@
             }
             const rate = getRate(ROOM_RENT_2023, cleanedRoom);
             if (rate !== null) return rate;
-            return ROOM_RENT_2023["DELUXE"] || 1600;
+            return ROOM_RENT_2023["DELUXE"] || 1400;
         } else if (year === "2021") {
             if (normRoom) {
                 const rate = getRate(ROOM_RENT_2021_ACTIVE, normRoom);
@@ -7628,11 +7844,8 @@
             if (rate !== null) return rate;
             return ROOM_RENT_2021_ACTIVE["DELUXE"] || ROOM_RENT_2021_ACTIVE["DELUXE CABIN"] || 1600;
         }
-        
-        const simpleRoom = toSimpleRoom(cleanedRoom);
-        return ROOM_RENT_TPA[cleanedRoom] || ROOM_RENT_TPA[simpleRoom] || ROOM_RENT_TPA["DELUXE"] || 1600;
+        return 1600;
     }
-
     function lookupSOCRoomRent(socArray, cleanedRoom, originalRoomCategory) {
         return lookupActiveRoomRent("", socArray, cleanedRoom, false, originalRoomCategory);
     }
@@ -8152,6 +8365,7 @@
         auditedRows = [];
 
         function getActiveSOCMap(socArray) {
+            if (typeof TARIFF_KOLKATA_SOC !== 'undefined' && socArray === TARIFF_KOLKATA_SOC) return mapKolkata;
             if (socArray === TARIFF_2025) return map2025;
             if (socArray === TARIFF_2024) return map2024;
             if (socArray === TARIFF_2023) return map2023;
@@ -8386,7 +8600,13 @@
                     let activeSOC = TARIFF_DATA;
 
                     if (mappingMethod === "single") {
-                        if (activeSourceVal === "2025") {
+                        if (activeSourceVal === "sockolkata") {
+                            activeSOC = TARIFF_KOLKATA_SOC;
+                            explanation = `Billed against SOC: ${activeSourceVal}.`;
+                        } else if (activeSourceVal === "pkgkolkata") {
+                            activeSOC = TARIFF_KOLKATA_PKG;
+                            explanation = `Billed against SOC: ${activeSourceVal}.`;
+                        } else if (activeSourceVal === "2025") {
                             activeSOC = TARIFF_2025;
                             explanation = `Billed against SOC: ${activeSourceVal}.`;
                         } else if (activeSourceVal === "2024") {
@@ -8461,7 +8681,11 @@
                             activeSOC = TARIFF_EXCELCARE_GIPSA_2026;
                             explanation = `Room-wise: ${cleanedRoom} -> Excelcare GIPSA 2026.`;
                         } else {
-                            activeSOC = activeBU === "excelcare" ? (activeSourceVal === "excelcare_2024" ? TARIFF_EXCELCARE_2024 : (activeSourceVal === "excelcare_cash_2025" ? TARIFF_EXCELCARE_CASH_2025 : (activeSourceVal === "excelcare_gipsa_2026" ? TARIFF_EXCELCARE_GIPSA_2026 : TARIFF_EXCELCARE_2025))) : TARIFF_2024;
+                            if (activeBU === "kolkata") {
+                                activeSOC = TARIFF_KOLKATA_SOC;
+                            } else {
+                                activeSOC = activeBU === "excelcare" ? (activeSourceVal === "excelcare_2024" ? TARIFF_EXCELCARE_2024 : (activeSourceVal === "excelcare_cash_2025" ? TARIFF_EXCELCARE_CASH_2025 : (activeSourceVal === "excelcare_gipsa_2026" ? TARIFF_EXCELCARE_GIPSA_2026 : TARIFF_EXCELCARE_2025))) : TARIFF_2024;
+                            }
                             explanation = `Room-wise fallback SOC applied.`;
                         }
                     } else if (mappingMethod === "manual") {
@@ -8476,7 +8700,10 @@
                         const ag = findMatchingAgreement(customer);
                         if (ag) {
                             const mappedTariffUpper = ag.tariffMapped.toUpperCase();
-                            if (mappedTariffUpper === "TARIFF_EXCELCARE_GIPSA_2026") {
+                            if (mappedTariffUpper === "TARIFF_KOLKATA_SOC") {
+                                activeSOC = TARIFF_KOLKATA_SOC;
+                                explanation = `Contract: ${ag.agreementName} (Kolkata SOC).`;
+                            } else if (mappedTariffUpper === "TARIFF_EXCELCARE_GIPSA_2026") {
                                 activeSOC = TARIFF_EXCELCARE_GIPSA_2026;
                                 explanation = `Contract: ${ag.agreementName} (Excelcare GIPSA 2026).`;
                             } else if (mappedTariffUpper === "TARIFF_EXCELCARE_2025") {
@@ -8512,7 +8739,10 @@
                             }
                             appliedDiscountPercent = parseAgreementDiscountForCategory(ag, deptLower, nameUpper);
                         } else {
-                            if (activeBU === "excelcare") {
+                            if (activeBU === "kolkata") {
+                                activeSOC = TARIFF_KOLKATA_SOC;
+                                explanation = `No contract matching ${customer}. Defaulting to Kolkata SOC.`;
+                            } else if (activeBU === "excelcare") {
                                 isHdfc = true;
                                 targetTemplateName = getHdfcErgoTemplateName(cleanedRoom, isDayCare);
                                 explanation = `No contract matching ${customer}. Defaulting to Excelcare HDFC template: ${targetTemplateName}.`;
@@ -8717,25 +8947,70 @@
                                 }
                             }
                         } else if (serviceId === "2103" || nameUpper.includes("OPERATION THEATRE CHARGES") || nameUpper.includes("OPERATION THEATRE CHARGE")) {
-                            let start = parseExcelDate(startDateVal);
-                            let end = parseExcelDate(endDateVal);
-                            if (start && end && end >= start) {
-                                let durationMins = Math.round((end - start) / (60 * 1000));
-                                let baseOT = (activeSOC === TARIFF_2021) ? 6400 : 10000;
-                                let slabRate = (activeSOC === TARIFF_2021) ? 1600 : 2000;
-                                
-                                if (durationMins <= 60) {
-                                    expectedTariff = baseOT;
+                            if (activeBU === "kolkata") {
+                                let start = parseExcelDate(startDateVal);
+                                let end = parseExcelDate(endDateVal);
+                                if (start && end && end >= start) {
+                                    let durationMins = Math.round((end - start) / (60 * 1000));
+                                    let matchedSlab = KOLKATA_OT_SLABS.find(s => durationMins >= s.from && durationMins <= s.to);
+                                    if (!matchedSlab) {
+                                        matchedSlab = KOLKATA_OT_SLABS[KOLKATA_OT_SLABS.length - 1];
+                                    }
+                                    let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
+                                    if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
+                                    else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
+                                    else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
+                                    else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
+                                    else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
+                                    else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
+                                    else if (normRoom.includes("SUITE")) normRoom = "SUITE";
+                                    else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
+                                    else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
+                                    else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
+                                    
+                                    let rate = matchedSlab.rates[normRoom] || matchedSlab.rates["STANDARD"];
+                                    expectedTariff = rate;
+                                    explanation += ` Resolved Kolkata OT slab rate for ${durationMins} minutes [${normRoom}].`;
                                 } else {
-                                    let extraMins = durationMins - 60;
-                                    let extraSlabs = Math.ceil(extraMins / 15);
-                                    expectedTariff = baseOT + (extraSlabs * slabRate);
+                                    const activeSOCMap = getActiveSOCMap(activeSOC);
+                                    const match = activeSOCMap[serviceId];
+                                    if (match && match.rates) {
+                                        let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
+                                        if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
+                                        else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
+                                        else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
+                                        else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
+                                        else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
+                                        else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
+                                        else if (normRoom.includes("SUITE")) normRoom = "SUITE";
+                                        else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
+                                        else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
+                                        else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
+                                        
+                                        expectedTariff = match.rates[normRoom] || match.rates["STANDARD"] || null;
+                                    }
                                 }
-                                explanation += ` Resolved OT Charges dynamically: ${durationMins} minutes [Base: ₹${baseOT} + ₹${slabRate}/15m extra].`;
                             } else {
-                                const activeSOCMap = getActiveSOCMap(activeSOC);
-                                const match = activeSOCMap[serviceId];
-                                expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
+                                let start = parseExcelDate(startDateVal);
+                                let end = parseExcelDate(endDateVal);
+                                if (start && end && end >= start) {
+                                    let durationMins = Math.round((end - start) / (60 * 1000));
+                                    let baseOT = (activeSOC === TARIFF_2021) ? 6400 : 10000;
+                                    let slabRate = (activeSOC === TARIFF_2021) ? 1600 : 2000;
+                                    
+                                    if (durationMins <= 60) {
+                                        expectedTariff = baseOT;
+                                    } else {
+                                        let extraMins = durationMins - 60;
+                                        let extraSlabs = Math.ceil(extraMins / 15);
+                                        expectedTariff = baseOT + (extraSlabs * slabRate);
+                                    }
+                                    explanation += ` Resolved OT Charges dynamically: ${durationMins} minutes [Base: ₹${baseOT} + ₹${slabRate}/15m extra].`;
+                                } else {
+                                    const activeSOCMap = getActiveSOCMap(activeSOC);
+                                    const match = activeSOCMap[serviceId];
+                                    expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
+                                }
                             }
                         } else if (serviceId === "3044188" || serviceId === "3044189" || nameUpper.includes("IP VISIT CHARGES") || nameUpper.includes("IPD VISIT")) {
                             const simpleRoom = toSimpleRoom(cleanedRoom);
@@ -8746,7 +9021,41 @@
                             const activeSOCMap = getActiveSOCMap(activeSOC);
                             const match = activeSOCMap[serviceId];
                             if (match) {
-                                expectedTariff = (activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate;
+                                if (activeSOCMap === mapKolkata) {
+                                    let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
+                                    if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
+                                    else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
+                                    else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
+                                    else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
+                                    else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
+                                    else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
+                                    else if (normRoom.includes("SUITE")) normRoom = "SUITE";
+                                    else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
+                                    else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
+                                    else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
+
+                                    if (match.rates) {
+                                        if (match.rates[normRoom] !== undefined) {
+                                            expectedTariff = match.rates[normRoom];
+                                        } else {
+                                            let foundRate = null;
+                                            for (const key in match.rates) {
+                                                if (normRoom.includes(key) || key.includes(normRoom)) {
+                                                    foundRate = match.rates[key];
+                                                    break;
+                                                }
+                                            }
+                                            expectedTariff = (foundRate !== null) ? foundRate : (match.rates["STANDARD"] !== undefined ? match.rates["STANDARD"] : null);
+                                        }
+                                    } else {
+                                        expectedTariff = null;
+                                    }
+                                    if (expectedTariff !== null) {
+                                        explanation += ` Resolved Kolkata room-specific rate (${normRoom}).`;
+                                    }
+                                } else {
+                                    expectedTariff = (activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate;
+                                }
                             } else {
                                 expectedTariff = null;
                             }
@@ -8784,9 +9093,14 @@
                             else activeYear = "2025"; // default to 2025-26
                         }
 
+                        let isKolkata = (activeBU === "kolkata" || activeSourceVal === "sockolkata" || activeSourceVal === "pkgkolkata" || activeSourceVal.toLowerCase().includes("kolkata"));
                         let isExcelcare = (activeBU === "excelcare" || activeSourceVal.startsWith("excelcare_") || activeSourceVal.startsWith("socexcelcare") || activeSourceVal === "hdfcergo");
                         let fallbackSOCArray, fallbackSOCMap;
-                        if (isExcelcare) {
+                        if (isKolkata) {
+                            fallbackSOCArray = TARIFF_KOLKATA_SOC;
+                            fallbackSOCMap = mapKolkata;
+                            activeYear = "Kolkata SOC";
+                        } else if (isExcelcare) {
                             const use24 = (activeSourceVal === "excelcare_2024" || activeSourceVal === "socexcelcare2024" || activeYear === "2024");
                             const useCash = (activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "socexcelcarecash" || activeSourceVal === "excelcare_soc_cash");
                             const useGipsa26 = (activeSourceVal === "excelcare_gipsa_2026" || activeSOC === TARIFF_EXCELCARE_GIPSA_2026);
@@ -8832,7 +9146,38 @@
                         }
 
                         if (fallbackMatch) {
-                            expectedTariff = fallbackMatch.rate;
+                            if (isKolkata) {
+                                let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
+                                if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
+                                else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
+                                else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
+                                else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
+                                else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
+                                else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
+                                else if (normRoom.includes("SUITE")) normRoom = "SUITE";
+                                else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
+                                else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
+                                else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
+
+                                if (fallbackMatch.rates) {
+                                    if (fallbackMatch.rates[normRoom] !== undefined) {
+                                        expectedTariff = fallbackMatch.rates[normRoom];
+                                    } else {
+                                        let foundRate = null;
+                                        for (const key in fallbackMatch.rates) {
+                                            if (normRoom.includes(key) || key.includes(normRoom)) {
+                                                foundRate = fallbackMatch.rates[key];
+                                                break;
+                                            }
+                                        }
+                                        expectedTariff = (foundRate !== null) ? foundRate : (fallbackMatch.rates["STANDARD"] !== undefined ? fallbackMatch.rates["STANDARD"] : null);
+                                    }
+                                } else {
+                                    expectedTariff = null;
+                                }
+                            } else {
+                                expectedTariff = fallbackMatch.rate;
+                            }
                             status = "Matching"; // reset status from Not Found
                             explanation += ` Not found in Template; fetched ₹${expectedTariff} from ${activeYear} SOC` + (fallbackMatchedByDesc ? ` (Matched by Description: ${fallbackMatch.name})` : "") + ".";
                         } else {
@@ -9984,6 +10329,7 @@
                 </div>
             </div>
             ${evolutionHtml}
+            ${formatKolkataRatesHTML(unifiedItem ? unifiedItem.rateKolkata : null)}
         `;
         detailsModal.classList.add('show');
     }
@@ -10733,6 +11079,9 @@
         const searchCust = document.getElementById('repo-search-customer').value.toLowerCase().trim();
 
         let filtered = db;
+        if (window.currentUserUnit && window.currentUserUnit !== 'all') {
+            filtered = filtered.filter(x => x.businessUnit === window.currentUserUnit);
+        }
 
         if (buFilter !== 'all') {
             filtered = filtered.filter(x => x.businessUnit === buFilter);
@@ -11227,6 +11576,10 @@
             if (stored) db = JSON.parse(stored);
         } catch(e) {}
 
+        if (window.currentUserUnit && window.currentUserUnit !== 'all') {
+            db = db.filter(x => x.businessUnit === window.currentUserUnit);
+        }
+
         const now = new Date();
         const curMonth = now.getMonth();
         const curYear = now.getFullYear();
@@ -11289,7 +11642,11 @@
     function getAgreementScope(ag) {
         const nameUpper = ag.agreementName.toUpperCase();
         const tariffUpper = ag.tariffMapped.toUpperCase();
+        const locUpper = (ag.locations || '').toUpperCase();
         
+        if (locUpper.includes("KOLKATA") || tariffUpper.includes("KOLKATA")) {
+            return "kolkata";
+        }
         if (nameUpper.includes("HDFC") || tariffUpper.includes("EXCELCARE")) {
             return "excelcare";
         }
@@ -11341,7 +11698,7 @@
     }
 
     // Modal Helpers
-    window.openCustomAgreementModal = function() {
+    window.openCustomAgreementModalAdvanced = function() {
         document.getElementById('custom-agreement-modal-title').textContent = "Add Custom Agreement";
         document.getElementById('custom-agreement-original-name').value = "";
         document.getElementById('custom-agreement-name').value = "";
@@ -11383,6 +11740,8 @@
             locations = 'Assam Hospitals Limited – Guwahati';
         } else if (scope === 'excelcare') {
             locations = 'Apollo Excelcare Hospital – Guwahati';
+        } else if (scope === 'kolkata') {
+            locations = 'Kolkata - Apollo Multispeciality';
         } else {
             locations = 'Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati';
         }
@@ -11419,7 +11778,7 @@
         }
 
         window.saveAndSyncCustomAgreements(list);
-        window.closeCustomAgreementModal();
+        window.closeCustomAgreementModalAdvanced();
     };
 
     window.editCustomAgreement = function(escapedName) {
@@ -11436,7 +11795,8 @@
         document.getElementById('custom-agreement-status').value = ag.status || "Available/Valid";
         
         let scope = 'both';
-        if (ag.locations && ag.locations.includes('Guwahati') && !ag.locations.includes('Excelcare')) scope = 'international';
+        if (ag.locations && ag.locations.includes('Kolkata')) scope = 'kolkata';
+        else if (ag.locations && ag.locations.includes('Guwahati') && !ag.locations.includes('Excelcare')) scope = 'international';
         else if (ag.locations && ag.locations.includes('Excelcare') && !ag.locations.includes('Limited')) scope = 'excelcare';
         document.getElementById('custom-agreement-scope').value = scope;
         
@@ -11468,7 +11828,8 @@
         document.getElementById('custom-agreement-status').value = ag.status || "Available/Valid";
         
         let scope = 'both';
-        if (ag.locations && ag.locations.includes('Guwahati') && !ag.locations.includes('Excelcare')) scope = 'international';
+        if (ag.locations && ag.locations.includes('Kolkata')) scope = 'kolkata';
+        else if (ag.locations && ag.locations.includes('Guwahati') && !ag.locations.includes('Excelcare')) scope = 'international';
         else if (ag.locations && ag.locations.includes('Excelcare') && !ag.locations.includes('Limited')) scope = 'excelcare';
         document.getElementById('custom-agreement-scope').value = scope;
         
@@ -11491,6 +11852,7 @@
         let countIntl = 0;
         let countExcelcare = 0;
         let countCentralised = 0;
+        let countKolkata = 0;
 
         AGREEMENT_DETAILS.forEach(ag => {
             const scope = getAgreementScope(ag);
@@ -11498,6 +11860,7 @@
             if (scope === 'international') countIntl++;
             else if (scope === 'excelcare') countExcelcare++;
             else if (scope === 'centralised') countCentralised++;
+            else if (scope === 'kolkata') countKolkata++;
         });
 
         // Update badge counts in sub-tabs
@@ -11505,11 +11868,13 @@
         const badgeIntl = document.getElementById('ag-badge-international');
         const badgeExcelcare = document.getElementById('ag-badge-excelcare');
         const badgeCentralised = document.getElementById('ag-badge-centralised');
+        const badgeKolkata = document.getElementById('ag-badge-kolkata');
 
         if (badgeAll) badgeAll.textContent = countAll;
         if (badgeIntl) badgeIntl.textContent = countIntl;
         if (badgeExcelcare) badgeExcelcare.textContent = countExcelcare;
         if (badgeCentralised) badgeCentralised.textContent = countCentralised;
+        if (badgeKolkata) badgeKolkata.textContent = countKolkata;
 
         // Update description box content based on active sub-tab
         const descBox = document.getElementById('agreements-desc-box');
@@ -11534,6 +11899,11 @@
                     <div style="font-weight: 700; margin-bottom: 0.2rem; color: var(--primary);">Centralised Group Rates ( TPA & Insurances )</div>
                     <div style="line-height: 1.4;">These represent consolidated/centralised rates negotiated with major TPA and national insurance providers (such as GIPSA, Vidal, Bajaj Allianz, Aditya Birla, Tata AIG). These rates and discount tables apply uniformly across both Apollo International and Excelcare.</div>
                 `;
+            } else if (currentAgreementFilter === 'kolkata') {
+                descBox.innerHTML = `
+                    <div style="font-weight: 700; margin-bottom: 0.2rem; color: var(--primary);">Kolkata - Apollo Multispeciality Agreements</div>
+                    <div style="line-height: 1.4;">These agreements are tailored specifically for the Kolkata unit. Patient bills are validated against the Kolkata Schedule of Charges (SOC) and Packages master.</div>
+                `;
             }
         }
 
@@ -11554,6 +11924,9 @@
             } else if (scope === 'excelcare') {
                 scopeLabel = 'Excelcare';
                 scopeClass = 'badge-diff'; // Amber
+            } else if (scope === 'kolkata') {
+                scopeLabel = 'Kolkata';
+                scopeClass = 'badge-danger';
             } else {
                 scopeLabel = 'Centralised (Both)';
                 scopeClass = 'badge-match'; // Teal
@@ -11887,7 +12260,10 @@
 
         // Populate Date Filter dropdown if it has only All Dates option
         const uniqueDates = [...new Set(allBills.map(b => b.date))].sort((a,b) => b.localeCompare(a));
-        const uniqueBus = [...new Set(allBills.map(b => b.businessUnit))].sort();
+        let uniqueBus = [...new Set(allBills.map(b => b.businessUnit))].sort();
+        if (window.currentUserUnit && window.currentUserUnit !== 'all') {
+            uniqueBus = [window.currentUserUnit];
+        }
 
         const curDateVal = dateSelect.value;
         const curBuVal = buSelect.value;
@@ -11904,18 +12280,25 @@
         }
 
         if (buSelect.options.length <= 1 && uniqueBus.length > 0) {
-            buSelect.innerHTML = '<option value="all">All Units</option>';
+            if (window.currentUserUnit && window.currentUserUnit !== 'all') {
+                buSelect.innerHTML = '';
+            } else {
+                buSelect.innerHTML = '<option value="all">All Units</option>';
+            }
             uniqueBus.forEach(bu => {
                 const opt = document.createElement('option');
                 opt.value = bu;
                 opt.textContent = bu;
                 buSelect.appendChild(opt);
             });
-            buSelect.value = curBuVal || 'all';
+            buSelect.value = (window.currentUserUnit && window.currentUserUnit !== 'all') ? window.currentUserUnit : (curBuVal || 'all');
         }
 
         // Apply filters
         let filtered = allBills;
+        if (window.currentUserUnit && window.currentUserUnit !== 'all') {
+            filtered = filtered.filter(b => b.businessUnit === window.currentUserUnit);
+        }
         if (dateSelect.value !== 'all') {
             filtered = filtered.filter(b => b.date === dateSelect.value);
         }
@@ -12531,6 +12914,7 @@
             let unitLabel = '';
             if (window.currentUserUnit === 'international') unitLabel = ' (Intl)';
             else if (window.currentUserUnit === 'excelcare') unitLabel = ' (Excelcare)';
+            else if (window.currentUserUnit === 'kolkata') unitLabel = ' (Kolkata)';
             else unitLabel = ' (Global)';
             
             updateUserHeaderProfile(sessionData.username + unitLabel, sessionData.role);
@@ -13132,9 +13516,9 @@
         }
     }
 
-    // Custom Agreements UI Helpers
-    window.openCustomAgreementModal = function() {
-        document.getElementById('custom-agreement-modal-title').textContent = "Create Custom Payer Agreement";
+    // Custom Agreements UI Helpers (Advanced - Unused or Sandbox mode)
+    window.openCustomAgreementModalAdvanced = function() {
+        document.getElementById('custom-agreement-modal-title-advanced').textContent = "Create Custom Payer Agreement";
         document.getElementById('cust-ag-name').value = "";
         document.getElementById('cust-ag-name').disabled = false;
         document.getElementById('cust-ag-type').value = "Corporate";
@@ -13147,11 +13531,11 @@
         document.getElementById('test-limits-container').innerHTML = "";
         document.getElementById('room-limits-container').innerHTML = "";
         
-        document.getElementById('custom-agreement-modal').classList.add('show');
+        document.getElementById('custom-agreement-modal-advanced').classList.add('show');
     };
 
-    window.closeCustomAgreementModal = function() {
-        document.getElementById('custom-agreement-modal').classList.remove('show');
+    window.closeCustomAgreementModalAdvanced = function() {
+        document.getElementById('custom-agreement-modal-advanced').classList.remove('show');
     };
 
     window.addCategoryDiscountRow = function(category = "Room", discount = 0) {
@@ -13286,7 +13670,7 @@
         filtered.push(agreement);
         window.saveAndSyncCustomAgreements(filtered);
         
-        window.closeCustomAgreementModal();
+        window.closeCustomAgreementModalAdvanced();
         if (typeof window.showToast === 'function') {
             window.showToast(`Custom agreement for ${name} saved successfully.`, 'success');
         } else {
@@ -13294,11 +13678,11 @@
         }
     };
 
-    window.editCustomAgreement = function(name) {
+    window.editCustomAgreementAdvanced = function(name) {
         const ag = window.customAgreements.find(x => x.agreementName.toUpperCase() === name.toUpperCase());
         if (!ag) return;
 
-        window.openCustomAgreementModal();
+        window.openCustomAgreementModalAdvanced();
         
         document.getElementById('custom-agreement-modal-title').textContent = "Edit Custom Payer Agreement";
         const nameInput = document.getElementById('cust-ag-name');
@@ -13338,7 +13722,7 @@
         }
     };
 
-    window.deleteCustomAgreement = function(name) {
+    window.deleteCustomAgreementAdvanced = function(name) {
         if (!confirm(`Are you sure you want to delete the custom agreement for: ${name}?`)) return;
         const filtered = window.customAgreements.filter(ag => ag.agreementName.toUpperCase() !== name.toUpperCase());
         window.saveAndSyncCustomAgreements(filtered);
@@ -13347,12 +13731,12 @@
         }
     };
 
-    window.customizeStaticAgreement = function(name) {
+    window.customizeStaticAgreementAdvanced = function(name) {
         if (typeof AGREEMENT_DETAILS === 'undefined') return;
         const ag = AGREEMENT_DETAILS.find(x => x.agreementName.toUpperCase() === name.toUpperCase());
         if (!ag) return;
 
-        window.openCustomAgreementModal();
+        window.openCustomAgreementModalAdvanced();
         document.getElementById('custom-agreement-modal-title').textContent = "Customise Payer Agreement";
         
         document.getElementById('cust-ag-name').value = ag.agreementName;
@@ -13406,11 +13790,11 @@
 </script>
 
 <!-- CUSTOM AGREEMENT CREATE/EDIT MODAL -->
-<div class="modal-overlay" id="custom-agreement-modal" style="z-index: 2500;">
+<div class="modal-overlay" id="custom-agreement-modal-advanced" style="z-index: 2500;">
     <div class="modal-card" style="max-width: 750px; max-height: 85vh; display: flex; flex-direction: column;">
         <div class="modal-header">
-            <h2 id="custom-agreement-modal-title">Create Custom Payer Agreement</h2>
-            <button class="close-modal-btn" onclick="closeCustomAgreementModal()" title="Close modal">
+            <h2 id="custom-agreement-modal-title-advanced">Create Custom Payer Agreement</h2>
+            <button class="close-modal-btn" onclick="closeCustomAgreementModalAdvanced()" title="Close modal">
                 <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
         </div>
@@ -13494,7 +13878,7 @@
             </div>
         </div>
         <div style="padding: 1rem 1.5rem; background: rgba(0,0,0,0.2); border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 0.75rem;">
-            <button onclick="closeCustomAgreementModal()" class="export-btn" style="background: var(--bg-page); color: var(--text-muted); border-color: var(--border);">Cancel</button>
+            <button onclick="closeCustomAgreementModalAdvanced()" class="export-btn" style="background: var(--bg-page); color: var(--text-muted); border-color: var(--border);">Cancel</button>
             <button onclick="saveCustomAgreementForm()" class="export-btn" style="background: var(--primary); color: white; border-color: var(--primary); font-weight: 700;">Save Agreement</button>
         </div>
     </div>

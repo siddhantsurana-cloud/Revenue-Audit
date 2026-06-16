@@ -1,0 +1,2132 @@
+[
+  {
+    "id": "KOL_PKG_1",
+    "name": "DIGITAL SUBTRACTION ANGIOGRAPHY (DSA) (PACKAGE)",
+    "department": "Cath Lab",
+    "days": 1,
+    "rates": {
+      "STANDARD": 31000,
+      "SEMI-PRIVATE": 42000,
+      "PRIVATE": 55000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_2",
+    "name": "ANGIOGRAM/ANGIOGRAPHY (CAG) (PACKAGE)",
+    "department": "Cath Lab",
+    "days": 1,
+    "rates": {
+      "STANDARD": 20000,
+      "SEMI-PRIVATE": 25000,
+      "PRIVATE": 35000,
+      "PRIVATE DELUXE": 48000,
+      "DELUXE": 60000,
+      "SUITE": 70000,
+      "MAHARAJA SUITE": 95000
+    }
+  },
+  {
+    "id": "KOL_PKG_3",
+    "name": "FRACTIONAL FLOW RESERVE - FFR (PACKAGE)",
+    "department": "Cath Lab",
+    "days": 1,
+    "rates": {
+      "STANDARD": 78000,
+      "SEMI-PRIVATE": 98000,
+      "PRIVATE": 122000,
+      "PRIVATE DELUXE": 145000,
+      "DELUXE": 192000,
+      "SUITE": 242000,
+      "MAHARAJA SUITE": 303000
+    }
+  },
+  {
+    "id": "KOL_PKG_4",
+    "name": "INTRA VASCULAR ULTRASOUND(IVUS) (PACKAGE) (NEW)",
+    "department": "Cath Lab",
+    "days": 1,
+    "rates": {
+      "STANDARD": 117000,
+      "SEMI-PRIVATE": 143000,
+      "PRIVATE": 163000,
+      "PRIVATE DELUXE": 182000,
+      "DELUXE": 208000,
+      "SUITE": 260000,
+      "MAHARAJA SUITE": 325000
+    }
+  },
+  {
+    "id": "KOL_PKG_5",
+    "name": "BALLOON VALVOPLASTY (PACKAGE) (NEW)",
+    "department": "Cath Lab",
+    "days": 2,
+    "rates": {
+      "STANDARD": 137000,
+      "SEMI-PRIVATE": 163000,
+      "PRIVATE": 194000,
+      "PRIVATE DELUXE": 230000,
+      "DELUXE": 274000,
+      "SUITE": 326000,
+      "MAHARAJA SUITE": 389000
+    }
+  },
+  {
+    "id": "KOL_PKG_6",
+    "name": "PERIPHERAL ANGIOGRAPHY(PAG) (PACKAGE) (NEW)",
+    "department": "Cath Lab",
+    "days": 1,
+    "rates": {
+      "STANDARD": 29000,
+      "SEMI-PRIVATE": 39000,
+      "PRIVATE": 52000,
+      "PRIVATE DELUXE": 65000,
+      "DELUXE": 85000,
+      "SUITE": 117000,
+      "MAHARAJA SUITE": 163000
+    }
+  },
+  {
+    "id": "KOL_PKG_7",
+    "name": "OCT (PACKAGE) (NEW)",
+    "department": "Cath Lab",
+    "days": 1,
+    "rates": {
+      "STANDARD": 156000,
+      "SEMI-PRIVATE": 176000,
+      "PRIVATE": 195000,
+      "PRIVATE DELUXE": 228000,
+      "DELUXE": 260000,
+      "SUITE": 312000,
+      "MAHARAJA SUITE": 358000
+    }
+  },
+  {
+    "id": "KOL_PKG_8",
+    "name": "ROTABLATION (PACKAGE) (NEW)",
+    "department": "Cath Lab",
+    "days": 1,
+    "rates": {
+      "STANDARD": 124000,
+      "SEMI-PRIVATE": 143000,
+      "PRIVATE": 163000,
+      "PRIVATE DELUXE": 182000,
+      "DELUXE": 208000,
+      "SUITE": 260000,
+      "MAHARAJA SUITE": 312000
+    }
+  },
+  {
+    "id": "KOL_PKG_9",
+    "name": "PTCA (PACKAGE)-2018",
+    "department": "Cath Lab",
+    "days": 3,
+    "rates": {
+      "STANDARD": 135000,
+      "SEMI-PRIVATE": 175000,
+      "PRIVATE": 200000,
+      "PRIVATE DELUXE": 225000,
+      "DELUXE": 300000,
+      "SUITE": 350000,
+      "MAHARAJA SUITE": 400000
+    }
+  },
+  {
+    "id": "KOL_PKG_10",
+    "name": "PPI(SINGLE CHAMBER)-2018",
+    "department": "Cath Lab",
+    "days": 3,
+    "rates": {
+      "STANDARD": 75000,
+      "SEMI-PRIVATE": 120000,
+      "PRIVATE": 150000,
+      "PRIVATE DELUXE": 175000,
+      "DELUXE": 200000,
+      "SUITE": 250000,
+      "MAHARAJA SUITE": 350000
+    }
+  },
+  {
+    "id": "KOL_PKG_11",
+    "name": "EP STUDY (PACKAGE)-2018",
+    "department": "Cath Lab",
+    "days": 1,
+    "rates": {
+      "STANDARD": 53000,
+      "SEMI-PRIVATE": 64000,
+      "PRIVATE": 77000,
+      "PRIVATE DELUXE": 92000,
+      "DELUXE": 111000,
+      "SUITE": 131000,
+      "MAHARAJA SUITE": 157000
+    }
+  },
+  {
+    "id": "KOL_PKG_12",
+    "name": "3D RF ABLATION (PACKAGE)-2018",
+    "department": "Cath Lab",
+    "days": 2,
+    "rates": {
+      "STANDARD": 280000,
+      "SEMI-PRIVATE": 330000,
+      "PRIVATE": 360000,
+      "PRIVATE DELUXE": 400000,
+      "DELUXE": 475000,
+      "SUITE": 575000,
+      "MAHARAJA SUITE": 700000
+    }
+  },
+  {
+    "id": "KOL_PKG_13",
+    "name": "PPI(DUAL CHAMBER) (PACKAGE)-2018",
+    "department": "Cath Lab",
+    "days": 3,
+    "rates": {
+      "STANDARD": 90000,
+      "SEMI-PRIVATE": 140000,
+      "PRIVATE": 180000,
+      "PRIVATE DELUXE": 260000,
+      "DELUXE": 293000,
+      "SUITE": 358000,
+      "MAHARAJA SUITE": 447000
+    }
+  },
+  {
+    "id": "KOL_PKG_14",
+    "name": "PTCA (COMPLEX AND PRIMARY) (PACKAGE)- 2018",
+    "department": "Cath Lab",
+    "days": 3,
+    "rates": {
+      "STANDARD": 200000,
+      "SEMI-PRIVATE": 260000,
+      "PRIVATE": 300000,
+      "PRIVATE DELUXE": 330000,
+      "DELUXE": 360000,
+      "SUITE": 410000,
+      "MAHARAJA SUITE": 475000
+    }
+  },
+  {
+    "id": "KOL_PKG_15",
+    "name": "CABG (GROUP-I) (PACKAGE)",
+    "department": "CARDIOLOGY",
+    "days": 7,
+    "rates": {
+      "STANDARD": 300000,
+      "SEMI-PRIVATE": 395000,
+      "PRIVATE": 470000,
+      "PRIVATE DELUXE": 630000,
+      "DELUXE": 840000,
+      "SUITE": 1050000,
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_16",
+    "name": "CORONARY FLOW ASSESMENT (PACKAGE)",
+    "department": "CARDIOLOGY",
+    "days": 1,
+    "rates": {
+      "STANDARD": 47000,
+      "SEMI-PRIVATE": 67000,
+      "PRIVATE": 79000,
+      "PRIVATE DELUXE": 96500,
+      "DELUXE": 114000,
+      "SUITE": 222000,
+      "MAHARAJA SUITE": 279000
+    }
+  },
+  {
+    "id": "KOL_PKG_17",
+    "name": "PAED ASD DEVICE CLOSURE (PACKAGE)",
+    "department": "CARDIOLOGY",
+    "days": 2,
+    "rates": {
+      "STANDARD": 124000,
+      "SEMI-PRIVATE": 137000,
+      "PRIVATE": 143000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_18",
+    "name": "PAED ATRIAL SEPTOSTOMY (PACKAGE)",
+    "department": "CARDIOLOGY",
+    "days": 2,
+    "rates": {
+      "STANDARD": 137000,
+      "SEMI-PRIVATE": 143000,
+      "PRIVATE": 150000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_19",
+    "name": "PAED CARDIAC CATHETERIZATION (PACKAGE)",
+    "department": "CARDIOLOGY",
+    "days": 2,
+    "rates": {
+      "STANDARD": 46000,
+      "SEMI-PRIVATE": 59000,
+      "PRIVATE": 78000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_20",
+    "name": "PAED EMBOLIZATION (PACKAGE)",
+    "department": "CARDIOLOGY",
+    "days": 3,
+    "rates": {
+      "STANDARD": 65000,
+      "SEMI-PRIVATE": 72000,
+      "PRIVATE": 91000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_21",
+    "name": "PAED PDA DEVICE CLOSURE (PACKAGE)",
+    "department": "CARDIOLOGY",
+    "days": 2,
+    "rates": {
+      "STANDARD": 111000,
+      "SEMI-PRIVATE": 117000,
+      "PRIVATE": 130000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_22",
+    "name": "PAED VSD DEVICE CLOSURE (PACKAGE)",
+    "department": "CARDIOLOGY",
+    "days": 3,
+    "rates": {
+      "STANDARD": 130000,
+      "SEMI-PRIVATE": 143000,
+      "PRIVATE": 163000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_23",
+    "name": "PAED BALLOON VOLVOPLASTY (PACKAGE)",
+    "department": "CARDIOLOGY",
+    "days": 2,
+    "rates": {
+      "STANDARD": 137000,
+      "SEMI-PRIVATE": 156000,
+      "PRIVATE": 169000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_24",
+    "name": "PTCA PLUS IVUS (PACKAGE)",
+    "department": "CARDIOLOGY",
+    "days": 3,
+    "rates": {
+      "STANDARD": 228000,
+      "SEMI-PRIVATE": 325000,
+      "PRIVATE": 380000,
+      "PRIVATE DELUXE": 434000,
+      "DELUXE": 543000,
+      "SUITE": 650000,
+      "MAHARAJA SUITE": 759000
+    }
+  },
+  {
+    "id": "KOL_PKG_25",
+    "name": "MINI EP STUDY PLUS RF ABLATION (PACKAGE)",
+    "department": "CARDIOLOGY",
+    "days": 2,
+    "rates": {
+      "STANDARD": 165000,
+      "SEMI-PRIVATE": 203000,
+      "PRIVATE": 248000,
+      "PRIVATE DELUXE": 306000,
+      "DELUXE": 374000,
+      "SUITE": 459000,
+      "MAHARAJA SUITE": 564000
+    }
+  },
+  {
+    "id": "KOL_PKG_26",
+    "name": "MINI EP STUDY (PACKAGE)-2018",
+    "department": "CARDIOLOGY",
+    "days": 1,
+    "rates": {
+      "STANDARD": 46000,
+      "SEMI-PRIVATE": 55000,
+      "PRIVATE": 65000,
+      "PRIVATE DELUXE": 78000,
+      "DELUXE": 95000,
+      "SUITE": 113000,
+      "MAHARAJA SUITE": 127000
+    }
+  },
+  {
+    "id": "KOL_PKG_27",
+    "name": "RF ABLATION (PACKAGE)-2018",
+    "department": "CARDIOLOGY",
+    "days": 2,
+    "rates": {
+      "STANDARD": 146000,
+      "SEMI-PRIVATE": 178000,
+      "PRIVATE": 217000,
+      "PRIVATE DELUXE": 265000,
+      "DELUXE": 324000,
+      "SUITE": 395000,
+      "MAHARAJA SUITE": 482000
+    }
+  },
+  {
+    "id": "KOL_PKG_28",
+    "name": "COMPLEX CONGENITAL HEART SURGERY PACKAGE (9 DAYS)",
+    "department": "Cardiac Thoracic",
+    "days": 9,
+    "rates": {
+      "STANDARD": 468000,
+      "SEMI-PRIVATE": 572000,
+      "PRIVATE": 715000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_29",
+    "name": "COMPLEX CONGENITAL HEART SURGERY PACKAGE (7 DAYS)",
+    "department": "Cardiac Thoracic",
+    "days": 7,
+    "rates": {
+      "STANDARD": 468000,
+      "SEMI-PRIVATE": 572000,
+      "PRIVATE": 715000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_30",
+    "name": "COMPLEX CONGENITAL HEART SURGERY PACKAGE (7 DAYS) (EXCLUDING IMPLANT)",
+    "department": "Cardiac Thoracic",
+    "days": 7,
+    "rates": {
+      "STANDARD": 468000,
+      "SEMI-PRIVATE": 572000,
+      "PRIVATE": 715000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_31",
+    "name": "SIMPLE CONGENITAL HEART SURGERY PACKAGE (3 DAYS) (EXCLUDING IMPLANT)",
+    "department": "Cardiac Thoracic",
+    "days": 3,
+    "rates": {
+      "STANDARD": 156000,
+      "SEMI-PRIVATE": 190000,
+      "PRIVATE": 238000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_32",
+    "name": "SIMPLE CONGENITAL HEART SURGERY PACKAGE (3 DAYS)",
+    "department": "Cardiac Thoracic",
+    "days": 3,
+    "rates": {
+      "STANDARD": 156000,
+      "SEMI-PRIVATE": 190000,
+      "PRIVATE": 238000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_33",
+    "name": "CONGENITAL HEART SURGERY PACKAGE (7 DAYS)",
+    "department": "Cardiac Thoracic",
+    "days": 7,
+    "rates": {
+      "STANDARD": 226000,
+      "SEMI-PRIVATE": 289000,
+      "PRIVATE": 343000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_34",
+    "name": "CABG EMERGENCY PACKAGE I",
+    "department": "Cardiac Thoracic",
+    "days": 7,
+    "rates": {
+      "STANDARD": 425000,
+      "SEMI-PRIVATE": 560000,
+      "PRIVATE": 670000,
+      "PRIVATE DELUXE": 930000,
+      "DELUXE": 1190000,
+      "SUITE": 1490000,
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_35",
+    "name": "CABG EMERGENCY PACKAGE II",
+    "department": "Cardiac Thoracic",
+    "days": 7,
+    "rates": {
+      "STANDARD": 550000,
+      "SEMI-PRIVATE": 725000,
+      "PRIVATE": 865000,
+      "PRIVATE DELUXE": 1200000,
+      "DELUXE": 1540000,
+      "SUITE": 1925000,
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_36",
+    "name": "MICS CABG CATEGORY A (SINGLE VESSEL)",
+    "department": "Cardiac Thoracic",
+    "days": 8,
+    "rates": {
+      "STANDARD": 390000,
+      "SEMI-PRIVATE": 488000,
+      "PRIVATE": 650000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_37",
+    "name": "MICS CABG CATEGORY B (MULTI VESSEL) PACKAGE",
+    "department": "Cardiac Thoracic",
+    "days": 8,
+    "rates": {
+      "STANDARD": 450000,
+      "SEMI-PRIVATE": 525000,
+      "PRIVATE": 620000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_38",
+    "name": "MICS - OHS PACKAGE",
+    "department": "Cardiac Thoracic",
+    "days": 7,
+    "rates": {
+      "STANDARD": 325000,
+      "SEMI-PRIVATE": 423000,
+      "PRIVATE": 585000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_39",
+    "name": "OPEN HEART SURGERY(O.H.S) (PACKAGE)",
+    "department": "Cardiothoracic &\nVascular Surgery",
+    "days": 7,
+    "rates": {
+      "STANDARD": 280000,
+      "SEMI-PRIVATE": 360000,
+      "PRIVATE": 430000,
+      "PRIVATE DELUXE": 510000,
+      "DELUXE": 700000,
+      "SUITE": 830000,
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_40",
+    "name": "TOTAL HIP REPLACEMENT BILATERAL (EX IMPLANT) (PACKAGE)",
+    "department": "Orthopaedics",
+    "days": 6,
+    "rates": {
+      "STANDARD": 209000,
+      "SEMI-PRIVATE": 260000,
+      "PRIVATE": 308000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_41",
+    "name": "TOTAL HIP REPLACEMENT UNILATERAL (EXCLUDING IMPLANT) (PACKAGE)",
+    "department": "Orthopaedics",
+    "days": 5,
+    "rates": {
+      "STANDARD": 168000,
+      "SEMI-PRIVATE": 216000,
+      "PRIVATE": 282000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_42",
+    "name": "TOTAL KNEE REPLACEMENT BILATERAL (EXCLUDING IMPLANT) (PACKAGE)",
+    "department": "Orthopaedics",
+    "days": 6,
+    "rates": {
+      "STANDARD": 252000,
+      "SEMI-PRIVATE": 346000,
+      "PRIVATE": 432000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_43",
+    "name": "TOTAL KNEE REPLACEMENT UNILATERAL (EXCLUDING IMPLANT) (PACKAGE)",
+    "department": "Orthopaedics",
+    "days": 5,
+    "rates": {
+      "STANDARD": 180000,
+      "SEMI-PRIVATE": 220000,
+      "PRIVATE": 275000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_44",
+    "name": "ARTHROSCOPY INTERMEDIATE (PACKAGE)",
+    "department": "Orthopaedics",
+    "days": 1,
+    "rates": {
+      "STANDARD": 79000,
+      "SEMI-PRIVATE": 94000,
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_45",
+    "name": "ARTHROSCOPY MAJOR (PACKAGE)",
+    "department": "Orthopaedics",
+    "days": 2,
+    "rates": {
+      "STANDARD": 115000,
+      "SEMI-PRIVATE": 122000,
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_46",
+    "name": "ARTHROSCOPY MINOR (PACKAGE)",
+    "department": "Orthopaedics",
+    "days": 1,
+    "rates": {
+      "STANDARD": 50000,
+      "SEMI-PRIVATE": 60000,
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_47",
+    "name": "TRAUMA PACKAGE GRADE - I",
+    "department": "Orthopaedics",
+    "days": 1,
+    "rates": {
+      "STANDARD": 48000,
+      "SEMI-PRIVATE": 66000,
+      "PRIVATE": 90000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_48",
+    "name": "TRAUMA PACKAGE GRADE - II",
+    "department": "Orthopaedics",
+    "days": 2,
+    "rates": {
+      "STANDARD": 84000,
+      "SEMI-PRIVATE": 108000,
+      "PRIVATE": 138000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_49",
+    "name": "TRAUMA PACKAGE GRADE - III",
+    "department": "Orthopaedics",
+    "days": 3,
+    "rates": {
+      "STANDARD": 108000,
+      "SEMI-PRIVATE": 138000,
+      "PRIVATE": 174000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_50",
+    "name": "TRAUMA PACKAGE GRADE - IV",
+    "department": "Orthopaedics",
+    "days": 4,
+    "rates": {
+      "STANDARD": 138000,
+      "SEMI-PRIVATE": 174000,
+      "PRIVATE": 216000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_51",
+    "name": "TRAUMA PACKAGE GRADE - V",
+    "department": "Orthopaedics",
+    "days": 4,
+    "rates": {
+      "STANDARD": 156000,
+      "SEMI-PRIVATE": 198000,
+      "PRIVATE": 252000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_52",
+    "name": "TRAUMA PACKAGE GRADE - VI",
+    "department": "Orthopaedics",
+    "days": 5,
+    "rates": {
+      "STANDARD": 204000,
+      "SEMI-PRIVATE": 270000,
+      "PRIVATE": 348000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_53",
+    "name": "REGROW (PACKAGE)",
+    "department": "Orthopaedics",
+    "days": 2,
+    "rates": {
+      "STANDARD": 372000,
+      "SEMI-PRIVATE": 389000,
+      "PRIVATE": 408000,
+      "PRIVATE DELUXE": 420000,
+      "DELUXE": 432000,
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_54",
+    "name": "REGROW PLUS HTO (PACKAGE)",
+    "department": "Orthopaedics",
+    "days": 4,
+    "rates": {
+      "STANDARD": 492000,
+      "SEMI-PRIVATE": 540000,
+      "PRIVATE": 594000,
+      "PRIVATE DELUXE": 603000,
+      "DELUXE": 612000,
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_55",
+    "name": "ROBOTIC SURGERY GRADE I (PACKAGE)",
+    "department": "Urology",
+    "days": 3,
+    "rates": {
+      "STANDARD": 328000,
+      "SEMI-PRIVATE": 374000,
+      "PRIVATE": 465000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_56",
+    "name": "ROBOTIC SURGERY GRADE II (PACKAGE)",
+    "department": "Urology",
+    "days": 3,
+    "rates": {
+      "STANDARD": 374000,
+      "SEMI-PRIVATE": 429000,
+      "PRIVATE": 532000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_57",
+    "name": "ROBOTIC SURGERY GRADE III (PACKAGE)",
+    "department": "Urology",
+    "days": 3,
+    "rates": {
+      "STANDARD": 437000,
+      "SEMI-PRIVATE": 501000,
+      "PRIVATE": 623000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_58",
+    "name": "ROBOTIC SURGERY GRADE IV (PACKAGE)",
+    "department": "Urology",
+    "days": 3,
+    "rates": {
+      "STANDARD": 484000,
+      "SEMI-PRIVATE": 554000,
+      "PRIVATE": 688000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_59",
+    "name": "SPECIAL ROBOTIC SURGERY GRADE I (PACKAGE)",
+    "department": "Urology",
+    "days": 3,
+    "rates": {
+      "STANDARD": 304000,
+      "SEMI-PRIVATE": 343000,
+      "PRIVATE": 382000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_60",
+    "name": "SPECIAL ROBOTIC SURGERY GRADE II (PACKAGE)",
+    "department": "Urology",
+    "days": 3,
+    "rates": {
+      "STANDARD": 382000,
+      "SEMI-PRIVATE": 421000,
+      "PRIVATE": 460000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_61",
+    "name": "SPECIAL ROBOTIC SURGERY GRADE III (PACKAGE)",
+    "department": "Urology",
+    "days": 3,
+    "rates": {
+      "STANDARD": 421000,
+      "SEMI-PRIVATE": 484000,
+      "PRIVATE": 538000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_62",
+    "name": "SPECIAL ROBOTIC SURGERY GRADE IV (PACKAGE)",
+    "department": "Urology",
+    "days": 3,
+    "rates": {
+      "STANDARD": 499000,
+      "SEMI-PRIVATE": 562000,
+      "PRIVATE": 632000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_63",
+    "name": "ROBOTIC DONOR NEPHRECTOMY (PACKAGE)",
+    "department": "Urology",
+    "days": 3,
+    "rates": {
+      "STANDARD": 195000,
+      "SEMI-PRIVATE": 254000,
+      "PRIVATE": 312000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_64",
+    "name": "FIBREOPTIC CYSTOSCOPY + BIOPSY (PACKAGE)",
+    "department": "Urology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 31000,
+      "SEMI-PRIVATE": 36000,
+      "PRIVATE": 44000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_65",
+    "name": "HOLMIUM LASER PROSTATE INTERNAL SURGERY STONE/TUMOUR (PACKAGE)",
+    "department": "Urology",
+    "days": 2,
+    "rates": {
+      "STANDARD": 124000,
+      "SEMI-PRIVATE": 161000,
+      "PRIVATE": 207000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_66",
+    "name": "HOLMIUM STRICTURES(BNI) (PACKAGE)",
+    "department": "Urology",
+    "days": 2,
+    "rates": {
+      "STANDARD": 69000,
+      "SEMI-PRIVATE": 91000,
+      "PRIVATE": 121000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_67",
+    "name": "HOLMIUM LASER SURGERY (PACKAGE)",
+    "department": "Urology",
+    "days": 2,
+    "rates": {
+      "STANDARD": 130000,
+      "SEMI-PRIVATE": 163000,
+      "PRIVATE": 208000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_68",
+    "name": "FLEXI URS-INTRARENAL STONE SURGERY (PACKAGE)",
+    "department": "Urology",
+    "days": 2,
+    "rates": {
+      "STANDARD": 142000,
+      "SEMI-PRIVATE": 178000,
+      "PRIVATE": 225000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_69",
+    "name": "FLEXI URS-INTRARENAL TUMOUR SURGERY (PACKAGE)",
+    "department": "Urology",
+    "days": 2,
+    "rates": {
+      "STANDARD": 142000,
+      "SEMI-PRIVATE": 178000,
+      "PRIVATE": 225000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_70",
+    "name": "FIBREOPTIC CYSTOSCOPY (PACKAGE)",
+    "department": "Urology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 26000,
+      "SEMI-PRIVATE": 31000,
+      "PRIVATE": 39000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_71",
+    "name": "FIBREOPTIC CYSTOSCOPY+STENT REMOVAL (PACKAGE)",
+    "department": "Urology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 26000,
+      "SEMI-PRIVATE": 31000,
+      "PRIVATE": 39000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_72",
+    "name": "HOLMIUM LASER PROSTATE (PACKAGE)",
+    "department": "Urology",
+    "days": 2,
+    "rates": {
+      "STANDARD": 104000,
+      "SEMI-PRIVATE": 137000,
+      "PRIVATE": 178000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_73",
+    "name": "HOLMIUM LASER-STONE/TUMOUR (PACKAGE)",
+    "department": "Urology",
+    "days": 2,
+    "rates": {
+      "STANDARD": 82000,
+      "SEMI-PRIVATE": 108000,
+      "PRIVATE": 139000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_74",
+    "name": "CYSTOSCOPY (NON-FIBEROPTIC) PACKAGE",
+    "department": "Urology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 14000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_75",
+    "name": "SURVEILLANCE CYSTOSOPY (EXCLUDE PHARMACY) (PACKAGE)",
+    "department": "Urology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 25000,
+      "SEMI-PRIVATE": 31250,
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_76",
+    "name": "LIVER TRANSPLANT PKG-DONOR (PACKAGE)",
+    "department": "General Surgery",
+    "days": 10,
+    "rates": {
+      "STANDARD": 600000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_77",
+    "name": "LIVER TRANSPLANT PKG-RECIPIENT(NORMAL) (PACKAGE)",
+    "department": "General Surgery",
+    "days": 21,
+    "rates": {
+      "STANDARD": 1700000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_78",
+    "name": "LIVER TRANSPLANT PKG-RECIPIENT(HIGH RISK) (PACKAGE)",
+    "department": "General Surgery",
+    "days": 21,
+    "rates": {
+      "STANDARD": 1900000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_79",
+    "name": "DAYCARE GRADE I (PACKAGE)",
+    "department": "General Surgery",
+    "days": 1,
+    "rates": {
+      "STANDARD": 15000,
+      "SEMI-PRIVATE": 15000,
+      "PRIVATE": 15000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_80",
+    "name": "DAYCARE GRADE II (PACKAGE)",
+    "department": "General Surgery",
+    "days": 1,
+    "rates": {
+      "STANDARD": 21000,
+      "SEMI-PRIVATE": 21000,
+      "PRIVATE": 21000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_81",
+    "name": "DAYCARE GRADE III (PACKAGE)",
+    "department": "General Surgery",
+    "days": 1,
+    "rates": {
+      "STANDARD": 30000,
+      "SEMI-PRIVATE": 30000,
+      "PRIVATE": 30000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_82",
+    "name": "PHACO + MULTIFOCAL",
+    "department": "General Surgery",
+    "days": 1,
+    "rates": {
+      "STANDARD": 52000,
+      "SEMI-PRIVATE": 52000,
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_83",
+    "name": "PHACO + TRABULECTOMY",
+    "department": "General Surgery",
+    "days": 1,
+    "rates": {
+      "STANDARD": 52000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_84",
+    "name": "TRABULECTOMY",
+    "department": "General Surgery",
+    "days": 1,
+    "rates": {
+      "STANDARD": 29000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_85",
+    "name": "ROBOTIC CHOLECYSTECTOMY (PACKAGE)",
+    "department": "General Surgery",
+    "days": 2,
+    "rates": {
+      "STANDARD": 182000,
+      "SEMI-PRIVATE": 237000,
+      "PRIVATE": 308000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_86",
+    "name": "ROBOTIC BARIATRIC SURGERY (PACKAGE)",
+    "department": "General Surgery",
+    "days": 5,
+    "rates": {
+      "STANDARD": 520000,
+      "SEMI-PRIVATE": 676000,
+      "PRIVATE": 879000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_87",
+    "name": "LAP CHOLECYSTECTOMY (PACKAGE)",
+    "department": "General Surgery",
+    "days": 2,
+    "rates": {
+      "STANDARD": 99000,
+      "SEMI-PRIVATE": 139000,
+      "PRIVATE": 176000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_88",
+    "name": "MICS 2.2MM PRELOADED LENS PACKAGE",
+    "department": "General Surgery",
+    "days": 1,
+    "rates": {
+      "STANDARD": 34000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_89",
+    "name": "OPEN APPENDECTOMY (PACKAGE)",
+    "department": "General Surgery",
+    "days": 3,
+    "rates": {
+      "STANDARD": 130000,
+      "SEMI-PRIVATE": 169000,
+      "PRIVATE": 220000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_90",
+    "name": "Fissurectomy / Haemorroidectomy / Correction of Piles (Package)",
+    "department": "General Surgery",
+    "days": 5,
+    "rates": {
+      "STANDARD": 104000,
+      "SEMI-PRIVATE": 135000,
+      "PRIVATE": 176000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_91",
+    "name": "Open Hernia Repair with Mesh (Package)",
+    "department": "General Surgery",
+    "days": 4,
+    "rates": {
+      "STANDARD": 130000,
+      "SEMI-PRIVATE": 169000,
+      "PRIVATE": 220000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_92",
+    "name": "Tumour Excision (Non-Malignant) (Package)",
+    "department": "General Surgery",
+    "days": 4,
+    "rates": {
+      "STANDARD": 130000,
+      "SEMI-PRIVATE": 169000,
+      "PRIVATE": 220000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_93",
+    "name": "Excision of Cyst (Package)",
+    "department": "General Surgery",
+    "days": 1,
+    "rates": {
+      "STANDARD": 85000,
+      "SEMI-PRIVATE": 111000,
+      "PRIVATE": 144000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_94",
+    "name": "Varicose Veins (Package)",
+    "department": "General Surgery",
+    "days": 3,
+    "rates": {
+      "STANDARD": 117000,
+      "SEMI-PRIVATE": 152000,
+      "PRIVATE": 198000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_95",
+    "name": "DECEASED LIVER TRANSPLANT PACKAGE (LEVEL-I)",
+    "department": "General Surgery",
+    "days": 21,
+    "rates": {
+      "STANDARD": 2300000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_96",
+    "name": "DECEASED LIVER TRANSPLANT PACKAGE (LEVEL-II)",
+    "department": "General Surgery",
+    "days": 21,
+    "rates": {
+      "STANDARD": 2500000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_97",
+    "name": "TONSILLECTOMY (PACKAGE)",
+    "department": "Ear Nose and Throat",
+    "days": 2,
+    "rates": {
+      "STANDARD": 95000,
+      "SEMI-PRIVATE": 122000,
+      "PRIVATE": 152000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_98",
+    "name": "TONSILLOADENOIDECTOMY (PACKAGE)",
+    "department": "Ear Nose and Throat",
+    "days": 2,
+    "rates": {
+      "STANDARD": 111000,
+      "SEMI-PRIVATE": 142000,
+      "PRIVATE": 176000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_99",
+    "name": "TYMPANOPLASTY (PACKAGE)",
+    "department": "Ear Nose and Throat",
+    "days": 2,
+    "rates": {
+      "STANDARD": 95000,
+      "SEMI-PRIVATE": 122000,
+      "PRIVATE": 152000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_100",
+    "name": "MASTOIDECTOMY WITH TYMPANOPLASTY (PACKAGE)",
+    "department": "Ear Nose and Throat",
+    "days": 2,
+    "rates": {
+      "STANDARD": 117000,
+      "SEMI-PRIVATE": 152000,
+      "PRIVATE": 198000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_101",
+    "name": "MYRINGOTOMY WITH GROMMET INSERTION (PACKAGE)",
+    "department": "Ear Nose and Throat",
+    "days": 1,
+    "rates": {
+      "STANDARD": 72000,
+      "SEMI-PRIVATE": 94000,
+      "PRIVATE": 122000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_102",
+    "name": "SEPTOPLASTY (PACKAGE)",
+    "department": "Ear Nose and Throat",
+    "days": 2,
+    "rates": {
+      "STANDARD": 95000,
+      "SEMI-PRIVATE": 122000,
+      "PRIVATE": 152000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_103",
+    "name": "ADENOIDECTOMY (PACKAGE)",
+    "department": "Ear Nose and Throat",
+    "days": 2,
+    "rates": {
+      "STANDARD": 95000,
+      "SEMI-PRIVATE": 122000,
+      "PRIVATE": 152000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_104",
+    "name": "FESS (ASSURED PACKAGE)",
+    "department": "Ear Nose and Throat",
+    "days": 2,
+    "rates": {
+      "STANDARD": 109000,
+      "SEMI-PRIVATE": 146000,
+      "PRIVATE": 174000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_105",
+    "name": "IOL-PHACO PACKAGE-I PACKAGE",
+    "department": "Ophthalmology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 26000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_106",
+    "name": "IOL-PHACO PACKAGE-II PACKAGE",
+    "department": "Ophthalmology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 33000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_107",
+    "name": "IOL-PHACO PACKAGE-III PACKAGE",
+    "department": "Ophthalmology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 36000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_108",
+    "name": "IOL-PHACO PACKAGE-IV PACKAGE",
+    "department": "Ophthalmology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 40000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_109",
+    "name": "PAEDIATRIC RENAL BIOPSY PACKAGE",
+    "department": "Nephrology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 33000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_110",
+    "name": "KT - RENAL TRANSPLANT - RECEIPIENT (EXCLUDE PHARMACY) (PACKAGE)",
+    "department": "Nephrology",
+    "days": 11,
+    "rates": {
+      "STANDARD": 550000,
+      "SEMI-PRIVATE": 690000,
+      "PRIVATE": 860000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_111",
+    "name": "KT - RENAL TRANSPLANT - DONOR (PACKAGE)",
+    "department": "Nephrology",
+    "days": 3,
+    "rates": {
+      "STANDARD": 350000,
+      "SEMI-PRIVATE": 440000,
+      "PRIVATE": 550000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_112",
+    "name": "GAS-HEMORRHOIDAL ARTERY LIGATION (SMALL) (PACKAGE)",
+    "department": "Gastroenterology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 39000,
+      "SEMI-PRIVATE": 48000,
+      "PRIVATE": 56000,
+      "PRIVATE DELUXE": 62000,
+      "DELUXE": 68000,
+      "SUITE": 75000,
+      "MAHARAJA SUITE": 82000
+    }
+  },
+  {
+    "id": "KOL_PKG_113",
+    "name": "GAS-HEMORRHOIDAL ARTERY LIGATION (LARGE) (PACKAGE)",
+    "department": "Gastroenterology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 52000,
+      "SEMI-PRIVATE": 64000,
+      "PRIVATE": 74000,
+      "PRIVATE DELUXE": 82000,
+      "DELUXE": 90000,
+      "SUITE": 101000,
+      "MAHARAJA SUITE": 107000
+    }
+  },
+  {
+    "id": "KOL_PKG_114",
+    "name": "LAP APPENDICECTOMY (PACKAGE)",
+    "department": "Gastroenterology",
+    "days": 2,
+    "rates": {
+      "STANDARD": 99000,
+      "SEMI-PRIVATE": 139000,
+      "PRIVATE": 176000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_115",
+    "name": "ACUTE STROKE IV THROMBOLYSIS PACKAGE (PACKAGE)",
+    "department": "Neurology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 70000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_116",
+    "name": "INTRA ARTERIAL THROMBOLYSIS / IV-IA BRIDGING PKG (PACKAGE)",
+    "department": "Neurology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 250000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_117",
+    "name": "DSA (VASCULAR AND NON-VASCULAR INTERVENTION) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 1,
+    "rates": {
+      "STANDARD": 26000,
+      "SEMI-PRIVATE": 33000,
+      "PRIVATE": 40000,
+      "PRIVATE DELUXE": 51000,
+      "DELUXE": 64000,
+      "SUITE": 79000,
+      "MAHARAJA SUITE": 99000
+    }
+  },
+  {
+    "id": "KOL_PKG_118",
+    "name": "PERMACATH INSERTION (VASCULAR AND NON-VASCULAR INTERVENTION) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 1,
+    "rates": {
+      "STANDARD": 72000,
+      "SEMI-PRIVATE": 90000,
+      "PRIVATE": 112000,
+      "PRIVATE DELUXE": 114000,
+      "DELUXE": 176000,
+      "SUITE": 220000,
+      "MAHARAJA SUITE": 274000
+    }
+  },
+  {
+    "id": "KOL_PKG_119",
+    "name": "PICC LINE (VASCULAR AND NON-VASCULAR INTERVENTION) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 1,
+    "rates": {
+      "STANDARD": 46000,
+      "SEMI-PRIVATE": 57000,
+      "PRIVATE": 72000,
+      "PRIVATE DELUXE": 78000,
+      "DELUXE": 112000,
+      "SUITE": 140000,
+      "MAHARAJA SUITE": 176000
+    }
+  },
+  {
+    "id": "KOL_PKG_120",
+    "name": "HICKMAN LINE INSERTION (VASCULAR AND NON-VASCULAR) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 1,
+    "rates": {
+      "STANDARD": 72000,
+      "SEMI-PRIVATE": 90000,
+      "PRIVATE": 112000,
+      "PRIVATE DELUXE": 114000,
+      "DELUXE": 176000,
+      "SUITE": 220000,
+      "MAHARAJA SUITE": 274000
+    }
+  },
+  {
+    "id": "KOL_PKG_121",
+    "name": "PTBD (SINGLE BILLIARY DRAINAGE VASCULAR AND NON-VASCULAR) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 1,
+    "rates": {
+      "STANDARD": 46000,
+      "SEMI-PRIVATE": 57000,
+      "PRIVATE": 72000,
+      "PRIVATE DELUXE": 78000,
+      "DELUXE": 112000,
+      "SUITE": 140000,
+      "MAHARAJA SUITE": 176000
+    }
+  },
+  {
+    "id": "KOL_PKG_122",
+    "name": "PTBD (DOUBLE BILLIARY DRAINAGE VASCULAR AND NON-VASCULAR) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 1,
+    "rates": {
+      "STANDARD": 59000,
+      "SEMI-PRIVATE": 73000,
+      "PRIVATE": 91000,
+      "PRIVATE DELUXE": 103000,
+      "DELUXE": 143000,
+      "SUITE": 179000,
+      "MAHARAJA SUITE": 225000
+    }
+  },
+  {
+    "id": "KOL_PKG_123",
+    "name": "CATHETER REPOSITIONING (VASCULAR AND NON-VASCULAR) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 1,
+    "rates": {
+      "STANDARD": 17000,
+      "SEMI-PRIVATE": 21000,
+      "PRIVATE": 26000,
+      "PRIVATE DELUXE": 33000,
+      "DELUXE": 40000,
+      "SUITE": 51000,
+      "MAHARAJA SUITE": 64000
+    }
+  },
+  {
+    "id": "KOL_PKG_124",
+    "name": "IVC FILTER (VASCULAR AND NON-VASCULAR INTERVENTION) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 2,
+    "rates": {
+      "STANDARD": 91000,
+      "SEMI-PRIVATE": 114000,
+      "PRIVATE": 143000,
+      "PRIVATE DELUXE": 153000,
+      "DELUXE": 225000,
+      "SUITE": 281000,
+      "MAHARAJA SUITE": 351000
+    }
+  },
+  {
+    "id": "KOL_PKG_125",
+    "name": "VENOPLASTY (VASCULAR AND NON- VASCULAR INTERVENTION) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 1,
+    "rates": {
+      "STANDARD": 91000,
+      "SEMI-PRIVATE": 114000,
+      "PRIVATE": 143000,
+      "PRIVATE DELUXE": 179000,
+      "DELUXE": 225000,
+      "SUITE": 281000,
+      "MAHARAJA SUITE": 351000
+    }
+  },
+  {
+    "id": "KOL_PKG_126",
+    "name": "STENTING (VASCULAR AND NON-VASCULAR INTERVENTION) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 2,
+    "rates": {
+      "STANDARD": 111000,
+      "SEMI-PRIVATE": 138000,
+      "PRIVATE": 173000,
+      "PRIVATE DELUXE": 215000,
+      "DELUXE": 270000,
+      "SUITE": 338000,
+      "MAHARAJA SUITE": 423000
+    }
+  },
+  {
+    "id": "KOL_PKG_127",
+    "name": "MESENTRIC (VASCULAR AND NON-VASCULAR INTERVENTION) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 1,
+    "rates": {
+      "STANDARD": 26000,
+      "SEMI-PRIVATE": 33000,
+      "PRIVATE": 40000,
+      "PRIVATE DELUXE": 51000,
+      "DELUXE": 64000,
+      "SUITE": 79000,
+      "MAHARAJA SUITE": 99000
+    }
+  },
+  {
+    "id": "KOL_PKG_128",
+    "name": "BILLARY STENTING (VASCULAR AND NON- VASCULAR) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 3,
+    "rates": {
+      "STANDARD": 111000,
+      "SEMI-PRIVATE": 138000,
+      "PRIVATE": 173000,
+      "PRIVATE DELUXE": 192000,
+      "DELUXE": 270000,
+      "SUITE": 338000,
+      "MAHARAJA SUITE": 423000
+    }
+  },
+  {
+    "id": "KOL_PKG_129",
+    "name": "R F ABLATION (VASCULAR AND NON- VASCULAR) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 2,
+    "rates": {
+      "STANDARD": 111000,
+      "SEMI-PRIVATE": 138000,
+      "PRIVATE": 173000,
+      "PRIVATE DELUXE": 179000,
+      "DELUXE": 270000,
+      "SUITE": 338000,
+      "MAHARAJA SUITE": 423000
+    }
+  },
+  {
+    "id": "KOL_PKG_130",
+    "name": "MICROWEB ABLATION (VASCULAR AND NON- VASCULAR) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 2,
+    "rates": {
+      "STANDARD": 117000,
+      "SEMI-PRIVATE": 147000,
+      "PRIVATE": 183000,
+      "PRIVATE DELUXE": 229000,
+      "DELUXE": 286000,
+      "SUITE": 358000,
+      "MAHARAJA SUITE": 447000
+    }
+  },
+  {
+    "id": "KOL_PKG_131",
+    "name": "EMBOLIZATION (VASCULAR AND NON- VASCULAR) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 2,
+    "rates": {
+      "STANDARD": 104000,
+      "SEMI-PRIVATE": 130000,
+      "PRIVATE": 163000,
+      "PRIVATE DELUXE": 208500,
+      "DELUXE": 254000,
+      "SUITE": 317000,
+      "MAHARAJA SUITE": 397000
+    }
+  },
+  {
+    "id": "KOL_PKG_132",
+    "name": "NERVE BLOCK (VASCULAR AND NON- VASCULAR) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 1,
+    "rates": {
+      "STANDARD": 27000,
+      "SEMI-PRIVATE": 34000,
+      "PRIVATE": 43000,
+      "PRIVATE DELUXE": 53000,
+      "DELUXE": 66000,
+      "SUITE": 92000,
+      "MAHARAJA SUITE": 129000
+    }
+  },
+  {
+    "id": "KOL_PKG_133",
+    "name": "NERVE ABLATION (VASCULAR AND NON- VASCULAR) PACKAGE",
+    "department": "Vascular and Non\nVascular Intervention",
+    "days": 1,
+    "rates": {
+      "STANDARD": 78000,
+      "SEMI-PRIVATE": 98000,
+      "PRIVATE": 122000,
+      "PRIVATE DELUXE": 153000,
+      "DELUXE": 192000,
+      "SUITE": 269000,
+      "MAHARAJA SUITE": 377000
+    }
+  },
+  {
+    "id": "KOL_PKG_134",
+    "name": "PERFORATED ENDOVENOUS LASER PACKAGE (UNILATERAL)",
+    "department": "Radiology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 39000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_135",
+    "name": "PERFORATED ENDOVENOUS LASER PACKAGE (BILATERAL)",
+    "department": "Radiology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 72000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_136",
+    "name": "ENDOVENOUS LASER PACKAGE (UNILATERAL)",
+    "department": "Radiology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 156000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_137",
+    "name": "ENDOVENOUS LASER PACKAGE (BILATERAL)",
+    "department": "Radiology",
+    "days": 1,
+    "rates": {
+      "STANDARD": 286000,
+      "SEMI-PRIVATE": "InActuals",
+      "PRIVATE": "InActuals",
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_138",
+    "name": "SLEEVE (PACKAGE)",
+    "department": "Bariatric Surgery",
+    "days": 3,
+    "rates": {
+      "STANDARD": 358000,
+      "SEMI-PRIVATE": 449000,
+      "PRIVATE": 585000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_139",
+    "name": "ROUX-EN-Y GASTRIC BYPASS (PACKAGE)",
+    "department": "Bariatric Surgery",
+    "days": 3,
+    "rates": {
+      "STANDARD": 455000,
+      "SEMI-PRIVATE": 566000,
+      "PRIVATE": 735000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_140",
+    "name": "BRONCHIAL THERMOPLASTY (SITTING-I) (PACKAGE)",
+    "department": "Pulmonary Function Lab",
+    "days": 1,
+    "rates": {
+      "STANDARD": 325000,
+      "SEMI-PRIVATE": 416000,
+      "PRIVATE": 520000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_141",
+    "name": "BRONCHIAL THERMOPLASTY (SITTING-II) (PACKAGE)",
+    "department": "Pulmonary Function Lab",
+    "days": 1,
+    "rates": {
+      "STANDARD": 130000,
+      "SEMI-PRIVATE": 156000,
+      "PRIVATE": 195000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  },
+  {
+    "id": "KOL_PKG_142",
+    "name": "BRONCHIAL THERMOPLASTY (SITTING-III) (PACKAGE)",
+    "department": "Pulmonary Function Lab",
+    "days": 1,
+    "rates": {
+      "STANDARD": 130000,
+      "SEMI-PRIVATE": 156000,
+      "PRIVATE": 195000,
+      "PRIVATE DELUXE": "InActuals",
+      "DELUXE": "InActuals",
+      "SUITE": "InActuals",
+      "MAHARAJA SUITE": "InActuals"
+    }
+  }
+]

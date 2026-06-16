@@ -46,5 +46,29 @@
     "password": "Admin@Intl",
     "role": "Administrator",
     "unit": "international"
+  },
+  {
+    "username": "Review",
+    "password": "Apollo@123",
+    "role": "Viewer",
+    "unit": "kolkata"
+  },
+  {
+    "username": "BRC",
+    "password": "Brc@2013",
+    "role": "Auditor",
+    "unit": "kolkata"
+  },
+  {
+    "username": "BRC1",
+    "password": "Brc@2026",
+    "role": "Approver",
+    "unit": "kolkata"
+  },
+  {
+    "username": "admin",
+    "password": "Admin@Kolkata",
+    "role": "Administrator",
+    "unit": "kolkata"
   }
 ]

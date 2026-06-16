@@ -1076,6 +1076,14 @@ $excel.Quit()
 [System.GC]::Collect()
 [System.GC]::WaitForPendingFinalizers()
 
+# # Run Kolkata PDF parsing python script
+Log-Info "Running Kolkata PDF parsing python script..."
+& python "$PSScriptRoot/compile_kolkata_tariffs.py"
+
+$jsonKolkataSoc = if (Test-Path "$PSScriptRoot/kolkata_soc.json") { [IO.File]::ReadAllText("$PSScriptRoot/kolkata_soc.json") } else { "[]" }
+$jsonKolkataPkg = if (Test-Path "$PSScriptRoot/kolkata_pkg.json") { [IO.File]::ReadAllText("$PSScriptRoot/kolkata_pkg.json") } else { "[]" }
+$jsonKolkataAgreements = if (Test-Path "$PSScriptRoot/kolkata_agreements.json") { [IO.File]::ReadAllText("$PSScriptRoot/kolkata_agreements.json") } else { "[]" }
+
 # Write everything to tariff_data.js
 Log-Info "Writing output file: $outputFile"
 
@@ -1118,6 +1126,9 @@ $jsonExcelcare2024 = if ($jsonExcelcare2024) { $jsonExcelcare2024 } else { "[]" 
 $jsonExcelcareGipsa2026 = if ($jsonExcelcareGipsa2026) { $jsonExcelcareGipsa2026 } else { "[]" }
 $jsonHdfcErgo = if ($jsonHdfcErgo) { $jsonHdfcErgo } else { "[]" }
 $jsonAgreements = if ($jsonAgreements) { $jsonAgreements } else { "[]" }
+$jsonKolkataSoc = if ($jsonKolkataSoc) { $jsonKolkataSoc } else { "[]" }
+$jsonKolkataPkg = if ($jsonKolkataPkg) { $jsonKolkataPkg } else { "[]" }
+$jsonKolkataAgreements = if ($jsonKolkataAgreements) { $jsonKolkataAgreements } else { "[]" }
 
 $jsContent = @"
 const TARIFF_DATA = $jsonMaster;
@@ -1138,6 +1149,9 @@ const TARIFF_EXCELCARE_CASH_2025 = $jsonExcelcareCash2025;
 const TARIFF_EXCELCARE_2024 = $jsonExcelcare2024;
 const TARIFF_EXCELCARE_GIPSA_2026 = $jsonExcelcareGipsa2026;
 const TARIFF_HDFC_ERGO_2024 = $jsonHdfcErgo;
+const TARIFF_KOLKATA_SOC = $jsonKolkataSoc;
+const TARIFF_KOLKATA_PKG = $jsonKolkataPkg;
+const AGREEMENT_KOLKATA = $jsonKolkataAgreements;
 const AGREEMENT_DETAILS = $jsonAgreements;
 "@
 
