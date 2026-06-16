@@ -668,25 +668,106 @@ $excelcareFile2025 = Join-Path $excelcareDir "SOC FY26  CREDIT (1).xls"
 
 if (Test-Path $excelcareFile2025) {
     $wb = $excel.Workbooks.Open($excelcareFile2025, [Type]::Missing, $true)
-    $sheet = $wb.Worksheets.Item("SOC 25-26 Merged")
-    if ($sheet -ne $null) {
+    $unique26 = [ordered]@{}
+    
+    for ($i = 1; $i -le $wb.Sheets.Count; $i++) {
+        $sheet = $wb.Sheets.Item($i)
+        $sName = $sheet.Name
+        if ($sName -eq "INDEX" -or $sName -eq "Sheet1" -or $sName -eq "Sheet2" -or $sName -eq "Sheet3" -or $sName -eq "Sheet4" -or $sName -eq "01 Billing terms") { continue }
+        
         $values = $sheet.UsedRange.Value2
+        if ($null -eq $values) { continue }
+        
         $rowCount = $sheet.UsedRange.Rows.Count
-        for ($r = 2; $r -le $rowCount; $r++) {
-            $code = if ($values[$r, 1] -ne $null) { $values[$r, 1].ToString().Trim() } else { "" }
-            $name = if ($values[$r, 2] -ne $null) { $values[$r, 2].ToString().Trim() } else { "" }
-            $rateStr = if ($values[$r, 3] -ne $null) { $values[$r, 3].ToString().Trim() } else { "" }
-            $rateNum = 0
-            if (-not [double]::TryParse($rateStr, [ref]$rateNum)) { $rateNum = 0 }
-            
-            if ([string]::IsNullOrEmpty($code) -or [string]::IsNullOrEmpty($name)) { continue }
-            
-            $listExcelcare2025.Add([PSCustomObject]@{
-                id = $code
-                name = $name
-                rate = $rateNum
-            })
+        $colCount = $sheet.UsedRange.Columns.Count
+        
+        # Auto-detect code, name, and rate columns
+        $headerRow = 0
+        $codeCol = 0
+        $nameCol = 0
+        $rateCol = 0
+        
+        for ($r = 1; $r -le [Math]::Min($rowCount, 10); $r++) {
+            for ($c = 1; $c -le $colCount; $c++) {
+                $val = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim().ToUpper() } else { "" }
+                if ($val -in @("SERVICE CODE", "SERVICEID", "CODE", "NEW CODE", "SERVICE_CODE")) {
+                    $headerRow = $r
+                    $codeCol = $c
+                    break
+                }
+            }
+            if ($headerRow -gt 0) { break }
         }
+        
+        if ($headerRow -eq 0) {
+            $codeCol = 1
+            $nameCol = 2
+            $rateCol = 3
+            $headerRow = 1
+        } else {
+            # Find name column
+            for ($c = $codeCol + 1; $c -le $colCount; $c++) {
+                $val = if ($values[$headerRow, $c] -ne $null) { $values[$headerRow, $c].ToString().Trim().ToUpper() } else { "" }
+                if ($val -in @("SERVICE NAME", "SERVICENAME", "DESCRIPTION", "PARTICULARS", "PROCEDURE NAME")) {
+                    $nameCol = $c
+                    break
+                }
+            }
+            if ($nameCol -eq 0) { $nameCol = $codeCol + 1 }
+            
+            # Rate column
+            $preferredHeaders = @("OPD/EMERGENCY", "OPD", "AMOUNT", "TARIFF", "RATE", "4 SHARING", "SINGLE/DAYCARE", "TARIFF PER VISIT")
+            foreach ($ph in $preferredHeaders) {
+                for ($c = $nameCol + 1; $c -le $colCount; $c++) {
+                    $val = if ($values[$headerRow, $c] -ne $null) { $values[$headerRow, $c].ToString().Trim().ToUpper() } else { "" }
+                    if ($val -like "*$ph*") {
+                        $rateCol = $c
+                        break
+                    }
+                }
+                if ($rateCol -gt 0) { break }
+            }
+            if ($rateCol -eq 0) { $rateCol = $nameCol + 1 }
+        }
+        
+        for ($r = $headerRow + 1; $r -le $rowCount; $r++) {
+            $code = if ($values[$r, $codeCol] -ne $null) { $values[$r, $codeCol].ToString().Trim() } else { "" }
+            $codeVal = 0
+            if (-not $code -or -not [double]::TryParse($code, [ref]$codeVal) -or $codeVal -lt 1) { continue }
+            
+            $name = if ($values[$r, $nameCol] -ne $null) { $values[$r, $nameCol].ToString().Trim() } else { "" }
+            if (-not $name) { continue }
+            
+            $rateNum = 0
+            $rateStr = if ($values[$r, $rateCol] -ne $null) { $values[$r, $rateCol].ToString().Trim() } else { "" }
+            if ($rateStr -and [double]::TryParse($rateStr, [ref]$rateNum) -and $rateNum -gt 0) {
+                # Valid rate
+            } else {
+                # Fallback scanning for any valid positive numeric value
+                for ($c = $nameCol + 1; $c -le $colCount; $c++) {
+                    $valStr = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
+                    $valNum = 0
+                    if ($valStr -and [double]::TryParse($valStr, [ref]$valNum) -and $valNum -gt 0) {
+                        $rateNum = $valNum
+                        if ($valNum -ge 10) {
+                            break
+                        }
+                    }
+                }
+            }
+            
+            if (-not $unique26.Contains($code) -or ($unique26[$code].rate -eq 0 -and $rateNum -gt 0)) {
+                $unique26[$code] = [PSCustomObject]@{
+                    id = $code
+                    name = $name
+                    rate = $rateNum
+                }
+            }
+        }
+    }
+    
+    foreach ($item in $unique26.Values) {
+        $listExcelcare2025.Add($item)
     }
     $wb.Close($false)
 } else {
@@ -700,40 +781,106 @@ $excelcareFile2024 = Join-Path $excelcareDir "SOC FY24-25 Credit (2).xls"
 
 if (Test-Path $excelcareFile2024) {
     $wb = $excel.Workbooks.Open($excelcareFile2024, [Type]::Missing, $true)
-    $sheet = $wb.Worksheets.Item("Merged")
-    if ($sheet -ne $null) {
+    $unique25 = [ordered]@{}
+    
+    for ($i = 1; $i -le $wb.Sheets.Count; $i++) {
+        $sheet = $wb.Sheets.Item($i)
+        $sName = $sheet.Name
+        if ($sName -eq "Index" -or $sName -eq "Sheet1" -or $sName -eq "Sheet2" -or $sName -eq "Sheet3" -or $sName -eq "Sheet4" -or $sName -eq "01 Billing terms") { continue }
+        
         $values = $sheet.UsedRange.Value2
+        if ($null -eq $values) { continue }
+        
         $rowCount = $sheet.UsedRange.Rows.Count
         $colCount = $sheet.UsedRange.Columns.Count
-        for ($r = 2; $r -le $rowCount; $r++) {
-            # In 24-25 Merged sheet: Col 2 is Service ID, Col 3 is Service Name, Col 5 is standard rate
-            $code = if ($values[$r, 2] -ne $null) { $values[$r, 2].ToString().Trim() } else { "" }
-            $name = if ($values[$r, 3] -ne $null) { $values[$r, 3].ToString().Trim() } else { "" }
+        
+        # Auto-detect code, name, and rate columns
+        $headerRow = 0
+        $codeCol = 0
+        $nameCol = 0
+        $rateCol = 0
+        
+        for ($r = 1; $r -le [Math]::Min($rowCount, 10); $r++) {
+            for ($c = 1; $c -le $colCount; $c++) {
+                $val = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim().ToUpper() } else { "" }
+                if ($val -in @("SERVICE CODE", "SERVICEID", "CODE", "NEW CODE", "SERVICE_CODE")) {
+                    $headerRow = $r
+                    $codeCol = $c
+                    break
+                }
+            }
+            if ($headerRow -gt 0) { break }
+        }
+        
+        if ($headerRow -eq 0) {
+            $codeCol = 1
+            $nameCol = 2
+            $rateCol = 3
+            $headerRow = 1
+        } else {
+            # Find name column
+            for ($c = $codeCol + 1; $c -le $colCount; $c++) {
+                $val = if ($values[$headerRow, $c] -ne $null) { $values[$headerRow, $c].ToString().Trim().ToUpper() } else { "" }
+                if ($val -in @("SERVICE NAME", "SERVICENAME", "DESCRIPTION", "PARTICULARS", "PROCEDURE NAME")) {
+                    $nameCol = $c
+                    break
+                }
+            }
+            if ($nameCol -eq 0) { $nameCol = $codeCol + 1 }
             
-            if ([string]::IsNullOrEmpty($code) -or [string]::IsNullOrEmpty($name)) { continue }
+            # Rate column
+            $preferredHeaders = @("OPD/EMERGENCY", "OPD", "AMOUNT", "TARIFF", "RATE", "4 SHARING", "SINGLE/DAYCARE", "TARIFF PER VISIT")
+            foreach ($ph in $preferredHeaders) {
+                for ($c = $nameCol + 1; $c -le $colCount; $c++) {
+                    $val = if ($values[$headerRow, $c] -ne $null) { $values[$headerRow, $c].ToString().Trim().ToUpper() } else { "" }
+                    if ($val -like "*$ph*") {
+                        $rateCol = $c
+                        break
+                    }
+                }
+                if ($rateCol -gt 0) { break }
+            }
+            if ($rateCol -eq 0) { $rateCol = $nameCol + 1 }
+        }
+        
+        for ($r = $headerRow + 1; $r -le $rowCount; $r++) {
+            $code = if ($values[$r, $codeCol] -ne $null) { $values[$r, $codeCol].ToString().Trim() } else { "" }
+            $codeVal = 0
+            if (-not $code -or -not [double]::TryParse($code, [ref]$codeVal) -or $codeVal -lt 1) { continue }
+            
+            $name = if ($values[$r, $nameCol] -ne $null) { $values[$r, $nameCol].ToString().Trim() } else { "" }
+            if (-not $name) { continue }
             
             $rateNum = 0
-            $rateStr = if ($values[$r, 5] -ne $null) { $values[$r, 5].ToString().Trim() } else { "" }
-            if ($rateStr -and [double]::TryParse($rateStr, [ref]$rateNum)) {
-                # Found in Col 5
+            $rateStr = if ($values[$r, $rateCol] -ne $null) { $values[$r, $rateCol].ToString().Trim() } else { "" }
+            if ($rateStr -and [double]::TryParse($rateStr, [ref]$rateNum) -and $rateNum -gt 0) {
+                # Valid rate
             } else {
-                # Fallback check columns 6 to 12
-                for ($c = 6; $c -le $colCount; $c++) {
-                    $rateStr = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
+                # Fallback scanning
+                for ($c = $nameCol + 1; $c -le $colCount; $c++) {
+                    $valStr = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
                     $valNum = 0
-                    if ($rateStr -and [double]::TryParse($rateStr, [ref]$valNum)) {
+                    if ($valStr -and [double]::TryParse($valStr, [ref]$valNum) -and $valNum -gt 0) {
                         $rateNum = $valNum
-                        break
+                        if ($valNum -ge 10) {
+                            break
+                        }
                     }
                 }
             }
             
-            $listExcelcare2024.Add([PSCustomObject]@{
-                id = $code
-                name = $name
-                rate = $rateNum
-            })
+            if (-not $unique25.Contains($code) -or ($unique25[$code].rate -eq 0 -and $rateNum -gt 0)) {
+                $unique25[$code] = [PSCustomObject]@{
+                    id = $code
+                    name = $name
+                    rate = $rateNum
+                }
+            }
         }
+    }
+    
+    foreach ($item in $unique25.Values) {
+        $listExcelcare2024.Add($item)
     }
     $wb.Close($false)
 } else {
@@ -830,6 +977,101 @@ if (Test-Path $excelcareCashFile) {
     Log-Info "Warning: Excelcare 2026 - Cash SOC file not found at $excelcareCashFile"
 }
 
+# 12. Parse Excelcare GIPSA 2026 (APL EXL HOSP_SOC.xlsx)
+Log-Info "Parsing Excelcare GIPSA 2026..."
+$listExcelcareGipsa2026 = New-Object System.Collections.Generic.List[Object]
+$dipjyotiDir = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Excelcare/SOC's from Dipjyoti"
+$dipjyotiFile = Join-Path $dipjyotiDir "APL EXL HOSP_SOC.xlsx"
+
+if (Test-Path $dipjyotiFile) {
+    $wb = $excel.Workbooks.Open($dipjyotiFile, [Type]::Missing, $true)
+    $uniqueGipsa = [ordered]@{}
+    
+    # Parse Bed Charges sheet first
+    $sheet1 = $null
+    try {
+        $sheet1 = $wb.Worksheets.Item("Bed Charges")
+    } catch {
+        $sheet1 = $wb.Worksheets.Item(1)
+    }
+    
+    if ($sheet1 -ne $null) {
+        $values1 = $sheet1.UsedRange.Value2
+        $rowCount1 = $sheet1.UsedRange.Rows.Count
+        for ($r = 1; $r -le $rowCount1; $r++) {
+            $code = if ($values1[$r, 2] -ne $null) { $values1[$r, 2].ToString().Trim() } else { "" }
+            $codeVal = 0
+            if (-not $code -or -not [double]::TryParse($code, [ref]$codeVal) -or $codeVal -lt 1) { continue }
+            
+            $name = if ($values1[$r, 3] -ne $null) { $values1[$r, 3].ToString().Trim() } else { "" }
+            if (-not $name) { continue }
+            
+            $rateNum = 0
+            $rateStr = if ($values1[$r, 6] -ne $null) { $values1[$r, 6].ToString().Trim() } else { "" }
+            if ($rateStr -and [double]::TryParse($rateStr, [ref]$rateNum) -and $rateNum -gt 0) {
+                $uniqueGipsa[$code] = [PSCustomObject]@{
+                    id = $code
+                    name = $name
+                    rate = $rateNum
+                }
+            }
+        }
+    }
+    
+    # Parse Other Tariff sheet
+    $sheet = $null
+    try {
+        $sheet = $wb.Worksheets.Item("Other Tariff")
+    } catch {
+        $sheet = $wb.Worksheets.Item(4)
+    }
+    
+    if ($sheet -ne $null) {
+        $values = $sheet.UsedRange.Value2
+        $rowCount = $sheet.UsedRange.Rows.Count
+        
+        for ($r = 2; $r -le $rowCount; $r++) {
+            $code = if ($values[$r, 4] -ne $null) { $values[$r, 4].ToString().Trim() } else { "" }
+            $name = if ($values[$r, 5] -ne $null) { $values[$r, 5].ToString().Trim() } else { "" }
+            
+            $codeVal = 0
+            if (-not $code -or -not [double]::TryParse($code, [ref]$codeVal) -or $codeVal -lt 1) { continue }
+            if (-not $name) { continue }
+            
+            $rateNum = 0
+            $rateStr = if ($values[$r, 7] -ne $null) { $values[$r, 7].ToString().Trim() } else { "" }
+            if ($rateStr -and [double]::TryParse($rateStr, [ref]$rateNum) -and $rateNum -gt 0) {
+                # Found OPD rate
+            } else {
+                for ($c = 7; $c -le $sheet.UsedRange.Columns.Count; $c++) {
+                    $valStr = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
+                    $valNum = 0
+                    if ($valStr -and [double]::TryParse($valStr, [ref]$valNum) -and $valNum -gt 0) {
+                        $rateNum = $valNum
+                        break
+                    }
+                }
+            }
+            
+            if (-not $uniqueGipsa.Contains($code) -or ($uniqueGipsa[$code].rate -eq 0 -and $rateNum -gt 0)) {
+                $uniqueGipsa[$code] = [PSCustomObject]@{
+                    id = $code
+                    name = $name
+                    rate = $rateNum
+                }
+            }
+        }
+    }
+    
+    foreach ($item in $uniqueGipsa.Values) {
+        $listExcelcareGipsa2026.Add($item)
+    }
+    
+    $wb.Close($false)
+} else {
+    Log-Info "Warning: Excelcare GIPSA 2026 file not found at $dipjyotiFile"
+}
+
 $excel.Quit()
 [System.GC]::Collect()
 [System.GC]::WaitForPendingFinalizers()
@@ -853,6 +1095,7 @@ $json2025 = $list2025 | ConvertTo-Json -Depth 5
 $jsonExcelcare2025 = $listExcelcare2025 | ConvertTo-Json -Depth 5
 $jsonExcelcareCash2025 = $listExcelcareCash2025 | ConvertTo-Json -Depth 5
 $jsonExcelcare2024 = $listExcelcare2024 | ConvertTo-Json -Depth 5
+$jsonExcelcareGipsa2026 = $listExcelcareGipsa2026 | ConvertTo-Json -Depth 5
 $jsonHdfcErgo = $listHdfcErgo | ConvertTo-Json -Depth 5
 $jsonAgreements = $listAgreements | ConvertTo-Json -Depth 5
 
@@ -872,6 +1115,7 @@ $json2025 = if ($json2025) { $json2025 } else { "[]" }
 $jsonExcelcare2025 = if ($jsonExcelcare2025) { $jsonExcelcare2025 } else { "[]" }
 $jsonExcelcareCash2025 = if ($jsonExcelcareCash2025) { $jsonExcelcareCash2025 } else { "[]" }
 $jsonExcelcare2024 = if ($jsonExcelcare2024) { $jsonExcelcare2024 } else { "[]" }
+$jsonExcelcareGipsa2026 = if ($jsonExcelcareGipsa2026) { $jsonExcelcareGipsa2026 } else { "[]" }
 $jsonHdfcErgo = if ($jsonHdfcErgo) { $jsonHdfcErgo } else { "[]" }
 $jsonAgreements = if ($jsonAgreements) { $jsonAgreements } else { "[]" }
 
@@ -892,6 +1136,7 @@ const TARIFF_2025 = $json2025;
 const TARIFF_EXCELCARE_2025 = $jsonExcelcare2025;
 const TARIFF_EXCELCARE_CASH_2025 = $jsonExcelcareCash2025;
 const TARIFF_EXCELCARE_2024 = $jsonExcelcare2024;
+const TARIFF_EXCELCARE_GIPSA_2026 = $jsonExcelcareGipsa2026;
 const TARIFF_HDFC_ERGO_2024 = $jsonHdfcErgo;
 const AGREEMENT_DETAILS = $jsonAgreements;
 "@
@@ -909,6 +1154,7 @@ Log-Info "SOC 2025-26 records: $($list2025.Count)"
 Log-Info "Excelcare SOC 25-26 records: $($listExcelcare2025.Count)"
 Log-Info "Excelcare 2026 - Cash records: $($listExcelcareCash2025.Count)"
 Log-Info "Excelcare SOC 24-25 records: $($listExcelcare2024.Count)"
+Log-Info "Excelcare GIPSA 2026 records: $($listExcelcareGipsa2026.Count)"
 Log-Info "HDFC ERGO 2024 records: $($listHdfcErgo.Count)"
 Log-Info "Agreements compiled: $($listAgreements.Count)"
 Log-Info "Total execution time: $(($endAll - $startAll).TotalSeconds) seconds"

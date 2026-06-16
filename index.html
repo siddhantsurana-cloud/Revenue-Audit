@@ -4195,6 +4195,7 @@
     let mapExcelcare = {};
     let mapExcelcareCash = {};
     let mapExcelcare2024 = {};
+    let mapExcelcareGipsa2026 = {};
     let mapHdfc = {}; // id -> Array of HDFC records
 
     // OneDrive Database Sync API Methods
@@ -4838,6 +4839,9 @@
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') {
             TARIFF_EXCELCARE_2024.forEach(item => { mapExcelcare2024[item.id] = item; });
         }
+        if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') {
+            TARIFF_EXCELCARE_GIPSA_2026.forEach(item => { mapExcelcareGipsa2026[item.id] = item; });
+        }
         if (typeof TARIFF_HDFC_ERGO_2024 !== 'undefined') {
             TARIFF_HDFC_ERGO_2024.forEach(item => {
                 if (!mapHdfc[item.id]) mapHdfc[item.id] = [];
@@ -4855,6 +4859,7 @@
         if (typeof TARIFF_EXCELCARE_2025 !== 'undefined') TARIFF_EXCELCARE_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') TARIFF_EXCELCARE_CASH_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') TARIFF_EXCELCARE_2024.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') TARIFF_EXCELCARE_GIPSA_2026.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_HDFC_ERGO_2024 !== 'undefined') TARIFF_HDFC_ERGO_2024.forEach(item => allIds.add(item.id));
 
         UNIFIED_TARIFFS = [];
@@ -4873,6 +4878,7 @@
             let mEc = mapExcelcare[id];
             let mEcCash = mapExcelcareCash[id];
             let mEc24 = mapExcelcare2024[id];
+            let mEcGipsa2026 = mapExcelcareGipsa2026[id];
             let mHdfcList = mapHdfc[id] || [];
             let mHdfc = mHdfcList.length > 0 ? mHdfcList[0] : null;
 
@@ -4888,6 +4894,8 @@
                 name = m23.name; dept = m23.dept; type = m23.type;
             } else if (m21) {
                 name = m21.name; dept = m21.dept; type = m21.type;
+            } else if (mEcGipsa2026) {
+                name = mEcGipsa2026.name; dept = 'Excelcare SOC'; type = 'Excelcare GIPSA';
             } else if (mEc) {
                 name = mEc.name; dept = 'Excelcare SOC'; type = 'Excelcare Room/Bed';
             } else if (mEcCash) {
@@ -4912,7 +4920,8 @@
                 rate2021: m21 ? m21.rate : null,
                 rateExcelcare: mEc ? mEc.rate : null,
                 rateExcelcareCash: mEcCash ? mEcCash.rate : null,
-                rateExcelcare2024: mEc24 ? mEc24.rate : null
+                rateExcelcare2024: mEc24 ? mEc24.rate : null,
+                rateExcelcareGipsa2026: mEcGipsa2026 ? mEcGipsa2026.rate : null
             });
         });
     }
@@ -5024,6 +5033,7 @@
         let countExcelcare = 0;
         let countExcelcareCash = 0;
         let countExcelcare2024 = 0;
+        let countExcelcareGipsa2026 = 0;
         let count2026 = 0;
 
         if (typeof TARIFF_2021 !== 'undefined') count2021 = TARIFF_2021.length;
@@ -5033,6 +5043,7 @@
         if (typeof TARIFF_EXCELCARE_2025 !== 'undefined') countExcelcare = TARIFF_EXCELCARE_2025.length;
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') countExcelcareCash = TARIFF_EXCELCARE_CASH_2025.length;
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') countExcelcare2024 = TARIFF_EXCELCARE_2024.length;
+        if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') countExcelcareGipsa2026 = TARIFF_EXCELCARE_GIPSA_2026.length;
         if (typeof TARIFF_DATA !== 'undefined') count2026 = TARIFF_DATA.length;
 
         let cbCount = 0;
@@ -5084,10 +5095,10 @@
             dbYearsChartInstance = new Chart(ctxYears.getContext('2d'), {
                 type: 'bar',
                 data: {
-                    labels: ['2021-22', '2023-24', '2024-25', '2025-26', 'Excelcare 2024', 'Excelcare 2025', 'Excelcare 2026 - Cash', '2026 Master'],
+                    labels: ['2021-22', '2023-24', '2024-25', '2025-26', 'Excelcare 2024', 'Excelcare 2025', 'Excelcare 2026 - Cash', 'Excelcare GIPSA 2026', '2026 Master'],
                     datasets: [{
                         label: 'Tariff Codes',
-                        data: [count2021, count2023, count2024, count2025, countExcelcare2024, countExcelcare, countExcelcareCash, count2026],
+                        data: [count2021, count2023, count2024, count2025, countExcelcare2024, countExcelcare, countExcelcareCash, countExcelcareGipsa2026, count2026],
                         backgroundColor: isDark ? 'rgba(13, 148, 136, 0.8)' : 'rgba(15, 118, 110, 0.85)',
                         borderColor: isDark ? '#0d9488' : '#0f766e',
                         borderWidth: 1.5,
@@ -6736,6 +6747,7 @@
                 sourceSelect.innerHTML = `
                     <option value="excelcare_2025" selected>2025-26 SOC (Excelcare)</option>
                     <option value="excelcare_cash_2025">2026 - Cash (Excelcare)</option>
+                    <option value="excelcare_gipsa_2026">SOC - GIPSA 2026 (Excelcare)</option>
                     <option value="excelcare_2024">2024-25 SOC (Excelcare)</option>
                 `;
             } else {
@@ -6769,6 +6781,7 @@
         } else {
             html = `
                 <option value="excelcare_soc">Standard Excelcare SOC 2025</option>
+                <option value="excelcare_gipsa_2026">SOC - GIPSA 2026 (Excelcare)</option>
                 <option value="excelcare_soc_2024">Standard Excelcare SOC 2024</option>
                 <option value="hdfc_gen">HDFC ERGO General/4 Sharing</option>
                 <option value="hdfc_twin">HDFC ERGO Twin/2 Sharing</option>
@@ -7295,6 +7308,31 @@
     }
 
     function lookupExcelcareRoomRent(cleanedRoom, activeSourceVal) {
+        const ratesGipsa2026 = {
+            "SUITE": 14250,
+            "SUITE ROOM": 14250,
+            "EXECUTIVE": 8550,
+            "EXECUTIVE ROOM": 8550,
+            "SINGLE PRIVATE": 7125,
+            "SINGLE ROOM": 7125,
+            "SEMI PRIVATE": 5225,
+            "2 BEDDED ROOM": 5225,
+            "STANDARD WARD": 2755,
+            "4 BEDDED ROOM": 2755,
+            "GENERAL WARD": 2755,
+            "ICU": 8075,
+            "ICCU": 8075,
+            "CCU": 8075,
+            "KTU- INTENSIVE CARE UNIT": 8075,
+            "KTU INTENSIVE CARE UNIT": 8075,
+            "CTVS ICU": 8075,
+            "CARDIAC SDU": 5225,
+            "CTVS SDU": 5225,
+            "HDU": 5225,
+            "NICU": 4560,
+            "PICU": 4560,
+            "DAYCARE": 332.5
+        };
         const rates2025 = {
             "SUITE": 13500,
             "EXECUTIVE": 7800,
@@ -7322,15 +7360,36 @@
             "DAYCARE": 1500
         };
         const is2024 = (activeSourceVal === "excelcare_2024" || activeSourceVal === "socexcelcare2024" || activeSourceVal === "excelcare_soc_2024");
-        const rates = is2024 ? rates2024 : rates2025;
+        const isGipsa26 = (activeSourceVal === "excelcare_gipsa_2026");
+        const rates = isGipsa26 ? ratesGipsa2026 : (is2024 ? rates2024 : rates2025);
         const simpleRoom = toSimpleRoom(cleanedRoom);
         if (rates[cleanedRoom] !== undefined) return rates[cleanedRoom];
         if (rates[simpleRoom] !== undefined) return rates[simpleRoom];
-        return is2024 ? 1500 : 1600;
+        return isGipsa26 ? 7125 : (is2024 ? 1500 : 1600);
     }
 
-    function lookupExcelcareNursing(cleanedRoom) {
-        const rates = {
+    function lookupExcelcareNursing(cleanedRoom, activeSourceVal) {
+        const ratesGipsa2026 = {
+            "SUITE": 1400,
+            "SUITE ROOM": 1400,
+            "EXECUTIVE": 1300,
+            "EXECUTIVE ROOM": 1300,
+            "SINGLE PRIVATE": 1200,
+            "SINGLE ROOM": 1200,
+            "SEMI PRIVATE": 1100,
+            "2 BEDDED ROOM": 1100,
+            "STANDARD WARD": 1000,
+            "4 BEDDED ROOM": 1000,
+            "GENERAL WARD": 1000,
+            "ICU": 1500,
+            "ICCU": 1500,
+            "HDU": 1500,
+            "SDU": 1500,
+            "NICU": 1500,
+            "PICU": 1500,
+            "DAYCARE": 500
+        };
+        const ratesStandard = {
             "SUITE": 2000,
             "EXECUTIVE": 1500,
             "SINGLE PRIVATE": 1000,
@@ -7343,8 +7402,10 @@
             "PICU": 1000,
             "DAYCARE": 500
         };
+        const isGipsa26 = (activeSourceVal === "excelcare_gipsa_2026");
+        const rates = isGipsa26 ? ratesGipsa2026 : ratesStandard;
         const simpleRoom = toSimpleRoom(cleanedRoom);
-        return rates[cleanedRoom] !== undefined ? rates[cleanedRoom] : (rates[simpleRoom] !== undefined ? rates[simpleRoom] : 500);
+        return rates[cleanedRoom] !== undefined ? rates[cleanedRoom] : (rates[simpleRoom] !== undefined ? rates[simpleRoom] : (isGipsa26 ? 1200 : 500));
     }
 
     const ROOM_RENT_2025 = {
@@ -8098,6 +8159,7 @@
             if (typeof TARIFF_EXCELCARE_2025 !== 'undefined' && socArray === TARIFF_EXCELCARE_2025) return mapExcelcare;
             if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && socArray === TARIFF_EXCELCARE_CASH_2025) return mapExcelcareCash;
             if (typeof TARIFF_EXCELCARE_2024 !== 'undefined' && socArray === TARIFF_EXCELCARE_2024) return mapExcelcare2024;
+            if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined' && socArray === TARIFF_EXCELCARE_GIPSA_2026) return mapExcelcareGipsa2026;
             return map2026;
         }
         
@@ -8345,6 +8407,9 @@
                         } else if (activeSourceVal === "excelcare_2024") {
                             activeSOC = TARIFF_EXCELCARE_2024;
                             explanation = `Billed against SOC: ${activeSourceVal}.`;
+                        } else if (activeSourceVal === "excelcare_gipsa_2026") {
+                            activeSOC = TARIFF_EXCELCARE_GIPSA_2026;
+                            explanation = `Billed against SOC: ${activeSourceVal}.`;
                         } else if (activeSourceVal === "gipsa") {
                             isGipsa = true;
                             activeSOC = TARIFF_DATA;
@@ -8392,8 +8457,11 @@
                         } else if (mappedSource === "excelcare_soc_2024") {
                             activeSOC = TARIFF_EXCELCARE_2024;
                             explanation = `Room-wise: ${cleanedRoom} -> Excelcare SOC 2024.`;
+                        } else if (mappedSource === "excelcare_gipsa_2026") {
+                            activeSOC = TARIFF_EXCELCARE_GIPSA_2026;
+                            explanation = `Room-wise: ${cleanedRoom} -> Excelcare GIPSA 2026.`;
                         } else {
-                            activeSOC = activeBU === "excelcare" ? (activeSourceVal === "excelcare_2024" ? TARIFF_EXCELCARE_2024 : (activeSourceVal === "excelcare_cash_2025" ? TARIFF_EXCELCARE_CASH_2025 : TARIFF_EXCELCARE_2025)) : TARIFF_2024;
+                            activeSOC = activeBU === "excelcare" ? (activeSourceVal === "excelcare_2024" ? TARIFF_EXCELCARE_2024 : (activeSourceVal === "excelcare_cash_2025" ? TARIFF_EXCELCARE_CASH_2025 : (activeSourceVal === "excelcare_gipsa_2026" ? TARIFF_EXCELCARE_GIPSA_2026 : TARIFF_EXCELCARE_2025))) : TARIFF_2024;
                             explanation = `Room-wise fallback SOC applied.`;
                         }
                     } else if (mappingMethod === "manual") {
@@ -8408,7 +8476,19 @@
                         const ag = findMatchingAgreement(customer);
                         if (ag) {
                             const mappedTariffUpper = ag.tariffMapped.toUpperCase();
-                            if (mappedTariffUpper.includes("GIPSA")) {
+                            if (mappedTariffUpper === "TARIFF_EXCELCARE_GIPSA_2026") {
+                                activeSOC = TARIFF_EXCELCARE_GIPSA_2026;
+                                explanation = `Contract: ${ag.agreementName} (Excelcare GIPSA 2026).`;
+                            } else if (mappedTariffUpper === "TARIFF_EXCELCARE_2025") {
+                                activeSOC = TARIFF_EXCELCARE_2025;
+                                explanation = `Contract: ${ag.agreementName} (Excelcare 2025 SOC).`;
+                            } else if (mappedTariffUpper === "TARIFF_EXCELCARE_CASH_2025") {
+                                activeSOC = TARIFF_EXCELCARE_CASH_2025;
+                                explanation = `Contract: ${ag.agreementName} (Excelcare 2026 Cash).`;
+                            } else if (mappedTariffUpper === "TARIFF_EXCELCARE_2024") {
+                                activeSOC = TARIFF_EXCELCARE_2024;
+                                explanation = `Contract: ${ag.agreementName} (Excelcare 2024 SOC).`;
+                            } else if (mappedTariffUpper.includes("GIPSA")) {
                                 isGipsa = true;
                                 activeSOC = TARIFF_DATA;
                                 explanation = `Contract: ${ag.agreementName} (GIPSA).`;
@@ -8422,7 +8502,7 @@
                             } else if (mappedTariffUpper.includes("2024-25") || mappedTariffUpper.includes("2024")) {
                                 activeSOC = TARIFF_2024;
                                 explanation = `Contract: ${ag.agreementName} (2024 SOC).`;
-                            } else if (mappedTariffUpper.includes("HDFC") || mappedTariffUpper.includes("ERGO") || activeBU === "excelcare") {
+                            } else if (mappedTariffUpper.includes("HDFC") || mappedTariffUpper.includes("ERGO") || (activeBU === "excelcare" && !mappedTariffUpper.startsWith("TARIFF_EXCELCARE"))) {
                                 isHdfc = true;
                                 targetTemplateName = getHdfcErgoTemplateName(cleanedRoom, isDayCare);
                                 explanation = `Contract: ${ag.agreementName} (Excelcare HDFC Room: ${cleanedRoom}).`;
@@ -8504,8 +8584,8 @@
                                 explanation += ` Resolved Room Rent for ${cleanedRoom}.`;
                             }
                         } else if (serviceId === "2126" || nameUpper.includes("NURSING AND ALLIED CHARGES")) {
-                            if (activeSOC === TARIFF_EXCELCARE_2025 || activeSOC === TARIFF_EXCELCARE_CASH_2025 || activeSOC === TARIFF_EXCELCARE_2024) {
-                                expectedTariff = lookupExcelcareNursing(cleanedRoom);
+                            if (activeSOC === TARIFF_EXCELCARE_2025 || activeSOC === TARIFF_EXCELCARE_CASH_2025 || activeSOC === TARIFF_EXCELCARE_2024 || activeSOC === TARIFF_EXCELCARE_GIPSA_2026) {
+                                expectedTariff = lookupExcelcareNursing(cleanedRoom, activeSourceVal);
                                 explanation += ` Resolved Excelcare Nursing for ${cleanedRoom}.`;
                             } else {
                                 const simpleRoom = toSimpleRoom(cleanedRoom);
@@ -8692,12 +8772,12 @@
                         let activeYear = "2024"; // default fallback year
                         if (activeSourceVal === "2025" || activeSourceVal === "2024" || activeSourceVal === "2023" || activeSourceVal === "2021") {
                             activeYear = activeSourceVal;
-                        } else if (activeSourceVal === "excelcare_2025" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_soc" || activeSourceVal === "excelcare_soc_cash") {
+                        } else if (activeSourceVal === "excelcare_2025" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_gipsa_2026" || activeSourceVal === "excelcare_soc" || activeSourceVal === "excelcare_soc_cash") {
                             activeYear = "2025";
                         } else if (activeSourceVal === "excelcare_2024" || activeSourceVal === "excelcare_soc_2024") {
                             activeYear = "2024";
                         } else {
-                            if (activeSOC === TARIFF_2025 || activeSOC === TARIFF_EXCELCARE_2025 || activeSOC === TARIFF_EXCELCARE_CASH_2025) activeYear = "2025";
+                            if (activeSOC === TARIFF_2025 || activeSOC === TARIFF_EXCELCARE_2025 || activeSOC === TARIFF_EXCELCARE_CASH_2025 || activeSOC === TARIFF_EXCELCARE_GIPSA_2026) activeYear = "2025";
                             else if (activeSOC === TARIFF_2024 || activeSOC === TARIFF_EXCELCARE_2024) activeYear = "2024";
                             else if (activeSOC === TARIFF_2023) activeYear = "2023";
                             else if (activeSOC === TARIFF_2021) activeYear = "2021";
@@ -8709,6 +8789,7 @@
                         if (isExcelcare) {
                             const use24 = (activeSourceVal === "excelcare_2024" || activeSourceVal === "socexcelcare2024" || activeYear === "2024");
                             const useCash = (activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "socexcelcarecash" || activeSourceVal === "excelcare_soc_cash");
+                            const useGipsa26 = (activeSourceVal === "excelcare_gipsa_2026" || activeSOC === TARIFF_EXCELCARE_GIPSA_2026);
                             if (use24) {
                                 fallbackSOCArray = TARIFF_EXCELCARE_2024;
                                 fallbackSOCMap = mapExcelcare2024;
@@ -8717,6 +8798,10 @@
                                 fallbackSOCArray = TARIFF_EXCELCARE_CASH_2025;
                                 fallbackSOCMap = mapExcelcareCash;
                                 activeYear = "Excelcare 2026 - Cash";
+                            } else if (useGipsa26) {
+                                fallbackSOCArray = TARIFF_EXCELCARE_GIPSA_2026;
+                                fallbackSOCMap = mapExcelcareGipsa2026;
+                                activeYear = "Excelcare GIPSA 2026";
                             } else {
                                 fallbackSOCArray = TARIFF_EXCELCARE_2025;
                                 fallbackSOCMap = mapExcelcare;
@@ -13356,6 +13441,7 @@
                         <option value="TARIFF_EXCELCARE_2025">TARIFF_EXCELCARE_2025 (Excelcare Credit)</option>
                         <option value="TARIFF_EXCELCARE_CASH_2025">TARIFF_EXCELCARE_CASH_2026 (Excelcare Cash)</option>
                         <option value="TARIFF_EXCELCARE_2024">TARIFF_EXCELCARE_2024 (Excelcare 2024 SOC)</option>
+                        <option value="TARIFF_EXCELCARE_GIPSA_2026">TARIFF_EXCELCARE_GIPSA_2026 (Excelcare GIPSA 2026)</option>
                         <option value="TARIFF_HDFC_ERGO_2024">TARIFF_HDFC_ERGO_2024 (HDFC ERGO Excelcare Template)</option>
                         <option value="TARIFF_DATA">TARIFF_DATA (Master 2026 TPA/GIPSA)</option>
                     </select>
