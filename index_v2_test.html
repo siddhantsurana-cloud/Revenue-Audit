@@ -3222,6 +3222,31 @@
                 <!-- Dynamically populated -->
             </div>
 
+            <!-- AGREEMENT FILTER OPTIONS -->
+            <div class="search-row" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+                <div class="input-group">
+                    <label for="agreement-search-input">Search Payer / Agreement Name</label>
+                    <div class="input-container">
+                        <svg class="search-icon" viewBox="0 0 24 24" style="width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; position: absolute; left: 12px; top: 50%; transform: translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        <input type="text" id="agreement-search-input" class="form-control form-control-with-icon" placeholder="Search by name, SOC, or discount..." autocomplete="off" style="padding-left: 2.5rem;">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="agreement-tariff-select">Tariff SOC Mapped</label>
+                    <select id="agreement-tariff-select" class="form-control">
+                        <option value="all">All Tariffs</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="agreement-status-select">Status</label>
+                    <select id="agreement-status-select" class="form-control">
+                        <option value="all">All Statuses</option>
+                        <option value="valid">Valid / Available</option>
+                        <option value="expired">Expired / Unavailable</option>
+                    </select>
+                </div>
+            </div>
+
             <div style="overflow-x: auto;">
                 <table class="summary-report-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; background-color: var(--bg-page); border-radius: 12px; border: 1px solid var(--border);">
                     <thead>
@@ -4463,6 +4488,7 @@
     let map2026 = {};
     let map2021 = {};
     let map2023 = {};
+    let map2023_v2 = {};
     let map2024 = {};
     let map2025 = {};
     let mapExcelcare = {};
@@ -5120,6 +5146,7 @@
         
         if (typeof TARIFF_2021 !== 'undefined') TARIFF_2021.forEach(item => { map2021[item.id] = item; });
         if (typeof TARIFF_2023 !== 'undefined') TARIFF_2023.forEach(item => { map2023[item.id] = item; });
+        if (typeof TARIFF_2023_V2 !== 'undefined') TARIFF_2023_V2.forEach(item => { map2023_v2[item.id] = item; });
         if (typeof TARIFF_2024 !== 'undefined') TARIFF_2024.forEach(item => { map2024[item.id] = item; });
         if (typeof TARIFF_2025 !== 'undefined') TARIFF_2025.forEach(item => { map2025[item.id] = item; });
         if (typeof TARIFF_EXCELCARE_2025 !== 'undefined') {
@@ -5156,6 +5183,7 @@
         TARIFF_DATA.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_2021 !== 'undefined') TARIFF_2021.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_2023 !== 'undefined') TARIFF_2023.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_2023_V2 !== 'undefined') TARIFF_2023_V2.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_2024 !== 'undefined') TARIFF_2024.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_2025 !== 'undefined') TARIFF_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2025 !== 'undefined') TARIFF_EXCELCARE_2025.forEach(item => allIds.add(item.id));
@@ -5177,6 +5205,7 @@
             let m25 = map2025[id];
             let m24 = map2024[id];
             let m23 = map2023[id];
+            let m23_v2 = map2023_v2[id];
             let m21 = map2021[id];
             let mEc = mapExcelcare[id];
             let mEcCash = mapExcelcareCash[id];
@@ -5196,6 +5225,8 @@
                 name = m24.name; dept = m24.dept; type = m24.type;
             } else if (m23) {
                 name = m23.name; dept = m23.dept; type = m23.type;
+            } else if (m23_v2) {
+                name = m23_v2.name; dept = m23_v2.dept; type = m23_v2.type;
             } else if (m21) {
                 name = m21.name; dept = m21.dept; type = m21.type;
             } else if (mKol) {
@@ -5223,6 +5254,7 @@
                 rate2025: m25 ? m25.rate : null,
                 rate2024: m24 ? m24.rate : null,
                 rate2023: m23 ? m23.rate : null,
+                rate2023_v2: m23_v2 ? m23_v2.rate : null,
                 rate2021: m21 ? m21.rate : null,
                 rateExcelcare: mEc ? mEc.rate : null,
                 rateExcelcareCash: mEcCash ? mEcCash.rate : null,
@@ -5356,6 +5388,7 @@
     function updateDatabaseDashboard() {
         let count2021 = 0;
         let count2023 = 0;
+        let count2023_v2 = 0;
         let count2024 = 0;
         let count2025 = 0;
         let countExcelcare = 0;
@@ -5368,6 +5401,7 @@
 
         if (typeof TARIFF_2021 !== 'undefined') count2021 = TARIFF_2021.length;
         if (typeof TARIFF_2023 !== 'undefined') count2023 = TARIFF_2023.length;
+        if (typeof TARIFF_2023_V2 !== 'undefined') count2023_v2 = TARIFF_2023_V2.length;
         if (typeof TARIFF_2024 !== 'undefined') count2024 = TARIFF_2024.length;
         if (typeof TARIFF_2025 !== 'undefined') count2025 = TARIFF_2025.length;
         if (typeof TARIFF_EXCELCARE_2025 !== 'undefined') countExcelcare = TARIFF_EXCELCARE_2025.length;
@@ -5824,6 +5858,7 @@
         let histIds = new Set();
         if (typeof TARIFF_2021 !== 'undefined') TARIFF_2021.forEach(x => histIds.add(x.id));
         if (typeof TARIFF_2023 !== 'undefined') TARIFF_2023.forEach(x => histIds.add(x.id));
+        if (typeof TARIFF_2023_V2 !== 'undefined') TARIFF_2023_V2.forEach(x => histIds.add(x.id));
         if (typeof TARIFF_2024 !== 'undefined') TARIFF_2024.forEach(x => histIds.add(x.id));
         if (typeof TARIFF_2025 !== 'undefined') TARIFF_2025.forEach(x => histIds.add(x.id));
         statSharedEl.textContent = histIds.size.toLocaleString();
@@ -6037,6 +6072,21 @@
                 renderAgreementManager();
             });
         });
+
+        // Agreements search and select filters
+        const agreementSearch = document.getElementById('agreement-search-input');
+        const agreementTariff = document.getElementById('agreement-tariff-select');
+        const agreementStatus = document.getElementById('agreement-status-select');
+
+        if (agreementSearch) {
+            agreementSearch.addEventListener('input', renderAgreementManager);
+        }
+        if (agreementTariff) {
+            agreementTariff.addEventListener('change', renderAgreementManager);
+        }
+        if (agreementStatus) {
+            agreementStatus.addEventListener('change', renderAgreementManager);
+        }
     }
 
     // Update the sorting indicator arrows in the UI
@@ -7235,6 +7285,7 @@
                 sourceSelect.innerHTML = `
                     <option value="2025">2025-26 SOC (International)</option>
                     <option value="2024" selected>2024-25 SOC (International)</option>
+                    <option value="soc_2023_v2">SOC - 2023-24_V2 (International)</option>
                     <option value="2023">2023-24 SOC (International)</option>
                     <option value="2021">2021-22 SOC (International)</option>
                 `;
@@ -7466,10 +7517,23 @@
         return isNaN(num) ? null : num;
     }
 
-    // Helper to find matching agreement
-    function findMatchingAgreement(customerStr) {
+    // Helper to find matching agreement (scoped by business unit to prevent cross-unit matching)
+    function findMatchingAgreement(customerStr, targetUnit) {
         if (!customerStr || typeof AGREEMENT_DETAILS === 'undefined' || !AGREEMENT_DETAILS.length) return null;
         
+        const unit = targetUnit || document.getElementById('audit-bu-select')?.value || 'excelcare';
+        const filteredAgreements = AGREEMENT_DETAILS.filter(ag => {
+            const scope = getAgreementScope(ag);
+            if (unit === 'kolkata') {
+                return scope === 'kolkata';
+            } else if (unit === 'excelcare') {
+                return scope === 'excelcare';
+            } else if (unit === 'international') {
+                return scope === 'international' || scope === 'centralised';
+            }
+            return true;
+        });
+
         let cleanCustomer = customerStr.toUpperCase().replace(/[.,()\-]/g, ' ');
         cleanCustomer = cleanCustomer.replace(/\bALLIANCE\b/g, 'ALLIANZ');
         
@@ -7487,7 +7551,7 @@
 
         if (customerWords.length === 0) {
             const custUpper = customerStr.toUpperCase().trim();
-            for (const ag of AGREEMENT_DETAILS) {
+            for (const ag of filteredAgreements) {
                 if (custUpper === ag.agreementName.toUpperCase().trim()) {
                     return ag;
                 }
@@ -7499,7 +7563,7 @@
         let maxScore = 0;
         let bestAgLengthRatio = 0;
 
-        for (const ag of AGREEMENT_DETAILS) {
+        for (const ag of filteredAgreements) {
             const agName = ag.agreementName.toUpperCase();
             if (agName.trim() === customerStr.toUpperCase().trim()) {
                 return ag;
@@ -8139,6 +8203,8 @@
             year = "2024";
         } else if (sourceVal === "2024") {
             year = "2024";
+        } else if (sourceVal === "soc_2023_v2") {
+            year = "2023_v2";
         } else if (sourceVal === "2023") {
             year = "2023";
         } else if (sourceVal === "2021") {
@@ -8150,6 +8216,8 @@
                 year = "2024";
             } else if (activeSOC === TARIFF_2023) {
                 year = "2023";
+            } else if (activeSOC === TARIFF_2023_V2) {
+                year = "2023_v2";
             } else if (activeSOC === TARIFF_2021) {
                 year = "2021";
             } else {
@@ -8181,7 +8249,7 @@
             const rate = getRate(ROOM_RENT_2024, cleanedRoom);
             if (rate !== null) return rate;
             return ROOM_RENT_2024["DELUXE"] || 1600;
-        } else if (year === "2023") {
+        } else if (year === "2023" || year === "2023_v2") {
             if (normRoom) {
                 const rate = getRate(ROOM_RENT_2023, normRoom);
                 if (rate !== null) return rate;
@@ -8706,7 +8774,7 @@
             if (row.customer && row.serviceId) {
                 if (!window.customAgreements) window.customAgreements = [];
                 let targetAg = null;
-                const matchedAg = findMatchingAgreement(row.customer);
+                const matchedAg = findMatchingAgreement(row.customer, document.getElementById('audit-bu-select')?.value);
                 
                 if (matchedAg) {
                     targetAg = window.customAgreements.find(x => x.agreementName.toUpperCase() === matchedAg.agreementName.toUpperCase());
@@ -8796,6 +8864,7 @@
             if (socArray === TARIFF_2025) return map2025;
             if (socArray === TARIFF_2024) return map2024;
             if (socArray === TARIFF_2023) return map2023;
+            if (socArray === TARIFF_2023_V2) return map2023_v2;
             if (socArray === TARIFF_2021) return map2021;
             if (typeof TARIFF_EXCELCARE_2025 !== 'undefined' && socArray === TARIFF_EXCELCARE_2025) return mapExcelcare;
             if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && socArray === TARIFF_EXCELCARE_CASH_2025) return mapExcelcareCash;
@@ -8838,7 +8907,7 @@
                 if (item && item[colIdx.customer]) {
                     const custVal = String(item[colIdx.customer]).trim();
                     if (custVal) {
-                        detectedAgreement = findMatchingAgreement(custVal);
+                        detectedAgreement = findMatchingAgreement(custVal, activeBU);
                         if (detectedAgreement) break;
                     }
                 }
@@ -9041,6 +9110,9 @@
                         } else if (activeSourceVal === "2024") {
                             activeSOC = TARIFF_2024;
                             explanation = `Billed against SOC: ${activeSourceVal}.`;
+                        } else if (activeSourceVal === "soc_2023_v2") {
+                            activeSOC = TARIFF_2023_V2;
+                            explanation = `Billed against SOC: ${activeSourceVal}.`;
                         } else if (activeSourceVal === "2023") {
                             activeSOC = TARIFF_2023;
                             explanation = `Billed against SOC: ${activeSourceVal}.`;
@@ -9126,7 +9198,7 @@
                         }
                     } else {
                         // Customer-specific agreement mapping
-                        const ag = findMatchingAgreement(customer);
+                        const ag = findMatchingAgreement(customer, activeBU);
                         if (ag) {
                             const pipelineResult = runAgreementPipeline({
                                 row: rowToUse,
@@ -9538,8 +9610,8 @@
                     // Fallback lookup: if expectedTariff is null or not found in the Template, fetch from That Year's SOC
                     if (expectedTariff === null && !isIgnored) {
                         let activeYear = "2024"; // default fallback year
-                        if (activeSourceVal === "2025" || activeSourceVal === "2024" || activeSourceVal === "2023" || activeSourceVal === "2021") {
-                            activeYear = activeSourceVal;
+                        if (activeSourceVal === "2025" || activeSourceVal === "2024" || activeSourceVal === "2023" || activeSourceVal === "2021" || activeSourceVal === "soc_2023_v2") {
+                            activeYear = activeSourceVal === "soc_2023_v2" ? "2023_v2" : activeSourceVal;
                         } else if (activeSourceVal === "excelcare_2025" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_gipsa_2026" || activeSourceVal === "excelcare_soc" || activeSourceVal === "excelcare_soc_cash") {
                             activeYear = "2025";
                         } else if (activeSourceVal === "excelcare_2024" || activeSourceVal === "excelcare_soc_2024") {
@@ -9548,6 +9620,7 @@
                             if (activeSOC === TARIFF_2025 || activeSOC === TARIFF_EXCELCARE_2025 || activeSOC === TARIFF_EXCELCARE_CASH_2025 || activeSOC === TARIFF_EXCELCARE_GIPSA_2026) activeYear = "2025";
                             else if (activeSOC === TARIFF_2024 || activeSOC === TARIFF_EXCELCARE_2024) activeYear = "2024";
                             else if (activeSOC === TARIFF_2023) activeYear = "2023";
+                            else if (activeSOC === TARIFF_2023_V2) activeYear = "2023_v2";
                             else if (activeSOC === TARIFF_2021) activeYear = "2021";
                             else activeYear = "2025"; // default to 2025-26
                         }
@@ -9585,6 +9658,7 @@
                             fallbackSOCMap = map2025;
                             if (activeYear === "2024") { fallbackSOCArray = TARIFF_2024; fallbackSOCMap = map2024; }
                             else if (activeYear === "2023") { fallbackSOCArray = TARIFF_2023; fallbackSOCMap = map2023; }
+                            else if (activeYear === "2023_v2") { fallbackSOCArray = TARIFF_2023_V2; fallbackSOCMap = map2023_v2; }
                             else if (activeYear === "2021") { fallbackSOCArray = TARIFF_2021; fallbackSOCMap = map2021; }
                         }
 
@@ -10411,14 +10485,28 @@
             return errs;
         }
         
+        // Helper to check numeric format after removing formatting characters (commas, currency, %, spaces)
+        const checkNumericFormat = (rawVal) => {
+            if (rawVal === undefined || rawVal === null) return true;
+            const cleaned = String(rawVal).replace(new RegExp("[₹$,%\\s]", "g"), '').trim();
+            if (cleaned === '') return true;
+            return new RegExp("^-?[0-9]+(\\.[0-9]+)?$").test(cleaned);
+        };
+
+        const getCleanedNumber = (rawVal) => {
+            if (rawVal === undefined || rawVal === null) return null;
+            const cleaned = String(rawVal).replace(new RegExp("[₹$,%\\s]", "g"), '').trim();
+            return cleaned === '' ? null : Number(cleaned);
+        };
+        
         // Validate Discount Applied
         if (row.rawDiscountAppliedStr !== undefined && row.rawDiscountAppliedStr !== null) {
-            const s = String(row.rawDiscountAppliedStr).trim();
-            if (s !== '' && !/^-?[0-9]+(\.[0-9]+)?$/.test(s)) {
-                errs.discount = `Discount % '${s}' contains invalid alphanumeric characters.`;
-            } else if (s !== '') {
-                const v = Number(s);
-                if (v < 0 || v > 100) {
+            const rawVal = String(row.rawDiscountAppliedStr).trim();
+            if (rawVal !== '' && !checkNumericFormat(rawVal)) {
+                errs.discount = `Discount % '${rawVal}' contains invalid alphanumeric characters.`;
+            } else if (rawVal !== '') {
+                const v = getCleanedNumber(rawVal);
+                if (v !== null && (v < 0 || v > 100)) {
                     errs.discount = `Discount % must be 0-100 (got ${v}%).`;
                 }
             }
@@ -10426,41 +10514,41 @@
         
         // Validate Expected Tariff (Expected Rate)
         if (row.rawExpectedTariffStr !== undefined && row.rawExpectedTariffStr !== null) {
-            const s = String(row.rawExpectedTariffStr).trim();
-            if (s !== '' && !/^-?[0-9]+(\.[0-9]+)?$/.test(s)) {
-                errs.expected = `Expected Rate '${s}' contains invalid alphanumeric characters.`;
+            const rawVal = String(row.rawExpectedTariffStr).trim();
+            if (rawVal !== '' && !checkNumericFormat(rawVal)) {
+                errs.expected = `Expected Rate '${rawVal}' contains invalid alphanumeric characters.`;
             }
         }
         
         // Validate Tariff Rate (Base Tariff Rate)
         if (row.rawTariffRateStr !== undefined && row.rawTariffRateStr !== null) {
-            const s = String(row.rawTariffRateStr).trim();
-            if (s !== '' && !/^-?[0-9]+(\.[0-9]+)?$/.test(s)) {
-                errs.tariff = `Tariff Rate '${s}' contains invalid alphanumeric characters.`;
+            const rawVal = String(row.rawTariffRateStr).trim();
+            if (rawVal !== '' && !checkNumericFormat(rawVal)) {
+                errs.tariff = `Tariff Rate '${rawVal}' contains invalid alphanumeric characters.`;
             }
         }
         
         // Validate SOC Rate (Base SOC Rate)
         if (row.rawSocRateStr !== undefined && row.rawSocRateStr !== null) {
-            const s = String(row.rawSocRateStr).trim();
-            if (s !== '' && !/^-?[0-9]+(\.[0-9]+)?$/.test(s)) {
-                errs.soc = `SOC Rate '${s}' contains invalid alphanumeric characters.`;
+            const rawVal = String(row.rawSocRateStr).trim();
+            if (rawVal !== '' && !checkNumericFormat(rawVal)) {
+                errs.soc = `SOC Rate '${rawVal}' contains invalid alphanumeric characters.`;
             }
         }
         
         // Validate Billed Rate
         if (row.rawBilledRateStr !== undefined && row.rawBilledRateStr !== null) {
-            const s = String(row.rawBilledRateStr).trim();
-            if (s !== '' && !/^-?[0-9]+(\.[0-9]+)?$/.test(s)) {
-                errs.billed = `Billed Rate '${s}' contains invalid alphanumeric characters.`;
+            const rawVal = String(row.rawBilledRateStr).trim();
+            if (rawVal !== '' && !checkNumericFormat(rawVal)) {
+                errs.billed = `Billed Rate '${rawVal}' contains invalid alphanumeric characters.`;
             }
         }
         
         // Validate Billed Pre-Discount Rate
         if (row.rawBilledPreDiscStr !== undefined && row.rawBilledPreDiscStr !== null) {
-            const s = String(row.rawBilledPreDiscStr).trim();
-            if (s !== '' && !/^-?[0-9]+(\.[0-9]+)?$/.test(s)) {
-                errs.preDisc = `Billed Pre-Discount Rate '${s}' contains invalid alphanumeric characters.`;
+            const rawVal = String(row.rawBilledPreDiscStr).trim();
+            if (rawVal !== '' && !checkNumericFormat(rawVal)) {
+                errs.preDisc = `Billed Pre-Discount Rate '${rawVal}' contains invalid alphanumeric characters.`;
             }
         }
         
@@ -13934,7 +14022,7 @@
         if (!tbody) return;
         
         if (typeof AGREEMENT_DETAILS === 'undefined' || AGREEMENT_DETAILS.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">No agreements loaded.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">No agreements loaded.</td></tr>';
             return;
         }
 
@@ -13998,11 +14086,68 @@
             }
         }
 
+        // Populate and/or update the tariff select dropdown options dynamically
+        const tariffSelect = document.getElementById('agreement-tariff-select');
+        if (tariffSelect) {
+            const currentSelected = tariffSelect.value || 'all';
+            const uniqueTariffs = new Set();
+            AGREEMENT_DETAILS.forEach(ag => {
+                if (ag.tariffMapped) uniqueTariffs.add(ag.tariffMapped);
+            });
+            let selectHtml = '<option value="all">All Tariffs</option>';
+            Array.from(uniqueTariffs).sort().forEach(t => {
+                selectHtml += `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`;
+            });
+            const currentOptions = Array.from(tariffSelect.options).map(o => o.value);
+            const nextOptions = ['all', ...Array.from(uniqueTariffs).sort()];
+            if (JSON.stringify(currentOptions) !== JSON.stringify(nextOptions)) {
+                tariffSelect.innerHTML = selectHtml;
+                tariffSelect.value = currentSelected;
+                if (tariffSelect.value !== currentSelected) {
+                    tariffSelect.value = 'all';
+                }
+            }
+        }
+
+        // Get filter inputs values
+        const query = (document.getElementById('agreement-search-input')?.value || '').toLowerCase().trim();
+        const selectedTariff = document.getElementById('agreement-tariff-select')?.value || 'all';
+        const selectedStatus = document.getElementById('agreement-status-select')?.value || 'all';
+
         // Filter agreements list
-        const filteredAgreements = AGREEMENT_DETAILS.filter(ag => {
+        let filteredAgreements = AGREEMENT_DETAILS.filter(ag => {
             if (currentAgreementFilter === 'all') return true;
             return getAgreementScope(ag) === currentAgreementFilter;
         });
+
+        // Apply search query filter
+        if (query) {
+            filteredAgreements = filteredAgreements.filter(ag => {
+                return (ag.agreementName || '').toLowerCase().includes(query) ||
+                       (ag.tariffMapped || '').toLowerCase().includes(query) ||
+                       (ag.discountAgreed || '').toLowerCase().includes(query);
+            });
+        }
+
+        // Apply tariff mapping filter
+        if (selectedTariff !== 'all') {
+            filteredAgreements = filteredAgreements.filter(ag => ag.tariffMapped === selectedTariff);
+        }
+
+        // Apply status filter
+        if (selectedStatus !== 'all') {
+            filteredAgreements = filteredAgreements.filter(ag => {
+                const isValid = ag.status === 'Valid' || ag.status === 'Available' || ag.status === 'Available/Valid';
+                if (selectedStatus === 'valid') return isValid;
+                if (selectedStatus === 'expired') return !isValid;
+                return true;
+            });
+        }
+
+        if (filteredAgreements.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">No matching agreements found for the active filters.</td></tr>';
+            return;
+        }
 
         let html = '';
         filteredAgreements.forEach(ag => {

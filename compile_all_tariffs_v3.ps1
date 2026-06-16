@@ -459,6 +459,10 @@ $list2023 = Parse-MultiSheetFile (Join-Path $socDir "23-24.xlsx")
 Log-Info "Parsing SOC 2024-25..."
 $list2024 = Parse-MultiSheetFile (Join-Path $socDir "24-25.xlsx")
 
+# 5b. Parse SOC - 2023-24_V2
+Log-Info "Parsing SOC - 2023-24_V2..."
+$list2023_V2 = Parse-MultiSheetFile (Join-Path $socDir "SOC - 2023-24_V2.xlsx")
+
 # 6. Parse 2025-26 SOC
 Log-Info "Parsing SOC 2025-26..."
 $list2025 = New-Object System.Collections.Generic.List[Object]
@@ -1097,6 +1101,7 @@ $jsonMonitoring = $monitoringCharges | ConvertTo-Json
 $jsonVisit = $visitCharges | ConvertTo-Json
 
 $json2021 = $list2021 | ConvertTo-Json -Depth 5
+$json2023_V2 = $list2023_V2 | ConvertTo-Json -Depth 5
 $json2023 = $list2023 | ConvertTo-Json -Depth 5
 $json2024 = $list2024 | ConvertTo-Json -Depth 5
 $json2025 = $list2025 | ConvertTo-Json -Depth 5
@@ -1117,6 +1122,7 @@ $jsonMonitoring = if ($jsonMonitoring) { $jsonMonitoring } else { "{}" }
 $jsonVisit = if ($jsonVisit) { $jsonVisit } else { "{}" }
 
 $json2021 = if ($json2021) { $json2021 } else { "[]" }
+$json2023_V2 = if ($json2023_V2) { $json2023_V2 } else { "[]" }
 $json2023 = if ($json2023) { $json2023 } else { "[]" }
 $json2024 = if ($json2024) { $json2024 } else { "[]" }
 $json2025 = if ($json2025) { $json2025 } else { "[]" }
@@ -1141,6 +1147,7 @@ const MONITORING_CHARGES = $jsonMonitoring;
 const VISIT_CHARGES = $jsonVisit;
 
 const TARIFF_2021 = $json2021;
+const TARIFF_2023_V2 = $json2023_V2;
 const TARIFF_2023 = $json2023;
 const TARIFF_2024 = $json2024;
 const TARIFF_2025 = $json2025;
@@ -1162,6 +1169,7 @@ Log-Info "=================================================="
 Log-Info "Full compilation successful!"
 Log-Info "Master 2026 records: $($dataArray.Count)"
 Log-Info "SOC 2021-22 records: $($list2021.Count)"
+Log-Info "SOC 2023-24_V2 records: $($list2023_V2.Count)"
 Log-Info "SOC 2023-24 records: $($list2023.Count)"
 Log-Info "SOC 2024-25 records: $($list2024.Count)"
 Log-Info "SOC 2025-26 records: $($list2025.Count)"
