@@ -4232,6 +4232,7 @@
                             <option value="TARIFF_2024">TARIFF_2024 (Guwahati Credit 2024)</option>
                             <option value="TARIFF_2023">TARIFF_2023 (Guwahati Credit 2023)</option>
                             <option value="TARIFF_2021">TARIFF_2021 (Guwahati SOC 2021-22)</option>
+                            <option value="TARIFF_2021_IOCL">TARIFF_2021_IOCL (Guwahati IOCL SOC 2021-22)</option>
                             <option value="TARIFF_EXCELCARE_2025">TARIFF_EXCELCARE_2025 (Excelcare Credit 2025)</option>
                             <option value="TARIFF_EXCELCARE_CASH_2026">TARIFF_EXCELCARE_CASH_2026 (Excelcare Cash 2026)</option>
                             <option value="TARIFF_EXCELCARE_2024">TARIFF_EXCELCARE_2024 (Excelcare SOC 2024)</option>
@@ -4487,6 +4488,7 @@
     let UNIFIED_TARIFFS = [];
     let map2026 = {};
     let map2021 = {};
+    let map2021_iocl = {};
     let map2023 = {};
     let map2023_v2 = {};
     let map2024 = {};
@@ -5145,6 +5147,7 @@
         TARIFF_DATA.forEach(item => { map2026[item.id] = item; });
         
         if (typeof TARIFF_2021 !== 'undefined') TARIFF_2021.forEach(item => { map2021[item.id] = item; });
+        if (typeof TARIFF_2021_IOCL !== 'undefined') TARIFF_2021_IOCL.forEach(item => { map2021_iocl[item.id] = item; });
         if (typeof TARIFF_2023 !== 'undefined') TARIFF_2023.forEach(item => { map2023[item.id] = item; });
         if (typeof TARIFF_2023_V2 !== 'undefined') TARIFF_2023_V2.forEach(item => { map2023_v2[item.id] = item; });
         if (typeof TARIFF_2024 !== 'undefined') TARIFF_2024.forEach(item => { map2024[item.id] = item; });
@@ -5182,6 +5185,7 @@
         let allIds = new Set();
         TARIFF_DATA.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_2021 !== 'undefined') TARIFF_2021.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_2021_IOCL !== 'undefined') TARIFF_2021_IOCL.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_2023 !== 'undefined') TARIFF_2023.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_2023_V2 !== 'undefined') TARIFF_2023_V2.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_2024 !== 'undefined') TARIFF_2024.forEach(item => allIds.add(item.id));
@@ -5387,6 +5391,7 @@
     // Dynamic Database overview counts and charts
     function updateDatabaseDashboard() {
         let count2021 = 0;
+        let count2021_iocl = 0;
         let count2023 = 0;
         let count2023_v2 = 0;
         let count2024 = 0;
@@ -5400,6 +5405,7 @@
         let countKolkataPkg = 0;
 
         if (typeof TARIFF_2021 !== 'undefined') count2021 = TARIFF_2021.length;
+        if (typeof TARIFF_2021_IOCL !== 'undefined') count2021_iocl = TARIFF_2021_IOCL.length;
         if (typeof TARIFF_2023 !== 'undefined') count2023 = TARIFF_2023.length;
         if (typeof TARIFF_2023_V2 !== 'undefined') count2023_v2 = TARIFF_2023_V2.length;
         if (typeof TARIFF_2024 !== 'undefined') count2024 = TARIFF_2024.length;
@@ -5459,7 +5465,7 @@
             if (dbEcEl) dbEcEl.textContent = ecCount.toLocaleString();
         } else if (activeUnit === 'international') {
             if (dbMouEl) dbMouEl.textContent = cbCount.toLocaleString();
-            if (dbMasterEl) dbMasterEl.textContent = (count2021 + count2023 + count2024 + count2025).toLocaleString();
+            if (dbMasterEl) dbMasterEl.textContent = (count2021 + count2021_iocl + count2023 + count2023_v2 + count2024 + count2025).toLocaleString();
             if (dbCbEl) dbCbEl.textContent = cbCount.toLocaleString();
             if (dbEcEl) dbEcEl.textContent = "0";
         } else {
@@ -5484,11 +5490,11 @@
             labels = ['Excelcare 24', 'Excelcare 25', 'Excelcare Cash', 'Excelcare GIPSA'];
             data = [countExcelcare2024, countExcelcare, countExcelcareCash, countExcelcareGipsa2026];
         } else if (activeUnit === 'international') {
-            labels = ['2021-22', '2023-24', '2024-25', '2025-26'];
-            data = [count2021, count2023, count2024, count2025];
+            labels = ['2021-22', '2021-22 IOCL', '2023-24', '2023-24 V2', '2024-25', '2025-26'];
+            data = [count2021, count2021_iocl, count2023, count2023_v2, count2024, count2025];
         } else {
-            labels = ['2021-22', '2023-24', '2024-25', '2025-26', 'Excelcare 24', 'Excelcare 25', 'Excelcare Cash', 'Excelcare GIPSA', 'Kolkata SOC', 'Kolkata Pkg', '2026 Master'];
-            data = [count2021, count2023, count2024, count2025, countExcelcare2024, countExcelcare, countExcelcareCash, countExcelcareGipsa2026, countKolkataSoc, countKolkataPkg, count2026];
+            labels = ['2021-22', '2021-22 IOCL', '2023-24', '2023-24 V2', '2024-25', '2025-26', 'Excelcare 24', 'Excelcare 25', 'Excelcare Cash', 'Excelcare GIPSA', 'Kolkata SOC', 'Kolkata Pkg', '2026 Master'];
+            data = [count2021, count2021_iocl, count2023, count2023_v2, count2024, count2025, countExcelcare2024, countExcelcare, countExcelcareCash, countExcelcareGipsa2026, countKolkataSoc, countKolkataPkg, count2026];
         }
 
         const ctxYears = document.getElementById('chart-db-years');
@@ -5857,6 +5863,7 @@
         // Historical SOC Codes unique count
         let histIds = new Set();
         if (typeof TARIFF_2021 !== 'undefined') TARIFF_2021.forEach(x => histIds.add(x.id));
+        if (typeof TARIFF_2021_IOCL !== 'undefined') TARIFF_2021_IOCL.forEach(x => histIds.add(x.id));
         if (typeof TARIFF_2023 !== 'undefined') TARIFF_2023.forEach(x => histIds.add(x.id));
         if (typeof TARIFF_2023_V2 !== 'undefined') TARIFF_2023_V2.forEach(x => histIds.add(x.id));
         if (typeof TARIFF_2024 !== 'undefined') TARIFF_2024.forEach(x => histIds.add(x.id));
@@ -7288,6 +7295,7 @@
                     <option value="soc_2023_v2">SOC - 2023-24_V2 (International)</option>
                     <option value="2023">2023-24 SOC (International)</option>
                     <option value="2021">2021-22 SOC (International)</option>
+                    <option value="soc_2021_iocl">SOC - 2021-22_IOCL (International)</option>
                 `;
             } else {
                 sourceSelect.innerHTML = `
@@ -8207,7 +8215,7 @@
             year = "2023_v2";
         } else if (sourceVal === "2023") {
             year = "2023";
-        } else if (sourceVal === "2021") {
+        } else if (sourceVal === "2021" || sourceVal === "soc_2021_iocl") {
             year = "2021";
         } else {
             if (activeSOC === TARIFF_2025 || activeSOC === TARIFF_EXCELCARE_2025 || activeSOC === TARIFF_EXCELCARE_CASH_2025) {
@@ -8218,7 +8226,7 @@
                 year = "2023";
             } else if (activeSOC === TARIFF_2023_V2) {
                 year = "2023_v2";
-            } else if (activeSOC === TARIFF_2021) {
+            } else if (activeSOC === TARIFF_2021 || activeSOC === TARIFF_2021_IOCL) {
                 year = "2021";
             } else {
                 if (isGipsa) {
@@ -8866,6 +8874,7 @@
             if (socArray === TARIFF_2023) return map2023;
             if (socArray === TARIFF_2023_V2) return map2023_v2;
             if (socArray === TARIFF_2021) return map2021;
+            if (socArray === TARIFF_2021_IOCL) return map2021_iocl;
             if (typeof TARIFF_EXCELCARE_2025 !== 'undefined' && socArray === TARIFF_EXCELCARE_2025) return mapExcelcare;
             if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && socArray === TARIFF_EXCELCARE_CASH_2025) return mapExcelcareCash;
             if (typeof TARIFF_EXCELCARE_2024 !== 'undefined' && socArray === TARIFF_EXCELCARE_2024) return mapExcelcare2024;
@@ -9119,6 +9128,9 @@
                         } else if (activeSourceVal === "2021") {
                             activeSOC = TARIFF_2021;
                             explanation = `Billed against SOC: ${activeSourceVal}.`;
+                        } else if (activeSourceVal === "soc_2021_iocl") {
+                            activeSOC = TARIFF_2021_IOCL;
+                            explanation = `Billed against SOC: ${activeSourceVal}.`;
                         } else if (activeSourceVal === "excelcare_2025") {
                             activeSOC = TARIFF_EXCELCARE_2025;
                             explanation = `Billed against SOC: ${activeSourceVal}.`;
@@ -9272,7 +9284,7 @@
                         const isDayCareItem = isDayCare || nameUpper.includes("DAY CARE") || nameUpper.includes("DAYCARE");
                         const isTriageItem = nameUpper.includes("TRIAGE") || deptLower.includes("triage") || rateType.toLowerCase().includes("triage");
 
-                        if (activeSOC === TARIFF_2021 && (isDayCareItem || isTriageItem)) {
+                        if ((activeSOC === TARIFF_2021 || activeSOC === TARIFF_2021_IOCL) && (isDayCareItem || isTriageItem)) {
                             let start = parseExcelDate(startDateVal);
                             let end = parseExcelDate(endDateVal);
                             let durationHours = null;
@@ -9500,8 +9512,8 @@
                                 let end = parseExcelDate(endDateVal);
                                 if (start && end && end >= start) {
                                     let durationMins = Math.round((end - start) / (60 * 1000));
-                                    let baseOT = (activeSOC === TARIFF_2021) ? 6400 : 10000;
-                                    let slabRate = (activeSOC === TARIFF_2021) ? 1600 : 2000;
+                                    let baseOT = (activeSOC === TARIFF_2021 || activeSOC === TARIFF_2021_IOCL) ? 6400 : 10000;
+                                    let slabRate = (activeSOC === TARIFF_2021 || activeSOC === TARIFF_2021_IOCL) ? 1600 : 2000;
                                     
                                     if (durationMins <= 60) {
                                         expectedTariff = baseOT;
@@ -9610,8 +9622,8 @@
                     // Fallback lookup: if expectedTariff is null or not found in the Template, fetch from That Year's SOC
                     if (expectedTariff === null && !isIgnored) {
                         let activeYear = "2024"; // default fallback year
-                        if (activeSourceVal === "2025" || activeSourceVal === "2024" || activeSourceVal === "2023" || activeSourceVal === "2021" || activeSourceVal === "soc_2023_v2") {
-                            activeYear = activeSourceVal === "soc_2023_v2" ? "2023_v2" : activeSourceVal;
+                        if (activeSourceVal === "2025" || activeSourceVal === "2024" || activeSourceVal === "2023" || activeSourceVal === "2021" || activeSourceVal === "soc_2023_v2" || activeSourceVal === "soc_2021_iocl") {
+                            activeYear = activeSourceVal === "soc_2023_v2" ? "2023_v2" : (activeSourceVal === "soc_2021_iocl" ? "2021_iocl" : activeSourceVal);
                         } else if (activeSourceVal === "excelcare_2025" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_gipsa_2026" || activeSourceVal === "excelcare_soc" || activeSourceVal === "excelcare_soc_cash") {
                             activeYear = "2025";
                         } else if (activeSourceVal === "excelcare_2024" || activeSourceVal === "excelcare_soc_2024") {
@@ -9660,6 +9672,7 @@
                             else if (activeYear === "2023") { fallbackSOCArray = TARIFF_2023; fallbackSOCMap = map2023; }
                             else if (activeYear === "2023_v2") { fallbackSOCArray = TARIFF_2023_V2; fallbackSOCMap = map2023_v2; }
                             else if (activeYear === "2021") { fallbackSOCArray = TARIFF_2021; fallbackSOCMap = map2021; }
+                            else if (activeYear === "2021_iocl") { fallbackSOCArray = TARIFF_2021_IOCL; fallbackSOCMap = map2021_iocl; }
                         }
 
                         let fallbackMatch = fallbackSOCMap[serviceId];
