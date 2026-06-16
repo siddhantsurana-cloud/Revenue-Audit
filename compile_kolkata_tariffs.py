@@ -275,16 +275,16 @@ compiled_soc.append({
     "name": "IP CONSULTATION CHARGES",
     "type": "Consultation",
     "dept": "Consultation",
-    "rates": {r["category"]: r["consultation"] for r in room_rents if r["consultation"] > 0}
+    "rates": {r["category"].upper().strip(): r["consultation"] for r in room_rents if r["consultation"] > 0}
 })
 
-# Add Room Rent itself into the SOC
+# Add Room Rent itself into the SOC (including zero rent categories like Emergency)
 compiled_soc.append({
     "id": "2127",
     "name": "Room Rent",
     "type": "Room Rent",
     "dept": "Room Rent",
-    "rates": {r["category"]: r["rent"] for r in room_rents if r["rent"] > 0}
+    "rates": {r["category"].upper().strip(): r["rent"] for r in room_rents}
 })
 
 # Add Sterilization Charges (A2126) -> zero rated
@@ -330,6 +330,15 @@ compiled_soc.append({
     "type": "Professional Charges",
     "dept": "Anaesthesiology",
     "rates": {cat: 0 for cat in ["STANDARD", "SEMI-PRIVATE", "PRIVATE", "PRIVATE DELUXE", "DELUXE", "SUITE", "MAHARAJA SUITE"]}
+})
+
+# Add PCCG - MONITORING CHARGES manually with same rates as CCG - MONITORING CHARGES (2760)
+compiled_soc.append({
+    "id": "3057717",
+    "name": "PCCG - MONITORING CHARGES",
+    "type": "Non Invasive Procedure",
+    "dept": "Critical Care",
+    "rates": {cat: 2760 for cat in ["STANDARD", "SEMI-PRIVATE", "PRIVATE", "PRIVATE DELUXE", "DELUXE", "SUITE", "MAHARAJA SUITE"]}
 })
 
 # 3.3 Add all remaining PDF items that were NOT matched so we have a complete repository
@@ -447,6 +456,13 @@ for ag_name, ag_id, cust_id in tpa_list:
         "customerId": cust_id,
         "extensionRemarks": "Extended by CEO/Indrajit D. until June 30, 2025, pending negotiation of new central agreement."
     })
+
+# Add manual corrections for Day Care chemotherapy rates
+for entry in compiled_soc:
+    if entry.get("id") == "99536":
+        entry["rates"]["DAY CARE"] = 5650
+    elif entry.get("id") == "99537":
+        entry["rates"]["DAY CARE"] = 8750
 
 # 4. Save JSON files
 print(f"Saving {len(compiled_soc)} SOC records to kolkata_soc.json...")

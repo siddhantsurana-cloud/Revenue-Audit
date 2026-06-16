@@ -4227,8 +4227,9 @@
     let mapExcelcareCash = {};
     let mapExcelcare2024 = {};
     let mapExcelcareGipsa2026 = {};
-    let mapKolkata = {};
-    let mapHdfc = {}; // id -> Array of HDFC records
+    let mapKolkata = {};       // Standard Kolkata SOC (no payer-specific entries)
+    let mapKolkataHdfc = {};   // Kolkata SOC + HDFC ERGO package entries (applicablePayer = HDFC_ERGO)
+    let mapHdfc = {}; // id -> Array of HDFC records (Excelcare templates)
 
     const KOLKATA_OT_SLABS = [
         { from: 0, to: 30, rates: { "STANDARD": 15000, "SEMI-PRIVATE": 25000, "PRIVATE": 30000, "PRIVATE DELUXE": 30000, "DELUXE": 30000, "SUITE": 40000, "MAHARAJA SUITE": 45000 } },
@@ -4892,7 +4893,14 @@
             TARIFF_EXCELCARE_GIPSA_2026.forEach(item => { mapExcelcareGipsa2026[item.id] = item; });
         }
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') {
-            TARIFF_KOLKATA_SOC.forEach(item => { mapKolkata[item.id] = item; });
+            TARIFF_KOLKATA_SOC.forEach(item => {
+                // Standard map: only entries without a payer restriction
+                if (!item.applicablePayer) {
+                    mapKolkata[item.id] = item;
+                }
+                // HDFC map: all standard entries + HDFC_ERGO-tagged package entries
+                mapKolkataHdfc[item.id] = item;
+            });
         }
         if (typeof TARIFF_HDFC_ERGO_2024 !== 'undefined') {
             TARIFF_HDFC_ERGO_2024.forEach(item => {
@@ -7820,18 +7828,20 @@
         if (activeSourceVal === "sockolkata" || activeSOC === TARIFF_KOLKATA_SOC || (window.currentUserUnit === 'kolkata' && activeSOC === undefined)) {
             if (typeof TARIFF_KOLKATA_SOC !== 'undefined' && mapKolkata && mapKolkata["2127"]) {
                 let normRoom = originalRoomCategory ? originalRoomCategory.toUpperCase().trim() : "";
-                if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
-                else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
-                else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
-                else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
-                else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
-                else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
-                else if (normRoom.includes("SUITE")) normRoom = "SUITE";
-                else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
-                else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
-                else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
-
                 const rates = mapKolkata["2127"].rates;
+                if (rates && rates[normRoom] === undefined) {
+                    if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
+                    else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
+                    else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
+                    else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
+                    else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
+                    else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
+                    else if (normRoom.includes("SUITE")) normRoom = "SUITE";
+                    else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
+                    else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
+                    else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
+                }
+
                 if (rates[normRoom] !== undefined) {
                     return rates[normRoom];
                 }
@@ -8454,8 +8464,11 @@
     function executeActualAudit() {
         auditedRows = [];
 
-        function getActiveSOCMap(socArray) {
-            if (typeof TARIFF_KOLKATA_SOC !== 'undefined' && socArray === TARIFF_KOLKATA_SOC) return mapKolkata;
+        function getActiveSOCMap(socArray, useHdfcKolkata) {
+            if (typeof TARIFF_KOLKATA_SOC !== 'undefined' && socArray === TARIFF_KOLKATA_SOC) {
+                // Use the HDFC-extended map when explicitly requested (Kolkata + HDFC Ergo audits)
+                return useHdfcKolkata ? mapKolkataHdfc : mapKolkata;
+            }
             if (socArray === TARIFF_2025) return map2025;
             if (socArray === TARIFF_2024) return map2024;
             if (socArray === TARIFF_2023) return map2023;
@@ -8686,6 +8699,7 @@
 
                     let isGipsa = false;
                     let isHdfc = false;
+                    let isKolkataHdfc = false; // true when Kolkata + HDFC ERGO → use mapKolkataHdfc
                     let targetTemplateName = "";
                     let activeSOC = TARIFF_DATA;
 
@@ -8851,52 +8865,27 @@
                             explanation = "Manual rate not provided in spreadsheet. Please enter manually.";
                         }
                     } else if (isHdfc && typeof TARIFF_HDFC_ERGO_2024 !== 'undefined') {
-                        const match = TARIFF_HDFC_ERGO_2024.find(x => x.id === serviceId && x.template === targetTemplateName);
-                        if (match) {
-                            expectedTariff = match.rate;
+                        // ── Kolkata HDFC Ergo: Use Unified SOC (with package entries) ──────────
+                        // For Kolkata + HDFC ERGO, we no longer use the TARIFF_HDFC_ERGO_2024
+                        // template lookup. Instead we use the Kolkata SOC 23-24 which now contains
+                        // HDFC-tagged package entries (applicablePayer = HDFC_ERGO). The rate
+                        // resolution goes through the standard SOC path below using mapKolkataHdfc.
+                        // For Excelcare HDFC Ergo (non-Kolkata), the original template lookup applies.
+                        if (activeBU === 'kolkata') {
+                            activeSOC = TARIFF_KOLKATA_SOC;
+                            // Signal to getActiveSOCMap to use the HDFC-extended map
+                            isHdfc = false;  // clear flag so we fall through to standard SOC path
+                            isKolkataHdfc = true; // remember to use mapKolkataHdfc for lookups
+                            explanation += ` [HDFC ERGO] Using Kolkata SOC 23-24 (incl. HDFC package rates) for ${targetTemplateName}.`;
                         } else {
-                            expectedTariff = null;
-                        }
-
-                        // ── Simultaneous Package Rate Check (Kolkata HDFC Ergo) ──────────────
-                        // For Kolkata patients on HDFC Ergo, also look up the package master.
-                        // If a package rate exists for this service, annotate the row so the
-                        // auditor can see both rates side-by-side in the Audit Details view.
-                        if (activeBU === 'kolkata' && typeof TARIFF_KOLKATA_PKG !== 'undefined') {
-                            const pkgMatch = TARIFF_KOLKATA_PKG.find(p => {
-                                if (!p || !p.id) return false;
-                                return String(p.id) === String(serviceId) ||
-                                    (p.name && p.name.toUpperCase().trim() === nameUpper.trim());
-                            });
-                            if (pkgMatch) {
-                                // Resolve room-specific pkg rate
-                                let pkgRate = null;
-                                if (pkgMatch.rates && typeof pkgMatch.rates === 'object') {
-                                    let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : '';
-                                    pkgRate = pkgMatch.rates[normRoom] || pkgMatch.rates['STANDARD'] || null;
-                                } else if (typeof pkgMatch.rate === 'number') {
-                                    pkgRate = pkgMatch.rate;
-                                }
-                                if (pkgRate !== null) {
-                                    // Use lower of SOC rate vs package rate as expected (benefit to patient)
-                                    const socRate = expectedTariff;
-                                    if (socRate !== null && pkgRate < socRate) {
-                                        expectedTariff = pkgRate;
-                                        explanation += ` [PKG OVERRIDE] Package rate ₹${pkgRate} applied (SOC: ₹${socRate}).`;
-                                    } else if (socRate === null) {
-                                        expectedTariff = pkgRate;
-                                        explanation += ` [PKG] Resolved from Kolkata Package master: ₹${pkgRate}.`;
-                                    } else {
-                                        explanation += ` [PKG NOTE] Package rate ₹${pkgRate} available (SOC ₹${socRate} used – SOC ≤ PKG).`;
-                                    }
-                                    // Tag the row for display in Audit Details
-                                    // (will be visible in showAuditDetails panel)
-                                    item._pkgRate = pkgRate;
-                                    item._pkgName = pkgMatch.name || 'Package';
-                                }
+                            // Excelcare: keep original HDFC Ergo template lookup
+                            const match = TARIFF_HDFC_ERGO_2024.find(x => x.id === serviceId && x.template === targetTemplateName);
+                            if (match) {
+                                expectedTariff = match.rate;
+                            } else {
+                                expectedTariff = null;
                             }
                         }
-                        // ─────────────────────────────────────────────────────────────────────
                     } else {
                         const isDayCareItem = isDayCare || nameUpper.includes("DAY CARE") || nameUpper.includes("DAYCARE");
                         const isTriageItem = nameUpper.includes("TRIAGE") || deptLower.includes("triage") || rateType.toLowerCase().includes("triage");
@@ -8952,7 +8941,7 @@
                                 expectedTariff = NURSING_CHARGES[cleanedRoom] || NURSING_CHARGES[simpleRoom];
                                 explanation += ` Resolved Nursing for ${cleanedRoom}.`;
                             }
-                        } else if (serviceId === "1077592" || nameUpper.includes("MONITORING CHARGES")) {
+                        } else if ((serviceId === "1077592" || nameUpper.includes("MONITORING CHARGES")) && activeBU !== "kolkata") {
                             const simpleRoom = toSimpleRoom(cleanedRoom);
                             expectedTariff = MONITORING_CHARGES[cleanedRoom] || MONITORING_CHARGES[simpleRoom];
                             explanation += ` Resolved Monitoring for ${cleanedRoom}.`;
@@ -9087,25 +9076,7 @@
                                         matchedSlab = KOLKATA_OT_SLABS[KOLKATA_OT_SLABS.length - 1];
                                     }
                                     let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
-                                    if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
-                                    else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
-                                    else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
-                                    else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
-                                    else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
-                                    else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
-                                    else if (normRoom.includes("SUITE")) normRoom = "SUITE";
-                                    else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
-                                    else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
-                                    else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
-                                    
-                                    let rate = matchedSlab.rates[normRoom] || matchedSlab.rates["STANDARD"];
-                                    expectedTariff = rate;
-                                    explanation += ` Resolved Kolkata OT slab rate for ${durationMins} minutes [${normRoom}].`;
-                                } else {
-                                    const activeSOCMap = getActiveSOCMap(activeSOC);
-                                    const match = activeSOCMap[serviceId];
-                                    if (match && match.rates) {
-                                        let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
+                                    if (matchedSlab.rates && matchedSlab.rates[normRoom] === undefined) {
                                         if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
                                         else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
                                         else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
@@ -9116,6 +9087,28 @@
                                         else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
                                         else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
                                         else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
+                                    }
+                                    
+                                    let rate = matchedSlab.rates[normRoom] || matchedSlab.rates["STANDARD"];
+                                    expectedTariff = rate;
+                                    explanation += ` Resolved Kolkata OT slab rate for ${durationMins} minutes [${normRoom}].`;
+                                } else {
+                                    const activeSOCMap = getActiveSOCMap(activeSOC);
+                                    const match = activeSOCMap[serviceId];
+                                    if (match && match.rates) {
+                                        let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
+                                        if (match.rates && match.rates[normRoom] === undefined) {
+                                            if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
+                                            else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
+                                            else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
+                                            else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
+                                            else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
+                                            else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
+                                            else if (normRoom.includes("SUITE")) normRoom = "SUITE";
+                                            else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
+                                            else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
+                                            else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
+                                        }
                                         
                                         expectedTariff = match.rates[normRoom] || match.rates["STANDARD"] || null;
                                     }
@@ -9148,21 +9141,24 @@
                             explanation += ` Resolved Visit Charge for ${cleanedRoom}.`;
                         } else {
                             // Standard SOC lookup
-                            const activeSOCMap = getActiveSOCMap(activeSOC);
+                            // Pass isKolkataHdfc so HDFC-tagged package entries are included
+                            const activeSOCMap = getActiveSOCMap(activeSOC, isKolkataHdfc);
                             const match = activeSOCMap[serviceId];
                             if (match) {
-                                if (activeSOCMap === mapKolkata) {
+                                if (activeSOCMap === mapKolkata || activeSOCMap === mapKolkataHdfc) {
                                     let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
-                                    if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
-                                    else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
-                                    else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
-                                    else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
-                                    else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
-                                    else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
-                                    else if (normRoom.includes("SUITE")) normRoom = "SUITE";
-                                    else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
-                                    else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
-                                    else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
+                                    if (match.rates && match.rates[normRoom] === undefined) {
+                                        if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
+                                        else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
+                                        else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
+                                        else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
+                                        else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
+                                        else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
+                                        else if (normRoom.includes("SUITE")) normRoom = "SUITE";
+                                        else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
+                                        else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
+                                        else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
+                                    }
 
                                     if (match.rates) {
                                         if (match.rates[normRoom] !== undefined) {
@@ -9301,16 +9297,18 @@
                         if (fallbackMatch) {
                             if (isKolkata) {
                                 let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
-                                if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
-                                else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
-                                else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
-                                else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
-                                else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
-                                else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
-                                else if (normRoom.includes("SUITE")) normRoom = "SUITE";
-                                else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
-                                else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
-                                else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
+                                if (fallbackMatch.rates && fallbackMatch.rates[normRoom] === undefined) {
+                                    if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
+                                    else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
+                                    else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
+                                    else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
+                                    else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
+                                    else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
+                                    else if (normRoom.includes("SUITE")) normRoom = "SUITE";
+                                    else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
+                                    else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
+                                    else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
+                                }
 
                                 if (fallbackMatch.rates) {
                                     if (fallbackMatch.rates[normRoom] !== undefined) {

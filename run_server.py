@@ -72,6 +72,19 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
                 content = '[]'
             self.wfile.write(content.encode('utf-8'))
             
+        elif self.path == '/api/load_agreements':
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            
+            data_file = 'agreement_master.json'
+            if os.path.exists(data_file):
+                with open(data_file, 'r', encoding='utf-8') as f:
+                    content = f.read()
+            else:
+                content = '{"agreements":[], "chargingMethods":[], "version":"1.0"}'
+            self.wfile.write(content.encode('utf-8'))
+            
         else:
             # Fallback to serving static files normally
             super().do_GET()
@@ -128,6 +141,25 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
                 self.wfile.write(json.dumps({"status": "success", "message": "Custom agreements saved successfully"}).encode('utf-8'))
+            except Exception as e:
+                self.send_response(400)
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "message": str(e)}).encode('utf-8'))
+                
+        elif self.path == '/api/save_agreements':
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length)
+            
+            try:
+                data = json.loads(post_data.decode('utf-8'))
+                with open('agreement_master.json', 'w', encoding='utf-8') as f:
+                    json.dump(data, f, indent=2, ensure_ascii=False)
+                
+                self.send_response(200)
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "success", "message": "Agreements saved successfully"}).encode('utf-8'))
             except Exception as e:
                 self.send_response(400)
                 self.send_header('Content-type', 'application/json')
