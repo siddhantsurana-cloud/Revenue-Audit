@@ -4211,6 +4211,78 @@
         syncOverridesToServer(overrides);
     }
 
+    window.customAgreements = [];
+
+    async function loadCustomAgreementsFromServer() {
+        let loaded = [];
+        if (window.sandboxEnvironment) {
+            const stored = localStorage.getItem('custom_customer_agreements');
+            loaded = stored ? JSON.parse(stored) : [];
+        } else {
+            try {
+                const res = await fetch('/api/load_custom_agreements');
+                if (res.ok) {
+                    const data = await res.json();
+                    loaded = data || [];
+                    localStorage.setItem('custom_customer_agreements', JSON.stringify(loaded));
+                    console.log('Successfully loaded custom agreements from server.');
+                }
+            } catch (e) {
+                console.warn('Could not load custom agreements from server, using localStorage:', e);
+                const stored = localStorage.getItem('custom_customer_agreements');
+                loaded = stored ? JSON.parse(stored) : [];
+            }
+        }
+        window.customAgreements = loaded;
+
+        // Merge into AGREEMENT_DETAILS if not already present
+        if (typeof AGREEMENT_DETAILS !== 'undefined' && Array.isArray(AGREEMENT_DETAILS)) {
+            loaded.forEach(ag => {
+                const exists = AGREEMENT_DETAILS.some(x => x.agreementName === ag.agreementName);
+                if (!exists) {
+                    AGREEMENT_DETAILS.push(ag);
+                }
+            });
+        }
+
+        // Trigger UI updates
+        if (typeof populateDropdowns === 'function') {
+            populateDropdowns();
+        }
+        if (typeof updateTabBadges === 'function') {
+            updateTabBadges();
+        }
+        if (typeof renderAgreementsTable === 'function') {
+            renderAgreementsTable();
+        }
+
+        return window.customAgreements;
+    }
+
+    async function syncCustomAgreementsToServer(agreements) {
+        if (window.sandboxEnvironment) {
+            console.log('Sandbox environment active: Skipping server agreements sync.');
+            return;
+        }
+        try {
+            await fetch('/api/save_custom_agreements', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(agreements)
+            });
+            console.log('Successfully synced custom agreements to server.');
+        } catch (e) {
+            console.error('Failed to sync custom agreements to server:', e);
+        }
+    }
+
+    window.saveAndSyncCustomAgreements = function(agreements) {
+        window.customAgreements = agreements;
+        localStorage.setItem('custom_customer_agreements', JSON.stringify(agreements));
+        syncCustomAgreementsToServer(agreements);
+        renderAgreementManager(); // Refresh table
+    };
+
     let filteredData = [];
     let currentPage = 1;
     let pageSize = 100;
@@ -4459,6 +4531,7 @@
                 
                 // 2. Reload overrides and refresh custom department discounts
                 await loadOverridesFromServer();
+                await loadCustomAgreementsFromServer();
                 if (typeof window.loadUnitCustomDiscounts === 'function') {
                     window.loadUnitCustomDiscounts();
                 }
@@ -4792,6 +4865,7 @@
             updateDatabaseDashboard();
         });
         loadOverridesFromServer();
+        loadCustomAgreementsFromServer();
 
         // Build unified tariffs list and lookups
         buildUnifiedTariffs();
@@ -12724,8 +12798,397 @@
         }
     }
 
+    // Custom Agreements UI Helpers
+    window.openCustomAgreementModal = function() {
+        document.getElementById('custom-agreement-modal-title').textContent = "Create Custom Payer Agreement";
+        document.getElementById('cust-ag-name').value = "";
+        document.getElementById('cust-ag-name').disabled = false;
+        document.getElementById('cust-ag-type').value = "Corporate";
+        document.getElementById('cust-ag-soc').value = "TARIFF_2025";
+        document.getElementById('cust-ag-discount').value = "0";
+        document.getElementById('cust-ag-from').value = "";
+        document.getElementById('cust-ag-to').value = "";
+        
+        document.getElementById('category-discounts-container').innerHTML = "";
+        document.getElementById('test-limits-container').innerHTML = "";
+        document.getElementById('room-limits-container').innerHTML = "";
+        
+        document.getElementById('custom-agreement-modal').classList.add('show');
+    };
+
+    window.closeCustomAgreementModal = function() {
+        document.getElementById('custom-agreement-modal').classList.remove('show');
+    };
+
+    window.addCategoryDiscountRow = function(category = "Room", discount = 0) {
+        const container = document.getElementById('category-discounts-container');
+        const row = document.createElement('div');
+        row.className = 'category-discount-row';
+        row.style.display = 'flex';
+        row.style.gap = '0.5rem';
+        row.style.alignItems = 'center';
+        row.innerHTML = `
+            <select class="ag-cat-select" style="flex: 2; padding: 0.4rem; border: 1px solid var(--border); border-radius: 6px; background-color: var(--bg-hover); color: var(--text-main);">
+                <option value="Room" ${category === 'Room' ? 'selected' : ''}>Room/Bed Category</option>
+                <option value="Lab" ${category === 'Lab' ? 'selected' : ''}>Investigations - Lab</option>
+                <option value="Radiology" ${category === 'Radiology' ? 'selected' : ''}>Investigations - Radiology</option>
+                <option value="Pharmacy" ${category === 'Pharmacy' ? 'selected' : ''}>Pharmacy & Consumables</option>
+                <option value="Consultations" ${category === 'Consultations' ? 'selected' : ''}>Professional Fees / Visit</option>
+                <option value="Procedures" ${category === 'Procedures' ? 'selected' : ''}>OT & Procedures</option>
+                <option value="Others" ${category === 'Others' ? 'selected' : ''}>Others / General</option>
+            </select>
+            <input type="number" class="ag-cat-discount" value="${discount}" min="0" max="100" step="0.1" placeholder="Discount %" style="flex: 1; padding: 0.4rem; border: 1px solid var(--border); border-radius: 6px; background-color: var(--bg-hover); color: var(--text-main);">
+            <button type="button" onclick="this.parentElement.remove()" class="export-btn" style="padding: 0.4rem 0.6rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: var(--danger);">×</button>
+        `;
+        container.appendChild(row);
+    };
+
+    window.addTestLimitRow = function(code = "", limit = "", excluded = false) {
+        const container = document.getElementById('test-limits-container');
+        const row = document.createElement('div');
+        row.className = 'test-limit-row';
+        row.style.display = 'flex';
+        row.style.gap = '0.5rem';
+        row.style.alignItems = 'center';
+        row.innerHTML = `
+            <input type="text" class="ag-test-code" value="${escapeHtml(code)}" placeholder="Service Code (e.g. A1045742)" style="flex: 2; padding: 0.4rem; border: 1px solid var(--border); border-radius: 6px; background-color: var(--bg-hover); color: var(--text-main);" required>
+            <input type="number" class="ag-test-limit" value="${limit}" placeholder="Limit Rate (₹)" style="flex: 1; padding: 0.4rem; border: 1px solid var(--border); border-radius: 6px; background-color: var(--bg-hover); color: var(--text-main);" ${excluded ? 'disabled' : ''}>
+            <label style="display: flex; align-items: center; gap: 0.25rem; font-size: 0.72rem; color: var(--text-muted); cursor: pointer; white-space: nowrap;">
+                <input type="checkbox" class="ag-test-excluded" ${excluded ? 'checked' : ''} onchange="this.parentElement.previousElementSibling.disabled = this.checked; if(this.checked) this.parentElement.previousElementSibling.value='';"> Excluded
+            </label>
+            <button type="button" onclick="this.parentElement.remove()" class="export-btn" style="padding: 0.4rem 0.6rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: var(--danger);">×</button>
+        `;
+        container.appendChild(row);
+    };
+
+    window.addRoomLimitRow = function(category = "", limit = "") {
+        const container = document.getElementById('room-limits-container');
+        const row = document.createElement('div');
+        row.className = 'room-limit-row';
+        row.style.display = 'flex';
+        row.style.gap = '0.5rem';
+        row.style.alignItems = 'center';
+        row.innerHTML = `
+            <input type="text" class="ag-room-cat" value="${escapeHtml(category)}" placeholder="Category (e.g. GENERAL WARD)" style="flex: 2; padding: 0.4rem; border: 1px solid var(--border); border-radius: 6px; background-color: var(--bg-hover); color: var(--text-main);" required>
+            <input type="number" class="ag-room-limit" value="${limit}" placeholder="Limit Rate (₹)" style="flex: 1; padding: 0.4rem; border: 1px solid var(--border); border-radius: 6px; background-color: var(--bg-hover); color: var(--text-main);" required>
+            <button type="button" onclick="this.parentElement.remove()" class="export-btn" style="padding: 0.4rem 0.6rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: var(--danger);">×</button>
+        `;
+        container.appendChild(row);
+    };
+
+    window.saveCustomAgreementForm = function() {
+        const nameInput = document.getElementById('cust-ag-name');
+        const name = nameInput.value.trim();
+        if (!name) {
+            alert('Payer/Customer Name is required.');
+            return;
+        }
+
+        const fromDate = document.getElementById('cust-ag-from').value;
+        const toDate = document.getElementById('cust-ag-to').value;
+        if (!fromDate || !toDate) {
+            alert('Validity dates are required.');
+            return;
+        }
+
+        const type = document.getElementById('cust-ag-type').value;
+        const soc = document.getElementById('cust-ag-soc').value;
+        const globalDiscount = Number(document.getElementById('cust-ag-discount').value) || 0;
+
+        // Parse category discounts
+        const categoryDiscounts = {};
+        const catRows = document.querySelectorAll('.category-discount-row');
+        catRows.forEach(row => {
+            const cat = row.querySelector('.ag-cat-select').value;
+            const disc = Number(row.querySelector('.ag-cat-discount').value) || 0;
+            categoryDiscounts[cat] = disc;
+        });
+
+        // Parse specific test limits/exclusions
+        const specificTestLimits = {};
+        const testRows = document.querySelectorAll('.test-limit-row');
+        testRows.forEach(row => {
+            const code = row.querySelector('.ag-test-code').value.trim();
+            const excluded = row.querySelector('.ag-test-excluded').checked;
+            const limit = row.querySelector('.ag-test-limit').value.trim();
+            if (code) {
+                if (excluded) {
+                    specificTestLimits[code] = "EXCLUDED";
+                } else if (limit) {
+                    specificTestLimits[code] = Number(limit) || 0;
+                }
+            }
+        });
+
+        // Parse room limits
+        const perDayLimits = {};
+        const roomRows = document.querySelectorAll('.room-limit-row');
+        roomRows.forEach(row => {
+            const cat = row.querySelector('.ag-room-cat').value.trim().toUpperCase();
+            const limit = Number(row.querySelector('.ag-room-limit').value) || 0;
+            if (cat) {
+                perDayLimits[cat] = limit;
+            }
+        });
+
+        // Construct object
+        const agreement = {
+            customerType: type,
+            agreementName: name,
+            tariffMapped: soc,
+            discountAgreed: globalDiscount > 0 ? `${globalDiscount}% global discount` : 'Refer to master discount schedule',
+            discountPercentage: globalDiscount,
+            fromDate: formatDateToString(fromDate),
+            toDate: formatDateToString(toDate),
+            status: new Date(toDate) < new Date() ? 'Expired' : 'Available/Valid',
+            locations: "Guwahati",
+            categoryDiscounts,
+            specificTestLimits,
+            perDayLimits
+        };
+
+        // Remove existing agreement with same name if any
+        const filtered = window.customAgreements.filter(ag => ag.agreementName.toUpperCase() !== name.toUpperCase());
+        filtered.push(agreement);
+        window.saveAndSyncCustomAgreements(filtered);
+        
+        window.closeCustomAgreementModal();
+        if (typeof window.showToast === 'function') {
+            window.showToast(`Custom agreement for ${name} saved successfully.`, 'success');
+        } else {
+            alert('Custom agreement saved successfully.');
+        }
+    };
+
+    window.editCustomAgreement = function(name) {
+        const ag = window.customAgreements.find(x => x.agreementName.toUpperCase() === name.toUpperCase());
+        if (!ag) return;
+
+        window.openCustomAgreementModal();
+        
+        document.getElementById('custom-agreement-modal-title').textContent = "Edit Custom Payer Agreement";
+        const nameInput = document.getElementById('cust-ag-name');
+        nameInput.value = ag.agreementName;
+        nameInput.disabled = true; // disable name editing to preserve primary key
+
+        document.getElementById('cust-ag-type').value = ag.customerType || 'Corporate';
+        document.getElementById('cust-ag-soc').value = ag.tariffMapped;
+        document.getElementById('cust-ag-discount').value = ag.discountPercentage || 0;
+        document.getElementById('cust-ag-from').value = parseStringToDateInput(ag.fromDate);
+        document.getElementById('cust-ag-to').value = parseStringToDateInput(ag.toDate);
+
+        // Populate dynamic category discounts
+        if (ag.categoryDiscounts) {
+            Object.keys(ag.categoryDiscounts).forEach(cat => {
+                window.addCategoryDiscountRow(cat, ag.categoryDiscounts[cat]);
+            });
+        }
+
+        // Populate dynamic test limits
+        if (ag.specificTestLimits) {
+            Object.keys(ag.specificTestLimits).forEach(code => {
+                const limitVal = ag.specificTestLimits[code];
+                if (limitVal === "EXCLUDED") {
+                    window.addTestLimitRow(code, "", true);
+                } else {
+                    window.addTestLimitRow(code, limitVal, false);
+                }
+            });
+        }
+
+        // Populate dynamic room limits
+        if (ag.perDayLimits) {
+            Object.keys(ag.perDayLimits).forEach(cat => {
+                window.addRoomLimitRow(cat, ag.perDayLimits[cat]);
+            });
+        }
+    };
+
+    window.deleteCustomAgreement = function(name) {
+        if (!confirm(`Are you sure you want to delete the custom agreement for: ${name}?`)) return;
+        const filtered = window.customAgreements.filter(ag => ag.agreementName.toUpperCase() !== name.toUpperCase());
+        window.saveAndSyncCustomAgreements(filtered);
+        if (typeof window.showToast === 'function') {
+            window.showToast(`Custom agreement deleted.`, 'success');
+        }
+    };
+
+    window.customizeStaticAgreement = function(name) {
+        if (typeof AGREEMENT_DETAILS === 'undefined') return;
+        const ag = AGREEMENT_DETAILS.find(x => x.agreementName.toUpperCase() === name.toUpperCase());
+        if (!ag) return;
+
+        window.openCustomAgreementModal();
+        document.getElementById('custom-agreement-modal-title').textContent = "Customise Payer Agreement";
+        
+        document.getElementById('cust-ag-name').value = ag.agreementName;
+        document.getElementById('cust-ag-type').value = ag.customerType || 'Corporate';
+        
+        // Match SOC mapping
+        let socVal = "TARIFF_2025";
+        const tLower = ag.tariffMapped.toUpperCase();
+        if (tLower.includes("2021")) socVal = "TARIFF_2021";
+        else if (tLower.includes("2023")) socVal = "TARIFF_2023";
+        else if (tLower.includes("2024")) socVal = "TARIFF_2024";
+        else if (tLower.includes("EXCELCARE")) socVal = "TARIFF_EXCELCARE_2025";
+        else if (tLower.includes("HDFC")) socVal = "TARIFF_HDFC_ERGO_2024";
+        
+        document.getElementById('cust-ag-soc').value = socVal;
+        
+        // Parse discount string to percentage
+        let globalDisc = 0;
+        if (ag.discountAgreed) {
+            const match = ag.discountAgreed.match(/(\d+)\s*%/);
+            if (match) globalDisc = Number(match[1]);
+        }
+        document.getElementById('cust-ag-discount').value = globalDisc;
+        
+        document.getElementById('cust-ag-from').value = parseStringToDateInput(ag.fromDate);
+        document.getElementById('cust-ag-to').value = parseStringToDateInput(ag.toDate);
+    };
+
+    // Helper functions for date formatting conversion
+    function formatDateToString(dateStr) {
+        // Converts YYYY-MM-DD to dd-MM-yyyy
+        if (!dateStr) return "";
+        const parts = dateStr.split('-');
+        if (parts.length === 3) {
+            return `${parts[2]}-${parts[1]}-${parts[0]}`;
+        }
+        return dateStr;
+    }
+
+    function parseStringToDateInput(strVal) {
+        // Converts dd-MM-yyyy to YYYY-MM-DD
+        if (!strVal) return "";
+        const parts = strVal.split('-');
+        if (parts.length === 3) {
+            return `${parts[2]}-${parts[1]}-${parts[0]}`;
+        }
+        return strVal;
+    }
+
     document.addEventListener('DOMContentLoaded', init);
 </script>
+
+<!-- CUSTOM AGREEMENT CREATE/EDIT MODAL -->
+<div class="modal-overlay" id="custom-agreement-modal" style="z-index: 2500;">
+    <div class="modal-card" style="max-width: 750px; max-height: 85vh; display: flex; flex-direction: column;">
+        <div class="modal-header">
+            <h2 id="custom-agreement-modal-title">Create Custom Payer Agreement</h2>
+            <button class="close-modal-btn" onclick="closeCustomAgreementModal()" title="Close modal">
+                <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="modal-body" style="padding: 1.5rem; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- Basic Fields Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+                <div class="input-group" style="padding: 0;">
+                    <label for="cust-ag-name" style="font-weight: 700; margin-bottom: 0.25rem; display: block; color: var(--text-main);">Payer/Customer Name <span style="color:var(--danger)">*</span></label>
+                    <input type="text" id="cust-ag-name" class="form-control" placeholder="e.g. ONGC NAZIRA LIMITED" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px; background-color: var(--bg-hover); color: var(--text-main);" required>
+                </div>
+                <div class="input-group" style="padding: 0;">
+                    <label for="cust-ag-type" style="font-weight: 700; margin-bottom: 0.25rem; display: block; color: var(--text-main);">Customer Type</label>
+                    <select id="cust-ag-type" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px; background-color: var(--bg-hover); color: var(--text-main);">
+                        <option value="Corporate">Corporate</option>
+                        <option value="TPA">TPA</option>
+                        <option value="Insurance Company">Insurance Company</option>
+                        <option value="Bank">Bank</option>
+                        <option value="State Govt. Organization">State Govt. Organization</option>
+                    </select>
+                </div>
+                <div class="input-group" style="padding: 0;">
+                    <label for="cust-ag-soc" style="font-weight: 700; margin-bottom: 0.25rem; display: block; color: var(--text-main);">Mapped Tariff SOC <span style="color:var(--danger)">*</span></label>
+                    <select id="cust-ag-soc" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px; background-color: var(--bg-hover); color: var(--text-main);">
+                        <option value="TARIFF_2025">TARIFF_2025 (AIH 2025 Credit)</option>
+                        <option value="TARIFF_2024">TARIFF_2024 (AIH 2024 Credit)</option>
+                        <option value="TARIFF_2023">TARIFF_2023 (AIH 2023 Credit)</option>
+                        <option value="TARIFF_2021">TARIFF_2021 (AIH 2021-22 SOC)</option>
+                        <option value="TARIFF_EXCELCARE_2025">TARIFF_EXCELCARE_2025 (Excelcare Credit)</option>
+                        <option value="TARIFF_EXCELCARE_CASH_2025">TARIFF_EXCELCARE_CASH_2026 (Excelcare Cash)</option>
+                        <option value="TARIFF_EXCELCARE_2024">TARIFF_EXCELCARE_2024 (Excelcare 2024 SOC)</option>
+                        <option value="TARIFF_HDFC_ERGO_2024">TARIFF_HDFC_ERGO_2024 (HDFC ERGO Excelcare Template)</option>
+                        <option value="TARIFF_DATA">TARIFF_DATA (Master 2026 TPA/GIPSA)</option>
+                    </select>
+                </div>
+                <div class="input-group" style="padding: 0;">
+                    <label for="cust-ag-discount" style="font-weight: 700; margin-bottom: 0.25rem; display: block; color: var(--text-main);">Global Discount %</label>
+                    <input type="number" id="cust-ag-discount" class="form-control" placeholder="0" min="0" max="100" step="0.1" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px; background-color: var(--bg-hover); color: var(--text-main);">
+                </div>
+                <div class="input-group" style="padding: 0;">
+                    <label for="cust-ag-from" style="font-weight: 700; margin-bottom: 0.25rem; display: block; color: var(--text-main);">Effective From <span style="color:var(--danger)">*</span></label>
+                    <input type="date" id="cust-ag-from" class="form-control" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px; background-color: var(--bg-hover); color: var(--text-main);" required>
+                </div>
+                <div class="input-group" style="padding: 0;">
+                    <label for="cust-ag-to" style="font-weight: 700; margin-bottom: 0.25rem; display: block; color: var(--text-main);">Expiry Date <span style="color:var(--danger)">*</span></label>
+                    <input type="date" id="cust-ag-to" class="form-control" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px; background-color: var(--bg-hover); color: var(--text-main);" required>
+                </div>
+            </div>
+
+            <!-- Dynamic Section: Category-specific discounts -->
+            <div style="border-top: 1px solid var(--border); padding-top: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                    <h3 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin: 0;">Category-Specific Discounts</h3>
+                    <button type="button" onclick="addCategoryDiscountRow()" class="export-btn" style="padding: 0.2rem 0.6rem; font-size: 0.72rem; background: rgba(13, 148, 136, 0.1); border: 1px solid rgba(13, 148, 136, 0.3); color: var(--primary);">+ Add Category Discount</button>
+                </div>
+                <div id="category-discounts-container" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <!-- Dynamic Rows -->
+                </div>
+            </div>
+
+            <!-- Dynamic Section: Specific Test Charges Limits & Exclusions -->
+            <div style="border-top: 1px solid var(--border); padding-top: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                    <h3 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin: 0;">Specific Test Limits & Exclusions</h3>
+                    <button type="button" onclick="addTestLimitRow()" class="export-btn" style="padding: 0.2rem 0.6rem; font-size: 0.72rem; background: rgba(13, 148, 136, 0.1); border: 1px solid rgba(13, 148, 136, 0.3); color: var(--primary);">+ Add Test Limit/Exclusion</button>
+                </div>
+                <div id="test-limits-container" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <!-- Dynamic Rows -->
+                </div>
+            </div>
+
+            <!-- Dynamic Section: Room Rent Daily Limits -->
+            <div style="border-top: 1px solid var(--border); padding-top: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                    <h3 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin: 0;">Room Rent Daily Caps (Per-Day limits)</h3>
+                    <button type="button" onclick="addRoomLimitRow()" class="export-btn" style="padding: 0.2rem 0.6rem; font-size: 0.72rem; background: rgba(13, 148, 136, 0.1); border: 1px solid rgba(13, 148, 136, 0.3); color: var(--primary);">+ Add Room Cap</button>
+                </div>
+                <div id="room-limits-container" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <!-- Dynamic Rows -->
+                </div>
+            </div>
+        </div>
+        <div style="padding: 1rem 1.5rem; background: rgba(0,0,0,0.2); border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 0.75rem;">
+            <button onclick="closeCustomAgreementModal()" class="export-btn" style="background: var(--bg-page); color: var(--text-muted); border-color: var(--border);">Cancel</button>
+            <button onclick="saveCustomAgreementForm()" class="export-btn" style="background: var(--primary); color: white; border-color: var(--primary); font-weight: 700;">Save Agreement</button>
+        </div>
+    </div>
+</div>
+
+<!-- AGREEMENT EXPIRY PROMPT MODAL -->
+<div class="modal-overlay" id="agreement-expiry-modal" style="z-index: 2800;">
+    <div class="modal-card" style="max-width: 480px; border-top: 5px solid var(--warning);">
+        <div class="modal-header">
+            <h2 style="display: flex; align-items: center; gap: 0.5rem; color: var(--warning);">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--warning)"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"/></svg>
+                Agreement Period Expired
+            </h2>
+            <button class="close-modal-btn" onclick="closeExpiryModal()" title="Close modal">
+                <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="modal-body" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div id="expiry-modal-message" style="font-size: 0.9rem; line-height: 1.6; color: var(--text-main);">
+                <!-- Populated dynamically -->
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 0.5rem;">
+                <button class="export-btn" id="btn-expiry-bypass" style="background: var(--bg-page); color: var(--text-muted); border-color: var(--border);">Proceed Anyway</button>
+                <button class="export-btn" id="btn-expiry-modify" style="background: var(--primary); color: white; border-color: var(--primary);">Modify Details</button>
+                <button class="export-btn" id="btn-expiry-extend-btn" style="background: var(--success); color: white; border-color: var(--success); font-weight: 700;">Extend 1 Year</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
