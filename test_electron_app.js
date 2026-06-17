@@ -227,6 +227,9 @@ async function runTests() {
     try {
         if (fs.existsSync(backupFile)) fs.unlinkSync(backupFile);
         
+        console.log('- Logging in as Administrator (admin/Admin@Excel)...');
+        await authEngine.login('admin', 'Admin@Excel', 'excelcare', 'Administrator');
+
         console.log(`- Creating backup database at: ${backupFile}`);
         await backupEngine.createBackup(backupFile);
         

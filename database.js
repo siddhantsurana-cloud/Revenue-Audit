@@ -188,7 +188,7 @@ async function seedTariffsIfNeeded() {
     }
 
     console.log('Seeding tariff databases from tariff_data.js...');
-    const fileContent = fs.readFileSync(tariffFile, 'utf-8');
+    const fileContent = fs.readFileSync(tariffFile, 'utf-8').replace(/\bconst\b/g, 'var');
 
     // Run tariff_data.js inside VM context to extract arrays safely
     const context = {};

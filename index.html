@@ -5331,6 +5331,51 @@
 
     // App Initialization
     function init() {
+        if (typeof window.api === 'undefined') {
+            const overlay = document.createElement('div');
+            overlay.id = 'desktop-mode-overlay';
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100vw';
+            overlay.style.height = '100vh';
+            overlay.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
+            overlay.style.color = '#f8fafc';
+            overlay.style.display = 'flex';
+            overlay.style.flexDirection = 'column';
+            overlay.style.justifyContent = 'center';
+            overlay.style.alignItems = 'center';
+            overlay.style.zIndex = '999999';
+            overlay.style.fontFamily = 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            overlay.style.padding = '2rem';
+            overlay.style.textAlign = 'center';
+
+            overlay.innerHTML = `
+                <div style="background: #1e293b; padding: 3rem; border-radius: 12px; max-width: 600px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid #334155; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+                    <div style="background: rgba(245, 158, 11, 0.1); border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#f59e0b" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    </div>
+                    <h2 style="font-size: 1.75rem; font-weight: 700; margin: 0; color: #f8fafc; letter-spacing: -0.025em;">Desktop Application Mode Required</h2>
+                    <p style="color: #94a3b8; line-height: 1.6; margin: 0; font-size: 0.975rem;">
+                        The <strong>Revenue Assurance Portal</strong> has been upgraded to a secure native desktop application with local database encryption. It can no longer be accessed directly via a standard web browser.
+                    </p>
+                    <div style="background: #0f172a; padding: 1rem 1.5rem; border-radius: 8px; border: 1px solid #1e293b; width: 100%; text-align: left; font-size: 0.875rem;">
+                        <h4 style="margin: 0 0 0.5rem 0; color: #38bdf8; font-weight: 600;">How to launch the application:</h4>
+                        <ol style="margin: 0; padding-left: 1.2rem; color: #cbd5e1; line-height: 1.5; display: flex; flex-direction: column; gap: 0.4rem;">
+                            <li>Open the folder where the application files are located.</li>
+                            <li>Run the desktop shortcut or double-click <strong>RevenueAudit.exe</strong> (or execute <code>npm start</code> in this directory).</li>
+                        </ol>
+                    </div>
+                    <div style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem;">
+                        OS: Windows | Application Version: 2.0.0
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+            return;
+        }
+
         if (typeof TARIFF_DATA === 'undefined') {
             console.error('TARIFF_DATA is not defined. Make sure tariff_data.js is compiled.');
             tariffTbody.innerHTML = '<tr><td colspan="11" style="text-align: center; color: var(--danger); font-weight: 700; padding: 2rem;">Error: tariff_data.js not found. Please compile the files first.</td></tr>';

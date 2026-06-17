@@ -358,53 +358,102 @@ function saveAudit(results, user) {
     enforcePermission('canSaveAudit');
     const timestamp = new Date().toISOString();
     return new Promise((resolve, reject) => {
-        db.serialize(() => {
-            db.run('BEGIN TRANSACTION');
-            
-            const stmt = db.prepare(`INSERT OR REPLACE INTO tbl_audit_results 
-                (FileName, RowIndex, BillNo, IPNo, PatientName, BilledDate, RoomCategory, Customer, 
-                 ServiceID, ServiceName, BilledRate, Quantity, ExpectedRate, Variance, Status, 
-                 Explanation, UserRemarks, AuditedBy, AuditDate, Unit) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
-                
-            for (const r of results) {
-                stmt.run([
-                    r.fileName || '',
-                    r.rowIndex || 0,
-                    r.billNo || '',
-                    r.ipNo || '',
-                    r.patientName || '',
-                    r.billedDate || '',
-                    r.roomCategory || '',
-                    r.customer || '',
-                    r.serviceId || '',
-                    r.serviceName || '',
-                    r.billedRate || 0.0,
-                    r.quantity || 1,
-                    r.expectedRate || 0.0,
-                    r.variance || 0.0,
-                    r.status || 'Matching',
-                    r.explanation || '',
-                    r.userRemarks || '',
-                    user.username,
-                    timestamp,
-                    user.unit
-                ]);
-            }
-            stmt.finalize();
-
-            // Record audit log
-            db.run(`INSERT INTO tbl_audit_logs (Timestamp, User, Role, Action, Module, Remarks) 
-                VALUES (?, ?, ?, ?, ?, ?)`, 
-                [timestamp, user.username, user.role, 'Create', 'Revenue Audit', `Saved ${results.length} audit records`], (err) => {
-                    if (err) {
-                        db.run('ROLLBACK');
-                        return reject(err);
-                    }
-                    db.run('COMMIT');
-                    resolve(true);
+        // Step 1: Check for locked rows
+        const checkSql = `SELECT IsLocked FROM tbl_audit_results WHERE FileName = ? AND RowIndex = ? AND Unit = ? AND IsLocked = 1 LIMIT 1`;
+        
+        const checks = results.map(r => {
+            return new Promise((resCheck, rejCheck) => {
+                db.get(checkSql, [r.fileName || '', r.rowIndex || 0, user.unit], (err, row) => {
+                    if (err) rejCheck(err);
+                    else if (row) rejCheck(new Error(`Cannot save: Audit record for file ${r.fileName} at row ${r.rowIndex} is approved and locked.`));
+                    else resCheck();
                 });
+            });
         });
+
+        Promise.all(checks)
+            .then(() => {
+                // Step 2: Run transaction sequentially using Promises
+                return new Promise((resTx, rejTx) => {
+                    db.run('BEGIN TRANSACTION', (err) => {
+                        if (err) return rejTx(err);
+
+                        // Helper to run all inserts sequentially
+                        let insertChain = Promise.resolve();
+                        const stmt = db.prepare(`INSERT OR REPLACE INTO tbl_audit_results 
+                            (FileName, RowIndex, BillNo, IPNo, PatientName, BilledDate, RoomCategory, Customer, 
+                             ServiceID, ServiceName, BilledRate, Quantity, ExpectedRate, Variance, Status, 
+                             Explanation, UserRemarks, AuditedBy, AuditDate, Unit) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+
+                        for (const r of results) {
+                            insertChain = insertChain.then(() => {
+                                return new Promise((resRun, rejRun) => {
+                                    stmt.run([
+                                        r.fileName || '',
+                                        r.rowIndex || 0,
+                                        r.billNo || '',
+                                        r.ipNo || '',
+                                        r.patientName || '',
+                                        r.billedDate || '',
+                                        r.roomCategory || '',
+                                        r.customer || '',
+                                        r.serviceId || '',
+                                        r.serviceName || '',
+                                        r.billedRate || 0.0,
+                                        r.quantity || 1,
+                                        r.expectedRate || 0.0,
+                                        r.variance || 0.0,
+                                        r.status || 'Matching',
+                                        r.explanation || '',
+                                        r.userRemarks || '',
+                                        user.username,
+                                        timestamp,
+                                        user.unit
+                                    ], (errRun) => {
+                                        if (errRun) rejRun(errRun);
+                                        else resRun();
+                                    });
+                                });
+                            });
+                        }
+
+                        insertChain
+                            .then(() => {
+                                return new Promise((resFin, rejFin) => {
+                                    stmt.finalize((errFin) => {
+                                        if (errFin) rejFin(errFin);
+                                        else resFin();
+                                    });
+                                });
+                            })
+                            .then(() => {
+                                return new Promise((resLog, rejLog) => {
+                                    db.run(`INSERT INTO tbl_audit_logs (Timestamp, User, Role, Action, Module, Remarks) 
+                                        VALUES (?, ?, ?, ?, ?, ?)`, 
+                                        [timestamp, user.username, user.role, 'Create', 'Revenue Audit', `Saved ${results.length} audit records`], (errLog) => {
+                                            if (errLog) rejLog(errLog);
+                                            else resLog();
+                                        });
+                                });
+                            })
+                            .then(() => {
+                                db.run('COMMIT', (errCommit) => {
+                                    if (errCommit) rejTx(errCommit);
+                                    else resTx(true);
+                                });
+                            })
+                            .catch((txErr) => {
+                                // If any insert or finalize or log fails, attempt rollback
+                                db.run('ROLLBACK', () => {
+                                    rejTx(txErr);
+                                });
+                            });
+                    });
+                });
+            })
+            .then(resolve)
+            .catch(reject);
     });
 }
 
@@ -412,27 +461,49 @@ function approveAudit(resultId, user) {
     enforcePermission('canApproveAudit');
     const timestamp = new Date().toISOString();
     return new Promise((resolve, reject) => {
-        db.serialize(() => {
-            db.run('BEGIN TRANSACTION');
+        db.run('BEGIN TRANSACTION', (err) => {
+            if (err) return reject(err);
 
-            // Lock audit record
-            db.run(`UPDATE tbl_audit_results SET IsLocked = 1 WHERE ResultID = ?`, [resultId], (err) => {
-                if (err) {
-                    db.run('ROLLBACK');
-                    return reject(err);
-                }
-
-                // Log to tbl_approval_history
-                db.run(`INSERT INTO tbl_approval_history (ResultID, Action, User, Timestamp) 
-                    VALUES (?, 'Approve', ?, ?)`, [resultId, user.username, timestamp]);
-
-                // Record audit log
-                db.run(`INSERT INTO tbl_audit_logs (Timestamp, User, Role, Action, Module, RecordID, Remarks) 
-                    VALUES (?, ?, ?, 'Approve', 'Revenue Audit', ?, ?)`, 
-                    [timestamp, user.username, user.role, String(resultId), `Approved audit result #${resultId}`]);
-
-                db.run('COMMIT');
-                resolve(true);
+            // 1. Update audit result
+            new Promise((resUpdate, rejUpdate) => {
+                db.run(`UPDATE tbl_audit_results SET IsLocked = 1 WHERE ResultID = ?`, [resultId], (errUpdate) => {
+                    if (errUpdate) rejUpdate(errUpdate);
+                    else resUpdate();
+                });
+            })
+            // 2. Insert approval history
+            .then(() => {
+                return new Promise((resHistory, rejHistory) => {
+                    db.run(`INSERT INTO tbl_approval_history (ResultID, Action, User, Timestamp) 
+                        VALUES (?, 'Approve', ?, ?)`, [resultId, user.username, timestamp], (errHist) => {
+                            if (errHist) rejHistory(errHist);
+                            else resHistory();
+                        });
+                });
+            })
+            // 3. Insert audit log
+            .then(() => {
+                return new Promise((resLog, rejLog) => {
+                    db.run(`INSERT INTO tbl_audit_logs (Timestamp, User, Role, Action, Module, RecordID, Remarks) 
+                        VALUES (?, ?, ?, 'Approve', 'Revenue Audit', ?, ?)`, 
+                        [timestamp, user.username, user.role, String(resultId), `Approved audit result #${resultId}`], (errLog) => {
+                            if (errLog) rejLog(errLog);
+                            else resLog();
+                        });
+                });
+            })
+            // 4. Commit transaction
+            .then(() => {
+                db.run('COMMIT', (errCommit) => {
+                    if (errCommit) reject(errCommit);
+                    else resolve(true);
+                });
+            })
+            // Rollback on error
+            .catch((txErr) => {
+                db.run('ROLLBACK', () => {
+                    reject(txErr);
+                });
             });
         });
     });
@@ -442,27 +513,49 @@ function reopenAudit(resultId, user, reason) {
     enforcePermission('canReopenAudit');
     const timestamp = new Date().toISOString();
     return new Promise((resolve, reject) => {
-        db.serialize(() => {
-            db.run('BEGIN TRANSACTION');
+        db.run('BEGIN TRANSACTION', (err) => {
+            if (err) return reject(err);
 
-            // Unlock audit record
-            db.run(`UPDATE tbl_audit_results SET IsLocked = 0 WHERE ResultID = ?`, [resultId], (err) => {
-                if (err) {
-                    db.run('ROLLBACK');
-                    return reject(err);
-                }
-
-                // Log to tbl_approval_history
-                db.run(`INSERT INTO tbl_approval_history (ResultID, Action, User, Timestamp, Reason) 
-                    VALUES (?, 'Reopen', ?, ?, ?)`, [resultId, user.username, timestamp, reason]);
-
-                // Record audit log
-                db.run(`INSERT INTO tbl_audit_logs (Timestamp, User, Role, Action, Module, RecordID, Remarks) 
-                    VALUES (?, ?, ?, 'Reopen', 'Revenue Audit', ?, ?)`, 
-                    [timestamp, user.username, user.role, String(resultId), `Reopened audit result #${resultId}. Reason: ${reason}`]);
-
-                db.run('COMMIT');
-                resolve(true);
+            // 1. Update audit result to unlocked
+            new Promise((resUpdate, rejUpdate) => {
+                db.run(`UPDATE tbl_audit_results SET IsLocked = 0 WHERE ResultID = ?`, [resultId], (errUpdate) => {
+                    if (errUpdate) rejUpdate(errUpdate);
+                    else resUpdate();
+                });
+            })
+            // 2. Insert reopen history
+            .then(() => {
+                return new Promise((resHistory, rejHistory) => {
+                    db.run(`INSERT INTO tbl_approval_history (ResultID, Action, User, Timestamp, Reason) 
+                        VALUES (?, 'Reopen', ?, ?, ?)`, [resultId, user.username, timestamp, reason], (errHist) => {
+                            if (errHist) rejHistory(errHist);
+                            else resHistory();
+                        });
+                });
+            })
+            // 3. Insert audit log
+            .then(() => {
+                return new Promise((resLog, rejLog) => {
+                    db.run(`INSERT INTO tbl_audit_logs (Timestamp, User, Role, Action, Module, RecordID, Remarks) 
+                        VALUES (?, ?, ?, 'Reopen', 'Revenue Audit', ?, ?)`, 
+                        [timestamp, user.username, user.role, String(resultId), `Reopened audit result #${resultId}. Reason: ${reason}`], (errLog) => {
+                            if (errLog) rejLog(errLog);
+                            else resLog();
+                        });
+                });
+            })
+            // 4. Commit transaction
+            .then(() => {
+                db.run('COMMIT', (errCommit) => {
+                    if (errCommit) reject(errCommit);
+                    else resolve(true);
+                });
+            })
+            // Rollback on error
+            .catch((txErr) => {
+                db.run('ROLLBACK', () => {
+                    reject(txErr);
+                });
             });
         });
     });
