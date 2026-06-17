@@ -7560,7 +7560,7 @@
         const u = tariffMapped.toUpperCase();
         const custUpper = customerName ? customerName.toUpperCase() : "";
         
-        if (custUpper.includes("IOCL") || u.includes("IOCL")) {
+        if (custUpper.includes("IOCL") || u.includes("IOCL") || custUpper.includes("INDIAN OIL") || u.includes("INDIAN OIL")) {
             return { activeSOC: TARIFF_2021_IOCL, activeSOCMap: map2021_iocl };
         }
         if (u.includes("KOLKATA")) {
@@ -7615,6 +7615,9 @@
 
         let cleanCustomer = customerStr.toUpperCase().replace(/[.,()\-]/g, ' ');
         cleanCustomer = cleanCustomer.replace(/\bALLIANCE\b/g, 'ALLIANZ');
+        if (cleanCustomer.includes("INDIAN OIL") || cleanCustomer.includes("INDIAN OIL CORPORATION")) {
+            cleanCustomer += " IOCL";
+        }
         
         const stopwords = [
             "LTD", "PVT", "LIMITED", "PRIVATE", "AGREEMENT", "COMPANY", "INSURANCE", 
