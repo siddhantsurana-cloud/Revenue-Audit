@@ -14074,7 +14074,7 @@
                 const unit = unitInput ? unitInput.value : 'excelcare';
                 const username = usernameInput ? usernameInput.value.trim() : '';
                 const password = passwordInput ? passwordInput.value : '';
-                const role = (roleInput && !roleInput.disabled) ? roleInput.value : 'Viewer';
+                const role = roleInput ? roleInput.value : 'Viewer';
                 
                 if (!username || !password) {
                     alert('Please fill out all fields.');
