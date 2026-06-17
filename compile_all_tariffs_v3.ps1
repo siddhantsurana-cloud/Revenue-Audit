@@ -331,160 +331,11 @@ if (Test-Path $file2122) {
     $wb.Close($false)
 }
 
-# 3d. Parse SOC - 2021-22_IOCL.xlsx
-Log-Info "Parsing SOC - 2021-22_IOCL..."
-$list2021_IOCL = New-Object System.Collections.Generic.List[Object]
-$file2122_IOCL = Join-Path $socDir "SOC - 2021-22_IOCL.xlsx"
-if (Test-Path $file2122_IOCL) {
-    $wb = $excel.Workbooks.Open($file2122_IOCL, [Type]::Missing, $true)
-    $sheet = $wb.Worksheets.Item(1)
-    $values = $sheet.UsedRange.Value2
-    $rowCount = $sheet.UsedRange.Rows.Count
-    
-    # Pre-scan parent-row rate patterns (e.g. PDA CLOSURE Rs. 30,000/-)
-    $parentRowRates = @{}
-    for ($r = 24; $r -le $rowCount; $r++) {
-        $c1 = if ($values[$r, 1] -ne $null) { $values[$r, 1].ToString().Trim() } else { "" }
-        if ($c1 -and ($c1.Contains("Rs.") -or $c1.Contains("Rs"))) {
-            if ($c1 -match 'Rs\.?\s*(\d{1,3}(,\d{3})*)') {
-                $rateStr = $Matches[1].Replace(",", "")
-                $rateNum = 0
-                if ([double]::TryParse($rateStr, [ref]$rateNum)) {
-                    $name = $c1 -replace 'Rs\.?.*$', ''
-                    $name = $name.Trim()
-                    
-                    # Look for subsequent code in the next 4 rows
-                    for ($offset = 1; $offset -le 4; $offset++) {
-                        $targetRow = $r + $offset
-                        if ($targetRow -gt $rowCount) { break }
-                        $nextVal = if ($values[$targetRow, 1] -ne $null) { $values[$targetRow, 1].ToString().Trim() } else { "" }
-                        $nextNum = 0
-                        if ($nextVal -and [double]::TryParse($nextVal, [ref]$nextNum) -and $nextNum -ge 1) {
-                            $parentRowRates[$nextVal] = @{ name = $name; rate = $rateNum }
-                            break
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    $section = "General"
-    for ($r = 24; $r -le $rowCount; $r++) {
-        $c1 = if ($values[$r, 1] -ne $null) { $values[$r, 1].ToString().Trim() } else { "" }
-        $c4 = if ($values[$r, 4] -ne $null) { $values[$r, 4].ToString().Trim() } else { "" }
-        $c6 = if ($values[$r, 6] -ne $null) { $values[$r, 6].ToString().Trim() } else { "" }
-        $c13 = if ($values[$r, 13] -ne $null) { $values[$r, 13].ToString().Trim() } else { "" }
-        
-        # Check for section headers in Col 1 or Col 4
-        if ($c1 -match '^[A-Za-z /&,-]{5,50}$' -and [string]::IsNullOrEmpty($c6) -and [string]::IsNullOrEmpty($c13)) {
-            $section = $c1
-            continue
-        } elseif ($c4 -match '^[A-Za-z /&,-]{5,50}$' -and [string]::IsNullOrEmpty($c1) -and [string]::IsNullOrEmpty($c6) -and [string]::IsNullOrEmpty($c13)) {
-            $section = $c4
-            continue
-        }
-        
-        $cleanC1 = ""
-        if ($c1 -match '^(\d+)') { $cleanC1 = $Matches[1] }
-        $cleanC4 = ""
-        if ($c4 -match '^(\d+)') { $cleanC4 = $Matches[1] }
+# # 3d. Parse SOC - 2021-22_IOCL using Python parser (handles DOCX room-specific rates)
+Log-Info "Parsing SOC - 2021-22_IOCL via Python..."
+$ioclJsonPath = Join-Path $PSScriptRoot "compiled_iocl_2021.json"
+& python "$PSScriptRoot/compile_iocl_2021.py" "$socDir" "$ioclJsonPath"
 
-        $code = ""
-        $codeVal = 0
-        
-        if ($cleanC1 -ne "" -and [double]::TryParse($cleanC1, [ref]$codeVal) -and $codeVal -ge 1) {
-            $code = $cleanC1
-        } elseif ($cleanC4 -ne "" -and [double]::TryParse($cleanC4, [ref]$codeVal) -and $codeVal -ge 1) {
-            $code = $cleanC4
-        }
-        
-        if ($code -eq "") {
-            # Find the rate first by scanning Col 15 to 52
-            $rateCol = 0
-            $rate = 0
-            for ($c = 15; $c -le 52; $c++) {
-                $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
-                $rateNum = 0
-                if ($v -eq "No Charge") {
-                    $rate = 0
-                    $rateCol = $c
-                    break
-                } elseif ($v -and [double]::TryParse($v, [ref]$rateNum)) {
-                    $rate = $rateNum
-                    $rateCol = $c
-                    break
-                }
-            }
-            if ($rateCol -gt 0) {
-                # We have a rate but no numeric code. Scan Col 1 to 14 for a text description.
-                $nameParts = @()
-                for ($c = 1; $c -le 14; $c++) {
-                    $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
-                    if ($v -and $v.Length -gt 1 -and $v -notmatch '^\d+$') {
-                        $nameParts += $v
-                    }
-                }
-                $name = $nameParts -join " "
-                if ($name -ne "") {
-                    $code = $name
-                }
-            }
-        } else {
-            if ($parentRowRates.ContainsKey($code)) {
-                $name = $parentRowRates[$code].name
-                $rate = $parentRowRates[$code].rate
-            } else {
-                # Find the rate first by scanning Col 15 to 52
-                $rateCol = 0
-                $rate = 0
-                for ($c = 15; $c -le 52; $c++) {
-                    $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
-                    $rateNum = 0
-                    if ($v -eq "No Charge") {
-                        $rate = 0
-                        $rateCol = $c
-                        break
-                    } elseif ($v -and [double]::TryParse($v, [ref]$rateNum)) {
-                        $rate = $rateNum
-                        $rateCol = $c
-                        break
-                    }
-                }
-                
-                # Find the name by concatenating non-empty text cells between the code column and the rate column
-                $nameParts = @()
-                $startCol = if ($code -eq $cleanC4) { 5 } else { 2 }
-                $endCol = if ($rateCol -gt 0) { $rateCol - 1 } else { 18 }
-                if ($endCol -gt 18) { $endCol = 18 }
-                
-                for ($c = $startCol; $c -le $endCol; $c++) {
-                    $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
-                    if ($v -and $v.Length -gt 1 -and $v -notmatch '^\d+$') {
-                        $nameParts += $v
-                    }
-                }
-                $name = $nameParts -join " "
-            }
-        }
-        
-        if ($code -ne "" -and -not [string]::IsNullOrEmpty($name)) {
-            # Skip comments/remarks/notes (which have code < 100 but no rate)
-            if ($codeVal -gt 0 -and $codeVal -lt 100 -and $rate -eq 0 -and $c1 -ne "" -and $values[$r, 19] -eq $null) {
-                continue
-            }
-            
-            $list2021_IOCL.Add([PSCustomObject]@{
-                id = $code
-                name = $name
-                type = $section
-                dept = $section
-                rate = $rate
-            })
-        }
-    }
-    $wb.Close($false)
-}
 
 # Generic Sheet Parser for 23-24 and 24-25 (with row-by-row fallback scanning for merged headings)
 function Parse-MultiSheetFile($file) {
@@ -1256,7 +1107,12 @@ $jsonMonitoring = $monitoringCharges | ConvertTo-Json
 $jsonVisit = $visitCharges | ConvertTo-Json
 
 $json2021 = $list2021 | ConvertTo-Json -Depth 5
-$json2021_IOCL = $list2021_IOCL | ConvertTo-Json -Depth 5
+$json2021_IOCL = if (Test-Path $ioclJsonPath) { [IO.File]::ReadAllText($ioclJsonPath) } else { "[]" }
+$list2021_IOCL_Count = 0
+if (Test-Path $ioclJsonPath) {
+    $list2021_IOCL_Count = (ConvertFrom-Json $json2021_IOCL).Count
+    Remove-Item $ioclJsonPath -ErrorAction SilentlyContinue
+}
 $json2023_V2 = $list2023_V2 | ConvertTo-Json -Depth 5
 $json2023 = $list2023 | ConvertTo-Json -Depth 5
 $json2024 = $list2024 | ConvertTo-Json -Depth 5
@@ -1327,7 +1183,7 @@ Log-Info "=================================================="
 Log-Info "Full compilation successful!"
 Log-Info "Master 2026 records: $($dataArray.Count)"
 Log-Info "SOC 2021-22 records: $($list2021.Count)"
-Log-Info "SOC 2021-22 IOCL records: $($list2021_IOCL.Count)"
+Log-Info "SOC 2021-22 IOCL records: $list2021_IOCL_Count"
 Log-Info "SOC 2023-24_V2 records: $($list2023_V2.Count)"
 Log-Info "SOC 2023-24 records: $($list2023.Count)"
 Log-Info "SOC 2024-25 records: $($list2024.Count)"

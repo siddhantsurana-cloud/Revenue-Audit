@@ -7484,6 +7484,23 @@
 
     // Discount Master Excel upload functions removed as it's not required/included in UI
 
+    // Map IOCL room category to the three categories in the DOCX tariff
+    function mapIOCLRoomCategory(roomCat, cleanedRoom) {
+        let u = roomCat ? roomCat.toUpperCase().trim() : "";
+        if (!u && cleanedRoom) {
+            if (cleanedRoom === "STANDARD WARD") return "GENERAL";
+            if (cleanedRoom === "SEMI PRIVATE") return "SEMI CABIN/ NON AC CABIN";
+            return "AC CABIN TO SUPER DELUXE AND CRITICAL CARE";
+        }
+        if (u.includes("GENERAL WARD") || u === "GENERAL" || u === "GENERAL WARD" || u === "AC GENERAL WARD" || u.includes("GENERAL")) {
+            return "GENERAL";
+        }
+        if (u.includes("SEMI CABIN") || u.includes("SEMI-PRIVATE") || u.includes("SEMI PRIVATE") || u.includes("SEMI PRIVATE WARD") || u.includes("SEMI PRIVATE-AC") || u.includes("SEMI PRIVATE AC")) {
+            return "SEMI CABIN/ NON AC CABIN";
+        }
+        return "AC CABIN TO SUPER DELUXE AND CRITICAL CARE";
+    }
+
     // Clean room type string to match keys
     function cleanRoomCategory(cat) {
         if (!cat) return "STANDARD WARD";
@@ -9608,7 +9625,17 @@
                                     // ─────────────────────────────────────────────────────────────────
 
                                 } else {
-                                    expectedTariff = (activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate;
+                                    if (match.rates) {
+                                        const mappedCat = mapIOCLRoomCategory(roomCategory, cleanedRoom);
+                                        expectedTariff = match.rates[mappedCat];
+                                        if (expectedTariff === undefined || expectedTariff === null) {
+                                            expectedTariff = match.rate;
+                                        } else {
+                                            explanation += ` Resolved IOCL room-specific rate (${mappedCat}).`;
+                                        }
+                                    } else {
+                                        expectedTariff = (activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate;
+                                    }
                                 }
                             } else {
                                 expectedTariff = null;
@@ -9623,7 +9650,18 @@
                                     return nameVal === cleanBillName || (aliasNameVal && aliasNameVal === cleanBillName);
                                 });
                                 if (descMatches.length > 0) {
-                                    expectedTariff = (activeSOC === TARIFF_DATA) ? (isGipsa ? descMatches[0].gipsa_rate : descMatches[0].tpa_rate) : descMatches[0].rate;
+                                    const matchedItem = descMatches[0];
+                                    if (matchedItem.rates) {
+                                        const mappedCat = mapIOCLRoomCategory(roomCategory, cleanedRoom);
+                                        expectedTariff = matchedItem.rates[mappedCat];
+                                        if (expectedTariff === undefined || expectedTariff === null) {
+                                            expectedTariff = matchedItem.rate;
+                                        } else {
+                                            explanation += ` Resolved IOCL room-specific rate (${mappedCat}).`;
+                                        }
+                                    } else {
+                                        expectedTariff = (activeSOC === TARIFF_DATA) ? (isGipsa ? matchedItem.gipsa_rate : matchedItem.tpa_rate) : matchedItem.rate;
+                                    }
                                     explanation += " Matched by description in active SOC.";
                                 }
                             }
@@ -9735,7 +9773,17 @@
                                     expectedTariff = null;
                                 }
                             } else {
-                                expectedTariff = fallbackMatch.rate;
+                                if (fallbackMatch.rates) {
+                                    const mappedCat = mapIOCLRoomCategory(roomCategory, cleanedRoom);
+                                    expectedTariff = fallbackMatch.rates[mappedCat];
+                                    if (expectedTariff === undefined || expectedTariff === null) {
+                                        expectedTariff = fallbackMatch.rate;
+                                    } else {
+                                        explanation += ` Resolved IOCL room-specific rate (${mappedCat}).`;
+                                    }
+                                } else {
+                                    expectedTariff = fallbackMatch.rate;
+                                }
                             }
                             status = "Matching"; // reset status from Not Found
                             explanation += ` Not found in Template; fetched ₹${expectedTariff} from ${activeYear} SOC` + (fallbackMatchedByDesc ? ` (Matched by Description: ${fallbackMatch.name})` : "") + ".";
