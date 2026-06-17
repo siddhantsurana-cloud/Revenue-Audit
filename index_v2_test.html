@@ -7553,6 +7553,48 @@
         return isNaN(num) ? null : num;
     }
 
+    // Helper to resolve active SOC array and map from tariffMapped string on agreement
+    function getSOCFromTariffMapped(tariffMapped, customerName) {
+        if (!tariffMapped) return { activeSOC: TARIFF_DATA, activeSOCMap: map2026 };
+        const u = tariffMapped.toUpperCase();
+        const custUpper = customerName ? customerName.toUpperCase() : "";
+        
+        if (custUpper.includes("IOCL") || u.includes("IOCL")) {
+            return { activeSOC: TARIFF_2021_IOCL, activeSOCMap: map2021_iocl };
+        }
+        if (u.includes("KOLKATA")) {
+            return { activeSOC: TARIFF_KOLKATA_SOC, activeSOCMap: mapKolkata };
+        }
+        if (u.includes("EXCELCARE")) {
+            if (u.includes("2024") || u.includes("24-25")) {
+                return { activeSOC: TARIFF_EXCELCARE_2024, activeSOCMap: mapExcelcare2024 };
+            }
+            if (u.includes("CASH")) {
+                return { activeSOC: TARIFF_EXCELCARE_CASH_2025, activeSOCMap: mapExcelcareCash };
+            }
+            if (u.includes("GIPSA")) {
+                return { activeSOC: TARIFF_EXCELCARE_GIPSA_2026, activeSOCMap: mapExcelcareGipsa2026 };
+            }
+            return { activeSOC: TARIFF_EXCELCARE_2025, activeSOCMap: mapExcelcare };
+        }
+        if (u.includes("2025")) {
+            return { activeSOC: TARIFF_2025, activeSOCMap: map2025 };
+        }
+        if (u.includes("2024")) {
+            return { activeSOC: TARIFF_2024, activeSOCMap: map2024 };
+        }
+        if (u.includes("2023")) {
+            if (u.includes("V2") || u.includes("2023-24 V2")) {
+                return { activeSOC: TARIFF_2023_V2, activeSOCMap: map2023_v2 };
+            }
+            return { activeSOC: TARIFF_2023, activeSOCMap: map2023 };
+        }
+        if (u.includes("2021")) {
+            return { activeSOC: TARIFF_2021, activeSOCMap: map2021 };
+        }
+        return { activeSOC: TARIFF_DATA, activeSOCMap: map2026 };
+    }
+
     // Helper to find matching agreement (scoped by business unit to prevent cross-unit matching)
     function findMatchingAgreement(customerStr, targetUnit) {
         if (!customerStr || typeof AGREEMENT_DETAILS === 'undefined' || !AGREEMENT_DETAILS.length) return null;
@@ -8993,7 +9035,7 @@
             }
 
             const serviceIdRaw = String(rowToUse[colIdxToUse.serviceid] || '').trim();
-            const serviceId = serviceIdRaw.replace(/^[a-zA-Z]/, '');
+            const serviceId = serviceIdRaw.replace(/^[a-zA-Z]+-?/, '');
 
             const serviceName = String(rowToUse[colIdxToUse.servicename] || '').trim();
             const patientName = String(rowToUse[colIdxToUse.patient] || '').trim();
@@ -9133,6 +9175,7 @@
                     let isKolkataHdfc = false; // true when Kolkata + HDFC ERGO → use mapKolkataHdfc
                     let targetTemplateName = "";
                     let activeSOC = TARIFF_DATA;
+                    let activeSOCMap = map2026;
 
                     if (mappingMethod === "single") {
                         if (activeSourceVal === "sockolkata") {
@@ -9240,6 +9283,7 @@
                         // Customer-specific agreement mapping
                         const ag = findMatchingAgreement(customer, activeBU);
                         if (ag) {
+                            const resolvedSOC = getSOCFromTariffMapped(ag.tariffMapped, customer);
                             const pipelineResult = runAgreementPipeline({
                                 row: rowToUse,
                                 colIdx: colIdxToUse,
@@ -9253,7 +9297,7 @@
                                 quantity: quantity,
                                 startDateVal: startDateVal,
                                 endDateVal: endDateVal
-                            }, ag, activeSOCMap, activeSOC);
+                            }, ag, resolvedSOC.activeSOCMap, resolvedSOC.activeSOC);
 
                             expectedTariff = pipelineResult.expectedTariff;
                             expectedDiscountedRate = pipelineResult.expectedDiscountedRate;
@@ -10039,7 +10083,7 @@
             // 1. Identify Anesthesiologist fee rows
             const anesthesiaRows = group.filter(row => {
                 const nameUpper = (row.serviceName || '').toUpperCase();
-                const code = (row.serviceId || '').replace(/^[a-zA-Z]/, '');
+                const code = (row.serviceId || '').replace(/^[a-zA-Z]+-?/, '');
                 return code === '2122' || nameUpper.includes('ANAESTHESIOLOGIST FEES') || nameUpper.includes('ANAESTHETIST FEES');
             });
 
@@ -10048,7 +10092,7 @@
             // 2. Identify Surgeon fee rows
             const surgeonRows = group.filter(row => {
                 const nameUpper = (row.serviceName || '').toUpperCase();
-                const code = (row.serviceId || '').replace(/^[a-zA-Z]/, '');
+                const code = (row.serviceId || '').replace(/^[a-zA-Z]+-?/, '');
                 return code === '2121' || nameUpper.includes('SURGEON FEES') || nameUpper.includes('SURGERY FEES');
             });
 
@@ -10072,7 +10116,7 @@
             if (!hasSurgeonFee || baseSurgeonBilled === 0) {
                 const surgeryProcRows = group.filter(row => {
                     const nameUpper = (row.serviceName || '').toUpperCase();
-                    const code = (row.serviceId || '').replace(/^[a-zA-Z]/, '');
+                    const code = (row.serviceId || '').replace(/^[a-zA-Z]+-?/, '');
                     const deptLower = (row.dept || '').toLowerCase();
                     const isOT = code === '2103' || nameUpper.includes('THEATRE') || nameUpper.includes('OT CHARGE');
                     const isAnes = code === '2122' || nameUpper.includes('ANAES') || nameUpper.includes('ANESTH');
@@ -13692,7 +13736,7 @@
         
         // Tier 1: Exact service code match
         if (serviceId && activeSOCMap) {
-            const cleanId = String(serviceId).trim().replace(/^[a-zA-Z]/, '');
+            const cleanId = String(serviceId).trim().replace(/^[a-zA-Z]+-?/, '');
             if (activeSOCMap[cleanId]) {
                 return {
                     item: activeSOCMap[cleanId],
@@ -13999,8 +14043,18 @@
                         }
                     }
                 } else {
-                    const isGipsa = agreement.tariffMapped ? agreement.tariffMapped.toUpperCase().includes("GIPSA") : false;
-                    resolvedRate = (activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate;
+                    if (match.rates) {
+                        const mappedCat = mapIOCLRoomCategory(item.roomCategory, cleanRoom);
+                        resolvedRate = match.rates[mappedCat];
+                        if (resolvedRate === undefined || resolvedRate === null) {
+                            resolvedRate = match.rate;
+                        } else {
+                            res.explanation += ` Resolved IOCL room-specific rate (${mappedCat}).`;
+                        }
+                    } else {
+                        const isGipsa = agreement.tariffMapped ? agreement.tariffMapped.toUpperCase().includes("GIPSA") : false;
+                        resolvedRate = (activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate;
+                    }
                 }
                 res.expectedTariff = resolvedRate;
             }
