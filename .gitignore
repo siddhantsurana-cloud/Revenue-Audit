@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.db
+*.log
+.temp/
+__pycache__/
+*.bak*
+*.bak_rename
+*.bak_before_merge
+*.bak_kolkata_fix
+backup_test.db
+test_revenue_audit.db

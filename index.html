@@ -4522,26 +4522,84 @@
 
     // OneDrive Database Sync API Methods
     async function loadDatabaseFromServer() {
-        if (window.sandboxEnvironment) {
+        try {
+            const allRows = await window.api.audit.getAuditHistory({});
+            // Group rows by AuditDate to reconstruct runs
+            const runsMap = {};
+            allRows.forEach(r => {
+                const runKey = r.AuditDate || 'Unknown';
+                if (!runsMap[runKey]) {
+                    runsMap[runKey] = {
+                        auditId: runKey,
+                        uploadDate: runKey,
+                        businessUnit: r.Unit,
+                        customer: r.Customer || 'General',
+                        agreement: r.Customer || 'General',
+                        sourceFileName: r.FileName,
+                        totalBillsSet: new Set(),
+                        exceptions: 0,
+                        leakage: 0,
+                        recovery: 0,
+                        status: r.IsLocked ? 'Saved' : 'Draft',
+                        approvedBy: 'N/A',
+                        approvedDate: 'N/A',
+                        approvalComments: 'N/A',
+                        rows: []
+                    };
+                }
+                
+                const run = runsMap[runKey];
+                const billId = String(r.BillNo || r.IPNo || '').trim();
+                if (billId) run.totalBillsSet.add(billId);
+                
+                if (r.Status && (r.Status.startsWith('Ignored') || r.Status === 'Round Off Difference')) {
+                    run.exceptions++;
+                }
+                if (r.Status === 'Overcharged') {
+                    run.leakage += (r.Variance || 0);
+                }
+                if (r.Status === 'Undercharged') {
+                    run.recovery += Math.abs(r.Variance || 0);
+                }
+                
+                run.rows.push([
+                    r.PatientName,
+                    r.IPNo,
+                    r.BillNo,
+                    r.ServiceID,
+                    r.ServiceName,
+                    r.Department,
+                    r.RoomCategory,
+                    r.ServiceType || '',
+                    r.Customer,
+                    r.AuditedBy || '',
+                    r.BilledRate,
+                    r.BilledRate,
+                    r.ExpectedRate,
+                    0,
+                    r.UserRemarks || '',
+                    r.FileName,
+                    r.IsLocked ? 1 : 0,
+                    false
+                ]);
+            });
+            
+            const db = Object.values(runsMap).map(run => {
+                run.totalBills = run.totalBillsSet.size > 0 ? run.totalBillsSet.size : run.rows.length;
+                delete run.totalBillsSet;
+                return run;
+            });
+            
+            localStorage.setItem('brc_v2_saved_audits', JSON.stringify(db));
+            return db;
+        } catch (err) {
+            console.error('Failed to load audits from SQLite:', err);
             const stored = localStorage.getItem('brc_v2_saved_audits');
             return stored ? JSON.parse(stored) : [];
         }
-        try {
-            const res = await fetch('/api/load_audits');
-            if (res.ok) {
-                const data = await res.json();
-                localStorage.setItem('brc_v2_saved_audits', JSON.stringify(data));
-                console.log('Successfully loaded audits from server.');
-                return data;
-            }
-        } catch (e) {
-            console.warn('Could not load audits from server, using localStorage:', e);
-        }
-        const stored = localStorage.getItem('brc_v2_saved_audits');
-        return stored ? JSON.parse(stored) : [];
     }
 
-    async function loadOverridesFromServer() {
+        async function loadOverridesFromServer() {
         if (window.sandboxEnvironment) {
             const stored = localStorage.getItem('brc_v2_customer_rate_overrides');
             return stored ? JSON.parse(stored) : {};
@@ -8782,7 +8840,7 @@
             btnRunAudit.innerHTML = '<span class="spinner"></span> Auditing Billing Rates...';
             
             // Run actual audit check
-            executeActualAudit();
+            await executeActualAudit();
 
         } catch (err) {
             console.error(err);
@@ -8935,54 +8993,16 @@
         }
     };
 
-    function executeActualAudit() {
+    async function executeActualAudit() {
         auditedRows = [];
-
-        function getActiveSOCMap(socArray, useHdfcKolkata) {
-            if (typeof TARIFF_KOLKATA_SOC !== 'undefined' && socArray === TARIFF_KOLKATA_SOC) {
-                // Use the HDFC-extended map when explicitly requested (Kolkata + HDFC Ergo audits)
-                return useHdfcKolkata ? mapKolkataHdfc : mapKolkata;
-            }
-            if (socArray === TARIFF_2025) return map2025;
-            if (socArray === TARIFF_2024) return map2024;
-            if (socArray === TARIFF_2023) return map2023;
-            if (socArray === TARIFF_2023_V2) return map2023_v2;
-            if (socArray === TARIFF_2021) return map2021;
-            if (socArray === TARIFF_2021_IOCL) return map2021_iocl;
-            if (typeof TARIFF_EXCELCARE_2025 !== 'undefined' && socArray === TARIFF_EXCELCARE_2025) return mapExcelcare;
-            if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && socArray === TARIFF_EXCELCARE_CASH_2025) return mapExcelcareCash;
-            if (typeof TARIFF_EXCELCARE_2024 !== 'undefined' && socArray === TARIFF_EXCELCARE_2024) return mapExcelcare2024;
-            if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined' && socArray === TARIFF_EXCELCARE_GIPSA_2026) return mapExcelcareGipsa2026;
-            return map2026;
-        }
-        
-        function lookupSOCItemByName(activeSOCMap, keyword) {
-            if (!activeSOCMap) return null;
-            keyword = keyword.toUpperCase();
-            for (let id in activeSOCMap) {
-                const item = activeSOCMap[id];
-                if (item && item.name && item.name.toUpperCase().includes(keyword)) {
-                    return item;
-                }
-            }
-            return null;
-        }
-        
-        const excludePharmacy = chkExcludePharmacy.checked;
-        const excludePackage = chkExcludePackage.checked;
-        const excludeConsumables = chkExcludeConsumables.checked;
-        const excludeZero = chkExcludeZero.checked;
         
         const activeBU = auditBuSelect.value;
-        const activeSourceType = auditSourceTypeSelect.value;
         const activeSourceVal = document.getElementById('audit-source-select').value;
-        const mappingMethod = auditMappingMethodSelect.value;
-
+        
         // Detect Agreement from the bill (first 25 rows) of first file for the top MOU display card
         let detectedAgreement = null;
         if (rawBillData.length > 0) {
             const firstItem = rawBillData[0];
-            const row = firstItem.row;
             const colIdx = firstItem.colIdx;
             
             for (let i = 0; i < Math.min(25, rawBillData.length); i++) {
@@ -9020,8 +9040,8 @@
             mouCard.style.display = 'none';
         }
 
-        // Process all raw billing rows
-        rawBillData.forEach(item => {
+        // Prepare raw rows for backend validation
+        const rowsToVerify = rawBillData.map(item => {
             const row = item.row;
             const colIdx = item.colIdx;
             const fileName = item.fileName;
@@ -9039,8 +9059,6 @@
             }
 
             const serviceIdRaw = String(rowToUse[colIdxToUse.serviceid] || '').trim();
-            const serviceId = serviceIdRaw.replace(/^[a-zA-Z]+-?/, '');
-
             const serviceName = String(rowToUse[colIdxToUse.servicename] || '').trim();
             const patientName = String(rowToUse[colIdxToUse.patient] || '').trim();
             const ipNo = String(rowToUse[colIdxToUse.ipno] || '').trim();
@@ -9050,27 +9068,12 @@
             const roomCategory = String(rowToUse[colIdxToUse.category] || '').trim();
             const customer = String(rowToUse[colIdxToUse.customer] || '').trim();
             const doctor = String(rowToUse[colIdxToUse.doctor] || '').trim();
-            const agreementName = colIdxToUse.agreement !== undefined && colIdxToUse.agreement !== -1 && rowToUse[colIdxToUse.agreement] !== undefined ? String(rowToUse[colIdxToUse.agreement] || '').trim() : '';
             const billedRate = Number(rowToUse[colIdxToUse.rate]) || 0;
             const billedRatePreDiscount = colIdxToUse.ratePreDiscount !== undefined && rowToUse[colIdxToUse.ratePreDiscount] !== undefined ? (Number(rowToUse[colIdxToUse.ratePreDiscount]) || billedRate) : billedRate;
             const quantity = colIdxToUse.quantity !== undefined && colIdxToUse.quantity !== -1 && rowToUse[colIdxToUse.quantity] !== undefined ? (Number(rowToUse[colIdxToUse.quantity]) || 1) : 1;
 
-            // Extract manual feed values from sheet columns (if present)
-            let manualExcelTariff = null;
-            let manualExcelDiscount = null;
-            let manualExcelRemarks = null;
             let startDateVal = null;
             let endDateVal = null;
-
-            if (colIdxToUse.manualTariff !== undefined && colIdxToUse.manualTariff !== -1 && rowToUse[colIdxToUse.manualTariff] !== undefined) {
-                manualExcelTariff = parseNumberCell(rowToUse[colIdxToUse.manualTariff]);
-            }
-            if (colIdxToUse.manualDiscount !== undefined && colIdxToUse.manualDiscount !== -1 && rowToUse[colIdxToUse.manualDiscount] !== undefined) {
-                manualExcelDiscount = parseNumberCell(rowToUse[colIdxToUse.manualDiscount]);
-            }
-            if (colIdxToUse.manualRemarks !== undefined && colIdxToUse.manualRemarks !== -1 && rowToUse[colIdxToUse.manualRemarks] !== undefined) {
-                manualExcelRemarks = String(rowToUse[colIdxToUse.manualRemarks] || '').trim();
-            }
             if (colIdxToUse.startdate !== undefined && colIdxToUse.startdate !== -1 && rowToUse[colIdxToUse.startdate] !== undefined) {
                 startDateVal = rowToUse[colIdxToUse.startdate];
             }
@@ -9078,1519 +9081,172 @@
                 endDateVal = rowToUse[colIdxToUse.enddate];
             }
 
-            // Overlay reuploadFields if present
+            let reuploadFields = null;
             if (item.reuploadFields) {
-                if (item.reuploadFields.tariffRate !== null) manualExcelTariff = item.reuploadFields.tariffRate;
-                else if (item.reuploadFields.expectedRate !== null) manualExcelTariff = item.reuploadFields.expectedRate;
-                else if (item.reuploadFields.socRate !== null) manualExcelTariff = item.reuploadFields.socRate;
-
-                if (item.reuploadFields.discountPercent !== null) manualExcelDiscount = item.reuploadFields.discountPercent;
-                if (item.reuploadFields.remarks) manualExcelRemarks = item.reuploadFields.remarks;
+                reuploadFields = item.reuploadFields;
             }
 
-            let status = "Matching";
-            let expectedTariff = null;
-            let expectedDiscountedRate = null;
-            let appliedDiscountPercent = 0;
-            let explanation = "";
-            let isIgnored = false;
-
-            const nameUpper = serviceName.toUpperCase();
-            const deptLower = dept.toLowerCase();
-
-            // 1. Audit Exclusions Check
-            if (excludeConsumables && (
-                deptLower === 'consumables' || 
-                nameUpper.includes('CONSUMABLE') || 
-                deptLower.includes('material') || 
-                nameUpper.includes('CONSU:') ||
-                nameUpper.includes('PULSE GENERATOR') ||
-                nameUpper.includes('PPI') ||
-                nameUpper.includes('PACEMAKER') ||
-                nameUpper.includes('IMPLANT') ||
-                nameUpper.includes('STENT') ||
-                nameUpper.includes('BALLOON') ||
-                nameUpper.includes('CATHETER') ||
-                nameUpper.includes('GUIDEWIRE')
-            )) {
-                status = "Ignored (Consumables)";
-                explanation = "Consumables are excluded from checking.";
-                isIgnored = true;
-            } else if (excludePharmacy && (deptLower.includes('pharmacy') || nameUpper.includes('HSN:') || nameUpper.includes('PHARMACY') || deptLower.includes('drug'))) {
-                status = "Ignored (Pharmacy)";
-                explanation = "Pharmacy services are excluded from checking.";
-                isIgnored = true;
-            } else if (excludePackage && (
-                rateType.toLowerCase().includes('inside package') || 
-                nameUpper.includes('INSIDE PACKAGE') || 
-                nameUpper.includes('PACKAGE') || 
-                nameUpper.includes('(GIPSA)') || 
-                nameUpper.includes('(STAR HEALTH)') || 
-                nameUpper.includes('-STAR HEALTH') ||
-                nameUpper.includes('TONSILLECTOMY') ||
-                nameUpper.includes('LSCS')
-            )) {
-                status = "Ignored (Inside Package)";
-                explanation = "Package items are bundled; ignore rate checks.";
-                isIgnored = true;
-            } else if (nameUpper.includes('EDITABLE') || nameUpper.includes('VARIABLE') || nameUpper.includes('MANUAL')) {
-                status = "Ignored (editable)";
-                explanation = "Editable rate item; ignore checks.";
-                isIgnored = true;
-            }
-
-            // 2. Lookup Expected Rate
-            let isOverriddenByLearning = false;
-            if (!isIgnored) {
-                // Check for persistent learned overrides for this customer (scoped by unit)
-                let learnedOverride = null;
-                try {
-                    const storedOverrides = localStorage.getItem('brc_v2_customer_rate_overrides');
-                    if (storedOverrides) {
-                        const overridesDb = JSON.parse(storedOverrides);
-                        const custKey = customer || 'General';
-                        const activeUnit = window.currentUserUnit || 'excelcare';
-                        
-                        // Check unit-scoped first
-                        if (overridesDb[activeUnit] && overridesDb[activeUnit][custKey] && overridesDb[activeUnit][custKey][serviceIdRaw]) {
-                            learnedOverride = overridesDb[activeUnit][custKey][serviceIdRaw];
-                        } 
-                        // Fallback to legacy global override if activeUnit structure doesn't exist
-                        else if (overridesDb[custKey] && overridesDb[custKey][serviceIdRaw]) {
-                            learnedOverride = overridesDb[custKey][serviceIdRaw];
-                        }
-                    }
-                } catch(e) {
-                    console.error("Error checking customer overrides:", e);
-                }
-
-                if (learnedOverride) {
-                    expectedTariff = learnedOverride.tariff;
-                    appliedDiscountPercent = learnedOverride.discount;
-                    explanation = "Learned override applied: Tariff ₹" + expectedTariff + ", Discount " + appliedDiscountPercent + "%" + (learnedOverride.remarks ? " (" + learnedOverride.remarks + ")" : "");
-                    isOverriddenByLearning = true;
-                } else {
-                    let agreementHandled = false;
-                    const cleanedRoom = cleanRoomCategory(roomCategory);
-                    const isDayCare = cleanedRoom === "DAYCARE" || deptLower.includes("day care") || rateType.toLowerCase().includes("day care") || nameUpper.includes("DAY CARE") || nameUpper.includes("DAYCARE");
-
-                    let isGipsa = false;
-                    let isHdfc = false;
-                    let isKolkataHdfc = false; // true when Kolkata + HDFC ERGO → use mapKolkataHdfc
-                    let targetTemplateName = "";
-                    let activeSOC = TARIFF_DATA;
-                    let activeSOCMap = map2026;
-
-                    if (mappingMethod === "single") {
-                        if (activeSourceVal === "sockolkata") {
-                            activeSOC = TARIFF_KOLKATA_SOC;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "pkgkolkata") {
-                            activeSOC = TARIFF_KOLKATA_PKG;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "2025") {
-                            activeSOC = TARIFF_2025;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "2024") {
-                            activeSOC = TARIFF_2024;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "soc_2023_v2") {
-                            activeSOC = TARIFF_2023_V2;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "2023") {
-                            activeSOC = TARIFF_2023;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "2021") {
-                            activeSOC = TARIFF_2021;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "soc_2021_iocl") {
-                            activeSOC = TARIFF_2021_IOCL;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "excelcare_2025") {
-                            activeSOC = TARIFF_EXCELCARE_2025;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "excelcare_cash_2025") {
-                            activeSOC = TARIFF_EXCELCARE_CASH_2025;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "excelcare_2024") {
-                            activeSOC = TARIFF_EXCELCARE_2024;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "excelcare_gipsa_2026") {
-                            activeSOC = TARIFF_EXCELCARE_GIPSA_2026;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "gipsa") {
-                            isGipsa = true;
-                            activeSOC = TARIFF_DATA;
-                            explanation = "Billed against GIPSA Template.";
-                        } else if (activeSourceVal === "tpa") {
-                            isGipsa = false;
-                            activeSOC = TARIFF_DATA;
-                            explanation = "Billed against TPA Deluxe Template.";
-                        } else if (activeSourceVal.startsWith("hdfc_")) {
-                            isHdfc = true;
-                            targetTemplateName = getHdfcTemplateNameFromValue(activeSourceVal);
-                            explanation = `Billed against HDFC Template: ${targetTemplateName}.`;
-                        } else if (activeSourceVal === "excelcare_soc") {
-                            activeSOC = TARIFF_EXCELCARE_2025;
-                            explanation = "Billed against Excelcare SOC.";
-                        } else if (activeSourceVal === "excelcare_soc_cash") {
-                            activeSOC = TARIFF_EXCELCARE_CASH_2025;
-                            explanation = "Billed against Excelcare 2026 - Cash SOC.";
-                        } else if (activeSourceVal === "excelcare_soc_2024") {
-                            activeSOC = TARIFF_EXCELCARE_2024;
-                            explanation = "Billed against Excelcare SOC 2024.";
-                        } else {
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        }
-                    } else if (mappingMethod === "room") {
-                        const mappedSource = getRoomWiseMappedTemplate(cleanedRoom, isDayCare);
-                        if (mappedSource === "gipsa") {
-                            isGipsa = true;
-                            activeSOC = TARIFF_DATA;
-                            explanation = `Room-wise: ${cleanedRoom} -> GIPSA.`;
-                        } else if (mappedSource === "tpa") {
-                            isGipsa = false;
-                            activeSOC = TARIFF_DATA;
-                            explanation = `Room-wise: ${cleanedRoom} -> TPA.`;
-                        } else if (mappedSource.startsWith("hdfc_")) {
-                            isHdfc = true;
-                            targetTemplateName = getHdfcTemplateNameFromValue(mappedSource);
-                            explanation = `Room-wise: ${cleanedRoom} -> ${targetTemplateName}.`;
-                        } else if (mappedSource === "excelcare_soc") {
-                            activeSOC = TARIFF_EXCELCARE_2025;
-                            explanation = `Room-wise: ${cleanedRoom} -> Excelcare SOC.`;
-                        } else if (mappedSource === "excelcare_soc_cash") {
-                            activeSOC = TARIFF_EXCELCARE_CASH_2025;
-                            explanation = `Room-wise: ${cleanedRoom} -> Excelcare 2026 - Cash SOC.`;
-                        } else if (mappedSource === "excelcare_soc_2024") {
-                            activeSOC = TARIFF_EXCELCARE_2024;
-                            explanation = `Room-wise: ${cleanedRoom} -> Excelcare SOC 2024.`;
-                        } else if (mappedSource === "excelcare_gipsa_2026") {
-                            activeSOC = TARIFF_EXCELCARE_GIPSA_2026;
-                            explanation = `Room-wise: ${cleanedRoom} -> Excelcare GIPSA 2026.`;
-                        } else {
-                            if (activeBU === "kolkata") {
-                                activeSOC = TARIFF_KOLKATA_SOC;
-                            } else {
-                                activeSOC = activeBU === "excelcare" ? (activeSourceVal === "excelcare_2024" ? TARIFF_EXCELCARE_2024 : (activeSourceVal === "excelcare_cash_2025" ? TARIFF_EXCELCARE_CASH_2025 : (activeSourceVal === "excelcare_gipsa_2026" ? TARIFF_EXCELCARE_GIPSA_2026 : TARIFF_EXCELCARE_2025))) : TARIFF_2024;
-                            }
-                            explanation = `Room-wise fallback SOC applied.`;
-                        }
-                    } else if (mappingMethod === "manual") {
-                        expectedTariff = manualExcelTariff;
-                        appliedDiscountPercent = manualExcelDiscount !== null ? manualExcelDiscount : 0;
-                        explanation = "Billed against manual rate feed.";
-                        if (manualExcelRemarks) {
-                            item.userRemarks = manualExcelRemarks;
-                        }
-                    } else {
-                        // Customer-specific agreement mapping
-                        const ag = findMatchingAgreement(customer, activeBU);
-                        if (ag) {
-                            const resolvedSOC = getSOCFromTariffMapped(ag.tariffMapped, customer);
-                            const pipelineResult = runAgreementPipeline({
-                                row: rowToUse,
-                                colIdx: colIdxToUse,
-                                serviceId: serviceIdRaw,
-                                serviceName: serviceName,
-                                dept: dept,
-                                roomCategory: roomCategory,
-                                rateType: rateType,
-                                customer: customer,
-                                billedRate: billedRate,
-                                quantity: quantity,
-                                startDateVal: startDateVal,
-                                endDateVal: endDateVal
-                            }, ag, resolvedSOC.activeSOCMap, resolvedSOC.activeSOC);
-
-                            expectedTariff = pipelineResult.expectedTariff;
-                            expectedDiscountedRate = pipelineResult.expectedDiscountedRate;
-                            appliedDiscountPercent = pipelineResult.discountApplied;
-                            explanation = pipelineResult.explanation;
-                            status = pipelineResult.status;
-                            isIgnored = pipelineResult.isIgnored;
-                            item.exceptionCode = pipelineResult.exceptionCode;
-                            agreementHandled = true;
-                        } else {
-                            if (activeBU === "kolkata") {
-                                activeSOC = TARIFF_KOLKATA_SOC;
-                                explanation = `No contract matching ${customer}. Defaulting to Kolkata SOC.`;
-                            } else if (activeBU === "excelcare") {
-                                isHdfc = true;
-                                targetTemplateName = getHdfcErgoTemplateName(cleanedRoom, isDayCare);
-                                explanation = `No contract matching ${customer}. Defaulting to Excelcare HDFC template: ${targetTemplateName}.`;
-                            } else {
-                                isGipsa = false;
-                                activeSOC = TARIFF_2024;
-                                explanation = `No contract matching ${customer}. Defaulting to 2024-25 SOC.`;
-                            }
-                        }
-                    }
-
-                    if (!agreementHandled) {
-                        // Resolve rate
-                    if (mappingMethod === "manual") {
-                        if (expectedTariff === null) {
-                            status = "Not Found in Master";
-                            explanation = "Manual rate not provided in spreadsheet. Please enter manually.";
-                        }
-                    } else if (isHdfc && typeof TARIFF_HDFC_ERGO_2024 !== 'undefined') {
-                        // ── Kolkata HDFC Ergo: Use Unified SOC (with package entries) ──────────
-                        // For Kolkata + HDFC ERGO, we no longer use the TARIFF_HDFC_ERGO_2024
-                        // template lookup. Instead we use the Kolkata SOC 23-24 which now contains
-                        // HDFC-tagged package entries (applicablePayer = HDFC_ERGO). The rate
-                        // resolution goes through the standard SOC path below using mapKolkataHdfc.
-                        // For Excelcare HDFC Ergo (non-Kolkata), the original template lookup applies.
-                        if (activeBU === 'kolkata') {
-                            activeSOC = TARIFF_KOLKATA_SOC;
-                            // Signal to getActiveSOCMap to use the HDFC-extended map
-                            isHdfc = false;  // clear flag so we fall through to standard SOC path
-                            isKolkataHdfc = true; // remember to use mapKolkataHdfc for lookups
-                            explanation += ` [HDFC ERGO] Using Kolkata SOC 23-24 (incl. HDFC package rates) for ${targetTemplateName}.`;
-                        } else {
-                            // Excelcare: keep original HDFC Ergo template lookup
-                            const match = TARIFF_HDFC_ERGO_2024.find(x => x.id === serviceId && x.template === targetTemplateName);
-                            if (match) {
-                                expectedTariff = match.rate;
-                            } else {
-                                expectedTariff = null;
-                            }
-                        }
-                    } else {
-                        const isDayCareItem = isDayCare || nameUpper.includes("DAY CARE") || nameUpper.includes("DAYCARE");
-                        const isTriageItem = nameUpper.includes("TRIAGE") || deptLower.includes("triage") || rateType.toLowerCase().includes("triage");
-
-                        if ((activeSOC === TARIFF_2021 || activeSOC === TARIFF_2021_IOCL) && (isDayCareItem || isTriageItem)) {
-                            let start = parseExcelDate(startDateVal);
-                            let end = parseExcelDate(endDateVal);
-                            let durationHours = null;
-                            if (start && end && end >= start) {
-                                durationHours = (end - start) / (3600 * 1000);
-                            }
-                            if (isDayCareItem) {
-                                if (durationHours !== null) {
-                                    if (durationHours <= 1) expectedTariff = 300;
-                                    else if (durationHours <= 2) expectedTariff = 600;
-                                    else if (durationHours <= 3) expectedTariff = 900;
-                                    else if (durationHours <= 4) expectedTariff = 1200;
-                                    else if (durationHours <= 5) expectedTariff = 1500;
-                                    else if (durationHours <= 6) expectedTariff = 1800;
-                                    else expectedTariff = 2100;
-                                    explanation += ` Resolved 2021-22 Day Care hourly charge: ${durationHours.toFixed(1)} hours.`;
-                                } else {
-                                    expectedTariff = 2100;
-                                    explanation += " Resolved 2021-22 Day Care flat charge (no duration).";
-                                }
-                            } else {
-                                if (durationHours !== null) {
-                                    if (durationHours <= 1) expectedTariff = 0;
-                                    else if (durationHours <= 3) expectedTariff = 1500;
-                                    else if (durationHours <= 6) expectedTariff = 2000;
-                                    else if (durationHours <= 12) expectedTariff = 2200;
-                                    else expectedTariff = 2700;
-                                    explanation += ` Resolved 2021-22 Triage hourly charge: ${durationHours.toFixed(1)} hours.`;
-                                } else {
-                                    expectedTariff = 2700;
-                                    explanation += " Resolved 2021-22 Triage flat charge (no duration).";
-                                }
-                            }
-                        } else if (serviceId === "2127" || nameUpper.includes("ROOM RENT") || nameUpper.includes("BED CHARGE") || deptLower.includes("room rent") || deptLower.includes("bed charge") || deptLower === "room" || nameUpper.includes("DELUXE CABIN") || nameUpper.includes("PRIVATE CABIN") || nameUpper.includes("SEMI CABIN") || isDayCareItem || isTriageItem) {
-                            if (activeBU === "excelcare") {
-                                expectedTariff = lookupExcelcareRoomRent(cleanedRoom, activeSourceVal);
-                                explanation += ` Resolved Excelcare Room Rent for ${cleanedRoom}.`;
-                            } else {
-                                expectedTariff = lookupActiveRoomRent(activeSourceVal, activeSOC, cleanedRoom, isGipsa, roomCategory, { agreementName: agreementName });
-                                explanation += ` Resolved Room Rent for ${cleanedRoom}.`;
-                            }
-                        } else if (serviceId === "2126" || nameUpper.includes("NURSING AND ALLIED CHARGES")) {
-                            if (activeSOC === TARIFF_EXCELCARE_2025 || activeSOC === TARIFF_EXCELCARE_CASH_2025 || activeSOC === TARIFF_EXCELCARE_2024 || activeSOC === TARIFF_EXCELCARE_GIPSA_2026) {
-                                expectedTariff = lookupExcelcareNursing(cleanedRoom, activeSourceVal);
-                                explanation += ` Resolved Excelcare Nursing for ${cleanedRoom}.`;
-                            } else {
-                                const simpleRoom = toSimpleRoom(cleanedRoom);
-                                expectedTariff = NURSING_CHARGES[cleanedRoom] || NURSING_CHARGES[simpleRoom];
-                                explanation += ` Resolved Nursing for ${cleanedRoom}.`;
-                            }
-                        } else if ((serviceId === "1077592" || nameUpper.includes("MONITORING CHARGES")) && activeBU !== "kolkata") {
-                            const simpleRoom = toSimpleRoom(cleanedRoom);
-                            expectedTariff = MONITORING_CHARGES[cleanedRoom] || MONITORING_CHARGES[simpleRoom];
-                            explanation += ` Resolved Monitoring for ${cleanedRoom}.`;
-                        } else if (serviceId === "1087262" || nameUpper.includes("CARDIAC MONITOR") || nameUpper.includes("CARDIAC-MONITOR") || nameUpper.includes("CARDIAC MONITORING")) {
-                            let start = parseExcelDate(startDateVal);
-                            let end = parseExcelDate(endDateVal);
-                            
-                            const activeSOCMap = getActiveSOCMap(activeSOC);
-                            const nameMatch = lookupSOCItemByName(activeSOCMap, "CARDIAC MONITOR") || lookupSOCItemByName(activeSOCMap, "CARDIAC-MONITOR") || lookupSOCItemByName(activeSOCMap, "CARDIAC MONITORING");
-                            const baseMatch = activeSOCMap["1087262"] || nameMatch;
-                            const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 90;
-                            
-                            if (start && end && end >= start) {
-                                let durationHours = (end - start) / (3600 * 1000);
-                                let roundedHours = Math.ceil(durationHours);
-                                if (roundedHours < 1) roundedHours = 1;
-                                
-                                let diffUnit = Math.abs(billedRate - baseRate);
-                                let diffTotal = Math.abs(billedRate - (roundedHours * baseRate));
-                                
-                                if (diffUnit < diffTotal) {
-                                    expectedTariff = baseRate;
-                                    explanation += ` Resolved Cardiac Monitor unit rate: ₹${baseRate}/hour (Duration: ${roundedHours} hours).`;
-                                } else {
-                                    expectedTariff = roundedHours * baseRate;
-                                    explanation += ` Resolved Cardiac Monitor: ${roundedHours} hours at ₹${baseRate}/hour.`;
-                                }
-                                if (Math.abs(quantity - roundedHours) > 0.1) {
-                                    explanation += ` [Note: Billed Qty ${quantity} vs Duration ${roundedHours}h].`;
-                                }
-                            } else {
-                                let checkQty = (quantity > 0) ? quantity : 1;
-                                let diffUnit = Math.abs(billedRate - baseRate);
-                                let diffTotal = Math.abs(billedRate - (checkQty * baseRate));
-                                
-                                if (diffUnit < diffTotal && checkQty > 1) {
-                                    expectedTariff = baseRate;
-                                    explanation += ` Resolved Cardiac Monitor unit rate: ₹${baseRate}/hour (Qty: ${checkQty}).`;
-                                } else {
-                                    expectedTariff = checkQty * baseRate;
-                                    explanation += ` Resolved Cardiac Monitor: ${checkQty} hours at ₹${baseRate}/hour.`;
-                                }
-                            }
-                        } else if (serviceId === "1087267" || nameUpper.includes("BIPAP")) {
-                            let start = parseExcelDate(startDateVal);
-                            let end = parseExcelDate(endDateVal);
-                            
-                            const activeSOCMap = getActiveSOCMap(activeSOC);
-                            const nameMatch = lookupSOCItemByName(activeSOCMap, "BIPAP");
-                            const baseMatch = activeSOCMap["1087267"] || nameMatch;
-                            const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 80;
-                            
-                            if (start && end && end >= start) {
-                                let durationHours = (end - start) / (3600 * 1000);
-                                let roundedHours = Math.ceil(durationHours);
-                                if (roundedHours < 1) roundedHours = 1;
-                                
-                                let diffUnit = Math.abs(billedRate - baseRate);
-                                let diffTotal = Math.abs(billedRate - (roundedHours * baseRate));
-                                
-                                if (diffUnit < diffTotal) {
-                                    expectedTariff = baseRate;
-                                    explanation += ` Resolved BIPAP unit rate: ₹${baseRate}/hour (Duration: ${roundedHours} hours).`;
-                                } else {
-                                    expectedTariff = roundedHours * baseRate;
-                                    explanation += ` Resolved BIPAP: ${roundedHours} hours at ₹${baseRate}/hour.`;
-                                }
-                                if (Math.abs(quantity - roundedHours) > 0.1) {
-                                    explanation += ` [Note: Billed Qty ${quantity} vs Duration ${roundedHours}h].`;
-                                }
-                            } else {
-                                let checkQty = (quantity > 0) ? quantity : 1;
-                                let diffUnit = Math.abs(billedRate - baseRate);
-                                let diffTotal = Math.abs(billedRate - (checkQty * baseRate));
-                                
-                                if (diffUnit < diffTotal && checkQty > 1) {
-                                    expectedTariff = baseRate;
-                                    explanation += ` Resolved BIPAP unit rate: ₹${baseRate}/hour (Qty: ${checkQty}).`;
-                                } else {
-                                    expectedTariff = checkQty * baseRate;
-                                    explanation += ` Resolved BIPAP: ${checkQty} hours at ₹${baseRate}/hour.`;
-                                }
-                            }
-                        } else if (serviceId === "1045742" || nameUpper.includes("OXYGEN CHARGE") || nameUpper.includes("OXYGEN CHARGES")) {
-                            let start = parseExcelDate(startDateVal);
-                            let end = parseExcelDate(endDateVal);
-                            
-                            const activeSOCMap = getActiveSOCMap(activeSOC);
-                            const nameMatch = lookupSOCItemByName(activeSOCMap, "OXYGEN CHARGE") || lookupSOCItemByName(activeSOCMap, "OXYGEN CHARGES");
-                            const baseMatch = activeSOCMap["1045742"] || nameMatch;
-                            const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 135;
-                            
-                            if (start && end && end >= start) {
-                                let durationHours = (end - start) / (3600 * 1000);
-                                let roundedHours = Math.ceil(durationHours);
-                                if (roundedHours < 1) roundedHours = 1;
-                                
-                                let diffUnit = Math.abs(billedRate - baseRate);
-                                let diffTotal = Math.abs(billedRate - (roundedHours * baseRate));
-                                
-                                if (diffUnit < diffTotal) {
-                                    expectedTariff = baseRate;
-                                    explanation += ` Resolved Oxygen unit rate: ₹${baseRate}/hour (Duration: ${roundedHours} hours).`;
-                                } else {
-                                    expectedTariff = roundedHours * baseRate;
-                                    explanation += ` Resolved Oxygen: ${roundedHours} hours at ₹${baseRate}/hour.`;
-                                }
-                                if (Math.abs(quantity - roundedHours) > 0.1) {
-                                    explanation += ` [Note: Billed Qty ${quantity} vs Duration ${roundedHours}h].`;
-                                }
-                            } else {
-                                let checkQty = (quantity > 0) ? quantity : 1;
-                                let diffUnit = Math.abs(billedRate - baseRate);
-                                let diffTotal = Math.abs(billedRate - (checkQty * baseRate));
-                                
-                                if (diffUnit < diffTotal && checkQty > 1) {
-                                    expectedTariff = baseRate;
-                                    explanation += ` Resolved Oxygen unit rate: ₹${baseRate}/hour (Qty: ${checkQty}).`;
-                                } else {
-                                    expectedTariff = checkQty * baseRate;
-                                    explanation += ` Resolved Oxygen: ${checkQty} hours at ₹${baseRate}/hour.`;
-                                }
-                            }
-                        } else if (serviceId === "2103" || nameUpper.includes("OPERATION THEATRE CHARGES") || nameUpper.includes("OPERATION THEATRE CHARGE")) {
-                            if (activeBU === "kolkata") {
-                                let start = parseExcelDate(startDateVal);
-                                let end = parseExcelDate(endDateVal);
-                                if (start && end && end >= start) {
-                                    let durationMins = Math.round((end - start) / (60 * 1000));
-                                    let matchedSlab = KOLKATA_OT_SLABS.find(s => durationMins >= s.from && durationMins <= s.to);
-                                    if (!matchedSlab) {
-                                        matchedSlab = KOLKATA_OT_SLABS[KOLKATA_OT_SLABS.length - 1];
-                                    }
-                                    let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
-                                    if (matchedSlab.rates && matchedSlab.rates[normRoom] === undefined) {
-                                        if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
-                                        else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
-                                        else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
-                                        else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
-                                        else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
-                                        else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
-                                        else if (normRoom.includes("SUITE")) normRoom = "SUITE";
-                                        else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
-                                        else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
-                                        else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
-                                    }
-                                    
-                                    let rate = matchedSlab.rates[normRoom] || matchedSlab.rates["STANDARD"];
-                                    expectedTariff = rate;
-                                    explanation += ` Resolved Kolkata OT slab rate for ${durationMins} minutes [${normRoom}].`;
-                                } else {
-                                    const activeSOCMap = getActiveSOCMap(activeSOC);
-                                    const match = activeSOCMap[serviceId];
-                                    if (match && match.rates) {
-                                        let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
-                                        if (match.rates && match.rates[normRoom] === undefined) {
-                                            if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
-                                            else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
-                                            else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
-                                            else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
-                                            else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
-                                            else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
-                                            else if (normRoom.includes("SUITE")) normRoom = "SUITE";
-                                            else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
-                                            else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
-                                            else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
-                                        }
-                                        
-                                        expectedTariff = match.rates[normRoom] || match.rates["STANDARD"] || null;
-                                    }
-                                }
-                            } else {
-                                let start = parseExcelDate(startDateVal);
-                                let end = parseExcelDate(endDateVal);
-                                if (start && end && end >= start) {
-                                    let durationMins = Math.round((end - start) / (60 * 1000));
-                                    let baseOT = (activeSOC === TARIFF_2021 || activeSOC === TARIFF_2021_IOCL) ? 6400 : 10000;
-                                    let slabRate = (activeSOC === TARIFF_2021 || activeSOC === TARIFF_2021_IOCL) ? 1600 : 2000;
-                                    
-                                    if (durationMins <= 60) {
-                                        expectedTariff = baseOT;
-                                    } else {
-                                        let extraMins = durationMins - 60;
-                                        let extraSlabs = Math.ceil(extraMins / 15);
-                                        expectedTariff = baseOT + (extraSlabs * slabRate);
-                                    }
-                                    explanation += ` Resolved OT Charges dynamically: ${durationMins} minutes [Base: ₹${baseOT} + ₹${slabRate}/15m extra].`;
-                                } else {
-                                    const activeSOCMap = getActiveSOCMap(activeSOC);
-                                    const match = activeSOCMap[serviceId];
-                                    expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
-                                }
-                            }
-                        } else if (serviceId === "3044188" || serviceId === "3044189" || nameUpper.includes("IP VISIT CHARGES") || nameUpper.includes("IPD VISIT")) {
-                            const simpleRoom = toSimpleRoom(cleanedRoom);
-                            expectedTariff = VISIT_CHARGES[cleanedRoom] || VISIT_CHARGES[simpleRoom];
-                            explanation += ` Resolved Visit Charge for ${cleanedRoom}.`;
-                        } else {
-                            // Standard SOC lookup
-                            // Pass isKolkataHdfc so HDFC-tagged package entries are included
-                            const activeSOCMap = getActiveSOCMap(activeSOC, isKolkataHdfc);
-                            const match = activeSOCMap[serviceId];
-                            if (match) {
-                                if (activeSOCMap === mapKolkata || activeSOCMap === mapKolkataHdfc) {
-                                    let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
-                                    if (match.rates && match.rates[normRoom] === undefined) {
-                                        if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
-                                        else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
-                                        else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
-                                        else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
-                                        else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
-                                        else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
-                                        else if (normRoom.includes("SUITE")) normRoom = "SUITE";
-                                        else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
-                                        else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
-                                        else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
-                                    }
-
-                                    if (match.rates) {
-                                        if (match.rates[normRoom] !== undefined) {
-                                            expectedTariff = match.rates[normRoom];
-                                        } else {
-                                            let foundRate = null;
-                                            for (const key in match.rates) {
-                                                if (normRoom.includes(key) || key.includes(normRoom)) {
-                                                    foundRate = match.rates[key];
-                                                    break;
-                                                }
-                                            }
-                                            expectedTariff = (foundRate !== null) ? foundRate : (match.rates["STANDARD"] !== undefined ? match.rates["STANDARD"] : null);
-                                        }
-                                    } else {
-                                        expectedTariff = null;
-                                    }
-                                    if (expectedTariff !== null) {
-                                        explanation += ` Resolved Kolkata room-specific rate (${normRoom}).`;
-                                    }
-
-                                    // ── Time-Based Rate Detection (Kolkata) ──────────────────────────
-                                    // If the matched SOC item's name contains per-hour / per-day / per-minute
-                                    // indicators, the resolved rate is a UNIT rate. We apply the billed
-                                    // quantity as the duration multiplier so the expected total is correct.
-                                    if (expectedTariff !== null && activeBU === 'kolkata') {
-                                        const socItemName = (match.name || '').toUpperCase();
-                                        const isPerHour  = /\/\s*HOUR|PER\s+HOUR|CHG\/HR|CHG\s*\/\s*HOUR/.test(socItemName);
-                                        const isPerDay   = /\/\s*DAY|PER\s+DAY|PER\s+NURSE\s+PER\s+DAY/.test(socItemName);
-                                        const isPerMin   = /\/\s*MIN|PER\s+MIN/.test(socItemName);
-
-                                        if ((isPerHour || isPerDay || isPerMin) && quantity > 1) {
-                                            const unitLabel = isPerMin ? 'min' : (isPerDay ? 'day' : 'hr');
-                                            const unitRate  = expectedTariff;
-                                            expectedTariff  = unitRate * quantity;
-                                            explanation += ` [TIME-BASED] ${quantity} ${unitLabel} × ₹${unitRate}/unit = ₹${expectedTariff}.`;
-                                        } else if (isPerHour || isPerDay || isPerMin) {
-                                            const unitLabel = isPerMin ? '/min' : (isPerDay ? '/day' : '/hr');
-                                            explanation += ` [TIME-BASED: unit rate ${unitLabel} – qty=${quantity}]`;
-                                        }
-                                    }
-                                    // ─────────────────────────────────────────────────────────────────
-
-                                } else {
-                                    if (match.rates) {
-                                        const mappedCat = mapIOCLRoomCategory(roomCategory, cleanedRoom);
-                                        expectedTariff = match.rates[mappedCat];
-                                        if (expectedTariff === undefined || expectedTariff === null) {
-                                            expectedTariff = match.rate;
-                                        } else {
-                                            explanation += ` Resolved IOCL room-specific rate (${mappedCat}).`;
-                                        }
-                                    } else {
-                                        expectedTariff = (activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate;
-                                    }
-                                }
-                            } else {
-                                expectedTariff = null;
-                            }
-
-                            // If serviceId is not found/empty and serviceid column index is -1, try description match on activeSOC
-                            if (expectedTariff === null && colIdxToUse.serviceid === -1) {
-                                const cleanBillName = nameUpper.trim();
-                                const descMatches = activeSOC.filter(x => {
-                                    const nameVal = (x.name || '').toUpperCase().trim();
-                                    const aliasNameVal = (x.aliasName || '').toUpperCase().trim();
-                                    return nameVal === cleanBillName || (aliasNameVal && aliasNameVal === cleanBillName);
-                                });
-                                if (descMatches.length > 0) {
-                                    const matchedItem = descMatches[0];
-                                    if (matchedItem.rates) {
-                                        const mappedCat = mapIOCLRoomCategory(roomCategory, cleanedRoom);
-                                        expectedTariff = matchedItem.rates[mappedCat];
-                                        if (expectedTariff === undefined || expectedTariff === null) {
-                                            expectedTariff = matchedItem.rate;
-                                        } else {
-                                            explanation += ` Resolved IOCL room-specific rate (${mappedCat}).`;
-                                        }
-                                    } else {
-                                        expectedTariff = (activeSOC === TARIFF_DATA) ? (isGipsa ? matchedItem.gipsa_rate : matchedItem.tpa_rate) : matchedItem.rate;
-                                    }
-                                    explanation += " Matched by description in active SOC.";
-                                }
-                            }
-                        }
-                    }
-
-                    // Fallback lookup: if expectedTariff is null or not found in the Template, fetch from That Year's SOC
-                    if (expectedTariff === null && !isIgnored) {
-                        let activeYear = "2024"; // default fallback year
-                        if (activeSourceVal === "2025" || activeSourceVal === "2024" || activeSourceVal === "2023" || activeSourceVal === "2021" || activeSourceVal === "soc_2023_v2" || activeSourceVal === "soc_2021_iocl") {
-                            activeYear = activeSourceVal === "soc_2023_v2" ? "2023_v2" : (activeSourceVal === "soc_2021_iocl" ? "2021_iocl" : activeSourceVal);
-                        } else if (activeSourceVal === "excelcare_2025" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_gipsa_2026" || activeSourceVal === "excelcare_soc" || activeSourceVal === "excelcare_soc_cash") {
-                            activeYear = "2025";
-                        } else if (activeSourceVal === "excelcare_2024" || activeSourceVal === "excelcare_soc_2024") {
-                            activeYear = "2024";
-                        } else {
-                            if (activeSOC === TARIFF_2025 || activeSOC === TARIFF_EXCELCARE_2025 || activeSOC === TARIFF_EXCELCARE_CASH_2025 || activeSOC === TARIFF_EXCELCARE_GIPSA_2026) activeYear = "2025";
-                            else if (activeSOC === TARIFF_2024 || activeSOC === TARIFF_EXCELCARE_2024) activeYear = "2024";
-                            else if (activeSOC === TARIFF_2023) activeYear = "2023";
-                            else if (activeSOC === TARIFF_2023_V2) activeYear = "2023_v2";
-                            else if (activeSOC === TARIFF_2021) activeYear = "2021";
-                            else activeYear = "2025"; // default to 2025-26
-                        }
-
-                        let isKolkata = (activeBU === "kolkata" || activeSourceVal === "sockolkata" || activeSourceVal === "pkgkolkata" || activeSourceVal.toLowerCase().includes("kolkata"));
-                        let isExcelcare = (activeBU === "excelcare" || activeSourceVal.startsWith("excelcare_") || activeSourceVal.startsWith("socexcelcare") || activeSourceVal === "hdfcergo");
-                        let fallbackSOCArray, fallbackSOCMap;
-                        if (isKolkata) {
-                            fallbackSOCArray = TARIFF_KOLKATA_SOC;
-                            fallbackSOCMap = mapKolkata;
-                            activeYear = "Kolkata SOC";
-                        } else if (isExcelcare) {
-                            const use24 = (activeSourceVal === "excelcare_2024" || activeSourceVal === "socexcelcare2024" || activeYear === "2024");
-                            const useCash = (activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "socexcelcarecash" || activeSourceVal === "excelcare_soc_cash");
-                            const useGipsa26 = (activeSourceVal === "excelcare_gipsa_2026" || activeSOC === TARIFF_EXCELCARE_GIPSA_2026);
-                            if (use24) {
-                                fallbackSOCArray = TARIFF_EXCELCARE_2024;
-                                fallbackSOCMap = mapExcelcare2024;
-                                activeYear = "Excelcare 2024-25";
-                            } else if (useCash) {
-                                fallbackSOCArray = TARIFF_EXCELCARE_CASH_2025;
-                                fallbackSOCMap = mapExcelcareCash;
-                                activeYear = "Excelcare 2026 - Cash";
-                            } else if (useGipsa26) {
-                                fallbackSOCArray = TARIFF_EXCELCARE_GIPSA_2026;
-                                fallbackSOCMap = mapExcelcareGipsa2026;
-                                activeYear = "Excelcare GIPSA 2026";
-                            } else {
-                                fallbackSOCArray = TARIFF_EXCELCARE_2025;
-                                fallbackSOCMap = mapExcelcare;
-                                activeYear = "Excelcare 2025-26";
-                            }
-                        } else {
-                            fallbackSOCArray = TARIFF_2025;
-                            fallbackSOCMap = map2025;
-                            if (activeYear === "2024") { fallbackSOCArray = TARIFF_2024; fallbackSOCMap = map2024; }
-                            else if (activeYear === "2023") { fallbackSOCArray = TARIFF_2023; fallbackSOCMap = map2023; }
-                            else if (activeYear === "2023_v2") { fallbackSOCArray = TARIFF_2023_V2; fallbackSOCMap = map2023_v2; }
-                            else if (activeYear === "2021") { fallbackSOCArray = TARIFF_2021; fallbackSOCMap = map2021; }
-                            else if (activeYear === "2021_iocl") { fallbackSOCArray = TARIFF_2021_IOCL; fallbackSOCMap = map2021_iocl; }
-                        }
-
-                        let fallbackMatch = fallbackSOCMap[serviceId];
-                        let fallbackMatchedByDesc = false;
-
-                        if (!fallbackMatch) {
-                            const cleanBillName = nameUpper.trim();
-                            const descMatches = fallbackSOCArray.filter(x => {
-                                const nameVal = (x.name || '').toUpperCase().trim();
-                                const aliasNameVal = (x.aliasName || '').toUpperCase().trim();
-                                return nameVal === cleanBillName || (aliasNameVal && aliasNameVal === cleanBillName);
-                            });
-                            if (descMatches.length > 0) {
-                                fallbackMatch = descMatches[0];
-                                fallbackMatchedByDesc = true;
-                            }
-                        }
-
-                        if (fallbackMatch) {
-                            if (isKolkata) {
-                                let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
-                                if (fallbackMatch.rates && fallbackMatch.rates[normRoom] === undefined) {
-                                    if (normRoom.includes("STANDARD")) normRoom = "STANDARD";
-                                    else if (normRoom.includes("SEMI") || normRoom.includes("SEMI-PRIVATE") || normRoom.includes("SEMI PRIVATE")) normRoom = "SEMI-PRIVATE";
-                                    else if (normRoom.includes("PRIVATE DELUXE")) normRoom = "PRIVATE DELUXE";
-                                    else if (normRoom.includes("DELUXE")) normRoom = "DELUXE";
-                                    else if (normRoom.includes("PRIVATE")) normRoom = "PRIVATE";
-                                    else if (normRoom.includes("MAHARAJA")) normRoom = "MAHARAJA SUITE";
-                                    else if (normRoom.includes("SUITE")) normRoom = "SUITE";
-                                    else if (normRoom.includes("DAY CARE") || normRoom.includes("DAYCARE")) normRoom = "DAY CARE";
-                                    else if (normRoom.includes("ISOLATION")) normRoom = "ISOLATION";
-                                    else if (normRoom.includes("STROKE")) normRoom = "STROKE WARD";
-                                }
-
-                                if (fallbackMatch.rates) {
-                                    if (fallbackMatch.rates[normRoom] !== undefined) {
-                                        expectedTariff = fallbackMatch.rates[normRoom];
-                                    } else {
-                                        let foundRate = null;
-                                        for (const key in fallbackMatch.rates) {
-                                            if (normRoom.includes(key) || key.includes(normRoom)) {
-                                                foundRate = fallbackMatch.rates[key];
-                                                break;
-                                            }
-                                        }
-                                        expectedTariff = (foundRate !== null) ? foundRate : (fallbackMatch.rates["STANDARD"] !== undefined ? fallbackMatch.rates["STANDARD"] : null);
-                                    }
-                                } else {
-                                    expectedTariff = null;
-                                }
-                            } else {
-                                if (fallbackMatch.rates) {
-                                    const mappedCat = mapIOCLRoomCategory(roomCategory, cleanedRoom);
-                                    expectedTariff = fallbackMatch.rates[mappedCat];
-                                    if (expectedTariff === undefined || expectedTariff === null) {
-                                        expectedTariff = fallbackMatch.rate;
-                                    } else {
-                                        explanation += ` Resolved IOCL room-specific rate (${mappedCat}).`;
-                                    }
-                                } else {
-                                    expectedTariff = fallbackMatch.rate;
-                                }
-                            }
-                            status = "Matching"; // reset status from Not Found
-                            explanation += ` Not found in Template; fetched ₹${expectedTariff} from ${activeYear} SOC` + (fallbackMatchedByDesc ? ` (Matched by Description: ${fallbackMatch.name})` : "") + ".";
-                        } else {
-                            // As a final fallback, check the 2026 GIPSA/TPA Master database (TARIFF_DATA)
-                            let masterMatch = map2026[serviceId];
-                            let masterMatchedByDesc = false;
-                            if (!masterMatch) {
-                                const cleanBillName = nameUpper.trim();
-                                const descMatches = TARIFF_DATA.filter(x => {
-                                    const nameVal = (x.name || '').toUpperCase().trim();
-                                    const aliasNameVal = (x.aliasName || '').toUpperCase().trim();
-                                    return nameVal === cleanBillName || (aliasNameVal && aliasNameVal === cleanBillName);
-                                });
-                                if (descMatches.length > 0) {
-                                    masterMatch = descMatches[0];
-                                    masterMatchedByDesc = true;
-                                }
-                            }
-                            if (masterMatch) {
-                                expectedTariff = isGipsa ? masterMatch.gipsa_rate : masterMatch.tpa_rate;
-                                if (expectedTariff !== null && expectedTariff !== undefined) {
-                                    status = "Matching";
-                                    explanation += ` Not found in Template or ${activeYear} SOC; fetched ₹${expectedTariff} from 2026 Master (TPA/GIPSA)` + (masterMatchedByDesc ? ` (Matched by Description: ${masterMatch.name})` : "") + ".";
-                                } else {
-                                    status = "Not Found in Master";
-                                    explanation += ` Service Code found in 2026 Master but has no valid rate.`;
-                                }
-                            } else {
-                                status = "Not Found in Master";
-                                explanation += ` Service Code not found in Template or ${activeYear} SOC.`;
-                            }
-                        }
-                    }
-                } // close else of if (learnedOverride)
-            } // close if (!isIgnored)
-
-            // Exclude Zero-Rated check
-            if (!isIgnored && excludeZero && billedRate === 0) {
-                status = "Ignored (Zero Rated)";
-                explanation = "Zero rated service items are excluded from checking.";
-                isIgnored = true;
-            }
-
-            // Resolve Discount
-            if (!isIgnored && status !== "Not Found in Master" && !isOverriddenByLearning) {
-                if (mappingMethod === "manual" && manualExcelDiscount !== null) {
-                    explanation += " (Manual Discount from Excel: " + appliedDiscountPercent + "%)";
-                } else {
-                    let customApplied = false;
-                    
-                    // 1. Item-specific custom override
-                    if (window.customItemDiscounts) {
-                        const customItem = window.customItemDiscounts[serviceId] !== undefined ? 
-                            window.customItemDiscounts[serviceId] : 
-                            window.customItemDiscounts[serviceIdRaw];
-                        if (customItem !== undefined) {
-                            appliedDiscountPercent = customItem.discount || 0;
-                            explanation += " (Custom Item Discount: " + appliedDiscountPercent + "%)";
-                            customApplied = true;
-                        }
-                    }
-                    
-                    // 2. Department-specific custom override
-                    if (!customApplied && window.customDeptDiscounts && window.customDeptDiscounts[dept] !== undefined) {
-                        appliedDiscountPercent = window.customDeptDiscounts[dept];
-                        explanation += " (Custom Dept Discount: " + appliedDiscountPercent + "% for " + dept + ")";
-                        customApplied = true;
-                    }
-                    
-                    if (!customApplied) {
-                        const serviceCat = getDiscountCategory(deptLower, nameUpper);
-                        
-                        if (uploadedDiscountMap && uploadedDiscountMap[serviceCat] !== undefined) {
-                            appliedDiscountPercent = uploadedDiscountMap[serviceCat];
-                            explanation += " (Discount Master: " + appliedDiscountPercent + "% for " + serviceCat + ")";
-                        } else if (mappingMethod !== "customer") {
-                            appliedDiscountPercent = getManualDiscountForCategory(serviceCat);
-                            if (appliedDiscountPercent > 0) {
-                                explanation += " (Manual Discount: " + appliedDiscountPercent + "% for " + serviceCat + ")";
-                            }
-                        } else {
-                            if (appliedDiscountPercent > 0) {
-                                explanation += " (Contract Discount: " + appliedDiscountPercent + "%)";
-                            } else {
-                                // Fallback to Category-wise MOU Discount entered in the UI
-                                const fallbackDisc = getManualDiscountForCategory(serviceCat);
-                                if (fallbackDisc > 0) {
-                                    appliedDiscountPercent = fallbackDisc;
-                                    explanation += " (MOU Category Discount: " + appliedDiscountPercent + "% for " + serviceCat + ")";
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            }
-
-            let baseExplanation = explanation;
-
-            // Extract raw string values for validation
-            let rawBilledRateStr = colIdx.rate !== undefined && item.row[colIdx.rate] !== undefined ? String(item.row[colIdx.rate]).trim() : String(billedRate);
-            let rawBilledPreDiscStr = colIdx.ratePreDiscount !== undefined && item.row[colIdx.ratePreDiscount] !== undefined ? String(item.row[colIdx.ratePreDiscount]).trim() : String(billedRatePreDiscount);
-            let rawDiscountAppliedStr = String(appliedDiscountPercent);
-            let rawExpectedTariffStr = expectedTariff !== null ? String(expectedTariff) : '';
-
-            let rowObj = {
-                uid: 'r_' + auditedRows.length,
-                patientName,
-                ipNo,
+            return {
+                fileName,
+                rowIndex: item.rowIndex,
                 billNo,
+                ipNo,
+                patientName,
+                roomCategory,
+                customer,
                 serviceId: serviceIdRaw,
                 serviceName,
                 dept,
-                roomCategory,
                 rateType,
-                customer,
-                doctor,
-                billedRatePreDiscount,
                 billedRate,
-                expectedTariff,
-                expectedDiscountedRate,
-                discountApplied: appliedDiscountPercent,
-                diff: null,
-                status,
-                explanation,
-                baseExplanation,
-                isIgnored,
-                fileName,
-                rowIndex: item.rowIndex,
-                userRemarks: "",
-                rawBilledRateStr: rawBilledRateStr,
-                rawBilledPreDiscStr: rawBilledPreDiscStr,
-                rawDiscountAppliedStr: rawDiscountAppliedStr,
-                rawExpectedTariffStr: rawExpectedTariffStr
+                billedRatePreDiscount,
+                quantity,
+                startDateVal,
+                endDateVal,
+                doctor,
+                reuploadFields
             };
+        });
 
-            if (!isIgnored && status !== "Not Found in Master") {
-                computeRowAuditStatusAndDiff(rowObj);
-            } else {
-                if (isIgnored) {
-                    rowObj.diff = null;
-                } else if (status === "Not Found in Master") {
-                    rowObj.diff = billedRate;
-                }
-            }
-
-            // Apply Reupload overrides
-            if (isReuploadAuditRun && item.reuploadFields) {
-                const rf = item.reuploadFields;
+        try {
+            // Run the audit check on the backend SQLite/Engine
+            const results = await window.api.audit.runRevenueCheck(rowsToVerify, detectedAgreement, activeSourceVal);
+            
+            // Map backend results back to auditedRows structure
+            results.forEach((res, idx) => {
+                const originalItem = rowsToVerify[idx];
                 
-                // Store raw reuploaded strings for validation
-                if (item.colIdx_discountPercent !== undefined && item.row[item.colIdx_discountPercent] !== undefined) {
-                    rowObj.rawDiscountAppliedStr = String(item.row[item.colIdx_discountPercent]).trim();
-                }
-                if (item.colIdx_expectedRate !== undefined && item.row[item.colIdx_expectedRate] !== undefined) {
-                    rowObj.rawExpectedTariffStr = String(item.row[item.colIdx_expectedRate]).trim();
-                }
-                if (item.colIdx_tariffRate !== undefined && item.row[item.colIdx_tariffRate] !== undefined) {
-                    rowObj.rawTariffRateStr = String(item.row[item.colIdx_tariffRate]).trim();
-                }
-                if (item.colIdx_socRate !== undefined && item.row[item.colIdx_socRate] !== undefined) {
-                    rowObj.rawSocRateStr = String(item.row[item.colIdx_socRate]).trim();
-                }
-                
-                let isOverridden = false;
-                let originalTariff = rowObj.expectedTariff;
-                let originalDiscount = rowObj.discountApplied;
-                let originalExpected = rowObj.expectedDiscountedRate !== null ? rowObj.expectedDiscountedRate : rowObj.expectedTariff;
+                const rowObj = {
+                    uid: 'r_' + idx,
+                    patientName: originalItem.patientName,
+                    ipNo: originalItem.ipNo,
+                    billNo: originalItem.billNo,
+                    serviceId: originalItem.serviceId,
+                    serviceName: originalItem.serviceName,
+                    dept: originalItem.dept,
+                    roomCategory: originalItem.roomCategory,
+                    rateType: originalItem.rateType,
+                    customer: originalItem.customer,
+                    doctor: originalItem.doctor,
+                    billedRatePreDiscount: originalItem.billedRatePreDiscount,
+                    billedRate: originalItem.billedRate,
+                    expectedTariff: res.expectedRate,
+                    expectedDiscountedRate: res.expectedDiscountedRate,
+                    discountApplied: detectedAgreement ? parseFloat(detectedAgreement.discountAgreed || 0) : 0,
+                    diff: res.variance,
+                    status: res.status,
+                    explanation: res.explanation,
+                    baseExplanation: res.explanation,
+                    isIgnored: res.isIgnored,
+                    fileName: res.fileName,
+                    rowIndex: res.rowIndex,
+                    userRemarks: ""
+                };
 
-                let editedDiscount = (rf.discountPercent !== null && !isNaN(rf.discountPercent) && rf.discountPercent !== originalDiscount);
-                let editedTariff = (rf.tariffRate !== null && !isNaN(rf.tariffRate) && rf.tariffRate !== originalTariff) || 
-                                     (rf.socRate !== null && !isNaN(rf.socRate) && rf.socRate !== originalTariff);
-                let editedExpectedDirectly = (rf.expectedRate !== null && !isNaN(rf.expectedRate) && rf.expectedRate !== originalExpected);
-
-                if (editedDiscount) {
-                    rowObj.discountApplied = rf.discountPercent;
-                    isOverridden = true;
-                }
-
-                if (editedTariff) {
-                    const newTariff = (rf.tariffRate !== null && !isNaN(rf.tariffRate) && rf.tariffRate !== originalTariff) ? rf.tariffRate : rf.socRate;
-                    rowObj.expectedTariff = newTariff;
-                    isOverridden = true;
-                }
-
-                if (editedTariff || editedDiscount) {
-                    // Recalculate default discounted rate based on new base tariff and discount
-                    rowObj.expectedDiscountedRate = rowObj.expectedTariff * (1 - rowObj.discountApplied / 100);
-                }
-
-                // If user edited Expected Rate directly and it doesn't match the new recalculated expected rate
-                if (editedExpectedDirectly) {
-                    rowObj.expectedDiscountedRate = rf.expectedRate;
-                    isOverridden = true;
-                }
-
-                if (isOverridden) {
-                    reuploadStats.overridesImported++;
-                    // Recompute diff and status after overrides
+                // Overlay user overrides from re-upload if present
+                if (originalItem.reuploadFields) {
+                    const rf = originalItem.reuploadFields;
+                    if (rf.remarks) {
+                        rowObj.userRemarks = rf.remarks;
+                        rowObj.explanation = rf.remarks;
+                        reuploadStats.remarksImported++;
+                    }
+                    if (rf.discountPercent !== null && !isNaN(rf.discountPercent)) {
+                        rowObj.discountApplied = rf.discountPercent;
+                    }
+                    if (rf.expectedRate !== null && !isNaN(rf.expectedRate)) {
+                        rowObj.expectedDiscountedRate = rf.expectedRate;
+                    }
+                    if (rf.tariffRate !== null && !isNaN(rf.tariffRate)) {
+                        rowObj.expectedTariff = rf.tariffRate;
+                    }
+                    // Recompute diff/status if overridden
                     const netExpected = rowObj.expectedDiscountedRate !== null ? rowObj.expectedDiscountedRate : rowObj.expectedTariff;
                     if (netExpected !== null) {
                         rowObj.diff = rowObj.billedRate - netExpected;
-                        if (Math.abs(rowObj.diff) < 0.1) {
-                            rowObj.status = "Matching";
-                        } else if (Math.abs(rowObj.diff) <= 1) {
-                            rowObj.status = "Round Off Difference";
-                        } else if (rowObj.diff > 0) {
-                            rowObj.status = "Overcharged";
-                        } else {
-                            rowObj.status = "Undercharged";
-                        }
+                        if (Math.abs(rowObj.diff) < 0.1) rowObj.status = "Matching";
+                        else if (Math.abs(rowObj.diff) <= 1) rowObj.status = "Round Off Difference";
+                        else if (rowObj.diff > 0) rowObj.status = "Overcharged";
+                        else rowObj.status = "Undercharged";
                     }
                 }
 
-                // 3. Import remarks if any entered
-                if (rf.remarks) {
-                    rowObj.userRemarks = rf.remarks;
-                    rowObj.explanation = rf.remarks;
-                    reuploadStats.remarksImported++;
-                }
-
-                // 4. Calculate corrected vs pending discrepancies
-                const isPreviousException = ["Overcharged", "Undercharged", "Unauthorized Discount", "Not Found in Master"].includes(rf.auditStatus);
-                if (isPreviousException) {
-                    const isCurrentlyResolved = (rowObj.status === "Matching" || rowObj.status === "Round Off Difference" || rowObj.status.startsWith("Ignored") || rowObj.userRemarks !== "");
-                    if (isCurrentlyResolved) {
-                        reuploadStats.corrected++;
-                    } else {
-                        reuploadStats.pending++;
-                    }
-                }
-            }
-
-            auditedRows.push(rowObj);
-        });
-
-        // -------------------------------------------------------------
-        // ANESTHESIOLOGIST 35% FEE CROSS-VERIFICATION PROCESSOR
-        // -------------------------------------------------------------
-        const ipGroups = {};
-        auditedRows.forEach(row => {
-            if (row.isIgnored) return;
-            const ip = (row.ipNo || '').trim().toUpperCase();
-            if (!ip) return;
-            if (!ipGroups[ip]) ipGroups[ip] = [];
-            ipGroups[ip].push(row);
-        });
-
-        Object.keys(ipGroups).forEach(ip => {
-            const group = ipGroups[ip];
-
-            // 1. Identify Anesthesiologist fee rows
-            const anesthesiaRows = group.filter(row => {
-                const nameUpper = (row.serviceName || '').toUpperCase();
-                const code = (row.serviceId || '').replace(/^[a-zA-Z]+-?/, '');
-                return code === '2122' || nameUpper.includes('ANAESTHESIOLOGIST FEES') || nameUpper.includes('ANAESTHETIST FEES');
+                auditedRows.push(rowObj);
             });
 
-            if (anesthesiaRows.length === 0) return;
-
-            // 2. Identify Surgeon fee rows
-            const surgeonRows = group.filter(row => {
-                const nameUpper = (row.serviceName || '').toUpperCase();
-                const code = (row.serviceId || '').replace(/^[a-zA-Z]+-?/, '');
-                return code === '2121' || nameUpper.includes('SURGEON FEES') || nameUpper.includes('SURGERY FEES');
+            // -------------------------------------------------------------
+            // ANESTHESIOLOGIST 35% FEE CROSS-VERIFICATION PROCESSOR
+            // -------------------------------------------------------------
+            const ipGroups = {};
+            auditedRows.forEach(row => {
+                if (row.isIgnored) return;
+                const ip = (row.ipNo || '').trim().toUpperCase();
+                if (!ip) return;
+                if (!ipGroups[ip]) ipGroups[ip] = [];
+                ipGroups[ip].push(row);
             });
 
-            // 3. Resolve the base surgeon/surgery fee for this case
-            let baseSurgeonBilled = 0;
-            let baseSurgeonExpected = 0;
-            let hasSurgeonFee = false;
-
-            // Try to get rates from Surgeon Fee rows (code 2121)
-            surgeonRows.forEach(row => {
-                if (row.billedRate > 0) {
-                    baseSurgeonBilled += row.billedRate;
-                    hasSurgeonFee = true;
-                }
-                if (row.expectedTariff > 0) {
-                    baseSurgeonExpected += row.expectedTariff;
-                }
-            });
-
-            // If Surgeon Fee is 0 or missing in the bill, look for surgery procedure rows in this case
-            if (!hasSurgeonFee || baseSurgeonBilled === 0) {
-                const surgeryProcRows = group.filter(row => {
+            Object.keys(ipGroups).forEach(ip => {
+                const group = ipGroups[ip];
+                const anesthesiaRows = group.filter(row => {
                     const nameUpper = (row.serviceName || '').toUpperCase();
                     const code = (row.serviceId || '').replace(/^[a-zA-Z]+-?/, '');
-                    const deptLower = (row.dept || '').toLowerCase();
-                    const isOT = code === '2103' || nameUpper.includes('THEATRE') || nameUpper.includes('OT CHARGE');
-                    const isAnes = code === '2122' || nameUpper.includes('ANAES') || nameUpper.includes('ANESTH');
-                    const isConsumable = deptLower.includes('consumable') || nameUpper.includes('HSN:') || nameUpper.includes('DRUG') || nameUpper.includes('IMPLANT');
-                    const isConsult = nameUpper.includes('CONSULTATION') || nameUpper.includes('PAC CHARGE');
-                    const isSurgeryWord = nameUpper.includes('SURGERY') || nameUpper.includes('SURGICAL') || nameUpper.includes('OPERATION') || row.rateType === 'Surgery Charges';
-                    
-                    return isSurgeryWord && !isOT && !isAnes && !isConsumable && !isConsult;
+                    return code === '2122' || nameUpper.includes('ANAESTHESIOLOGIST FEES') || nameUpper.includes('ANAESTHETIST FEES');
                 });
-
-                surgeryProcRows.forEach(row => {
-                    baseSurgeonBilled += row.billedRate;
-                    if (row.expectedTariff > 0) {
-                        baseSurgeonExpected += row.expectedTariff;
-                    }
+                if (anesthesiaRows.length === 0) return;
+                const surgeonRows = group.filter(row => {
+                    const nameUpper = (row.serviceName || '').toUpperCase();
+                    const code = (row.serviceId || '').replace(/^[a-zA-Z]+-?/, '');
+                    return code === '2121' || nameUpper.includes('SURGEON FEES') || nameUpper.includes('SURGERY FEES');
                 });
-            }
-
-            // If we found a base surgery/surgeon charge, verify anesthesia rows against 35%
-            if (baseSurgeonBilled > 0 || baseSurgeonExpected > 0) {
-                anesthesiaRows.forEach(row => {
-                    const targetAnesBilled = Math.round(baseSurgeonBilled * 0.35);
-                    const targetAnesExpected = Math.round(baseSurgeonExpected * 0.35);
-
-                    // Update expected rate for anesthesia if logic says it's 35% of expected surgeon fees
-                    if (targetAnesExpected > 0) {
-                        row.expectedTariff = targetAnesExpected;
-                        row.rawExpectedTariffStr = String(targetAnesExpected);
-                        if (row.expectedDiscountedRate !== null) {
-                            row.expectedDiscountedRate = targetAnesExpected * (1 - row.discountApplied / 100);
-                        }
-                    }
-
-                    // Recalculate status and difference with the new expected rate
-                    const netExpected = row.expectedDiscountedRate !== null ? row.expectedDiscountedRate : row.expectedTariff;
-                    if (netExpected !== null) {
-                        row.diff = row.billedRate - netExpected;
-                        if (Math.abs(row.diff) < 0.1) {
-                            row.status = "Matching";
-                        } else if (Math.abs(row.diff) <= 1) {
-                            row.status = "Round Off Difference";
-                        } else if (row.diff > 0) {
-                            row.status = "Overcharged";
+                if (surgeonRows.length > 0) {
+                    const totalSurgeonBilled = surgeonRows.reduce((sum, r) => sum + r.billedRate, 0);
+                    const totalSurgeonExpected = surgeonRows.reduce((sum, r) => sum + (r.expectedDiscountedRate !== null ? r.expectedDiscountedRate : r.expectedTariff || 0), 0);
+                    const expectedAnesthesia = totalSurgeonExpected * 0.35;
+                    anesthesiaRows.forEach(aRow => {
+                        aRow.expectedTariff = totalSurgeonExpected;
+                        aRow.expectedDiscountedRate = expectedAnesthesia;
+                        aRow.discountApplied = 65;
+                        aRow.diff = aRow.billedRate - expectedAnesthesia;
+                        if (Math.abs(aRow.diff) > 1) {
+                            aRow.status = aRow.diff > 0 ? "Overcharged" : "Undercharged";
+                            aRow.explanation = `Anesthesia fee ₹${aRow.billedRate} is checked against 35% of Surgeon expected fees (₹${totalSurgeonExpected}). Expected ₹${expectedAnesthesia.toFixed(2)}.`;
                         } else {
-                            row.status = "Undercharged";
+                            aRow.status = "Matching";
+                            aRow.explanation = `Anesthesia fee matched 35% of Surgeon expected fees.`;
                         }
-                    }
-
-                    // Add detailed verification remark
-                    let remark = ` [Anesthesia Audit] Verified 35% rate logic. Surgeon/Surgery Fee: Billed ₹${baseSurgeonBilled} (Expected ₹${baseSurgeonExpected}). Expected Anesthesia (35%): ₹${targetAnesExpected}.`;
-                    
-                    if (Math.abs(row.billedRate - targetAnesBilled) > 1) {
-                        remark += ` ⚠️ Billed Anesthesia ₹${row.billedRate} does not match 35% of Surgeon/Surgery Fee (₹${targetAnesBilled}).`;
-                    } else {
-                        remark += ` Check Passed: Billed Anesthesia matches 35% of Surgeon/Surgery Fee.`;
-                    }
-                    
-                    row.explanation += remark;
-                    row.baseExplanation += remark;
-                });
-            } else {
-                // We found anesthesia charges but no surgeon fee / surgery procedure at all!
-                anesthesiaRows.forEach(row => {
-                    const remark = ` [Anesthesia Audit] ⚠️ No surgeon fees or surgery procedures found for this case (${ip}). Cannot verify 35% logic.`;
-                    row.explanation += remark;
-                    row.baseExplanation += remark;
-                });
-            }
-        });
-
-        updateAuditCharts();
-        resetAuditBtn();
-        updateTabBadges();
-
-        // Update Reupload Summary Banner
-        const reuploadBanner = document.getElementById('reupload-summary-banner');
-        if (reuploadBanner) {
-            if (isReuploadAuditRun) {
-                reuploadBanner.style.display = 'block';
-                document.getElementById('reupload-corrected-count').textContent = reuploadStats.corrected;
-                document.getElementById('reupload-pending-count').textContent = reuploadStats.pending;
-                document.getElementById('reupload-remarks-count').textContent = reuploadStats.remarksImported;
-                document.getElementById('reupload-overrides-count').textContent = reuploadStats.overridesImported;
-            } else {
-                reuploadBanner.style.display = 'none';
-            }
-        }
-
-        updateUIForRole();
-    }
-
-    function resetAuditBtn() {
-        btnRunAudit.disabled = false;
-        btnRunAudit.innerHTML = `
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4 12 14.01l-3-3"/></svg>
-            Run Billing Audit
-        `;
-        let totalCount = auditedRows.length;
-        let matchesCount = 0;
-        let mismatchesCount = 0;
-        let ignoredCount = 0;
-        let totalOvercharged = 0;
-        const uniqueRooms = new Set();
-        const uniqueCases = new Map();
-
-        // Summary calculations variables
-        const uniqueBillNos = new Set();
-        auditedRows.forEach(row => {
-            const billId = String(row.billNo || row.ipNo || '').trim();
-            if (billId) uniqueBillNos.add(billId);
-        });
-        let raisedNos = uniqueBillNos.size > 0 ? uniqueBillNos.size : auditedRows.length;
-        let raisedVal = 0;
-        
-        let verifiedNos = uniqueBillNos.size > 0 ? uniqueBillNos.size : auditedRows.length;
-        let verifiedVal = 0;
-        
-        let shortNos = 0;
-        let shortVal = 0;
-        
-        let excessNos = 0;
-        let excessVal = 0;
-        
-        let notfoundNos = 0;
-        let notfoundVal = 0;
-        
-        let roundNos = 0;
-        let roundVal = 0;
-        
-        let packageNos = 0;
-        let packageVal = 0;
-        
-        let consumablesNos = 0;
-        let consumablesVal = 0;
-        
-        let zeroNos = 0;
-        let zeroVal = 0;
-        
-        let editableNos = 0;
-        let editableVal = 0;
-        
-        let pharmacyNos = 0;
-        let pharmacyVal = 0;
-        
-        let nodiscNos = 0;
-
-        auditedRows.forEach(row => {
-            if (row.roomCategory) uniqueRooms.add(row.roomCategory.trim());
-            if (row.ipNo) uniqueCases.set(row.ipNo.trim(), row.patientName ? row.patientName.trim() : 'Unknown');
-            
-            raisedVal += row.billedRate;
-            verifiedVal += row.billedRate;
-
-            if (row.status === "Matching") {
-                matchesCount++;
-                nodiscNos++;
-            } else if (row.status === "Overcharged") {
-                mismatchesCount++;
-                excessNos++;
-                excessVal += row.diff;
-                if (row.diff !== null) {
-                    totalOvercharged += row.diff;
+                    });
                 }
-            } else if (row.status === "Undercharged") {
-                mismatchesCount++;
-                shortNos++;
-                shortVal += Math.abs(row.diff);
-            } else if (row.status === "Not Found in Master") {
-                mismatchesCount++;
-                notfoundNos++;
-                notfoundVal += row.billedRate;
-            } else if (row.status === "Round Off Difference") {
-                ignoredCount++;
-                roundNos++;
-                roundVal += Math.abs(row.diff);
-            } else if (row.status === "Ignored (Inside Package)") {
-                ignoredCount++;
-                packageNos++;
-            } else if (row.status === "Ignored (Consumables)") {
-                ignoredCount++;
-                consumablesNos++;
-            } else if (row.status === "Ignored (Zero Rated)") {
-                ignoredCount++;
-                zeroNos++;
-            } else if (row.status === "Ignored (editable)") {
-                ignoredCount++;
-                editableNos++;
-            } else if (row.status === "Ignored (Pharmacy)") {
-                ignoredCount++;
-                pharmacyNos++;
-            }
-        });
-
-        // Set top dashboard CFO metrics
-        const activeAuditedCount = totalCount - ignoredCount;
-        const assuranceRate = activeAuditedCount > 0 ? Math.round((matchesCount / activeAuditedCount) * 100) : 100;
-        const auditCoverage = totalCount > 0 ? Math.round(((totalCount - ignoredCount) / totalCount) * 100) : 0;
-
-        document.getElementById('cfo-verification-accuracy').textContent = `${assuranceRate}%`;
-        document.getElementById('cfo-compliance-leakage').textContent = '₹' + Math.round(excessVal).toLocaleString('en-IN');
-        document.getElementById('cfo-recovery-potential').textContent = '₹' + Math.round(shortVal).toLocaleString('en-IN');
-        document.getElementById('cfo-audit-coverage').textContent = `${auditCoverage}%`;
-
-        // Update counts inside the brick filters
-        const brickAll = document.getElementById('brick-val-all');
-        const brickMatching = document.getElementById('brick-val-matching');
-        const brickOvercharged = document.getElementById('brick-val-overcharged');
-        const brickUndercharged = document.getElementById('brick-val-undercharged');
-        const brickNotfound = document.getElementById('brick-val-notfound');
-        const brickIgnored = document.getElementById('brick-val-ignored');
-        const brickErrors = document.getElementById('brick-val-errors');
-
-        let errorsNos = 0;
-        auditedRows.forEach(row => {
-            if (window.hasValidationError(row)) {
-                errorsNos++;
-            }
-        });
-
-        if (brickAll) brickAll.textContent = totalCount.toLocaleString();
-        if (brickMatching) brickMatching.textContent = matchesCount.toLocaleString();
-        if (brickOvercharged) brickOvercharged.textContent = excessNos.toLocaleString();
-        if (brickUndercharged) brickUndercharged.textContent = shortNos.toLocaleString();
-        if (brickNotfound) brickNotfound.textContent = notfoundNos.toLocaleString();
-        if (brickIgnored) {
-            const totalExceptionsNos = roundNos + packageNos + consumablesNos + zeroNos + editableNos + pharmacyNos;
-            brickIgnored.textContent = totalExceptionsNos.toLocaleString();
-        }
-        if (brickErrors) brickErrors.textContent = errorsNos.toLocaleString();
-
-        // Hide empty state and show dashboard layer
-        const dbEmpty = document.getElementById('dashboard-empty-state');
-        const dbResults = document.getElementById('dashboard-results-area');
-        if (dbEmpty) dbEmpty.style.display = 'none';
-        if (dbResults) dbResults.style.display = 'flex';
-
-        // Populate summary replica cells
-        document.getElementById('sum-raised-nos').textContent = raisedNos.toLocaleString();
-        document.getElementById('sum-raised-val').textContent = '₹' + Math.round(raisedVal).toLocaleString('en-IN');
-        document.getElementById('sum-verified-nos').textContent = verifiedNos.toLocaleString();
-        document.getElementById('sum-verified-val').textContent = '₹' + Math.round(verifiedVal).toLocaleString('en-IN');
-        
-        document.getElementById('sum-short-nos').textContent = shortNos.toLocaleString();
-        document.getElementById('sum-short-val').textContent = '₹' + Math.round(shortVal).toLocaleString('en-IN');
-        document.getElementById('sum-excess-nos').textContent = excessNos.toLocaleString();
-        document.getElementById('sum-excess-val').textContent = '₹' + Math.round(excessVal).toLocaleString('en-IN');
-        document.getElementById('sum-notfound-nos').textContent = notfoundNos.toLocaleString();
-        document.getElementById('sum-notfound-val').textContent = '₹' + Math.round(notfoundVal).toLocaleString('en-IN');
-        
-        document.getElementById('sum-round-nos').textContent = roundNos.toLocaleString();
-        document.getElementById('sum-round-val').textContent = '₹' + Math.round(roundVal).toLocaleString('en-IN');
-        document.getElementById('sum-package-nos').textContent = packageNos.toLocaleString();
-        document.getElementById('sum-package-val').textContent = '₹0';
-        document.getElementById('sum-consumables-nos').textContent = consumablesNos.toLocaleString();
-        document.getElementById('sum-consumables-val').textContent = '₹0';
-        document.getElementById('sum-zero-nos').textContent = zeroNos.toLocaleString();
-        document.getElementById('sum-zero-val').textContent = '₹0';
-        document.getElementById('sum-editable-nos').textContent = editableNos.toLocaleString();
-        document.getElementById('sum-editable-val').textContent = '₹0';
-        document.getElementById('sum-pharmacy-nos').textContent = pharmacyNos.toLocaleString();
-        document.getElementById('sum-pharmacy-val').textContent = '₹0';
-
-        const totalExceptionsNos = roundNos + packageNos + consumablesNos + zeroNos + editableNos + pharmacyNos;
-        document.getElementById('sum-tolexcept-nos').textContent = totalExceptionsNos.toLocaleString();
-        document.getElementById('sum-tolexcept-val').textContent = '₹' + Math.round(roundVal).toLocaleString('en-IN');
-
-        document.getElementById('sum-nodisc-nos').textContent = nodiscNos.toLocaleString();
-        document.getElementById('sum-nodisc-val').textContent = '—';
-
-        // Audit check verification: verified == short + excess + notfound + exceptions + nodisc
-        const totalCategoriesNos = shortNos + excessNos + notfoundNos + totalExceptionsNos + nodiscNos;
-        const diffNos = totalCount - totalCategoriesNos;
-        
-        const checkStatusEl = document.getElementById('sum-check-status');
-        if (diffNos === 0) {
-            checkStatusEl.innerHTML = '<span class="comparison-badge badge-match">MATCH OK</span>';
-        } else {
-            checkStatusEl.innerHTML = '<span class="comparison-badge badge-diff">MISMATCH</span>';
-        }
-        document.getElementById('sum-check-val-diff').textContent = `Deviations: ${diffNos}`;
-
-        // Populate room dropdown
-        auditRoomSelect.innerHTML = '<option value="">All Room Categories</option>';
-        Array.from(uniqueRooms).sort().forEach(room => {
-            if (room) {
-                const opt = document.createElement('option');
-                opt.value = room;
-                opt.textContent = room;
-                auditRoomSelect.appendChild(opt);
-            }
-        });
-
-        // Populate case dropdown
-        const auditCaseSelect = document.getElementById('audit-case-select');
-        if (auditCaseSelect) {
-            auditCaseSelect.innerHTML = `<option value="">All Cases (${uniqueCases.size})</option>`;
-            Array.from(uniqueCases.keys()).sort().forEach(ipNo => {
-                const opt = document.createElement('option');
-                opt.value = ipNo;
-                opt.textContent = `${ipNo} (${uniqueCases.get(ipNo)})`;
-                auditCaseSelect.appendChild(opt);
             });
-        }
 
-        // Show table area
-        auditResultsArea.style.display = 'flex';
+            updateAuditCharts();
+            resetAuditBtn();
+            updateTabBadges();
 
-        // Apply filters
-        currentAuditPage = 1;
-        applyAuditFiltersAndSort();
-    }
-
-    function updateAuditCharts() {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        const textColor = isDark ? '#e2e8f0' : '#1e293b';
-        const gridColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.05)';
-
-        // 1. Aggregate Customer Counts
-        const customerCounts = {};
-        auditedRows.forEach(row => {
-            const cust = row.customer || 'Unknown Payer';
-            customerCounts[cust] = (customerCounts[cust] || 0) + 1;
-        });
-
-        const customerLabels = Object.keys(customerCounts);
-        const customerData = Object.values(customerCounts);
-
-        // Aggregate Discrepancy Types
-        const discrepancyCounts = {
-            "Excess Billing": 0,
-            "Short Billing": 0,
-            "Not in SOC/Templates": 0,
-            "Unauthorized Discount": 0
-        };
-
-        auditedRows.forEach(row => {
-            if (row.status === "Overcharged") {
-                discrepancyCounts["Excess Billing"]++;
-            } else if (row.status === "Undercharged") {
-                discrepancyCounts["Short Billing"]++;
-            } else if (row.status === "Not Found in Master") {
-                discrepancyCounts["Not in SOC/Templates"]++;
-            } else if (row.status === "Unauthorized Discount") {
-                discrepancyCounts["Unauthorized Discount"]++;
-            }
-        });
-
-        const discLabels = Object.keys(discrepancyCounts);
-        const discData = Object.values(discrepancyCounts);
-        const totalDiscrepancies = discData.reduce((a, b) => a + b, 0);
-
-        // 2. Render / Update Customer Chart
-        const ctxCustomers = document.getElementById('chart-customers').getContext('2d');
-        if (customerChartInstance) {
-            customerChartInstance.destroy();
-        }
-
-        customerChartInstance = new Chart(ctxCustomers, {
-            type: 'bar',
-            data: {
-                labels: customerLabels,
-                datasets: [{
-                    label: 'Rows Checked',
-                    data: customerData,
-                    backgroundColor: 'rgba(0, 95, 115, 0.85)', // Peacock Green
-                    borderColor: '#005f73',
-                    borderWidth: 1.5,
-                    borderRadius: 4,
-                    barThickness: 20
-                }]
-            },
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        backgroundColor: isDark ? '#1e293b' : '#ffffff',
-                        titleColor: isDark ? '#ffffff' : '#0f172a',
-                        bodyColor: isDark ? '#cbd5e1' : '#334155',
-                        borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
-                        borderWidth: 1,
-                        padding: 10
-                    }
-                },
-                scales: {
-                    x: {
-                        ticks: { color: textColor },
-                        grid: { color: gridColor },
-                        title: {
-                            display: true,
-                            text: 'Number of Rows',
-                            color: textColor,
-                            font: { size: 10, weight: 'bold' }
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            color: textColor,
-                            callback: function(value, index) {
-                                const label = customerLabels[index] || '';
-                                return label.length > 20 ? label.substring(0, 18) + '..' : label;
-                            }
-                        },
-                        grid: { display: false }
-                    }
+            // Update Reupload Summary Banner
+            const reuploadBanner = document.getElementById('reupload-summary-banner');
+            if (reuploadBanner) {
+                if (isReuploadAuditRun) {
+                    reuploadBanner.style.display = 'block';
+                    document.getElementById('reupload-corrected-count').textContent = reuploadStats.corrected;
+                    document.getElementById('reupload-pending-count').textContent = reuploadStats.pending;
+                    document.getElementById('reupload-remarks-count').textContent = reuploadStats.remarksImported;
+                    document.getElementById('reupload-overrides-count').textContent = reuploadStats.overridesImported;
+                } else {
+                    reuploadBanner.style.display = 'none';
                 }
             }
-        });
 
-        // 3. Render / Update Discrepancy Chart
-        const ctxDiscrepancies = document.getElementById('chart-discrepancies').getContext('2d');
-        if (discrepancyChartInstance) {
-            discrepancyChartInstance.destroy();
+            updateUIForRole();
+
+        } catch (err) {
+            console.error("Error executing audit via IPC:", err);
+            alert("Error running audit validation: " + err.message);
+            resetAuditBtn();
         }
-
-        discrepancyChartInstance = new Chart(ctxDiscrepancies, {
-            type: 'doughnut',
-            data: {
-                labels: discLabels,
-                datasets: [{
-                    data: discData,
-                    backgroundColor: [
-                        '#8b0000', // Excess Billing: Royal Red
-                        '#ca6702', // Short Billing: Amber/Orange
-                        '#9b5de5', // Not in SOC/Templates: Purple
-                        '#e07a5f'  // Unauthorized Discount: Coral/Orange
-                    ],
-                    borderWidth: isDark ? 2 : 1,
-                    borderColor: isDark ? '#1e293b' : '#ffffff'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'right',
-                        labels: {
-                            color: textColor,
-                            font: { size: 11, family: 'Book Antiqua' },
-                            boxWidth: 12,
-                            padding: 10
-                        }
-                    },
-                    tooltip: {
-                        backgroundColor: isDark ? '#1e293b' : '#ffffff',
-                        titleColor: isDark ? '#ffffff' : '#0f172a',
-                        bodyColor: isDark ? '#cbd5e1' : '#334155',
-                        borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
-                        borderWidth: 1,
-                        padding: 10,
-                        callbacks: {
-                            label: function(context) {
-                                const val = context.raw || 0;
-                                const pct = totalDiscrepancies > 0 ? Math.round((val / totalDiscrepancies) * 100) : 0;
-                                return ` ${context.label}: ${val} (${pct}%)`;
-                            }
-                        }
-                    }
-                },
-                cutout: '65%'
-            }
-        });
     }
 
-    window.getRowValidationErrors = function(row) {
+        window.getRowValidationErrors = function(row) {
         let errs = {};
 
         // Zero-rated or already-ignored rows: suppress all field-level validation.
@@ -11476,149 +10132,32 @@
     };
 
     // 4. Save Audit to Database
-    window.saveAudit = function() {
-        let db = [];
-        try {
-            const stored = localStorage.getItem('brc_v2_saved_audits');
-            if (stored) db = JSON.parse(stored);
-        } catch (e) {
-            console.error('Error loading saved audits:', e);
-        }
-
-        const uniqueBillsSet = new Set();
-        auditedRows.forEach(r => {
-            const billId = String(r.billNo || r.ipNo || '').trim();
-            if (billId) uniqueBillsSet.add(billId);
-        });
-        const uniqueBillsCount = uniqueBillsSet.size > 0 ? uniqueBillsSet.size : auditedRows.length;
-
-        const existingIdx = db.findIndex(x => x.auditId === currentAuditId);
-        const customerVal = document.getElementById('ag-payer-selected')?.textContent || 'General';
-        const fileNames = selectedBillFiles.map(f => f.name).join(', ');
-
+    window.saveAudit = async function() {
         const targetStatus = workflowStatus === 'Approved' ? 'Saved' : workflowStatus;
-
-        // Save manual overrides to customer overrides registry
-        let overridesDb = {};
         try {
-            const storedOverrides = localStorage.getItem('brc_v2_customer_rate_overrides');
-            if (storedOverrides) overridesDb = JSON.parse(storedOverrides);
-        } catch (e) {
-            console.error('Error loading customer overrides:', e);
-        }
-
-        const activeUnit = window.currentUserUnit || 'excelcare';
-        auditedRows.forEach(r => {
-            if (r.isManuallyOverridden) {
-                const custKey = r.customer || 'General';
-                const unitKey = r.unit || activeUnit;
-                if (!overridesDb[unitKey]) overridesDb[unitKey] = {};
-                if (!overridesDb[unitKey][custKey]) overridesDb[unitKey][custKey] = {};
-                overridesDb[unitKey][custKey][r.serviceId] = {
-                    tariff: r.expectedTariff,
-                    discount: r.discountApplied,
-                    remarks: r.userRemarks || r.explanation || ''
-                };
-            }
-        });
-
-        try {
-            saveAndSyncOverrides(overridesDb);
-        } catch (e) {
-            console.error('Error saving customer overrides:', e);
-        }
-
-        const savedRecord = {
-            auditId: currentAuditId,
-            uploadDate: new Date().toISOString(),
-            businessUnit: auditBuSelect.value,
-            customer: customerVal,
-            agreement: customerVal,
-            sourceFileName: fileNames,
-            totalBills: uniqueBillsCount,
-            exceptions: auditedRows.filter(r => r.isIgnored || r.status === 'Round Off Difference').length,
-            leakage: auditedRows.filter(r => r.status === 'Overcharged').reduce((acc, r) => acc + (r.diff || 0), 0),
-            recovery: auditedRows.filter(r => r.status === 'Undercharged').reduce((acc, r) => acc + Math.abs(r.diff || 0), 0),
-            status: targetStatus,
-            approvedBy: window.currentApprovalDetails ? window.currentApprovalDetails.approvedBy : 'N/A',
-            approvedDate: window.currentApprovalDetails ? window.currentApprovalDetails.approvedDate : 'N/A',
-            approvalComments: window.currentApprovalDetails ? window.currentApprovalDetails.remarks : 'N/A',
-            rows: serializeRows(auditedRows.map(r => [
-                r.patientName,                  // 0
-                r.ipNo,                         // 1
-                r.billNo,                       // 2
-                r.serviceId,                    // 3
-                r.serviceName,                  // 4
-                r.dept,                         // 5
-                r.roomCategory,                 // 6
-                r.rateType,                     // 7
-                r.customer,                     // 8
-                r.doctor,                       // 9
-                r.billedRatePreDiscount,        // 10
-                r.billedRate,                   // 11
-                r.expectedTariff,               // 12
-                r.discountApplied,              // 13
-                r.userRemarks,                  // 14
-                r.fileName,                     // 15
-                r.isIgnored,                    // 16
-                r.isManuallyOverridden || false // 17
-            ])),
-            versionHistory: window.currentAuditVersionHistory
-        };
-
-        if (existingIdx > -1) {
-            db[existingIdx] = savedRecord;
-        } else {
-            db.push(savedRecord);
-        }
-
-        try {
-            saveAndSyncAudits(db);
+            await window.api.audit.saveAudit(auditedRows);
             if (workflowStatus === 'Approved') {
                 workflowStatus = 'Saved';
             }
             updateWorkflowDisplay();
             logHistoryAction('Saved', `Saved audit run successfully to database with status: ${targetStatus}.`);
 
+            await loadDatabaseFromServer();
             renderRepositoryTable();
             updateDashboardMetrics();
             if (typeof updateCheckingDashboard === 'function') updateCheckingDashboard();
             updateUIForRole();
 
-            if (confirm(`Audit ${currentAuditId} saved successfully as ${targetStatus}!\n\nDo you want to download the final Excel report now?`)) {
+            if (confirm(`Audit saved successfully as ${targetStatus}!\n\nDo you want to download the final Excel report now?`)) {
                 exportAuditExcel();
             }
         } catch (err) {
             console.error(err);
-            if (confirm('Failed to save: LocalStorage is full.\n\nWould you like to clear all historical saved audits to free up space and save this audit?')) {
-                try {
-                    localStorage.removeItem('brc_v2_saved_audits');
-                    saveAndSyncAudits([savedRecord]);
-                    if (workflowStatus === 'Approved') {
-                        workflowStatus = 'Saved';
-                    }
-                    updateWorkflowDisplay();
-                    logHistoryAction('Saved', `Saved audit run successfully to database with status: ${targetStatus} after clearing old cache.`);
-
-                    renderRepositoryTable();
-                    updateDashboardMetrics();
-                    updateUIForRole();
-
-                    alert(`Repository cleared and Audit ${currentAuditId} saved successfully!`);
-                    if (confirm(`Do you want to download the final Excel report now?`)) {
-                        exportAuditExcel();
-                    }
-                } catch (retryErr) {
-                    alert('Failed to save: Clearing history did not free enough space. Please check browser settings or upload smaller files.');
-                }
-            } else {
-                alert('Failed to save: LocalStorage is full. Please delete old runs.');
-            }
+            alert('Failed to save audit: ' + err.message);
         }
     };
 
-    // Helper Action Timestamps & History Log
-    function logHistoryAction(action, details) {
+        function logHistoryAction(action, details) {
         const timestamp = new Date().toLocaleDateString('en-IN') + ' ' + new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
         const user = window.currentUserRole;
 
@@ -11977,7 +10516,7 @@
         updateUIForRole();
     };
 
-    window.deleteSavedAudit = function(auditId) {
+    window.deleteSavedAudit = async function(auditId) {
         if (window.currentUserRole !== 'Administrator') {
             alert('Only Administrators can delete repository audits.');
             return;
@@ -11987,34 +10526,38 @@
             return;
         }
 
-        let db = [];
         try {
-            const stored = localStorage.getItem('brc_v2_saved_audits');
-            if (stored) db = JSON.parse(stored);
-        } catch(e) {}
-
-        const filtered = db.filter(x => x.auditId !== auditId);
-        saveAndSyncAudits(filtered);
-
-        renderRepositoryTable();
-        updateDashboardMetrics();
+            await window.api.audit.deleteAudit(auditId);
+            await loadDatabaseFromServer();
+            renderRepositoryTable();
+            updateDashboardMetrics();
+        } catch (err) {
+            alert('Failed to delete audit: ' + err.message);
+        }
     };
 
-    window.clearAllSavedAudits = function() {
+    window.clearAllSavedAudits = async function() {
         if (window.currentUserRole !== 'Administrator') {
             alert('Only Administrators can clear the database repository.');
             return;
         }
         if (confirm('Are you sure you want to permanently clear ALL saved audits from the repository database? This action cannot be undone.')) {
-            localStorage.removeItem('brc_v2_saved_audits');
-            syncDatabaseToServer([]);
-            renderRepositoryTable();
-            updateDashboardMetrics();
-            alert('Repository database cleared successfully.');
+            try {
+                const db = await loadDatabaseFromServer();
+                for (const run of db) {
+                    await window.api.audit.deleteAudit(run.auditId);
+                }
+                await loadDatabaseFromServer();
+                renderRepositoryTable();
+                updateDashboardMetrics();
+                alert('Repository database cleared successfully.');
+            } catch (err) {
+                alert('Failed to clear repository: ' + err.message);
+            }
         }
     };
 
-    // 7. Reports Sub-tab Navigation
+        // 7. Reports Sub-tab Navigation
     let activeReportsSubtab = 'mtdytd';
     window.switchReportsSubtab = function(subtab) {
         activeReportsSubtab = subtab;
@@ -15208,67 +13751,28 @@
     const CREDS_CACHE_VERSION = 'V1.3.0';
 
     async function initUserCredentials() {
-        const defaultFallback = [
-            // Excelcare Unit
-            { username: 'Review', password: '0925e05f5675f50e0437bbca40253c55301b2bb736f3d888ad3a96633ae08d30', role: 'Viewer', unit: 'excelcare' },
-            { username: 'BRC', password: 'c7240e7f16fe9cb50bbcbc2aaf710051adeaea15f2fb892cfbe774518474f920', role: 'Auditor', unit: 'excelcare' },
-            { username: 'BRC1', password: '567a32694a4b8d77301b7324ff6b8ff3fd583b0511a9dc4589a2aab938b86533', role: 'Approver', unit: 'excelcare' },
-            { username: 'admin', password: '8337cc7788bd6877d6107cc621f5429e25ebe5f6a2381ae193cd00504f4ef025', role: 'Administrator', unit: 'excelcare' },
-            // International Unit
-            { username: 'Review', password: '0925e05f5675f50e0437bbca40253c55301b2bb736f3d888ad3a96633ae08d30', role: 'Viewer', unit: 'international' },
-            { username: 'BRC', password: 'c7240e7f16fe9cb50bbcbc2aaf710051adeaea15f2fb892cfbe774518474f920', role: 'Auditor', unit: 'international' },
-            { username: 'BRC1', password: '567a32694a4b8d77301b7324ff6b8ff3fd583b0511a9dc4589a2aab938b86533', role: 'Approver', unit: 'international' },
-            { username: 'admin', password: '1ab37526146fea387e7e1e57dae16fa344408b38b5277a28e4be67c58dd28c84', role: 'Administrator', unit: 'international' },
-            // Kolkata Unit
-            { username: 'Review', password: '0925e05f5675f50e0437bbca40253c55301b2bb736f3d888ad3a96633ae08d30', role: 'Viewer', unit: 'kolkata' },
-            { username: 'BRC', password: 'c7240e7f16fe9cb50bbcbc2aaf710051adeaea15f2fb892cfbe774518474f920', role: 'Auditor', unit: 'kolkata' },
-            { username: 'BRC1', password: '567a32694a4b8d77301b7324ff6b8ff3fd583b0511a9dc4589a2aab938b86533', role: 'Approver', unit: 'kolkata' },
-            { username: 'admin', password: '3069fd7661b6b5c87a9999326327e1e00f7d20de0ad17cc7c757ce803afba756', role: 'Administrator', unit: 'kolkata' },
-            { username: 'kol_viewer', password: '9719baa8b0cd4455798fa39f2b33db5a2aad2ef812aeb08f8526e308ee06934f', role: 'Viewer', unit: 'kolkata' },
-            { username: 'kol_auditor', password: 'abb643817747ee505c7f63c94fecb5a0cdbe9d471f85481140bfbbcce485fc58', role: 'Auditor', unit: 'kolkata' },
-            { username: 'kol_reviewer', password: '78c0d84a074f69d0d3ccdad70404828cdeefde95bfd0bd2a205fffb9f84fd541', role: 'Approver', unit: 'kolkata' },
-            { username: 'kol_admin', password: '3069fd7661b6b5c87a9999326327e1e00f7d20de0ad17cc7c757ce803afba756', role: 'Administrator', unit: 'kolkata' }
-        ];
-
-        // Bust stale localStorage if version has changed
-        const cachedVersion = localStorage.getItem('brc_v2_creds_version');
-        if (cachedVersion !== CREDS_CACHE_VERSION) {
-            localStorage.removeItem('brc_v2_user_credentials');
-            localStorage.setItem('brc_v2_creds_version', CREDS_CACHE_VERSION);
-        }
-
-        // Always try server first — this is the authoritative source
-        try {
-            const response = await fetch('/api/load_users');
-            if (response.ok) {
-                const serverCreds = await response.json();
-                if (Array.isArray(serverCreds) && serverCreds.length > 0) {
-                    window.userCredentials = serverCreds;
-                    localStorage.setItem('brc_v2_user_credentials', JSON.stringify(serverCreds));
-                    localStorage.setItem('brc_v2_creds_version', CREDS_CACHE_VERSION);
+        const savedSession = localStorage.getItem('brc_v2_logged_in_user');
+        if (savedSession) {
+            const sessionData = JSON.parse(savedSession);
+            if (sessionData.role === 'Administrator') {
+                try {
+                    const freshCreds = await window.api.auth.loadUsers();
+                    window.userCredentials = freshCreds.map(u => ({
+                        userID: u.UserID,
+                        username: u.Username,
+                        password: '[Protected Hash]',
+                        role: u.Role,
+                        unit: u.Unit,
+                        status: u.Status
+                    }));
                     if (typeof window.renderAdminCenter === 'function') {
                         window.renderAdminCenter();
                     }
-                    return; // Server data loaded — done
+                } catch (err) {
+                    console.warn('Failed to load user credentials on init:', err);
                 }
             }
-        } catch (e) {
-            console.warn("Could not load user credentials from server. Falling back to local cache:", e);
         }
-
-        // Fallback: try localStorage cache
-        const savedCreds = localStorage.getItem('brc_v2_user_credentials');
-        if (savedCreds) {
-            try {
-                window.userCredentials = JSON.parse(savedCreds);
-                return;
-            } catch (e) {
-                console.warn("Corrupted localStorage credentials, using defaults.");
-            }
-        }
-
-        // Last resort: use built-in defaults
-        window.userCredentials = defaultFallback;
     }
 
     function applyUnitRestrictions() {
@@ -15532,86 +14036,34 @@
                     return;
                 }
                 
-                // Disable button during async check
                 if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Signing In…'; }
                 if (errorMsg) errorMsg.style.display = 'none';
                 
-                let isValid = false;
-                let loggedInUser = null;
-                
-                const attemptMatch = async (credsList) => {
-                    if (!credsList) return null;
-                    const getNormalizedRole = (r) => (r === 'Approver' || r === 'Approval') ? 'Approver' : r;
-                    const normTarget = getNormalizedRole(role);
-                    for (const u of credsList) {
-                        const isPwdValid = await checkPassword(password, u.password);
-                        if (u.username.toLowerCase() === username.toLowerCase() &&
-                            isPwdValid &&
-                            getNormalizedRole(u.role) === normTarget &&
-                            u.unit === unit) {
-                            return u;
+                try {
+                    const loggedInUser = await window.api.auth.login(username, password, unit, role);
+                    if (loggedInUser) {
+                        localStorage.setItem('brc_v2_logged_in_user', JSON.stringify(loggedInUser));
+                        checkUserLoginState();
+                        if (typeof window.resetInactivityTimers === 'function') {
+                            window.resetInactivityTimers();
                         }
                     }
-                    return null;
-                };
-                
-                if (unit === 'all') {
-                    // Global Website Master Admin (CA Siddhant Surana only)
-                    const passwordHash = await sha256(password);
-                    if (username.toLowerCase() === 'admin' && passwordHash === '10846d83f5348390f15ec3367789410cd5a4e33b7a3fb5dc8676d2182b47705a') {
-                        isValid = true;
-                        loggedInUser = { username: 'admin', role: 'Administrator', unit: 'all' };
-                    }
-                } else {
-                    // Try local credentials first (fast path)
-                    let matched = await attemptMatch(window.userCredentials);
-                    
-                    if (!matched) {
-                        // Re-fetch from server in case initUserCredentials hasn't finished yet
-                        try {
-                            const resp = await fetch('/api/load_users');
-                            if (resp.ok) {
-                                const freshCreds = await resp.json();
-                                if (Array.isArray(freshCreds) && freshCreds.length > 0) {
-                                    window.userCredentials = freshCreds;
-                                    localStorage.setItem('brc_v2_user_credentials', JSON.stringify(freshCreds));
-                                }
-                            }
-                        } catch (err) {
-                            console.warn('Login: server re-fetch failed, using cached credentials.', err);
-                        }
-                        matched = await attemptMatch(window.userCredentials);
-                    }
-                    
-                    if (matched) {
-                        isValid = true;
-                        loggedInUser = { username: matched.username, role: matched.role, unit: unit };
-                    }
-                }
-                
-                // Re-enable button
-                if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Sign In'; }
-                
-                if (isValid && loggedInUser) {
-                    localStorage.setItem('brc_v2_logged_in_user', JSON.stringify(loggedInUser));
-                    checkUserLoginState();
-                    if (typeof window.resetInactivityTimers === 'function') {
-                        window.resetInactivityTimers();
-                    }
-                } else {
+                } catch (err) {
                     if (errorMsg) {
-                        errorMsg.textContent = 'Invalid username or password for the selected Business Unit / Role.';
+                        errorMsg.textContent = err.message || 'Invalid username or password for the selected Business Unit / Role.';
                         errorMsg.style.display = 'block';
                     }
                     if (passwordInput) {
                         passwordInput.value = '';
                         passwordInput.focus();
                     }
+                } finally {
+                    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Sign In'; }
                 }
             });
         }
-        
-        const togglePwdBtn = document.getElementById('toggle-main-login-password');
+
+                const togglePwdBtn = document.getElementById('toggle-main-login-password');
         const loginPwdInput = document.getElementById('login-password');
         if (togglePwdBtn && loginPwdInput) {
             togglePwdBtn.addEventListener('click', () => {
@@ -15798,53 +14250,30 @@
             return;
         }
 
-        if (!username || !password || !role) {
+        if (!username || (!password && idx === -1) || !role) {
             alert('Please fill out all fields.');
             return;
         }
 
-        // Validate duplicates for the SAME unit (since different units can have identical usernames!)
-        const dupIdx = window.userCredentials.findIndex(u => 
-            u.username.toLowerCase() === username.toLowerCase() && u.unit === unit
-        );
-        
-        if (idx === -1 && dupIdx !== -1) {
-            alert(`An account with username "${username}" already exists in the selected unit.`);
-            return;
-        }
-        if (idx !== -1 && dupIdx !== -1 && dupIdx !== idx) {
-            alert(`Another account with username "${username}" already exists in the selected unit.`);
-            return;
-        }
+        const userObj = {
+            userID: idx === -1 ? -1 : window.userCredentials[idx].userID,
+            username,
+            password: password || undefined,
+            role,
+            unit,
+            status: 'Active'
+        };
 
-        let passwordToStore = password;
-        if (!(password.length === 64 && /^[0-9a-fA-F]+$/.test(password))) {
-            passwordToStore = await sha256(password);
+        try {
+            await window.api.auth.saveUser(userObj);
+            window.resetAdminForm();
+            await initUserCredentials();
+        } catch (err) {
+            alert('Error saving user: ' + err.message);
         }
-
-        if (idx === -1) {
-            window.userCredentials.push({ username, password: passwordToStore, role, unit });
-        } else {
-            // Guard editing admin role of own unit by non-global admin
-            if (currentUnit !== 'all' && window.userCredentials[idx].role === 'Administrator') {
-                alert('You do not have permissions to modify Administrator credentials.');
-                return;
-            }
-            window.userCredentials[idx] = { username, password: passwordToStore, role, unit };
-        }
-
-        localStorage.setItem('brc_v2_user_credentials', JSON.stringify(window.userCredentials));
-        fetch('/api/save_users', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(window.userCredentials)
-        }).catch(err => console.error("Error saving users to server:", err));
-        
-        window.resetAdminForm();
-        window.renderAdminCenter();
     };
 
-    window.deleteAdminUser = function(index) {
+    window.deleteAdminUser = async function(index) {
         const currentRole = window.currentUserRole;
         if (currentRole !== 'Administrator') {
             alert('Access Denied: Only Administrators are authorized to manage user credentials.');
@@ -15868,79 +14297,21 @@
         }
 
         if (confirm(`Are you sure you want to delete user account "${user.username}" for unit "${user.unit}"?`)) {
-            window.userCredentials.splice(index, 1);
-            localStorage.setItem('brc_v2_user_credentials', JSON.stringify(window.userCredentials));
-            fetch('/api/save_users', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(window.userCredentials)
-            }).catch(err => console.error("Error saving users to server:", err));
-            
-            window.resetAdminForm();
-            window.renderAdminCenter();
+            try {
+                await window.api.auth.deleteUser(user.userID);
+                window.resetAdminForm();
+                await initUserCredentials();
+            } catch (err) {
+                alert('Error deleting user: ' + err.message);
+            }
         }
     };
 
     window.handleResetDefaults = function() {
-        const currentRole = window.currentUserRole;
-        if (currentRole !== 'Administrator') {
-            alert('Access Denied: Only Administrators are authorized to manage user credentials.');
-            return;
-        }
-
-        const currentUnit = window.currentUserUnit || 'all';
-
-        let confirmMsg = '';
-        if (currentUnit === 'all') {
-            confirmMsg = 'Are you sure you want to reset all user credentials across ALL units to their system defaults? This will overwrite existing custom credentials.';
-        } else {
-            const capitalizedUnit = currentUnit.charAt(0).toUpperCase() + currentUnit.slice(1);
-            confirmMsg = `Are you sure you want to reset all View, Approve & Audit user credentials for the ${capitalizedUnit} unit to their defaults?`;
-        }
-
-        if (confirm(confirmMsg)) {
-            const defaults = [
-                // Excelcare Unit defaults
-                { username: 'Review', password: 'Apollo@123', role: 'Viewer', unit: 'excelcare' },
-                { username: 'BRC', password: 'Brc@2013', role: 'Auditor', unit: 'excelcare' },
-                { username: 'BRC1', password: 'Brc@2026', role: 'Approver', unit: 'excelcare' },
-                { username: 'admin', password: 'Admin@Excel', role: 'Administrator', unit: 'excelcare' },
-                
-                // International Unit defaults
-                { username: 'Review', password: 'Apollo@123', role: 'Viewer', unit: 'international' },
-                { username: 'BRC', password: 'Brc@2013', role: 'Auditor', unit: 'international' },
-                { username: 'BRC1', password: 'Brc@2026', role: 'Approver', unit: 'international' },
-                { username: 'admin', password: 'Admin@Intl', role: 'Administrator', unit: 'international' }
-            ];
-
-            if (currentUnit === 'all') {
-                window.userCredentials = defaults;
-            } else {
-                // Keep other units intact, reset only non-Admin roles of the logged-in unit
-                window.userCredentials = window.userCredentials.filter(u => u.unit !== currentUnit);
-                
-                // Add back defaults for current unit (excluding Admin)
-                defaults.forEach(d => {
-                    if (d.unit === currentUnit && d.role !== 'Administrator') {
-                        window.userCredentials.push(d);
-                    }
-                });
-            }
-
-            localStorage.setItem('brc_v2_user_credentials', JSON.stringify(window.userCredentials));
-            fetch('/api/save_users', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(window.userCredentials)
-            }).catch(err => console.error("Error saving users to server:", err));
-            
-            window.resetAdminForm();
-            window.renderAdminCenter();
-            alert('Credentials reset to default system values successfully.');
-        }
+        alert('Default user credentials are created automatically on database initialization.');
     };
 
-    function initAdminCenterEventListeners() {
+        function initAdminCenterEventListeners() {
         const form = document.getElementById('admin-user-form');
         if (form) {
             form.addEventListener('submit', window.saveAdminUser);

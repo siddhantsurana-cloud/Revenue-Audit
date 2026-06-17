@@ -1,0 +1,64 @@
+{
+  "name": "revenue-audit-portal",
+  "version": "2.0.0",
+  "description": "Secure Revenue Assurance Portal for Apollo Hospitals",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test_electron_app.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "keywords": [
+    "revenue",
+    "audit",
+    "electron",
+    "secure"
+  ],
+  "author": "CA Siddhant Surana",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.apollo.revenueaudit",
+    "productName": "RevenueAudit",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "apollo_logo.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Revenue Audit Portal",
+      "installerHeaderIcon": "apollo_logo.png"
+    },
+    "asar": true,
+    "files": [
+      "main.js",
+      "preload.js",
+      "database.js",
+      "authEngine.js",
+      "auditEngine.js",
+      "backupEngine.js",
+      "index.html",
+      "index_v2_test.html",
+      "apollo_logo.png",
+      "apollo_logo.jpg",
+      "node_modules/**/*"
+    ]
+  }
+}
