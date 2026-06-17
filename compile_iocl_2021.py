@@ -38,7 +38,7 @@ def parse_docx_rates(path):
         header_row_idx = -1
         col_mapping = {}
         
-        for r_idx, r in enumerate(rows[:6]):
+        for r_idx, r in enumerate(rows[:20]):
             cells = [get_text(tc) for tc in r.findall('.//w:tc', namespaces)]
             cells_upper = [c.upper() for c in cells]
             
