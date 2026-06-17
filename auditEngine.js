@@ -152,7 +152,7 @@ function getMasterTariffItem(serviceId, serviceName) {
 }
 
 // 4. Proprietary Validation Pipeline
-async function validateAuditItem(item, agreement, activeSOCName) {
+async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
     const res = {
         expectedTariff: null,
         expectedDiscountedRate: null,
@@ -265,7 +265,26 @@ async function validateAuditItem(item, agreement, activeSOCName) {
 
     // F. Fetch rates from SOC
     if (res.expectedTariff === null && !roomRentResolved && !serviceConditionApplied) {
-        const resolved = await getSOCItem(activeSOCName, item.serviceId, item.serviceName);
+        let resolved = null;
+        if (cache) {
+            let cleanId = '';
+            if (item.serviceId) {
+                cleanId = String(item.serviceId).trim().replace(/^[a-zA-Z]+-?/, '');
+            }
+            let cachedItem = cache.socById.get(cleanId) || cache.socById.get(item.serviceId);
+            let exp = "[SOC Match T1]";
+            if (!cachedItem && item.serviceName) {
+                const cleanName = String(item.serviceName).toUpperCase().trim();
+                cachedItem = cache.socByName.get(cleanName);
+                exp = "[SOC Match T2]";
+            }
+            if (cachedItem) {
+                resolved = { item: cachedItem, explanation: exp };
+            }
+        } else {
+            resolved = await getSOCItem(activeSOCName, item.serviceId, item.serviceName);
+        }
+
         if (resolved) {
             const match = resolved.item;
             res.explanation = `${resolved.explanation} ${res.explanation}`;
@@ -299,7 +318,20 @@ async function validateAuditItem(item, agreement, activeSOCName) {
                 } else {
                     const isGipsa = agreement && agreement.tariffMapped ? agreement.tariffMapped.toUpperCase().includes("GIPSA") : false;
                     if (activeSOCName === 'TARIFF_DATA') {
-                        const baseMatch = await getMasterTariffItem(item.serviceId, item.serviceName);
+                        let baseMatch = null;
+                        if (cache) {
+                            let cleanId = '';
+                            if (item.serviceId) {
+                                cleanId = String(item.serviceId).trim().replace(/^[a-zA-Z]+-?/, '');
+                            }
+                            baseMatch = cache.tariffById.get(cleanId) || cache.tariffById.get(item.serviceId);
+                            if (!baseMatch && item.serviceName) {
+                                const cleanName = String(item.serviceName).toUpperCase().trim();
+                                baseMatch = cache.tariffByName.get(cleanName);
+                            }
+                        } else {
+                            baseMatch = await getMasterTariffItem(item.serviceId, item.serviceName);
+                        }
                         resolvedRate = baseMatch ? baseMatch.rate : match.rate;
                     } else {
                         resolvedRate = match.rate;
@@ -309,7 +341,20 @@ async function validateAuditItem(item, agreement, activeSOCName) {
             res.expectedTariff = resolvedRate;
         } else {
             // Default fallback to base master
-            const baseMatch = await getMasterTariffItem(item.serviceId, item.serviceName);
+            let baseMatch = null;
+            if (cache) {
+                let cleanId = '';
+                if (item.serviceId) {
+                    cleanId = String(item.serviceId).trim().replace(/^[a-zA-Z]+-?/, '');
+                }
+                baseMatch = cache.tariffById.get(cleanId) || cache.tariffById.get(item.serviceId);
+                if (!baseMatch && item.serviceName) {
+                    const cleanName = String(item.serviceName).toUpperCase().trim();
+                    baseMatch = cache.tariffByName.get(cleanName);
+                }
+            } else {
+                baseMatch = await getMasterTariffItem(item.serviceId, item.serviceName);
+            }
             if (baseMatch) {
                 res.expectedTariff = baseMatch.rate;
                 res.explanation = `[Base Master Fallback] ${res.explanation}`;
@@ -561,6 +606,68 @@ function reopenAudit(resultId, user, reason) {
     });
 }
 
+function preloadAuditCache(activeSOCName) {
+    return new Promise((resolve, reject) => {
+        const cache = {
+            socById: new Map(),
+            socByName: new Map(),
+            tariffById: new Map(),
+            tariffByName: new Map()
+        };
+        
+        db.all(`SELECT ServiceID, ServiceName, ServiceType, Department, StandardRate, RatesJSON FROM tbl_soc_master WHERE SOCName = ?`, [activeSOCName], (err, socRows) => {
+            if (err) return reject(err);
+            
+            if (socRows) {
+                for (const row of socRows) {
+                    const item = {
+                        id: row.ServiceID,
+                        name: row.ServiceName,
+                        type: row.ServiceType,
+                        dept: row.Department,
+                        rate: row.StandardRate,
+                        rates: row.RatesJSON ? JSON.parse(row.RatesJSON) : null
+                    };
+                    
+                    if (row.ServiceID) {
+                        const cleanId = String(row.ServiceID).trim().replace(/^[a-zA-Z]+-?/, '');
+                        cache.socById.set(cleanId, item);
+                        cache.socById.set(String(row.ServiceID), item);
+                    }
+                    if (row.ServiceName) {
+                        cache.socByName.set(String(row.ServiceName).toUpperCase().trim(), item);
+                    }
+                }
+            }
+            
+            db.all(`SELECT ServiceID, ServiceName, Rate FROM tbl_tariff_master`, [], (err, tariffRows) => {
+                if (err) return reject(err);
+                
+                if (tariffRows) {
+                    for (const row of tariffRows) {
+                        const item = {
+                            id: row.ServiceID,
+                            name: row.ServiceName,
+                            rate: row.Rate
+                        };
+                        
+                        if (row.ServiceID) {
+                            const cleanId = String(row.ServiceID).trim().replace(/^[a-zA-Z]+-?/, '');
+                            cache.tariffById.set(cleanId, item);
+                            cache.tariffById.set(String(row.ServiceID), item);
+                        }
+                        if (row.ServiceName) {
+                            cache.tariffByName.set(String(row.ServiceName).toUpperCase().trim(), item);
+                        }
+                    }
+                }
+                
+                resolve(cache);
+            });
+        });
+    });
+}
+
 function loadDashboard(unit, durationDays) {
     return new Promise((resolve, reject) => {
         const days = durationDays || 30;
@@ -617,6 +724,7 @@ function deleteAuditRun(auditDate) {
 
 module.exports = {
     validateAuditItem,
+    preloadAuditCache,
     saveAudit,
     approveAudit,
     reopenAudit,

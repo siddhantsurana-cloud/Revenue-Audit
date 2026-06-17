@@ -117,8 +117,10 @@ ipcMain.handle('audit:runValidation', async (event, { item, agreement, activeSOC
 
 ipcMain.handle('audit:runRevenueCheck', async (event, { rows, agreement, activeSOCName }) => {
     const results = [];
+    const cache = await auditEngine.preloadAuditCache(activeSOCName);
+    
     for (const item of rows) {
-        const res = await auditEngine.validateAuditItem(item, agreement, activeSOCName);
+        const res = await auditEngine.validateAuditItem(item, agreement, activeSOCName, cache);
         results.push({
             fileName: item.fileName || '',
             rowIndex: item.rowIndex || 0,
