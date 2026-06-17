@@ -7157,7 +7157,7 @@
             window.pendingUserRoleChange = null;
         }
 
-        function verifyRolePassword() {
+        async function verifyRolePassword() {
             const roleUsernameInput = document.getElementById('role-username-input');
             const username = roleUsernameInput ? roleUsernameInput.value.trim() : '';
             const pwd = rolePasswordInput.value;
@@ -7173,7 +7173,8 @@
             let currentUnit = window.currentUserUnit || 'all';
 
             // Master Admin check
-            if (username.toLowerCase() === 'admin' && pwd === 'Siddhant@$26') {
+            const pwdHash = await sha256(pwd);
+            if (username.toLowerCase() === 'admin' && pwdHash === '10846d83f5348390f15ec3367789410cd5a4e33b7a3fb5dc8676d2182b47705a') {
                 if (role === 'Administrator') {
                     isValid = true;
                     currentUnit = 'all'; // Elevate/maintain global access
@@ -7185,15 +7186,15 @@
                 const getNormalizedRole = (r) => (r === 'Approver' || r === 'Approval') ? 'Approver' : r;
                 const normTarget = getNormalizedRole(role);
                 
-                const matchedUser = window.userCredentials.find(u => 
-                    u.username.toLowerCase() === username.toLowerCase() && 
-                    u.password === pwd && 
-                    getNormalizedRole(u.role) === normTarget &&
-                    u.unit === currentUnit
-                );
-                
-                if (matchedUser) {
-                    isValid = true;
+                for (const u of window.userCredentials) {
+                    const isPwdValid = await checkPassword(pwd, u.password);
+                    if (u.username.toLowerCase() === username.toLowerCase() && 
+                        isPwdValid && 
+                        getNormalizedRole(u.role) === normTarget &&
+                        u.unit === currentUnit) {
+                        isValid = true;
+                        break;
+                    }
                 }
             }
 
@@ -15201,29 +15202,29 @@
         }
     }
 
-    const CREDS_CACHE_VERSION = 'V1.2.1';
+    const CREDS_CACHE_VERSION = 'V1.3.0';
 
     async function initUserCredentials() {
         const defaultFallback = [
             // Excelcare Unit
-            { username: 'Review', password: 'Apollo@123', role: 'Viewer', unit: 'excelcare' },
-            { username: 'BRC', password: 'Brc@2013', role: 'Auditor', unit: 'excelcare' },
-            { username: 'BRC1', password: 'Brc@2026', role: 'Approver', unit: 'excelcare' },
-            { username: 'admin', password: 'Admin@Excel', role: 'Administrator', unit: 'excelcare' },
+            { username: 'Review', password: '0925e05f5675f50e0437bbca40253c55301b2bb736f3d888ad3a96633ae08d30', role: 'Viewer', unit: 'excelcare' },
+            { username: 'BRC', password: 'c7240e7f16fe9cb50bbcbc2aaf710051adeaea15f2fb892cfbe774518474f920', role: 'Auditor', unit: 'excelcare' },
+            { username: 'BRC1', password: '567a32694a4b8d77301b7324ff6b8ff3fd583b0511a9dc4589a2aab938b86533', role: 'Approver', unit: 'excelcare' },
+            { username: 'admin', password: '8337cc7788bd6877d6107cc621f5429e25ebe5f6a2381ae193cd00504f4ef025', role: 'Administrator', unit: 'excelcare' },
             // International Unit
-            { username: 'Review', password: 'Apollo@123', role: 'Viewer', unit: 'international' },
-            { username: 'BRC', password: 'Brc@2013', role: 'Auditor', unit: 'international' },
-            { username: 'BRC1', password: 'Brc@2026', role: 'Approver', unit: 'international' },
-            { username: 'admin', password: 'Admin@Intl', role: 'Administrator', unit: 'international' },
+            { username: 'Review', password: '0925e05f5675f50e0437bbca40253c55301b2bb736f3d888ad3a96633ae08d30', role: 'Viewer', unit: 'international' },
+            { username: 'BRC', password: 'c7240e7f16fe9cb50bbcbc2aaf710051adeaea15f2fb892cfbe774518474f920', role: 'Auditor', unit: 'international' },
+            { username: 'BRC1', password: '567a32694a4b8d77301b7324ff6b8ff3fd583b0511a9dc4589a2aab938b86533', role: 'Approver', unit: 'international' },
+            { username: 'admin', password: '1ab3752614fea387e7e1e57dae16fa344408b38b5277a28e4be67c58dd28c84', role: 'Administrator', unit: 'international' },
             // Kolkata Unit
-            { username: 'Review', password: 'Apollo@123', role: 'Viewer', unit: 'kolkata' },
-            { username: 'BRC', password: 'Brc@2013', role: 'Auditor', unit: 'kolkata' },
-            { username: 'BRC1', password: 'Brc@2026', role: 'Approver', unit: 'kolkata' },
-            { username: 'admin', password: 'Admin@Kolkata', role: 'Administrator', unit: 'kolkata' },
-            { username: 'kol_viewer', password: 'Viewer@Kolkata', role: 'Viewer', unit: 'kolkata' },
-            { username: 'kol_auditor', password: 'Auditor@Kolkata', role: 'Auditor', unit: 'kolkata' },
-            { username: 'kol_reviewer', password: 'Reviewer@Kolkata', role: 'Approver', unit: 'kolkata' },
-            { username: 'kol_admin', password: 'Admin@Kolkata', role: 'Administrator', unit: 'kolkata' }
+            { username: 'Review', password: '0925e05f5675f50e0437bbca40253c55301b2bb736f3d888ad3a96633ae08d30', role: 'Viewer', unit: 'kolkata' },
+            { username: 'BRC', password: 'c7240e7f16fe9cb50bbcbc2aaf710051adeaea15f2fb892cfbe774518474f920', role: 'Auditor', unit: 'kolkata' },
+            { username: 'BRC1', password: '567a32694a4b8d77301b7324ff6b8ff3fd583b0511a9dc4589a2aab938b86533', role: 'Approver', unit: 'kolkata' },
+            { username: 'admin', password: '3069fd7661b6b5c87a9999326327e1e00f7d20de0ad17cc7c757ce803afba756', role: 'Administrator', unit: 'kolkata' },
+            { username: 'kol_viewer', password: '9719baa8b0cd4455798fa39f2b33db5a2aad2ef812aeb08f8526e308ee06934f', role: 'Viewer', unit: 'kolkata' },
+            { username: 'kol_auditor', password: 'abb643817747ee505c7f63c94fecb5a0cdbe9d471f85481140bfbbcce485fc58', role: 'Auditor', unit: 'kolkata' },
+            { username: 'kol_reviewer', password: '78c0d84a074f69d0d3ccdad70404828cdeefde95bfd0bd2a205fffb9f84fd541', role: 'Approver', unit: 'kolkata' },
+            { username: 'kol_admin', password: '3069fd7661b6b5c87a9999326327e1e00f7d20de0ad17cc7c757ce803afba756', role: 'Administrator', unit: 'kolkata' }
         ];
 
         // Bust stale localStorage if version has changed
@@ -15468,6 +15469,21 @@
         if (btnDashboard) btnDashboard.click();
     };
 
+    async function sha256(str) {
+        if (!str) return '';
+        const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+        return Array.prototype.map.call(new Uint8Array(buf), x => (('00' + x.toString(16)).slice(-2))).join('');
+    }
+
+    async function checkPassword(inputPwd, storedHashOrPwd) {
+        if (!storedHashOrPwd) return false;
+        const inputHash = await sha256(inputPwd);
+        if (storedHashOrPwd.length === 64 && /^[0-9a-fA-F]+$/.test(storedHashOrPwd)) {
+            return inputHash === storedHashOrPwd.toLowerCase();
+        }
+        return inputPwd === storedHashOrPwd;
+    }
+
     function initPortalLoginListeners() {
         const form = document.getElementById('main-login-form');
         const loginUnit = document.getElementById('login-unit');
@@ -15520,27 +15536,32 @@
                 let isValid = false;
                 let loggedInUser = null;
                 
-                const attemptMatch = (credsList) => {
+                const attemptMatch = async (credsList) => {
                     if (!credsList) return null;
                     const getNormalizedRole = (r) => (r === 'Approver' || r === 'Approval') ? 'Approver' : r;
                     const normTarget = getNormalizedRole(role);
-                    return credsList.find(u =>
-                        u.username.toLowerCase() === username.toLowerCase() &&
-                        u.password === password &&
-                        getNormalizedRole(u.role) === normTarget &&
-                        u.unit === unit
-                    ) || null;
+                    for (const u of credsList) {
+                        const isPwdValid = await checkPassword(password, u.password);
+                        if (u.username.toLowerCase() === username.toLowerCase() &&
+                            isPwdValid &&
+                            getNormalizedRole(u.role) === normTarget &&
+                            u.unit === unit) {
+                            return u;
+                        }
+                    }
+                    return null;
                 };
                 
                 if (unit === 'all') {
                     // Global Website Master Admin (CA Siddhant Surana only)
-                    if (username.toLowerCase() === 'admin' && password === 'Siddhant@$26') {
+                    const passwordHash = await sha256(password);
+                    if (username.toLowerCase() === 'admin' && passwordHash === '10846d83f5348390f15ec3367789410cd5a4e33b7a3fb5dc8676d2182b47705a') {
                         isValid = true;
                         loggedInUser = { username: 'admin', role: 'Administrator', unit: 'all' };
                     }
                 } else {
                     // Try local credentials first (fast path)
-                    let matched = attemptMatch(window.userCredentials);
+                    let matched = await attemptMatch(window.userCredentials);
                     
                     if (!matched) {
                         // Re-fetch from server in case initUserCredentials hasn't finished yet
@@ -15556,7 +15577,7 @@
                         } catch (err) {
                             console.warn('Login: server re-fetch failed, using cached credentials.', err);
                         }
-                        matched = attemptMatch(window.userCredentials);
+                        matched = await attemptMatch(window.userCredentials);
                     }
                     
                     if (matched) {
@@ -15749,7 +15770,7 @@
         document.getElementById('btn-reset-admin-form').style.display = 'none';
     };
 
-    window.saveAdminUser = function(e) {
+    window.saveAdminUser = async function(e) {
         if (e) e.preventDefault();
 
         const currentRole = window.currentUserRole;
@@ -15793,15 +15814,20 @@
             return;
         }
 
+        let passwordToStore = password;
+        if (!(password.length === 64 && /^[0-9a-fA-F]+$/.test(password))) {
+            passwordToStore = await sha256(password);
+        }
+
         if (idx === -1) {
-            window.userCredentials.push({ username, password, role, unit });
+            window.userCredentials.push({ username, password: passwordToStore, role, unit });
         } else {
             // Guard editing admin role of own unit by non-global admin
             if (currentUnit !== 'all' && window.userCredentials[idx].role === 'Administrator') {
                 alert('You do not have permissions to modify Administrator credentials.');
                 return;
             }
-            window.userCredentials[idx] = { username, password, role, unit };
+            window.userCredentials[idx] = { username, password: passwordToStore, role, unit };
         }
 
         localStorage.setItem('brc_v2_user_credentials', JSON.stringify(window.userCredentials));
