@@ -2552,8 +2552,15 @@
 
             <!-- Configuration / Fields -->
             <div style="display: flex; flex-direction: column; gap: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; width: 100%;">
-                <!-- Row 1: Business Unit, Validation Source Type, Validation Source, Tariff Mapping Method -->
+                <!-- Row 1: Audit Type, Business Unit, Validation Source Type, Validation Source, Tariff Mapping Method -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; width: 100%;">
+                    <div class="input-group" style="padding: 0;">
+                        <label for="audit-type-select" style="font-size: 0.7rem;">Audit Type</label>
+                        <select id="audit-type-select" class="form-control" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;">
+                            <option value="ip" selected>IP (In-Patient) Audit</option>
+                            <option value="op">OP (Out-Patient) Audit</option>
+                        </select>
+                    </div>
                     <div class="input-group" style="padding: 0;">
                         <label for="audit-bu-select" style="font-size: 0.7rem;">Business Unit</label>
                         <select id="audit-bu-select" class="form-control" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;">
@@ -4803,6 +4810,7 @@
     const chkExcludeConsumables = document.getElementById('chk-exclude-consumables');
     const chkExcludeZero = document.getElementById('chk-exclude-zero');
     const auditBuSelect = document.getElementById('audit-bu-select');
+    const auditTypeSelect = document.getElementById('audit-type-select');
     const auditSourceTypeSelect = document.getElementById('audit-source-type-select');
     const auditSourceSelect = document.getElementById('audit-source-select');
     const auditMappingMethodSelect = document.getElementById('audit-mapping-method-select');
@@ -7026,6 +7034,16 @@
             }
         });
 
+        if (auditTypeSelect) {
+            auditTypeSelect.addEventListener('change', () => {
+                localStorage.setItem('brc_v2_audit_type', auditTypeSelect.value);
+            });
+            const savedAuditType = localStorage.getItem('brc_v2_audit_type');
+            if (savedAuditType) {
+                auditTypeSelect.value = savedAuditType;
+            }
+        }
+
         // Validation Source Type selector change listener
         auditSourceTypeSelect.addEventListener('change', () => {
             updateValidationSourceOptions();
@@ -8498,23 +8516,30 @@
             let originalFilesInfo = [];
             let revisedFilesInfo = [];
             
+            let anyOPFile = false;
             for (let fIdx = 0; fIdx < selectedBillFiles.length; fIdx++) {
                 const file = selectedBillFiles[fIdx];
                 const fileData = await readFileAsArrayBuffer(file);
                 const workbook = XLSX.read(fileData, { type: 'array' });
                 
                 let targetSheet = null;
+                let targetSheetName = "";
                 let maxRows = 0;
                 workbook.SheetNames.forEach(sheetName => {
                     const sheet = workbook.Sheets[sheetName];
                     const range = XLSX.utils.decode_range(sheet['!ref'] || 'A1:A1');
                     const rowsCount = range.e.r - range.s.r + 1;
-                    if (sheetName.toLowerCase().includes('ip services') || sheetName.toLowerCase().includes('discharge') || sheetName.toLowerCase().includes('report') || sheetName.toLowerCase().includes('billing')) {
+                    const nameLower = sheetName.toLowerCase();
+                    if (nameLower.includes('ip services') || nameLower.includes('discharge') || nameLower.includes('report') || nameLower.includes('billing') || nameLower.includes('op services') || nameLower.includes('outpatient') || nameLower.includes('op bill')) {
                         targetSheet = sheet;
+                        targetSheetName = sheetName;
                     }
                     if (rowsCount > maxRows) {
                         maxRows = rowsCount;
-                        if (!targetSheet) targetSheet = sheet;
+                        if (!targetSheet) {
+                            targetSheet = sheet;
+                            targetSheetName = sheetName;
+                        }
                     }
                 });
 
@@ -8561,6 +8586,17 @@
 
                 if (headerRowIdx === -1) continue;
 
+                let isOPFile = false;
+                if (targetSheetName.toLowerCase().includes('op') || targetSheetName.toLowerCase().includes('outpatient')) {
+                    isOPFile = true;
+                }
+                if (colMapping['oppno'] !== undefined || (colMapping['uhid'] !== undefined && colMapping['ipno'] === undefined && colMapping['admissionno'] === undefined)) {
+                    isOPFile = true;
+                }
+                if (isOPFile) {
+                    anyOPFile = true;
+                }
+
                 let fileIsReupload = false;
                 if (colMapping['matchedservicecode'] !== undefined || colMapping['expectedrate'] !== undefined || colMapping['remarks'] !== undefined) {
                     fileIsReupload = true;
@@ -8571,6 +8607,23 @@
                     revisedFilesInfo.push(fileRecord);
                 } else {
                     originalFilesInfo.push(fileRecord);
+                }
+            }
+
+            // Auto-select Audit Type dropdown based on detected format
+            const typeSelect = document.getElementById('audit-type-select');
+            if (typeSelect) {
+                if (anyOPFile) {
+                    if (typeSelect.value !== 'op') {
+                        typeSelect.value = 'op';
+                        typeSelect.dispatchEvent(new Event('change'));
+                        alert('OP Billing format detected. Automatically switched Audit Type to OP Audit.');
+                    }
+                } else {
+                    if (typeSelect.value !== 'ip') {
+                        typeSelect.value = 'ip';
+                        typeSelect.dispatchEvent(new Event('change'));
+                    }
                 }
             }
 
@@ -9809,11 +9862,25 @@
                             // Try description match on activeSOC
                             if (expectedTariff === null) {
                                 const cleanBillName = nameUpper.trim();
-                                const descMatches = activeSOC.filter(x => {
+                                let descMatches = activeSOC.filter(x => {
                                     const nameVal = (x.name || '').toUpperCase().trim();
                                     const aliasNameVal = (x.aliasName || '').toUpperCase().trim();
                                     return nameVal === cleanBillName || (aliasNameVal && aliasNameVal === cleanBillName);
                                 });
+                                
+                                // Normalized description fallback for OP Audits (or general fallback)
+                                if (descMatches.length === 0) {
+                                    const normalizeDesc = str => str.replace(/[-\s_(),]+/g, ' ').replace(/\b(OP|IP|CASH|SUBHAM|CHRISTIANBASTI|APHC)\b/gi, '').trim().toUpperCase();
+                                    const normBillName = normalizeDesc(cleanBillName);
+                                    if (normBillName.length > 2) {
+                                        descMatches = activeSOC.filter(x => {
+                                            const nameVal = (x.name || '').toUpperCase();
+                                            const aliasNameVal = (x.aliasName || '').toUpperCase();
+                                            return normalizeDesc(nameVal) === normBillName || (aliasNameVal && normalizeDesc(aliasNameVal) === normBillName);
+                                        });
+                                    }
+                                }
+
                                 if (descMatches.length > 0) {
                                     const matchedItem = descMatches[0];
                                     if (matchedItem.rates) {
@@ -10739,6 +10806,7 @@
 
     window.getRowValidationErrors = function(row) {
         let errs = {};
+        const isOpAudit = document.getElementById('audit-type-select')?.value === 'op';
 
         // Zero-rated or already-ignored rows: suppress all field-level validation.
         // These rows are already excluded from the audit comparison, so rate-format
@@ -10746,7 +10814,7 @@
         // or 'N/A' in the SOC rate column).
         if (row.isIgnored || row.billedRate === 0) {
             // Only keep mandatory-field check so truly broken rows are still flagged
-            if (!row.patientName || !row.ipNo || !row.serviceId) {
+            if (!row.patientName || !row.ipNo || (!isOpAudit && !row.serviceId)) {
                 errs.mandatory = 'Mandatory fields missing.';
             }
             return errs;
@@ -10820,7 +10888,7 @@
         }
         
         // Mandatory fields check
-        if (!row.patientName || !row.ipNo || !row.serviceId || row.billedRate === null) {
+        if (!row.patientName || !row.ipNo || (!isOpAudit && !row.serviceId) || row.billedRate === null) {
             errs.mandatory = `Mandatory fields missing.`;
         }
         
