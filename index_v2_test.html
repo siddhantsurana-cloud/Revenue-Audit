@@ -4497,6 +4497,8 @@
     let map2025 = {};
     let mapExcelcare = {};
     let mapExcelcareCash = {};
+    let mapCash2025 = {};
+    let mapCash2026 = {};
     let mapExcelcare2024 = {};
     let mapExcelcareGipsa2026 = {};
     let mapKolkata = {};       // Standard Kolkata SOC (no payer-specific entries)
@@ -5160,6 +5162,12 @@
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') {
             TARIFF_EXCELCARE_CASH_2025.forEach(item => { mapExcelcareCash[item.id] = item; });
         }
+        if (typeof TARIFF_CASH_2025 !== 'undefined') {
+            TARIFF_CASH_2025.forEach(item => { mapCash2025[item.id] = item; });
+        }
+        if (typeof TARIFF_CASH_2026 !== 'undefined') {
+            TARIFF_CASH_2026.forEach(item => { mapCash2026[item.id] = item; });
+        }
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') {
             TARIFF_EXCELCARE_2024.forEach(item => { mapExcelcare2024[item.id] = item; });
         }
@@ -5194,6 +5202,8 @@
         if (typeof TARIFF_2025 !== 'undefined') TARIFF_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2025 !== 'undefined') TARIFF_EXCELCARE_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') TARIFF_EXCELCARE_CASH_2025.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_CASH_2025 !== 'undefined') TARIFF_CASH_2025.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_CASH_2026 !== 'undefined') TARIFF_CASH_2026.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') TARIFF_EXCELCARE_2024.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') TARIFF_EXCELCARE_GIPSA_2026.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') TARIFF_KOLKATA_SOC.forEach(item => allIds.add(item.id));
@@ -8951,6 +8961,8 @@
             if (socArray === TARIFF_2021_IOCL) return map2021_iocl;
             if (typeof TARIFF_EXCELCARE_2025 !== 'undefined' && socArray === TARIFF_EXCELCARE_2025) return mapExcelcare;
             if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && socArray === TARIFF_EXCELCARE_CASH_2025) return mapExcelcareCash;
+            if (typeof TARIFF_CASH_2025 !== 'undefined' && socArray === TARIFF_CASH_2025) return mapCash2025;
+            if (typeof TARIFF_CASH_2026 !== 'undefined' && socArray === TARIFF_CASH_2026) return mapCash2026;
             if (typeof TARIFF_EXCELCARE_2024 !== 'undefined' && socArray === TARIFF_EXCELCARE_2024) return mapExcelcare2024;
             if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined' && socArray === TARIFF_EXCELCARE_GIPSA_2026) return mapExcelcareGipsa2026;
             return map2026;

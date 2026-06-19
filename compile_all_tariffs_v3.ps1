@@ -987,6 +987,146 @@ if (Test-Path $excelcareCashFile) {
     Log-Info "Warning: Excelcare 2026 - Cash SOC file not found at $excelcareCashFile"
 }
 
+# 11b. Parse International 2025-26 Cash SOC
+Log-Info "Parsing International 2025-26 Cash SOC..."
+$listCash2025 = New-Object System.Collections.Generic.List[Object]
+$intlCash2526File = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/OP - INternational/OP - International/SOC/OP Cash 25-26 (Nov-March) Received on 19-05-2026.xlsb"
+if (Test-Path $intlCash2526File) {
+    $wb = $excel.Workbooks.Open($intlCash2526File, [Type]::Missing, $true)
+    $sheet = $wb.Worksheets.Item(1)
+    $values = $sheet.UsedRange.Value2
+    $rowCount = $sheet.UsedRange.Rows.Count
+    $colCount = $sheet.UsedRange.Columns.Count
+    
+    $colIdx = @{
+        template = -1
+        code = -1
+        name = -1
+        type = -1
+        dept = -1
+        rate = -1
+    }
+    $headerRow = -1
+    for ($r = 1; $r -le [Math]::Min($rowCount, 5); $r++) {
+        for ($c = 1; $c -le $colCount; $c++) {
+            $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim().ToUpper() } else { "" }
+            if ($v -eq "TEMPLATENAME") { $colIdx.template = $c; $headerRow = $r }
+            if ($v -in @("SERVICEID", "CODE", "SERVICECODE")) { $colIdx.code = $c; $headerRow = $r }
+            if ($v -in @("SERVICENAME", "DESCRIPTION")) { $colIdx.name = $c; $headerRow = $r }
+            if ($v -in @("SERVICETYPENAME", "CATEGORY")) { $colIdx.type = $c; $headerRow = $r }
+            if ($v -in @("DEPTNAME", "DEPARTMENT")) { $colIdx.dept = $c; $headerRow = $r }
+            if ($v -match "TARIFF|RATE|AMT|PRICE|CHARGE|OPD/EMERGENCY|CASH|AMOUNT|FINALTARIFF") { $colIdx.rate = $c; $headerRow = $r }
+        }
+        if ($headerRow -ne -1) { break }
+    }
+    
+    if ($headerRow -eq -1) {
+        $colIdx.template = 1
+        $colIdx.code = 2
+        $colIdx.name = 3
+        $colIdx.type = 4
+        $colIdx.dept = 5
+        $colIdx.rate = 6
+        $headerRow = 1
+    }
+    
+    for ($r = ($headerRow + 1); $r -le $rowCount; $r++) {
+        $template = if ($colIdx.template -ne -1 -and $values[$r, $colIdx.template] -ne $null) { $values[$r, $colIdx.template].ToString().Trim() } else { "" }
+        $code = if ($colIdx.code -ne -1 -and $values[$r, $colIdx.code] -ne $null) { $values[$r, $colIdx.code].ToString().Trim() } else { "" }
+        $name = if ($colIdx.name -ne -1 -and $values[$r, $colIdx.name] -ne $null) { $values[$r, $colIdx.name].ToString().Trim() } else { "" }
+        $type = if ($colIdx.type -ne -1 -and $values[$r, $colIdx.type] -ne $null) { $values[$r, $colIdx.type].ToString().Trim() } else { "" }
+        $dept = if ($colIdx.dept -ne -1 -and $values[$r, $colIdx.dept] -ne $null) { $values[$r, $colIdx.dept].ToString().Trim() } else { "" }
+        $rateStr = if ($colIdx.rate -ne -1 -and $values[$r, $colIdx.rate] -ne $null) { $values[$r, $colIdx.rate].ToString().Trim() } else { "" }
+        
+        $rateNum = 0
+        if (-not [double]::TryParse($rateStr, [ref]$rateNum)) { $rateNum = 0 }
+        
+        if ([string]::IsNullOrEmpty($code) -or [string]::IsNullOrEmpty($name)) { continue }
+        
+        $listCash2025.Add([PSCustomObject]@{
+            id = $code
+            name = $name
+            type = $type
+            dept = $dept
+            rate = $rateNum
+            template = $template
+        })
+    }
+    $wb.Close($false)
+} else {
+    Log-Info "Warning: International 2025-26 Cash SOC file not found at $intlCash2526File"
+}
+
+# 11c. Parse International 2026-27 Cash SOC
+Log-Info "Parsing International 2026-27 Cash SOC..."
+$listCash2026 = New-Object System.Collections.Generic.List[Object]
+$intlCash2627File = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/OP - INternational/OP - International/SOC/OP Cash 26-27 (From April) Received on 19-05-26.xlsb"
+if (Test-Path $intlCash2627File) {
+    $wb = $excel.Workbooks.Open($intlCash2627File, [Type]::Missing, $true)
+    $sheet = $wb.Worksheets.Item(1)
+    $values = $sheet.UsedRange.Value2
+    $rowCount = $sheet.UsedRange.Rows.Count
+    $colCount = $sheet.UsedRange.Columns.Count
+    
+    $colIdx = @{
+        template = -1
+        code = -1
+        name = -1
+        type = -1
+        dept = -1
+        rate = -1
+    }
+    $headerRow = -1
+    for ($r = 1; $r -le [Math]::Min($rowCount, 5); $r++) {
+        for ($c = 1; $c -le $colCount; $c++) {
+            $v = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim().ToUpper() } else { "" }
+            if ($v -eq "TEMPLATENAME") { $colIdx.template = $c; $headerRow = $r }
+            if ($v -in @("SERVICEID", "CODE", "SERVICECODE")) { $colIdx.code = $c; $headerRow = $r }
+            if ($v -in @("SERVICENAME", "DESCRIPTION")) { $colIdx.name = $c; $headerRow = $r }
+            if ($v -in @("SERVICETYPENAME", "CATEGORY")) { $colIdx.type = $c; $headerRow = $r }
+            if ($v -in @("DEPTNAME", "DEPARTMENT")) { $colIdx.dept = $c; $headerRow = $r }
+            if ($v -match "TARIFF|RATE|AMT|PRICE|CHARGE|OPD/EMERGENCY|CASH|AMOUNT|FINALTARIFF") { $colIdx.rate = $c; $headerRow = $r }
+        }
+        if ($headerRow -ne -1) { break }
+    }
+    
+    if ($headerRow -eq -1) {
+        $colIdx.template = 1
+        $colIdx.code = 2
+        $colIdx.name = 3
+        $colIdx.type = 4
+        $colIdx.dept = 5
+        $colIdx.rate = 6
+        $headerRow = 1
+    }
+    
+    for ($r = ($headerRow + 1); $r -le $rowCount; $r++) {
+        $template = if ($colIdx.template -ne -1 -and $values[$r, $colIdx.template] -ne $null) { $values[$r, $colIdx.template].ToString().Trim() } else { "" }
+        $code = if ($colIdx.code -ne -1 -and $values[$r, $colIdx.code] -ne $null) { $values[$r, $colIdx.code].ToString().Trim() } else { "" }
+        $name = if ($colIdx.name -ne -1 -and $values[$r, $colIdx.name] -ne $null) { $values[$r, $colIdx.name].ToString().Trim() } else { "" }
+        $type = if ($colIdx.type -ne -1 -and $values[$r, $colIdx.type] -ne $null) { $values[$r, $colIdx.type].ToString().Trim() } else { "" }
+        $dept = if ($colIdx.dept -ne -1 -and $values[$r, $colIdx.dept] -ne $null) { $values[$r, $colIdx.dept].ToString().Trim() } else { "" }
+        $rateStr = if ($colIdx.rate -ne -1 -and $values[$r, $colIdx.rate] -ne $null) { $values[$r, $colIdx.rate].ToString().Trim() } else { "" }
+        
+        $rateNum = 0
+        if (-not [double]::TryParse($rateStr, [ref]$rateNum)) { $rateNum = 0 }
+        
+        if ([string]::IsNullOrEmpty($code) -or [string]::IsNullOrEmpty($name)) { continue }
+        
+        $listCash2026.Add([PSCustomObject]@{
+            id = $code
+            name = $name
+            type = $type
+            dept = $dept
+            rate = $rateNum
+            template = $template
+        })
+    }
+    $wb.Close($false)
+} else {
+    Log-Info "Warning: International 2026-27 Cash SOC file not found at $intlCash2627File"
+}
+
 # 12. Parse Excelcare GIPSA 2026 (APL EXL HOSP_SOC.xlsx)
 Log-Info "Parsing Excelcare GIPSA 2026..."
 $listExcelcareGipsa2026 = New-Object System.Collections.Generic.List[Object]
@@ -1119,6 +1259,8 @@ $json2024 = $list2024 | ConvertTo-Json -Depth 5
 $json2025 = $list2025 | ConvertTo-Json -Depth 5
 $jsonExcelcare2025 = $listExcelcare2025 | ConvertTo-Json -Depth 5
 $jsonExcelcareCash2025 = $listExcelcareCash2025 | ConvertTo-Json -Depth 5
+$jsonCash2025 = $listCash2025 | ConvertTo-Json -Depth 5
+$jsonCash2026 = $listCash2026 | ConvertTo-Json -Depth 5
 $jsonExcelcare2024 = $listExcelcare2024 | ConvertTo-Json -Depth 5
 $jsonExcelcareGipsa2026 = $listExcelcareGipsa2026 | ConvertTo-Json -Depth 5
 $jsonHdfcErgo = $listHdfcErgo | ConvertTo-Json -Depth 5
@@ -1141,6 +1283,8 @@ $json2024 = if ($json2024) { $json2024 } else { "[]" }
 $json2025 = if ($json2025) { $json2025 } else { "[]" }
 $jsonExcelcare2025 = if ($jsonExcelcare2025) { $jsonExcelcare2025 } else { "[]" }
 $jsonExcelcareCash2025 = if ($jsonExcelcareCash2025) { $jsonExcelcareCash2025 } else { "[]" }
+$jsonCash2025 = if ($jsonCash2025) { $jsonCash2025 } else { "[]" }
+$jsonCash2026 = if ($jsonCash2026) { $jsonCash2026 } else { "[]" }
 $jsonExcelcare2024 = if ($jsonExcelcare2024) { $jsonExcelcare2024 } else { "[]" }
 $jsonExcelcareGipsa2026 = if ($jsonExcelcareGipsa2026) { $jsonExcelcareGipsa2026 } else { "[]" }
 $jsonHdfcErgo = if ($jsonHdfcErgo) { $jsonHdfcErgo } else { "[]" }
@@ -1168,6 +1312,8 @@ const TARIFF_2025 = $json2025;
 const TARIFF_EXCELCARE_2025 = $jsonExcelcare2025;
 const TARIFF_EXCELCARE_CASH_2025 = $jsonExcelcareCash2025;
 const TARIFF_EXCELCARE_2024 = $jsonExcelcare2024;
+const TARIFF_CASH_2025 = $jsonCash2025;
+const TARIFF_CASH_2026 = $jsonCash2026;
 const TARIFF_EXCELCARE_GIPSA_2026 = $jsonExcelcareGipsa2026;
 const TARIFF_HDFC_ERGO_2024 = $jsonHdfcErgo;
 const TARIFF_KOLKATA_SOC = $jsonKolkataSoc;
@@ -1191,6 +1337,8 @@ Log-Info "SOC 2025-26 records: $($list2025.Count)"
 Log-Info "Excelcare SOC 25-26 records: $($listExcelcare2025.Count)"
 Log-Info "Excelcare 2026 - Cash records: $($listExcelcareCash2025.Count)"
 Log-Info "Excelcare SOC 24-25 records: $($listExcelcare2024.Count)"
+Log-Info "International Cash SOC 25-26 records: $($listCash2025.Count)"
+Log-Info "International Cash SOC 26-27 records: $($listCash2026.Count)"
 Log-Info "Excelcare GIPSA 2026 records: $($listExcelcareGipsa2026.Count)"
 Log-Info "HDFC ERGO 2024 records: $($listHdfcErgo.Count)"
 Log-Info "Agreements compiled: $($listAgreements.Count)"
