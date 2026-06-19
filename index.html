@@ -2586,6 +2586,21 @@
                             <!-- Populated dynamically -->
                         </select>
                     </div>
+                    <div class="input-group" id="agreement-variables-container" style="display: none; padding: 0;">
+                        <label for="var-officer-grade" style="font-size: 0.7rem; color: var(--warning);">Officer Grade</label>
+                        <select id="var-officer-grade" class="form-control" style="padding: 0.4rem 0.6rem; font-size: 0.8rem; border-color: var(--warning);">
+                            <option value="">-- Select Grade (Optional) --</option>
+                            <option value="JMG-I">JMG-I</option>
+                            <option value="MMGS-II">MMGS-II</option>
+                            <option value="MMGS-III">MMGS-III</option>
+                            <option value="SMGS-IV">SMGS-IV</option>
+                            <option value="SMGS-V">SMGS-V</option>
+                            <option value="TEGSS-VI">TEGSS-VI</option>
+                            <option value="TEGSS-VII">TEGSS-VII</option>
+                            <option value="TEGSS-VIII">TEGSS-VIII</option>
+                            <option value="TEGSS-IX">TEGSS-IX</option>
+                        </select>
+                    </div>
                     <div class="input-group" style="padding: 0;">
                         <label for="audit-mapping-method-select" style="font-size: 0.7rem;">Tariff Mapping Method</label>
                         <select id="audit-mapping-method-select" class="form-control" style="padding: 0.4rem 0.6rem; font-size: 0.8rem;">
@@ -7214,6 +7229,24 @@
         auditSourceTypeSelect.addEventListener('change', () => {
             updateValidationSourceOptions();
         });
+ 
+        // Validation Source change listener (for dynamic agreement variables)
+        const auditSourceSelect = document.getElementById('audit-source-select');
+        if (auditSourceSelect) {
+            auditSourceSelect.addEventListener('change', () => {
+                const val = auditSourceSelect.value;
+                const varContainer = document.getElementById('agreement-variables-container');
+                if (varContainer) {
+                    if (val === 'sbi_officers') {
+                        varContainer.style.display = 'flex';
+                    } else {
+                        varContainer.style.display = 'none';
+                        const gradeSelect = document.getElementById('var-officer-grade');
+                        if (gradeSelect) gradeSelect.value = '';
+                    }
+                }
+            });
+        }
 
         // Discount Master upload has been removed from UI
 
@@ -7509,6 +7542,8 @@
                 sourceSelect.innerHTML = `
                     <option value="gipsa">2026 GIPSA Tariff Template</option>
                     <option value="tpa" selected>2024 TPA Deluxe Tariff Template</option>
+                    <option value="sbi_credit">SBI Credit Agreement FY 2023-24</option>
+                    <option value="sbi_officers">SBI Officers Circular FY 2023-24</option>
                 `;
             }
         } else if (bu === 'kolkata') {
@@ -7547,10 +7582,8 @@
         const optionExists = Array.from(sourceSelect.options).some(opt => opt.value === currentSource);
         if (optionExists && currentSource) {
             sourceSelect.value = currentSource;
-        } else {
-            // Otherwise fire change for default selected
-            sourceSelect.dispatchEvent(new Event('change'));
         }
+        sourceSelect.dispatchEvent(new Event('change'));
     }
 
     function populateRoomMappingSelects() {
@@ -9173,10 +9206,12 @@
 
         if (window.MigrationConfig && window.MigrationConfig.getFeatureFlag('useAgreementEngine')) {
             try {
-                // Resolve active SOC array
-                const socSelect = document.getElementById('audit-soc-select');
-                const selectedSocName = socSelect ? socSelect.value : '';
+                // Resolve active SOC array and Agreement Name
+                const sourceSelect = document.getElementById('audit-source-select');
+                const selectedSocName = sourceSelect ? sourceSelect.value : '';
                 let activeSOCArray = [];
+                let agreementName = '';
+
                 if (selectedSocName === '2025') activeSOCArray = TARIFF_2025;
                 else if (selectedSocName === '2024') activeSOCArray = TARIFF_2024;
                 else if (selectedSocName === '2023') activeSOCArray = TARIFF_2023;
@@ -9185,15 +9220,35 @@
                 else if (selectedSocName === '2021_iocl') activeSOCArray = TARIFF_2021_IOCL;
                 else if (selectedSocName === 'excelcare') activeSOCArray = typeof TARIFF_EXCELCARE_2025 !== 'undefined' ? TARIFF_EXCELCARE_2025 : [];
                 else if (selectedSocName === 'excelcare_cash') activeSOCArray = typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2025 : [];
-                else if (selectedSocName === 'cash_2025') activeSOCArray = typeof TARIFF_CASH_2025 !== 'undefined' ? TARIFF_CASH_2025 : [];
-                else if (selectedSocName === 'cash_2026') activeSOCArray = typeof TARIFF_CASH_2026 !== 'undefined' ? TARIFF_CASH_2026 : [];
+                else if (selectedSocName === '2025_cash') activeSOCArray = typeof TARIFF_CASH_2025 !== 'undefined' ? TARIFF_CASH_2025 : [];
+                else if (selectedSocName === '2026_cash') activeSOCArray = typeof TARIFF_CASH_2026 !== 'undefined' ? TARIFF_CASH_2026 : [];
                 else if (selectedSocName === 'excelcare_2024') activeSOCArray = typeof TARIFF_EXCELCARE_2024 !== 'undefined' ? TARIFF_EXCELCARE_2024 : [];
                 else if (selectedSocName === 'excelcare_gipsa_2026') activeSOCArray = typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined' ? TARIFF_EXCELCARE_GIPSA_2026 : [];
                 else if (selectedSocName === 'kolkata') activeSOCArray = typeof TARIFF_KOLKATA_SOC !== 'undefined' ? TARIFF_KOLKATA_SOC : [];
-                else activeSOCArray = TARIFF_2026;
+                else if (selectedSocName === 'sbi_credit') {
+                    agreementName = 'SBI Credit Agreement FY 2023-24';
+                    activeSOCArray = TARIFF_2026;
+                }
+                else if (selectedSocName === 'sbi_officers') {
+                    agreementName = 'SBI Officers Circular FY 2023-24';
+                    activeSOCArray = TARIFF_2026;
+                }
+                else if (selectedSocName === 'gipsa') {
+                    activeSOCArray = typeof TARIFF_GIPSA !== 'undefined' ? TARIFF_GIPSA : [];
+                }
+                else if (selectedSocName === 'tpa') {
+                    activeSOCArray = typeof TARIFF_TPA !== 'undefined' ? TARIFF_TPA : [];
+                }
+                else {
+                    activeSOCArray = TARIFF_2026;
+                }
 
-                const agreementSelect = document.getElementById('audit-agreement-select');
-                const agreementName = agreementSelect ? agreementSelect.value : '';
+                // Resolve context variables (e.g. Officer Grade)
+                const contextVariables = {};
+                const gradeSelect = document.getElementById('var-officer-grade');
+                if (gradeSelect && gradeSelect.value) {
+                    contextVariables.officer_grade = gradeSelect.value;
+                }
 
                 // Format raw bill data rows for UnifiedAuditEngine
                 const formattedRows = rawBillData.map(item => {
@@ -9214,7 +9269,7 @@
                     };
                 });
 
-                const auditResult = await window.UnifiedAuditEngine.auditBillRows(formattedRows, agreementName, activeSOCArray);
+                const auditResult = await window.UnifiedAuditEngine.auditBillRows(formattedRows, agreementName, activeSOCArray, contextVariables);
                 
                 // Map the results back to auditedRows structure expected by the legacy UI
                 auditResult.auditedResults.forEach(res => {

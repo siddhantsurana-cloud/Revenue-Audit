@@ -209,7 +209,7 @@
 
     // 8. Unified IP/OP Agreement-Driven Audit Engine
     const UnifiedAuditEngine = {
-        auditBillRows: async function(rows, agreementName, activeSOC) {
+        auditBillRows: async function(rows, agreementName, activeSOC, contextVariables) {
             console.log(`[Unified Engine] Running Agreement Audit against MOU: ${agreementName}`);
             
             // Log run in audit trail
@@ -225,41 +225,174 @@
             const ag = agreements.find(x => x.agreementName === agreementName) || null;
             const agId = ag ? ag.agreementId : null;
 
+            // Fetch all rules from IndexedDB
+            const allRules = agId ? await window.RevenueAssuranceDB.getAll("tbl_agreement_rules") : [];
+            const activeRules = allRules.filter(x => x.agreementId === agId && x.status === "Active");
+
             const auditedResults = [];
             const exceptionList = [];
 
             for (const row of rows) {
-                const code = row.serviceId || "";
-                const name = row.serviceName || row.name || "";
+                const code = String(row.serviceId || "").trim();
+                const name = String(row.serviceName || row.name || "").trim();
                 const billed = parseFloat(row.billedRate) || 0;
                 
-                // 1. Match Service Code / Name
+                // 1. Resolve matching service from service master / legacy SOC
                 const matchResult = await ServiceMasterEngine.resolveService(code, name, activeSOC);
                 
-                let expectedRate = billed; // Fallback to billed rate if no rule matches
+                let expectedRate = billed;
                 let ruleViolated = "No matching agreement rule found";
+                let ruleFound = false;
+                let severityOverride = null;
 
-                if (matchResult && agId) {
-                    const svc = matchResult.service;
-                    // 2. Look for Agreement Rule
-                    const rule = await AgreementRulesEngine.getRuleForService(agId, svc.serviceCode);
-                    if (rule) {
-                        if (rule.fixedRate !== undefined && rule.fixedRate !== null) {
-                            expectedRate = rule.fixedRate;
-                            ruleViolated = `Fixed rate applied: ₹${expectedRate}`;
-                        } else if (rule.discountPercent !== undefined && rule.discountPercent !== null) {
-                            // Fetch default standard rate from TARIFF_DATA
-                            const standardItem = activeSOC.find(x => x.id === svc.serviceCode);
-                            const standardRate = standardItem ? (standardItem.rate || 0) : billed;
-                            expectedRate = standardRate * (1 - rule.discountPercent / 100);
-                            ruleViolated = `Discount rate applied (${rule.discountPercent}%): ₹${expectedRate}`;
+                if (agId) {
+                    // Step A: Evaluate Exclusions (Regex keywords)
+                    const exclusionRules = activeRules.filter(r => r.ruleType === "exclusion");
+                    for (const rule of exclusionRules) {
+                        const isMatch = rule.matchPatterns.some(pattern => {
+                            const regex = new RegExp(`\\b${pattern}\\b`, "i");
+                            return regex.test(name) || regex.test(row.dept || "");
+                        });
+                        
+                        if (isMatch) {
+                            expectedRate = 0;
+                            ruleViolated = `Exclusion Rule: ${rule.description || "Excluded item charged"}`;
+                            severityOverride = "High";
+                            ruleFound = true;
+                            break;
                         }
+                    }
+
+                    // Step B: Evaluate Capping Rules (ICU, Room, Consults, Monitoring)
+                    if (!ruleFound) {
+                        const cappingRules = activeRules.filter(r => r.ruleType === "capping");
+                        for (const rule of cappingRules) {
+                            let isCategoryMatch = false;
+                            
+                            if (rule.scope === "category") {
+                                const catUpper = String(rule.category || "").toUpperCase().trim();
+                                
+                                if (catUpper === "ROOM RENT") {
+                                    isCategoryMatch = /room rent|bed charge|ward|cabin|deluxe|suite/i.test(name) || /room rent/i.test(row.dept || "");
+                                } else if (catUpper === "ICU") {
+                                    isCategoryMatch = /icu|intensive care/i.test(name) && !/step down|sdicu/i.test(name);
+                                } else if (catUpper === "ICU STEP DOWN") {
+                                    isCategoryMatch = /step down|sdicu/i.test(name);
+                                } else if (catUpper === "DAY CARE") {
+                                    isCategoryMatch = /day care|daycare/i.test(name);
+                                } else if (catUpper === "MONITORING") {
+                                    isCategoryMatch = /monitoring|monitor/i.test(name) && !/cardiac monitor/i.test(name);
+                                } else if (catUpper.startsWith("CONSULTATION")) {
+                                    const isConsult = /consultation|visit/i.test(name);
+                                    if (isConsult) {
+                                        if (catUpper === "CONSULTATION - MBBS") {
+                                            isCategoryMatch = /mbbs|general practitioner/i.test(name);
+                                        } else if (catUpper === "CONSULTATION - PG") {
+                                            isCategoryMatch = /pg degree|diploma|md|ms|specialist/i.test(name) && !/super specialist|dm|mch/i.test(name);
+                                        } else if (catUpper === "CONSULTATION - SUPER SPECIALIST") {
+                                            isCategoryMatch = /super specialist|dm|mch|dnb/i.test(name);
+                                        }
+                                    }
+                                }
+                            } else if (rule.scope === "service" && matchResult) {
+                                isCategoryMatch = (matchResult.service.serviceCode === rule.serviceCode);
+                            }
+
+                            if (isCategoryMatch) {
+                                // Rule requires Officer Grade variable check
+                                const isGradeDependent = (rule.variableKey === "officer_grade") || 
+                                                        (rule.category === "Room Rent") || 
+                                                        (rule.category === "ICU") || 
+                                                        (rule.category === "ICU Step Down") || 
+                                                        (rule.category === "Day Care") || 
+                                                        (rule.category === "Monitoring") || 
+                                                        (rule.category && rule.category.startsWith("Consultation"));
+
+                                const activeGrade = contextVariables ? contextVariables.officer_grade : null;
+
+                                if (isGradeDependent && !activeGrade) {
+                                    // Grade is missing: Skip Room, ICU, Monitoring, and Consult Caps as per Validation Rule
+                                    ruleViolated = "Officer Grade unavailable. Grade-dependent validations were not performed.";
+                                    expectedRate = billed;
+                                    ruleFound = true;
+                                    severityOverride = "Medium";
+                                } else {
+                                    // Resolve cap value
+                                    let resolvedCap = null;
+                                    if (rule.variableKey) {
+                                        const ctxVal = contextVariables ? contextVariables[rule.variableKey] : null;
+                                        // For consultations, resolve type dynamically if not passed
+                                        let finalCtxVal = ctxVal;
+                                        if (rule.variableKey === "consultation_type" && !finalCtxVal) {
+                                            finalCtxVal = /emerg|night|casualty|urgent/i.test(name) ? "emergency" : "chamber";
+                                        }
+                                        
+                                        if (finalCtxVal && rule.variableValueMap && rule.variableValueMap[finalCtxVal] !== undefined) {
+                                            resolvedCap = rule.variableValueMap[finalCtxVal];
+                                        }
+                                    } else if (rule.capValue !== undefined && rule.capValue !== null) {
+                                        resolvedCap = rule.capValue;
+                                    }
+
+                                    if (resolvedCap !== null) {
+                                        if (billed > resolvedCap) {
+                                            expectedRate = resolvedCap;
+                                            ruleViolated = `${rule.description}: Capped at ₹${resolvedCap}`;
+                                            ruleFound = true;
+                                        } else {
+                                            expectedRate = billed;
+                                            ruleViolated = `${rule.description}: Within limit (Cap: ₹${resolvedCap})`;
+                                            ruleFound = true;
+                                        }
+                                    }
+                                }
+                                
+                                if (ruleFound) break;
+                            }
+                        }
+                    }
+
+                    // Step C: Evaluate Tariff Rate Overrides (Fixed rates / discounts)
+                    if (!ruleFound && matchResult) {
+                        const svc = matchResult.service;
+                        const rule = activeRules.find(r => r.ruleType === "fixed_rate" && r.serviceCode === svc.serviceCode);
+                        if (rule) {
+                            expectedRate = rule.fixedRate;
+                            ruleViolated = `Fixed rate override applied: ₹${expectedRate}`;
+                            ruleFound = true;
+                        } else {
+                            const discRule = activeRules.find(r => r.ruleType === "discount_percent" && r.serviceCode === svc.serviceCode);
+                            if (discRule) {
+                                const standardItem = activeSOC.find(x => x.id === svc.serviceCode);
+                                const standardRate = standardItem ? (standardItem.rate || 0) : billed;
+                                expectedRate = standardRate * (1 - discRule.discountPercent / 100);
+                                ruleViolated = `Discount rate override applied (${discRule.discountPercent}%): ₹${expectedRate}`;
+                                ruleFound = true;
+                            }
+                        }
+                    }
+                }
+
+                // Step D: Fallback to standard active SOC matching if no rule matched
+                if (!ruleFound) {
+                    if (matchResult) {
+                        const standardItem = activeSOC.find(x => x.id === matchResult.service.serviceCode);
+                        if (standardItem) {
+                            expectedRate = standardItem.rate || 0;
+                            ruleViolated = `Matched standard tariff: ₹${expectedRate}`;
+                        } else {
+                            expectedRate = billed;
+                            ruleViolated = `Unmapped Service Tariff`;
+                        }
+                    } else {
+                        expectedRate = billed;
+                        ruleViolated = `Unmapped Service`;
                     }
                 }
 
                 // 3. Compare and check exception
                 const variance = billed - expectedRate;
-                const severity = ExceptionGovernanceEngine.classifySeverity(billed, expectedRate);
+                const severity = severityOverride || ExceptionGovernanceEngine.classifySeverity(billed, expectedRate);
                 
                 const exceptionObj = ExceptionGovernanceEngine.createExceptionRecord(row, expectedRate, matchResult ? matchResult.service : null, ruleViolated, severity);
                 
