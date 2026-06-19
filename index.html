@@ -3891,6 +3891,23 @@
                                 </table>
                             </div>
                         </details>
+
+                        <!-- Section 4 -->
+                        <details style="background-color: var(--bg-page); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+                            <summary style="padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; color: var(--text-main); cursor: pointer; user-select: none; background: rgba(59, 130, 246, 0.03); display: flex; align-items: center; justify-content: space-between;">
+                                <span>4. Platform Infrastructure & IndexedDB (V1.3.0 Engine Upgrade)</span>
+                                <span style="font-size: 0.7rem; color: var(--text-muted);">▼</span>
+                            </summary>
+                            <div style="padding: 1rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.5rem;">
+                                <p style="margin: 0;">In V1.3.0, we introduced a robust database and audit engine layer:</p>
+                                <ul style="margin: 0 0 0.5rem 0; padding-left: 1.25rem;">
+                                    <li><strong>IndexedDB Storage:</strong> Payers, custom agreements, versions, rules, and audit results are stored directly in the browser's high-performance IndexedDB (using 18 object stores).</li>
+                                    <li><strong>Agreement-Driven Engine:</strong> Audits can be switched from legacy in-memory maps to database-driven rules, enabling dynamic price lookup overrides.</li>
+                                    <li><strong>4-Step Match Resolver:</strong> Matches billing items against the service master using Code Match, Exact Name Match, Alias Match, and Fuzzy Match.</li>
+                                    <li><strong>Auto-Seeding:</strong> On first render, the platform automatically seeds standard parameters (HDFC ERGO, Star Health, GIPSA agreements, default service codes).</li>
+                                </ul>
+                            </div>
+                        </details>
                     </div>
                 </div>
             </div>
@@ -3947,11 +3964,11 @@
                     <div style="border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.25rem;">
                         <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Planned V2 updates:</div>
                         <ul style="margin: 0; padding-left: 1rem; font-size: 0.72rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem;">
-                            <li>• Real-time WebSockets collaboration</li>
-                            <li>• PostgreSQL central database integration</li>
-                            <li>• Virtual Scroll list (50k+ lines)</li>
-                            <li>• Custom SOC template creator inside UI</li>
-                            <li>• FastAPI high-performance backend</li>
+                            <li>• <strong>Centralized SQL Store:</strong> Replace browser-isolated IndexedDB with a shared PostgreSQL database (Supabase/Firebase) to coordinate custom rules and user overrides across all auditing workstations.</li>
+                            <li>• <strong>Asynchronous Backend Audit Worker:</strong> Offload audit processing to FastAPI server-side queue threads to prevent browser freeze when checking 10k+ row Excel files.</li>
+                            <li>• <strong>Tariff On-Demand Querying API:</strong> Shift the 21MB client-side JS tariff dataset to a central GraphQL API, reducing page payload by 99% and enabling instant updates.</li>
+                            <li>• <strong>Executive Analytics Engine:</strong> Store audit runs historically to generate time-series dashboards monitoring leakage, overcharges, and recovery metrics by Unit.</li>
+                            <li>• <strong>Dynamic Schema Template Creator:</strong> Visual column mapping tool allowing auditors to import custom hospital bill templates on the fly without changing codebase.</li>
                         </ul>
                     </div>
 
@@ -4096,12 +4113,12 @@
                     <div>
                         <h3 style="font-size: 1.5rem; font-weight: 800; color: white; margin: 0;">Platform Infrastructure Foundation</h3>
                         <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.9rem; margin: 0.25rem 0 0 0;">
-                            V1.02 Foundational Layer: IndexedDB storage engine, Unified IP/OP Matching Resolvers, and Migration Controls.
+                            V1.3.0 Foundational Layer: IndexedDB storage engine, Unified IP/OP Matching Resolvers, and Migration Controls.
                         </p>
                     </div>
                 </div>
                 <div style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; backdrop-filter: blur(4px);">
-                    FOUNDATION LAYER: V1.02
+                    FOUNDATION LAYER: V1.3.0
                 </div>
             </div>
         </div>
