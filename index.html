@@ -8967,6 +8967,101 @@
             }
             return null;
         }
+
+        function isPediatricConsultation(serviceName, dept, doctor, serviceId) {
+            const nameUpper = (serviceName || '').toUpperCase();
+            const deptUpper = (dept || '').toUpperCase();
+            const docUpper = (doctor || '').toUpperCase();
+            const idStr = String(serviceId || '');
+            
+            const isPed = nameUpper.includes('PAED') || nameUpper.includes('PEDIAT') || nameUpper.includes('(PAE') ||
+                          deptUpper.includes('PAED') || deptUpper.includes('PEDIAT') || deptUpper.includes('(PAE') ||
+                          docUpper.includes('PAED') || docUpper.includes('PEDIAT');
+                          
+            if (!isPed) return false;
+            
+            const isConsult = nameUpper.includes('CONSULT') || nameUpper.includes('VISIT') || nameUpper.includes('FEE') || nameUpper.includes('CHARGE') ||
+                              deptUpper.includes('CONSULT') || deptUpper.includes('VISIT') || deptUpper.includes('FEE') || deptUpper.includes('CHARGE') ||
+                              idStr.includes('INDOOR_CONSULTATION_FEE') || idStr === '1116888' || idStr === '1116889';
+                              
+            return isConsult;
+        }
+
+        function findPediatricSpecialtyRate(nameUpper, activeSOCArray) {
+            if (!activeSOCArray || !Array.isArray(activeSOCArray)) return null;
+            const isGroup = nameUpper.includes("GROUP");
+            
+            let matchedItem = null;
+            if (isGroup) {
+                matchedItem = activeSOCArray.find(x => {
+                    const n = (x.name || '').toUpperCase().trim();
+                    const id = (x.id || '').toUpperCase().trim();
+                    return n === "PAEDIATRIC GROUP" || n === "PEDIATRIC GROUP" || n === "PAEDIATRICS GROUP" ||
+                           id === "PAEDIATRIC GROUP" || id === "PEDIATRIC GROUP" || id === "PAEDIATRICS GROUP";
+                });
+            } else {
+                matchedItem = activeSOCArray.find(x => {
+                    const n = (x.name || '').toUpperCase().trim();
+                    const id = (x.id || '').toUpperCase().trim();
+                    return n === "PAEDIATRICS INDIVIDUAL" || n === "PAEDIATRIC INDIVIDUAL" || n === "PAEDIATRICS" || n === "PEDIATRICS" || n === "PAEDIATRICS SURGERY" ||
+                           id === "PAEDIATRICS INDIVIDUAL" || id === "PAEDIATRIC INDIVIDUAL" || id === "PAEDIATRICS" || id === "PEDIATRICS" || id === "PAEDIATRICS SURGERY";
+                });
+            }
+            
+            if (!matchedItem) {
+                matchedItem = activeSOCArray.find(x => {
+                    const n = (x.name || '').toUpperCase();
+                    const id = (x.id || '').toUpperCase();
+                    const isPedName = n.includes("PAED") || n.includes("PEDIAT") || id.includes("PAED") || id.includes("PEDIAT");
+                    if (!isPedName) return false;
+                    
+                    const isConsult = n.includes("CONSULT") || n.includes("VISIT") || n.includes("INDIVIDUAL") || n.includes("GROUP") || n.includes("FEE") || n.includes("SURGERY") || 
+                                      id.includes("CONSULT") || id.includes("VISIT") || id.includes("INDIVIDUAL") || id.includes("GROUP") || id.includes("FEE") || id.includes("SURGERY") ||
+                                      x.type === "Indoor consultation fee";
+                    if (!isConsult) return false;
+                    
+                    if (isGroup) {
+                        return n.includes("GROUP") || id.includes("GROUP");
+                    } else {
+                        return !(n.includes("GROUP") || id.includes("GROUP"));
+                    }
+                });
+            }
+            
+            return matchedItem ? matchedItem.rate : null;
+        }
+
+        function getCashSOCForYear(unit, year) {
+            if (unit === 'excelcare') {
+                if ((year === '2025' || year === '2026') && typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') {
+                    return { array: TARIFF_EXCELCARE_CASH_2025, map: mapExcelcareCash, name: "Excelcare 2026 - Cash" };
+                }
+                if (year === '2024' && typeof TARIFF_EXCELCARE_CASH_2024 !== 'undefined') {
+                    return { array: TARIFF_EXCELCARE_CASH_2024, map: mapExcelcareCash2024, name: "Excelcare 2024 - Cash" };
+                }
+            } else if (unit === 'international') {
+                if (year === '2026' && typeof TARIFF_CASH_2026 !== 'undefined') {
+                    return { array: TARIFF_CASH_2026, map: mapCash2026, name: "International 2026 - Cash" };
+                }
+                if (year === '2025' && typeof TARIFF_CASH_2025 !== 'undefined') {
+                    return { array: TARIFF_CASH_2025, map: mapCash2025, name: "International 2025 - Cash" };
+                }
+                if (year === '2024' && typeof TARIFF_CASH_2024 !== 'undefined') {
+                    return { array: TARIFF_CASH_2024, map: mapCash2024, name: "International 2024 - Cash" };
+                }
+                if (year === '2023' && typeof TARIFF_CASH_2023 !== 'undefined') {
+                    return { array: TARIFF_CASH_2023, map: mapCash2023, name: "International 2023 - Cash" };
+                }
+                if (year === '2021' && typeof TARIFF_CASH_2021 !== 'undefined') {
+                    return { array: TARIFF_CASH_2021, map: mapCash2021, name: "International 2021 - Cash" };
+                }
+            } else if (unit === 'kolkata') {
+                if (year === '2023' && typeof TARIFF_KOLKATA_CASH_SOC !== 'undefined') {
+                    return { array: TARIFF_KOLKATA_CASH_SOC, map: mapKolkataCash, name: "Kolkata Cash SOC" };
+                }
+            }
+            return null;
+        }
         
         const excludePharmacy = chkExcludePharmacy.checked;
         const excludePackage = chkExcludePackage.checked;
@@ -9689,8 +9784,8 @@
                                 expectedTariff = null;
                             }
 
-                            // If serviceId is not found/empty and serviceid column index is -1, try description match on activeSOC
-                            if (expectedTariff === null && colIdxToUse.serviceid === -1) {
+                            // Try description match on activeSOC
+                            if (expectedTariff === null) {
                                 const cleanBillName = nameUpper.trim();
                                 const descMatches = activeSOC.filter(x => {
                                     const nameVal = (x.name || '').toUpperCase().trim();
@@ -9711,6 +9806,17 @@
                                         expectedTariff = (activeSOC === TARIFF_DATA) ? (isGipsa ? matchedItem.gipsa_rate : matchedItem.tpa_rate) : matchedItem.rate;
                                     }
                                     explanation += " Matched by description in active SOC.";
+                                }
+                            }
+
+                            // If still not matched, check if it is a pediatric consultation and resolve specialty rate from activeSOC
+                            if (expectedTariff === null) {
+                                if (isPediatricConsultation(serviceName, dept, doctor, serviceIdRaw)) {
+                                    const pedRate = findPediatricSpecialtyRate(nameUpper, activeSOC);
+                                    if (pedRate !== null) {
+                                        expectedTariff = pedRate;
+                                        explanation += ` Resolved pediatric specialty rate (₹${pedRate}) from active SOC.`;
+                                    }
                                 }
                             }
                         }
@@ -9736,40 +9842,42 @@
 
                         let isKolkata = (activeBU === "kolkata" || activeSourceVal === "sockolkata" || activeSourceVal === "pkgkolkata" || activeSourceVal.toLowerCase().includes("kolkata"));
                         let isExcelcare = (activeBU === "excelcare" || activeSourceVal.startsWith("excelcare_") || activeSourceVal.startsWith("socexcelcare") || activeSourceVal === "hdfcergo");
+                        
                         let fallbackSOCArray, fallbackSOCMap;
-                        if (isKolkata) {
-                            fallbackSOCArray = TARIFF_KOLKATA_SOC;
-                            fallbackSOCMap = mapKolkata;
-                            activeYear = "Kolkata SOC";
-                        } else if (isExcelcare) {
-                            const use24 = (activeSourceVal === "excelcare_2024" || activeSourceVal === "socexcelcare2024" || activeYear === "2024");
-                            const useCash = (activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "socexcelcarecash" || activeSourceVal === "excelcare_soc_cash");
-                            const useGipsa26 = (activeSourceVal === "excelcare_gipsa_2026" || activeSOC === TARIFF_EXCELCARE_GIPSA_2026);
-                            if (use24) {
-                                fallbackSOCArray = TARIFF_EXCELCARE_2024;
-                                fallbackSOCMap = mapExcelcare2024;
-                                activeYear = "Excelcare 2024-25";
-                            } else if (useCash) {
-                                fallbackSOCArray = TARIFF_EXCELCARE_CASH_2025;
-                                fallbackSOCMap = mapExcelcareCash;
-                                activeYear = "Excelcare 2026 - Cash";
-                            } else if (useGipsa26) {
-                                fallbackSOCArray = TARIFF_EXCELCARE_GIPSA_2026;
-                                fallbackSOCMap = mapExcelcareGipsa2026;
-                                activeYear = "Excelcare GIPSA 2026";
-                            } else {
-                                fallbackSOCArray = TARIFF_EXCELCARE_2025;
-                                fallbackSOCMap = mapExcelcare;
-                                activeYear = "Excelcare 2025-26";
-                            }
+                        const unitKey = isExcelcare ? 'excelcare' : (isKolkata ? 'kolkata' : 'international');
+                        const yearNum = activeYear.split('_')[0]; // Extract numeric year (e.g., '2021' from '2021_iocl')
+                        
+                        const cashSoc = getCashSOCForYear(unitKey, yearNum);
+                        if (cashSoc) {
+                            fallbackSOCArray = cashSoc.array;
+                            fallbackSOCMap = cashSoc.map;
+                            activeYear = cashSoc.name;
                         } else {
-                            fallbackSOCArray = TARIFF_2025;
-                            fallbackSOCMap = map2025;
-                            if (activeYear === "2024") { fallbackSOCArray = TARIFF_2024; fallbackSOCMap = map2024; }
-                            else if (activeYear === "2023") { fallbackSOCArray = TARIFF_2023; fallbackSOCMap = map2023; }
-                            else if (activeYear === "2023_v2") { fallbackSOCArray = TARIFF_2023_V2; fallbackSOCMap = map2023_v2; }
-                            else if (activeYear === "2021") { fallbackSOCArray = TARIFF_2021; fallbackSOCMap = map2021; }
-                            else if (activeYear === "2021_iocl") { fallbackSOCArray = TARIFF_2021_IOCL; fallbackSOCMap = map2021_iocl; }
+                            // Default to standard SOC of that year if no Cash SOC is uploaded yet
+                            if (isKolkata) {
+                                fallbackSOCArray = TARIFF_KOLKATA_SOC;
+                                fallbackSOCMap = mapKolkata;
+                                activeYear = "Kolkata SOC";
+                            } else if (isExcelcare) {
+                                const use24 = (activeSourceVal === "excelcare_2024" || activeSourceVal === "socexcelcare2024" || activeYear === "2024");
+                                if (use24) {
+                                    fallbackSOCArray = TARIFF_EXCELCARE_2024;
+                                    fallbackSOCMap = mapExcelcare2024;
+                                    activeYear = "Excelcare 2024-25";
+                                } else {
+                                    fallbackSOCArray = TARIFF_EXCELCARE_2025;
+                                    fallbackSOCMap = mapExcelcare;
+                                    activeYear = "Excelcare 2025-26";
+                                }
+                            } else {
+                                fallbackSOCArray = TARIFF_2025;
+                                fallbackSOCMap = map2025;
+                                if (activeYear === "2024") { fallbackSOCArray = TARIFF_2024; fallbackSOCMap = map2024; }
+                                else if (activeYear === "2023") { fallbackSOCArray = TARIFF_2023; fallbackSOCMap = map2023; }
+                                else if (activeYear === "2023_v2") { fallbackSOCArray = TARIFF_2023_V2; fallbackSOCMap = map2023_v2; }
+                                else if (activeYear === "2021") { fallbackSOCArray = TARIFF_2021; fallbackSOCMap = map2021; }
+                                else if (activeYear === "2021_iocl") { fallbackSOCArray = TARIFF_2021_IOCL; fallbackSOCMap = map2021_iocl; }
+                            }
                         }
 
                         let fallbackMatch = fallbackSOCMap[serviceId];
@@ -9785,6 +9893,17 @@
                             if (descMatches.length > 0) {
                                 fallbackMatch = descMatches[0];
                                 fallbackMatchedByDesc = true;
+                            }
+                        }
+
+                        // Try pediatric specialty rate lookup in fallback SOC if not matched by ID/Description
+                        if (!fallbackMatch) {
+                            if (isPediatricConsultation(serviceName, dept, doctor, serviceIdRaw)) {
+                                const pedRate = findPediatricSpecialtyRate(nameUpper, fallbackSOCArray);
+                                if (pedRate !== null) {
+                                    fallbackMatch = { rate: pedRate, name: "Pediatric Specialty Rate Fallback" };
+                                    fallbackMatchedByDesc = true;
+                                }
                             }
                         }
 
@@ -9836,33 +9955,39 @@
                             status = "Matching"; // reset status from Not Found
                             explanation += ` Not found in Template; fetched ₹${expectedTariff} from ${activeYear} SOC` + (fallbackMatchedByDesc ? ` (Matched by Description: ${fallbackMatch.name})` : "") + ".";
                         } else {
-                            // As a final fallback, check the 2026 GIPSA/TPA Master database (TARIFF_DATA)
-                            let masterMatch = map2026[serviceId];
-                            let masterMatchedByDesc = false;
-                            if (!masterMatch) {
-                                const cleanBillName = nameUpper.trim();
-                                const descMatches = TARIFF_DATA.filter(x => {
-                                    const nameVal = (x.name || '').toUpperCase().trim();
-                                    const aliasNameVal = (x.aliasName || '').toUpperCase().trim();
-                                    return nameVal === cleanBillName || (aliasNameVal && aliasNameVal === cleanBillName);
-                                });
-                                if (descMatches.length > 0) {
-                                    masterMatch = descMatches[0];
-                                    masterMatchedByDesc = true;
+                            // If it's a pediatric consultation, skip fallback to 2026 GIPSA/TPA Master
+                            if (isPediatricConsultation(serviceName, dept, doctor, serviceIdRaw)) {
+                                status = "Not Found in Master";
+                                explanation += ` Service not found in Template or ${activeYear} SOC. Fallback to 2026 GIPSA Master bypassed.`;
+                            } else {
+                                // As a final fallback, check the 2026 GIPSA/TPA Master database (TARIFF_DATA)
+                                let masterMatch = map2026[serviceId];
+                                let masterMatchedByDesc = false;
+                                if (!masterMatch) {
+                                    const cleanBillName = nameUpper.trim();
+                                    const descMatches = TARIFF_DATA.filter(x => {
+                                        const nameVal = (x.name || '').toUpperCase().trim();
+                                        const aliasNameVal = (x.aliasName || '').toUpperCase().trim();
+                                        return nameVal === cleanBillName || (aliasNameVal && aliasNameVal === cleanBillName);
+                                    });
+                                    if (descMatches.length > 0) {
+                                        masterMatch = descMatches[0];
+                                        masterMatchedByDesc = true;
+                                    }
                                 }
-                            }
-                            if (masterMatch) {
-                                expectedTariff = isGipsa ? masterMatch.gipsa_rate : masterMatch.tpa_rate;
-                                if (expectedTariff !== null && expectedTariff !== undefined) {
-                                    status = "Matching";
-                                    explanation += ` Not found in Template or ${activeYear} SOC; fetched ₹${expectedTariff} from 2026 Master (TPA/GIPSA)` + (masterMatchedByDesc ? ` (Matched by Description: ${masterMatch.name})` : "") + ".";
+                                if (masterMatch) {
+                                    expectedTariff = isGipsa ? masterMatch.gipsa_rate : masterMatch.tpa_rate;
+                                    if (expectedTariff !== null && expectedTariff !== undefined) {
+                                        status = "Matching";
+                                        explanation += ` Not found in Template or ${activeYear} SOC; fetched ₹${expectedTariff} from 2026 Master (TPA/GIPSA)` + (masterMatchedByDesc ? ` (Matched by Description: ${masterMatch.name})` : "") + ".";
+                                    } else {
+                                        status = "Not Found in Master";
+                                        explanation += ` Service Code found in 2026 Master but has no valid rate.`;
+                                    }
                                 } else {
                                     status = "Not Found in Master";
-                                    explanation += ` Service Code found in 2026 Master but has no valid rate.`;
+                                    explanation += ` Service Code not found in Template or ${activeYear} SOC.`;
                                 }
-                            } else {
-                                status = "Not Found in Master";
-                                explanation += ` Service Code not found in Template or ${activeYear} SOC.`;
                             }
                         }
                     }
