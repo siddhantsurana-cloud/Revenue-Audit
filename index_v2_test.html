@@ -1943,11 +1943,11 @@
             color: var(--primary);
         }
         
-        /* Sandbox Prototype Upgrades (V1.2.1) */
+        /* Sandbox Prototype Upgrades (V1.3.0) */
         
         /* Permanent sandbox indicator strip */
         body.sandbox-active::before {
-            content: "TEST SANDBOX ENVIRONMENT ACTIVE • VERSION V1.2.1 • NO PRODUCTION DATA MODIFICATION" !important;
+            content: "TEST SANDBOX ENVIRONMENT ACTIVE • VERSION V1.3.0 • NO PRODUCTION DATA MODIFICATION" !important;
             height: 28px !important;
             background: repeating-linear-gradient(45deg, #f59e0b, #f59e0b 10px, #d97706 10px, #d97706 20px) !important;
             font-size: 0.72rem !important;
@@ -3771,7 +3771,7 @@
                 </div>
                 <!-- Version Badge -->
                 <div id="app-version-badge" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; backdrop-filter: blur(4px);">
-                    LOCKED VERSION: V1.2.1
+                    LOCKED VERSION: V1.3.0
                 </div>
             </div>
         </div>
@@ -3905,15 +3905,18 @@
                     </div>
                     <div id="version-card-title" style="font-size: 0.8rem; font-weight: 800; color: var(--success); display: flex; align-items: center; gap: 0.35rem;">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        VERSION V1.2.1
+                        VERSION V1.3.0
                     </div>
                     <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.45;">
                         Latest stable production release with IOCL 2021-22 and SOC 2023-24 V2 tariff master integration, full client overrides, and formatting validation.
                     </div>
                     
                     <div style="border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.25rem;">
-                        <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">V1.2.1 Features:</div>
+                        <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">V1.3.0 Features:</div>
                         <ul style="margin: 0; padding-left: 1rem; font-size: 0.72rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem;">
+                            <li>✓ Platform Infrastructure Foundation</li>
+                            <li>✓ Unified Audit Agreement Engine</li>
+                            <li>✓ International Cash SOC (25-26 & 26-27)</li>
                             <li>✓ Scoped rate overrides by Unit</li>
                             <li>✓ Granular Department discount editor</li>
                             <li>✓ Specific Item ID discount editor</li>
@@ -4082,8 +4085,6 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
     <!-- PANEL 8: PLATFORM INFRASTRUCTURE FOUNDATION -->
     <div class="tab-panel" id="panel-infra">
         <div class="controls-card" style="background: linear-gradient(135deg, var(--info) 0%, #0369a1 100%); border-left: none; color: white; padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem;">
@@ -4221,6 +4222,7 @@
             </div>
         </div>
     </div>
+</div>
 </main>
 </div>
 
@@ -5015,7 +5017,7 @@
                 
                 // Update version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'TEST VERSION: V1.2.1';
+                if (vBadge) vBadge.textContent = 'TEST VERSION: V1.3.0';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'TESTING';
@@ -5026,11 +5028,11 @@
                     vTitle.style.color = '#d97706';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        VERSION V1.2.1
+                        VERSION V1.3.0
                     `;
                 }
                 
-                showToast('Switched to Test Sandbox Environment (V1.2.1). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
+                showToast('Switched to Test Sandbox Environment (V1.3.0). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
             } else {
                 // Update badge to Production mode
                 envBadge.style.color = 'var(--primary)';
@@ -5047,7 +5049,7 @@
                 
                 // Reset version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V1.2.1';
+                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V1.3.0';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'LOCKED';
@@ -5058,7 +5060,7 @@
                     vTitle.style.color = 'var(--success)';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        VERSION V1.2.1
+                        VERSION V1.3.0
                     `;
                 }
                 
