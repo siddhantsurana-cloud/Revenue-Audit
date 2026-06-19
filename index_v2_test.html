@@ -7313,6 +7313,8 @@
             if (type === 'soc') {
                 sourceSelect.innerHTML = `
                     <option value="2025">2025-26 SOC (International)</option>
+                    <option value="2025_cash">2025-26 SOC - Cash (International)</option>
+                    <option value="2026_cash">2026-27 SOC - Cash (International)</option>
                     <option value="2024" selected>2024-25 SOC (International)</option>
                     <option value="soc_2023_v2">SOC - 2023-24_V2 (International)</option>
                     <option value="2023">2023-24 SOC (International)</option>
@@ -8289,8 +8291,10 @@
             return ROOM_RENT_SBI["DELUXE"] || 5500;
         }
         
-        if (sourceVal === "2025" || sourceVal === "excelcare_soc" || sourceVal === "excelcare_2025" || sourceVal === "excelcare_cash_2025" || sourceVal === "excelcare_soc_cash") {
+        if (sourceVal === "2025" || sourceVal === "excelcare_soc" || sourceVal === "excelcare_2025" || sourceVal === "excelcare_cash_2025" || sourceVal === "excelcare_soc_cash" || sourceVal === "2025_cash") {
             year = "2025";
+        } else if (sourceVal === "2026_cash") {
+            year = "2026";
         } else if (sourceVal === "excelcare_2024" || sourceVal === "excelcare_soc_2024") {
             year = "2024";
         } else if (sourceVal === "2024") {
@@ -8325,7 +8329,7 @@
 
         const normRoom = originalRoomCategory ? originalRoomCategory.toUpperCase().trim().replace(/[-\s]+/g, ' ') : "";
 
-        if (year === "2025") {
+        if (year === "2025" || year === "2026") {
             if (normRoom) {
                 const rate = getRate(ROOM_RENT_2025, normRoom);
                 if (rate !== null) return rate;
@@ -9298,6 +9302,12 @@
                         } else if (activeSourceVal === "2025") {
                             activeSOC = TARIFF_2025;
                             explanation = `Billed against SOC: ${activeSourceVal}.`;
+                        } else if (activeSourceVal === "2025_cash") {
+                            activeSOC = TARIFF_CASH_2025;
+                            explanation = `Billed against SOC: ${activeSourceVal}.`;
+                        } else if (activeSourceVal === "2026_cash") {
+                            activeSOC = TARIFF_CASH_2026;
+                            explanation = `Billed against SOC: ${activeSourceVal}.`;
                         } else if (activeSourceVal === "2024") {
                             activeSOC = TARIFF_2024;
                             explanation = `Billed against SOC: ${activeSourceVal}.`;
@@ -9837,7 +9847,7 @@
                     // Fallback lookup: if expectedTariff is null or not found in the Template, fetch from That Year's SOC
                     if (expectedTariff === null && !isIgnored) {
                         let activeYear = "2024"; // default fallback year
-                        if (activeSourceVal === "2025" || activeSourceVal === "2024" || activeSourceVal === "2023" || activeSourceVal === "2021" || activeSourceVal === "soc_2023_v2" || activeSourceVal === "soc_2021_iocl") {
+                        if (activeSourceVal === "2025" || activeSourceVal === "2024" || activeSourceVal === "2023" || activeSourceVal === "2021" || activeSourceVal === "soc_2023_v2" || activeSourceVal === "soc_2021_iocl" || activeSourceVal === "2025_cash" || activeSourceVal === "2026_cash") {
                             activeYear = activeSourceVal === "soc_2023_v2" ? "2023_v2" : (activeSourceVal === "soc_2021_iocl" ? "2021_iocl" : activeSourceVal);
                         } else if (activeSourceVal === "excelcare_2025" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_gipsa_2026" || activeSourceVal === "excelcare_soc" || activeSourceVal === "excelcare_soc_cash") {
                             activeYear = "2025";
