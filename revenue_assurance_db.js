@@ -181,11 +181,11 @@
             }
 
             // 4. Seed Service Master from TARIFF_DATA (if loaded)
-            const currentServices = await this.getAll("tbl_service_master");
-            if (currentServices.length === 0 && typeof window.TARIFF_DATA !== 'undefined') {
+            const tData = (typeof TARIFF_DATA !== 'undefined') ? TARIFF_DATA : (typeof window.TARIFF_DATA !== 'undefined' ? window.TARIFF_DATA : undefined);
+            if (currentServices.length === 0 && tData) {
                 console.log("Seeding service master from compiled TARIFF_DATA...");
                 // Limit to first 200 items for seeding performance
-                const sampleList = window.TARIFF_DATA.slice(0, 200);
+                const sampleList = tData.slice(0, 200);
                 for (const s of sampleList) {
                     await this.put("tbl_service_master", {
                         serviceCode: s.id,

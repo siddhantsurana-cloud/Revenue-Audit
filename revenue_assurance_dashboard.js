@@ -10,12 +10,36 @@
             await window.RevenueAssuranceDB.open();
 
             // Fetch statistics
-            const payers = await window.RevenueAssuranceDB.getAll("tbl_payer_master");
-            const agreements = await window.RevenueAssuranceDB.getAll("tbl_agreement_master");
-            const services = await window.RevenueAssuranceDB.getAll("tbl_service_master");
-            const rules = await window.RevenueAssuranceDB.getAll("tbl_agreement_rules");
-            const runs = await window.RevenueAssuranceDB.getAll("tbl_audit_results");
-            const trails = await window.RevenueAssuranceDB.getAll("tbl_audit_trail");
+            let payers = await window.RevenueAssuranceDB.getAll("tbl_payer_master");
+            let agreements = await window.RevenueAssuranceDB.getAll("tbl_agreement_master");
+            let services = await window.RevenueAssuranceDB.getAll("tbl_service_master");
+            let rules = await window.RevenueAssuranceDB.getAll("tbl_agreement_rules");
+            let runs = await window.RevenueAssuranceDB.getAll("tbl_audit_results");
+            let trails = await window.RevenueAssuranceDB.getAll("tbl_audit_trail");
+
+            // Auto-seed on first load if database is empty
+            if (payers.length === 0 && agreements.length === 0) {
+                console.log("Database is empty. Auto-seeding default records...");
+                await window.RevenueAssuranceDB.seedData();
+                const seedAgreements = await window.RevenueAssuranceDB.getAll("tbl_agreement_master");
+                const starAg = seedAgreements.find(x => x.agreementName === "Star Health Credit Agreement");
+                if (starAg) {
+                    await window.RevenueAssuranceDB.add("tbl_agreement_rules", {
+                        agreementId: starAg.agreementId,
+                        serviceCode: "1",
+                        fixedRate: 200,
+                        discountPercent: null,
+                        status: "Active"
+                    });
+                }
+                // Refetch
+                payers = await window.RevenueAssuranceDB.getAll("tbl_payer_master");
+                agreements = await window.RevenueAssuranceDB.getAll("tbl_agreement_master");
+                services = await window.RevenueAssuranceDB.getAll("tbl_service_master");
+                rules = await window.RevenueAssuranceDB.getAll("tbl_agreement_rules");
+                runs = await window.RevenueAssuranceDB.getAll("tbl_audit_results");
+                trails = await window.RevenueAssuranceDB.getAll("tbl_audit_trail");
+            }
 
             // Update UI elements
             document.getElementById("stat-infra-payers").textContent = payers.length;
