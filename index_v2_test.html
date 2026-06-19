@@ -2248,6 +2248,10 @@
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                 <span>Process Manual</span>
             </button>
+            <button class="tab-btn" id="tab-infra-btn" style="border-left: 3px solid var(--info);">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span>Platform Infra</span>
+            </button>
         </nav>
     </aside>
     
@@ -4080,6 +4084,143 @@
     </div>
     </div>
     </div>
+    <!-- PANEL 8: PLATFORM INFRASTRUCTURE FOUNDATION -->
+    <div class="tab-panel" id="panel-infra">
+        <div class="controls-card" style="background: linear-gradient(135deg, var(--info) 0%, #0369a1 100%); border-left: none; color: white; padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 0.6rem; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.5rem; font-weight: 800; color: white; margin: 0;">Platform Infrastructure Foundation</h3>
+                        <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.9rem; margin: 0.25rem 0 0 0;">
+                            V1.02 Foundational Layer: IndexedDB storage engine, Unified IP/OP Matching Resolvers, and Migration Controls.
+                        </p>
+                    </div>
+                </div>
+                <div style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; backdrop-filter: blur(4px);">
+                    FOUNDATION LAYER: V1.02
+                </div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem; align-items: start; margin-bottom: 1.5rem;">
+            <!-- LEFT COLUMN: MIGRATION & ENGINE CONTROLS -->
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Migration Engine Controls</div>
+                    
+                    <!-- Toggle Switch -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; background: var(--bg-page); border-radius: 8px; border: 1px solid var(--border);">
+                        <div>
+                            <div style="font-weight: 700; font-size: 0.85rem; color: var(--text-main);">Use Agreement-Driven Engine</div>
+                            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.15rem;">Bypasses legacy SOC maps for DB rules</div>
+                        </div>
+                        <label class="switch-container" style="position: relative; display: inline-block; width: 44px; height: 24px;">
+                            <input type="checkbox" id="flag-agreement-engine-checkbox" style="opacity: 0; width: 0; height: 0;">
+                            <span class="slider-round" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px;"></span>
+                        </label>
+                    </div>
+
+                    <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; padding: 0.5rem; border-left: 3px solid var(--warning); background-color: var(--bg-hover); border-radius: 4px;">
+                        <strong>Note:</strong> Legay validation mode remains active by default. Toggling this flag hooks the audit Workspace into the new IndexedDB schema.
+                    </div>
+
+                    <!-- Actions -->
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem;">
+                        <button class="export-btn" id="btn-seed-infra-db" style="background: var(--primary); color: white; border-color: var(--primary); font-weight: 700;">
+                            🔄 Reset & Seed Database
+                        </button>
+                        <button class="export-btn" id="btn-check-infra" style="background: var(--success-bg); color: var(--success); border-color: var(--success); font-weight: 700;">
+                            🧪 Run Verification check
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PRE-BILL REVENUE ASSURANCE READY STUB -->
+                <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem;">
+                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Pre-Bill Interface Status</div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--warning); font-weight: 700;">
+                        <span style="display:inline-block; width:8px; height:8px; background-color: var(--warning); border-radius:50%;"></span>
+                        READY (STUB ONLY - NOT IN WORKFLOW)
+                    </div>
+                    <div style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;">
+                        Pre-bill validation database schemas, workflow status states, and release check APIs are created and ready for future integration.
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: DATABASE STATISTICS & LOADED PAYERS -->
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div class="controls-card" style="background-color: var(--bg-card);">
+                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem;">Database Repositories Statistics</div>
+                    
+                    <div class="metrics-grid" style="grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                        <div class="metric-card" style="padding: 0.75rem; min-width: 0; --accent: var(--primary);">
+                            <div class="metric-info">
+                                <div class="metric-value" id="stat-infra-payers" style="font-size: 1.5rem;">0</div>
+                                <div class="metric-label" style="font-size: 0.7rem;">Payers Loaded</div>
+                            </div>
+                        </div>
+                        <div class="metric-card" style="padding: 0.75rem; min-width: 0; --accent: var(--info);">
+                            <div class="metric-info">
+                                <div class="metric-value" id="stat-infra-agreements" style="font-size: 1.5rem;">0</div>
+                                <div class="metric-label" style="font-size: 0.7rem;">Agreements</div>
+                            </div>
+                        </div>
+                        <div class="metric-card" style="padding: 0.75rem; min-width: 0; --accent: var(--success);">
+                            <div class="metric-info">
+                                <div class="metric-value" id="stat-infra-services" style="font-size: 1.5rem;">0</div>
+                                <div class="metric-label" style="font-size: 0.7rem;">Services Master</div>
+                            </div>
+                        </div>
+                        <div class="metric-card" style="padding: 0.75rem; min-width: 0; --accent: var(--warning);">
+                            <div class="metric-info">
+                                <div class="metric-value" id="stat-infra-rules" style="font-size: 1.5rem;">0</div>
+                                <div class="metric-label" style="font-size: 0.7rem;">Rules Loaded</div>
+                            </div>
+                        </div>
+                        <div class="metric-card" style="padding: 0.75rem; min-width: 0; --accent: var(--danger);">
+                            <div class="metric-info">
+                                <div class="metric-value" id="stat-infra-runs" style="font-size: 1.5rem;">0</div>
+                                <div class="metric-label" style="font-size: 0.7rem;">Audit Runs</div>
+                            </div>
+                        </div>
+                        <div class="metric-card" style="padding: 0.75rem; min-width: 0; --accent: var(--diff);">
+                            <div class="metric-info">
+                                <div class="metric-value" id="stat-infra-accuracy" style="font-size: 1.5rem;">-</div>
+                                <div class="metric-label" style="font-size: 0.7rem;">accuracy Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLE: ACTIVE PAYERS & AGREEMENT RULES -->
+                <div class="controls-card" style="background-color: var(--bg-card); padding: 0;">
+                    <div style="padding: 1rem; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; border-bottom: 1px solid var(--border);">Active MOU Agreement Mappings</div>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left;" id="tbl-infra-mappings">
+                            <thead>
+                                <tr style="background-color: var(--bg-page); border-bottom: 2px solid var(--border);">
+                                    <th style="padding: 0.75rem 1rem; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Agreement Name</th>
+                                    <th style="padding: 0.75rem 1rem; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Payer</th>
+                                    <th style="padding: 0.75rem 1rem; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Period</th>
+                                    <th style="padding: 0.75rem 1rem; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Version</th>
+                                    <th style="padding: 0.75rem 1rem; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; text-align: center;">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl-infra-mappings-tbody">
+                                <tr>
+                                    <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem; font-size: 0.8rem;">Database not loaded. Click 'Reset & Seed Database' to initialize.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 </div>
 
@@ -4455,6 +4596,9 @@
 
 <!-- DATA SCRIPT IMPORT -->
 <script src="tariff_data.js"></script>
+<script src="revenue_assurance_db.js"></script>
+<script src="revenue_assurance_engine.js"></script>
+<script src="revenue_assurance_dashboard.js"></script>
 
 <script>
     // Global Storage Interceptor for Sandbox Environment
@@ -4721,6 +4865,7 @@
     const tabManualBtn = document.getElementById('tab-manual-btn');
     const tabCheckingBtn = document.getElementById('tab-checking-btn');
     const tabAdminBtn = document.getElementById('tab-admin-btn');
+    const tabInfraBtn = document.getElementById('tab-infra-btn');
 
     const panelDashboard = document.getElementById('panel-dashboard');
     const panelMaster = document.getElementById('panel-master');
@@ -4732,6 +4877,7 @@
     const panelManual = document.getElementById('panel-manual');
     const panelChecking = document.getElementById('panel-checking');
     const panelAdmin = document.getElementById('panel-admin');
+    const panelInfra = document.getElementById('panel-infra');
 
     // Checking Console State Variables
     let checkingLedgerCurrentPage = 1;
@@ -5016,7 +5162,8 @@
         { btn: tabRepositoryBtn, panel: panelRepository, onShow: () => { renderRepositoryTable(); } },
         { btn: tabManualBtn, panel: panelManual, onShow: () => { } },
         { btn: tabCheckingBtn, panel: panelChecking, onShow: () => { updateCheckingDashboard(); } },
-        { btn: tabAdminBtn, panel: panelAdmin, onShow: () => { window.renderAdminCenter(); } }
+        { btn: tabAdminBtn, panel: panelAdmin, onShow: () => { window.renderAdminCenter(); } },
+        { btn: tabInfraBtn, panel: panelInfra, onShow: () => { if (window.renderInfraDashboard) window.renderInfraDashboard(); } }
     ];
 
     tabsList.forEach(tab => {
@@ -8849,7 +8996,7 @@
             btnRunAudit.innerHTML = '<span class="spinner"></span> Auditing Billing Rates...';
             
             // Run actual audit check
-            executeActualAudit();
+            await executeActualAudit();
 
         } catch (err) {
             console.error(err);
@@ -9002,8 +9149,81 @@
         }
     };
 
-    function executeActualAudit() {
+    async function executeActualAudit() {
         auditedRows = [];
+
+        if (window.MigrationConfig && window.MigrationConfig.getFeatureFlag('useAgreementEngine')) {
+            try {
+                // Resolve active SOC array
+                const socSelect = document.getElementById('audit-soc-select');
+                const selectedSocName = socSelect ? socSelect.value : '';
+                let activeSOCArray = [];
+                if (selectedSocName === '2025') activeSOCArray = TARIFF_2025;
+                else if (selectedSocName === '2024') activeSOCArray = TARIFF_2024;
+                else if (selectedSocName === '2023') activeSOCArray = TARIFF_2023;
+                else if (selectedSocName === '2023_v2') activeSOCArray = TARIFF_2023_V2;
+                else if (selectedSocName === '2021') activeSOCArray = TARIFF_2021;
+                else if (selectedSocName === '2021_iocl') activeSOCArray = TARIFF_2021_IOCL;
+                else if (selectedSocName === 'excelcare') activeSOCArray = typeof TARIFF_EXCELCARE_2025 !== 'undefined' ? TARIFF_EXCELCARE_2025 : [];
+                else if (selectedSocName === 'excelcare_cash') activeSOCArray = typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2025 : [];
+                else if (selectedSocName === 'cash_2025') activeSOCArray = typeof TARIFF_CASH_2025 !== 'undefined' ? TARIFF_CASH_2025 : [];
+                else if (selectedSocName === 'cash_2026') activeSOCArray = typeof TARIFF_CASH_2026 !== 'undefined' ? TARIFF_CASH_2026 : [];
+                else if (selectedSocName === 'excelcare_2024') activeSOCArray = typeof TARIFF_EXCELCARE_2024 !== 'undefined' ? TARIFF_EXCELCARE_2024 : [];
+                else if (selectedSocName === 'excelcare_gipsa_2026') activeSOCArray = typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined' ? TARIFF_EXCELCARE_GIPSA_2026 : [];
+                else if (selectedSocName === 'kolkata') activeSOCArray = typeof TARIFF_KOLKATA_SOC !== 'undefined' ? TARIFF_KOLKATA_SOC : [];
+                else activeSOCArray = TARIFF_2026;
+
+                const agreementSelect = document.getElementById('audit-agreement-select');
+                const agreementName = agreementSelect ? agreementSelect.value : '';
+
+                // Format raw bill data rows for UnifiedAuditEngine
+                const formattedRows = rawBillData.map(item => {
+                    const row = item.row;
+                    const colIdx = item.colIdx;
+                    return {
+                        serviceId: String(row[colIdx.serviceid] || '').trim(),
+                        serviceName: String(row[colIdx.servicename] || '').trim(),
+                        patientName: String(row[colIdx.patient] || '').trim(),
+                        ipNo: String(row[colIdx.ipno] || '').trim(),
+                        billNo: String(row[colIdx.billno] || '').trim(),
+                        dept: String(row[colIdx.dept] || '').trim(),
+                        billedRate: Number(row[colIdx.rate]) || 0,
+                        row: row,
+                        colIdx: colIdx,
+                        rowIndex: item.rowIndex,
+                        fileName: item.fileName
+                    };
+                });
+
+                const auditResult = await window.UnifiedAuditEngine.auditBillRows(formattedRows, agreementName, activeSOCArray);
+                
+                // Map the results back to auditedRows structure expected by the legacy UI
+                auditResult.auditedResults.forEach(res => {
+                    const rowObj = {
+                        ipNo: res.row.ipNo,
+                        patientName: res.row.patientName,
+                        billNo: res.row.billNo,
+                        serviceId: res.row.serviceId,
+                        serviceName: res.row.serviceName,
+                        dept: res.row.dept,
+                        billedRate: res.row.billedRate,
+                        expectedRate: res.expectedRate,
+                        variance: res.variance,
+                        status: res.status,
+                        severity: res.severity,
+                        explanation: res.ruleUsed,
+                        fileName: res.row.fileName,
+                        rowIndex: res.row.rowIndex,
+                        isIgnored: false
+                    };
+                    auditedRows.push(rowObj);
+                });
+            } catch (err) {
+                console.error("Platform Audit Engine failed. Falling back to legacy:", err);
+                showToast("Platform Audit Engine failed. Falling back to legacy.", "danger");
+                auditedRows = [];
+            }
+        }
 
         function getActiveSOCMap(socArray, useHdfcKolkata) {
             if (typeof TARIFF_KOLKATA_SOC !== 'undefined' && socArray === TARIFF_KOLKATA_SOC) {
@@ -9185,7 +9405,8 @@
         }
 
         // Process all raw billing rows
-        rawBillData.forEach(item => {
+        if (auditedRows.length === 0) {
+            rawBillData.forEach(item => {
             const row = item.row;
             const colIdx = item.colIdx;
             const fileName = item.fileName;
@@ -10281,7 +10502,8 @@
             }
 
             auditedRows.push(rowObj);
-        });
+            });
+        }
 
         // -------------------------------------------------------------
         // ANESTHESIOLOGIST 35% FEE CROSS-VERIFICATION PROCESSOR
