@@ -133,6 +133,19 @@
             });
         },
 
+        putBatch: function(storeName, items) {
+            return new Promise((resolve, reject) => {
+                this.getTransaction(storeName, "readwrite").then(tx => {
+                    const store = tx.objectStore(storeName);
+                    for (const item of items) {
+                        store.put(item);
+                    }
+                    tx.oncomplete = () => resolve(true);
+                    tx.onerror = () => reject(tx.error);
+                }).catch(reject);
+            });
+        },
+
         seedData: async function() {
             console.log("Seeding reference data to RevenueAssuranceDB...");
             
@@ -182,23 +195,59 @@
                 }
             }
 
-            // 4. Seed Service Master from TARIFF_DATA (if loaded)
+            // 4. Seed Service Master from compiled SOC arrays (Incremental)
             const currentServices = await this.getAll("tbl_service_master");
-            const tData = (typeof TARIFF_DATA !== 'undefined') ? TARIFF_DATA : (typeof window.TARIFF_DATA !== 'undefined' ? window.TARIFF_DATA : undefined);
-            if (currentServices.length === 0 && tData) {
-                console.log("Seeding service master from compiled TARIFF_DATA...");
-                // Limit to first 200 items for seeding performance
-                const sampleList = tData.slice(0, 200);
-                for (const s of sampleList) {
-                    await this.put("tbl_service_master", {
-                        serviceCode: s.id,
-                        serviceName: s.name,
-                        department: s.dept || "General",
-                        category: s.type || "General",
-                        chargingMethod: "Per Quantity",
-                        status: "Active"
-                    });
+            const seenCodes = new Set(currentServices.map(s => String(s.serviceCode).trim()));
+            const itemsToSeed = [];
+
+            const getGlobalArray = (name) => {
+                return (typeof window[name] !== 'undefined') ? window[name] : ((typeof global !== 'undefined' && typeof global[name] !== 'undefined') ? global[name] : undefined);
+            };
+
+            const arraysToProcess = [
+                'TARIFF_DATA',
+                'TARIFF_CASH_2026',
+                'TARIFF_CASH_2026_V2',
+                'TARIFF_CASH_2025',
+                'TARIFF_2025',
+                'TARIFF_2024',
+                'TARIFF_2023',
+                'TARIFF_2023_V2',
+                'TARIFF_2021',
+                'TARIFF_2021_IOCL',
+                'TARIFF_EXCELCARE_2025',
+                'TARIFF_EXCELCARE_CASH_2025',
+                'TARIFF_EXCELCARE_CASH_2026',
+                'TARIFF_EXCELCARE_2024',
+                'TARIFF_EXCELCARE_GIPSA_2026',
+                'TARIFF_KOLKATA_SOC'
+            ];
+
+            const processArray = (arr) => {
+                if (!arr || !Array.isArray(arr)) return;
+                for (const s of arr) {
+                    const code = String(s.id).trim();
+                    if (code && !seenCodes.has(code)) {
+                        seenCodes.add(code);
+                        itemsToSeed.push({
+                            serviceCode: code,
+                            serviceName: s.name,
+                            department: s.dept || "General",
+                            category: s.type || "General",
+                            chargingMethod: "Per Quantity",
+                            status: "Active"
+                        });
+                    }
                 }
+            };
+
+            for (const name of arraysToProcess) {
+                processArray(getGlobalArray(name));
+            }
+
+            if (itemsToSeed.length > 0) {
+                console.log(`Incremental Seeding: adding ${itemsToSeed.length} new services into tbl_service_master...`);
+                await this.putBatch("tbl_service_master", itemsToSeed);
             }
 
             // 5. Seed Agreement Master

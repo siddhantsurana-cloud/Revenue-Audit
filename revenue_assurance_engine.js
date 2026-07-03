@@ -27,12 +27,110 @@
     };
     MigrationConfig.loadFlags();
 
+    function matchServiceInSOC(serviceId, serviceName, socArray, socMap) {
+        if (!serviceName) return null;
+        const nameUpper = serviceName.trim().toUpperCase();
+
+        // 1. Exact Code Match
+        if (serviceId && socMap && socMap[serviceId]) {
+            return { item: socMap[serviceId], matchType: "Exact Code Match" };
+        }
+
+        if (!socArray || !Array.isArray(socArray)) return null;
+
+        // 2. Exact Name Match (case-insensitive, trimmed)
+        let matched = socArray.find(x => (x.name || '').trim().toUpperCase() === nameUpper);
+        if (matched) return { item: matched, matchType: "Exact Name Match" };
+
+        // 3. Normalized Name Match
+        const normalize = str => {
+            if (!str) return "";
+            let cleaned = str.replace(/[-\s_(),\/+&.*]/g, '').toUpperCase().trim();
+            cleaned = cleaned.replace(/X-?RAY/gi, 'XRAY');
+            cleaned = cleaned.replace(/ULTRASOUND|ULTRASONOGRAPHY/gi, 'USG');
+            return cleaned;
+        };
+        
+        const normBillName = normalize(nameUpper);
+        if (normBillName.length > 2) {
+            matched = socArray.find(x => normalize(x.name) === normBillName);
+            if (matched) return { item: matched, matchType: "Normalized Name Match" };
+        }
+
+        // 4. Alias Match (Exact name vs aliasName)
+        matched = socArray.find(x => (x.aliasName || '').trim().toUpperCase() === nameUpper);
+        if (matched) return { item: matched, matchType: "Alias Match" };
+        
+        if (normBillName.length > 2) {
+            matched = socArray.find(x => x.aliasName && normalize(x.aliasName) === normBillName);
+            if (matched) return { item: matched, matchType: "Normalized Alias Match" };
+        }
+
+        // 5. Fuzzy Match
+        if (normBillName.length > 3) {
+            matched = socArray.find(x => {
+                const normSOCName = normalize(x.name);
+                const normSOCAlias = normalize(x.aliasName);
+                return (normSOCName && (normSOCName.includes(normBillName) || normBillName.includes(normSOCName))) ||
+                       (normSOCAlias && (normSOCAlias.includes(normBillName) || normBillName.includes(normSOCAlias)));
+            });
+            if (matched) return { item: matched, matchType: "Fuzzy Match" };
+        }
+
+        return null;
+    }
+
+    function getCashSOCForYear(unit, year) {
+        if (unit === 'excelcare') {
+            if (year === '2026' && typeof window.TARIFF_EXCELCARE_CASH_2026 !== 'undefined') {
+                return { array: window.TARIFF_EXCELCARE_CASH_2026, map: window.mapExcelcareCash2026, name: "Excelcare 2026-27 - Cash" };
+            }
+            if (year === '2025' && typeof window.TARIFF_EXCELCARE_CASH_2025 !== 'undefined') {
+                return { array: window.TARIFF_EXCELCARE_CASH_2025, map: window.mapExcelcareCash, name: "Excelcare 2025-26 - Cash" };
+            }
+            if (year === '2024' && typeof window.TARIFF_EXCELCARE_CASH_2024 !== 'undefined') {
+                return { array: window.TARIFF_EXCELCARE_CASH_2024, map: window.mapExcelcareCash2024, name: "Excelcare 2024 - Cash" };
+            }
+        } else if (unit === 'international') {
+            if (year === '2026') {
+                const sourceVal = window.activeSourceVal || '';
+                if (sourceVal === '2026_cash_v2') {
+                    if (typeof window.TARIFF_CASH_2026_V2 !== 'undefined') {
+                        return { array: window.TARIFF_CASH_2026_V2, map: window.mapCash2026_v2, name: "International 2026 V2 - Cash" };
+                    }
+                }
+                if (typeof window.TARIFF_CASH_2026 !== 'undefined') {
+                    return { array: window.TARIFF_CASH_2026, map: window.mapCash2026, name: "International 2026 - Cash" };
+                }
+            }
+            if (year === '2025' && typeof window.TARIFF_CASH_2025 !== 'undefined') {
+                return { array: window.TARIFF_CASH_2025, map: window.mapCash2025, name: "International 2025 - Cash" };
+            }
+            if (year === '2024' && typeof window.TARIFF_CASH_2024 !== 'undefined') {
+                return { array: window.TARIFF_CASH_2024, map: window.mapCash2024, name: "International 2024 - Cash" };
+            }
+            if (year === '2023' && typeof window.TARIFF_CASH_2023 !== 'undefined') {
+                return { array: window.TARIFF_CASH_2023, map: window.mapCash2023, name: "International 2023 - Cash" };
+            }
+            if (year === '2021' && typeof window.TARIFF_CASH_2021 !== 'undefined') {
+                return { array: window.TARIFF_CASH_2021, map: window.mapCash2021, name: "International 2021 - Cash" };
+            }
+        } else if (unit === 'kolkata') {
+            if (year === '2023' && typeof window.TARIFF_KOLKATA_CASH_SOC !== 'undefined') {
+                return { array: window.TARIFF_KOLKATA_CASH_SOC, map: window.mapKolkataCash, name: "Kolkata Cash SOC" };
+            }
+        }
+        return null;
+    }
+
     // 2. Service Master Match Engine (4-step Matching Logic)
     const ServiceMasterEngine = {
         cleanNameForFuzzy: function(str) {
             if (!str) return "";
-            // Remove punctuation, dashes, spaces, and capitalize
-            return str.replace(/[-\s_(),]+/g, '').toUpperCase().trim();
+            let cleaned = str.replace(/[-\s_(),\/+&.*]/g, '').toUpperCase().trim();
+            cleaned = cleaned.replace(/X-?RAY/gi, 'XRAY');
+            cleaned = cleaned.replace(/ULTRASOUND|ULTRASONOGRAPHY/gi, 'USG');
+            return cleaned;
         },
         
         resolveService: async function(serviceCode, serviceName, activeSOC) {
@@ -57,14 +155,24 @@
             // Step 4: Fourth Match - Fuzzy Match (Cleaned name characters)
             const cleanBillName = this.cleanNameForFuzzy(serviceName);
             if (cleanBillName.length > 2) {
+                // Check service master normalized names
                 matched = allServices.find(x => this.cleanNameForFuzzy(x.serviceName) === cleanBillName);
                 if (matched) return { service: matched, matchType: "Fourth (Fuzzy Match)" };
+
+                // Check alias normalized names
+                const normAliasMatch = aliases.find(x => this.cleanNameForFuzzy(x.aliasName) === cleanBillName);
+                if (normAliasMatch) {
+                    matched = allServices.find(x => x.serviceCode === normAliasMatch.serviceCode);
+                    if (matched) return { service: matched, matchType: "Fourth (Fuzzy Alias Match)" };
+                }
             }
 
-            // Fallback: If not found in IndexedDB service master, check the in-memory SOC mapping
+            // Fallback: If not found in IndexedDB service master, check the in-memory SOC mapping using the same matching hierarchy
             if (activeSOC) {
-                const socItem = activeSOC.find(x => x.id === serviceCode || (x.name || '').toUpperCase().trim() === nameUpper);
-                if (socItem) {
+                const activeMap = typeof getActiveSOCMap !== 'undefined' ? getActiveSOCMap(activeSOC) : null;
+                const res = matchServiceInSOC(serviceCode, serviceName, activeSOC, activeMap);
+                if (res) {
+                    const socItem = res.item;
                     return {
                         service: {
                             serviceCode: socItem.id,
@@ -72,7 +180,7 @@
                             department: socItem.dept || "General",
                             category: socItem.type || "General"
                         },
-                        matchType: "Legacy SOC Fallback"
+                        matchType: `Legacy SOC Fallback (${res.matchType})`
                     };
                 }
             }
@@ -209,7 +317,7 @@
 
     // 8. Unified IP/OP Agreement-Driven Audit Engine
     const UnifiedAuditEngine = {
-        auditBillRows: async function(rows, agreementName, activeSOC, contextVariables) {
+        auditBillRows: async function(rows, agreementName, activeSOC, contextVariables, selectedSocName) {
             console.log(`[Unified Engine] Running Agreement Audit against MOU: ${agreementName}`);
             
             // Log run in audit trail
@@ -373,17 +481,102 @@
                     }
                 }
 
-                // Step D: Fallback to standard active SOC matching if no rule matched
+                // Step D: Fallback to standard active SOC / multi-year fallback matching if no rule matched
                 if (!ruleFound) {
+                    let matchedItem = null;
+                    let matchedSource = "";
+
                     if (matchResult) {
-                        const standardItem = activeSOC.find(x => x.id === matchResult.service.serviceCode);
+                        // First try standard active SOC
+                        const standardItem = activeSOC ? activeSOC.find(x => x.id === matchResult.service.serviceCode) : null;
                         if (standardItem) {
-                            expectedRate = standardItem.rate || 0;
-                            ruleViolated = `Matched standard tariff: ₹${expectedRate}`;
-                        } else {
-                            expectedRate = billed;
-                            ruleViolated = `Unmapped Service Tariff`;
+                            matchedItem = standardItem;
+                            matchedSource = "Standard Active SOC";
                         }
+                    }
+
+                    // If not found in standard active SOC, trigger the multi-year fallback lookup list
+                    if (!matchedItem) {
+                        let activeSourceVal = selectedSocName || "";
+                        let activeYear = "2024"; // default fallback year
+                        if (activeSourceVal === "2025" || activeSourceVal === "2024" || activeSourceVal === "2023" || activeSourceVal === "2021" || activeSourceVal === "soc_2023_v2" || activeSourceVal === "soc_2021_iocl" || activeSourceVal === "2025_cash" || activeSourceVal === "2026_cash" || activeSourceVal === "2026_cash_v2") {
+                            activeYear = activeSourceVal === "soc_2023_v2" ? "2023_v2" : (activeSourceVal === "soc_2021_iocl" ? "2021_iocl" : activeSourceVal);
+                        } else if (activeSourceVal === "excelcare_2025" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_gipsa_2026" || activeSourceVal === "excelcare_soc" || activeSourceVal === "excelcare_soc_cash") {
+                            activeYear = "2025";
+                        } else if (activeSourceVal === "excelcare_2024" || activeSourceVal === "excelcare_soc_2024") {
+                            activeYear = "2024";
+                        } else {
+                            if (activeSOC === window.TARIFF_2025 || activeSOC === window.TARIFF_EXCELCARE_2025 || activeSOC === window.TARIFF_EXCELCARE_CASH_2025 || activeSOC === window.TARIFF_EXCELCARE_GIPSA_2026) activeYear = "2025";
+                            else if (activeSOC === window.TARIFF_2024 || activeSOC === window.TARIFF_EXCELCARE_2024) activeYear = "2024";
+                            else if (activeSOC === window.TARIFF_2023) activeYear = "2023";
+                            else if (activeSOC === window.TARIFF_2023_V2) activeYear = "2023_v2";
+                            else if (activeSOC === window.TARIFF_2021) activeYear = "2021";
+                            else activeYear = "2025"; // default to 2025-26
+                        }
+
+                        const activeBU = (contextVariables && contextVariables.bu) || "international";
+                        const isKolkata = (activeBU === "kolkata" || activeSourceVal === "sockolkata" || activeSourceVal === "pkgkolkata" || activeSourceVal.toLowerCase().includes("kolkata"));
+                        const isExcelcare = (activeBU === "excelcare" || activeSourceVal.startsWith("excelcare_") || activeSourceVal.startsWith("socexcelcare") || activeSourceVal === "hdfcergo");
+
+                        const unitKey = isExcelcare ? 'excelcare' : (isKolkata ? 'kolkata' : 'international');
+                        const yearNum = activeYear.split('_')[0];
+
+                        const fallbackSOCList = [];
+                        const isCashAudit = activeSourceVal.includes("cash") || activeSourceVal === "excelcare_soc_cash" || (activeSOC && (activeSOC === window.TARIFF_EXCELCARE_CASH_2025 || activeSOC === window.TARIFF_EXCELCARE_CASH_2026 || activeSOC === window.TARIFF_CASH_2026 || activeSOC === window.TARIFF_CASH_2026_V2 || activeSOC === window.TARIFF_CASH_2025 || activeSOC === window.TARIFF_CASH_2024 || activeSOC === window.TARIFF_CASH_2023 || activeSOC === window.TARIFF_CASH_2021 || activeSOC === window.TARIFF_KOLKATA_CASH_SOC));
+
+                        if (isCashAudit) {
+                            const years = ['2026', '2025', '2024', '2023', '2021'];
+                            const startIndex = years.indexOf(yearNum);
+                            const searchYears = startIndex !== -1 ? years.slice(startIndex) : years;
+                            
+                            for (const y of searchYears) {
+                                const cashSoc = getCashSOCForYear(unitKey, y);
+                                if (cashSoc) {
+                                    fallbackSOCList.push(cashSoc);
+                                }
+                            }
+                        } else {
+                            if (isKolkata) {
+                                fallbackSOCList.push({ array: window.TARIFF_KOLKATA_SOC, map: window.mapKolkata, name: "Kolkata SOC" });
+                            } else if (isExcelcare) {
+                                const use24 = (activeSourceVal === "excelcare_2024" || activeSourceVal === "socexcelcare2024" || activeYear === "2024");
+                                if (use24) {
+                                    fallbackSOCList.push({ array: window.TARIFF_EXCELCARE_2024, map: window.mapExcelcare2024, name: "Excelcare 2024-25" });
+                                } else {
+                                    fallbackSOCList.push({ array: window.TARIFF_EXCELCARE_2025, map: window.mapExcelcare, name: "Excelcare 2025-26" });
+                                }
+                            } else {
+                                if (activeYear === "2025") {
+                                    fallbackSOCList.push({ array: window.TARIFF_2025, map: window.map2025, name: "2025-26 SOC" });
+                                } else if (activeYear === "2024") {
+                                    fallbackSOCList.push({ array: window.TARIFF_2024, map: window.map2024, name: "2024-25 SOC" });
+                                } else if (activeYear === "2023") {
+                                    fallbackSOCList.push({ array: window.TARIFF_2023, map: window.map2023, name: "2023-24 SOC" });
+                                } else if (activeYear === "2023_v2") {
+                                    fallbackSOCList.push({ array: window.TARIFF_2023_V2, map: window.map2023_v2, name: "2023-24 V2 SOC" });
+                                } else if (activeYear === "2021") {
+                                    fallbackSOCList.push({ array: window.TARIFF_2021, map: window.map2021, name: "2021-22 SOC" });
+                                } else if (activeYear === "2021_iocl") {
+                                    fallbackSOCList.push({ array: window.TARIFF_2021_IOCL, map: window.map2021_iocl, name: "2021-22 IOCL SOC" });
+                                } else {
+                                    fallbackSOCList.push({ array: window.TARIFF_2025, map: window.map2025, name: "2025-26 SOC" });
+                                }
+                            }
+                        }
+
+                        for (const fallbackSOC of fallbackSOCList) {
+                            const res = matchServiceInSOC(code, name, fallbackSOC.array, fallbackSOC.map);
+                            if (res) {
+                                matchedItem = res.item;
+                                matchedSource = `${fallbackSOC.name} (${res.matchType})`;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (matchedItem) {
+                        expectedRate = matchedItem.rate || 0;
+                        ruleViolated = `Matched via ${matchedSource}: ₹${expectedRate}`;
                     } else {
                         expectedRate = billed;
                         ruleViolated = `Unmapped Service`;
