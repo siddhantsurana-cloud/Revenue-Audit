@@ -1,6 +1,31 @@
 const { db } = require('./database');
 const { enforcePermission } = require('./authEngine');
 
+const UI_TO_DB_SOC_MAP = {
+    "excelcare_2025": "TARIFF_EXCELCARE_2025",
+    "excelcare_cash_2025": "TARIFF_EXCELCARE_CASH_2025",
+    "excelcare_gipsa_2026": "TARIFF_EXCELCARE_GIPSA_2026",
+    "excelcare_2024": "TARIFF_EXCELCARE_2024",
+    "2025": "TARIFF_2025",
+    "2024": "TARIFF_2024",
+    "soc_2023_v2": "TARIFF_2023_V2",
+    "2023": "TARIFF_2023",
+    "2021": "TARIFF_2021",
+    "soc_2021_iocl": "TARIFF_2021_IOCL",
+    "sockolkata": "TARIFF_KOLKATA_SOC",
+    "pkgkolkata": "TARIFF_KOLKATA_PKG",
+    "2026_cash_v2": "TARIFF_CASH_2026_V2",
+    "2026_cash": "TARIFF_CASH_2026",
+    "2025_cash": "TARIFF_CASH_2025",
+    "excelcare_soc": "TARIFF_EXCELCARE_2025",
+    "excelcare_soc_cash": "TARIFF_EXCELCARE_CASH_2025",
+    "hdfc_single": "TARIFF_HDFC_ERGO_2024",
+    "hdfc_gen": "TARIFF_HDFC_ERGO_2024",
+    "hdfc_twin": "TARIFF_HDFC_ERGO_2024",
+    "hdfc_suite": "TARIFF_HDFC_ERGO_2024",
+    "hdfc_daycare": "TARIFF_HDFC_ERGO_2024"
+};
+
 // 1. Room category helpers
 function cleanRoomCategory(cat) {
     if (!cat) return "STANDARD WARD";
@@ -71,51 +96,85 @@ function parseExcelDate(val) {
     return isNaN(d.getTime()) ? null : d;
 }
 
-// 3. Database loaders
+// 3. Database loaders and matchers
+function normalize(s) {
+    if (!s) return "";
+    let cleaned = String(s).replace(/[-\s_(),\/+&.*]/g, '').toUpperCase().trim();
+    cleaned = cleaned.replace(/X-?RAY/gi, 'XRAY');
+    cleaned = cleaned.replace(/ULTRASOUND|ULTRASONOGRAPHY/gi, 'USG');
+    return cleaned;
+}
+
+function matchServiceInSOCList(serviceId, serviceName, socList) {
+    if (!serviceName) return null;
+    const nameUpper = serviceName.trim().toUpperCase();
+
+    // 1. Exact Code Match
+    if (serviceId) {
+        const cleanId = String(serviceId).trim().replace(/^[a-zA-Z]+-?/, '');
+        const matched = socList.find(x => {
+            if (!x.id) return false;
+            const xClean = String(x.id).trim().replace(/^[a-zA-Z]+-?/, '');
+            return xClean === cleanId || String(x.id) === String(serviceId);
+        });
+        if (matched) return { item: matched, explanation: "[SOC Match T1]" };
+    }
+
+    if (!socList || !Array.isArray(socList)) return null;
+
+    // 2. Exact Name Match
+    let matched = socList.find(x => (x.name || '').trim().toUpperCase() === nameUpper);
+    if (matched) return { item: matched, explanation: "[SOC Match Exact Name]" };
+
+    // 3. Normalized Name Match
+    const normBill = normalize(nameUpper);
+    if (normBill.length > 2) {
+        matched = socList.find(x => normalize(x.name || '') === normBill);
+        if (matched) return { item: matched, explanation: "[SOC Match Norm Name]" };
+    }
+
+    // 4. Alias Match
+    matched = socList.find(x => (x.aliasName || '').trim().toUpperCase() === nameUpper);
+    if (matched) return { item: matched, explanation: "[SOC Match Alias]" };
+
+    // 5. Normalized Alias Match
+    if (normBill.length > 2) {
+        matched = socList.find(x => normalize(x.aliasName || '') === normBill);
+        if (matched) return { item: matched, explanation: "[SOC Match Norm Alias]" };
+    }
+
+    // 6. Fuzzy Match
+    if (normBill.length > 3) {
+        matched = socList.find(x => {
+            const normSoc = normalize(x.name || '');
+            const normAlias = normalize(x.aliasName || '');
+            return (normSoc && (normBill.includes(normSoc) || normSoc.includes(normBill))) ||
+                   (normAlias && (normBill.includes(normAlias) || normAlias.includes(normBill)));
+        });
+        if (matched) return { item: matched, explanation: "[SOC Match Fuzzy Name]" };
+    }
+
+    return null;
+}
+
 function getSOCItem(socName, serviceId, serviceName) {
+    const dbSOCName = UI_TO_DB_SOC_MAP[socName] || socName;
     return new Promise((resolve) => {
-        let cleanId = '';
-        if (serviceId) {
-            cleanId = String(serviceId).trim().replace(/^[a-zA-Z]+-?/, '');
-        }
-
-        db.get(`SELECT * FROM tbl_soc_master WHERE SOCName = ? AND (ServiceID = ? OR ServiceID = ?)`, [socName, cleanId, serviceId], (err, row) => {
-            if (row) {
-                return resolve({
-                    item: {
-                        id: row.ServiceID,
-                        name: row.ServiceName,
-                        type: row.ServiceType,
-                        dept: row.Department,
-                        rate: row.StandardRate,
-                        rates: row.RatesJSON ? JSON.parse(row.RatesJSON) : null
-                    },
-                    explanation: "[SOC Match T1]"
-                });
-            }
-
-            if (serviceName) {
-                const cleanName = String(serviceName).toUpperCase().trim();
-                db.get(`SELECT * FROM tbl_soc_master WHERE SOCName = ? AND (UPPER(TRIM(ServiceName)) = ? OR UPPER(TRIM(ServiceName)) = ?)`,
-                    [socName, cleanName, cleanName], (err, rowByName) => {
-                        if (rowByName) {
-                            return resolve({
-                                item: {
-                                    id: rowByName.ServiceID,
-                                    name: rowByName.ServiceName,
-                                    type: rowByName.ServiceType,
-                                    dept: rowByName.Department,
-                                    rate: rowByName.StandardRate,
-                                    rates: rowByName.RatesJSON ? JSON.parse(rowByName.RatesJSON) : null
-                                },
-                                explanation: "[SOC Match T2]"
-                            });
-                        }
-                        resolve(null);
-                    });
-            } else {
-                resolve(null);
-            }
+        db.all(`SELECT * FROM tbl_soc_master WHERE SOCName = ?`, [dbSOCName], (err, rows) => {
+            if (err || !rows) return resolve(null);
+            
+            const socList = rows.map(row => ({
+                id: row.ServiceID,
+                name: row.ServiceName,
+                aliasName: row.AliasName || '',
+                type: row.ServiceType,
+                dept: row.Department,
+                rate: row.StandardRate,
+                rates: row.RatesJSON ? JSON.parse(row.RatesJSON) : null
+            }));
+            
+            const match = matchServiceInSOCList(serviceId, serviceName, socList);
+            resolve(match);
         });
     });
 }
@@ -272,14 +331,10 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
                 cleanId = String(item.serviceId).trim().replace(/^[a-zA-Z]+-?/, '');
             }
             let cachedItem = cache.socById.get(cleanId) || cache.socById.get(item.serviceId);
-            let exp = "[SOC Match T1]";
-            if (!cachedItem && item.serviceName) {
-                const cleanName = String(item.serviceName).toUpperCase().trim();
-                cachedItem = cache.socByName.get(cleanName);
-                exp = "[SOC Match T2]";
-            }
             if (cachedItem) {
-                resolved = { item: cachedItem, explanation: exp };
+                resolved = { item: cachedItem, explanation: "[SOC Match T1]" };
+            } else {
+                resolved = matchServiceInSOCList(item.serviceId, item.serviceName, cache.socList);
             }
         } else {
             resolved = await getSOCItem(activeSOCName, item.serviceId, item.serviceName);
@@ -607,15 +662,17 @@ function reopenAudit(resultId, user, reason) {
 }
 
 function preloadAuditCache(activeSOCName) {
+    const dbSOCName = UI_TO_DB_SOC_MAP[activeSOCName] || activeSOCName;
     return new Promise((resolve, reject) => {
         const cache = {
+            socList: [],
             socById: new Map(),
             socByName: new Map(),
             tariffById: new Map(),
             tariffByName: new Map()
         };
         
-        db.all(`SELECT ServiceID, ServiceName, ServiceType, Department, StandardRate, RatesJSON FROM tbl_soc_master WHERE SOCName = ?`, [activeSOCName], (err, socRows) => {
+        db.all(`SELECT ServiceID, ServiceName, AliasName, ServiceType, Department, StandardRate, RatesJSON FROM tbl_soc_master WHERE SOCName = ?`, [dbSOCName], (err, socRows) => {
             if (err) return reject(err);
             
             if (socRows) {
@@ -623,11 +680,14 @@ function preloadAuditCache(activeSOCName) {
                     const item = {
                         id: row.ServiceID,
                         name: row.ServiceName,
+                        aliasName: row.AliasName || '',
                         type: row.ServiceType,
                         dept: row.Department,
                         rate: row.StandardRate,
                         rates: row.RatesJSON ? JSON.parse(row.RatesJSON) : null
                     };
+                    
+                    cache.socList.push(item);
                     
                     if (row.ServiceID) {
                         const cleanId = String(row.ServiceID).trim().replace(/^[a-zA-Z]+-?/, '');

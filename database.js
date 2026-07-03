@@ -47,12 +47,22 @@ function initDatabase() {
                 SOCName TEXT NOT NULL,
                 ServiceID TEXT NOT NULL,
                 ServiceName TEXT NOT NULL,
+                AliasName TEXT,
                 ServiceType TEXT,
                 Department TEXT,
                 StandardRate REAL,
                 RatesJSON TEXT,
                 UNIQUE(SOCName, ServiceID)
             )`);
+
+            // Migration: Check if AliasName exists in tbl_soc_master
+            db.all(`PRAGMA table_info(tbl_soc_master)`, [], (err, info) => {
+                if (err) return;
+                const hasAlias = info && info.some(col => col.name === 'AliasName');
+                if (!hasAlias && info && info.length > 0) {
+                    db.run(`ALTER TABLE tbl_soc_master ADD COLUMN AliasName TEXT`);
+                }
+            });
 
             // 4. Tariff Master table (standard base rates)
             db.run(`CREATE TABLE IF NOT EXISTS tbl_tariff_master (
@@ -207,7 +217,11 @@ async function seedTariffsIfNeeded() {
         'TARIFF_EXCELCARE_CASH_2025': context.TARIFF_EXCELCARE_CASH_2025,
         'TARIFF_EXCELCARE_GIPSA_2026': context.TARIFF_EXCELCARE_GIPSA_2026,
         'TARIFF_KOLKATA_SOC': context.TARIFF_KOLKATA_SOC,
-        'TARIFF_KOLKATA_PKG': context.TARIFF_KOLKATA_PKG
+        'TARIFF_KOLKATA_PKG': context.TARIFF_KOLKATA_PKG,
+        'TARIFF_CASH_2025': context.TARIFF_CASH_2025,
+        'TARIFF_CASH_2026': context.TARIFF_CASH_2026,
+        'TARIFF_CASH_2026_V2': context.TARIFF_CASH_2026_V2,
+        'TARIFF_HDFC_ERGO_2024': context.TARIFF_HDFC_ERGO_2024
     };
 
     // 1. Begin transaction to populate SOC Master
@@ -250,8 +264,8 @@ async function seedTariffsIfNeeded() {
 
     // Seed SOCs
     const socStmt = db.prepare(`INSERT OR REPLACE INTO tbl_soc_master 
-        (SOCName, ServiceID, ServiceName, ServiceType, Department, StandardRate, RatesJSON) 
-        VALUES (?, ?, ?, ?, ?, ?, ?)`);
+        (SOCName, ServiceID, ServiceName, AliasName, ServiceType, Department, StandardRate, RatesJSON) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`);
         
     for (const [socName, socList] of Object.entries(socMappings)) {
         if (!socList || !Array.isArray(socList)) continue;
@@ -261,6 +275,7 @@ async function seedTariffsIfNeeded() {
                 socName,
                 item.id,
                 item.name || '',
+                item.aliasName || '',
                 item.type || '',
                 item.dept || '',
                 item.rate || 0.0,
