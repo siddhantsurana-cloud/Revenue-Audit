@@ -12811,6 +12811,59 @@
                             resolvedRate = (foundRate !== null) ? foundRate : (match.rates["STANDARD"] !== undefined ? match.rates["STANDARD"] : null);
                         }
                     }
+
+                    // ── Fix: serviceContext IP/OP mismatch filter ──────────────────
+                    // If SOC entry is tagged as IP-only but the bill row is Day Care/OP
+                    // (or tagged OP but row is an admitted IP patient), skip this match
+                    // so the correct context variant can be found instead.
+                    if (match.serviceContext) {
+                        const isOPRow = (cleanRoom.includes("DAY CARE") || cleanRoom.includes("DAYCARE") ||
+                                         cleanRoom.includes("OPD") || cleanRoom.includes("EMERGENCY"));
+                        const isIPRow = !isOPRow;
+                        if (match.serviceContext === "IP" && isOPRow) {
+                            resolvedRate = null;
+                            res.explanation += ` [SC] Entry ${match.id} is IP-only; bill row appears to be Day Care/OP — using OP rate instead.`;
+                            // Try to find the OP variant
+                            const opMatch = Object.values(activeSOCMap).find(e =>
+                                e.serviceContext === "OP" && e.name === match.name
+                            );
+                            if (opMatch && opMatch.rates) {
+                                resolvedRate = opMatch.rates[normRoom] !== undefined
+                                    ? opMatch.rates[normRoom]
+                                    : opMatch.rates["DAY CARE"] || opMatch.rates["STANDARD"] || null;
+                                if (resolvedRate !== null) {
+                                    res.explanation += ` Using OP variant [${opMatch.id}] rate ₹${resolvedRate}.`;
+                                }
+                            }
+                        } else if (match.serviceContext === "OP" && isIPRow) {
+                            resolvedRate = null;
+                            res.explanation += ` [SC] Entry ${match.id} is OP-only; bill row appears to be IP admission — using IP rate instead.`;
+                            const ipMatch = Object.values(activeSOCMap).find(e =>
+                                e.serviceContext === "IP" && e.name === match.name
+                            );
+                            if (ipMatch && ipMatch.rates) {
+                                resolvedRate = ipMatch.rates[normRoom] !== undefined
+                                    ? ipMatch.rates[normRoom]
+                                    : ipMatch.rates["STANDARD"] || null;
+                                if (resolvedRate !== null) {
+                                    res.explanation += ` Using IP variant [${ipMatch.id}] rate ₹${resolvedRate}.`;
+                                }
+                            }
+                        }
+                    }
+
+                    // ── Fix: chargeUnit=per_day multiplier ────────────────────────
+                    // Monitoring charges (CCG, PCCG, RCCG, NNCCG) are billed per
+                    // ICU day. The bill qty = number of days. expectedTariff = rate × qty.
+                    if (match.chargeUnit === "per_day" && resolvedRate !== null) {
+                        const qty = typeof item.quantity === 'number' && item.quantity > 0 ? item.quantity : 1;
+                        if (qty > 1) {
+                            const totalExpected = resolvedRate * qty;
+                            res.explanation += ` [PD] Per-day charge: ₹${resolvedRate} × ${qty} days = ₹${totalExpected}.`;
+                            resolvedRate = totalExpected;  // compare against total billed amount
+                        }
+                    }
+
                 } else {
                     if (match.rates) {
                         const mappedCat = mapIOCLRoomCategory(item.roomCategory, cleanRoom);

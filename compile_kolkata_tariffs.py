@@ -464,6 +464,60 @@ for entry in compiled_soc:
     elif entry.get("id") == "99537":
         entry["rates"]["DAY CARE"] = 8750
 
+# ── Post-processing: permanent data-quality fixes ────────────────────────────
+
+# Fix 1: Tag PCCG / CCG / RCCG / NNCCG monitoring charges as chargeUnit="per_day"
+#         (Confirmed by business: billed per day of ICU stay, qty = no. of days)
+PER_DAY_MONITORING_IDS = {'3057717', '1051057', '1055872', 'KOL_IP_2173'}
+for entry in compiled_soc:
+    sid  = str(entry.get('id', ''))
+    name = (entry.get('name') or '').upper()
+    if sid in PER_DAY_MONITORING_IDS or (
+        'MONITORING CHARGE' in name and
+        any(k in name for k in ('CCG', 'PCCG', 'RCCG', 'NNCCG'))
+    ):
+        entry['chargeUnit'] = 'per_day'
+
+# Fix 2: Tag IP Chemo entries as serviceContext="IP" to avoid OP-rate false matches
+IP_CHEMO_IDS = {'99536', '99537'}   # CHEMO LOW / CHEMO HGH INCL SPL CHARGE (IP, room-scaled)
+for entry in compiled_soc:
+    if str(entry.get('id', '')) in IP_CHEMO_IDS:
+        entry['serviceContext'] = 'IP'
+
+# Fix 3: Tag OP Chemo entries as serviceContext="OP" (flat rate, Day Care / OP context)
+OP_CHEMO_IDS = {'KOL_OP_2427', 'KOL_OP_2428', 'KOL_OP_2429', 'KOL_OP_2430'}
+for entry in compiled_soc:
+    if str(entry.get('id', '')) in OP_CHEMO_IDS:
+        entry['serviceContext'] = 'OP'
+
+# Fix 4: Auto-merge HDFC ERGO packages from kolkata_pkg.json
+#         Packages are tagged applicablePayer="HDFC_ERGO" and included in the
+#         unified SOC so mapKolkataHdfc can serve both standard + package rates.
+print("Merging HDFC ERGO packages into SOC...")
+try:
+    with open("kolkata_pkg.json", "r", encoding="utf-8") as f:
+        pkg_data = json.load(f)
+    existing_ids = {str(e.get('id')) for e in compiled_soc}
+    added = 0
+    for pkg in pkg_data:
+        pkg_id = str(pkg.get('id', ''))
+        if pkg_id not in existing_ids:
+            pkg['applicablePayer'] = 'HDFC_ERGO'
+            compiled_soc.append(pkg)
+            existing_ids.add(pkg_id)
+            added += 1
+        else:
+            # Update existing entry with payer tag
+            for entry in compiled_soc:
+                if str(entry.get('id')) == pkg_id:
+                    entry['applicablePayer'] = 'HDFC_ERGO'
+                    break
+    print(f"  Added {added} HDFC ERGO package entries (total SOC: {len(compiled_soc)})")
+except FileNotFoundError:
+    print("  kolkata_pkg.json not found – skipping HDFC package merge.")
+
+# ─────────────────────────────────────────────────────────────────────────────
+
 # 4. Save JSON files
 print(f"Saving {len(compiled_soc)} SOC records to kolkata_soc.json...")
 with open("kolkata_soc.json", "w", encoding="utf-8") as f:
@@ -478,3 +532,4 @@ with open("kolkata_agreements.json", "w", encoding="utf-8") as f:
     json.dump(compiled_agreements, f, indent=2, ensure_ascii=False)
 
 print("Kolkata master compilation completed successfully!")
+
