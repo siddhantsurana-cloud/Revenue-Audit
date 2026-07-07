@@ -1,0 +1,75 @@
+{
+  "version": "1.0",
+  "methods": [
+    {
+      "id": "CM_PD",
+      "name": "Per Day",
+      "description": "Charge multiplied by number of days (quantity = days in bill)",
+      "unitLabel": "day",
+      "applies_to": "IP"
+    },
+    {
+      "id": "CM_PH",
+      "name": "Per Hour",
+      "description": "Charge multiplied by number of hours",
+      "unitLabel": "hour",
+      "applies_to": "both"
+    },
+    {
+      "id": "CM_PM",
+      "name": "Per Minute",
+      "description": "Charge multiplied by number of minutes (e.g. C-Arm, OT time)",
+      "unitLabel": "minute",
+      "applies_to": "both"
+    },
+    {
+      "id": "CM_PP",
+      "name": "Per Procedure",
+      "description": "Fixed charge per procedure regardless of time",
+      "unitLabel": "procedure",
+      "applies_to": "both"
+    },
+    {
+      "id": "CM_PV",
+      "name": "Per Visit",
+      "description": "Charge per consultation visit",
+      "unitLabel": "visit",
+      "applies_to": "OP"
+    },
+    {
+      "id": "CM_PA",
+      "name": "Per Admission",
+      "description": "One-time charge per admission event",
+      "unitLabel": "admission",
+      "applies_to": "IP"
+    },
+    {
+      "id": "CM_PQ",
+      "name": "Per Quantity",
+      "description": "Charge multiplied by quantity column in bill",
+      "unitLabel": "unit",
+      "applies_to": "both"
+    },
+    {
+      "id": "CM_IP",
+      "name": "IP Only",
+      "description": "Service is only applicable for inpatients; ignore for OP/Day Care rows",
+      "unitLabel": null,
+      "applies_to": "IP"
+    },
+    {
+      "id": "CM_OP",
+      "name": "OP Only",
+      "description": "Service is only applicable for outpatients / Day Care; ignore for IP rows",
+      "unitLabel": null,
+      "applies_to": "OP"
+    },
+    {
+      "id": "CM_UL",
+      "name": "Unlimited",
+      "description": "No cap on quantity; billed as a single line",
+      "unitLabel": null,
+      "applies_to": "both"
+    }
+  ]
+}

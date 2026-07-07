@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRC · V1.02.01-TEST — DEVELOPMENT BUILD</title>
+    <title>BRC - Guwahati | Revenue Assurance · V1.01</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0d9488">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -2080,15 +2080,6 @@
     </style>
 </head>
 <body>
-    <!-- ⚗️ DEVELOPMENT BANNER — cannot be dismissed -->
-    <div id="dev-banner" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:linear-gradient(90deg,#92400e,#b45309,#92400e);color:#fef3c7;font-size:0.78rem;font-weight:700;text-align:center;padding:6px 16px;letter-spacing:0.05em;display:flex;align-items:center;justify-content:center;gap:12px;border-bottom:2px solid #f59e0b;">
-        <span>⚗️</span>
-        <span>V1.02.01-TEST &nbsp;·&nbsp; DEVELOPMENT BUILD &nbsp;·&nbsp; DO NOT DEPLOY &nbsp;·&nbsp; FOR INTERNAL TESTING ONLY</span>
-        <span>⚗️</span>
-        <a href="index_v1.html" style="color:#fef3c7;text-decoration:underline;font-size:0.72rem;margin-left:8px;">← Back to V1.01 Stable</a>
-    </div>
-    <div style="height:34px;"></div><!-- spacer for banner -->
-
     <!-- FULL PAGE PORTAL LOGIN -->
     <div id="full-page-login" class="full-page-login">
         <div class="login-card">
@@ -2206,8 +2197,8 @@
                 <div class="sidebar-app-name">BRC - Guwahati</div>
                 <div class="sidebar-app-sub">Revenue Assurance</div>
                 <div style="margin-top:4px;display:inline-flex;align-items:center;gap:5px;">
-                    <span style="background:#b45309;color:#fef3c7;font-size:0.62rem;font-weight:700;padding:2px 7px;border-radius:20px;letter-spacing:0.04em;">V1.02.01-TEST ⚯</span>
-                    <a href="index_v1.html" target="_self" style="background:rgba(13,148,136,0.15);color:#0d9488;font-size:0.62rem;font-weight:700;padding:2px 7px;border-radius:20px;text-decoration:none;letter-spacing:0.04em;border:1px solid rgba(13,148,136,0.35);" title="Switch to V1.01 Stable build">← V1.01</a>
+                    <span style="background:#0d9488;color:#fff;font-size:0.62rem;font-weight:700;padding:2px 7px;border-radius:20px;letter-spacing:0.04em;">V1.01 · STABLE</span>
+                    <a href="index_v2_test.html" target="_self" style="background:rgba(245,158,11,0.18);color:#f59e0b;font-size:0.62rem;font-weight:700;padding:2px 7px;border-radius:20px;text-decoration:none;letter-spacing:0.04em;border:1px solid rgba(245,158,11,0.4);" title="Switch to V2 Test build">V2 TEST ↗</span>
                 </div>
             </div>
         </div>
@@ -4248,10 +4239,12 @@
                             <option value="TARIFF_2023">TARIFF_2023 (Guwahati Credit 2023)</option>
                             <option value="TARIFF_2021">TARIFF_2021 (Guwahati SOC 2021-22)</option>
                             <option value="TARIFF_2021_IOCL">TARIFF_2021_IOCL (Guwahati IOCL SOC 2021-22)</option>
-                            <option value="TARIFF_EXCELCARE_2025">TARIFF_EXCELCARE_2025 (Excelcare Credit 2025)</option>
-                            <option value="TARIFF_EXCELCARE_CASH_2026">TARIFF_EXCELCARE_CASH_2026 (Excelcare Cash 2026)</option>
-                            <option value="TARIFF_EXCELCARE_2024">TARIFF_EXCELCARE_2024 (Excelcare SOC 2024)</option>
-                            <option value="TARIFF_EXCELCARE_GIPSA_2026">TARIFF_EXCELCARE_GIPSA_2026 (Excelcare GIPSA 2026)</option>
+                            <option value="TARIFF_EXCELCARE_2025">Excelcare SOC FY 25 (Credit/TPA)</option>
+                            <option value="TARIFF_EXCELCARE_CASH_2025">Excelcare SOC FY 25 (Cash)</option>
+                            <option value="TARIFF_EXCELCARE_CASH_2627">Excelcare SOC FY 26-27 (Cash) ★ New</option>
+                            <option value="TARIFF_EXCELCARE_CASH_2026">Excelcare Cash 2026</option>
+                            <option value="TARIFF_EXCELCARE_2024">Excelcare SOC FY 24 (Credit/TPA)</option>
+                            <option value="TARIFF_EXCELCARE_GIPSA_2026">Excelcare GIPSA 2026</option>
                             <option value="TARIFF_HDFC_ERGO_2024">TARIFF_HDFC_ERGO_2024 (HDFC ERGO Templates)</option>
                             <option value="TARIFF_KOLKATA_SOC">TARIFF_KOLKATA_SOC (Kolkata SOC)</option>
                             <option value="TARIFF_DATA">TARIFF_DATA (Master 2026 TPA/GIPSA)</option>
@@ -4509,7 +4502,8 @@
     let map2024 = {};
     let map2025 = {};
     let mapExcelcare = {};
-    let mapExcelcareCash = {};
+    let mapExcelcareCash = {};      // FY 25 Cash
+    let mapExcelcareCash2627 = {};  // FY 26-27 Cash (new)
     let mapExcelcare2024 = {};
     let mapExcelcareGipsa2026 = {};
     let mapKolkata = {};       // Standard Kolkata SOC (no payer-specific entries)
@@ -5231,6 +5225,9 @@
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') {
             TARIFF_EXCELCARE_CASH_2025.forEach(item => { mapExcelcareCash[item.id] = item; });
         }
+        if (typeof TARIFF_EXCELCARE_CASH_2627 !== 'undefined') {
+            TARIFF_EXCELCARE_CASH_2627.forEach(item => { mapExcelcareCash2627[item.id] = item; });
+        }
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') {
             TARIFF_EXCELCARE_2024.forEach(item => { mapExcelcare2024[item.id] = item; });
         }
@@ -5265,6 +5262,7 @@
         if (typeof TARIFF_2025 !== 'undefined') TARIFF_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2025 !== 'undefined') TARIFF_EXCELCARE_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') TARIFF_EXCELCARE_CASH_2025.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_EXCELCARE_CASH_2627 !== 'undefined') TARIFF_EXCELCARE_CASH_2627.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') TARIFF_EXCELCARE_2024.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') TARIFF_EXCELCARE_GIPSA_2026.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') TARIFF_KOLKATA_SOC.forEach(item => allIds.add(item.id));
@@ -5286,6 +5284,7 @@
             let m21 = map2021[id];
             let mEc = mapExcelcare[id];
             let mEcCash = mapExcelcareCash[id];
+            let mEcCash2627 = mapExcelcareCash2627[id];  // FY 26-27 Cash
             let mEc24 = mapExcelcare2024[id];
             let mEcGipsa2026 = mapExcelcareGipsa2026[id];
             let mKol = mapKolkata[id];
@@ -7690,6 +7689,11 @@
                 return { activeSOC: TARIFF_EXCELCARE_2024, activeSOCMap: mapExcelcare2024 };
             }
             if (u.includes("CASH")) {
+                // Prefer newer FY 26-27 Cash SOC when keyword present
+                if ((u.includes("2627") || u.includes("26-27") || u.includes("2026-27") || u.includes("2027")) &&
+                    typeof TARIFF_EXCELCARE_CASH_2627 !== 'undefined') {
+                    return { activeSOC: TARIFF_EXCELCARE_CASH_2627, activeSOCMap: mapExcelcareCash2627 };
+                }
                 return { activeSOC: TARIFF_EXCELCARE_CASH_2025, activeSOCMap: mapExcelcareCash };
             }
             if (u.includes("GIPSA")) {
@@ -9429,46 +9433,46 @@
                         '#ca6702', // Short Billing: Amber/Orange
                         '#9b5de5', // Not in SOC/Templates: Purple
                         '#e07a5f'  // Unauthorized Discount: Coral/Orange
-                      ],
-                      borderWidth: isDark ? 2 : 1,
-                      borderColor: isDark ? '#1e293b' : '#ffffff'
-                  }]
-              },
-              options: {
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  plugins: {
-                      legend: {
-                          position: 'right',
-                          labels: {
-                              color: textColor,
-                              font: { size: 11, family: 'Book Antiqua' },
-                              boxWidth: 12,
-                              padding: 10
-                          }
-                      },
-                      tooltip: {
-                          backgroundColor: isDark ? '#1e293b' : '#ffffff',
-                          titleColor: isDark ? '#ffffff' : '#0f172a',
-                          bodyColor: isDark ? '#cbd5e1' : '#334155',
-                          borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
-                          borderWidth: 1,
-                          padding: 10,
-                          callbacks: {
-                              label: function(context) {
-                                  const val = context.raw || 0;
-                                  const pct = totalDiscrepancies > 0 ? Math.round((val / totalDiscrepancies) * 100) : 0;
-                                  return ` ${context.label}: ${val} (${pct}%)`;
-                              }
-                          }
-                      }
-                  },
-                  cutout: '65%'
-              }
-          });
-      }
-  
-      window.getRowValidationErrors = function(row) {
+                    ],
+                    borderWidth: isDark ? 2 : 1,
+                    borderColor: isDark ? '#1e293b' : '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            color: textColor,
+                            font: { size: 11, family: 'Book Antiqua' },
+                            boxWidth: 12,
+                            padding: 10
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: isDark ? '#1e293b' : '#ffffff',
+                        titleColor: isDark ? '#ffffff' : '#0f172a',
+                        bodyColor: isDark ? '#cbd5e1' : '#334155',
+                        borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
+                        borderWidth: 1,
+                        padding: 10,
+                        callbacks: {
+                            label: function(context) {
+                                const val = context.raw || 0;
+                                const pct = totalDiscrepancies > 0 ? Math.round((val / totalDiscrepancies) * 100) : 0;
+                                return ` ${context.label}: ${val} (${pct}%)`;
+                            }
+                        }
+                    }
+                },
+                cutout: '65%'
+            }
+        });
+    }
+
+    window.getRowValidationErrors = function(row) {
         let errs = {};
 
         // Zero-rated or already-ignored rows: suppress all field-level validation.
@@ -12811,6 +12815,59 @@
                             resolvedRate = (foundRate !== null) ? foundRate : (match.rates["STANDARD"] !== undefined ? match.rates["STANDARD"] : null);
                         }
                     }
+
+                    // ── Fix: serviceContext IP/OP mismatch filter ──────────────────
+                    // If SOC entry is tagged as IP-only but the bill row is Day Care/OP
+                    // (or tagged OP but row is an admitted IP patient), skip this match
+                    // so the correct context variant can be found instead.
+                    if (match.serviceContext) {
+                        const isOPRow = (cleanRoom.includes("DAY CARE") || cleanRoom.includes("DAYCARE") ||
+                                         cleanRoom.includes("OPD") || cleanRoom.includes("EMERGENCY"));
+                        const isIPRow = !isOPRow;
+                        if (match.serviceContext === "IP" && isOPRow) {
+                            resolvedRate = null;
+                            res.explanation += ` [SC] Entry ${match.id} is IP-only; bill row appears to be Day Care/OP — using OP rate instead.`;
+                            // Try to find the OP variant
+                            const opMatch = Object.values(activeSOCMap).find(e =>
+                                e.serviceContext === "OP" && e.name === match.name
+                            );
+                            if (opMatch && opMatch.rates) {
+                                resolvedRate = opMatch.rates[normRoom] !== undefined
+                                    ? opMatch.rates[normRoom]
+                                    : opMatch.rates["DAY CARE"] || opMatch.rates["STANDARD"] || null;
+                                if (resolvedRate !== null) {
+                                    res.explanation += ` Using OP variant [${opMatch.id}] rate ₹${resolvedRate}.`;
+                                }
+                            }
+                        } else if (match.serviceContext === "OP" && isIPRow) {
+                            resolvedRate = null;
+                            res.explanation += ` [SC] Entry ${match.id} is OP-only; bill row appears to be IP admission — using IP rate instead.`;
+                            const ipMatch = Object.values(activeSOCMap).find(e =>
+                                e.serviceContext === "IP" && e.name === match.name
+                            );
+                            if (ipMatch && ipMatch.rates) {
+                                resolvedRate = ipMatch.rates[normRoom] !== undefined
+                                    ? ipMatch.rates[normRoom]
+                                    : ipMatch.rates["STANDARD"] || null;
+                                if (resolvedRate !== null) {
+                                    res.explanation += ` Using IP variant [${ipMatch.id}] rate ₹${resolvedRate}.`;
+                                }
+                            }
+                        }
+                    }
+
+                    // ── Fix: chargeUnit=per_day multiplier ────────────────────────
+                    // Monitoring charges (CCG, PCCG, RCCG, NNCCG) are billed per
+                    // ICU day. The bill qty = number of days. expectedTariff = rate × qty.
+                    if (match.chargeUnit === "per_day" && resolvedRate !== null) {
+                        const qty = typeof item.quantity === 'number' && item.quantity > 0 ? item.quantity : 1;
+                        if (qty > 1) {
+                            const totalExpected = resolvedRate * qty;
+                            res.explanation += ` [PD] Per-day charge: ₹${resolvedRate} × ${qty} days = ₹${totalExpected}.`;
+                            resolvedRate = totalExpected;  // compare against total billed amount
+                        }
+                    }
+
                 } else {
                     if (match.rates) {
                         const mappedCat = mapIOCLRoomCategory(item.roomCategory, cleanRoom);
