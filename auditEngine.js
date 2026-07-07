@@ -4,6 +4,7 @@ const { enforcePermission } = require('./authEngine');
 const UI_TO_DB_SOC_MAP = {
     "excelcare_2025": "TARIFF_EXCELCARE_2025",
     "excelcare_cash_2025": "TARIFF_EXCELCARE_CASH_2025",
+    "excelcare_cash_2627": "TARIFF_EXCELCARE_CASH_2627",
     "excelcare_gipsa_2026": "TARIFF_EXCELCARE_GIPSA_2026",
     "excelcare_2024": "TARIFF_EXCELCARE_2024",
     "2025": "TARIFF_2025",
@@ -19,6 +20,7 @@ const UI_TO_DB_SOC_MAP = {
     "2025_cash": "TARIFF_CASH_2025",
     "excelcare_soc": "TARIFF_EXCELCARE_2025",
     "excelcare_soc_cash": "TARIFF_EXCELCARE_CASH_2025",
+    "excelcare_soc_cash_2627": "TARIFF_EXCELCARE_CASH_2627",
     "hdfc_single": "TARIFF_HDFC_ERGO_2024",
     "hdfc_gen": "TARIFF_HDFC_ERGO_2024",
     "hdfc_twin": "TARIFF_HDFC_ERGO_2024",

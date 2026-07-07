@@ -4235,10 +4235,12 @@
                             <option value="TARIFF_2023">TARIFF_2023 (Guwahati Credit 2023)</option>
                             <option value="TARIFF_2021">TARIFF_2021 (Guwahati SOC 2021-22)</option>
                             <option value="TARIFF_2021_IOCL">TARIFF_2021_IOCL (Guwahati IOCL SOC 2021-22)</option>
-                            <option value="TARIFF_EXCELCARE_2025">TARIFF_EXCELCARE_2025 (Excelcare Credit 2025)</option>
-                            <option value="TARIFF_EXCELCARE_CASH_2026">TARIFF_EXCELCARE_CASH_2026 (Excelcare Cash 2026)</option>
-                            <option value="TARIFF_EXCELCARE_2024">TARIFF_EXCELCARE_2024 (Excelcare SOC 2024)</option>
-                            <option value="TARIFF_EXCELCARE_GIPSA_2026">TARIFF_EXCELCARE_GIPSA_2026 (Excelcare GIPSA 2026)</option>
+                            <option value="TARIFF_EXCELCARE_2025">Excelcare SOC FY 25 (Credit/TPA)</option>
+                            <option value="TARIFF_EXCELCARE_CASH_2025">Excelcare SOC FY 25 (Cash)</option>
+                            <option value="TARIFF_EXCELCARE_CASH_2627">Excelcare SOC FY 26-27 (Cash) ★ New</option>
+                            <option value="TARIFF_EXCELCARE_CASH_2026">Excelcare Cash 2026</option>
+                            <option value="TARIFF_EXCELCARE_2024">Excelcare SOC FY 24 (Credit/TPA)</option>
+                            <option value="TARIFF_EXCELCARE_GIPSA_2026">Excelcare GIPSA 2026</option>
                             <option value="TARIFF_HDFC_ERGO_2024">TARIFF_HDFC_ERGO_2024 (HDFC ERGO Templates)</option>
                             <option value="TARIFF_KOLKATA_SOC">TARIFF_KOLKATA_SOC (Kolkata SOC)</option>
                             <option value="TARIFF_DATA">TARIFF_DATA (Master 2026 TPA/GIPSA)</option>
@@ -4496,7 +4498,8 @@
     let map2024 = {};
     let map2025 = {};
     let mapExcelcare = {};
-    let mapExcelcareCash = {};
+    let mapExcelcareCash = {};      // FY 25 Cash
+    let mapExcelcareCash2627 = {};  // FY 26-27 Cash (new)
     let mapExcelcare2024 = {};
     let mapExcelcareGipsa2026 = {};
     let mapKolkata = {};       // Standard Kolkata SOC (no payer-specific entries)
@@ -5218,6 +5221,9 @@
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') {
             TARIFF_EXCELCARE_CASH_2025.forEach(item => { mapExcelcareCash[item.id] = item; });
         }
+        if (typeof TARIFF_EXCELCARE_CASH_2627 !== 'undefined') {
+            TARIFF_EXCELCARE_CASH_2627.forEach(item => { mapExcelcareCash2627[item.id] = item; });
+        }
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') {
             TARIFF_EXCELCARE_2024.forEach(item => { mapExcelcare2024[item.id] = item; });
         }
@@ -5252,6 +5258,7 @@
         if (typeof TARIFF_2025 !== 'undefined') TARIFF_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2025 !== 'undefined') TARIFF_EXCELCARE_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') TARIFF_EXCELCARE_CASH_2025.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_EXCELCARE_CASH_2627 !== 'undefined') TARIFF_EXCELCARE_CASH_2627.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') TARIFF_EXCELCARE_2024.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') TARIFF_EXCELCARE_GIPSA_2026.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') TARIFF_KOLKATA_SOC.forEach(item => allIds.add(item.id));
@@ -5273,6 +5280,7 @@
             let m21 = map2021[id];
             let mEc = mapExcelcare[id];
             let mEcCash = mapExcelcareCash[id];
+            let mEcCash2627 = mapExcelcareCash2627[id];  // FY 26-27 Cash
             let mEc24 = mapExcelcare2024[id];
             let mEcGipsa2026 = mapExcelcareGipsa2026[id];
             let mKol = mapKolkata[id];
@@ -7677,6 +7685,11 @@
                 return { activeSOC: TARIFF_EXCELCARE_2024, activeSOCMap: mapExcelcare2024 };
             }
             if (u.includes("CASH")) {
+                // Prefer newer FY 26-27 Cash SOC when keyword present
+                if ((u.includes("2627") || u.includes("26-27") || u.includes("2026-27") || u.includes("2027")) &&
+                    typeof TARIFF_EXCELCARE_CASH_2627 !== 'undefined') {
+                    return { activeSOC: TARIFF_EXCELCARE_CASH_2627, activeSOCMap: mapExcelcareCash2627 };
+                }
                 return { activeSOC: TARIFF_EXCELCARE_CASH_2025, activeSOCMap: mapExcelcareCash };
             }
             if (u.includes("GIPSA")) {
