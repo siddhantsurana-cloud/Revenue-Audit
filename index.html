@@ -4240,7 +4240,8 @@
                             <option value="TARIFF_EXCELCARE_CASH_2627">Excelcare SOC FY 26-27 (Cash) ★ New</option>
                             <option value="TARIFF_EXCELCARE_CASH_2026">Excelcare Cash 2026</option>
                             <option value="TARIFF_EXCELCARE_2024">Excelcare SOC FY 24 (Credit/TPA)</option>
-                            <option value="TARIFF_EXCELCARE_GIPSA_2026">Excelcare GIPSA 2026</option>
+                            <option value="TARIFF_EXCELCARE_GIPSA_2026">Excelcare GIPSA 2026 (old)</option>
+                            <option value="TARIFF_GIPSA_2526">GIPSA FY 25-26 ★ (Excelcare + International)</option>
                             <option value="TARIFF_HDFC_ERGO_2024">TARIFF_HDFC_ERGO_2024 (HDFC ERGO Templates)</option>
                             <option value="TARIFF_KOLKATA_SOC">TARIFF_KOLKATA_SOC (Kolkata SOC)</option>
                             <option value="TARIFF_DATA">TARIFF_DATA (Master 2026 TPA/GIPSA)</option>
@@ -4502,6 +4503,7 @@
     let mapExcelcareCash2627 = {};  // FY 26-27 Cash (new)
     let mapExcelcare2024 = {};
     let mapExcelcareGipsa2026 = {};
+    let mapGipsa2526 = {};  // GIPSA FY 2025-26 — Excelcare + International
     let mapKolkata = {};       // Standard Kolkata SOC (no payer-specific entries)
     let mapKolkataHdfc = {};   // Kolkata SOC + HDFC ERGO package entries (applicablePayer = HDFC_ERGO)
     let mapHdfc = {}; // id -> Array of HDFC records (Excelcare templates)
@@ -5230,6 +5232,9 @@
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') {
             TARIFF_EXCELCARE_GIPSA_2026.forEach(item => { mapExcelcareGipsa2026[item.id] = item; });
         }
+        if (typeof TARIFF_GIPSA_2526 !== 'undefined') {
+            TARIFF_GIPSA_2526.forEach(item => { mapGipsa2526[item.id] = item; });
+        }
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') {
             TARIFF_KOLKATA_SOC.forEach(item => {
                 // Standard map: only entries without a payer restriction
@@ -5261,6 +5266,7 @@
         if (typeof TARIFF_EXCELCARE_CASH_2627 !== 'undefined') TARIFF_EXCELCARE_CASH_2627.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') TARIFF_EXCELCARE_2024.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') TARIFF_EXCELCARE_GIPSA_2026.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_GIPSA_2526 !== 'undefined') TARIFF_GIPSA_2526.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') TARIFF_KOLKATA_SOC.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_HDFC_ERGO_2024 !== 'undefined') TARIFF_HDFC_ERGO_2024.forEach(item => allIds.add(item.id));
 
@@ -7693,6 +7699,10 @@
                 return { activeSOC: TARIFF_EXCELCARE_CASH_2025, activeSOCMap: mapExcelcareCash };
             }
             if (u.includes("GIPSA")) {
+                // Prefer newer FY 25-26 GIPSA when available
+                if (typeof TARIFF_GIPSA_2526 !== 'undefined') {
+                    return { activeSOC: TARIFF_GIPSA_2526, activeSOCMap: mapGipsa2526 };
+                }
                 return { activeSOC: TARIFF_EXCELCARE_GIPSA_2026, activeSOCMap: mapExcelcareGipsa2026 };
             }
             return { activeSOC: TARIFF_EXCELCARE_2025, activeSOCMap: mapExcelcare };
