@@ -4248,10 +4248,13 @@
                             <option value="TARIFF_2023">TARIFF_2023 (Guwahati Credit 2023)</option>
                             <option value="TARIFF_2021">TARIFF_2021 (Guwahati SOC 2021-22)</option>
                             <option value="TARIFF_2021_IOCL">TARIFF_2021_IOCL (Guwahati IOCL SOC 2021-22)</option>
-                            <option value="TARIFF_EXCELCARE_2025">TARIFF_EXCELCARE_2025 (Excelcare Credit 2025)</option>
-                            <option value="TARIFF_EXCELCARE_CASH_2026">TARIFF_EXCELCARE_CASH_2026 (Excelcare Cash 2026)</option>
-                            <option value="TARIFF_EXCELCARE_2024">TARIFF_EXCELCARE_2024 (Excelcare SOC 2024)</option>
-                            <option value="TARIFF_EXCELCARE_GIPSA_2026">TARIFF_EXCELCARE_GIPSA_2026 (Excelcare GIPSA 2026)</option>
+                            <option value="TARIFF_EXCELCARE_2025">Excelcare SOC FY 25 (Credit/TPA)</option>
+                            <option value="TARIFF_EXCELCARE_CASH_2025">Excelcare SOC FY 25 (Cash)</option>
+                            <option value="TARIFF_EXCELCARE_CASH_2627">Excelcare SOC FY 26-27 (Cash) ★ New</option>
+                            <option value="TARIFF_EXCELCARE_CASH_2026">Excelcare Cash 2026</option>
+                            <option value="TARIFF_EXCELCARE_2024">Excelcare SOC FY 24 (Credit/TPA)</option>
+                            <option value="TARIFF_EXCELCARE_GIPSA_2026">Excelcare GIPSA 2026 (old)</option>
+                            <option value="TARIFF_GIPSA_2526">GIPSA FY 25-26 ★ (Excelcare + International)</option>
                             <option value="TARIFF_HDFC_ERGO_2024">TARIFF_HDFC_ERGO_2024 (HDFC ERGO Templates)</option>
                             <option value="TARIFF_KOLKATA_SOC">TARIFF_KOLKATA_SOC (Kolkata SOC)</option>
                             <option value="TARIFF_DATA">TARIFF_DATA (Master 2026 TPA/GIPSA)</option>
@@ -4509,9 +4512,11 @@
     let map2024 = {};
     let map2025 = {};
     let mapExcelcare = {};
-    let mapExcelcareCash = {};
+    let mapExcelcareCash = {};      // FY 25 Cash
+    let mapExcelcareCash2627 = {};  // FY 26-27 Cash (new)
     let mapExcelcare2024 = {};
     let mapExcelcareGipsa2026 = {};
+    let mapGipsa2526 = {};  // GIPSA FY 2025-26 — Excelcare + International
     let mapKolkata = {};       // Standard Kolkata SOC (no payer-specific entries)
     let mapKolkataHdfc = {};   // Kolkata SOC + HDFC ERGO package entries (applicablePayer = HDFC_ERGO)
     let mapHdfc = {}; // id -> Array of HDFC records (Excelcare templates)
@@ -4678,6 +4683,44 @@
 
     window.customAgreements = [];
 
+    window.availableChargingMethods = [];
+
+    async function loadChargingMethodsFromServer() {
+        if (window.sandboxEnvironment) {
+            const stored = localStorage.getItem('brc_v2_charging_methods');
+            window.availableChargingMethods = stored ? JSON.parse(stored) : [];
+        } else {
+            try {
+                const res = await fetch('/api/load_charging_methods');
+                if (res.ok) {
+                    const data = await res.json();
+                    window.availableChargingMethods = data.methods || [];
+                    localStorage.setItem('brc_v2_charging_methods', JSON.stringify(window.availableChargingMethods));
+                    console.log('Successfully loaded charging methods from server.');
+                }
+            } catch (e) {
+                console.warn('Could not load charging methods from server, using localStorage:', e);
+                const stored = localStorage.getItem('brc_v2_charging_methods');
+                window.availableChargingMethods = stored ? JSON.parse(stored) : [];
+            }
+        }
+        return window.availableChargingMethods;
+    }
+
+    async function syncChargingMethodsToServer(methods) {
+        if (window.sandboxEnvironment) return;
+        try {
+            await fetch('/api/save_charging_methods', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ methods: methods, version: "1.0" })
+            });
+            console.log('Successfully synced charging methods to server.');
+        } catch (e) {
+            console.error('Failed to sync charging methods to server:', e);
+        }
+    }
+
     async function loadCustomAgreementsFromServer() {
         let loaded = [];
         if (window.sandboxEnvironment) {
@@ -4685,10 +4728,10 @@
             loaded = stored ? JSON.parse(stored) : [];
         } else {
             try {
-                const res = await fetch('/api/load_custom_agreements');
+                const res = await fetch('/api/load_agreements');
                 if (res.ok) {
                     const data = await res.json();
-                    loaded = data || [];
+                    loaded = (data && data.agreements) ? data.agreements : (data || []);
                     localStorage.setItem('brc_v2_custom_customer_agreements', JSON.stringify(loaded));
                     console.log('Successfully loaded custom agreements from server.');
                 }
@@ -4721,10 +4764,14 @@
             return;
         }
         try {
-            await fetch('/api/save_custom_agreements', {
+            await fetch('/api/save_agreements', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(agreements)
+                body: JSON.stringify({
+                    agreements: agreements,
+                    chargingMethods: window.availableChargingMethods || [],
+                    version: "1.0"
+                })
             });
             console.log('Successfully synced custom agreements to server.');
         } catch (e) {
@@ -4992,6 +5039,7 @@
                 // 2. Reload overrides and refresh custom department discounts
                 await loadOverridesFromServer();
                 await loadCustomAgreementsFromServer();
+                await loadChargingMethodsFromServer();
                 if (typeof window.loadUnitCustomDiscounts === 'function') {
                     window.loadUnitCustomDiscounts();
                 }
@@ -5231,11 +5279,17 @@
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') {
             TARIFF_EXCELCARE_CASH_2025.forEach(item => { mapExcelcareCash[item.id] = item; });
         }
+        if (typeof TARIFF_EXCELCARE_CASH_2627 !== 'undefined') {
+            TARIFF_EXCELCARE_CASH_2627.forEach(item => { mapExcelcareCash2627[item.id] = item; });
+        }
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') {
             TARIFF_EXCELCARE_2024.forEach(item => { mapExcelcare2024[item.id] = item; });
         }
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') {
             TARIFF_EXCELCARE_GIPSA_2026.forEach(item => { mapExcelcareGipsa2026[item.id] = item; });
+        }
+        if (typeof TARIFF_GIPSA_2526 !== 'undefined') {
+            TARIFF_GIPSA_2526.forEach(item => { mapGipsa2526[item.id] = item; });
         }
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') {
             TARIFF_KOLKATA_SOC.forEach(item => {
@@ -5265,8 +5319,10 @@
         if (typeof TARIFF_2025 !== 'undefined') TARIFF_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2025 !== 'undefined') TARIFF_EXCELCARE_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') TARIFF_EXCELCARE_CASH_2025.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_EXCELCARE_CASH_2627 !== 'undefined') TARIFF_EXCELCARE_CASH_2627.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') TARIFF_EXCELCARE_2024.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') TARIFF_EXCELCARE_GIPSA_2026.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_GIPSA_2526 !== 'undefined') TARIFF_GIPSA_2526.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') TARIFF_KOLKATA_SOC.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_HDFC_ERGO_2024 !== 'undefined') TARIFF_HDFC_ERGO_2024.forEach(item => allIds.add(item.id));
 
@@ -5286,6 +5342,7 @@
             let m21 = map2021[id];
             let mEc = mapExcelcare[id];
             let mEcCash = mapExcelcareCash[id];
+            let mEcCash2627 = mapExcelcareCash2627[id];  // FY 26-27 Cash
             let mEc24 = mapExcelcare2024[id];
             let mEcGipsa2026 = mapExcelcareGipsa2026[id];
             let mKol = mapKolkata[id];
@@ -5411,6 +5468,7 @@
         });
         loadOverridesFromServer();
         loadCustomAgreementsFromServer();
+        loadChargingMethodsFromServer();
 
         // Build unified tariffs list and lookups
         buildUnifiedTariffs();
@@ -7690,9 +7748,18 @@
                 return { activeSOC: TARIFF_EXCELCARE_2024, activeSOCMap: mapExcelcare2024 };
             }
             if (u.includes("CASH")) {
+                // Prefer newer FY 26-27 Cash SOC when keyword present
+                if ((u.includes("2627") || u.includes("26-27") || u.includes("2026-27") || u.includes("2027")) &&
+                    typeof TARIFF_EXCELCARE_CASH_2627 !== 'undefined') {
+                    return { activeSOC: TARIFF_EXCELCARE_CASH_2627, activeSOCMap: mapExcelcareCash2627 };
+                }
                 return { activeSOC: TARIFF_EXCELCARE_CASH_2025, activeSOCMap: mapExcelcareCash };
             }
             if (u.includes("GIPSA")) {
+                // Prefer newer FY 25-26 GIPSA when available
+                if (typeof TARIFF_GIPSA_2526 !== 'undefined') {
+                    return { activeSOC: TARIFF_GIPSA_2526, activeSOCMap: mapGipsa2526 };
+                }
                 return { activeSOC: TARIFF_EXCELCARE_GIPSA_2026, activeSOCMap: mapExcelcareGipsa2026 };
             }
             return { activeSOC: TARIFF_EXCELCARE_2025, activeSOCMap: mapExcelcare };
@@ -11442,7 +11509,8 @@
             const descs = new Set();
             const processItem = (item) => {
                 if (item.id) ids.add(String(item.id).trim());
-                if (item.desc) descs.add(String(item.desc).trim());
+                const name = item.name || item.desc;
+                if (name) descs.add(String(name).trim());
             };
             if (typeof TARIFF_DATA !== 'undefined' && Array.isArray(TARIFF_DATA)) {
                 TARIFF_DATA.forEach(processItem);
@@ -11514,10 +11582,10 @@
         if (!desc) return null;
         let found = null;
         if (typeof TARIFF_DATA !== 'undefined' && Array.isArray(TARIFF_DATA)) {
-            found = TARIFF_DATA.find(x => String(x.desc).trim().toUpperCase() === desc);
+            found = TARIFF_DATA.find(x => String(x.name || x.desc || '').trim().toUpperCase() === desc);
         }
         if (!found && typeof TARIFF_KOLKATA_SOC !== 'undefined' && Array.isArray(TARIFF_KOLKATA_SOC)) {
-            found = TARIFF_KOLKATA_SOC.find(x => String(x.desc).trim().toUpperCase() === desc);
+            found = TARIFF_KOLKATA_SOC.find(x => String(x.name || x.desc || '').trim().toUpperCase() === desc);
         }
         return found;
     }
@@ -11532,7 +11600,7 @@
                 if (x.id) {
                     unique.set(String(x.id).trim(), {
                         id: String(x.id).trim(),
-                        desc: String(x.desc || '').trim()
+                        desc: String(x.name || x.desc || '').trim()
                     });
                 }
             });
@@ -11543,7 +11611,7 @@
                 if (x.id && !unique.has(id)) {
                     unique.set(id, {
                         id: id,
-                        desc: String(x.desc || '').trim()
+                        desc: String(x.name || x.desc || '').trim()
                     });
                 }
             });
@@ -11758,10 +11826,11 @@
         if (prop === 'serviceId') {
             const item = findServiceById(val);
             if (item) {
-                window.tempAgreement.services[idx]['serviceName'] = item.desc || '';
+                const name = item.name || item.desc || '';
+                window.tempAgreement.services[idx]['serviceName'] = name;
                 if (row) {
                     const nameInput = row.cells[1].querySelector('input');
-                    if (nameInput) nameInput.value = item.desc || '';
+                    if (nameInput) nameInput.value = name;
                 }
             }
         } else if (prop === 'serviceName') {
@@ -11874,10 +11943,11 @@
         if (prop === 'serviceId') {
             const item = findServiceById(val);
             if (item) {
-                window.tempPackageList[idx]['serviceName'] = item.desc || '';
+                const name = item.name || item.desc || '';
+                window.tempPackageList[idx]['serviceName'] = name;
                 if (row) {
                     const nameInput = row.cells[1].querySelector('input');
-                    if (nameInput) nameInput.value = item.desc || '';
+                    if (nameInput) nameInput.value = name;
                 }
             }
         } else if (prop === 'serviceName') {
@@ -11939,10 +12009,9 @@
                 </td>
                 <td style="padding: 0.35rem 0.5rem;">
                     <select onchange="updateTempMethod(${idx}, 'method', this.value)" style="width:100%; padding:0.35rem; background:var(--bg-page); border:1px solid var(--border); color:var(--text-main); font-size:0.8rem; border-radius:4px;">
-                        <option value="Per Day" ${item.method === 'Per Day' ? 'selected' : ''}>Per Day</option>
-                        <option value="Per Hour" ${item.method === 'Per Hour' ? 'selected' : ''}>Per Hour</option>
-                        <option value="Per Procedure" ${item.method === 'Per Procedure' ? 'selected' : ''}>Per Procedure</option>
-                        <option value="Flat" ${item.method === 'Flat' ? 'selected' : ''}>Flat</option>
+                        ${(window.availableChargingMethods && window.availableChargingMethods.length > 0 ? window.availableChargingMethods : [
+                            { name: "Per Day" }, { name: "Per Hour" }, { name: "Per Procedure" }, { name: "Flat" }
+                        ]).map(m => `<option value="${escapeHtml(m.name)}" ${item.method === m.name ? 'selected' : ''}>${escapeHtml(m.name)}</option>`).join('')}
                     </select>
                 </td>
                 <td style="padding: 0.35rem 0.5rem;"><input type="number" step="any" value="${item.cap !== null && item.cap !== undefined ? item.cap : ''}" oninput="updateTempMethod(${idx}, 'cap', this.value)" style="width:100%; padding:0.35rem; background:transparent; border:1px solid var(--border); color:var(--text-main); font-size:0.8rem; border-radius:4px;" placeholder="e.g. 5000"></td>
@@ -11963,10 +12032,11 @@
         if (prop === 'serviceId') {
             const item = findServiceById(val);
             if (item) {
-                window.tempAgreement.chargingMethods[idx]['serviceName'] = item.desc || '';
+                const name = item.name || item.desc || '';
+                window.tempAgreement.chargingMethods[idx]['serviceName'] = name;
                 if (row) {
                     const nameInput = row.cells[1].querySelector('input');
-                    if (nameInput) nameInput.value = item.desc || '';
+                    if (nameInput) nameInput.value = name;
                 }
             }
         } else if (prop === 'serviceName') {
@@ -12044,10 +12114,11 @@
         if (prop === 'serviceId') {
             const item = findServiceById(val);
             if (item) {
-                window.tempAgreement.rules[idx]['serviceName'] = item.desc || '';
+                const name = item.name || item.desc || '';
+                window.tempAgreement.rules[idx]['serviceName'] = name;
                 if (row) {
                     const nameInput = row.cells[2].querySelector('input');
-                    if (nameInput) nameInput.value = item.desc || '';
+                    if (nameInput) nameInput.value = name;
                 }
             }
         } else if (prop === 'serviceName') {
@@ -12285,13 +12356,13 @@
             const inclusions = window.tempAgreement.packages.inclusions || [];
             inclusions.forEach(id => {
                 const item = findServiceById(id);
-                const name = item ? item.desc : '';
+                const name = item ? (item.name || item.desc || '') : '';
                 pkgData.push([id, name, "Inclusion"]);
             });
             const exclusions = window.tempAgreement.packages.exclusions || [];
             exclusions.forEach(id => {
                 const item = findServiceById(id);
-                const name = item ? item.desc : '';
+                const name = item ? (item.name || item.desc || '') : '';
                 pkgData.push([id, name, "Exclusion"]);
             });
         }
