@@ -192,7 +192,14 @@ async function seedTariffsIfNeeded() {
         });
     });
 
-    if (dbTime === fileTime) {
+    // Check if base rates are seeded correctly (not all 0)
+    const baseRatesCount = await new Promise((res) => {
+        db.get(`SELECT COUNT(*) as count FROM tbl_tariff_master WHERE Rate > 0`, [], (err, row) => {
+            res(row ? row.count : 0);
+        });
+    });
+
+    if (dbTime === fileTime && baseRatesCount > 0) {
         console.log('Tariff master is already up to date.');
         return;
     }
@@ -258,7 +265,18 @@ async function seedTariffsIfNeeded() {
     if (context.TARIFF_DATA) {
         const baseStmt = db.prepare(`INSERT OR REPLACE INTO tbl_tariff_master (ServiceID, ServiceName, Rate) VALUES (?, ?, ?)`);
         for (const item of context.TARIFF_DATA) {
-            baseStmt.run([item.id, item.name, item.rate || 0.0]);
+            let rateVal = 0.0;
+            if (item.rate !== undefined && item.rate !== null) {
+                rateVal = Number(item.rate);
+            } else if (item.gipsa_rate !== undefined && item.gipsa_rate !== null) {
+                rateVal = Number(item.gipsa_rate);
+            } else if (item.tpa_rate !== undefined && item.tpa_rate !== null) {
+                rateVal = Number(item.tpa_rate);
+            }
+            if (isNaN(rateVal)) {
+                rateVal = 0.0;
+            }
+            baseStmt.run([item.id, item.name, rateVal]);
         }
         baseStmt.finalize();
     }

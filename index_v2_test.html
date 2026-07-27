@@ -5864,6 +5864,7 @@
             updateAuditCharts();
             renderAuditTable();
             updateTabBadges();
+            updateVerificationKPIs();
 
             if (panelReports.classList.contains('active')) {
                 renderReportsPanel();
@@ -5895,6 +5896,7 @@
             updateAuditCharts();
             renderAuditTable();
             updateTabBadges();
+            updateVerificationKPIs();
         }
     };
 
@@ -5912,6 +5914,7 @@
             updateAuditCharts();
             renderAuditTable();
             updateTabBadges();
+            updateVerificationKPIs();
         }
     };
 
@@ -5927,6 +5930,7 @@
             updateAuditCharts();
             renderAuditTable();
             updateTabBadges();
+            updateVerificationKPIs();
         }
     };
 
@@ -5942,6 +5946,7 @@
             updateAuditCharts();
             renderAuditTable();
             updateTabBadges();
+            updateVerificationKPIs();
         }
     };
 
@@ -9114,6 +9119,7 @@
             updateAuditCharts();
             renderAuditTable();
             updateTabBadges();
+            updateVerificationKPIs();
             
             if (panelReports.classList.contains('active')) {
                 renderReportsPanel();
@@ -9350,6 +9356,7 @@
             updateAuditCharts();
             resetAuditBtn();
             updateTabBadges();
+            updateVerificationKPIs();
 
             // Update Reupload Summary Banner
             const reuploadBanner = document.getElementById('reupload-summary-banner');
@@ -9740,6 +9747,67 @@
         if (activeIndicator) {
             activeIndicator.textContent = currentAuditSortDirection === 'asc' ? '▲' : '▼';
         }
+    }
+
+    function updateVerificationKPIs() {
+        const totalCount = auditedRows.length;
+        let matchingCount = 0;
+        let overchargedCount = 0;
+        let underchargedCount = 0;
+        let notfoundCount = 0;
+        let ignoredCount = 0;
+        let errorsCount = 0;
+        let excessVal = 0;
+        let shortVal = 0;
+
+        auditedRows.forEach(row => {
+            const errors = typeof window.getRowValidationErrors === 'function' ? window.getRowValidationErrors(row) : {};
+            if (Object.keys(errors).length > 0) {
+                errorsCount++;
+            }
+
+            if (row.isIgnored || (row.status && (row.status.startsWith("Ignored") || row.status === "Round Off Difference"))) {
+                ignoredCount++;
+            } else if (row.status === "Matching") {
+                matchingCount++;
+            } else if (row.status === "Overcharged") {
+                overchargedCount++;
+                const diffVal = Number(row.diff);
+                if (!isNaN(diffVal)) {
+                    excessVal += diffVal;
+                }
+            } else if (row.status === "Undercharged") {
+                underchargedCount++;
+                const diffVal = Number(row.diff);
+                if (!isNaN(diffVal)) {
+                    shortVal += Math.abs(diffVal);
+                }
+            } else if (row.status === "Not Found in Master") {
+                notfoundCount++;
+            }
+        });
+
+        const activeCount = totalCount - ignoredCount;
+        const assuranceRate = activeCount > 0 ? Math.round((matchingCount / activeCount) * 100) : 100;
+        const auditCoverage = totalCount > 0 ? Math.round(((totalCount - ignoredCount) / totalCount) * 100) : 0;
+
+        const setSafeText = (id, text) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = text;
+        };
+
+        setSafeText('cfo-verification-accuracy', `${assuranceRate}%`);
+        setSafeText('cfo-compliance-leakage', '₹' + Math.round(excessVal).toLocaleString('en-IN'));
+        setSafeText('cfo-recovery-potential', '₹' + Math.round(shortVal).toLocaleString('en-IN'));
+        setSafeText('cfo-audit-coverage', `${auditCoverage}%`);
+
+        setSafeText('brick-val-all', totalCount.toLocaleString());
+        setSafeText('brick-val-matching', matchingCount.toLocaleString());
+        setSafeText('brick-val-overcharged', overchargedCount.toLocaleString());
+        setSafeText('brick-val-undercharged', underchargedCount.toLocaleString());
+        setSafeText('brick-val-notfound', notfoundCount.toLocaleString());
+        setSafeText('brick-val-ignored', ignoredCount.toLocaleString());
+        setSafeText('brick-val-errors', errorsCount.toLocaleString());
     }
 
     // Render Audit Table page content
@@ -10807,6 +10875,7 @@
         // Show table
         auditResultsArea.style.display = 'flex';
         applyAuditFiltersAndSort();
+        updateVerificationKPIs();
         updateUIForRole();
     };
 
