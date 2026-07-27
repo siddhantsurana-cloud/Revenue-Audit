@@ -212,6 +212,88 @@ function getMasterTariffItem(serviceId, serviceName) {
     });
 }
 
+function getDiscountCategory(deptLower, nameUpper) {
+    if (deptLower === 'consumables' || nameUpper.includes('CONSUMABLE') || deptLower.includes('material')) {
+        return "Pharmacy";
+    }
+    if (deptLower.includes('laboratory') || deptLower.includes('pathology') || deptLower.includes('microbiology') || deptLower.includes('biochemistry') || deptLower.includes('bio-chemistry') || deptLower.includes('bio chemistry') || deptLower.includes('biochem') || deptLower.includes('hematology') || deptLower.includes('lab') || deptLower.includes('path') || deptLower.includes('investigation') || deptLower.includes('inv')) {
+        return "Lab";
+    }
+    if (deptLower.includes('radiology') || deptLower.includes('imaging') || deptLower.includes('scan') || deptLower.includes('ultrasound') || deptLower.includes('usg') || deptLower.includes('mri') || deptLower.includes('ct ') || deptLower.includes('ct-') || deptLower.includes('x-ray') || deptLower.includes('xray')) {
+        return "Radiology";
+    }
+    if (deptLower.includes('pharmacy') || nameUpper.includes('HSN:') || nameUpper.includes('PHARMACY') || deptLower.includes('drug')) {
+        return "Pharmacy";
+    }
+    if (deptLower.includes('bed') || deptLower.includes('room') || deptLower.includes('ward') || deptLower.includes('nursing') || deptLower.includes('monitoring')) {
+        return "Room";
+    }
+    if (deptLower.includes('visit') || nameUpper.includes('VISIT') || nameUpper.includes('CONSULTATION') || deptLower.includes('consultation')) {
+        return "Consultations";
+    }
+    if (deptLower.includes('procedure') || deptLower.includes('ot') || deptLower.includes('surgery') || deptLower.includes('operation') || deptLower.includes('anesthesia')) {
+        return "Procedures";
+    }
+    return "Others";
+}
+
+function parseAgreementDiscountForCategory(ag, deptLower, nameUpper) {
+    if (!ag) return 0;
+    const isKolkata = (ag.locations && ag.locations.includes("Kolkata")) || (ag.tariffMapped && ag.tariffMapped.toUpperCase().includes("KOLKATA"));
+    if (isKolkata) {
+        if (deptLower.includes("health check") || deptLower.includes("ahc") || nameUpper.includes("HEALTH CHECK") || nameUpper.includes("AHC") || deptLower.includes("package")) {
+            return 20;
+        }
+        const serviceCat = getDiscountCategory(deptLower, nameUpper);
+        if (
+            serviceCat === "Room" || 
+            serviceCat === "Procedures" || 
+            serviceCat === "Lab" || 
+            serviceCat === "Radiology" ||
+            deptLower.includes("nursing") ||
+            deptLower.includes("room rent") ||
+            deptLower.includes("operation theatre") ||
+            deptLower.includes("investigation")
+        ) {
+            return 12;
+        }
+        return 0;
+    }
+
+    if (!ag.discountAgreed) return 0;
+    const discStr = ag.discountAgreed.toUpperCase();
+    const serviceCat = getDiscountCategory(deptLower, nameUpper);
+    
+    if (serviceCat === "Room") {
+        if (discStr.includes("BED") || discStr.includes("ROOM") || discStr.includes("NURS")) {
+            const match = discStr.match(/(\d+)\s*%\s*(?:ON\s*)?(?:ALL\s*)?(?:BED|ROOM|NURS)/);
+            if (match) return Number(match[1]);
+        }
+    }
+    if (serviceCat === "Lab") {
+        if (discStr.includes("LAB") || discStr.includes("INVESTIGATION")) {
+            const match = discStr.match(/(\d+)\s*%\s*(?:ON\s*)?(?:INHOUSE\s*)?(?:LAB|INVESTIGATION)/);
+            if (match) return Number(match[1]);
+        }
+    }
+    if (serviceCat === "Radiology") {
+        if (discStr.includes("RAD") || discStr.includes("INVESTIGATION") || discStr.includes("X-RAY")) {
+            const match = discStr.match(/(\d+)\s*%\s*(?:ON\s*)?(?:INHOUSE\s*)?(?:RAD|INVESTIGATION|X-RAY)/);
+            if (match) return Number(match[1]);
+        }
+    }
+    if (serviceCat === "Procedures") {
+        if (discStr.includes("PROC") || discStr.includes("OT") || discStr.includes("SURG") || discStr.includes("FEES")) {
+            const match = discStr.match(/(\d+)\s*%\s*(?:ON\s*)?(?:PROC|OT|SURG|FEES)/);
+            if (match) return Number(match[1]);
+        }
+    }
+    
+    const matchAll = discStr.match(/(?:DISCOUNT|LESS)\s*-?\s*(\d+)\s*%/);
+    if (matchAll) return Number(matchAll[1]);
+    return 0;
+}
+
 // 4. Proprietary Validation Pipeline
 async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
     const res = {
@@ -421,9 +503,8 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
 
     // G. Calculate expected discounted rates
     if (res.expectedTariff !== null) {
-        if (res.discountApplied === 0 && agreement && agreement.discountAgreed) {
-            const discNum = parseFloat(agreement.discountAgreed);
-            if (!isNaN(discNum)) res.discountApplied = discNum;
+        if (res.discountApplied === 0 && agreement) {
+            res.discountApplied = parseAgreementDiscountForCategory(agreement, (item.dept || '').toLowerCase(), (item.serviceName || '').toUpperCase());
         }
         res.expectedDiscountedRate = res.expectedTariff * (1 - res.discountApplied / 100);
     }
