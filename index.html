@@ -16111,7 +16111,7 @@
                     if (username.toLowerCase() === 'admin' && passwordHash === '10846d83f5348390f15ec3367789410cd5a4e33b7a3fb5dc8676d2182b47705a') {
                         isValid = true;
                         loggedInUser = { username: 'admin', role: 'Administrator', unit: 'all' };
-                        matchedUserObj = { username: 'admin', role: 'Administrator', unit: 'all', email: 'siddhant@bihanico.in' };
+                        matchedUserObj = { username: 'admin', role: 'Administrator', unit: 'all', email: 'siddhantsurana@gmail.com' };
                     }
                 } else {
                     // Try local credentials first (fast path)
@@ -16146,7 +16146,7 @@
                 
                 if (isValid && loggedInUser) {
                     // Step 1: Resolve Email Address
-                    const userEmail = (matchedUserObj && matchedUserObj.email) ? matchedUserObj.email : 'siddhant@bihanico.in';
+                    const userEmail = (matchedUserObj && matchedUserObj.email) ? matchedUserObj.email : 'siddhantsurana@gmail.com';
                     
                     // Step 2: Generate 6-digit OTP code
                     const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
