@@ -2089,41 +2089,60 @@
                 <p class="login-subtitle">BRC Guwahati Console</p>
             </div>
             <form id="main-login-form" class="login-form">
-                <div class="form-group-login">
-                    <label for="login-unit">Business Unit</label>
-                    <select id="login-unit">
-                        <option value="international">International Unit</option>
-                        <option value="excelcare" selected>Excelcare Unit</option>
-                        <option value="kolkata">Kolkata - Apollo Multispeciality</option>
-                        <option value="all">Master Console (Global Admin)</option>
-                    </select>
+                <div id="login-credentials-group">
+                    <div class="form-group-login">
+                        <label for="login-unit">Business Unit</label>
+                        <select id="login-unit">
+                            <option value="international">International Unit</option>
+                            <option value="excelcare" selected>Excelcare Unit</option>
+                            <option value="kolkata">Kolkata - Apollo Multispeciality</option>
+                            <option value="all">Master Console (Global Admin)</option>
+                        </select>
+                    </div>
+                    <div class="form-group-login">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" placeholder="Enter username" required autocomplete="username">
+                    </div>
+                    <div class="form-group-login">
+                        <label for="login-password">Password</label>
+                        <div style="position: relative;">
+                            <input type="password" id="login-password" placeholder="Enter password" required autocomplete="current-password">
+                            <button type="button" id="toggle-main-login-password" style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; padding: 0.2rem;">
+                                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group-login">
+                        <label for="login-role">Session Role</label>
+                        <select id="login-role">
+                            <option value="Viewer">Viewer (Read-Only)</option>
+                            <option value="Auditor" selected>Auditor</option>
+                            <option value="Approver">Approval / Reviewer</option>
+                            <option value="Administrator">Administrator</option>
+                        </select>
+                    </div>
+                    <div id="main-login-error" class="login-error-msg" style="display: none;">
+                        Invalid username or password.
+                    </div>
+                    <button type="submit" class="btn-login-submit" id="btn-login-submit" disabled style="opacity: 0.6; cursor: not-allowed;">Loading Portal…</button>
                 </div>
-                <div class="form-group-login">
-                    <label for="login-username">Username</label>
-                    <input type="text" id="login-username" placeholder="Enter username" required autocomplete="username">
-                </div>
-                <div class="form-group-login">
-                    <label for="login-password">Password</label>
-                    <div style="position: relative;">
-                        <input type="password" id="login-password" placeholder="Enter password" required autocomplete="current-password">
-                        <button type="button" id="toggle-main-login-password" style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; padding: 0.2rem;">
-                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                        </button>
+
+                <div id="otp-verification-group" style="display: none; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 0.5rem;">
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <span style="display: inline-block; background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 0.5rem 0.8rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; border: 1px solid rgba(59,130,246,0.2);">
+                            2-FACTOR OTP REQUIRED
+                        </span>
+                        <div id="otp-email-target" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; font-weight: 600;"></div>
+                    </div>
+                    <div class="form-group-login">
+                        <label for="login-otp">Enter 6-Digit OTP Code</label>
+                        <input type="text" id="login-otp" placeholder="XXXXXX" maxlength="6" style="text-align: center; letter-spacing: 0.5em; font-size: 1.2rem; font-weight: 800;" autocomplete="one-time-code">
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <button type="button" class="btn-login-submit" id="btn-otp-verify" style="flex: 2; background-color: var(--success); border-color: var(--success); opacity: 1; cursor: pointer;">Verify & Sign In</button>
+                        <button type="button" class="btn-login-submit" id="btn-otp-cancel" style="flex: 1; background: none; border: 1px solid var(--border); color: var(--text-main); font-weight: 700; opacity: 1; cursor: pointer;">Back</button>
                     </div>
                 </div>
-                <div class="form-group-login">
-                    <label for="login-role">Session Role</label>
-                    <select id="login-role">
-                        <option value="Viewer">Viewer (Read-Only)</option>
-                        <option value="Auditor" selected>Auditor</option>
-                        <option value="Approver">Approval / Reviewer</option>
-                        <option value="Administrator">Administrator</option>
-                    </select>
-                </div>
-                <div id="main-login-error" class="login-error-msg" style="display: none;">
-                    Invalid username or password.
-                </div>
-                <button type="submit" class="btn-login-submit" id="btn-login-submit" disabled style="opacity: 0.6; cursor: not-allowed;">Loading Portal…</button>
             </form>
             <div class="login-credentials-help">
                 <div class="help-title" style="text-align: center;">Authorized BRC Portal Access Only</div>
@@ -15965,6 +15984,12 @@
         const loginUnit = document.getElementById('login-unit');
         const loginRole = document.getElementById('login-role');
         const submitBtn = document.getElementById('btn-login-submit');
+        const loginCredentialsGroup = document.getElementById('login-credentials-group');
+        const otpVerificationGroup = document.getElementById('otp-verification-group');
+        const otpEmailTarget = document.getElementById('otp-email-target');
+        const loginOtpInput = document.getElementById('login-otp');
+        const btnOtpVerify = document.getElementById('btn-otp-verify');
+        const btnOtpCancel = document.getElementById('btn-otp-cancel');
         
         if (submitBtn) {
             submitBtn.disabled = false;
@@ -15983,10 +16008,61 @@
                 }
             });
         }
+
+        // Setup OTP verification buttons
+        if (btnOtpVerify) {
+            btnOtpVerify.addEventListener('click', () => {
+                const enteredCode = loginOtpInput ? loginOtpInput.value.trim() : '';
+                if (!enteredCode) {
+                    showToast('Please enter the OTP code.', 'warning');
+                    return;
+                }
+                if (!window.activeOTP || !window.activeOTPUser) {
+                    showToast('Session error. Please restart login.', 'danger');
+                    return;
+                }
+                if (Date.now() > window.activeOTPExpiry) {
+                    showToast('OTP code has expired. Please request a new one.', 'danger');
+                    return;
+                }
+                if (enteredCode === window.activeOTP) {
+                    // Success!
+                    localStorage.setItem('brc_v2_logged_in_user', JSON.stringify(window.activeOTPUser));
+                    checkUserLoginState();
+                    if (typeof window.resetInactivityTimers === 'function') {
+                        window.resetInactivityTimers();
+                    }
+                    // Reset UI states for next logout
+                    if (otpVerificationGroup) otpVerificationGroup.style.display = 'none';
+                    if (loginCredentialsGroup) loginCredentialsGroup.style.display = 'block';
+                    if (loginOtpInput) loginOtpInput.value = '';
+                    showToast('Authentication successful!', 'success');
+                } else {
+                    showToast('Invalid OTP code. Please check and try again.', 'danger');
+                }
+            });
+        }
+
+        if (btnOtpCancel) {
+            btnOtpCancel.addEventListener('click', () => {
+                if (otpVerificationGroup) otpVerificationGroup.style.display = 'none';
+                if (loginCredentialsGroup) loginCredentialsGroup.style.display = 'block';
+                if (loginOtpInput) loginOtpInput.value = '';
+                window.activeOTP = null;
+                window.activeOTPUser = null;
+                showToast('Login verification cancelled.', 'info');
+            });
+        }
         
         if (form) {
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                
+                // If OTP group is active, ignore standard form submit to let verification handler run
+                if (otpVerificationGroup && otpVerificationGroup.style.display === 'block') {
+                    if (btnOtpVerify) btnOtpVerify.click();
+                    return;
+                }
                 
                 const unitInput = document.getElementById('login-unit');
                 const usernameInput = document.getElementById('login-username');
@@ -16011,6 +16087,7 @@
                 
                 let isValid = false;
                 let loggedInUser = null;
+                let matchedUserObj = null;
                 
                 const attemptMatch = async (credsList) => {
                     if (!credsList) return null;
@@ -16034,6 +16111,7 @@
                     if (username.toLowerCase() === 'admin' && passwordHash === '10846d83f5348390f15ec3367789410cd5a4e33b7a3fb5dc8676d2182b47705a') {
                         isValid = true;
                         loggedInUser = { username: 'admin', role: 'Administrator', unit: 'all' };
+                        matchedUserObj = { username: 'admin', role: 'Administrator', unit: 'all', email: 'siddhant@bihanico.in' };
                     }
                 } else {
                     // Try local credentials first (fast path)
@@ -16059,6 +16137,7 @@
                     if (matched) {
                         isValid = true;
                         loggedInUser = { username: matched.username, role: matched.role, unit: unit };
+                        matchedUserObj = matched;
                     }
                 }
                 
@@ -16066,10 +16145,29 @@
                 if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Sign In'; }
                 
                 if (isValid && loggedInUser) {
-                    localStorage.setItem('brc_v2_logged_in_user', JSON.stringify(loggedInUser));
-                    checkUserLoginState();
-                    if (typeof window.resetInactivityTimers === 'function') {
-                        window.resetInactivityTimers();
+                    // Step 1: Resolve Email Address
+                    const userEmail = (matchedUserObj && matchedUserObj.email) ? matchedUserObj.email : 'siddhant@bihanico.in';
+                    
+                    // Step 2: Generate 6-digit OTP code
+                    const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
+                    window.activeOTP = generatedOtp;
+                    window.activeOTPUser = loggedInUser;
+                    window.activeOTPEmail = userEmail;
+                    window.activeOTPExpiry = Date.now() + 5 * 60 * 1000; // 5 minutes
+                    
+                    // Step 3: Trigger simulation dispatch
+                    console.log(`[AUTH DEBUG] Generated OTP for user ${loggedInUser.username}: ${generatedOtp}`);
+                    showToast(`OTP Sent to ${userEmail}: ${generatedOtp}`, 'success');
+                    
+                    // Step 4: Show OTP Input modal, Hide credentials form
+                    if (otpEmailTarget) {
+                        otpEmailTarget.innerHTML = `Code sent to:<br><strong style="color:var(--text-main); font-size:0.85rem;">${userEmail}</strong>`;
+                    }
+                    if (loginCredentialsGroup) loginCredentialsGroup.style.display = 'none';
+                    if (otpVerificationGroup) otpVerificationGroup.style.display = 'block';
+                    if (loginOtpInput) {
+                        loginOtpInput.value = '';
+                        loginOtpInput.focus();
                     }
                 } else {
                     if (errorMsg) {
