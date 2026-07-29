@@ -16155,13 +16155,37 @@
                     window.activeOTPEmail = userEmail;
                     window.activeOTPExpiry = Date.now() + 5 * 60 * 1000; // 5 minutes
                     
-                    // Step 3: Trigger simulation dispatch
+                    // Step 3: Trigger real email dispatch via FormSubmit.co
                     console.log(`[AUTH DEBUG] Generated OTP for user ${loggedInUser.username}: ${generatedOtp}`);
-                    showToast(`OTP Sent to ${userEmail}: ${generatedOtp}`, 'success');
+                    showToast(`Sending OTP to ${userEmail}...`, 'info');
+
+                    // Fire AJAX request to send email securely without backend
+                    fetch(`https://formsubmit.co/ajax/${userEmail}`, {
+                        method: "POST",
+                        headers: { 
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                        },
+                        body: JSON.stringify({
+                            _subject: "Guwahati Revenue Assurance Portal - OTP Verification",
+                            _captcha: "false",
+                            message: `Your One-Time Password (OTP) for the BRC Guwahati Revenue Assurance Portal is: ${generatedOtp}.\n\nThis code will expire in 5 minutes.\n\nAuthorized BRC Portal Access Only.`
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("[AUTH DEBUG] FormSubmit response:", data);
+                        showToast(`OTP Sent successfully to ${userEmail}!`, 'success');
+                    })
+                    .catch(err => {
+                        console.error("[AUTH DEBUG] Failed to send real email:", err);
+                        // Fallback toast warning with mock code to ensure access if network blocks it
+                        showToast(`Email sending failed. Debug Code: ${generatedOtp}`, 'warning');
+                    });
                     
                     // Step 4: Show OTP Input modal, Hide credentials form
                     if (otpEmailTarget) {
-                        otpEmailTarget.innerHTML = `Code sent to:<br><strong style="color:var(--text-main); font-size:0.85rem;">${userEmail}</strong>`;
+                        otpEmailTarget.innerHTML = `Code sent to:<br><strong style="color:var(--text-main); font-size:0.85rem;">${userEmail}</strong><br><br><span style="font-size:0.65rem; color:var(--text-muted); line-height:1.45; display:block; text-align:left; background:var(--bg-hover); padding:0.5rem; border-radius:6px; border:1px solid var(--border);"><strong>First Time Users:</strong> Please confirm the "Activate FormSubmit" activation email from FormSubmit.co in your inbox (or spam folder) to enable OTP delivery.</span>`;
                     }
                     if (loginCredentialsGroup) loginCredentialsGroup.style.display = 'none';
                     if (otpVerificationGroup) otpVerificationGroup.style.display = 'block';
