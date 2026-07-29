@@ -1,6 +1,6 @@
 {
   "name": "revenue-audit-portal",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Secure Revenue Assurance Portal for Apollo Hospitals",
   "main": "main.js",
   "scripts": {
