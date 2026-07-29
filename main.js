@@ -120,24 +120,26 @@ ipcMain.handle('audit:runValidation', async (event, { item, agreement, activeSOC
     }
     const resolvedAgreement = agreement || await auditEngine.findDateEffectiveAgreement(item.customer, item.billedDate || item.startDateVal, database.getCurrentTenant());
     const res = await auditEngine.validateAuditItem(item, resolvedAgreement, activeSOCName);
+    
+    const isAuthorized = user.role !== 'Viewer';
     return {
-        expectedRate: res.expectedTariff,
-        expectedDiscountedRate: res.expectedDiscountedRate,
-        variance: res.variance,
+        expectedRate: isAuthorized ? res.expectedTariff : null,
+        expectedDiscountedRate: isAuthorized ? res.expectedDiscountedRate : null,
+        variance: isAuthorized ? res.variance : 0,
         status: res.status,
-        explanation: res.explanation,
+        explanation: isAuthorized ? res.explanation : res.explanation.replace(/₹\s*\d+(\.\d+)?/g, '₹***'),
         isIgnored: res.isIgnored,
         exceptionCode: res.exceptionCode,
         
         // Rate Decision Engine extension fields
-        applicableTariff: res.applicableTariff,
-        applicableSOC: res.applicableSOC,
-        expectedAmount: res.expectedAmount,
-        recoveryAmount: res.recoveryAmount,
-        agreementReference: res.agreementReference,
-        calculationTrace: res.calculationTrace,
-        aiExplanation: res.aiExplanation,
-        disallowanceInfo: res.disallowanceInfo
+        applicableTariff: isAuthorized ? res.applicableTariff : null,
+        applicableSOC: isAuthorized ? res.applicableSOC : null,
+        expectedAmount: isAuthorized ? res.expectedAmount : null,
+        recoveryAmount: isAuthorized ? res.recoveryAmount : null,
+        agreementReference: isAuthorized ? res.agreementReference : null,
+        calculationTrace: isAuthorized ? res.calculationTrace : [],
+        aiExplanation: isAuthorized ? res.aiExplanation : 'Rates masked for unauthorized role.',
+        disallowanceInfo: isAuthorized ? res.disallowanceInfo : null
     };
 });
 
@@ -150,6 +152,8 @@ ipcMain.handle('audit:runRevenueCheck', async (event, { rows, agreement, activeS
     }
     const results = [];
     const cache = await auditEngine.preloadAuditCache(activeSOCName);
+    
+    const isAuthorized = user.role !== 'Viewer';
     
     for (const item of rows) {
         const resolvedAgreement = agreement || await auditEngine.findDateEffectiveAgreement(item.customer, item.billedDate || item.startDateVal, database.getCurrentTenant());
@@ -167,23 +171,23 @@ ipcMain.handle('audit:runRevenueCheck', async (event, { rows, agreement, activeS
             serviceName: item.serviceName || '',
             billedRate: item.billedRate || 0.0,
             quantity: item.quantity || 1,
-            expectedRate: res.expectedTariff,
-            expectedDiscountedRate: res.expectedDiscountedRate,
-            variance: res.variance,
+            expectedRate: isAuthorized ? res.expectedTariff : null,
+            expectedDiscountedRate: isAuthorized ? res.expectedDiscountedRate : null,
+            variance: isAuthorized ? res.variance : 0,
             status: res.status,
-            explanation: res.explanation,
+            explanation: isAuthorized ? res.explanation : res.explanation.replace(/₹\s*\d+(\.\d+)?/g, '₹***'),
             isIgnored: res.isIgnored,
             exceptionCode: res.exceptionCode,
             
             // Rate Decision Engine extension fields
-            applicableTariff: res.applicableTariff,
-            applicableSOC: res.applicableSOC,
-            expectedAmount: res.expectedAmount,
-            recoveryAmount: res.recoveryAmount,
-            agreementReference: res.agreementReference,
-            calculationTrace: res.calculationTrace,
-            aiExplanation: res.aiExplanation,
-            disallowanceInfo: res.disallowanceInfo
+            applicableTariff: isAuthorized ? res.applicableTariff : null,
+            applicableSOC: isAuthorized ? res.applicableSOC : null,
+            expectedAmount: isAuthorized ? res.expectedAmount : null,
+            recoveryAmount: isAuthorized ? res.recoveryAmount : null,
+            agreementReference: isAuthorized ? res.agreementReference : null,
+            calculationTrace: isAuthorized ? res.calculationTrace : [],
+            aiExplanation: isAuthorized ? res.aiExplanation : 'Rates masked for unauthorized role.',
+            disallowanceInfo: isAuthorized ? res.disallowanceInfo : null
         });
     }
     return results;
@@ -235,7 +239,20 @@ ipcMain.handle('audit:getAuditHistory', async (event, filter) => {
         finalFilter.unit = user.unit;
     }
     
-    return await auditEngine.getAuditHistory(finalFilter);
+    const rows = await auditEngine.getAuditHistory(finalFilter);
+    const isAuthorized = user.role !== 'Viewer';
+    if (!isAuthorized) {
+        return rows.map(r => {
+            const copy = Object.assign({}, r);
+            copy.ExpectedRate = null;
+            copy.Variance = 0;
+            if (copy.Explanation) {
+                copy.Explanation = copy.Explanation.replace(/₹\s*\d+(\.\d+)?/g, '₹***');
+            }
+            return copy;
+        });
+    }
+    return rows;
 });
 
 ipcMain.handle('audit:getAuditLogs', async () => {

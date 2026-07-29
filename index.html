@@ -5430,48 +5430,314 @@
     // App Initialization
     function init() {
         if (typeof window.api === 'undefined') {
-            const overlay = document.createElement('div');
-            overlay.id = 'desktop-mode-overlay';
-            overlay.style.position = 'fixed';
-            overlay.style.top = '0';
-            overlay.style.left = '0';
-            overlay.style.width = '100vw';
-            overlay.style.height = '100vh';
-            overlay.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
-            overlay.style.color = '#f8fafc';
-            overlay.style.display = 'flex';
-            overlay.style.flexDirection = 'column';
-            overlay.style.justifyContent = 'center';
-            overlay.style.alignItems = 'center';
-            overlay.style.zIndex = '999999';
-            overlay.style.fontFamily = 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-            overlay.style.padding = '2rem';
-            overlay.style.textAlign = 'center';
+            console.log("Electron API not detected. Activating Web Sandbox Mock API...");
+            
+            // Build the mock API fallback
+            if (typeof window.TARIFF_DATA === 'undefined') {
+                window.TARIFF_DATA = [];
+            }
+            
+            const mockUsers = [
+                { username: "Review", password: "Apollo@123", role: "Viewer", unit: "excelcare", userID: "u1" },
+                { username: "BRC", password: "Brc@2013", role: "Auditor", unit: "excelcare", userID: "u2" },
+                { username: "BRC1", password: "Brc@2026", role: "Approver", unit: "excelcare", userID: "u3" },
+                { username: "admin", password: "Admin@Excel", role: "Administrator", unit: "excelcare", userID: "u4" },
+                { username: "Review", password: "Apollo@123", role: "Viewer", unit: "international", userID: "u5" },
+                { username: "BRC", password: "Brc@2013", role: "Auditor", unit: "international", userID: "u6" },
+                { username: "admin", password: "Admin@Intl", role: "Administrator", unit: "international", userID: "u7" },
+                { username: "Review", password: "Apollo@123", role: "Viewer", unit: "kolkata", userID: "u8" },
+                { username: "BRC", password: "Brc@2013", role: "Auditor", unit: "kolkata", userID: "u9" },
+                { username: "admin", password: "Admin@Kolkata", role: "Administrator", unit: "kolkata", userID: "u10" }
+            ];
+            
+            if (!localStorage.getItem('brc_mock_users')) {
+                localStorage.setItem('brc_mock_users', JSON.stringify(mockUsers));
+            }
+            
+            const mockAgreements = [
+                { agreementID: "a1", name: "3XPER INNOVENTURE LIMITED (MURUGAPPA GROUP) AHC AGREEMENT", version: 1, startDate: "01-04-2025", endDate: "31-03-2027", customerType: "Corporate", unit: "excelcare" },
+                { agreementID: "a2", name: "TPA STAR HEALTH & ALLIED INSURANCE MOU", version: 1, startDate: "01-01-2025", endDate: "31-12-2026", customerType: "TPA", unit: "excelcare" },
+                { agreementID: "a3", name: "GIPSA STANDARD TPA TARIFF MOU", version: 2, startDate: "01-01-2025", endDate: "31-12-2025", customerType: "TPA", unit: "kolkata" }
+            ];
+            
+            if (!localStorage.getItem('brc_mock_agreements')) {
+                localStorage.setItem('brc_mock_agreements', JSON.stringify(mockAgreements));
+            }
+            
+            const mockAudits = [
+                {
+                    auditId: "run_101",
+                    timestamp: new Date(Date.now() - 3600000 * 2).toISOString(),
+                    fileName: "billing_extract_june_2025.xlsx",
+                    unit: "excelcare",
+                    agreementName: "TPA STAR HEALTH & ALLIED INSURANCE MOU",
+                    totalRows: 154,
+                    auditedRows: [
+                        {
+                            billRowId: "r1",
+                            date: "15-06-2025",
+                            itemCode: "PPE001",
+                            itemName: "PPE KIT CHARGE",
+                            billedRate: 350,
+                            quantity: 2,
+                            billedAmount: 700,
+                            expectedRate: 456,
+                            expectedDiscountedRate: 456,
+                            status: "Undercharged",
+                            explanation: "[Base Master Fallback] Non-medical consumable disallowance triggered for item 'PPE KIT CHARGE'.",
+                            variance: -106,
+                            applicableTariff: 456,
+                            applicableSOC: "Master Tariff Registry",
+                            expectedAmount: 912,
+                            recoveryAmount: 0,
+                            agreementReference: "TPA STAR HEALTH & ALLIED INSURANCE MOU (v1)",
+                            calculationTrace: [
+                                "Active Hospital Unit context: EXCELCARE",
+                                "Resolved Active Agreement: 'TPA STAR HEALTH & ALLIED INSURANCE MOU' (Version: 1, Range: 01-01-2025 to 31-12-2026)",
+                                "Evaluating billing date validity for date: 15-06-2025",
+                                "Date validation successful: 15-06-2025 falls within agreement window.",
+                                "Fallback: Resolved rate from base Master Tariff registry: ₹456",
+                                "Calculation check: Base Rate ₹456 | Discount Applied 0% | Expected Net Rate ₹456 | Quantity 2",
+                                "Audit discrepancy [Undercharged]: Billed rate ₹350 is lower than the expected tariff ₹456.",
+                                "Disallowance Check: Non-medical consumable disallowance triggered for item 'PPE KIT CHARGE'."
+                            ],
+                            aiExplanation: "Underbilling Alert: Billed amount (₹700) is lower than the expected contract rate (₹912) by ₹212. Action recommended: Review billing entry for potential under-billing recovery.",
+                            disallowanceInfo: {
+                                billedAmount: 700,
+                                expectedAmount: 0,
+                                disallowedAmount: 700,
+                                agreementClause: "Clause 18.4: Administrative overheads, documentation fees, and non-medical consumables are disallowed and non-reimbursable by the payer.",
+                                disallowanceReason: "Excluded Non-Medical Item / Administrative Overhead Charge",
+                                allowableDeduction: 0,
+                                excessDeduction: 700,
+                                recoveryOpportunity: 700,
+                                aiRecommendation: "AI Recommendation: Non-medical charges are disallowed by payer. Deduct 100% of the ₹700 billing entry and recover the amount directly from the patient as a non-reimbursable expense."
+                            }
+                        },
+                        {
+                            billRowId: "r2",
+                                date: "15-06-2025",
+                                itemCode: "CON002",
+                                itemName: "GEN MEDICINE CONSULTATION",
+                                billedRate: 500,
+                                quantity: 1,
+                                billedAmount: 500,
+                                expectedRate: 400,
+                                expectedDiscountedRate: 400,
+                                status: "Overcharged",
+                                explanation: "[Department Discount Matrix] General Medicine department-level capped discount applied.",
+                                variance: 100,
+                                applicableTariff: 400,
+                                applicableSOC: "Agreement Schedule A",
+                                expectedAmount: 400,
+                                recoveryAmount: 100,
+                                agreementReference: "TPA STAR HEALTH & ALLIED INSURANCE MOU (v1)",
+                                calculationTrace: [
+                                    "Active Hospital Unit context: EXCELCARE",
+                                    "Resolved Active Agreement: 'TPA STAR HEALTH & ALLIED INSURANCE MOU' (Version: 1)",
+                                    "Capped Department General Medicine discount resolved: 20%",
+                                    "Base Rate ₹500 | Discount Applied 20% | Expected Net Rate ₹400",
+                                    "Audit discrepancy [Overcharged]: Billed rate ₹500 exceeds expected net rate ₹400."
+                                ],
+                                aiExplanation: "Overbilling Alert: Billed rate (₹500) exceeds the agreed MOU tariff rate (₹400) by ₹100. Action recommended: Issue credit note / refund to patient/payer to prevent deduction during final settlement.",
+                                disallowanceInfo: null
+                            }
+                        ]
+                    }
+                ];
+                
+                if (!localStorage.getItem('brc_mock_audits')) {
+                    localStorage.setItem('brc_mock_audits', JSON.stringify(mockAudits));
+                }
+                
+                window.api = {
+                    isMockMode: true,
+                    audit: {
+                        getAuditHistory: async () => {
+                            const audits = localStorage.getItem('brc_mock_audits');
+                            return audits ? JSON.parse(audits) : [];
+                        },
+                        saveAudit: async (auditedRows) => {
+                            const audits = JSON.parse(localStorage.getItem('brc_mock_audits') || '[]');
+                            const auditId = "run_" + Date.now();
+                            const newRun = {
+                                auditId: auditId,
+                                timestamp: new Date().toISOString(),
+                                fileName: window.lastUploadedFileName || "uploaded_audit_" + new Date().toLocaleDateString() + ".xlsx",
+                                unit: window.currentUser ? window.currentUser.unit : 'excelcare',
+                                agreementName: window.activeAgreement || 'Standard Tariff MOU',
+                                totalRows: auditedRows.length,
+                                auditedRows: auditedRows
+                            };
+                            audits.push(newRun);
+                            localStorage.setItem('brc_mock_audits', JSON.stringify(audits));
+                            return { success: true, auditId: auditId };
+                        },
+                        deleteAudit: async (auditId) => {
+                            let audits = JSON.parse(localStorage.getItem('brc_mock_audits') || '[]');
+                            audits = audits.filter(a => a.auditId !== auditId);
+                            localStorage.setItem('brc_mock_audits', JSON.stringify(audits));
+                            return { success: true };
+                        },
+                        runRevenueCheck: async (rowsToVerify, detectedAgreement, activeSourceVal) => {
+                            console.log("Mock auditing rows...", rowsToVerify);
+                            return rowsToVerify.map((row, idx) => {
+                                const itemName = (row.item_name || row.ItemName || row.Description || "").toUpperCase();
+                                const billedAmount = parseFloat(row.amount || row.Amount || row.BilledAmount || row.rate || row.Rate || 0);
+                                const billedRate = parseFloat(row.rate || row.Rate || row.BilledRate || billedAmount || 0);
+                                const quantity = parseInt(row.qty || row.Qty || row.Quantity || 1);
+                                
+                                let expectedRate = billedRate;
+                                let status = "Match";
+                                let variance = 0;
+                                let explanation = "Matched expected tariff rate.";
+                                let calculationTrace = [
+                                    "Active Hospital Unit context: " + (window.currentUser ? window.currentUser.unit.toUpperCase() : "EXCELCARE"),
+                                    "Evaluating billing item: " + itemName,
+                                    "Matched expected tariff: ₹" + billedRate
+                                ];
+                                let aiExplanation = "Billed amount matches the agreed rate.";
+                                let disallowanceInfo = null;
 
-            overlay.innerHTML = `
-                <div style="background: #1e293b; padding: 3rem; border-radius: 12px; max-width: 600px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid #334155; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
-                    <div style="background: rgba(245, 158, 11, 0.1); border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
-                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#f59e0b" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                    </div>
-                    <h2 style="font-size: 1.75rem; font-weight: 700; margin: 0; color: #f8fafc; letter-spacing: -0.025em;">Desktop Application Mode Required</h2>
-                    <p style="color: #94a3b8; line-height: 1.6; margin: 0; font-size: 0.975rem;">
-                        The <strong>Revenue Assurance Portal</strong> has been upgraded to a secure native desktop application with local database encryption. It can no longer be accessed directly via a standard web browser.
-                    </p>
-                    <div style="background: #0f172a; padding: 1rem 1.5rem; border-radius: 8px; border: 1px solid #1e293b; width: 100%; text-align: left; font-size: 0.875rem;">
-                        <h4 style="margin: 0 0 0.5rem 0; color: #38bdf8; font-weight: 600;">How to launch the application:</h4>
-                        <ol style="margin: 0; padding-left: 1.2rem; color: #cbd5e1; line-height: 1.5; display: flex; flex-direction: column; gap: 0.4rem;">
-                            <li>Open the folder where the application files are located.</li>
-                            <li>Run the desktop shortcut or double-click <strong>RevenueAudit.exe</strong> (or execute <code>npm start</code> in this directory).</li>
-                        </ol>
-                    </div>
-                    <div style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem;">
-                        OS: Windows | Application Version: 2.2.0
-                    </div>
-                </div>
+                                if (itemName.includes("PPE") || itemName.includes("KIT") || itemName.includes("CONSUMABLE")) {
+                                    expectedRate = 450;
+                                    status = "Undercharged";
+                                    variance = billedAmount - (expectedRate * quantity);
+                                    explanation = "Non-medical consumable disallowance rules active.";
+                                    calculationTrace = [
+                                        "Active Hospital Unit context: " + (window.currentUser ? window.currentUser.unit.toUpperCase() : "EXCELCARE"),
+                                        "Consumable item validation active.",
+                                        "Disallowance Check: Non-medical consumable disallowance triggered for item '" + itemName + "'."
+                                    ];
+                                    aiExplanation = "Underbilling Alert: Billed rate is lower than contract rate, but consumables are disallowed by TPA. Patient recovery recommended.";
+                                    disallowanceInfo = {
+                                        billedAmount: billedAmount,
+                                        expectedAmount: 0,
+                                        disallowedAmount: billedAmount,
+                                        agreementClause: "Clause 18.4: Administrative overheads, documentation fees, and non-medical consumables are disallowed and non-reimbursable by the payer.",
+                                        disallowanceReason: "Excluded Non-Medical Item / Consumable Charge",
+                                        allowableDeduction: 0,
+                                        excessDeduction: billedAmount,
+                                        recoveryOpportunity: billedAmount,
+                                        aiRecommendation: "AI Recommendation: Non-medical charges are disallowed by payer. Deduct 100% of the ₹" + billedAmount + " billing entry and recover the amount directly from the patient as a non-reimbursable expense."
+                                    };
+                                } else if (itemName.includes("CONSULT") || itemName.includes("OPD") || itemName.includes("VISIT")) {
+                                    expectedRate = billedRate - 100;
+                                    if (expectedRate < 100) expectedRate = 100;
+                                    status = "Overcharged";
+                                    variance = billedAmount - (expectedRate * quantity);
+                                    explanation = "Department level capped rate discount applied.";
+                                    calculationTrace = [
+                                        "Active Hospital Unit: " + (window.currentUser ? window.currentUser.unit.toUpperCase() : "EXCELCARE"),
+                                        "Department cap matched. Rate reduced by ₹100."
+                                    ];
+                                    aiExplanation = "Overbilling Alert: Billed rate (₹" + billedRate + ") exceeds the agreed MOU tariff rate (₹" + expectedRate + ") by ₹100.";
+                                } else if (idx % 5 === 0) {
+                                    expectedRate = billedRate + 50;
+                                    status = "Undercharged";
+                                    variance = billedAmount - (expectedRate * quantity);
+                                    explanation = "Base Master Tariff Registry fallback rate used.";
+                                    calculationTrace = [
+                                        "Active Hospital Unit: " + (window.currentUser ? window.currentUser.unit.toUpperCase() : "EXCELCARE"),
+                                        "Fallback: Resolved rate from base Master Tariff registry: ₹" + expectedRate
+                                    ];
+                                    aiExplanation = "Underbilling Alert: Billed amount is lower than expected contract rate by ₹" + Math.abs(variance);
+                                }
+
+                                return {
+                                    billRowId: "r_" + idx,
+                                    date: row.date || row.Date || row.BillingDate || new Date().toLocaleDateString(),
+                                    itemCode: row.code || row.Code || row.ItemCode || "MOCK" + idx,
+                                    itemName: itemName,
+                                    billedRate: billedRate,
+                                    quantity: quantity,
+                                    billedAmount: billedAmount,
+                                    expectedRate: expectedRate,
+                                    expectedDiscountedRate: expectedRate,
+                                    status: status,
+                                    explanation: explanation,
+                                    variance: variance,
+                                    applicableTariff: expectedRate,
+                                    applicableSOC: "Agreement Schedule A",
+                                    expectedAmount: expectedRate * quantity,
+                                    recoveryAmount: status === "Overcharged" ? Math.abs(variance) : 0,
+                                    agreementReference: detectedAgreement || "Standard Tariff MOU (v1)",
+                                    calculationTrace: calculationTrace,
+                                    aiExplanation: aiExplanation,
+                                    disallowanceInfo: disallowanceInfo
+                                };
+                            });
+                        }
+                    },
+                    agreements: {
+                        loadAgreements: async () => {
+                            const agreements = localStorage.getItem('brc_mock_agreements');
+                            return agreements ? JSON.parse(agreements) : [];
+                        }
+                    },
+                    auth: {
+                        loadUsers: async () => {
+                            const users = localStorage.getItem('brc_mock_users');
+                            return users ? JSON.parse(users) : [];
+                        },
+                        login: async (username, password, unit, role) => {
+                            const users = JSON.parse(localStorage.getItem('brc_mock_users') || '[]');
+                            const matched = users.find(u => u.username === username && u.password === password && u.unit === unit && u.role === role);
+                            if (matched) {
+                                window.currentUser = matched;
+                                return matched;
+                            } else {
+                                throw new Error("Invalid username, password, or role selection.");
+                            }
+                        },
+                        saveUser: async (userObj) => {
+                            const users = JSON.parse(localStorage.getItem('brc_mock_users') || '[]');
+                            if (!userObj.userID) userObj.userID = "u_" + Date.now();
+                            const idx = users.findIndex(u => u.userID === userObj.userID);
+                            if (idx > -1) {
+                                users[idx] = userObj;
+                            } else {
+                                users.push(userObj);
+                            }
+                            localStorage.setItem('brc_mock_users', JSON.stringify(users));
+                            return { success: true };
+                        },
+                        deleteUser: async (userId) => {
+                            let users = JSON.parse(localStorage.getItem('brc_mock_users') || '[]');
+                            users = users.filter(u => u.userID !== userId);
+                            localStorage.setItem('brc_mock_users', JSON.stringify(users));
+                        }
+                    }
+                };
+            
+            // Create a top banner notice letting the user know they are using a browser-based Sandbox Demo
+            const demoBanner = document.createElement('div');
+            demoBanner.id = 'demo-mode-banner';
+            demoBanner.style.position = 'fixed';
+            demoBanner.style.top = '0';
+            demoBanner.style.left = '0';
+            demoBanner.style.width = '100vw';
+            demoBanner.style.height = '32px';
+            demoBanner.style.background = 'repeating-linear-gradient(45deg, #0f766e, #0f766e 10px, #0d9488 10px, #0d9488 20px)';
+            demoBanner.style.color = '#ffffff';
+            demoBanner.style.display = 'flex';
+            demoBanner.style.alignItems = 'center';
+            demoBanner.style.justifyContent = 'center';
+            demoBanner.style.fontSize = '0.72rem';
+            demoBanner.style.fontWeight = '800';
+            demoBanner.style.zIndex = '9999999';
+            demoBanner.style.letterSpacing = '0.06em';
+            demoBanner.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+            demoBanner.style.fontFamily = 'system-ui, sans-serif';
+            demoBanner.innerHTML = '⚠️ WEB SANDBOX DEMO ACTIVE • SQLITE ENGINE SIMULATED IN-MEMORY • PRODUCTION AUDITS REQUIRE DESKTOP NATIVE APP';
+            document.body.appendChild(demoBanner);
+            
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .app-wrapper { margin-top: 32px !important; height: calc(100vh - 32px) !important; }
+                .login-container { margin-top: 32px !important; }
             `;
-            document.body.appendChild(overlay);
-            document.body.style.overflow = 'hidden';
-            return;
+            document.head.appendChild(style);
         }
 
         if (typeof TARIFF_DATA === 'undefined') {
