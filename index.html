@@ -4077,7 +4077,6 @@
         </div>
     </div>
     </div>
-    </div>
 </main>
 </div>
 
@@ -5153,21 +5152,27 @@
     
     // Sidebar state initialization
     const sidebar = document.querySelector('.sidebar');
-    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebarToggle = document.getElementById('btn-collapse-sidebar');
     
     if (localStorage.getItem('brc_v2_sidebar-collapsed') === 'true') {
         if (sidebar) sidebar.classList.add('collapsed');
     }
     
-    if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener('click', () => {
+    window.toggleSidebar = function() {
+        if (sidebar) {
             sidebar.classList.toggle('collapsed');
             localStorage.setItem('brc_v2_sidebar-collapsed', sidebar.classList.contains('collapsed'));
+        }
+    };
+    
+    if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener('click', () => {
+            window.toggleSidebar();
         });
     }
     
     // Sync Navigation Links Filtering with Search
-    const navSearch = document.getElementById('nav-search');
+    const navSearch = document.getElementById('sidebar-search-input');
     if (navSearch) {
         navSearch.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
