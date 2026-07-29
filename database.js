@@ -1,184 +1,75 @@
 const path = require('path');
 const fs = require('fs');
 const sqlite3 = require('sqlite3').verbose();
-const bcrypt = require('bcryptjs');
 const vm = require('vm');
+const centralRegistry = require('./central_registry');
 
-const dbPath = path.join(__dirname, 'revenue_audit.db');
-const db = new sqlite3.Database(dbPath);
+let currentDb = null;
+let currentDbName = 'excelcare';
 
-function initDatabase() {
-    return new Promise((resolve, reject) => {
-        db.serialize(() => {
-            // 1. Users table
-            db.run(`CREATE TABLE IF NOT EXISTS tbl_users (
-                UserID INTEGER PRIMARY KEY AUTOINCREMENT,
-                Username TEXT NOT NULL,
-                PasswordHash TEXT NOT NULL,
-                Role TEXT NOT NULL,
-                Unit TEXT NOT NULL,
-                Status TEXT NOT NULL DEFAULT 'Active',
-                CreatedOn TEXT NOT NULL,
-                LastLogin TEXT,
-                UNIQUE(Username, Unit)
-            )`);
-
-            // 2. Agreements table (with versioning)
-            db.run(`CREATE TABLE IF NOT EXISTS tbl_agreements (
-                AgreementID INTEGER PRIMARY KEY AUTOINCREMENT,
-                AgreementName TEXT UNIQUE NOT NULL,
-                CustomerType TEXT,
-                TariffMapped TEXT,
-                DiscountMapped TEXT,
-                Status TEXT DEFAULT 'Available/Valid',
-                FromDate TEXT,
-                ToDate TEXT,
-                DiscountAgreed TEXT,
-                Locations TEXT,
-                Version INTEGER DEFAULT 1,
-                ChangedBy TEXT,
-                ChangedOn TEXT,
-                ChangeSummary TEXT
-            )`);
-
-            // 3. SOC Master table
-            db.run(`CREATE TABLE IF NOT EXISTS tbl_soc_master (
-                SOCID INTEGER PRIMARY KEY AUTOINCREMENT,
-                SOCName TEXT NOT NULL,
-                ServiceID TEXT NOT NULL,
-                ServiceName TEXT NOT NULL,
-                AliasName TEXT,
-                ServiceType TEXT,
-                Department TEXT,
-                StandardRate REAL,
-                RatesJSON TEXT,
-                UNIQUE(SOCName, ServiceID)
-            )`);
-
-            // Migration: Check if AliasName exists in tbl_soc_master
-            db.all(`PRAGMA table_info(tbl_soc_master)`, [], (err, info) => {
-                if (err) return;
-                const hasAlias = info && info.some(col => col.name === 'AliasName');
-                if (!hasAlias && info && info.length > 0) {
-                    db.run(`ALTER TABLE tbl_soc_master ADD COLUMN AliasName TEXT`);
-                }
-            });
-
-            // 4. Tariff Master table (standard base rates)
-            db.run(`CREATE TABLE IF NOT EXISTS tbl_tariff_master (
-                TariffID INTEGER PRIMARY KEY AUTOINCREMENT,
-                ServiceID TEXT UNIQUE NOT NULL,
-                ServiceName TEXT NOT NULL,
-                Rate REAL NOT NULL
-            )`);
-
-            // 5. Audit Results table (lockable results)
-            db.run(`CREATE TABLE IF NOT EXISTS tbl_audit_results (
-                ResultID INTEGER PRIMARY KEY AUTOINCREMENT,
-                FileName TEXT NOT NULL,
-                RowIndex INTEGER NOT NULL,
-                BillNo TEXT,
-                IPNo TEXT,
-                PatientName TEXT,
-                BilledDate TEXT,
-                RoomCategory TEXT,
-                Customer TEXT,
-                ServiceID TEXT,
-                ServiceName TEXT,
-                BilledRate REAL,
-                Quantity INTEGER,
-                ExpectedRate REAL,
-                Variance REAL,
-                Status TEXT,
-                Explanation TEXT,
-                UserRemarks TEXT,
-                AuditedBy TEXT,
-                AuditDate TEXT,
-                Unit TEXT NOT NULL,
-                IsLocked INTEGER DEFAULT 0
-            )`);
-
-            // 6. Approval History table
-            db.run(`CREATE TABLE IF NOT EXISTS tbl_approval_history (
-                ApprovalID INTEGER PRIMARY KEY AUTOINCREMENT,
-                ResultID INTEGER NOT NULL,
-                Action TEXT NOT NULL,
-                User TEXT NOT NULL,
-                Timestamp TEXT NOT NULL,
-                Reason TEXT
-            )`);
-
-            // 7. Immutable Audit Logs table
-            db.run(`CREATE TABLE IF NOT EXISTS tbl_audit_logs (
-                LogID INTEGER PRIMARY KEY AUTOINCREMENT,
-                Timestamp TEXT NOT NULL,
-                User TEXT NOT NULL,
-                Role TEXT NOT NULL,
-                Action TEXT NOT NULL,
-                Module TEXT NOT NULL,
-                RecordID TEXT,
-                OldValue TEXT,
-                NewValue TEXT,
-                Remarks TEXT
-            )`);
-
-            // 8. Application Settings table
-            db.run(`CREATE TABLE IF NOT EXISTS tbl_application_settings (
-                SettingKey TEXT PRIMARY KEY,
-                SettingValue TEXT NOT NULL
-            )`, (err) => {
-                if (err) return reject(err);
-                
-                // Seed settings and default users
-                seedInitialData()
-                    .then(() => seedTariffsIfNeeded())
-                    .then(resolve)
-                    .catch(reject);
-            });
+// Proxy object for database connection to support backwards compatibility
+const dbProxy = {
+    all(sql, params = [], callback) {
+        getDb().then(db => db.all(sql, params, callback)).catch(err => {
+            if (typeof callback === 'function') callback(err);
         });
-    });
-}
-
-async function seedInitialData() {
-    const defaultUsers = [
-        // Global Admin
-        { username: 'admin', password: 'Siddhant@$26', role: 'Administrator', unit: 'all' },
-        // Excelcare
-        { username: 'Review', password: 'Apollo@123', role: 'Viewer', unit: 'excelcare' },
-        { username: 'BRC', password: 'Brc@2013', role: 'Auditor', unit: 'excelcare' },
-        { username: 'BRC1', password: 'Brc@2026', role: 'Approver', unit: 'excelcare' },
-        { username: 'admin', password: 'Admin@Excel', role: 'Administrator', unit: 'excelcare' },
-        // International
-        { username: 'Review', password: 'Apollo@123', role: 'Viewer', unit: 'international' },
-        { username: 'BRC', password: 'Brc@2013', role: 'Auditor', unit: 'international' },
-        { username: 'BRC1', password: 'Brc@2026', role: 'Approver', unit: 'international' },
-        { username: 'admin', password: 'Admin@Intl', role: 'Administrator', unit: 'international' },
-        // Kolkata
-        { username: 'Review', password: 'Apollo@123', role: 'Viewer', unit: 'kolkata' },
-        { username: 'BRC', password: 'Brc@2013', role: 'Auditor', unit: 'kolkata' },
-        { username: 'BRC1', password: 'Brc@2026', role: 'Approver', unit: 'kolkata' },
-        { username: 'admin', password: 'Admin@Kolkata', role: 'Administrator', unit: 'kolkata' },
-        { username: 'kol_viewer', password: 'Viewer@Kolkata', role: 'Viewer', unit: 'kolkata' },
-        { username: 'kol_auditor', password: 'Auditor@Kolkata', role: 'Auditor', unit: 'kolkata' },
-        { username: 'kol_reviewer', password: 'Reviewer@Kolkata', role: 'Approver', unit: 'kolkata' },
-        { username: 'kol_admin', password: 'Admin@Kolkata', role: 'Administrator', unit: 'kolkata' }
-    ];
-
-    const timestamp = new Date().toISOString();
-    
-    for (const u of defaultUsers) {
-        const hash = bcrypt.hashSync(u.password, 10);
-        await new Promise((res) => {
-            db.run(`INSERT OR IGNORE INTO tbl_users (Username, PasswordHash, Role, Unit, CreatedOn) 
-                    VALUES (?, ?, ?, ?, ?)`, [u.username, hash, u.role, u.unit, timestamp], () => res());
+    },
+    run(sql, params = [], callback) {
+        getDb().then(db => db.run(sql, params, callback)).catch(err => {
+            if (typeof callback === 'function') callback(err);
         });
+    },
+    get(sql, params = [], callback) {
+        getDb().then(db => db.get(sql, params, callback)).catch(err => {
+            if (typeof callback === 'function') callback(err);
+        });
+    },
+    prepare(sql) {
+        if (!currentDb) {
+            throw new Error("Database not initialized yet. Call initDatabase first.");
+        }
+        return currentDb.prepare(sql);
+    },
+    serialize(callback) {
+        if (!currentDb) {
+            throw new Error("Database not initialized yet. Call initDatabase first.");
+        }
+        currentDb.serialize(callback);
     }
+};
+
+async function getDb() {
+    if (!currentDb) {
+        currentDb = await centralRegistry.getTenantDatabase(currentDbName);
+    }
+    return currentDb;
 }
 
-async function seedTariffsIfNeeded() {
+async function switchTenantContext(hospitalCode) {
+    currentDbName = hospitalCode.toLowerCase();
+    currentDb = await centralRegistry.getTenantDatabase(currentDbName);
+    console.log(`[SaaS Context Router] Switched active database context to: hospital_${currentDbName}.db`);
+    return true;
+}
+
+async function initDatabase() {
+    // 1. Init central registry
+    await centralRegistry.initCentralDatabase();
+
+    // 2. Init and seed tenant databases
+    const tenants = ['excelcare', 'christianbasti', 'kolkata'];
+    for (const t of tenants) {
+        const tenantDb = await centralRegistry.getTenantDatabase(t);
+        await seedTenantTariffsIfNeeded(tenantDb, t);
+    }
+
+    // Set default context to excelcare for tests
+    currentDb = await centralRegistry.getTenantDatabase('excelcare');
+}
+
+async function seedTenantTariffsIfNeeded(tenantDb, tenantCode) {
     const tariffFile = path.join(__dirname, 'tariff_data.js');
     if (!fs.existsSync(tariffFile)) {
-        console.warn('tariff_data.js not found. Skipping seeding.');
         return;
     }
 
@@ -187,27 +78,31 @@ async function seedTariffsIfNeeded() {
 
     // Check last seeded timestamp
     const dbTime = await new Promise((res) => {
-        db.get(`SELECT SettingValue FROM tbl_application_settings WHERE SettingKey = 'tariff_data_timestamp'`, [], (err, row) => {
+        tenantDb.get(`SELECT SettingValue FROM tbl_application_settings WHERE SettingKey = 'tariff_data_timestamp'`, [], (err, row) => {
             res(row ? row.SettingValue : null);
         });
     });
 
     // Check if base rates are seeded correctly (not all 0)
     const baseRatesCount = await new Promise((res) => {
-        db.get(`SELECT COUNT(*) as count FROM tbl_tariff_master WHERE Rate > 0`, [], (err, row) => {
+        tenantDb.get(`SELECT COUNT(*) as count FROM tbl_tariff_master WHERE Rate > 0`, [], (err, row) => {
             res(row ? row.count : 0);
         });
     });
 
     if (dbTime === fileTime && baseRatesCount > 0) {
-        console.log('Tariff master is already up to date.');
         return;
     }
 
-    console.log('Seeding tariff databases from tariff_data.js...');
+    console.log(`[Seeding] Seeding isolated tenant database for: ${tenantCode}...`);
+    
+    // Ensure table application settings exists in tenant
+    await new Promise((resolve) => {
+        tenantDb.run(`CREATE TABLE IF NOT EXISTS tbl_application_settings (SettingKey TEXT PRIMARY KEY, SettingValue TEXT NOT NULL)`, () => resolve());
+    });
+
     const fileContent = fs.readFileSync(tariffFile, 'utf-8').replace(/\bconst\b/g, 'var');
 
-    // Run tariff_data.js inside VM context to extract arrays safely
     const context = {};
     vm.createContext(context);
     vm.runInContext(fileContent, context);
@@ -232,17 +127,15 @@ async function seedTariffsIfNeeded() {
         'TARIFF_HDFC_ERGO_2024': context.TARIFF_HDFC_ERGO_2024
     };
 
-    // 1. Begin transaction to populate SOC Master
-    await new Promise((res) => db.run('BEGIN TRANSACTION', res));
+    await new Promise((res) => tenantDb.run('BEGIN TRANSACTION', res));
     
-    // Clear old tables
-    await new Promise((res) => db.run('DELETE FROM tbl_soc_master', res));
-    await new Promise((res) => db.run('DELETE FROM tbl_tariff_master', res));
-    await new Promise((res) => db.run('DELETE FROM tbl_agreements', res));
+    await new Promise((res) => tenantDb.run('DELETE FROM tbl_soc_master', res));
+    await new Promise((res) => tenantDb.run('DELETE FROM tbl_tariff_master', res));
+    await new Promise((res) => tenantDb.run('DELETE FROM tbl_agreements', res));
 
     // Seed agreements
     if (context.AGREEMENT_DETAILS) {
-        const agStmt = db.prepare(`INSERT INTO tbl_agreements 
+        const agStmt = tenantDb.prepare(`INSERT OR REPLACE INTO tbl_agreements 
             (AgreementName, CustomerType, TariffMapped, DiscountMapped, Status, FromDate, ToDate, DiscountAgreed, Locations) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`);
         for (const ag of context.AGREEMENT_DETAILS) {
@@ -261,9 +154,9 @@ async function seedTariffsIfNeeded() {
         agStmt.finalize();
     }
 
-    // Seed master base tariff
+    // Seed base master tariff
     if (context.TARIFF_DATA) {
-        const baseStmt = db.prepare(`INSERT OR REPLACE INTO tbl_tariff_master (ServiceID, ServiceName, Rate) VALUES (?, ?, ?)`);
+        const baseStmt = tenantDb.prepare(`INSERT OR REPLACE INTO tbl_tariff_master (ServiceID, ServiceName, Rate) VALUES (?, ?, ?)`);
         for (const item of context.TARIFF_DATA) {
             let rateVal = 0.0;
             if (item.rate !== undefined && item.rate !== null) {
@@ -282,7 +175,7 @@ async function seedTariffsIfNeeded() {
     }
 
     // Seed SOCs
-    const socStmt = db.prepare(`INSERT OR REPLACE INTO tbl_soc_master 
+    const socStmt = tenantDb.prepare(`INSERT OR REPLACE INTO tbl_soc_master 
         (SOCName, ServiceID, ServiceName, AliasName, ServiceType, Department, StandardRate, RatesJSON) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`);
         
@@ -304,17 +197,18 @@ async function seedTariffsIfNeeded() {
     }
     socStmt.finalize();
 
-    await new Promise((res) => db.run('COMMIT', res));
+    await new Promise((res) => tenantDb.run('COMMIT', res));
 
-    // Save seeding timestamp
     await new Promise((res) => {
-        db.run(`INSERT OR REPLACE INTO tbl_application_settings (SettingKey, SettingValue) VALUES ('tariff_data_timestamp', ?)`, [fileTime], res);
+        tenantDb.run(`INSERT OR REPLACE INTO tbl_application_settings (SettingKey, SettingValue) VALUES ('tariff_data_timestamp', ?)`, [fileTime], res);
     });
-    console.log('Seeding completed successfully!');
+    console.log(`[Seeding] Tenant database for ${tenantCode} seeded successfully.`);
 }
 
 module.exports = {
-    db,
+    db: dbProxy,
     initDatabase,
-    seedTariffsIfNeeded
+    switchTenantContext,
+    getCurrentTenant: () => currentDbName
 };
+

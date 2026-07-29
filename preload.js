@@ -28,5 +28,8 @@ contextBridge.exposeInMainWorld('api', {
     backup: {
         createBackup: (filePath) => ipcRenderer.invoke('backup:createBackup', filePath),
         restoreBackup: (filePath) => ipcRenderer.invoke('backup:restoreBackup', filePath)
+    },
+    database: {
+        switchTenantContext: (unit) => ipcRenderer.invoke('database:switchTenantContext', unit)
     }
 });

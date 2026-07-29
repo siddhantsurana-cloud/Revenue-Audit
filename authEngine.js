@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const { db } = require('./database');
+const centralRegistry = require('./central_registry');
 
 // Active session storage in backend memory
 let activeSession = null;
@@ -27,6 +27,17 @@ const ROLE_PERMISSIONS = {
         canManageUsers: false,
         canBackupRestore: false
     },
+    'RegionalAdmin': {
+        canViewDashboard: true,
+        canViewReports: true,
+        canSearch: true,
+        canRunAudit: true,
+        canSaveAudit: true,
+        canApproveAudit: false,
+        canReopenAudit: false,
+        canManageUsers: false,
+        canBackupRestore: false
+    },
     'Approver': {
         canViewDashboard: true,
         canViewReports: true,
@@ -37,6 +48,17 @@ const ROLE_PERMISSIONS = {
         canReopenAudit: true,
         canManageUsers: false,
         canBackupRestore: false
+    },
+    'CommercialAdmin': {
+        canViewDashboard: true,
+        canViewReports: true,
+        canSearch: true,
+        canRunAudit: true,
+        canSaveAudit: true,
+        canApproveAudit: true,
+        canReopenAudit: true,
+        canManageUsers: true,
+        canBackupRestore: true
     },
     'Administrator': {
         canViewDashboard: true,
@@ -53,8 +75,8 @@ const ROLE_PERMISSIONS = {
 
 function login(username, password, unit, role) {
     return new Promise((resolve, reject) => {
-        const query = `SELECT * FROM tbl_users WHERE LOWER(Username) = LOWER(?) AND Unit = ? AND Status = 'Active'`;
-        db.get(query, [username.trim(), unit], (err, user) => {
+        const query = `SELECT * FROM tbl_global_users WHERE LOWER(Username) = LOWER(?) AND Unit = ? AND Status = 'Active'`;
+        centralRegistry.centralDb.get(query, [username.trim(), unit], (err, user) => {
             if (err) return reject(new Error('Database error during login.'));
             if (!user) return reject(new Error('Invalid username or unit.'));
 
@@ -75,11 +97,12 @@ function login(username, password, unit, role) {
                     username: user.Username,
                     role: user.Role,
                     unit: user.Unit,
+                    region: user.Region || 'ALL',
                     permissions: ROLE_PERMISSIONS[user.Role] || ROLE_PERMISSIONS['Viewer']
                 };
 
                 // Update last login
-                db.run(`UPDATE tbl_users SET LastLogin = ? WHERE UserID = ?`, [new Date().toISOString(), user.UserID]);
+                centralRegistry.centralDb.run(`UPDATE tbl_global_users SET LastLogin = ? WHERE UserID = ?`, [new Date().toISOString(), user.UserID]);
 
                 resolve({
                     username: user.Username,
@@ -114,7 +137,7 @@ function enforcePermission(permissionKey) {
 function loadUsers() {
     enforcePermission('canManageUsers');
     return new Promise((resolve, reject) => {
-        db.all(`SELECT UserID, Username, Role, Unit, Status, CreatedOn, LastLogin FROM tbl_users`, [], (err, rows) => {
+        centralRegistry.centralDb.all(`SELECT UserID, Username, Role, Region, Unit, Status, CreatedOn, LastLogin FROM tbl_global_users`, [], (err, rows) => {
             if (err) return reject(err);
             resolve(rows);
         });
@@ -130,16 +153,14 @@ function saveUser(user) {
         if (userID && userID !== -1) {
             // Edit user
             if (password) {
-                // Changing password
                 const hash = bcrypt.hashSync(password, 10);
-                db.run(`UPDATE tbl_users SET Username = ?, PasswordHash = ?, Role = ?, Unit = ?, Status = ? WHERE UserID = ?`,
+                centralRegistry.centralDb.run(`UPDATE tbl_global_users SET Username = ?, PasswordHash = ?, Role = ?, Unit = ?, Status = ? WHERE UserID = ?`,
                     [username, hash, role, unit, status || 'Active', userID], (err) => {
                         if (err) return reject(err);
                         resolve(true);
                     });
             } else {
-                // Not changing password
-                db.run(`UPDATE tbl_users SET Username = ?, Role = ?, Unit = ?, Status = ? WHERE UserID = ?`,
+                centralRegistry.centralDb.run(`UPDATE tbl_global_users SET Username = ?, Role = ?, Unit = ?, Status = ? WHERE UserID = ?`,
                     [username, role, unit, status || 'Active', userID], (err) => {
                         if (err) return reject(err);
                         resolve(true);
@@ -149,7 +170,7 @@ function saveUser(user) {
             // Create user
             if (!password) return reject(new Error('Password is required for new users.'));
             const hash = bcrypt.hashSync(password, 10);
-            db.run(`INSERT INTO tbl_users (Username, PasswordHash, Role, Unit, CreatedOn) VALUES (?, ?, ?, ?, ?)`,
+            centralRegistry.centralDb.run(`INSERT INTO tbl_global_users (Username, PasswordHash, Role, Unit, CreatedOn) VALUES (?, ?, ?, ?, ?)`,
                 [username, hash, role, unit, timestamp], (err) => {
                     if (err) return reject(err);
                     resolve(true);
@@ -161,7 +182,7 @@ function saveUser(user) {
 function deleteUser(userId) {
     enforcePermission('canManageUsers');
     return new Promise((resolve, reject) => {
-        db.run(`DELETE FROM tbl_users WHERE UserID = ?`, [userId], (err) => {
+        centralRegistry.centralDb.run(`DELETE FROM tbl_global_users WHERE UserID = ?`, [userId], (err) => {
             if (err) return reject(err);
             resolve(true);
         });

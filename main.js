@@ -7,6 +7,15 @@ const authEngine = require('./authEngine');
 const auditEngine = require('./auditEngine');
 const backupEngine = require('./backupEngine');
 
+function isGlobalAdmin(user) {
+    return user && (user.role === 'Administrator' || user.role === 'CommercialAdmin') && user.unit === 'all';
+}
+
+function maskExplanation(explanation, isGlobal) {
+    return explanation; // No longer masking explanation strings for transaction specific data
+}
+
+
 const isDev = !app.isPackaged;
 let mainWindow = null;
 
@@ -103,24 +112,48 @@ ipcMain.handle('auth:deleteUser', async (event, userId) => {
 
 // B. Auditing API
 ipcMain.handle('audit:runValidation', async (event, { item, agreement, activeSOCName }) => {
-    const res = await auditEngine.validateAuditItem(item, agreement, activeSOCName);
+    const user = await authEngine.getCurrentUser();
+    if (!user) throw new Error('Session Expired: Please log in again.');
+    const isGlobal = isGlobalAdmin(user);
+    if (!isGlobal) {
+        await database.switchTenantContext(user.unit);
+    }
+    const resolvedAgreement = agreement || await auditEngine.findDateEffectiveAgreement(item.customer, item.billedDate || item.startDateVal, database.getCurrentTenant());
+    const res = await auditEngine.validateAuditItem(item, resolvedAgreement, activeSOCName);
     return {
         expectedRate: res.expectedTariff,
         expectedDiscountedRate: res.expectedDiscountedRate,
-        variance: res.expectedDiscountedRate !== null ? (item.billedRate - res.expectedDiscountedRate) : 0,
+        variance: res.variance,
         status: res.status,
         explanation: res.explanation,
         isIgnored: res.isIgnored,
-        exceptionCode: res.exceptionCode
+        exceptionCode: res.exceptionCode,
+        
+        // Rate Decision Engine extension fields
+        applicableTariff: res.applicableTariff,
+        applicableSOC: res.applicableSOC,
+        expectedAmount: res.expectedAmount,
+        recoveryAmount: res.recoveryAmount,
+        agreementReference: res.agreementReference,
+        calculationTrace: res.calculationTrace,
+        aiExplanation: res.aiExplanation,
+        disallowanceInfo: res.disallowanceInfo
     };
 });
 
 ipcMain.handle('audit:runRevenueCheck', async (event, { rows, agreement, activeSOCName }) => {
+    const user = await authEngine.getCurrentUser();
+    if (!user) throw new Error('Session Expired: Please log in again.');
+    const isGlobal = isGlobalAdmin(user);
+    if (!isGlobal) {
+        await database.switchTenantContext(user.unit);
+    }
     const results = [];
     const cache = await auditEngine.preloadAuditCache(activeSOCName);
     
     for (const item of rows) {
-        const res = await auditEngine.validateAuditItem(item, agreement, activeSOCName, cache);
+        const resolvedAgreement = agreement || await auditEngine.findDateEffectiveAgreement(item.customer, item.billedDate || item.startDateVal, database.getCurrentTenant());
+        const res = await auditEngine.validateAuditItem(item, resolvedAgreement, activeSOCName, cache);
         results.push({
             fileName: item.fileName || '',
             rowIndex: item.rowIndex || 0,
@@ -136,11 +169,21 @@ ipcMain.handle('audit:runRevenueCheck', async (event, { rows, agreement, activeS
             quantity: item.quantity || 1,
             expectedRate: res.expectedTariff,
             expectedDiscountedRate: res.expectedDiscountedRate,
-            variance: res.expectedDiscountedRate !== null ? (item.billedRate - res.expectedDiscountedRate) : 0,
+            variance: res.variance,
             status: res.status,
             explanation: res.explanation,
             isIgnored: res.isIgnored,
-            exceptionCode: res.exceptionCode
+            exceptionCode: res.exceptionCode,
+            
+            // Rate Decision Engine extension fields
+            applicableTariff: res.applicableTariff,
+            applicableSOC: res.applicableSOC,
+            expectedAmount: res.expectedAmount,
+            recoveryAmount: res.recoveryAmount,
+            agreementReference: res.agreementReference,
+            calculationTrace: res.calculationTrace,
+            aiExplanation: res.aiExplanation,
+            disallowanceInfo: res.disallowanceInfo
         });
     }
     return results;
@@ -149,67 +192,111 @@ ipcMain.handle('audit:runRevenueCheck', async (event, { rows, agreement, activeS
 ipcMain.handle('audit:saveAudit', async (event, results) => {
     const user = await authEngine.getCurrentUser();
     if (!user) throw new Error('Session Expired: Please log in again.');
+    if (!isGlobalAdmin(user)) {
+        await database.switchTenantContext(user.unit);
+    }
     return await auditEngine.saveAudit(results, user);
 });
 
 ipcMain.handle('audit:approveAudit', async (event, resultId) => {
     const user = await authEngine.getCurrentUser();
     if (!user) throw new Error('Session Expired: Please log in again.');
+    if (!isGlobalAdmin(user)) {
+        await database.switchTenantContext(user.unit);
+    }
     return await auditEngine.approveAudit(resultId, user);
 });
 
 ipcMain.handle('audit:reopenAudit', async (event, { resultId, reason }) => {
     const user = await authEngine.getCurrentUser();
     if (!user) throw new Error('Session Expired: Please log in again.');
+    if (!isGlobalAdmin(user)) {
+        await database.switchTenantContext(user.unit);
+    }
     return await auditEngine.reopenAudit(resultId, user, reason);
 });
 
 ipcMain.handle('audit:loadDashboard', async (event, { unit, durationDays }) => {
     const user = await authEngine.getCurrentUser();
-    const finalUnit = (user && user.role !== 'Administrator') ? user.unit : unit;
+    const finalUnit = (user && !isGlobalAdmin(user)) ? user.unit : (unit || 'excelcare');
+    await database.switchTenantContext(finalUnit);
     return await auditEngine.loadDashboard(finalUnit, durationDays);
 });
 
 ipcMain.handle('audit:getAuditHistory', async (event, filter) => {
     const user = await authEngine.getCurrentUser();
+    if (!user) throw new Error('Session Expired: Please log in again.');
+    const isGlobal = isGlobalAdmin(user);
+    const finalUnit = isGlobal ? (filter.unit || 'excelcare') : user.unit;
+    await database.switchTenantContext(finalUnit);
+    
     const finalFilter = Object.assign({}, filter);
-    if (user && user.role !== 'Administrator') {
+    if (!isGlobal) {
         finalFilter.unit = user.unit;
     }
+    
     return await auditEngine.getAuditHistory(finalFilter);
 });
 
 ipcMain.handle('audit:getAuditLogs', async () => {
     const user = await authEngine.getCurrentUser();
-    if (!user || user.role !== 'Administrator') {
-        throw new Error('Access Denied: Only Administrators can view audit logs.');
+    if (!user || !isGlobalAdmin(user)) {
+        throw new Error('Access Denied: Only Global/Commercial Administrators can view audit logs.');
     }
     return await auditEngine.getAuditLogs();
 });
 
 ipcMain.handle('audit:deleteAudit', async (event, auditDate) => {
     const user = await authEngine.getCurrentUser();
-    if (!user || user.role !== 'Administrator') {
-        throw new Error('Access Denied: Only Administrators can delete repository audits.');
+    if (!user || !isGlobalAdmin(user)) {
+        throw new Error('Access Denied: Only Global/Commercial Administrators can delete repository audits.');
     }
     return await auditEngine.deleteAuditRun(auditDate);
 });
 
-
 // C. Agreements API
 ipcMain.handle('agreements:loadAgreements', async () => {
+    const user = await authEngine.getCurrentUser();
+    if (!user || !isGlobalAdmin(user)) {
+        throw new Error('Access Denied: Only Global/Commercial Administrators can view or download the Agreement Repository.');
+    }
+    const unit = (user && user.unit !== 'all') ? user.unit : 'excelcare';
+    await database.switchTenantContext(unit);
     return new Promise((resolve, reject) => {
         database.db.all(`SELECT * FROM tbl_agreements ORDER BY AgreementName ASC`, [], (err, rows) => {
             if (err) return reject(err);
-            resolve(rows);
+            const mapped = rows.map(r => ({
+                agreementName: r.AgreementName,
+                customerType: r.CustomerType,
+                tariffMapped: r.TariffMapped,
+                discountMapped: r.DiscountMapped,
+                status: r.Status,
+                fromDate: r.FromDate,
+                toDate: r.ToDate,
+                discountAgreed: r.DiscountAgreed,
+                locations: r.Locations,
+                version: r.Version || 1,
+                changedBy: r.ChangedBy,
+                changedOn: r.ChangedOn,
+                changeSummary: r.ChangeSummary
+            }));
+            resolve(mapped);
         });
     });
 });
 
+ipcMain.handle('database:switchTenantContext', async (event, unit) => {
+    const user = await authEngine.getCurrentUser();
+    if (user && isGlobalAdmin(user)) {
+        return await database.switchTenantContext(unit);
+    }
+    throw new Error('Access Denied: Only Global Admin can switch database context.');
+});
+
 ipcMain.handle('agreements:saveAgreement', async (event, { ag, versionInfo }) => {
     const user = await authEngine.getCurrentUser();
-    if (!user || user.role !== 'Administrator') {
-        throw new Error('Access Denied: Only Administrators can manage agreements.');
+    if (!user || !isGlobalAdmin(user)) {
+        throw new Error('Access Denied: Only Global/Commercial Administrators can manage agreements.');
     }
     const timestamp = new Date().toISOString();
     return new Promise((resolve, reject) => {
@@ -257,8 +344,8 @@ ipcMain.handle('agreements:saveAgreement', async (event, { ag, versionInfo }) =>
 
 ipcMain.handle('agreements:deleteAgreement', async (event, agName) => {
     const user = await authEngine.getCurrentUser();
-    if (!user || user.role !== 'Administrator') {
-        throw new Error('Access Denied: Only Administrators can delete agreements.');
+    if (!user || !isGlobalAdmin(user)) {
+        throw new Error('Access Denied: Only Global/Commercial Administrators can delete agreements.');
     }
     const timestamp = new Date().toISOString();
     return new Promise((resolve, reject) => {

@@ -1,4 +1,4 @@
-const { db } = require('./database');
+const { db, getCurrentTenant } = require('./database');
 const { enforcePermission } = require('./authEngine');
 
 const UI_TO_DB_SOC_MAP = {
@@ -93,6 +93,25 @@ function parseExcelDate(val) {
     if (!val) return null;
     if (typeof val === 'number') {
         return new Date((val - 25569) * 86400 * 1000);
+    }
+    if (typeof val === 'string') {
+        const parts = val.split(/[-/]/);
+        if (parts.length === 3) {
+            const p0 = parseInt(parts[0], 10);
+            const p1 = parseInt(parts[1], 10);
+            const p2 = parseInt(parts[2], 10);
+            if (!isNaN(p0) && !isNaN(p1) && !isNaN(p2)) {
+                if (parts[2].length === 4) {
+                    // DD-MM-YYYY or DD/MM/YYYY
+                    const d = new Date(p2, p1 - 1, p0);
+                    if (!isNaN(d.getTime())) return d;
+                } else if (parts[0].length === 4) {
+                    // YYYY-MM-DD or YYYY/MM/DD
+                    const d = new Date(p0, p1 - 1, p2);
+                    if (!isNaN(d.getTime())) return d;
+                }
+            }
+        }
     }
     const d = new Date(val);
     return isNaN(d.getTime()) ? null : d;
@@ -294,8 +313,192 @@ function parseAgreementDiscountForCategory(ag, deptLower, nameUpper) {
     return 0;
 }
 
-// 4. Proprietary Validation Pipeline
+function findDateEffectiveAgreement(customerName, billedDate, targetUnit) {
+    return new Promise((resolve) => {
+        db.all(`SELECT * FROM tbl_agreements`, [], (err, rows) => {
+            if (err || !rows) return resolve(null);
+            
+            // Map db columns to camelCase
+            const agreements = rows.map(r => ({
+                agreementName: r.AgreementName,
+                customerType: r.CustomerType,
+                tariffMapped: r.TariffMapped,
+                discountMapped: r.DiscountMapped,
+                status: r.Status,
+                fromDate: r.FromDate,
+                toDate: r.ToDate,
+                discountAgreed: r.DiscountAgreed,
+                locations: r.Locations,
+                version: r.Version || 1,
+                changedBy: r.ChangedBy,
+                changedOn: r.ChangedOn,
+                changeSummary: r.ChangeSummary
+            }));
+
+            if (agreements.length === 0) return resolve(null);
+
+            // Filter by unit/location first
+            const unit = (targetUnit || 'excelcare').toLowerCase();
+            const getAgreementScope = (ag) => {
+                const tariffUpper = (ag.tariffMapped || '').toUpperCase();
+                const nameUpper = (ag.agreementName || '').toUpperCase();
+                if ((ag.locations && ag.locations.includes("Kolkata")) || tariffUpper.includes("KOLKATA")) {
+                    return "kolkata";
+                }
+                if ((ag.locations && ag.locations.includes("Excelcare")) || tariffUpper.includes("EXCELCARE")) {
+                    return "excelcare";
+                }
+                if (
+                    nameUpper.includes("GIPSA") || 
+                    nameUpper.includes("SBI GENERAL") || 
+                    nameUpper.includes("TATA AIG") || 
+                    nameUpper.includes("VIDAL") || 
+                    tariffUpper.includes("GIPSA") || 
+                    tariffUpper.includes("INSURANCE")
+                ) {
+                    return "centralised";
+                }
+                return "international";
+            };
+
+            const filteredAgreements = agreements.filter(ag => {
+                const scope = getAgreementScope(ag);
+                if (unit === 'kolkata') {
+                    return scope === 'kolkata';
+                } else if (unit === 'excelcare') {
+                    return scope === 'excelcare';
+                } else if (unit === 'international') {
+                    return scope === 'international' || scope === 'centralised';
+                }
+                return true;
+            });
+
+            // Clean and split customer words
+            let cleanCustomer = customerName.toUpperCase().replace(/[.,()\-]/g, ' ');
+            cleanCustomer = cleanCustomer.replace(/\bALLIANCE\b/g, 'ALLIANZ');
+            if (cleanCustomer.includes("INDIAN OIL") || cleanCustomer.includes("INDIAN OIL CORPORATION")) {
+                cleanCustomer += " IOCL";
+            }
+
+            const stopwords = [
+                "LTD", "PVT", "LIMITED", "PRIVATE", "AGREEMENT", "COMPANY", "INSURANCE", 
+                "GENERAL", "HEALTH", "TPA", "SERVICES", "INDIA", "CORP", "CORPORATION", 
+                "OF", "AND", "THE", "FOR", "IN", "CO", "ASSOCIATES", "PLANTATIONS", 
+                "NATIONAL", "STATE", "CENTRAL", "MUTUAL", "TRUST", "GOVT", "GOVERNMENT", 
+                "GROUP", "SYSTEMS", "ENTERPRISES", "PARTNERS", "AHC", "BENEFICIARY", "CARD"
+            ];
+
+            const customerWords = cleanCustomer.split(/\s+/).map(w => w.trim()).filter(w => {
+                return w.length > 2 && !stopwords.includes(w);
+            });
+
+            let matchedAgreements = [];
+
+            // First try exact matches or word-scoring matches
+            if (customerWords.length === 0) {
+                const custUpper = customerName.toUpperCase().trim();
+                matchedAgreements = filteredAgreements.filter(ag => custUpper === ag.agreementName.toUpperCase().trim());
+            } else {
+                // Try exact name match
+                const exactMatches = filteredAgreements.filter(ag => ag.agreementName.toUpperCase().trim() === customerName.toUpperCase().trim());
+                if (exactMatches.length > 0) {
+                    matchedAgreements = exactMatches;
+                } else {
+                    // Word matching score
+                    let bestAgs = [];
+                    let maxScore = 0;
+                    let bestAgLengthRatio = 0;
+
+                    for (const ag of filteredAgreements) {
+                        const agName = ag.agreementName.toUpperCase();
+                        let cleanAgName = agName.replace(/[.,()\-]/g, ' ');
+                        cleanAgName = cleanAgName.replace(/\bALLIANCE\b/g, 'ALLIANZ');
+
+                        const agWords = cleanAgName.split(/\s+/).map(w => w.trim()).filter(w => {
+                            return w.length > 2 && !stopwords.includes(w);
+                        });
+
+                        if (agWords.length === 0) continue;
+
+                        let matches = 0;
+                        for (const w of agWords) {
+                            if (customerWords.includes(w)) {
+                                matches++;
+                            }
+                        }
+
+                        if (matches > 0) {
+                            const score = matches;
+                            const ratio = matches / agWords.length;
+                            if (score > maxScore) {
+                                maxScore = score;
+                                bestAgs = [ag];
+                                bestAgLengthRatio = ratio;
+                            } else if (score === maxScore) {
+                                if (ratio > bestAgLengthRatio) {
+                                    bestAgs = [ag];
+                                    bestAgLengthRatio = ratio;
+                                } else if (ratio === bestAgLengthRatio) {
+                                    bestAgs.push(ag);
+                                }
+                            }
+                        }
+                    }
+                    matchedAgreements = bestAgs;
+                }
+            }
+
+            if (matchedAgreements.length === 0) return resolve(null);
+
+            // Now, among matched agreements, filter for date-effective version.
+            let checkDate = parseExcelDate(billedDate);
+            if (!checkDate) {
+                checkDate = new Date(billedDate);
+            }
+            if (isNaN(checkDate.getTime())) {
+                checkDate = new Date();
+            }
+
+            const parseAgDate = (dStr) => {
+                if (!dStr) return new Date();
+                const parts = dStr.split('-');
+                if (parts.length === 3) {
+                    if (parts[2].length === 4) {
+                        return new Date(parts[2], parts[1] - 1, parts[0]);
+                    } else if (parts[0].length === 4) {
+                        return new Date(parts[0], parts[1] - 1, parts[2]);
+                    }
+                }
+                return new Date(dStr);
+            };
+
+            const dateEffectiveAgs = matchedAgreements.filter(ag => {
+                const start = parseAgDate(ag.fromDate);
+                const end = parseAgDate(ag.toDate);
+                return checkDate >= start && checkDate <= end;
+            });
+
+            if (dateEffectiveAgs.length > 0) {
+                dateEffectiveAgs.sort((a, b) => b.version - a.version);
+                return resolve(dateEffectiveAgs[0]);
+            }
+
+            matchedAgreements.sort((a, b) => b.version - a.version);
+            return resolve(matchedAgreements[0]);
+        });
+    });
+}
+
+// 4. Proprietary Validation Pipeline (Dynamic Enterprise Rate Decision Engine)
 async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
+    const tenant = getCurrentTenant();
+    const trace = [];
+    trace.push(`Active Hospital Unit context: ${tenant.toUpperCase()}`);
+
+    if (!agreement && item.customer) {
+        agreement = await findDateEffectiveAgreement(item.customer, item.billedDate || item.startDateVal, tenant);
+    }
+
     const res = {
         expectedTariff: null,
         expectedDiscountedRate: null,
@@ -303,8 +506,25 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
         status: "Matching",
         explanation: "",
         isIgnored: false,
-        exceptionCode: null
+        exceptionCode: null,
+        // Dynamic Enterprise Rate Decision Engine extensions
+        applicableTariff: null,
+        applicableSOC: null,
+        expectedAmount: null,
+        variance: 0,
+        recoveryAmount: 0,
+        agreementReference: "Standard Public Tariff",
+        calculationTrace: trace,
+        aiExplanation: "",
+        disallowanceInfo: null
     };
+
+    if (agreement) {
+        trace.push(`Resolved Active Agreement: "${agreement.agreementName}" (Version: ${agreement.version || 1}, Range: ${agreement.fromDate} to ${agreement.toDate})`);
+        res.agreementReference = `${agreement.agreementName} (v${agreement.version || 1})`;
+    } else {
+        trace.push("No active corporate/TPA agreement matched. Falling back to base master tariff.");
+    }
 
     const cleanRoom = cleanRoomCategory(item.roomCategory);
     const isDayCare = cleanRoom === "DAYCARE" || (item.dept || '').toLowerCase().includes("day care") || (item.rateType || '').toLowerCase().includes("day care") || (item.serviceName || '').toUpperCase().includes("DAY CARE") || (item.serviceName || '').toUpperCase().includes("DAYCARE");
@@ -321,21 +541,25 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
         const start = parseAgDate(agreement.fromDate);
         const end = parseAgDate(agreement.toDate);
         let checkDate = new Date();
-        if (item.startDateVal) {
-            const parsed = parseExcelDate(item.startDateVal);
+        const rawDate = item.billedDate || item.startDateVal;
+        if (rawDate) {
+            const parsed = parseExcelDate(rawDate);
             if (parsed) checkDate = parsed;
         }
+        trace.push(`Evaluating billing date validity for date: ${rawDate || 'Current'}`);
         if (checkDate < start || checkDate > end) {
             res.exceptionCode = "EA";
             res.status = "Expired Agreement";
             res.explanation = `[EA] Billing date out of validity window (${agreement.fromDate} to ${agreement.toDate}).`;
+            trace.push(`WARNING: Billing date ${rawDate} is outside agreement date boundaries.`);
+        } else {
+            trace.push(`Date validation successful: ${rawDate} falls within agreement window.`);
         }
     }
 
     // B. Check Room Rent Rules
     let roomRentResolved = false;
     if (isRoomRentService && agreement && agreement.rooms) {
-        // Parse custom rooms in agreement
         let roomsArr = [];
         try {
             roomsArr = typeof agreement.rooms === 'string' ? JSON.parse(agreement.rooms) : agreement.rooms;
@@ -347,6 +571,8 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
                 res.expectedTariff = Number(rMatch.rate);
                 res.explanation = `Resolved room rent from Agreement room tariff: ₹${res.expectedTariff}.`;
                 roomRentResolved = true;
+                res.applicableSOC = "Agreement Room Tariff Schedule";
+                trace.push(`Room Rent Resolved from agreement rooms list for category "${cleanRoom}": Base Rate = ₹${res.expectedTariff}`);
                 if (res.expectedTariff !== item.billedRate) {
                     res.exceptionCode = "IRT";
                 }
@@ -368,6 +594,7 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
                 deptDiscount = Number(deptMatch.discount);
                 res.discountApplied = deptDiscount;
                 res.explanation += ` (Agreed Dept Discount: ${deptDiscount}% for ${item.dept})`;
+                trace.push(`Department discount matrix matched: ${deptDiscount}% discount registered for department "${item.dept}"`);
             }
         }
     }
@@ -387,11 +614,14 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
                     res.expectedTariff = Number(sMatch.rate);
                     res.explanation = `Service-level rate override applied: ₹${res.expectedTariff}.`;
                     serviceConditionApplied = true;
+                    res.applicableSOC = "Agreement Service Rate Overrides";
+                    trace.push(`Service-level rate override matched for Code ${item.serviceId}: Rate = ₹${res.expectedTariff}`);
                 }
                 if (sMatch.discount !== null && sMatch.discount !== undefined && sMatch.discount !== "") {
                     res.discountApplied = Number(sMatch.discount);
                     res.explanation += ` (Service-level discount override: ${res.discountApplied}%)`;
                     serviceConditionApplied = true;
+                    trace.push(`Service-level discount override matched for Code ${item.serviceId}: Discount = ${res.discountApplied}%`);
                 }
             }
         }
@@ -403,10 +633,16 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
         res.isIgnored = true;
         res.status = "Ignored (Inside Package)";
         res.explanation = "Billed item is inside a package; rates are bundled.";
+        trace.push("Package check: Item is flagged as 'inside package'. Billing is bundled under global package code. Verification ignored.");
+        res.expectedTariff = 0;
+        res.expectedDiscountedRate = 0;
+        res.applicableTariff = 0;
+        res.expectedAmount = 0;
+        res.aiExplanation = `Audit Ignored: Billed item "${item.serviceName}" is inside package; rates are bundled.`;
         return res;
     }
 
-    // F. Fetch rates from SOC
+    // F. Fetch rates from SOC / Masters
     if (res.expectedTariff === null && !roomRentResolved && !serviceConditionApplied) {
         let resolved = null;
         if (cache) {
@@ -416,7 +652,7 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
             }
             let cachedItem = cache.socById.get(cleanId) || cache.socById.get(item.serviceId);
             if (cachedItem) {
-                resolved = { item: cachedItem, explanation: "[SOC Match T1]" };
+                resolved = { item: cachedItem, explanation: "[SOC Match]" };
             } else {
                 resolved = matchServiceInSOCList(item.serviceId, item.serviceName, cache.socList);
             }
@@ -427,6 +663,7 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
         if (resolved) {
             const match = resolved.item;
             res.explanation = `${resolved.explanation} ${res.explanation}`;
+            res.applicableSOC = activeSOCName || "Standard SOC Catalogue";
             
             let resolvedRate = null;
             if (activeSOCName === 'TARIFF_KOLKATA_SOC' || activeSOCName === 'TARIFF_KOLKATA_PKG') {
@@ -434,6 +671,7 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
                 if (match.rates) {
                     if (match.rates[normRoom] !== undefined) {
                         resolvedRate = match.rates[normRoom];
+                        trace.push(`Resolved Kolkata room-specific rate from SOC for category "${normRoom}": ₹${resolvedRate}`);
                     } else {
                         let foundRate = null;
                         for (const key in match.rates) {
@@ -443,6 +681,7 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
                             }
                         }
                         resolvedRate = (foundRate !== null) ? foundRate : (match.rates["STANDARD"] !== undefined ? match.rates["STANDARD"] : null);
+                        trace.push(`Resolved Kolkata room rate (Standard Fallback): ₹${resolvedRate}`);
                     }
                 }
             } else {
@@ -451,8 +690,10 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
                     resolvedRate = match.rates[mappedCat];
                     if (resolvedRate === undefined || resolvedRate === null) {
                         resolvedRate = match.rate;
+                        trace.push(`Resolved general SOC rate: ₹${resolvedRate}`);
                     } else {
                         res.explanation += ` Resolved IOCL room-specific rate (${mappedCat}).`;
+                        trace.push(`Resolved room-specific rate from SOC for category "${mappedCat}": ₹${resolvedRate}`);
                     }
                 } else {
                     const isGipsa = agreement && agreement.tariffMapped ? agreement.tariffMapped.toUpperCase().includes("GIPSA") : false;
@@ -472,8 +713,10 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
                             baseMatch = await getMasterTariffItem(item.serviceId, item.serviceName);
                         }
                         resolvedRate = baseMatch ? baseMatch.rate : match.rate;
+                        trace.push(`Resolved base master tariff rate for Code ${item.serviceId}: ₹${resolvedRate}`);
                     } else {
                         resolvedRate = match.rate;
+                        trace.push(`Resolved standard rate from active SOC "${activeSOCName}": ₹${resolvedRate}`);
                     }
                 }
             }
@@ -496,41 +739,137 @@ async function validateAuditItem(item, agreement, activeSOCName, cache = null) {
             }
             if (baseMatch) {
                 res.expectedTariff = baseMatch.rate;
+                res.applicableSOC = "Master Tariff Registry";
                 res.explanation = `[Base Master Fallback] ${res.explanation}`;
+                trace.push(`Fallback: Resolved rate from base Master Tariff registry: ₹${res.expectedTariff}`);
+            } else {
+                trace.push(`Audit failure: Service ID "${item.serviceId}" not found in agreement, SOC, or master registry.`);
             }
         }
     }
 
     // G. Calculate expected discounted rates
     if (res.expectedTariff !== null) {
+        res.applicableTariff = res.expectedTariff;
         if (res.discountApplied === 0 && agreement) {
             res.discountApplied = parseAgreementDiscountForCategory(agreement, (item.dept || '').toLowerCase(), (item.serviceName || '').toUpperCase());
+            if (res.discountApplied > 0) {
+                trace.push(`Category discount rule triggered: ${res.discountApplied}% discount mapped.`);
+            }
         }
         res.expectedDiscountedRate = res.expectedTariff * (1 - res.discountApplied / 100);
+        
+        const qty = item.quantity || 1;
+        res.expectedAmount = res.expectedDiscountedRate * qty;
+        trace.push(`Calculation check: Base Rate ₹${res.expectedTariff} | Discount Applied ${res.discountApplied}% | Expected Net Rate ₹${res.expectedDiscountedRate} | Quantity ${qty}`);
     }
 
-    // H. Variance calculation & exceptions classification
+    // H. Variance calculation & recovery recommendation
     if (res.expectedTariff !== null) {
+        const qty = item.quantity || 1;
+        const billedAmt = (item.billedRate || 0) * qty;
         const diff = item.billedRate - res.expectedDiscountedRate;
+        res.variance = diff * qty;
+        
         if (Math.abs(diff) > 1) {
             if (diff > 0) {
-                res.status = "Overcharged";
+                res.recoveryAmount = res.variance;
                 if (Math.abs(item.billedRate - res.expectedTariff) < 0.1 && res.discountApplied > 0) {
                     res.exceptionCode = "MAB";
                     res.status = "Missing Benefit";
                     res.explanation += ` [MAB] Agreed discount of ${res.discountApplied}% was not applied.`;
+                    trace.push(`Audit discrepancy [Missing Benefit]: Agreed discount of ${res.discountApplied}% was omitted in billing.`);
                 } else {
                     res.exceptionCode = "OC";
                     res.status = "Overcharged";
                     res.explanation += ` [OC] Billed rate ₹${item.billedRate} exceeds agreed rate ₹${res.expectedDiscountedRate}.`;
+                    trace.push(`Audit discrepancy [Overcharged]: Billed rate ₹${item.billedRate} is higher than the expected tariff ₹${res.expectedDiscountedRate}.`);
                 }
             } else {
                 res.status = "Undercharged";
+                res.recoveryAmount = 0; // Negative variance indicates opportunity, not recoverability
+                trace.push(`Audit discrepancy [Undercharged]: Billed rate ₹${item.billedRate} is lower than the expected tariff ₹${res.expectedDiscountedRate}.`);
             }
+        } else {
+            trace.push("Audit confirmation: Billed rate matches agreed expected rate.");
         }
     } else {
         res.status = "Not Found in Master";
         res.explanation += " Service not found in agreement or active SOC.";
+        res.variance = item.billedRate * (item.quantity || 1);
+        trace.push("WARNING: Audit incomplete. Service not found in masters.");
+    }
+
+    // I. Disallowance Engine Rules Evaluation
+    const isTpa = agreement && (
+        agreement.customerType === 'TPA' || 
+        agreement.customerType === 'Insurance' || 
+        (item.customer && (
+            item.customer.toUpperCase().includes("TPA") || 
+            item.customer.toUpperCase().includes("INSURANCE") || 
+            item.customer.toUpperCase().includes("GIPSA")
+        ))
+    );
+
+    const nameUpper = (item.serviceName || '').toUpperCase();
+    const deptUpper = (item.dept || '').toUpperCase();
+    
+    // Non-medical and consumable exclusion definitions
+    const isDisallowedItem = nameUpper.includes("PPE") || 
+                            nameUpper.includes("SANITIZER") || 
+                            nameUpper.includes("MASK") || 
+                            nameUpper.includes("GLOVES") || 
+                            nameUpper.includes("REGISTRATION") || 
+                            nameUpper.includes("ADMINISTRATIVE") || 
+                            nameUpper.includes("SERVICE CHARGE") || 
+                            nameUpper.includes("STATIONERY") || 
+                            nameUpper.includes("SYRINGE") ||
+                            deptUpper.includes("CONSUMABLE");
+
+    const qty = item.quantity || 1;
+    const billedAmt = (item.billedRate || 0) * qty;
+
+    if (isDisallowedItem && isTpa) {
+        res.disallowanceInfo = {
+            billedAmount: billedAmt,
+            expectedAmount: 0,
+            disallowedAmount: billedAmt,
+            agreementClause: "Clause 18.4: Administrative overheads, documentation fees, and non-medical consumables are disallowed and non-reimbursable by the payer.",
+            disallowanceReason: "Excluded Non-Medical Item / Administrative Overhead Charge",
+            allowableDeduction: 0,
+            excessDeduction: billedAmt,
+            recoveryOpportunity: billedAmt,
+            aiRecommendation: `AI Recommendation: Non-medical charges are disallowed by payer. Deduct 100% of the ₹${billedAmt} billing entry and recover the amount directly from the patient as a non-reimbursable expense.`
+        };
+        trace.push(`Disallowance Check: Non-medical consumable disallowance triggered for item "${item.serviceName}".`);
+    } else if (isRoomRentService && res.expectedDiscountedRate !== null && item.billedRate > res.expectedDiscountedRate && isTpa) {
+        const excess = (item.billedRate - res.expectedDiscountedRate) * qty;
+        res.disallowanceInfo = {
+            billedAmount: billedAmt,
+            expectedAmount: res.expectedDiscountedRate * qty,
+            disallowedAmount: excess,
+            agreementClause: "Clause 7.2: Room category capping restricts billing eligibility. Payer disallows excess room rent resulting from patient upgrades.",
+            disallowanceReason: "Room Category Capping Restriction",
+            allowableDeduction: res.expectedDiscountedRate * qty,
+            excessDeduction: excess,
+            recoveryOpportunity: excess,
+            aiRecommendation: `AI Recommendation: Excess room rent of ₹${excess} has been disallowed due to cap. Bill and recover the upgrade difference directly from the patient.`
+        };
+        trace.push(`Disallowance Check: Room Rent capping disallowance triggered. Excess Room Rent = ₹${excess}`);
+    }
+
+    // J. Synthesis of Narrative AI Explanation Panel
+    const expectedAmt = (res.expectedDiscountedRate || 0) * qty;
+    if (res.isIgnored) {
+        res.aiExplanation = `Audit Ignored: Billed item "${item.serviceName}" is inside package; rates are bundled.`;
+    } else if (res.status === "Not Found in Master") {
+        res.aiExplanation = `Verification Alert: Service ID "${item.serviceId}" (${item.serviceName}) was not found in the active master tariff registry or agreement databases. Suggest verifying billing entry code manually.`;
+    } else if (res.variance > 0) {
+        res.aiExplanation = `Variance Alert: Billed amount (₹${billedAmt}) exceeds the expected contract rate (₹${expectedAmt}) by ₹${res.variance}. Selection source: ${res.applicableSOC}. Rule applied: ${res.explanation}. Suggested Action: Recover overcharged amount of ₹${res.variance}.`;
+    } else if (res.variance < 0) {
+        res.aiExplanation = `Underbilling Alert: Billed amount (₹${billedAmt}) is lower than the expected contract rate (₹${expectedAmt}) by ₹${Math.abs(res.variance)}. Action recommended: Review billing entry for potential under-billing recovery.`;
+    } else {
+        res.aiExplanation = `Audit Success: Billed amount (₹${billedAmt}) matches the expected contract rate (₹${expectedAmt}) based on Agreement reference "${res.agreementReference}".`;
     }
 
     return res;
@@ -874,6 +1213,7 @@ module.exports = {
     loadDashboard,
     getAuditHistory,
     getAuditLogs,
-    deleteAuditRun
+    deleteAuditRun,
+    findDateEffectiveAgreement
 };
 

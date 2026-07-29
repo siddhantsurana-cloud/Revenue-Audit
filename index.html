@@ -2266,6 +2266,27 @@
             
             <!-- Right side: Compact User Role Simulator & Env Switcher -->
             <div class="user-header-widget" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+                <!-- Hierarchy Selector Widget (only visible to Global / Regional Admins) -->
+                <div id="hierarchy-selector-container" style="display: none; align-items: center; gap: 0.5rem; border-right: 1px solid var(--border); padding-right: 0.75rem;">
+                    <div style="display: flex; flex-direction: column; gap: 0.05rem;">
+                        <span style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: bold; line-height: 1.2;">Hierarchy Scope</span>
+                        <div style="display: flex; align-items: center; gap: 0.35rem;">
+                            <select id="hierarchy-region-select" style="padding: 0.35rem 0.5rem; background-color: var(--bg-app); color: var(--text-main); border: 1px solid var(--border); border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer; outline: none;">
+                                <option value="ALL">All Regions</option>
+                                <option value="East">East Region</option>
+                                <option value="South">South Region</option>
+                                <option value="North">North Region</option>
+                            </select>
+                            <select id="hierarchy-unit-select" style="padding: 0.35rem 0.5rem; background-color: var(--bg-app); color: var(--text-main); border: 1px solid var(--border); border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer; outline: none;">
+                                <option value="all">Global (All Units)</option>
+                                <option value="excelcare">Excelcare Guwahati</option>
+                                <option value="christianbasti">Christian Basti</option>
+                                <option value="kolkata">Gleneagles Kolkata</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Profile selector dropdown & info -->
                 <div style="display: flex; align-items: center; gap: 0.5rem; border-right: 1px solid var(--border); padding-right: 0.75rem;">
                     <div id="active-user-avatar" style="width: 30px; height: 30px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">A</div>
@@ -4714,7 +4735,17 @@
 
     async function loadCustomAgreementsFromServer() {
         let loaded = [];
-        if (window.sandboxEnvironment) {
+        if (typeof window.api !== 'undefined') {
+            try {
+                loaded = await window.api.agreements.loadAgreements();
+                localStorage.setItem('brc_v2_custom_customer_agreements', JSON.stringify(loaded));
+                console.log('Successfully loaded custom agreements from Electron (SQLite database).');
+            } catch (e) {
+                console.warn('Could not load custom agreements from Electron, using localStorage:', e);
+                const stored = localStorage.getItem('brc_v2_custom_customer_agreements');
+                loaded = stored ? JSON.parse(stored) : [];
+            }
+        } else if (window.sandboxEnvironment) {
             const stored = localStorage.getItem('brc_v2_custom_customer_agreements');
             loaded = stored ? JSON.parse(stored) : [];
         } else {
@@ -7051,6 +7082,11 @@
 
     // Export current filtered master grid results as CSV
     function exportToCSV() {
+        const isGlobalAdmin = (window.currentUserRole === 'Administrator' || window.currentUserRole === 'CommercialAdmin') && window.currentUserUnit === 'all';
+        if (!isGlobalAdmin) {
+            alert('Access Denied: Exporting master tariff data is restricted to Global Admins.');
+            return;
+        }
         if (filteredData.length === 0) {
             alert('No records to export!');
             return;
@@ -9271,7 +9307,15 @@
                     isIgnored: res.isIgnored,
                     fileName: res.fileName,
                     rowIndex: res.rowIndex,
-                    userRemarks: ""
+                    userRemarks: "",
+                    applicableTariff: res.applicableTariff,
+                    applicableSOC: res.applicableSOC,
+                    expectedAmount: res.expectedAmount,
+                    recoveryAmount: res.recoveryAmount,
+                    agreementReference: res.agreementReference,
+                    calculationTrace: res.calculationTrace,
+                    aiExplanation: res.aiExplanation,
+                    disallowanceInfo: res.disallowanceInfo
                 };
 
                 // Overlay user overrides from re-upload if present
@@ -10076,6 +10120,13 @@
         const billedPct = (maxRate > 0 && !isNaN(maxRate)) ? Math.round((row.billedRate / maxRate) * 100) : 0;
         const expectedPct = (maxRate > 0 && !isNaN(maxRate)) ? Math.round((netExpected / maxRate) * 100) : 0;
 
+        const isGlobalAdmin = (window.currentUserRole === 'Administrator' || window.currentUserRole === 'CommercialAdmin') && window.currentUserUnit === 'all';
+        
+        // Non-Global Admins / Auditors should see transaction-specific commercial rates (Applicable Tariff, SOC, Expected Amount, and Variance)
+        const expectedRateValStr = netExpected !== null ? formatCurrency(netExpected) : 'N/A';
+        const baseExpectedRateValStr = row.expectedTariff !== null ? formatCurrency(row.expectedTariff) : 'N/A';
+        const netExpectedStr = expectedRateValStr;
+
         let vizHtml = '';
         if (netExpected !== null) {
             vizHtml = `
@@ -10092,7 +10143,7 @@
                     <div class="viz-row">
                         <div class="viz-label-price">
                             <span>Expected Net Rate (with Discount)</span>
-                            <span>${formatCurrency(netExpected)}</span>
+                            <span>${expectedRateValStr}</span>
                         </div>
                         <div class="viz-bar-container">
                             <div class="viz-bar" id="bar-expected" style="--bar-color: var(--primary); font-family: 'Book Antiqua';"></div>
@@ -10111,8 +10162,66 @@
         // Fetch comparative rate stepper if code exists in unified tariff master
         const unifiedItem = UNIFIED_TARIFFS.find(x => x.id === row.serviceId);
         let evolutionHtml = '';
-        if (unifiedItem) {
+        if (unifiedItem && isGlobalAdmin) {
             evolutionHtml = generateRateEvolutionHTML(unifiedItem);
+        }
+
+        // Calculation trace HTML
+        let traceListHtml = '';
+        if (row.calculationTrace && Array.isArray(row.calculationTrace)) {
+            traceListHtml = row.calculationTrace.map(t => `<li style="margin-bottom: 0.35rem; color: var(--text-muted); font-size: 0.8rem; line-height: 1.3;">• ${escapeHtml(t)}</li>`).join('');
+        }
+
+        // Disallowance panel HTML
+        let disallowanceHtml = '';
+        if (row.disallowanceInfo) {
+            const info = row.disallowanceInfo;
+            disallowanceHtml = `
+                <div class="modal-section" style="margin-top: 1.5rem;">
+                    <div class="modal-section-title" style="color: var(--danger); font-size: 0.9rem; font-weight: 700; border-bottom: 1.5px solid var(--danger); padding-bottom: 0.3rem; margin-bottom: 0.75rem;">Disallowance Engine Analysis</div>
+                    <div style="background: rgba(220, 53, 69, 0.04); border: 1.5px solid var(--danger); border-radius: 6px; padding: 1.2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; margin-bottom: 1.2rem;">
+                            <div>
+                                <span style="font-size: 0.7rem; color: var(--text-muted); display: block; font-weight: 600; text-transform: uppercase;">Billed Amount</span>
+                                <strong style="font-family: monospace; font-size: 0.95rem; color: var(--text-dark);">${formatCurrency(info.billedAmount)}</strong>
+                            </div>
+                            <div>
+                                <span style="font-size: 0.7rem; color: var(--text-muted); display: block; font-weight: 600; text-transform: uppercase;">Expected Payer Rate</span>
+                                <strong style="font-family: monospace; font-size: 0.95rem; color: var(--text-dark);">${formatCurrency(info.expectedAmount)}</strong>
+                            </div>
+                            <div>
+                                <span style="font-size: 0.7rem; color: var(--text-muted); display: block; color: var(--danger); font-weight: 600; text-transform: uppercase;">Disallowed Amount</span>
+                                <strong style="font-family: monospace; font-size: 0.95rem; color: var(--danger);">${formatCurrency(info.disallowedAmount)}</strong>
+                            </div>
+                            <div>
+                                <span style="font-size: 0.7rem; color: var(--text-muted); display: block; font-weight: 600; text-transform: uppercase;">Allowable Deduction</span>
+                                <strong style="font-family: monospace; font-size: 0.95rem; color: var(--text-dark);">${formatCurrency(info.allowableDeduction)}</strong>
+                            </div>
+                            <div>
+                                <span style="font-size: 0.7rem; color: var(--text-muted); display: block; font-weight: 600; text-transform: uppercase;">Excess Deduction</span>
+                                <strong style="font-family: monospace; font-size: 0.95rem; color: var(--text-dark);">${formatCurrency(info.excessDeduction)}</strong>
+                            </div>
+                            <div>
+                                <span style="font-size: 0.7rem; color: var(--text-muted); display: block; color: var(--success); font-weight: 600; text-transform: uppercase;">Recovery Opportunity</span>
+                                <strong style="font-family: monospace; font-size: 0.95rem; color: var(--success);">${formatCurrency(info.recoveryOpportunity)}</strong>
+                            </div>
+                        </div>
+                        
+                        <div style="font-size: 0.85rem; margin-bottom: 0.6rem; line-height: 1.4; border-top: 1px dashed var(--border); padding-top: 0.8rem;">
+                            <strong>Agreement Clause Reference:</strong> 
+                            <span style="color: var(--text-muted);">${escapeHtml(info.agreementClause)}</span>
+                        </div>
+                        <div style="font-size: 0.85rem; margin-bottom: 0.6rem; line-height: 1.4;">
+                            <strong>TPA Disallowance Reason:</strong> 
+                            <span style="color: var(--text-muted);">${escapeHtml(info.disallowanceReason)}</span>
+                        </div>
+                        <div style="font-size: 0.85rem; border-top: 1px dashed var(--border); padding-top: 0.8rem; line-height: 1.4; color: var(--text-dark); background: rgba(40, 167, 69, 0.03); padding: 0.8rem; border-radius: 4px; border-left: 3px solid var(--success);">
+                            <strong>AI Recovery Recommendation:</strong> 
+                            <span>${escapeHtml(info.aiRecommendation)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
         modalContent.innerHTML = `
@@ -10179,7 +10288,7 @@
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">Base Expected Rate</span>
-                        <span class="meta-val" style="font-family: 'Book Antiqua';">${row.expectedTariff !== null ? formatCurrency(row.expectedTariff) : 'N/A'}</span>
+                        <span class="meta-val" style="font-family: 'Book Antiqua';">${baseExpectedRateValStr}</span>
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">Mapped Discount %</span>
@@ -10187,12 +10296,27 @@
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">Expected Net Rate</span>
-                        <span class="meta-val" style="font-weight: bold; font-family: 'Book Antiqua';">${netExpected !== null ? formatCurrency(netExpected) : 'N/A'}</span>
+                        <span class="meta-val" style="font-weight: bold; font-family: 'Book Antiqua';">${netExpectedStr}</span>
                     </div>
                 </div>
             </div>
+
+            <div class="modal-section" style="margin-top: 1.5rem;">
+                <div class="modal-section-title" style="color: var(--primary); font-size: 0.9rem; font-weight: 700; border-bottom: 1.5px solid var(--primary); padding-bottom: 0.3rem; margin-bottom: 0.75rem;">Commercial Explanation Panel</div>
+                <div style="background: rgba(0, 102, 204, 0.03); border: 1.5px solid var(--primary); border-radius: 6px; padding: 1.2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.01);">
+                    <div style="font-weight: 700; font-size: 0.85rem; color: var(--primary); margin-bottom: 0.6rem;">AI Selected Tariff & Version Decision</div>
+                    <p style="font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.45; color: var(--text-dark);">${escapeHtml(row.aiExplanation || row.explanation || 'No summary available.')}</p>
+                    
+                    <div style="font-weight: 700; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem; border-top: 1px dashed var(--border); padding-top: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px;">Central Engine Execution Steps</div>
+                    <ul style="list-style: none; padding-left: 0; margin: 0;">
+                        ${traceListHtml || '<li style="font-size: 0.8rem; color: var(--text-muted);">• Dynamic evaluation trace loaded from transaction verification logs.</li>'}
+                    </ul>
+                </div>
+            </div>
+
+            ${disallowanceHtml}
             ${evolutionHtml}
-            ${formatKolkataRatesHTML(unifiedItem ? unifiedItem.rateKolkata : null)}
+            ${isGlobalAdmin ? formatKolkataRatesHTML(unifiedItem ? unifiedItem.rateKolkata : null) : ''}
         `;
         detailsModal.classList.add('show');
     }
@@ -10233,7 +10357,13 @@
         csvContent += headers.map(h => `"${h.replace(/"/g, '""')}"`).join(',') + '\r\n';
 
         exportRows.forEach(row => {
-            const netExpected = row.expectedDiscountedRate !== null ? row.expectedDiscountedRate : row.expectedTariff;
+            const rawNetExpected = row.expectedDiscountedRate !== null ? row.expectedDiscountedRate : row.expectedTariff;
+            const netExpected = (rawNetExpected === null || isNaN(rawNetExpected)) ? null : Number(rawNetExpected);
+            
+            const expectedTariffVal = row.expectedTariff !== null && row.expectedTariff !== undefined ? row.expectedTariff : 'N/A';
+            const netExpectedVal = netExpected !== null ? netExpected : 'N/A';
+            const explanationVal = row.explanation || '';
+
             const csvRow = [
                 row.fileName || 'N/A',
                 row.patientName,
@@ -10245,12 +10375,12 @@
                 row.roomCategory || '',
                 row.billedRatePreDiscount !== undefined ? row.billedRatePreDiscount : row.billedRate,
                 row.billedRate,
-                row.expectedTariff !== null ? row.expectedTariff : 'N/A',
+                expectedTariffVal,
                 row.discountApplied !== undefined ? row.discountApplied : 0,
-                netExpected !== null ? netExpected : 'N/A',
+                netExpectedVal,
                 row.diff !== null ? row.diff : 'N/A',
                 row.status,
-                row.explanation,
+                explanationVal,
                 row.userRemarks || ''
             ];
             csvContent += csvRow.map(val => `"${String(val).replace(/"/g, '""')}"`).join(',') + '\r\n';
@@ -10289,7 +10419,13 @@
         csvContent += headers.map(h => `"${h.replace(/"/g, '""')}"`).join(',') + '\r\n';
 
         auditedRows.forEach(row => {
-            const netExpected = row.expectedDiscountedRate !== null ? row.expectedDiscountedRate : row.expectedTariff;
+            const rawNetExpected = row.expectedDiscountedRate !== null ? row.expectedDiscountedRate : row.expectedTariff;
+            const netExpected = (rawNetExpected === null || isNaN(rawNetExpected)) ? null : Number(rawNetExpected);
+
+            const expectedTariffVal = row.expectedTariff !== null && row.expectedTariff !== undefined ? row.expectedTariff : 'N/A';
+            const netExpectedVal = netExpected !== null ? netExpected : 'N/A';
+            const explanationVal = row.explanation || '';
+
             const csvRow = [
                 row.fileName || 'N/A',
                 row.patientName,
@@ -10301,12 +10437,12 @@
                 row.roomCategory || '',
                 row.billedRatePreDiscount !== undefined ? row.billedRatePreDiscount : row.billedRate,
                 row.billedRate,
-                row.expectedTariff !== null ? row.expectedTariff : 'N/A',
+                expectedTariffVal,
                 row.discountApplied !== undefined ? row.discountApplied : 0,
-                netExpected !== null ? netExpected : 'N/A',
+                netExpectedVal,
                 row.diff !== null ? row.diff : 'N/A',
                 row.status,
-                row.explanation,
+                explanationVal,
                 row.userRemarks || ''
             ];
             csvContent += csvRow.map(val => `"${String(val).replace(/"/g, '""')}"`).join(',') + '\r\n';
@@ -10332,7 +10468,7 @@
         const isReviewer = role === 'Reviewer';
         const isApprover = role === 'Approver' || role === 'Approval';
         const isAdmin = role === 'Administrator';
-        const isGlobalAdmin = isAdmin && window.currentUserUnit === 'all';
+        const isGlobalAdmin = (role === 'Administrator' || role === 'CommercialAdmin') && window.currentUserUnit === 'all';
 
         // Dropzone interactions
         if (isViewer) {
@@ -10393,6 +10529,24 @@
         if (!isAdmin && typeof tabAdminBtn !== 'undefined' && tabAdminBtn && tabAdminBtn.classList.contains('active')) {
             if (typeof tabDashboardBtn !== 'undefined' && tabDashboardBtn) {
                 tabDashboardBtn.click();
+            }
+        }
+
+        // Hide/Show Agreement & Master Tariff tabs based on Global Admin
+        if (typeof tabAgreementBtn !== 'undefined' && tabAgreementBtn) {
+            tabAgreementBtn.style.display = isGlobalAdmin ? 'flex' : 'none';
+        }
+        if (typeof tabMasterBtn !== 'undefined' && tabMasterBtn) {
+            tabMasterBtn.style.display = isGlobalAdmin ? 'flex' : 'none';
+        }
+
+        // Redirect to dashboard if trying to access hidden tabs
+        if (!isGlobalAdmin) {
+            if ((tabAgreementBtn && tabAgreementBtn.classList.contains('active')) || 
+                (tabMasterBtn && tabMasterBtn.classList.contains('active'))) {
+                if (tabDashboardBtn) {
+                    tabDashboardBtn.click();
+                }
             }
         }
     }
