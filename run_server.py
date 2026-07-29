@@ -4,7 +4,7 @@ import webbrowser
 import threading
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 
-PORT = 8000
+PORT = 8500
 HOST = '0.0.0.0'
 
 class DatabaseSyncHandler(SimpleHTTPRequestHandler):
