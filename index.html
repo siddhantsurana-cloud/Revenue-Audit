@@ -5171,6 +5171,20 @@
     tabsList.forEach(tab => {
         if (tab.btn) {
             tab.btn.addEventListener('click', () => {
+                // Access permission guards
+                if (tab.btn === tabMasterBtn && !(window.currentUserRole === 'Administrator' && window.currentUserUnit === 'all')) {
+                    showToast('Access Denied: Tariff Repository is restricted to Global Admin.', 'danger');
+                    return;
+                }
+                if (tab.btn === tabAgreementBtn && window.currentUserRole !== 'Administrator') {
+                    showToast('Access Denied: Agreement Repository is restricted to Administrators.', 'danger');
+                    return;
+                }
+                if (tab.btn === tabAdminBtn && window.currentUserRole !== 'Administrator') {
+                    showToast('Access Denied: Administration is restricted to Administrators.', 'danger');
+                    return;
+                }
+
                 tabsList.forEach(t => {
                     if (t.btn) t.btn.classList.remove('active');
                     if (t.panel) t.panel.classList.remove('active');
@@ -11815,6 +11829,26 @@
             tabAdminBtn.style.display = isAdmin ? 'flex' : 'none';
         }
         if (!isAdmin && typeof tabAdminBtn !== 'undefined' && tabAdminBtn && tabAdminBtn.classList.contains('active')) {
+            if (typeof tabDashboardBtn !== 'undefined' && tabDashboardBtn) {
+                tabDashboardBtn.click();
+            }
+        }
+
+        // Hide/Show Tariff Repository based on Global Admin
+        if (typeof tabMasterBtn !== 'undefined' && tabMasterBtn) {
+            tabMasterBtn.style.display = isGlobalAdmin ? 'flex' : 'none';
+        }
+        if (!isGlobalAdmin && typeof tabMasterBtn !== 'undefined' && tabMasterBtn && tabMasterBtn.classList.contains('active')) {
+            if (typeof tabDashboardBtn !== 'undefined' && tabDashboardBtn) {
+                tabDashboardBtn.click();
+            }
+        }
+
+        // Hide/Show Agreement Repository based on Administrator role (Admin & Global Admin)
+        if (typeof tabAgreementBtn !== 'undefined' && tabAgreementBtn) {
+            tabAgreementBtn.style.display = isAdmin ? 'flex' : 'none';
+        }
+        if (!isAdmin && typeof tabAgreementBtn !== 'undefined' && tabAgreementBtn && tabAgreementBtn.classList.contains('active')) {
             if (typeof tabDashboardBtn !== 'undefined' && tabDashboardBtn) {
                 tabDashboardBtn.click();
             }
