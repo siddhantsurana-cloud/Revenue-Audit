@@ -171,6 +171,151 @@
         syncOverridesToServer(overrides);
     }
 
+    // Default Access Permissions Rules
+    const DEFAULT_ROLE_PERMISSIONS = {
+        'Viewer': [
+            'tab-dashboard-btn',
+            'tab-checking-btn',
+            'tab-manual-btn',
+            'tab-infra-btn'
+        ],
+        'Auditor': [
+            'tab-dashboard-btn',
+            'tab-audit-btn',
+            'tab-exceptions-btn',
+            'tab-reports-btn',
+            'tab-repository-btn',
+            'tab-checking-btn',
+            'tab-manual-btn',
+            'tab-infra-btn'
+        ],
+        'Approver': [
+            'tab-dashboard-btn',
+            'tab-audit-btn',
+            'tab-exceptions-btn',
+            'tab-reports-btn',
+            'tab-repository-btn',
+            'tab-checking-btn',
+            'tab-manual-btn',
+            'tab-infra-btn'
+        ],
+        'Administrator': [
+            'tab-dashboard-btn',
+            'tab-master-btn',
+            'tab-audit-btn',
+            'tab-agreement-btn',
+            'tab-exceptions-btn',
+            'tab-reports-btn',
+            'tab-repository-btn',
+            'tab-checking-btn',
+            'tab-manual-btn',
+            'tab-infra-btn',
+            'tab-admin-btn'
+        ]
+    };
+
+    const SYSTEM_TABS = [
+        { id: 'tab-dashboard-btn', name: 'Dashboard' },
+        { id: 'tab-checking-btn', name: 'Checking Console' },
+        { id: 'tab-audit-btn', name: 'Audit Workspace' },
+        { id: 'tab-exceptions-btn', name: 'Exception Command Centre' },
+        { id: 'tab-reports-btn', name: 'Reports & Exports' },
+        { id: 'tab-agreement-btn', name: 'Agreement Repository' },
+        { id: 'tab-master-btn', name: 'Tariff Repository' },
+        { id: 'tab-manual-btn', name: 'Process Manual' },
+        { id: 'tab-infra-btn', name: 'Platform Infrastructure' },
+        { id: 'tab-admin-btn', name: 'Administration Center' }
+    ];
+
+    window.rolePermissions = safeJsonParse(localStorage.getItem('brc_v2_role_permissions'), DEFAULT_ROLE_PERMISSIONS);
+
+    function renderPermissionsMatrix() {
+        const tbody = document.getElementById('permissions-matrix-tbody');
+        if (!tbody) return;
+        
+        tbody.innerHTML = '';
+        const roles = ['Viewer', 'Auditor', 'Approver', 'Administrator'];
+        
+        SYSTEM_TABS.forEach(tab => {
+            const tr = document.createElement('tr');
+            tr.style.borderBottom = '1px solid var(--border)';
+            
+            const tdName = document.createElement('td');
+            tdName.style.padding = '0.75rem 0.5rem';
+            tdName.style.fontWeight = '600';
+            tdName.style.color = 'var(--text-main)';
+            tdName.textContent = tab.name;
+            tr.appendChild(tdName);
+            
+            roles.forEach(role => {
+                const tdCheck = document.createElement('td');
+                tdCheck.style.padding = '0.75rem 0.5rem';
+                tdCheck.style.textAlign = 'center';
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.dataset.tab = tab.id;
+                checkbox.dataset.role = role;
+                checkbox.style.cursor = 'pointer';
+                checkbox.style.width = '16px';
+                checkbox.style.height = '16px';
+                
+                // Keep Admin role checking dashboard & admin tabs enabled for safety
+                if (role === 'Administrator' && (tab.id === 'tab-admin-btn' || tab.id === 'tab-dashboard-btn')) {
+                    checkbox.checked = true;
+                    checkbox.disabled = true;
+                } else {
+                    const hasAccess = window.rolePermissions[role] && window.rolePermissions[role].includes(tab.id);
+                    checkbox.checked = !!hasAccess;
+                }
+                
+                tdCheck.appendChild(checkbox);
+                tr.appendChild(tdCheck);
+            });
+            
+            tbody.appendChild(tr);
+        });
+    }
+
+    function savePermissionsMatrix() {
+        const tbody = document.getElementById('permissions-matrix-tbody');
+        if (!tbody) return;
+        
+        const roles = ['Viewer', 'Auditor', 'Approver', 'Administrator'];
+        const newPermissions = {
+            'Viewer': [],
+            'Auditor': [],
+            'Approver': [],
+            'Administrator': []
+        };
+        
+        const checkboxes = tbody.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(cb => {
+            const role = cb.dataset.role;
+            const tabId = cb.dataset.tab;
+            if (cb.checked || cb.disabled) {
+                if (!newPermissions[role].includes(tabId)) {
+                    newPermissions[role].push(tabId);
+                }
+            }
+        });
+        
+        window.rolePermissions = newPermissions;
+        localStorage.setItem('brc_v2_role_permissions', JSON.stringify(newPermissions));
+        
+        // Sync with backend if central API integration is live
+        if (!window.sandboxEnvironment) {
+            fetch('/api/save_permissions', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newPermissions)
+            }).catch(e => console.error("Failed to sync permissions matrix to server:", e));
+        }
+        
+        showToast('Access control rules saved successfully!', 'success');
+        updateUIForRole();
+    }
+
     window.customAgreements = [];
 
     async function loadCustomAgreementsFromServer() {
@@ -582,17 +727,13 @@
     tabsList.forEach(tab => {
         if (tab.btn) {
             tab.btn.addEventListener('click', () => {
-                // Access permission guards
-                if (tab.btn === tabMasterBtn && !(window.currentUserRole === 'Administrator' && window.currentUserUnit === 'all')) {
-                    showToast('Access Denied: Tariff Repository is restricted to Global Admin.', 'danger');
-                    return;
-                }
-                if (tab.btn === tabAgreementBtn && window.currentUserRole !== 'Administrator') {
-                    showToast('Access Denied: Agreement Repository is restricted to Administrators.', 'danger');
-                    return;
-                }
-                if (tab.btn === tabAdminBtn && window.currentUserRole !== 'Administrator') {
-                    showToast('Access Denied: Administration is restricted to Administrators.', 'danger');
+                // Access permission guards from dynamic permissions map
+                const activePerms = window.rolePermissions[window.currentUserRole] || [];
+                const tabId = tab.btn.id;
+                const isAuthorized = activePerms.includes(tabId) && (tabId !== 'tab-master-btn' || window.currentUserUnit === 'all');
+
+                if (!isAuthorized) {
+                    showToast('Access Denied: You do not have permission to view this section.', 'danger');
                     return;
                 }
 
@@ -7235,33 +7376,33 @@
             btn.style.display = isAdmin ? 'flex' : 'none';
         });
 
-        // Hide/Show Admin Tab based on Administrator role
-        if (typeof tabAdminBtn !== 'undefined' && tabAdminBtn) {
-            tabAdminBtn.style.display = isAdmin ? 'flex' : 'none';
-        }
-        if (!isAdmin && typeof tabAdminBtn !== 'undefined' && tabAdminBtn && tabAdminBtn.classList.contains('active')) {
-            if (typeof tabDashboardBtn !== 'undefined' && tabDashboardBtn) {
-                tabDashboardBtn.click();
+        // Dynamic Role-Based Access Enforcement
+        const activePermissions = window.rolePermissions[role] || [];
+        
+        SYSTEM_TABS.forEach(tab => {
+            const btn = document.getElementById(tab.id);
+            if (btn) {
+                // Administrator needs window.currentUserUnit === 'all' (Global Admin) for the Tariff Repository
+                if (tab.id === 'tab-master-btn') {
+                    btn.style.display = (activePermissions.includes(tab.id) && window.currentUserUnit === 'all') ? 'flex' : 'none';
+                } else {
+                    btn.style.display = activePermissions.includes(tab.id) ? 'flex' : 'none';
+                }
             }
-        }
-
-        // Hide/Show Tariff Repository based on Global Admin
-        if (typeof tabMasterBtn !== 'undefined' && tabMasterBtn) {
-            tabMasterBtn.style.display = isGlobalAdmin ? 'flex' : 'none';
-        }
-        if (!isGlobalAdmin && typeof tabMasterBtn !== 'undefined' && tabMasterBtn && tabMasterBtn.classList.contains('active')) {
-            if (typeof tabDashboardBtn !== 'undefined' && tabDashboardBtn) {
-                tabDashboardBtn.click();
-            }
-        }
-
-        // Hide/Show Agreement Repository based on Administrator role (Admin & Global Admin)
-        if (typeof tabAgreementBtn !== 'undefined' && tabAgreementBtn) {
-            tabAgreementBtn.style.display = isAdmin ? 'flex' : 'none';
-        }
-        if (!isAdmin && typeof tabAgreementBtn !== 'undefined' && tabAgreementBtn && tabAgreementBtn.classList.contains('active')) {
-            if (typeof tabDashboardBtn !== 'undefined' && tabDashboardBtn) {
-                tabDashboardBtn.click();
+        });
+        
+        // If current active tab is hidden, switch back to dashboard (or first authorized tab)
+        const activeTabBtn = document.querySelector('.tab-btn.active');
+        if (activeTabBtn) {
+            const tabId = activeTabBtn.id;
+            const hasAccess = activePermissions.includes(tabId) && (tabId !== 'tab-master-btn' || window.currentUserUnit === 'all');
+            if (!hasAccess) {
+                const fallbackTab = activePermissions.find(tId => {
+                    const btn = document.getElementById(tId);
+                    return btn && btn.style.display !== 'none';
+                }) || 'tab-dashboard-btn';
+                const fallbackBtn = document.getElementById(fallbackTab);
+                if (fallbackBtn) fallbackBtn.click();
             }
         }
     }
@@ -11722,6 +11863,9 @@
             `;
             tbody.appendChild(tr);
         });
+
+        // Load permissions matrix dynamically
+        renderPermissionsMatrix();
     };
 
     window.editAdminUser = function(index) {
@@ -11953,6 +12097,11 @@
                     adminPwdInput.type = 'password';
                 }
             });
+        }
+
+        const btnSavePerms = document.getElementById('btn-save-permissions');
+        if (btnSavePerms) {
+            btnSavePerms.addEventListener('click', savePermissionsMatrix);
         }
     }
 

@@ -1996,6 +1996,33 @@
                 </div>
             </div>
 
+            <!-- Role Access Permissions Matrix Card -->
+            <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">
+                    <h3 style="font-size: 1rem; font-weight: 800; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--primary)" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Role Access Permissions Matrix
+                    </h3>
+                    <button class="export-btn" id="btn-save-permissions" type="button" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; background: var(--primary); border-color: var(--primary); color: white; font-weight: 700; opacity: 1; cursor: pointer;">Save Access Rules</button>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left;" id="permissions-matrix-table">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--border); color: var(--text-muted); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
+                                <th style="padding: 0.75rem 0.5rem; width: 40%;">Workspace Panel / Tab</th>
+                                <th style="padding: 0.75rem 0.5rem; text-align: center;">Viewer</th>
+                                <th style="padding: 0.75rem 0.5rem; text-align: center;">Auditor</th>
+                                <th style="padding: 0.75rem 0.5rem; text-align: center;">Approver</th>
+                                <th style="padding: 0.75rem 0.5rem; text-align: center;">Admin</th>
+                            </tr>
+                        </thead>
+                        <tbody id="permissions-matrix-tbody" style="font-size: 0.82rem; color: var(--text-main);">
+                            <!-- Permissions rendered dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <!-- Add / Edit User Sidebar Form -->
             <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 1.25rem;">
                 <h3 style="font-size: 1rem; font-weight: 800; color: var(--text-main); margin: 0; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;" id="admin-form-title">
