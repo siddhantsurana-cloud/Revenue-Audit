@@ -70,11 +70,27 @@
         { from: 391, to: 420, rates: { "STANDARD": 95000, "SEMI-PRIVATE": 150000, "PRIVATE": 200000, "PRIVATE DELUXE": 200000, "DELUXE": 200000, "SUITE": 245000, "MAHARAJA SUITE": 300000 } }
     ];
 
+    // Safe Utility Parsers to prevent crash on corrupt data
+    function safeJsonParse(str, fallback = null) {
+        try {
+            return str ? JSON.parse(str) : fallback;
+        } catch (e) {
+            console.error("JSON parsing error:", e);
+            return fallback;
+        }
+    }
+
+    function safeForEach(arr, callback) {
+        if (arr && Array.isArray(arr)) {
+            arr.forEach(callback);
+        }
+    }
+
     // OneDrive Database Sync API Methods
     async function loadDatabaseFromServer() {
         if (window.sandboxEnvironment) {
             const stored = localStorage.getItem('brc_v2_saved_audits');
-            return stored ? JSON.parse(stored) : [];
+            return safeJsonParse(stored, []);
         }
         try {
             const res = await fetch('/api/load_audits');
@@ -88,13 +104,13 @@
             console.warn('Could not load audits from server, using localStorage:', e);
         }
         const stored = localStorage.getItem('brc_v2_saved_audits');
-        return stored ? JSON.parse(stored) : [];
+        return safeJsonParse(stored, []);
     }
 
     async function loadOverridesFromServer() {
         if (window.sandboxEnvironment) {
             const stored = localStorage.getItem('brc_v2_customer_rate_overrides');
-            return stored ? JSON.parse(stored) : {};
+            return safeJsonParse(stored, {});
         }
         try {
             const res = await fetch('/api/load_overrides');
@@ -108,7 +124,7 @@
             console.warn('Could not load customer overrides from server, using localStorage:', e);
         }
         const stored = localStorage.getItem('brc_v2_customer_rate_overrides');
-        return stored ? JSON.parse(stored) : {};
+        return safeJsonParse(stored, {});
     }
 
     async function syncDatabaseToServer(db) {
@@ -161,7 +177,7 @@
         let loaded = [];
         if (window.sandboxEnvironment) {
             const stored = localStorage.getItem('brc_v2_custom_customer_agreements');
-            loaded = stored ? JSON.parse(stored) : [];
+            loaded = safeJsonParse(stored, []);
         } else {
             try {
                 const res = await fetch('/api/load_custom_agreements');
@@ -174,7 +190,7 @@
             } catch (e) {
                 console.warn('Could not load custom agreements from server, using localStorage:', e);
                 const stored = localStorage.getItem('brc_v2_custom_customer_agreements');
-                loaded = stored ? JSON.parse(stored) : [];
+                loaded = safeJsonParse(stored, []);
             }
         }
         window.customAgreements = loaded;
@@ -713,35 +729,35 @@
 
     // Build Unified Tariffs on startup for Master Explorer
     function buildUnifiedTariffs() {
-        // Build maps
-        TARIFF_DATA.forEach(item => { map2026[item.id] = item; });
+        // Build maps safely using safeForEach
+        safeForEach(TARIFF_DATA, item => { map2026[item.id] = item; });
         
-        if (typeof TARIFF_2021 !== 'undefined') TARIFF_2021.forEach(item => { map2021[item.id] = item; });
-        if (typeof TARIFF_2021_IOCL !== 'undefined') TARIFF_2021_IOCL.forEach(item => { map2021_iocl[item.id] = item; });
-        if (typeof TARIFF_2023 !== 'undefined') TARIFF_2023.forEach(item => { map2023[item.id] = item; });
-        if (typeof TARIFF_2023_V2 !== 'undefined') TARIFF_2023_V2.forEach(item => { map2023_v2[item.id] = item; });
-        if (typeof TARIFF_2024 !== 'undefined') TARIFF_2024.forEach(item => { map2024[item.id] = item; });
-        if (typeof TARIFF_2025 !== 'undefined') TARIFF_2025.forEach(item => { map2025[item.id] = item; });
+        if (typeof TARIFF_2021 !== 'undefined') safeForEach(TARIFF_2021, item => { map2021[item.id] = item; });
+        if (typeof TARIFF_2021_IOCL !== 'undefined') safeForEach(TARIFF_2021_IOCL, item => { map2021_iocl[item.id] = item; });
+        if (typeof TARIFF_2023 !== 'undefined') safeForEach(TARIFF_2023, item => { map2023[item.id] = item; });
+        if (typeof TARIFF_2023_V2 !== 'undefined') safeForEach(TARIFF_2023_V2, item => { map2023_v2[item.id] = item; });
+        if (typeof TARIFF_2024 !== 'undefined') safeForEach(TARIFF_2024, item => { map2024[item.id] = item; });
+        if (typeof TARIFF_2025 !== 'undefined') safeForEach(TARIFF_2025, item => { map2025[item.id] = item; });
         if (typeof TARIFF_EXCELCARE_2025 !== 'undefined') {
-            TARIFF_EXCELCARE_2025.forEach(item => { mapExcelcare[item.id] = item; });
+            safeForEach(TARIFF_EXCELCARE_2025, item => { mapExcelcare[item.id] = item; });
         }
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') {
-            TARIFF_EXCELCARE_CASH_2025.forEach(item => { mapExcelcareCash[item.id] = item; });
+            safeForEach(TARIFF_EXCELCARE_CASH_2025, item => { mapExcelcareCash[item.id] = item; });
         }
         if (typeof TARIFF_CASH_2025 !== 'undefined') {
-            TARIFF_CASH_2025.forEach(item => { mapCash2025[item.id] = item; });
+            safeForEach(TARIFF_CASH_2025, item => { mapCash2025[item.id] = item; });
         }
         if (typeof TARIFF_CASH_2026 !== 'undefined') {
-            TARIFF_CASH_2026.forEach(item => { mapCash2026[item.id] = item; });
+            safeForEach(TARIFF_CASH_2026, item => { mapCash2026[item.id] = item; });
         }
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') {
-            TARIFF_EXCELCARE_2024.forEach(item => { mapExcelcare2024[item.id] = item; });
+            safeForEach(TARIFF_EXCELCARE_2024, item => { mapExcelcare2024[item.id] = item; });
         }
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') {
-            TARIFF_EXCELCARE_GIPSA_2026.forEach(item => { mapExcelcareGipsa2026[item.id] = item; });
+            safeForEach(TARIFF_EXCELCARE_GIPSA_2026, item => { mapExcelcareGipsa2026[item.id] = item; });
         }
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') {
-            TARIFF_KOLKATA_SOC.forEach(item => {
+            safeForEach(TARIFF_KOLKATA_SOC, item => {
                 // Standard map: only entries without a payer restriction
                 if (!item.applicablePayer) {
                     mapKolkata[item.id] = item;
@@ -751,7 +767,7 @@
             });
         }
         if (typeof TARIFF_HDFC_ERGO_2024 !== 'undefined') {
-            TARIFF_HDFC_ERGO_2024.forEach(item => {
+            safeForEach(TARIFF_HDFC_ERGO_2024, item => {
                 if (!mapHdfc[item.id]) mapHdfc[item.id] = [];
                 mapHdfc[item.id].push(item);
             });
