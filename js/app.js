@@ -182,7 +182,6 @@
         ],
         'Auditor': [
             'tab-dashboard-btn',
-            'tab-hdfc-btn',
             'tab-ingester-btn',
             'tab-audit-btn',
             'tab-exceptions-btn',
@@ -194,7 +193,6 @@
         ],
         'Approver': [
             'tab-dashboard-btn',
-            'tab-hdfc-btn',
             'tab-ingester-btn',
             'tab-audit-btn',
             'tab-exceptions-btn',
@@ -206,7 +204,6 @@
         ],
         'Administrator': [
             'tab-dashboard-btn',
-            'tab-hdfc-btn',
             'tab-ingester-btn',
             'tab-master-btn',
             'tab-audit-btn',
@@ -224,7 +221,6 @@
     const SYSTEM_TABS = [
         { id: 'tab-dashboard-btn', name: 'Dashboard' },
         { id: 'tab-checking-btn', name: 'Checking Console' },
-        { id: 'tab-hdfc-btn', name: 'HDFC Ergo Compliance Board' },
         { id: 'tab-ingester-btn', name: 'Tariff Ingester' },
         { id: 'tab-audit-btn', name: 'Audit Workspace' },
         { id: 'tab-exceptions-btn', name: 'Exception Command Centre' },
@@ -423,7 +419,6 @@
 
     // Tab view selectors
     const tabDashboardBtn = document.getElementById('tab-dashboard-btn');
-    const tabHdfcBtn = document.getElementById('tab-hdfc-btn');
     const tabMasterBtn = document.getElementById('tab-master-btn');
     const tabAuditBtn = document.getElementById('tab-audit-btn');
     const tabAgreementBtn = document.getElementById('tab-agreement-btn');
@@ -437,7 +432,6 @@
     const tabIngesterBtn = document.getElementById('tab-ingester-btn');
 
     const panelDashboard = document.getElementById('panel-dashboard');
-    const panelHdfc = document.getElementById('panel-hdfc');
     const panelMaster = document.getElementById('panel-master');
     const panelAudit = document.getElementById('panel-audit');
     const panelAgreement = document.getElementById('panel-agreement');
@@ -730,9 +724,7 @@
     window.showToast = showToast;
 
     // Tab Selector clicks
-    const tabsList = [
         { btn: tabDashboardBtn, panel: panelDashboard, onShow: () => { updateDashboardView(); } },
-        { btn: tabHdfcBtn, panel: panelHdfc, onShow: () => { renderHdfcBoard(); } },
         { btn: tabIngesterBtn, panel: panelIngester, onShow: () => { initIngesterPanel(); } },
         { btn: tabMasterBtn, panel: panelMaster, onShow: () => { applyFiltersAndSort(); } },
         { btn: tabAuditBtn, panel: panelAudit, onShow: () => { } },
@@ -1084,7 +1076,6 @@
         // Setup Event Listeners
         setupEventListeners();
         setupAuditEventListeners();
-        setupHdfcListeners();
         initIngesterPanel();
 
         // Run filter first time
@@ -3201,6 +3192,63 @@
                 selectedBillFiles.push(file);
             }
         }
+        
+        // Auto-detect HDFC Ergo files to set validation source
+        let detectedHdfc = false;
+        let detectedUnit = null; // 'international' or 'excelcare'
+        
+        for (let i = 0; i < filesList.length; i++) {
+            const nameUpper = filesList[i].name.toUpperCase();
+            if (nameUpper.includes("HDFC") || nameUpper.includes("ERGO")) {
+                detectedHdfc = true;
+                if (nameUpper.includes("EXCEL") || nameUpper.includes("CARE")) {
+                    detectedUnit = 'excelcare';
+                } else if (nameUpper.includes("ASSAM") || nameUpper.includes("INT") || nameUpper.includes("GUWAHATI") || nameUpper.includes("INTERNATIONAL")) {
+                    detectedUnit = 'international';
+                }
+            }
+        }
+        
+        if (detectedHdfc) {
+            const buSelect = document.getElementById('audit-bu-select');
+            const typeSelect = document.getElementById('audit-source-type-select');
+            
+            let changed = false;
+            
+            if (detectedUnit && buSelect && buSelect.value !== detectedUnit) {
+                buSelect.value = detectedUnit;
+                changed = true;
+            }
+            
+            if (typeSelect && typeSelect.value !== 'tpa') {
+                typeSelect.value = 'tpa';
+                changed = true;
+            }
+            
+            // Re-populate the validation source select list based on unit and type
+            if (typeof updateValidationSourceOptions === 'function') {
+                updateValidationSourceOptions();
+            }
+            
+            const sourceSelect = document.getElementById('audit-source-select');
+            if (sourceSelect && sourceSelect.value !== 'hdfc_agreed_2026') {
+                // Verify option exists, otherwise add it
+                const optionExists = Array.from(sourceSelect.options).some(opt => opt.value === 'hdfc_agreed_2026');
+                if (!optionExists) {
+                    const opt = document.createElement('option');
+                    opt.value = 'hdfc_agreed_2026';
+                    opt.textContent = 'HDFC ERGO Centrally Agreed (2026)';
+                    sourceSelect.appendChild(opt);
+                }
+                sourceSelect.value = 'hdfc_agreed_2026';
+                changed = true;
+            }
+            
+            if (changed && typeof showToast === 'function') {
+                showToast(`Auto-configured audit validation source: HDFC ERGO Centrally Agreed (2026) for ${detectedUnit === 'international' ? 'International Unit' : 'Excelcare Unit'}.`, 'success');
+            }
+        }
+
         updateBillFilesUI();
     }
 

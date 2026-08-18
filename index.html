@@ -327,10 +327,7 @@
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                 <span>Audit Repository</span>
             </button>
-            <button class="tab-btn" id="tab-hdfc-btn" style="border-left: 3px solid var(--emerald-glow, #10b981);">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span>HDFC Ergo Agreed</span>
-            </button>
+
             <button class="tab-btn" id="tab-ingester-btn" style="border-left: 3px solid var(--accent, #6366f1);">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
                 <span>Tariff Ingester</span>
@@ -476,115 +473,6 @@
                 <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; align-self: flex-start;">Agreement Distribution by Category</h4>
                 <div style="position: relative; width: 100%; height: 230px;">
                     <canvas id="chart-db-units"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PANEL: HDFC ERGO CENTRALLY AGREED TARIFF INTEGRITY & AUDIT BOARD -->
-    <div class="tab-panel" id="panel-hdfc">
-        <!-- DATABASE OVERVIEW BRANDING HEADER -->
-        <div class="controls-card" style="background-color: var(--bg-card); border-left: 5px solid var(--success-glow, #10b981); margin-bottom: 1.5rem;">
-            <h3 style="font-size: 1.25rem; font-weight: 800; color: #10b981; margin-bottom: 0.5rem;">HDFC Ergo Compliance Board | Centrally Agreed Tariff Intelligence</h3>
-            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
-                Cross-unit analysis and compliance console for the 2026 centrally agreed HDFC Ergo cash tariffs. This workspace provides real-time pricing variance, drift detection, and side-by-side procedure audit benchmarks between the Guwahati International and Excelcare clinical units.
-            </p>
-        </div>
-
-        <!-- SUMMARY STATS CARD GRID -->
-        <div class="metrics-grid" style="margin-bottom: 1.5rem;">
-            <div class="metric-card" style="--accent: #10b981; --icon-bg: rgba(16, 185, 129, 0.1); box-shadow: 0 0 15px rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.1);">
-                <div class="metric-icon" style="color: #10b981;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-                <div class="metric-info">
-                    <div class="metric-value" id="hdfc-stat-total">0</div>
-                    <div class="metric-label">Agreed Procedures Mapped</div>
-                </div>
-            </div>
-            <div class="metric-card" style="--accent: #3b82f6; --icon-bg: rgba(59, 130, 246, 0.1); box-shadow: 0 0 15px rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.1);">
-                <div class="metric-icon" style="color: #3b82f6;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
-                <div class="metric-info">
-                    <div class="metric-value" id="hdfc-stat-aligned">0</div>
-                    <div class="metric-label">Identical Rate Alignment</div>
-                </div>
-            </div>
-            <div class="metric-card" style="--accent: #f59e0b; --icon-bg: rgba(245, 158, 11, 0.1); box-shadow: 0 0 15px rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.1);">
-                <div class="metric-icon" style="color: #f59e0b;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-                <div class="metric-info">
-                    <div class="metric-value" id="hdfc-stat-drift">0%</div>
-                    <div class="metric-label">Avg Price Variance Drift</div>
-                </div>
-            </div>
-            <div class="metric-card" style="--accent: #ef4444; --icon-bg: rgba(239, 68, 68, 0.1); box-shadow: 0 0 15px rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.1);">
-                <div class="metric-icon" style="color: #ef4444;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-                <div class="metric-info">
-                    <div class="metric-value" id="hdfc-stat-max-drift">-</div>
-                    <div class="metric-label">Max Pricing Leakage/Gap</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- VISUAL GRAPHICS LAYOUT -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
-            <!-- Chart 1: Unit Pricing Comparison -->
-            <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; height: 340px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.04);">
-                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-top: 0; margin-bottom: 1rem; letter-spacing: 0.5px;">Average agreed rate comparison by specialty</h4>
-                <div style="position: relative; width: 100%; height: 260px;">
-                    <canvas id="chart-hdfc-comparison"></canvas>
-                </div>
-            </div>
-            <!-- Chart 2: Variance Distribution -->
-            <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; height: 340px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.04);">
-                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-top: 0; margin-bottom: 1rem; letter-spacing: 0.5px;">Unit-wise pricing alignment distribution</h4>
-                <div style="position: relative; width: 100%; height: 260px;">
-                    <canvas id="chart-hdfc-distribution"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- COMPARISON INTERACTIVE TABLE CARD -->
-        <div class="controls-card" style="background-color: var(--bg-card); box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.04);">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
-                <h4 style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin: 0; letter-spacing: 0.5px;">Interactive Agreed Tariff Analyzer</h4>
-                <!-- Filters -->
-                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
-                    <input type="text" id="hdfc-search" class="search-input" placeholder="Search by name or code..." style="width: 240px; margin: 0; padding: 0.4rem 0.75rem; font-size: 0.8rem; background: var(--bg-body);">
-                    <select id="hdfc-filter-dept" class="select-input" style="width: 180px; margin: 0; padding: 0.4rem; font-size: 0.8rem; background: var(--bg-body);">
-                        <option value="all">All Departments</option>
-                    </select>
-                    <select id="hdfc-filter-status" class="select-input" style="width: 180px; margin: 0; padding: 0.4rem; font-size: 0.8rem; background: var(--bg-body);">
-                        <option value="all">All Tariff Items</option>
-                        <option value="identical">Rate Aligned (0% Drift)</option>
-                        <option value="drift">Rate Discrepancy (>0% Drift)</option>
-                        <option value="excl_only">Excelcare Unit Only</option>
-                        <option value="intl_only">International Unit Only</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Table -->
-            <div style="overflow-x: auto;">
-                <table class="data-table" id="hdfc-table" style="width: 100%; border-collapse: collapse; font-size: 0.8rem;">
-                    <thead>
-                        <tr style="background: var(--bg-body); border-bottom: 2px solid var(--border);">
-                            <th style="padding: 0.75rem; text-align: left; font-weight: 700; width: 100px;">Code</th>
-                            <th style="padding: 0.75rem; text-align: left; font-weight: 700;">Procedure Name</th>
-                            <th style="padding: 0.75rem; text-align: left; font-weight: 700; width: 150px;">Department</th>
-                            <th style="padding: 0.75rem; text-align: right; font-weight: 700; width: 140px;">International Rate</th>
-                            <th style="padding: 0.75rem; text-align: right; font-weight: 700; width: 140px;">Excelcare Rate</th>
-                            <th style="padding: 0.75rem; text-align: center; font-weight: 700; width: 120px;">Variance (%)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="hdfc-table-body">
-                        <!-- Filled dynamically -->
-                    </tbody>
-                </table>
-            </div>
-            <!-- Pagination -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; flex-wrap: wrap; gap: 0.5rem;">
-                <span id="hdfc-pagination-info" style="font-size: 0.75rem; color: var(--text-muted);">Showing 0 to 0 of 0 entries</span>
-                <div style="display: flex; gap: 0.5rem;">
-                    <button id="hdfc-btn-prev" class="export-btn" style="padding: 0.25rem 0.5rem; font-size: 0.72rem; cursor: pointer;">Previous</button>
-                    <button id="hdfc-btn-next" class="export-btn" style="padding: 0.25rem 0.5rem; font-size: 0.72rem; cursor: pointer;">Next</button>
                 </div>
             </div>
         </div>
@@ -2936,10 +2824,10 @@
 <script>
     // Default customizations mapping dictionary
     window.profileCustomizations = {
-        excelcare: { name: 'Excelcare Unit', username: 'auditor', email: 'siddhantsurana@gmail.com' },
-        kolkata: { name: 'Kolkata Unit', username: 'auditor', email: 'siddhantsurana@gmail.com' },
-        international: { name: 'International Unit', username: 'auditor', email: 'siddhantsurana@gmail.com' },
-        all: { name: 'Master Admin', username: 'admin', email: 'siddhantsurana@gmail.com' }
+        excelcare: { name: 'Excelcare Unit', username: '', email: 'siddhantsurana@gmail.com' },
+        kolkata: { name: 'Kolkata Unit', username: '', email: 'siddhantsurana@gmail.com' },
+        international: { name: 'International Unit', username: '', email: 'siddhantsurana@gmail.com' },
+        all: { name: 'Master Admin', username: '', email: 'siddhantsurana@gmail.com' }
     };
 
     // Load from localStorage if present
@@ -3068,7 +2956,7 @@
         }
         
         // Retrieve customized profile values
-        const config = window.profileCustomizations[unitCode] || { name: unitName, username: 'auditor', email: '' };
+        const config = window.profileCustomizations[unitCode] || { name: unitName, username: '', email: '' };
 
         // Update the selected profile visuals in the card
         const selectedAvatar = document.getElementById('netflix-selected-avatar');
