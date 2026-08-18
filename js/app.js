@@ -11372,7 +11372,6 @@
         // Bust stale localStorage if version has changed
         const cachedVersion = localStorage.getItem('brc_v2_creds_version');
         if (cachedVersion !== CREDS_CACHE_VERSION) {
-            localStorage.removeItem('brc_v2_user_credentials');
             localStorage.setItem('brc_v2_creds_version', CREDS_CACHE_VERSION);
         }
 
