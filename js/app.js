@@ -3201,63 +3201,6 @@
                 selectedBillFiles.push(file);
             }
         }
-        
-        // Auto-detect HDFC Ergo files to set validation source
-        let detectedHdfc = false;
-        let detectedUnit = null; // 'international' or 'excelcare'
-        
-        for (let i = 0; i < filesList.length; i++) {
-            const nameUpper = filesList[i].name.toUpperCase();
-            if (nameUpper.includes("HDFC") || nameUpper.includes("ERGO")) {
-                detectedHdfc = true;
-                if (nameUpper.includes("EXCEL") || nameUpper.includes("CARE")) {
-                    detectedUnit = 'excelcare';
-                } else if (nameUpper.includes("ASSAM") || nameUpper.includes("INT") || nameUpper.includes("GUWAHATI") || nameUpper.includes("INTERNATIONAL")) {
-                    detectedUnit = 'international';
-                }
-            }
-        }
-        
-        if (detectedHdfc) {
-            const buSelect = document.getElementById('audit-bu-select');
-            const typeSelect = document.getElementById('audit-source-type-select');
-            
-            let changed = false;
-            
-            if (detectedUnit && buSelect && buSelect.value !== detectedUnit) {
-                buSelect.value = detectedUnit;
-                changed = true;
-            }
-            
-            if (typeSelect && typeSelect.value !== 'tpa') {
-                typeSelect.value = 'tpa';
-                changed = true;
-            }
-            
-            // Re-populate the validation source select list based on unit and type
-            if (typeof updateValidationSourceOptions === 'function') {
-                updateValidationSourceOptions();
-            }
-            
-            const sourceSelect = document.getElementById('audit-source-select');
-            if (sourceSelect && sourceSelect.value !== 'hdfc_agreed_2026') {
-                // Verify option exists, otherwise add it
-                const optionExists = Array.from(sourceSelect.options).some(opt => opt.value === 'hdfc_agreed_2026');
-                if (!optionExists) {
-                    const opt = document.createElement('option');
-                    opt.value = 'hdfc_agreed_2026';
-                    opt.textContent = 'HDFC ERGO Centrally Agreed (2026)';
-                    sourceSelect.appendChild(opt);
-                }
-                sourceSelect.value = 'hdfc_agreed_2026';
-                changed = true;
-            }
-            
-            if (changed && typeof showToast === 'function') {
-                showToast(`Auto-configured audit validation source: HDFC ERGO Centrally Agreed (2026) for ${detectedUnit === 'international' ? 'International Unit' : 'Excelcare Unit'}.`, 'success');
-            }
-        }
-
         updateBillFilesUI();
     }
 
