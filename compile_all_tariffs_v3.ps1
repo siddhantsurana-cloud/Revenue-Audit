@@ -338,6 +338,23 @@ $ioclJsonPath = Join-Path $PSScriptRoot "compiled_iocl_2021.json"
 
 
 # Generic Sheet Parser for 23-24 and 24-25 (with row-by-row fallback scanning for merged headings)
+# Deduplicate tariff arrays to ensure database integrity and remove warning anomalies
+function Deduplicate-TariffList($list) {
+    $unique = New-Object System.Collections.Generic.List[Object]
+    if ($null -eq $list) { return $unique }
+    $seen = @{}
+    foreach ($item in $list) {
+        if ($null -ne $item.id) {
+            $idStr = $item.id.ToString().Trim()
+            if ($idStr -ne "" -and -not $seen.ContainsKey($idStr)) {
+                $unique.Add($item)
+                $seen[$idStr] = $true
+            }
+        }
+    }
+    return $unique
+}
+
 function Parse-MultiSheetFile($file) {
     $results = New-Object System.Collections.Generic.List[Object]
     if (-not (Test-Path $file)) { return $results }
@@ -1175,25 +1192,25 @@ $jsonNursing = $nursingCharges | ConvertTo-Json
 $jsonMonitoring = $monitoringCharges | ConvertTo-Json
 $jsonVisit = $visitCharges | ConvertTo-Json
 
-$json2021 = $list2021 | ConvertTo-Json -Depth 5
+$json2021 = (Deduplicate-TariffList $list2021) | ConvertTo-Json -Depth 5
 $json2021_IOCL = if (Test-Path $ioclJsonPath) { [IO.File]::ReadAllText($ioclJsonPath) } else { "[]" }
 $list2021_IOCL_Count = 0
 if (Test-Path $ioclJsonPath) {
     $list2021_IOCL_Count = (ConvertFrom-Json $json2021_IOCL).Count
     # Remove-Item $ioclJsonPath -ErrorAction SilentlyContinue
 }
-$json2023_V2 = $list2023_V2 | ConvertTo-Json -Depth 5
-$json2023 = $list2023 | ConvertTo-Json -Depth 5
-$json2024 = $list2024 | ConvertTo-Json -Depth 5
-$json2025 = $list2025 | ConvertTo-Json -Depth 5
-$jsonExcelcare2025 = $listExcelcare2025 | ConvertTo-Json -Depth 5
-$jsonExcelcareCash2025 = $listExcelcareCash2025 | ConvertTo-Json -Depth 5
-$jsonCash2025 = $listCash2025 | ConvertTo-Json -Depth 5
-$jsonCash2026 = $listCash2026 | ConvertTo-Json -Depth 5
-$jsonExcelcare2024 = $listExcelcare2024 | ConvertTo-Json -Depth 5
-$jsonExcelcareGipsa2026 = $listExcelcareGipsa2026 | ConvertTo-Json -Depth 5
-$jsonHdfcErgo = $listHdfcErgo | ConvertTo-Json -Depth 5
-$jsonAgreements = $listAgreements | ConvertTo-Json -Depth 5
+$json2023_V2 = (Deduplicate-TariffList $list2023_V2) | ConvertTo-Json -Depth 5
+$json2023 = (Deduplicate-TariffList $list2023) | ConvertTo-Json -Depth 5
+$json2024 = (Deduplicate-TariffList $list2024) | ConvertTo-Json -Depth 5
+$json2025 = (Deduplicate-TariffList $list2025) | ConvertTo-Json -Depth 5
+$jsonExcelcare2025 = (Deduplicate-TariffList $listExcelcare2025) | ConvertTo-Json -Depth 5
+$jsonExcelcareCash2025 = (Deduplicate-TariffList $listExcelcareCash2025) | ConvertTo-Json -Depth 5
+$jsonCash2025 = (Deduplicate-TariffList $listCash2025) | ConvertTo-Json -Depth 5
+$jsonCash2026 = (Deduplicate-TariffList $listCash2026) | ConvertTo-Json -Depth 5
+$jsonExcelcare2024 = (Deduplicate-TariffList $listExcelcare2024) | ConvertTo-Json -Depth 5
+$jsonExcelcareGipsa2026 = (Deduplicate-TariffList $listExcelcareGipsa2026) | ConvertTo-Json -Depth 5
+$jsonHdfcErgo = (Deduplicate-TariffList $listHdfcErgo) | ConvertTo-Json -Depth 5
+$jsonAgreements = (Deduplicate-TariffList $listAgreements) | ConvertTo-Json -Depth 5
 
 # Safety guards to prevent empty/null assignments causing syntax errors in JS
 $jsonMaster = if ($jsonMaster) { $jsonMaster } else { "[]" }

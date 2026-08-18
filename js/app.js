@@ -183,6 +183,7 @@
         'Auditor': [
             'tab-dashboard-btn',
             'tab-hdfc-btn',
+            'tab-ingester-btn',
             'tab-audit-btn',
             'tab-exceptions-btn',
             'tab-reports-btn',
@@ -194,6 +195,7 @@
         'Approver': [
             'tab-dashboard-btn',
             'tab-hdfc-btn',
+            'tab-ingester-btn',
             'tab-audit-btn',
             'tab-exceptions-btn',
             'tab-reports-btn',
@@ -205,6 +207,7 @@
         'Administrator': [
             'tab-dashboard-btn',
             'tab-hdfc-btn',
+            'tab-ingester-btn',
             'tab-master-btn',
             'tab-audit-btn',
             'tab-agreement-btn',
@@ -222,6 +225,7 @@
         { id: 'tab-dashboard-btn', name: 'Dashboard' },
         { id: 'tab-checking-btn', name: 'Checking Console' },
         { id: 'tab-hdfc-btn', name: 'HDFC Ergo Compliance Board' },
+        { id: 'tab-ingester-btn', name: 'Tariff Ingester' },
         { id: 'tab-audit-btn', name: 'Audit Workspace' },
         { id: 'tab-exceptions-btn', name: 'Exception Command Centre' },
         { id: 'tab-reports-btn', name: 'Reports & Exports' },
@@ -430,6 +434,7 @@
     const tabCheckingBtn = document.getElementById('tab-checking-btn');
     const tabAdminBtn = document.getElementById('tab-admin-btn');
     const tabInfraBtn = document.getElementById('tab-infra-btn');
+    const tabIngesterBtn = document.getElementById('tab-ingester-btn');
 
     const panelDashboard = document.getElementById('panel-dashboard');
     const panelHdfc = document.getElementById('panel-hdfc');
@@ -443,6 +448,7 @@
     const panelChecking = document.getElementById('panel-checking');
     const panelAdmin = document.getElementById('panel-admin');
     const panelInfra = document.getElementById('panel-infra');
+    const panelIngester = document.getElementById('panel-ingester');
 
     // HDFC Agreed Board State Variables
     let hdfcAgreedCurrentPage = 1;
@@ -727,6 +733,7 @@
     const tabsList = [
         { btn: tabDashboardBtn, panel: panelDashboard, onShow: () => { updateDashboardView(); } },
         { btn: tabHdfcBtn, panel: panelHdfc, onShow: () => { renderHdfcBoard(); } },
+        { btn: tabIngesterBtn, panel: panelIngester, onShow: () => { initIngesterPanel(); } },
         { btn: tabMasterBtn, panel: panelMaster, onShow: () => { applyFiltersAndSort(); } },
         { btn: tabAuditBtn, panel: panelAudit, onShow: () => { } },
         { btn: tabAgreementBtn, panel: panelAgreement, onShow: () => { renderAgreementManager(); } },
@@ -1078,6 +1085,7 @@
         setupEventListeners();
         setupAuditEventListeners();
         setupHdfcListeners();
+        initIngesterPanel();
 
         // Run filter first time
         applyFiltersAndSort();
@@ -3086,22 +3094,26 @@
                     <option value="2023">2023-24 SOC (International)</option>
                     <option value="2021">2021-22 SOC (International)</option>
                     <option value="soc_2021_iocl">SOC - 2021-22_IOCL (International)</option>
+                    <option value="custom_ingested">Custom Ingested SOC (Session)</option>
                 `;
             } else {
                 sourceSelect.innerHTML = `
                     <option value="gipsa">2026 GIPSA Tariff Template</option>
                     <option value="tpa" selected>2024 TPA Deluxe Tariff Template</option>
                     <option value="hdfc_agreed_2026">HDFC ERGO Centrally Agreed (2026)</option>
+                    <option value="custom_ingested">Custom Ingested SOC (Session)</option>
                 `;
             }
         } else if (bu === 'kolkata') {
             if (type === 'soc') {
                 sourceSelect.innerHTML = `
                     <option value="sockolkata" selected>2023-24 SOC (Kolkata)</option>
+                    <option value="custom_ingested">Custom Ingested SOC (Session)</option>
                 `;
             } else {
                 sourceSelect.innerHTML = `
                     <option value="pkgkolkata" selected>2023-24 Packages (Kolkata)</option>
+                    <option value="custom_ingested">Custom Ingested SOC (Session)</option>
                 `;
             }
         } else {
@@ -3112,6 +3124,7 @@
                     <option value="excelcare_cash_2025">2026 - Cash (Excelcare)</option>
                     <option value="excelcare_gipsa_2026">SOC - GIPSA 2026 (Excelcare)</option>
                     <option value="excelcare_2024">2024-25 SOC (Excelcare)</option>
+                    <option value="custom_ingested">Custom Ingested SOC (Session)</option>
                 `;
             } else {
                 sourceSelect.innerHTML = `
@@ -3123,6 +3136,7 @@
                     <option value="hdfc_suite">HDFC ERGO Suite Template</option>
                     <option value="hdfc_daycare">HDFC ERGO Daycare Template</option>
                     <option value="hdfc_agreed_2026">HDFC ERGO Centrally Agreed (2026)</option>
+                    <option value="custom_ingested">Custom Ingested SOC (Session)</option>
                 `;
             }
         }
@@ -3397,6 +3411,11 @@
         const u = tariffMapped.toUpperCase();
         const custUpper = customerName ? customerName.toUpperCase() : "";
         
+        if (u.includes("CUSTOM_INGESTED")) {
+            const activeSOC = window.TARIFF_CUSTOM_INGESTED || [];
+            const activeSOCMap = window.mapCustomIngested || {};
+            return { activeSOC, activeSOCMap };
+        }
         if (u.includes("HDFC_AGREED_2026")) {
             return { activeSOC: TARIFF_HDFC_ERGO_AGREED_2026, activeSOCMap: mapHdfcAgreed2026 };
         }
@@ -12639,5 +12658,226 @@
 
     window.renderHdfcBoard = renderHdfcBoard;
     window.setupHdfcListeners = setupHdfcListeners;
+
+    // Tariff Ingester Global State
+    let ingestedWorkbook = null;
+    let ingestedRecords = [];
+
+    function initIngesterPanel() {
+        const dropzone = document.getElementById('ingester-dropzone');
+        const fileInput = document.getElementById('ingester-file-input');
+        if (!dropzone || !fileInput) return;
+
+        // Reset state
+        ingestedWorkbook = null;
+        ingestedRecords = [];
+        document.getElementById('ingester-results-container').style.display = 'none';
+
+        // Drag/Drop Listeners
+        dropzone.onclick = () => fileInput.click();
+        dropzone.ondragover = (e) => {
+            e.preventDefault();
+            dropzone.style.borderColor = 'var(--accent, #6366f1)';
+            dropzone.style.backgroundColor = 'var(--bg-hover)';
+        };
+        dropzone.ondragleave = () => {
+            dropzone.style.borderColor = 'var(--border)';
+            dropzone.style.backgroundColor = 'transparent';
+        };
+        dropzone.ondrop = (e) => {
+            e.preventDefault();
+            dropzone.style.borderColor = 'var(--border)';
+            dropzone.style.backgroundColor = 'transparent';
+            if (e.dataTransfer.files.length > 0) {
+                handleIngesterFile(e.dataTransfer.files[0]);
+            }
+        };
+        fileInput.onchange = (e) => {
+            if (e.target.files.length > 0) {
+                handleIngesterFile(e.target.files[0]);
+            }
+        };
+
+        // Action Button Listeners
+        document.getElementById('ingest-btn-download').onclick = () => {
+            if (ingestedRecords.length === 0) return;
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(ingestedRecords, null, 4));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `ingested_tariff_${Date.now()}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        };
+
+        document.getElementById('ingest-btn-copy').onclick = () => {
+            if (ingestedRecords.length === 0) return;
+            navigator.clipboard.writeText(JSON.stringify(ingestedRecords, null, 4))
+                .then(() => showToast('JSON snippet copied to clipboard!', 'success'))
+                .catch(() => showToast('Failed to copy to clipboard.', 'danger'));
+        };
+
+        document.getElementById('ingest-btn-apply').onclick = () => {
+            if (ingestedRecords.length === 0) return;
+            
+            // Register this custom SOC as a globally available target database!
+            window.TARIFF_CUSTOM_INGESTED = ingestedRecords;
+            window.mapCustomIngested = {};
+            ingestedRecords.forEach(item => window.mapCustomIngested[item.id] = item);
+
+            showToast('Tariff successfully loaded into active session as Custom SOC. You can now select it in the Audit Workspace!', 'success');
+        };
+
+        document.getElementById('ingest-sheet-select').onchange = (e) => {
+            if (!ingestedWorkbook) return;
+            parseIngesterSheet(e.target.value);
+        };
+    }
+
+    function handleIngesterFile(file) {
+        if (!file) return;
+        
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type: 'array' });
+                ingestedWorkbook = workbook;
+
+                // Populate sheet dropdown
+                const select = document.getElementById('ingest-sheet-select');
+                select.innerHTML = '';
+                workbook.SheetNames.forEach(name => {
+                    const opt = document.createElement('option');
+                    opt.value = name;
+                    opt.textContent = name;
+                    select.appendChild(opt);
+                });
+
+                document.getElementById('ingest-stat-filename').textContent = file.name;
+                
+                // Parse first sheet by default
+                if (workbook.SheetNames.length > 0) {
+                    parseIngesterSheet(workbook.SheetNames[0]);
+                }
+            } catch (err) {
+                console.error(err);
+                showToast('Failed to parse Excel file. Make sure it is not corrupt.', 'danger');
+            }
+        };
+        reader.readAsArrayBuffer(file);
+    }
+
+    function parseIngesterSheet(sheetName) {
+        if (!ingestedWorkbook) return;
+        
+        const sheet = ingestedWorkbook.Sheets[sheetName];
+        const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+        if (rows.length < 2) {
+            showToast('Selected sheet is empty or contains insufficient rows.', 'warning');
+            return;
+        }
+
+        // Auto-detect columns (header row detection)
+        let headerRowIdx = 0;
+        let colCodeIdx = -1;
+        let colNameIdx = -1;
+        let colRateIdx = -1;
+
+        // Loop through first 20 rows to find header
+        for (let r = 0; r < Math.min(rows.length, 20); r++) {
+            const row = rows[r];
+            if (!row || !row.length) continue;
+            
+            for (let c = 0; c < row.length; c++) {
+                const val = String(row[c] || '').toUpperCase().trim();
+                if (val === 'CODE' || val === 'SERVICE CODE' || val === 'SERVICEID' || val === 'ITEM CODE' || val === 'NEW CODE') {
+                    colCodeIdx = c;
+                    headerRowIdx = r;
+                }
+                if (val === 'NAME' || val === 'DESCRIPTION' || val === 'SERVICE NAME' || val === 'PARTICULARS' || val === 'PROCEDURE') {
+                    colNameIdx = c;
+                }
+                if (val === 'RATE' || val === 'TARIFF' || val === 'PRICE' || val === 'AMOUNT' || val === 'CHARGES' || val === 'GIPSA' || val === 'TPA') {
+                    colRateIdx = c;
+                }
+            }
+            if (colCodeIdx !== -1 && colNameIdx !== -1) {
+                break; // Found good header mapping
+            }
+        }
+
+        // Fallbacks if not found
+        if (colCodeIdx === -1) colCodeIdx = 0;
+        if (colNameIdx === -1) colNameIdx = 1;
+        if (colRateIdx === -1) colRateIdx = 2;
+
+        document.getElementById('ingest-stat-fields').textContent = `ID: col ${colCodeIdx + 1}, Name: col ${colNameIdx + 1}, Rate: col ${colRateIdx + 1}`;
+
+        // Parse records
+        ingestedRecords = [];
+        const seenIds = new Set();
+        
+        for (let r = headerRowIdx + 1; r < rows.length; r++) {
+            const row = rows[r];
+            if (!row) continue;
+            
+            const rawId = String(row[colCodeIdx] || '').trim();
+            const rawName = String(row[colNameIdx] || '').trim();
+            const rawRate = row[colRateIdx];
+
+            if (!rawId || !rawName || rawId === 'undefined' || rawName === 'undefined') continue;
+            
+            // Skip rows containing header keywords
+            if (rawId.toUpperCase() === 'CODE' || rawName.toUpperCase() === 'DESCRIPTION' || rawId.toUpperCase() === 'SERVICE') continue;
+
+            const parsedRate = parseFloat(String(rawRate || '').replace(/[^0-9.-]/g, ''));
+            if (isNaN(parsedRate)) continue;
+
+            if (seenIds.has(rawId)) continue; // Deduplicate
+            seenIds.add(rawId);
+
+            ingestedRecords.push({
+                id: rawId,
+                name: rawName,
+                rate: parsedRate,
+                dept: sheetName,
+                type: 'Ingested'
+            });
+        }
+
+        // Render preview table
+        const previewBody = document.getElementById('ingest-preview-body');
+        previewBody.innerHTML = '';
+        const previewRows = ingestedRecords.slice(0, 10);
+        
+        if (previewRows.length === 0) {
+            previewBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: var(--text-muted); padding: 1rem;">No valid records found in sheet.</td></tr>';
+        } else {
+            previewRows.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid var(--border)';
+                tr.innerHTML = `
+                    <td style="padding: 0.4rem; font-family: monospace; color: var(--text-main); font-weight: 600;">${item.id}</td>
+                    <td style="padding: 0.4rem; color: var(--text-main); max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.name}</td>
+                    <td style="padding: 0.4rem; text-align: right; font-family: monospace; font-weight: 700; color: var(--accent, #6366f1);">₹${item.rate.toLocaleString()}</td>
+                `;
+                previewBody.appendChild(tr);
+            });
+        }
+
+        // Update stats
+        document.getElementById('ingest-stat-total').textContent = ingestedRecords.length.toLocaleString();
+
+        // Update JSON preview area
+        const jsonPreview = document.getElementById('ingest-json-preview');
+        jsonPreview.value = JSON.stringify(ingestedRecords.slice(0, 50), null, 4) + (ingestedRecords.length > 50 ? `\n\n... [${ingestedRecords.length - 50} more records truncated from preview]` : '');
+
+        // Show container
+        document.getElementById('ingester-results-container').style.display = 'flex';
+        showToast(`Successfully extracted ${ingestedRecords.length} unique records from sheet "${sheetName}".`, 'success');
+    }
+
+    window.initIngesterPanel = initIngesterPanel;
 
     document.addEventListener('DOMContentLoaded', init);

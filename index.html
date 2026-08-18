@@ -331,6 +331,10 @@
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 <span>HDFC Ergo Agreed</span>
             </button>
+            <button class="tab-btn" id="tab-ingester-btn" style="border-left: 3px solid var(--accent, #6366f1);">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                <span>Tariff Ingester</span>
+            </button>
             <button class="tab-btn" id="tab-audit-btn">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 <span>Audit Workspace</span> <span class="tab-badge" id="tab-badge-audit">0</span>
@@ -581,6 +585,79 @@
                 <div style="display: flex; gap: 0.5rem;">
                     <button id="hdfc-btn-prev" class="export-btn" style="padding: 0.25rem 0.5rem; font-size: 0.72rem; cursor: pointer;">Previous</button>
                     <button id="hdfc-btn-next" class="export-btn" style="padding: 0.25rem 0.5rem; font-size: 0.72rem; cursor: pointer;">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANEL: TARIFF INGESTION CENTER -->
+    <div class="tab-panel" id="panel-ingester" style="display: none;">
+        <!-- DATABASE OVERVIEW BRANDING HEADER -->
+        <div class="controls-card" style="background-color: var(--bg-card); border-left: 5px solid var(--accent, #6366f1); margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #6366f1; margin-bottom: 0.5rem;">Tariff Ingestion Center | Client-Side Excel Converter</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+                Upload any agreed tariff or corporate contract Excel workbook (`.xlsx`, `.xls`) to instantly extract service codes, names, and pricing structures directly in your browser. This tool identifies column headers automatically, maps pricing data, and lets you download a compiled JSON database for validation without server uploads.
+            </p>
+        </div>
+
+        <!-- UPLOAD DROPZONE -->
+        <div class="controls-card" style="background-color: var(--bg-card); margin-bottom: 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.5rem; border: 2px dashed var(--border); border-radius: 8px; cursor: pointer; text-align: center; transition: all 0.2s;" id="ingester-dropzone">
+            <input type="file" id="ingester-file-input" accept=".xlsx,.xls,.csv" style="display: none;">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--accent, #6366f1)" stroke-width="2" style="margin-bottom: 1rem;"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+            <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Select or Drag Tariff Excel / CSV Here</h3>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0;">Accepts standard Excel files. Column names like "Code", "Description", and "Rate" are auto-detected.</p>
+        </div>
+
+        <!-- RESULTS CONTAINER -->
+        <div id="ingester-results-container" style="display: none; flex-direction: column; gap: 1.5rem;">
+            <div class="metrics-grid">
+                <div class="stat-card" style="background-color: var(--bg-card); border: 1px solid var(--border);">
+                    <div class="stat-label">File Name</div>
+                    <div class="stat-value" id="ingest-stat-filename" style="font-size: 1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-main); font-weight: 700;">—</div>
+                </div>
+                <div class="stat-card" style="background-color: var(--bg-card); border: 1px solid var(--border);">
+                    <div class="stat-label">Active Sheet</div>
+                    <div class="stat-value" style="font-size: 1rem;">
+                        <select id="ingest-sheet-select" class="filter-select" style="width: 100%; border: none; background: transparent; color: var(--text-main); font-weight: 700; font-family: inherit; font-size: 1rem; padding: 0; outline: none; cursor: pointer;"></select>
+                    </div>
+                </div>
+                <div class="stat-card" style="background-color: var(--bg-card); border: 1px solid var(--border);">
+                    <div class="stat-label">Total Records Extracted</div>
+                    <div class="stat-value" id="ingest-stat-total" style="color: var(--text-main); font-weight: 700;">—</div>
+                </div>
+                <div class="stat-card" style="background-color: var(--bg-card); border: 1px solid var(--border);">
+                    <div class="stat-label">Mapped Fields</div>
+                    <div class="stat-value" id="ingest-stat-fields" style="font-size: 0.88rem; color: var(--accent, #6366f1); font-weight: 700;">—</div>
+                </div>
+            </div>
+
+            <div class="grid-2col">
+                <!-- Live Preview Grid -->
+                <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; height: 320px; overflow: hidden;">
+                    <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem;">Extracted Records Preview (First 10)</h4>
+                    <div style="overflow-y: auto; flex-grow: 1;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.78rem;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--border); color: var(--text-muted); font-weight: 700;">
+                                    <th style="padding: 0.5rem;">Code (ID)</th>
+                                    <th style="padding: 0.5rem;">Name / Description</th>
+                                    <th style="padding: 0.5rem; text-align: right;">Rate (₹)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ingest-preview-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- JSON & Actions -->
+                <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 1rem; height: 320px;">
+                    <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.2rem;">Actions & JSON Export</h4>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <button id="ingest-btn-download" class="export-btn" style="flex: 1; min-width: 100px; font-weight: 700; padding: 0.4rem 0.5rem; font-size: 0.75rem; background-color: var(--emerald-glow, #10b981); color: #fff;">Download JSON</button>
+                        <button id="ingest-btn-copy" class="export-btn" style="flex: 1; min-width: 100px; font-weight: 700; padding: 0.4rem 0.5rem; font-size: 0.75rem;">Copy Snippet</button>
+                        <button id="ingest-btn-apply" class="export-btn" style="flex: 1; min-width: 100px; font-weight: 700; padding: 0.4rem 0.5rem; font-size: 0.75rem; background-color: var(--accent, #6366f1); color: #fff;">Load as Custom SOC</button>
+                    </div>
+                    <textarea id="ingest-json-preview" style="width: 100%; flex-grow: 1; background-color: var(--bg-page); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; padding: 0.5rem; font-family: monospace; font-size: 0.72rem; resize: none; outline: none; line-height: 1.4;" readonly></textarea>
                 </div>
             </div>
         </div>
