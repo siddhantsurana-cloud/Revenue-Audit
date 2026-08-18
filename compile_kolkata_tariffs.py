@@ -3,9 +3,47 @@ import re
 import json
 import pdfplumber
 import openpyxl
+import hashlib
+import sys
 
 pdf_path = "S:\\Sid Work\\1. Apollo\\@ Apollo Guwahti\\Tarriff Working\\Tarrif Reporting Format\\Kolkata\\HDFC ERGO\\AMHL Tariff_2023-24.pdf"
 excel_path = "S:\\Sid Work\\1. Apollo\\@ Apollo Guwahti\\Tarriff Working\\Tarrif Reporting Format\\Kolkata\\HDFC ERGO\\IP service discharge report HDFC May26.xlsx"
+
+# Caching optimization check
+def get_file_hash(filepath):
+    if not os.path.exists(filepath):
+        return ""
+    hasher = hashlib.md5()
+    try:
+        with open(filepath, 'rb') as f:
+            buf = f.read(65536)
+            while len(buf) > 0:
+                hasher.update(buf)
+                buf = f.read(65536)
+    except Exception:
+        return ""
+    return hasher.hexdigest()
+
+pdf_hash = get_file_hash(pdf_path)
+excel_hash = get_file_hash(excel_path)
+cache_info_path = os.path.join(os.path.dirname(__file__), "kolkata_compile_cache.json")
+
+cache_valid = False
+if (os.path.exists(cache_info_path) and 
+    os.path.exists(os.path.join(os.path.dirname(__file__), "kolkata_soc.json")) and 
+    os.path.exists(os.path.join(os.path.dirname(__file__), "kolkata_pkg.json")) and 
+    os.path.exists(os.path.join(os.path.dirname(__file__), "kolkata_agreements.json"))):
+    try:
+        with open(cache_info_path, 'r', encoding='utf-8') as cf:
+            cache_data = json.load(cf)
+            if cache_data.get("pdf_hash") == pdf_hash and cache_data.get("excel_hash") == excel_hash:
+                cache_valid = True
+    except Exception:
+        pass
+
+if cache_valid:
+    print("Caching: Source PDF and Excel files have not changed. Skipping 7-minute Kolkata PDF parsing.")
+    sys.exit(0)
 
 # 1. Read unique codes and names from the Excel discharge report
 print("Reading discharge report for name-to-code mapping...")
@@ -476,5 +514,12 @@ with open("kolkata_pkg.json", "w", encoding="utf-8") as f:
 print(f"Saving {len(compiled_agreements)} Agreement records to kolkata_agreements.json...")
 with open("kolkata_agreements.json", "w", encoding="utf-8") as f:
     json.dump(compiled_agreements, f, indent=2, ensure_ascii=False)
+
+# Save cache info
+try:
+    with open(cache_info_path, "w", encoding="utf-8") as cf:
+        json.dump({"pdf_hash": pdf_hash, "excel_hash": excel_hash}, cf, indent=2)
+except Exception as e:
+    print(f"Warning: Failed to save cache info: {e}")
 
 print("Kolkata master compilation completed successfully!")

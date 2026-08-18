@@ -2,10 +2,132 @@ import os
 import json
 import webbrowser
 import threading
+import sqlite3
+import smtplib
+import base64
+import urllib.request
+import urllib.parse
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 
 PORT = 8500
 HOST = '0.0.0.0'
+
+# Load configuration if present
+CONFIG_FILE = "config.json"
+config = {
+    "STORAGE_MODE": "local",  # "local" or "sqlite"
+    "SQLITE_DB_PATH": "revenue_audit.db",
+    "OTP_PROVIDER": "mock",   # "mock", "smtp", "sms"
+    "SMTP_CONFIG": {},
+    "SMS_CONFIG": {}
+}
+
+if os.path.exists(CONFIG_FILE):
+    try:
+        with open(CONFIG_FILE, "r", encoding="utf-8") as f:
+            user_config = json.load(f)
+            config.update(user_config)
+            print(f"Loaded configuration from {CONFIG_FILE}. Storage mode: {config['STORAGE_MODE']}")
+    except Exception as e:
+        print(f"Error loading {CONFIG_FILE}: {e}. Using defaults.")
+
+def get_db_connection():
+    db_path = config.get("SQLITE_DB_PATH", "revenue_audit.db")
+    conn = sqlite3.connect(db_path)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS json_store (
+            client_id TEXT,
+            key TEXT,
+            value TEXT,
+            PRIMARY KEY (client_id, key)
+        )
+    """)
+    conn.commit()
+    return conn
+
+def load_json_data(key, default_file_path, default_fallback="[]"):
+    client_id = "default"
+    if config["STORAGE_MODE"] == "sqlite":
+        try:
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            cursor.execute("SELECT value FROM json_store WHERE client_id = ? AND key = ?", (client_id, key))
+            row = cursor.fetchone()
+            conn.close()
+            if row:
+                return row[0]
+            else:
+                # Auto-migrate existing JSON file if database is empty for this key
+                if os.path.exists(default_file_path):
+                    with open(default_file_path, "r", encoding="utf-8") as f:
+                        file_content = f.read()
+                    save_json_data(key, default_file_path, file_content)
+                    return file_content
+                return default_fallback
+        except Exception as e:
+            print(f"Error loading from sqlite for key {key}: {e}")
+            
+    if os.path.exists(default_file_path):
+        with open(default_file_path, "r", encoding="utf-8") as f:
+            return f.read()
+    return default_fallback
+
+def save_json_data(key, default_file_path, content_str):
+    client_id = "default"
+    if config["STORAGE_MODE"] == "sqlite":
+        try:
+            conn = get_db_connection()
+            conn.execute(
+                "INSERT OR REPLACE INTO json_store (client_id, key, value) VALUES (?, ?, ?)",
+                (client_id, key, content_str)
+            )
+            conn.commit()
+            conn.close()
+            return True
+        except Exception as e:
+            print(f"Error saving to sqlite for key {key}: {e}")
+            
+    with open(default_file_path, "w", encoding="utf-8") as f:
+        f.write(content_str)
+    return True
+
+def send_smtp_email(smtp_config, to_email, subject, body_text):
+    host = smtp_config.get("host")
+    port = smtp_config.get("port", 587)
+    username = smtp_config.get("username")
+    password = smtp_config.get("password")
+    from_email = smtp_config.get("from_email", username)
+    
+    msg = MIMEMultipart()
+    msg['From'] = from_email
+    msg['To'] = to_email
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body_text, 'plain'))
+    
+    server = smtplib.SMTP(host, port)
+    server.starttls()
+    server.login(username, password)
+    server.sendmail(from_email, to_email, msg.as_string())
+    server.quit()
+
+def send_twilio_sms(account_sid, auth_token, from_number, to_number, message_body):
+    url = f"https://api.twilio.com/2010-04-01/Accounts/{account_sid}/Messages.json"
+    data = urllib.parse.urlencode({
+        "From": from_number,
+        "To": to_number,
+        "Body": message_body
+    }).encode("utf-8")
+    
+    req = urllib.request.Request(url, data=data, method="POST")
+    auth_str = f"{account_sid}:{auth_token}"
+    auth_b64 = base64.b64encode(auth_str.encode("utf-8")).decode("utf-8")
+    req.add_header("Authorization", f"Basic {auth_b64}")
+    req.add_header("Content-Type", "application/x-www-form-urlencoded")
+    
+    with urllib.request.urlopen(req) as response:
+        return response.read().decode("utf-8")
 
 class DatabaseSyncHandler(SimpleHTTPRequestHandler):
     def end_headers(self):
@@ -19,70 +141,52 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
         self.send_response(200, "OK")
         self.end_headers()
 
+    def send_success_response(self, message):
+        self.send_response(200)
+        self.send_header('Content-type', 'application/json')
+        self.end_headers()
+        self.wfile.write(json.dumps({"status": "success", "message": message}).encode('utf-8'))
+
+    def send_error_response(self, code, message):
+        self.send_response(code)
+        self.send_header('Content-type', 'application/json')
+        self.end_headers()
+        self.wfile.write(json.dumps({"status": "error", "message": message}).encode('utf-8'))
+
     def do_GET(self):
-        if self.path == '/api/load_audits':
+        if self.path.startswith('/api/load_audits'):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            
-            data_file = 'saved_audits.json'
-            if os.path.exists(data_file):
-                with open(data_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-            else:
-                content = '[]'
+            content = load_json_data('saved_audits', 'saved_audits.json', '[]')
             self.wfile.write(content.encode('utf-8'))
             
-        elif self.path == '/api/load_users':
+        elif self.path.startswith('/api/load_users'):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            
-            data_file = 'saved_users.json'
-            if os.path.exists(data_file):
-                with open(data_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-            else:
-                content = '[]'
+            content = load_json_data('saved_users', 'saved_users.json', '[]')
             self.wfile.write(content.encode('utf-8'))
             
-        elif self.path == '/api/load_overrides':
+        elif self.path.startswith('/api/load_overrides'):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            
-            data_file = 'customer_rate_overrides.json'
-            if os.path.exists(data_file):
-                with open(data_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-            else:
-                content = '{}'
+            content = load_json_data('customer_rate_overrides', 'customer_rate_overrides.json', '{}')
             self.wfile.write(content.encode('utf-8'))
             
-        elif self.path == '/api/load_custom_agreements':
+        elif self.path.startswith('/api/load_custom_agreements'):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            
-            data_file = 'custom_agreements.json'
-            if os.path.exists(data_file):
-                with open(data_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-            else:
-                content = '[]'
+            content = load_json_data('custom_agreements', 'custom_agreements.json', '[]')
             self.wfile.write(content.encode('utf-8'))
             
-        elif self.path == '/api/load_agreements':
+        elif self.path.startswith('/api/load_agreements'):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            
-            data_file = 'agreement_master.json'
-            if os.path.exists(data_file):
-                with open(data_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-            else:
-                content = '{"agreements":[], "chargingMethods":[], "version":"1.0"}'
+            content = load_json_data('agreement_master', 'agreement_master.json', '{"agreements":[], "chargingMethods":[], "version":"1.0"}')
             self.wfile.write(content.encode('utf-8'))
             
         else:
@@ -90,103 +194,86 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
             super().do_GET()
 
     def do_POST(self):
-        if self.path == '/api/save_audits':
-            content_length = int(self.headers['Content-Length'])
-            post_data = self.rfile.read(content_length)
-            
-            try:
+        content_length = int(self.headers['Content-Length'])
+        post_data = self.rfile.read(content_length)
+        
+        try:
+            if self.path == '/api/save_audits':
+                save_json_data('saved_audits', 'saved_audits.json', post_data.decode('utf-8'))
+                self.send_success_response("Audits saved successfully")
+                
+            elif self.path == '/api/save_overrides':
+                save_json_data('customer_rate_overrides', 'customer_rate_overrides.json', post_data.decode('utf-8'))
+                self.send_success_response("Overrides saved successfully")
+                
+            elif self.path == '/api/save_custom_agreements':
+                save_json_data('custom_agreements', 'custom_agreements.json', post_data.decode('utf-8'))
+                self.send_success_response("Custom agreements saved successfully")
+                
+            elif self.path == '/api/save_agreements':
+                save_json_data('agreement_master', 'agreement_master.json', post_data.decode('utf-8'))
+                self.send_success_response("Agreements saved successfully")
+                
+            elif self.path == '/api/save_users':
+                save_json_data('saved_users', 'saved_users.json', post_data.decode('utf-8'))
+                self.send_success_response("Users saved successfully")
+                
+            elif self.path == '/api/save_permissions':
+                save_json_data('saved_permissions', 'saved_permissions.json', post_data.decode('utf-8'))
+                self.send_success_response("Permissions saved successfully")
+                
+            elif self.path == '/api/send_otp':
                 data = json.loads(post_data.decode('utf-8'))
-                with open('saved_audits.json', 'w', encoding='utf-8') as f:
-                    json.dump(data, f, indent=2, ensure_ascii=False)
+                email = data.get("email")
+                otp = data.get("otp")
+                username = data.get("username", "User")
                 
-                self.send_response(200)
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                self.wfile.write(json.dumps({"status": "success", "message": "Audits saved successfully"}).encode('utf-8'))
-            except Exception as e:
-                self.send_response(400)
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                self.wfile.write(json.dumps({"status": "error", "message": str(e)}).encode('utf-8'))
+                subject = "Guwahati Revenue Assurance Portal - OTP Verification"
+                message_body = f"Your One-Time Password (OTP) for the BRC Guwahati Revenue Assurance Portal is: {otp}.\n\nThis code will expire in 5 minutes.\n\nAuthorized BRC Portal Access Only."
                 
-        elif self.path == '/api/save_overrides':
-            content_length = int(self.headers['Content-Length'])
-            post_data = self.rfile.read(content_length)
-            
-            try:
-                data = json.loads(post_data.decode('utf-8'))
-                with open('customer_rate_overrides.json', 'w', encoding='utf-8') as f:
-                    json.dump(data, f, indent=2, ensure_ascii=False)
+                success = False
+                error_msg = ""
+                provider = config.get("OTP_PROVIDER", "mock")
                 
-                self.send_response(200)
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                self.wfile.write(json.dumps({"status": "success", "message": "Overrides saved successfully"}).encode('utf-8'))
-            except Exception as e:
-                self.send_response(400)
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                self.wfile.write(json.dumps({"status": "error", "message": str(e)}).encode('utf-8'))
-                
-        elif self.path == '/api/save_custom_agreements':
-            content_length = int(self.headers['Content-Length'])
-            post_data = self.rfile.read(content_length)
-            
-            try:
-                data = json.loads(post_data.decode('utf-8'))
-                with open('custom_agreements.json', 'w', encoding='utf-8') as f:
-                    json.dump(data, f, indent=2, ensure_ascii=False)
-                
-                self.send_response(200)
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                self.wfile.write(json.dumps({"status": "success", "message": "Custom agreements saved successfully"}).encode('utf-8'))
-            except Exception as e:
-                self.send_response(400)
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                self.wfile.write(json.dumps({"status": "error", "message": str(e)}).encode('utf-8'))
-                
-        elif self.path == '/api/save_agreements':
-            content_length = int(self.headers['Content-Length'])
-            post_data = self.rfile.read(content_length)
-            
-            try:
-                data = json.loads(post_data.decode('utf-8'))
-                with open('agreement_master.json', 'w', encoding='utf-8') as f:
-                    json.dump(data, f, indent=2, ensure_ascii=False)
-                
-                self.send_response(200)
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                self.wfile.write(json.dumps({"status": "success", "message": "Agreements saved successfully"}).encode('utf-8'))
-            except Exception as e:
-                self.send_response(400)
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                self.wfile.write(json.dumps({"status": "error", "message": str(e)}).encode('utf-8'))
-                
-        elif self.path == '/api/save_users':
-            content_length = int(self.headers['Content-Length'])
-            post_data = self.rfile.read(content_length)
-            
-            try:
-                data = json.loads(post_data.decode('utf-8'))
-                with open('saved_users.json', 'w', encoding='utf-8') as f:
-                    json.dump(data, f, indent=2, ensure_ascii=False)
-                
-                self.send_response(200)
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                self.wfile.write(json.dumps({"status": "success", "message": "Users saved successfully"}).encode('utf-8'))
-            except Exception as e:
-                self.send_response(400)
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                self.wfile.write(json.dumps({"status": "error", "message": str(e)}).encode('utf-8'))
-        else:
-            self.send_response(404)
-            self.end_headers()
+                if provider == "smtp" and config.get("SMTP_CONFIG"):
+                    try:
+                        send_smtp_email(config["SMTP_CONFIG"], email, subject, message_body)
+                        success = True
+                    except Exception as ex:
+                        error_msg = f"SMTP dispatch failed: {ex}"
+                        print(f"[OTP ERROR] {error_msg}")
+                elif provider == "sms" and config.get("SMS_CONFIG"):
+                    sms_conf = config["SMS_CONFIG"]
+                    phone_number = sms_conf.get("to_number_overrides", {}).get(username)
+                    if phone_number:
+                        try:
+                            send_twilio_sms(
+                                sms_conf["account_sid"],
+                                sms_conf["auth_token"],
+                                sms_conf["from_number"],
+                                phone_number,
+                                message_body
+                            )
+                            success = True
+                        except Exception as ex:
+                            error_msg = f"SMS dispatch failed: {ex}"
+                            print(f"[OTP ERROR] {error_msg}")
+                    else:
+                        error_msg = f"No phone number override mapped for username: {username}"
+                        print(f"[OTP ERROR] {error_msg}")
+                else:
+                    # Mock provider: log code to terminal so developers can see it
+                    print(f"[MOCK OTP SUCCESS] Sent OTP to {email}: {otp}")
+                    success = True
+                    
+                if success:
+                    self.send_success_response("OTP sent successfully")
+                else:
+                    self.send_error_response(400, error_msg or "OTP provider failed")
+            else:
+                self.send_error_response(404, "Endpoint not found")
+        except Exception as e:
+            self.send_error_response(500, str(e))
 
 def open_browser():
     url = f"http://localhost:{PORT}/index.html"

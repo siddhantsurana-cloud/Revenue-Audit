@@ -1127,99 +1127,22 @@ if (Test-Path $intlCash2627File) {
     Log-Info "Warning: International 2026-27 Cash SOC file not found at $intlCash2627File"
 }
 
-# 12. Parse Excelcare GIPSA 2026 (APL EXL HOSP_SOC.xlsx)
-Log-Info "Parsing Excelcare GIPSA 2026..."
-$listExcelcareGipsa2026 = New-Object System.Collections.Generic.List[Object]
-$dipjyotiDir = "S:/Sid Work/1. Apollo/@ Apollo Guwahti/Tarriff Working/Tarrif Reporting Format/Excelcare/SOC's from Dipjyoti"
-$dipjyotiFile = Join-Path $dipjyotiDir "APL EXL HOSP_SOC.xlsx"
+# 12. Parse Excelcare GIPSA 2026 via Python
+Log-Info "Parsing Excelcare GIPSA 2026 via Python..."
+& python "$PSScriptRoot/compile_excelcare_gipsa.py"
 
-if (Test-Path $dipjyotiFile) {
-    $wb = $excel.Workbooks.Open($dipjyotiFile, [Type]::Missing, $true)
-    $uniqueGipsa = [ordered]@{}
-    
-    # Parse Bed Charges sheet first
-    $sheet1 = $null
-    try {
-        $sheet1 = $wb.Worksheets.Item("Bed Charges")
-    } catch {
-        $sheet1 = $wb.Worksheets.Item(1)
-    }
-    
-    if ($sheet1 -ne $null) {
-        $values1 = $sheet1.UsedRange.Value2
-        $rowCount1 = $sheet1.UsedRange.Rows.Count
-        for ($r = 1; $r -le $rowCount1; $r++) {
-            $code = if ($values1[$r, 2] -ne $null) { $values1[$r, 2].ToString().Trim() } else { "" }
-            $codeVal = 0
-            if (-not $code -or -not [double]::TryParse($code, [ref]$codeVal) -or $codeVal -lt 1) { continue }
-            
-            $name = if ($values1[$r, 3] -ne $null) { $values1[$r, 3].ToString().Trim() } else { "" }
-            if (-not $name) { continue }
-            
-            $rateNum = 0
-            $rateStr = if ($values1[$r, 6] -ne $null) { $values1[$r, 6].ToString().Trim() } else { "" }
-            if ($rateStr -and [double]::TryParse($rateStr, [ref]$rateNum) -and $rateNum -gt 0) {
-                $uniqueGipsa[$code] = [PSCustomObject]@{
-                    id = $code
-                    name = $name
-                    rate = $rateNum
-                }
-            }
+$listExcelcareGipsa2026 = New-Object System.Collections.Generic.List[Object]
+$gipsaJsonPath = "$PSScriptRoot/excelcare_gipsa_2026.json"
+if (Test-Path $gipsaJsonPath) {
+    $jsonGipsa26 = [IO.File]::ReadAllText($gipsaJsonPath)
+    $parsedGipsa26 = ConvertFrom-Json $jsonGipsa26
+    if ($parsedGipsa26) {
+        foreach ($item in $parsedGipsa26) {
+            $listExcelcareGipsa2026.Add($item)
         }
     }
-    
-    # Parse Other Tariff sheet
-    $sheet = $null
-    try {
-        $sheet = $wb.Worksheets.Item("Other Tariff")
-    } catch {
-        $sheet = $wb.Worksheets.Item(4)
-    }
-    
-    if ($sheet -ne $null) {
-        $values = $sheet.UsedRange.Value2
-        $rowCount = $sheet.UsedRange.Rows.Count
-        
-        for ($r = 2; $r -le $rowCount; $r++) {
-            $code = if ($values[$r, 4] -ne $null) { $values[$r, 4].ToString().Trim() } else { "" }
-            $name = if ($values[$r, 5] -ne $null) { $values[$r, 5].ToString().Trim() } else { "" }
-            
-            $codeVal = 0
-            if (-not $code -or -not [double]::TryParse($code, [ref]$codeVal) -or $codeVal -lt 1) { continue }
-            if (-not $name) { continue }
-            
-            $rateNum = 0
-            $rateStr = if ($values[$r, 7] -ne $null) { $values[$r, 7].ToString().Trim() } else { "" }
-            if ($rateStr -and [double]::TryParse($rateStr, [ref]$rateNum) -and $rateNum -gt 0) {
-                # Found OPD rate
-            } else {
-                for ($c = 7; $c -le $sheet.UsedRange.Columns.Count; $c++) {
-                    $valStr = if ($values[$r, $c] -ne $null) { $values[$r, $c].ToString().Trim() } else { "" }
-                    $valNum = 0
-                    if ($valStr -and [double]::TryParse($valStr, [ref]$valNum) -and $valNum -gt 0) {
-                        $rateNum = $valNum
-                        break
-                    }
-                }
-            }
-            
-            if (-not $uniqueGipsa.Contains($code) -or ($uniqueGipsa[$code].rate -eq 0 -and $rateNum -gt 0)) {
-                $uniqueGipsa[$code] = [PSCustomObject]@{
-                    id = $code
-                    name = $name
-                    rate = $rateNum
-                }
-            }
-        }
-    }
-    
-    foreach ($item in $uniqueGipsa.Values) {
-        $listExcelcareGipsa2026.Add($item)
-    }
-    
-    $wb.Close($false)
 } else {
-    Log-Info "Warning: Excelcare GIPSA 2026 file not found at $dipjyotiFile"
+    Log-Info "Warning: excelcare_gipsa_2026.json not found!"
 }
 
 $excel.Quit()
@@ -1233,6 +1156,12 @@ Log-Info "Running Kolkata PDF parsing python script..."
 $jsonKolkataSoc = if (Test-Path "$PSScriptRoot/kolkata_soc.json") { [IO.File]::ReadAllText("$PSScriptRoot/kolkata_soc.json") } else { "[]" }
 $jsonKolkataPkg = if (Test-Path "$PSScriptRoot/kolkata_pkg.json") { [IO.File]::ReadAllText("$PSScriptRoot/kolkata_pkg.json") } else { "[]" }
 $jsonKolkataAgreements = if (Test-Path "$PSScriptRoot/kolkata_agreements.json") { [IO.File]::ReadAllText("$PSScriptRoot/kolkata_agreements.json") } else { "[]" }
+
+# Run HDFC Ergo Centrally Agreed Tariff compilation script
+Log-Info "Running HDFC Ergo Centrally Agreed Tariff compilation script..."
+& python "$PSScriptRoot/compile_hdfc_agreed_2026.py"
+
+$jsonHdfcAgreed2026 = if (Test-Path "$PSScriptRoot/hdfc_ergo_agreed_2026.json") { [IO.File]::ReadAllText("$PSScriptRoot/hdfc_ergo_agreed_2026.json") } else { "[]" }
 
 # Write everything to tariff_data.js
 Log-Info "Writing output file: $outputFile"
@@ -1251,7 +1180,7 @@ $json2021_IOCL = if (Test-Path $ioclJsonPath) { [IO.File]::ReadAllText($ioclJson
 $list2021_IOCL_Count = 0
 if (Test-Path $ioclJsonPath) {
     $list2021_IOCL_Count = (ConvertFrom-Json $json2021_IOCL).Count
-    Remove-Item $ioclJsonPath -ErrorAction SilentlyContinue
+    # Remove-Item $ioclJsonPath -ErrorAction SilentlyContinue
 }
 $json2023_V2 = $list2023_V2 | ConvertTo-Json -Depth 5
 $json2023 = $list2023 | ConvertTo-Json -Depth 5
@@ -1292,6 +1221,7 @@ $jsonAgreements = if ($jsonAgreements) { $jsonAgreements } else { "[]" }
 $jsonKolkataSoc = if ($jsonKolkataSoc) { $jsonKolkataSoc } else { "[]" }
 $jsonKolkataPkg = if ($jsonKolkataPkg) { $jsonKolkataPkg } else { "[]" }
 $jsonKolkataAgreements = if ($jsonKolkataAgreements) { $jsonKolkataAgreements } else { "[]" }
+$jsonHdfcAgreed2026 = if ($jsonHdfcAgreed2026) { $jsonHdfcAgreed2026 } else { "[]" }
 
 $jsContent = @"
 const TARIFF_DATA = $jsonMaster;
@@ -1316,6 +1246,7 @@ const TARIFF_CASH_2025 = $jsonCash2025;
 const TARIFF_CASH_2026 = $jsonCash2026;
 const TARIFF_EXCELCARE_GIPSA_2026 = $jsonExcelcareGipsa2026;
 const TARIFF_HDFC_ERGO_2024 = $jsonHdfcErgo;
+const TARIFF_HDFC_ERGO_AGREED_2026 = $jsonHdfcAgreed2026;
 const TARIFF_KOLKATA_SOC = $jsonKolkataSoc;
 const TARIFF_KOLKATA_PKG = $jsonKolkataPkg;
 const AGREEMENT_KOLKATA = $jsonKolkataAgreements;
@@ -1325,6 +1256,11 @@ const AGREEMENT_DETAILS = $jsonAgreements;
 $jsContent | Out-File -FilePath $outputFile -Encoding utf8
 
 $endAll = Get-Date
+$listHdfcAgreedCount = 0
+if (Test-Path "$PSScriptRoot/hdfc_ergo_agreed_2026.json") {
+    $listHdfcAgreedCount = (ConvertFrom-Json $jsonHdfcAgreed2026).Count
+}
+
 Log-Info "=================================================="
 Log-Info "Full compilation successful!"
 Log-Info "Master 2026 records: $($dataArray.Count)"
@@ -1341,6 +1277,7 @@ Log-Info "International Cash SOC 25-26 records: $($listCash2025.Count)"
 Log-Info "International Cash SOC 26-27 records: $($listCash2026.Count)"
 Log-Info "Excelcare GIPSA 2026 records: $($listExcelcareGipsa2026.Count)"
 Log-Info "HDFC ERGO 2024 records: $($listHdfcErgo.Count)"
+Log-Info "HDFC ERGO Agreed 2026 records: $listHdfcAgreedCount"
 Log-Info "Agreements compiled: $($listAgreements.Count)"
 Log-Info "Total execution time: $(($endAll - $startAll).TotalSeconds) seconds"
 Log-Info "=================================================="

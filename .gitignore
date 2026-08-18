@@ -1,0 +1,27 @@
+# Databases
+*.db
+*.db-journal
+
+# Compilation cache files
+*_cache.json
+excelcare_gipsa_2026.json
+compiled_iocl_2021.json
+compiled_iocl_merged.json
+
+# Local scripts & backup files
+test_gipsa_cols.py
+*.bak*
+*.bak_rename
+*.html.bak_*
+
+# Node packages
+node_modules/
+package-lock.json
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local system files
+.DS_Store
+Thumbs.db

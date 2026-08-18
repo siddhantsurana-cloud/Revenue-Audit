@@ -23,75 +23,224 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- FULL PAGE PORTAL LOGIN -->
+    <!-- FULL PAGE PORTAL LOGIN (NETFLIX STYLE) -->
     <div id="full-page-login" class="full-page-login">
-        <div class="login-card">
-            <div class="login-header">
-                <img src="apollo_logo.jpg" alt="Apollo Logo" class="login-logo">
-                <h2 class="login-title">Revenue Assurance Portal</h2>
-                <p class="login-subtitle">BRC Guwahati Console</p>
+        <!-- 1. Who's Auditing? Profile Selection -->
+        <div id="netflix-profile-selector" class="netflix-container">
+            <!-- Brand Logo Centered -->
+            <div style="text-align: center; margin-bottom: 2.25rem;">
+                <img src="apollo_logo.jpg" alt="Apollo Logo" style="height: 52px; background: white; padding: 0.35rem 0.75rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); object-fit: contain;">
+            </div>
+            <h1 class="netflix-title" style="font-size: 2.5rem; margin-bottom: 2.5rem;">Who's auditing today?</h1>
+            <div class="netflix-profiles">
+                <!-- Excelcare Unit -->
+                <div class="netflix-profile-card" onclick="window.selectNetflixProfile('excelcare', 'Excelcare Unit', '#0d9488')">
+                    <div class="netflix-avatar-box" style="background-color: #0d9488;">
+                        E
+                        <div class="edit-overlay">
+                            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </div>
+                    </div>
+                    <div id="profile-name-excelcare" class="netflix-profile-name">Excelcare Unit</div>
+                </div>
+                <!-- Kolkata -->
+                <div class="netflix-profile-card" onclick="window.selectNetflixProfile('kolkata', 'Kolkata Multispeciality', '#1d4ed8')">
+                    <div class="netflix-avatar-box" style="background-color: #1d4ed8;">
+                        K
+                        <div class="edit-overlay">
+                            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </div>
+                    </div>
+                    <div id="profile-name-kolkata" class="netflix-profile-name">Kolkata Unit</div>
+                </div>
+                <!-- International -->
+                <div class="netflix-profile-card" onclick="window.selectNetflixProfile('international', 'International Unit', '#10b981')">
+                    <div class="netflix-avatar-box" style="background-color: #10b981;">
+                        I
+                        <div class="edit-overlay">
+                            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </div>
+                    </div>
+                    <div id="profile-name-international" class="netflix-profile-name">International Unit</div>
+                </div>
+                <!-- Master Admin -->
+                <div class="netflix-profile-card" onclick="window.selectNetflixProfile('all', 'Global Admin', '#8b5cf6')">
+                    <div class="netflix-avatar-box" style="background-color: #8b5cf6;">
+                        A
+                        <div class="edit-overlay">
+                            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </div>
+                    </div>
+                    <div id="profile-name-all" class="netflix-profile-name">Master Admin</div>
+                </div>
+            </div>
+            <button id="netflix-manage-toggle-btn" class="netflix-manage-btn" style="margin-bottom: 5rem;" onclick="window.toggleManageProfiles(event)">Manage Profiles</button>
+
+            <!-- Brand Capabilities Overview Section (Scroll Down) -->
+            <div class="brand-info-section" style="margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 5rem; text-align: left; max-width: 900px; margin-left: auto; margin-right: auto; box-sizing: border-box; width: 100%;">
+                <div style="text-align: center; margin-bottom: 3.5rem;">
+                    <span style="background: rgba(13, 148, 136, 0.1); color: var(--primary); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; padding: 0.5rem 1rem; border-radius: 30px; letter-spacing: 2px; border: 1px solid rgba(13, 148, 136, 0.2);">
+                        Brand & Capabilities Overview
+                    </span>
+                    <h2 style="font-size: 2.25rem; font-weight: 800; color: #ffffff; margin-top: 1.25rem; margin-bottom: 0.75rem; letter-spacing: -0.5px;">Next-Gen Revenue Integrity for Enterprise Healthcare</h2>
+                    <p style="color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        A unique automated audit engine ensuring 100% agreement compliance, eliminating revenue leakage, and streamlining multi-unit billing operations.
+                    </p>
+                </div>
+
+                <div class="brand-features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+                    <!-- Card 1 -->
+                    <div style="background: rgba(28, 37, 65, 0.25); border: 1px solid rgba(255,255,255,0.05); padding: 2rem; border-radius: 8px; transition: border-color 0.2s;" onmouseover="this.style.borderColor='rgba(13, 148, 136, 0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'">
+                        <div style="background: rgba(13, 148, 136, 0.1); color: var(--primary); width: 44px; height: 44px; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </div>
+                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-top: 0; margin-bottom: 0.75rem;">Automated Agreement Audits</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.55; margin: 0;">
+                            Scans billing databases, room rent categories, and clinical procedures against complex payer tariff contract rules automatically.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div style="background: rgba(28, 37, 65, 0.25); border: 1px solid rgba(255,255,255,0.05); padding: 2rem; border-radius: 8px; transition: border-color 0.2s;" onmouseover="this.style.borderColor='rgba(13, 148, 136, 0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'">
+                        <div style="background: rgba(16, 185, 129, 0.1); color: #10b981; width: 44px; height: 44px; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-top: 0; margin-bottom: 0.75rem;">Leakage Prevention Engine</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.55; margin: 0;">
+                            Instantly catches under-billing leakages, unbilled procedures, and unauthorized discounts before final billing settlement.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div style="background: rgba(28, 37, 65, 0.25); border: 1px solid rgba(255,255,255,0.05); padding: 2rem; border-radius: 8px; transition: border-color 0.2s;" onmouseover="this.style.borderColor='rgba(13, 148, 136, 0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'">
+                        <div style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; width: 44px; height: 44px; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                        </div>
+                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-top: 0; margin-bottom: 0.75rem;">Scalable Multi-Unit Console</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.55; margin: 0;">
+                            A unified platform running isolated audits, reviewer workflows, and databases for clinical business units securely.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(13, 148, 136, 0.1) 0%, rgba(28, 37, 65, 0.2) 100%); border: 1px solid rgba(13, 148, 136, 0.2); padding: 2.25rem; border-radius: 10px; display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 3rem;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <h4 style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin: 0 0 0.5rem 0;">A Unique Healthcare Automation Service Provider</h4>
+                        <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.55; margin: 0;">
+                            Built to handle enterprise compliance requirements. Designed to help major healthcare groups and chains automate revenue oversight, improve operational compliance, and secure billing integrity at scale.
+                        </p>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.75rem; color: #ffffff; font-weight: 700; text-transform: uppercase; background: var(--primary); padding: 0.5rem 1rem; border-radius: 4px; display: inline-block; letter-spacing: 0.5px;">
+                            Enterprise Compliant
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Password & Role Entry Screen -->
+        <div id="netflix-password-card" class="netflix-login-card" style="display: none;">
+            <div class="netflix-back-link" onclick="window.showNetflixProfiles()">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" style="vertical-align: middle;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Profiles
+            </div>
+            <div class="netflix-card-header">
+                <div id="netflix-selected-avatar" class="netflix-selected-avatar" style="background-color: #0d9488;">E</div>
+                <h2 id="netflix-selected-title" class="netflix-selected-title">Excelcare Unit</h2>
             </div>
             <form id="main-login-form" class="login-form">
                 <div id="login-credentials-group">
-                    <div class="form-group-login">
-                        <label for="login-unit">Business Unit</label>
-                        <select id="login-unit">
-                            <option value="international">International Unit</option>
-                            <option value="excelcare" selected>Excelcare Unit</option>
-                            <option value="kolkata">Kolkata - Apollo Multispeciality</option>
-                            <option value="all">Master Console (Global Admin)</option>
-                        </select>
+                    <!-- Hidden input to hold the unit value so Javascript app.js doesn't break -->
+                    <select id="login-unit" style="display: none;">
+                        <option value="excelcare">Excelcare Unit</option>
+                        <option value="kolkata">Kolkata - Apollo Multispeciality</option>
+                        <option value="international">International Unit</option>
+                        <option value="all">Master Console (Global Admin)</option>
+                    </select>
+
+                    <div class="netflix-input-group">
+                        <input type="text" id="login-username" class="netflix-input-field" placeholder=" " required autocomplete="username">
+                        <label for="login-username" class="netflix-input-label">Username</label>
                     </div>
-                    <div class="form-group-login">
-                        <label for="login-username">Username</label>
-                        <input type="text" id="login-username" placeholder="Enter username" required autocomplete="username">
+
+                    <div class="netflix-input-group" style="position: relative;">
+                        <input type="password" id="login-password" class="netflix-input-field" placeholder=" " required autocomplete="current-password">
+                        <label for="login-password" class="netflix-input-label">Password</label>
+                        <button type="button" id="toggle-main-login-password" style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: #8c8c8c; cursor: pointer; display: flex; align-items: center; padding: 0.2rem; outline: none; z-index: 10;">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
                     </div>
-                    <div class="form-group-login">
-                        <label for="login-password">Password</label>
-                        <div style="position: relative;">
-                            <input type="password" id="login-password" placeholder="Enter password" required autocomplete="current-password">
-                            <button type="button" id="toggle-main-login-password" style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; padding: 0.2rem;">
-                                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="form-group-login">
-                        <label for="login-role">Session Role</label>
-                        <select id="login-role">
+
+                    <div class="netflix-input-group">
+                        <select id="login-role" class="netflix-select-field">
                             <option value="Viewer">Viewer (Read-Only)</option>
                             <option value="Auditor" selected>Auditor</option>
                             <option value="Approver">Approval / Reviewer</option>
                             <option value="Administrator">Administrator</option>
                         </select>
                     </div>
-                    <div id="main-login-error" class="login-error-msg" style="display: none;">
+
+                    <div id="main-login-error" class="login-error-msg" style="display: none; color: #e50914; font-size: 0.85rem; font-weight: 700; margin-top: 0.5rem; line-height: 1.4;">
                         Invalid username or password.
                     </div>
-                    <button type="submit" class="btn-login-submit" id="btn-login-submit" disabled style="opacity: 0.6; cursor: not-allowed;">Loading Portal…</button>
+
+                    <button type="submit" class="netflix-btn-red" id="btn-login-submit">Sign In</button>
                 </div>
 
-                <div id="otp-verification-group" style="display: none; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 0.5rem;">
-                    <div style="text-align: center; margin-bottom: 1rem;">
-                        <span style="display: inline-block; background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 0.5rem 0.8rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; border: 1px solid rgba(59,130,246,0.2);">
-                            2-FACTOR OTP REQUIRED
+                <!-- OTP Verification Inside Netflix Box -->
+                <div id="otp-verification-group" style="display: none; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 0.5rem;">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <span style="display: inline-block; background: rgba(229, 9, 20, 0.1); color: #e50914; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; border: 1px solid rgba(229,9,20,0.25); text-transform: uppercase; letter-spacing: 1px;">
+                            2-Factor OTP Required
                         </span>
-                        <div id="otp-email-target" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; font-weight: 600;"></div>
+                        <div id="otp-email-target" style="font-size: 0.78rem; color: #a6a6a6; margin-top: 0.8rem; line-height: 1.45;"></div>
                     </div>
-                    <div class="form-group-login">
-                        <label for="login-otp">Enter 6-Digit OTP Code</label>
-                        <input type="text" id="login-otp" placeholder="XXXXXX" maxlength="6" style="text-align: center; letter-spacing: 0.5em; font-size: 1.2rem; font-weight: 800;" autocomplete="one-time-code">
+                    <div class="netflix-input-group">
+                        <input type="text" id="login-otp" class="netflix-input-field" placeholder=" " maxlength="6" style="text-align: center; letter-spacing: 0.3em; font-size: 1.25rem; font-weight: 800;" autocomplete="one-time-code">
+                        <label for="login-otp" class="netflix-input-label" style="text-align: center; width: calc(100% - 2rem);">Enter 6-Digit OTP Code</label>
                     </div>
-                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-                        <button type="button" class="btn-login-submit" id="btn-otp-verify" style="flex: 2; background-color: var(--success); border-color: var(--success); opacity: 1; cursor: pointer;">Verify & Sign In</button>
-                        <button type="button" class="btn-login-submit" id="btn-otp-cancel" style="flex: 1; background: none; border: 1px solid var(--border); color: var(--text-main); font-weight: 700; opacity: 1; cursor: pointer;">Back</button>
+                    <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+                        <button type="button" class="netflix-btn-red" id="btn-otp-verify" style="margin-top: 0; flex: 2;">Verify & Sign In</button>
+                        <button type="button" class="netflix-btn-red" id="btn-otp-cancel" style="margin-top: 0; flex: 1; background-color: transparent !important; border: 1px solid #808080 !important; color: #ffffff !important;">Back</button>
                     </div>
                 </div>
             </form>
-            <div class="login-credentials-help">
-                <div class="help-title" style="text-align: center;">Authorized BRC Portal Access Only</div>
-                <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center; margin-top: 0.4rem; line-height: 1.45;">
+            <div class="login-credentials-help" style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
+                <div class="help-title" style="text-align: center; font-size: 0.75rem; color: #808080; font-weight: 700;">Authorized BRC Portal Access Only</div>
+                <div style="font-size: 0.68rem; color: #606060; text-align: center; margin-top: 0.4rem; line-height: 1.45;">
                     Please enter your assigned BRC Guwahati credentials to log in. <br>
                     Configured roles: <strong>Viewer</strong>, <strong>Auditor</strong>, <strong>Approval</strong>, and <strong>Administrator</strong>.
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Edit Profile Modal (Inside the full-page-login overlay) -->
+        <div id="netflix-edit-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 100005; align-items: center; justify-content: center; box-sizing: border-box; padding: 1.5rem;">
+            <div class="netflix-login-card" style="max-width: 420px; padding: 2.5rem 2.25rem; margin: auto;">
+                <h3 style="margin-top: 0; margin-bottom: 1.5rem; font-size: 1.35rem; font-weight: 800; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem; color: #ffffff;">Edit Profile</h3>
+                
+                <div style="display: flex; gap: 1.25rem; align-items: center; margin-bottom: 1.75rem;">
+                    <div id="netflix-edit-avatar" style="width: 80px; height: 80px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 2.75rem; font-weight: 800; color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">E</div>
+                    <div style="flex: 1;">
+                        <label style="font-size: 0.68rem; color: #94a3b8; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.35rem; letter-spacing: 0.5px;">Display Name</label>
+                        <input type="text" id="netflix-edit-name-input" class="netflix-input-field" style="height: 42px !important; background: rgba(255,255,255,0.08) !important; border: 1px solid rgba(255,255,255,0.1) !important; border-radius: 4px; color: white;" placeholder="Profile Name">
+                    </div>
+                </div>
+
+                <div class="netflix-input-group">
+                    <input type="text" id="netflix-edit-username-input" class="netflix-input-field" placeholder=" " style="height: 45px !important;">
+                    <label for="netflix-edit-username-input" class="netflix-input-label" style="font-size: 0.78rem;">Default Username</label>
+                </div>
+
+                <div class="netflix-input-group" style="margin-bottom: 1.75rem;">
+                    <input type="email" id="netflix-edit-email-input" class="netflix-input-field" placeholder=" " style="height: 45px !important;">
+                    <label for="netflix-edit-email-input" class="netflix-input-label" style="font-size: 0.78rem;">Default OTP Email Address</label>
+                </div>
+
+                <div style="display: flex; gap: 0.75rem;">
+                    <button type="button" class="netflix-btn-red" onclick="window.saveNetflixProfileEdit()" style="margin-top: 0; height: 42px !important; flex: 2; font-size: 0.88rem !important;">Save Changes</button>
+                    <button type="button" class="netflix-btn-red" onclick="window.closeNetflixProfileEdit()" style="margin-top: 0; height: 42px !important; flex: 1; font-size: 0.88rem !important; background-color: transparent !important; border: 1px solid #808080 !important; color: #ffffff !important;">Cancel</button>
                 </div>
             </div>
         </div>
@@ -177,6 +326,10 @@
             <button class="tab-btn" id="tab-repository-btn">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                 <span>Audit Repository</span>
+            </button>
+            <button class="tab-btn" id="tab-hdfc-btn" style="border-left: 3px solid var(--emerald-glow, #10b981);">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>HDFC Ergo Agreed</span>
             </button>
             <button class="tab-btn" id="tab-audit-btn">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -319,6 +472,115 @@
                 <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; align-self: flex-start;">Agreement Distribution by Category</h4>
                 <div style="position: relative; width: 100%; height: 230px;">
                     <canvas id="chart-db-units"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANEL: HDFC ERGO CENTRALLY AGREED TARIFF INTEGRITY & AUDIT BOARD -->
+    <div class="tab-panel" id="panel-hdfc">
+        <!-- DATABASE OVERVIEW BRANDING HEADER -->
+        <div class="controls-card" style="background-color: var(--bg-card); border-left: 5px solid var(--success-glow, #10b981); margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #10b981; margin-bottom: 0.5rem;">HDFC Ergo Compliance Board | Centrally Agreed Tariff Intelligence</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+                Cross-unit analysis and compliance console for the 2026 centrally agreed HDFC Ergo cash tariffs. This workspace provides real-time pricing variance, drift detection, and side-by-side procedure audit benchmarks between the Guwahati International and Excelcare clinical units.
+            </p>
+        </div>
+
+        <!-- SUMMARY STATS CARD GRID -->
+        <div class="metrics-grid" style="margin-bottom: 1.5rem;">
+            <div class="metric-card" style="--accent: #10b981; --icon-bg: rgba(16, 185, 129, 0.1); box-shadow: 0 0 15px rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.1);">
+                <div class="metric-icon" style="color: #10b981;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <div class="metric-info">
+                    <div class="metric-value" id="hdfc-stat-total">0</div>
+                    <div class="metric-label">Agreed Procedures Mapped</div>
+                </div>
+            </div>
+            <div class="metric-card" style="--accent: #3b82f6; --icon-bg: rgba(59, 130, 246, 0.1); box-shadow: 0 0 15px rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.1);">
+                <div class="metric-icon" style="color: #3b82f6;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
+                <div class="metric-info">
+                    <div class="metric-value" id="hdfc-stat-aligned">0</div>
+                    <div class="metric-label">Identical Rate Alignment</div>
+                </div>
+            </div>
+            <div class="metric-card" style="--accent: #f59e0b; --icon-bg: rgba(245, 158, 11, 0.1); box-shadow: 0 0 15px rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.1);">
+                <div class="metric-icon" style="color: #f59e0b;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+                <div class="metric-info">
+                    <div class="metric-value" id="hdfc-stat-drift">0%</div>
+                    <div class="metric-label">Avg Price Variance Drift</div>
+                </div>
+            </div>
+            <div class="metric-card" style="--accent: #ef4444; --icon-bg: rgba(239, 68, 68, 0.1); box-shadow: 0 0 15px rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.1);">
+                <div class="metric-icon" style="color: #ef4444;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                <div class="metric-info">
+                    <div class="metric-value" id="hdfc-stat-max-drift">-</div>
+                    <div class="metric-label">Max Pricing Leakage/Gap</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VISUAL GRAPHICS LAYOUT -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+            <!-- Chart 1: Unit Pricing Comparison -->
+            <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; height: 340px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.04);">
+                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-top: 0; margin-bottom: 1rem; letter-spacing: 0.5px;">Average agreed rate comparison by specialty</h4>
+                <div style="position: relative; width: 100%; height: 260px;">
+                    <canvas id="chart-hdfc-comparison"></canvas>
+                </div>
+            </div>
+            <!-- Chart 2: Variance Distribution -->
+            <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; height: 340px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.04);">
+                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-top: 0; margin-bottom: 1rem; letter-spacing: 0.5px;">Unit-wise pricing alignment distribution</h4>
+                <div style="position: relative; width: 100%; height: 260px;">
+                    <canvas id="chart-hdfc-distribution"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPARISON INTERACTIVE TABLE CARD -->
+        <div class="controls-card" style="background-color: var(--bg-card); box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.04);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+                <h4 style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin: 0; letter-spacing: 0.5px;">Interactive Agreed Tariff Analyzer</h4>
+                <!-- Filters -->
+                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+                    <input type="text" id="hdfc-search" class="search-input" placeholder="Search by name or code..." style="width: 240px; margin: 0; padding: 0.4rem 0.75rem; font-size: 0.8rem; background: var(--bg-body);">
+                    <select id="hdfc-filter-dept" class="select-input" style="width: 180px; margin: 0; padding: 0.4rem; font-size: 0.8rem; background: var(--bg-body);">
+                        <option value="all">All Departments</option>
+                    </select>
+                    <select id="hdfc-filter-status" class="select-input" style="width: 180px; margin: 0; padding: 0.4rem; font-size: 0.8rem; background: var(--bg-body);">
+                        <option value="all">All Tariff Items</option>
+                        <option value="identical">Rate Aligned (0% Drift)</option>
+                        <option value="drift">Rate Discrepancy (>0% Drift)</option>
+                        <option value="excl_only">Excelcare Unit Only</option>
+                        <option value="intl_only">International Unit Only</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div style="overflow-x: auto;">
+                <table class="data-table" id="hdfc-table" style="width: 100%; border-collapse: collapse; font-size: 0.8rem;">
+                    <thead>
+                        <tr style="background: var(--bg-body); border-bottom: 2px solid var(--border);">
+                            <th style="padding: 0.75rem; text-align: left; font-weight: 700; width: 100px;">Code</th>
+                            <th style="padding: 0.75rem; text-align: left; font-weight: 700;">Procedure Name</th>
+                            <th style="padding: 0.75rem; text-align: left; font-weight: 700; width: 150px;">Department</th>
+                            <th style="padding: 0.75rem; text-align: right; font-weight: 700; width: 140px;">International Rate</th>
+                            <th style="padding: 0.75rem; text-align: right; font-weight: 700; width: 140px;">Excelcare Rate</th>
+                            <th style="padding: 0.75rem; text-align: center; font-weight: 700; width: 120px;">Variance (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hdfc-table-body">
+                        <!-- Filled dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- Pagination -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                <span id="hdfc-pagination-info" style="font-size: 0.75rem; color: var(--text-muted);">Showing 0 to 0 of 0 entries</span>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button id="hdfc-btn-prev" class="export-btn" style="padding: 0.25rem 0.5rem; font-size: 0.72rem; cursor: pointer;">Previous</button>
+                    <button id="hdfc-btn-next" class="export-btn" style="padding: 0.25rem 0.5rem; font-size: 0.72rem; cursor: pointer;">Next</button>
                 </div>
             </div>
         </div>
@@ -2592,6 +2854,222 @@
 <script src="revenue_assurance_dashboard.js"></script>
 
 <script src="js/app.js"></script>
+
+<!-- NETFLIX PROFILE SELECTOR INTEGRATION SCRIPT -->
+<script>
+    // Default customizations mapping dictionary
+    window.profileCustomizations = {
+        excelcare: { name: 'Excelcare Unit', username: 'auditor', email: 'siddhantsurana@gmail.com' },
+        kolkata: { name: 'Kolkata Unit', username: 'auditor', email: 'siddhantsurana@gmail.com' },
+        international: { name: 'International Unit', username: 'auditor', email: 'siddhantsurana@gmail.com' },
+        all: { name: 'Master Admin', username: 'admin', email: 'siddhantsurana@gmail.com' }
+    };
+
+    // Load from localStorage if present
+    const savedCustomizations = localStorage.getItem('brc_v2_profile_customizations');
+    if (savedCustomizations) {
+        try {
+            const parsed = JSON.parse(savedCustomizations);
+            window.profileCustomizations = Object.assign({}, window.profileCustomizations, parsed);
+        } catch(e) {
+            console.error("Failed to parse profile customizations", e);
+        }
+    }
+
+    // Apply customizations on initial load
+    function applyProfileCustomizations() {
+        for (const [code, val] of Object.entries(window.profileCustomizations)) {
+            const el = document.getElementById(`profile-name-${code}`);
+            if (el) {
+                el.textContent = val.name;
+            }
+        }
+    }
+
+    // Active edit state
+    let activeEditProfileCode = null;
+
+    window.toggleManageProfiles = function(event) {
+        if (event) event.preventDefault();
+        const selector = document.getElementById('netflix-profile-selector');
+        const toggleBtn = document.getElementById('netflix-manage-toggle-btn');
+        if (!selector || !toggleBtn) return;
+
+        const isManaging = selector.classList.toggle('managing');
+        if (isManaging) {
+            toggleBtn.textContent = 'Done';
+            toggleBtn.style.borderColor = '#ffffff';
+            toggleBtn.style.color = '#ffffff';
+        } else {
+            toggleBtn.textContent = 'Manage Profiles';
+            toggleBtn.style.borderColor = '#808080';
+            toggleBtn.style.color = '#808080';
+        }
+    };
+
+    window.editNetflixProfile = function(unitCode, unitName, avatarColor) {
+        activeEditProfileCode = unitCode;
+        const modal = document.getElementById('netflix-edit-modal');
+        const avatar = document.getElementById('netflix-edit-avatar');
+        const nameInput = document.getElementById('netflix-edit-name-input');
+        const usernameInput = document.getElementById('netflix-edit-username-input');
+        const emailInput = document.getElementById('netflix-edit-email-input');
+
+        if (!modal) return;
+
+        const current = window.profileCustomizations[unitCode] || { name: unitName, username: '', email: '' };
+
+        if (avatar) {
+            avatar.textContent = current.name.charAt(0);
+            avatar.style.backgroundColor = avatarColor;
+        }
+
+        if (nameInput) nameInput.value = current.name;
+        if (usernameInput) usernameInput.value = current.username || '';
+        if (emailInput) emailInput.value = current.email || '';
+
+        modal.style.display = 'flex';
+    };
+
+    window.closeNetflixProfileEdit = function() {
+        const modal = document.getElementById('netflix-edit-modal');
+        if (modal) modal.style.display = 'none';
+        activeEditProfileCode = null;
+    };
+
+    window.saveNetflixProfileEdit = function() {
+        if (!activeEditProfileCode) return;
+        const nameInput = document.getElementById('netflix-edit-name-input');
+        const usernameInput = document.getElementById('netflix-edit-username-input');
+        const emailInput = document.getElementById('netflix-edit-email-input');
+
+        const newName = nameInput ? nameInput.value.trim() : '';
+        const newUsername = usernameInput ? usernameInput.value.trim() : '';
+        const newEmail = emailInput ? emailInput.value.trim() : '';
+
+        if (!newName) {
+            alert('Profile name cannot be empty!');
+            return;
+        }
+
+        // Save customized values
+        window.profileCustomizations[activeEditProfileCode] = {
+            name: newName,
+            username: newUsername,
+            email: newEmail
+        };
+
+        // Persist to localStorage
+        localStorage.setItem('brc_v2_profile_customizations', JSON.stringify(window.profileCustomizations));
+
+        // Reapply visual updates
+        applyProfileCustomizations();
+        
+        // Hide Modal
+        window.closeNetflixProfileEdit();
+    };
+
+    // Netflix Profile Select Logic
+    window.selectNetflixProfile = function(unitCode, unitName, avatarColor) {
+        const selector = document.getElementById('netflix-profile-selector');
+        const isManaging = selector && selector.classList.contains('managing');
+        if (isManaging) {
+            window.editNetflixProfile(unitCode, unitName, avatarColor);
+            return;
+        }
+
+        const profileSelector = document.getElementById('netflix-profile-selector');
+        const passwordCard = document.getElementById('netflix-password-card');
+        
+        // Set active unit in the hidden select
+        const loginUnit = document.getElementById('login-unit');
+        if (loginUnit) {
+            loginUnit.value = unitCode;
+            // Trigger select change event for Global Admin settings
+            const event = new Event('change');
+            loginUnit.dispatchEvent(event);
+        }
+        
+        // Retrieve customized profile values
+        const config = window.profileCustomizations[unitCode] || { name: unitName, username: 'auditor', email: '' };
+
+        // Update the selected profile visuals in the card
+        const selectedAvatar = document.getElementById('netflix-selected-avatar');
+        const selectedTitle = document.getElementById('netflix-selected-title');
+        
+        if (selectedAvatar) {
+            selectedAvatar.textContent = config.name.charAt(0);
+            selectedAvatar.style.backgroundColor = avatarColor;
+        }
+        
+        if (selectedTitle) {
+            selectedTitle.textContent = config.name;
+        }
+
+        // Pre-fill username field if configured
+        const usernameField = document.getElementById('login-username');
+        if (usernameField) {
+            usernameField.value = config.username || '';
+            // Trigger float label animation
+            if (config.username) {
+                usernameField.setAttribute('value', config.username);
+            }
+        }
+        
+        // Clear previous username/password error
+        const errorMsg = document.getElementById('main-login-error');
+        if (errorMsg) errorMsg.style.display = 'none';
+        
+        // Hide profile selection screen, show password screen with fade
+        if (profileSelector) profileSelector.style.display = 'none';
+        if (passwordCard) passwordCard.style.display = 'block';
+        
+        // Focus password input
+        const pwdInput = document.getElementById('login-password');
+        if (pwdInput) pwdInput.focus();
+    };
+
+    window.showNetflixProfiles = function() {
+        const profileSelector = document.getElementById('netflix-profile-selector');
+        const passwordCard = document.getElementById('netflix-password-card');
+        
+        if (profileSelector) profileSelector.style.display = 'block';
+        if (passwordCard) passwordCard.style.display = 'none';
+        
+        // Hide OTP group and restore standard credentials group for next try
+        const otpVerificationGroup = document.getElementById('otp-verification-group');
+        const loginCredentialsGroup = document.getElementById('login-credentials-group');
+        if (otpVerificationGroup) otpVerificationGroup.style.display = 'none';
+        if (loginCredentialsGroup) loginCredentialsGroup.style.display = 'block';
+    };
+
+    // Run on document load
+    document.addEventListener('DOMContentLoaded', applyProfileCustomizations);
+    // Also run immediately just in case DOMContentLoaded has already fired
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        applyProfileCustomizations();
+    }
+
+    // Wrap portal logout to show profiles page on logout
+    if (typeof window.handlePortalLogout === 'function') {
+        const originalLogout = window.handlePortalLogout;
+        window.handlePortalLogout = function() {
+            originalLogout();
+            window.showNetflixProfiles();
+        };
+    } else {
+        // Wait for app.js script loading to complete
+        window.addEventListener('load', function() {
+            if (typeof window.handlePortalLogout === 'function') {
+                const originalLogout = window.handlePortalLogout;
+                window.handlePortalLogout = function() {
+                    originalLogout();
+                    window.showNetflixProfiles();
+                };
+            }
+        });
+    }
+</script>
 
 
 

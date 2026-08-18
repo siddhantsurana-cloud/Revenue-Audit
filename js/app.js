@@ -52,6 +52,7 @@
     let mapKolkata = {};       // Standard Kolkata SOC (no payer-specific entries)
     let mapKolkataHdfc = {};   // Kolkata SOC + HDFC ERGO package entries (applicablePayer = HDFC_ERGO)
     let mapHdfc = {}; // id -> Array of HDFC records (Excelcare templates)
+    let mapHdfcAgreed2026 = {}; // id -> reconciled HDFC Ergo Agreed 2026 record
 
     const KOLKATA_OT_SLABS = [
         { from: 0, to: 30, rates: { "STANDARD": 15000, "SEMI-PRIVATE": 25000, "PRIVATE": 30000, "PRIVATE DELUXE": 30000, "DELUXE": 30000, "SUITE": 40000, "MAHARAJA SUITE": 45000 } },
@@ -181,6 +182,7 @@
         ],
         'Auditor': [
             'tab-dashboard-btn',
+            'tab-hdfc-btn',
             'tab-audit-btn',
             'tab-exceptions-btn',
             'tab-reports-btn',
@@ -191,6 +193,7 @@
         ],
         'Approver': [
             'tab-dashboard-btn',
+            'tab-hdfc-btn',
             'tab-audit-btn',
             'tab-exceptions-btn',
             'tab-reports-btn',
@@ -201,6 +204,7 @@
         ],
         'Administrator': [
             'tab-dashboard-btn',
+            'tab-hdfc-btn',
             'tab-master-btn',
             'tab-audit-btn',
             'tab-agreement-btn',
@@ -217,6 +221,7 @@
     const SYSTEM_TABS = [
         { id: 'tab-dashboard-btn', name: 'Dashboard' },
         { id: 'tab-checking-btn', name: 'Checking Console' },
+        { id: 'tab-hdfc-btn', name: 'HDFC Ergo Compliance Board' },
         { id: 'tab-audit-btn', name: 'Audit Workspace' },
         { id: 'tab-exceptions-btn', name: 'Exception Command Centre' },
         { id: 'tab-reports-btn', name: 'Reports & Exports' },
@@ -414,6 +419,7 @@
 
     // Tab view selectors
     const tabDashboardBtn = document.getElementById('tab-dashboard-btn');
+    const tabHdfcBtn = document.getElementById('tab-hdfc-btn');
     const tabMasterBtn = document.getElementById('tab-master-btn');
     const tabAuditBtn = document.getElementById('tab-audit-btn');
     const tabAgreementBtn = document.getElementById('tab-agreement-btn');
@@ -426,6 +432,7 @@
     const tabInfraBtn = document.getElementById('tab-infra-btn');
 
     const panelDashboard = document.getElementById('panel-dashboard');
+    const panelHdfc = document.getElementById('panel-hdfc');
     const panelMaster = document.getElementById('panel-master');
     const panelAudit = document.getElementById('panel-audit');
     const panelAgreement = document.getElementById('panel-agreement');
@@ -436,6 +443,13 @@
     const panelChecking = document.getElementById('panel-checking');
     const panelAdmin = document.getElementById('panel-admin');
     const panelInfra = document.getElementById('panel-infra');
+
+    // HDFC Agreed Board State Variables
+    let hdfcAgreedCurrentPage = 1;
+    let hdfcAgreedPageSize = 25;
+    let hdfcAgreedFilteredRows = [];
+    let hdfcComparisonChartInstance = null;
+    let hdfcDistributionChartInstance = null;
 
     // Checking Console State Variables
     let checkingLedgerCurrentPage = 1;
@@ -712,6 +726,7 @@
     // Tab Selector clicks
     const tabsList = [
         { btn: tabDashboardBtn, panel: panelDashboard, onShow: () => { updateDashboardView(); } },
+        { btn: tabHdfcBtn, panel: panelHdfc, onShow: () => { renderHdfcBoard(); } },
         { btn: tabMasterBtn, panel: panelMaster, onShow: () => { applyFiltersAndSort(); } },
         { btn: tabAuditBtn, panel: panelAudit, onShow: () => { } },
         { btn: tabAgreementBtn, panel: panelAgreement, onShow: () => { renderAgreementManager(); } },
@@ -913,6 +928,18 @@
                 mapHdfc[item.id].push(item);
             });
         }
+        if (typeof TARIFF_HDFC_ERGO_AGREED_2026 !== 'undefined') {
+            safeForEach(TARIFF_HDFC_ERGO_AGREED_2026, item => {
+                Object.defineProperty(item, 'rate', {
+                    get: function() {
+                        const currentBU = document.getElementById('audit-bu-select')?.value || 'excelcare';
+                        return currentBU === 'international' ? this.intl_rate : this.excl_rate;
+                    },
+                    configurable: true
+                });
+                mapHdfcAgreed2026[item.id] = item;
+            });
+        }
 
         // Collect all unique IDs across all sets
         let allIds = new Set();
@@ -931,6 +958,7 @@
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') TARIFF_EXCELCARE_GIPSA_2026.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') TARIFF_KOLKATA_SOC.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_HDFC_ERGO_2024 !== 'undefined') TARIFF_HDFC_ERGO_2024.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_HDFC_ERGO_AGREED_2026 !== 'undefined') TARIFF_HDFC_ERGO_AGREED_2026.forEach(item => allIds.add(item.id));
 
         UNIFIED_TARIFFS = [];
         allIds.forEach(id => {
@@ -953,6 +981,7 @@
             let mKol = mapKolkata[id];
             let mHdfcList = mapHdfc[id] || [];
             let mHdfc = mHdfcList.length > 0 ? mHdfcList[0] : null;
+            let mHdfcAgreed = mapHdfcAgreed2026[id];
 
             // Priority order for descriptions
             if (m26) {
@@ -980,6 +1009,8 @@
                 name = mEc24.name; dept = 'Excelcare SOC'; type = 'Excelcare Room/Bed';
             } else if (mHdfc) {
                 name = mHdfc.name; dept = 'HDFC ERGO Template'; type = 'HDFC Room Specific';
+            } else if (mHdfcAgreed) {
+                name = mHdfcAgreed.name; dept = mHdfcAgreed.department; type = 'HDFC Centrally Agreed';
             }
 
             UNIFIED_TARIFFS.push({
@@ -999,7 +1030,8 @@
                 rateExcelcareCash: mEcCash ? mEcCash.rate : null,
                 rateExcelcare2024: mEc24 ? mEc24.rate : null,
                 rateExcelcareGipsa2026: mEcGipsa2026 ? mEcGipsa2026.rate : null,
-                rateKolkata: mKol ? mKol.rates : null
+                rateKolkata: mKol ? mKol.rates : null,
+                rateHdfcAgreed2026: mHdfcAgreed ? { intl_rate: mHdfcAgreed.intl_rate, excl_rate: mHdfcAgreed.excl_rate, variance: mHdfcAgreed.variance } : null
             });
         });
     }
@@ -1045,6 +1077,7 @@
         // Setup Event Listeners
         setupEventListeners();
         setupAuditEventListeners();
+        setupHdfcListeners();
 
         // Run filter first time
         applyFiltersAndSort();
@@ -3058,6 +3091,7 @@
                 sourceSelect.innerHTML = `
                     <option value="gipsa">2026 GIPSA Tariff Template</option>
                     <option value="tpa" selected>2024 TPA Deluxe Tariff Template</option>
+                    <option value="hdfc_agreed_2026">HDFC ERGO Centrally Agreed (2026)</option>
                 `;
             }
         } else if (bu === 'kolkata') {
@@ -3088,6 +3122,7 @@
                     <option value="hdfc_twin">HDFC ERGO Twin/2 Sharing Template</option>
                     <option value="hdfc_suite">HDFC ERGO Suite Template</option>
                     <option value="hdfc_daycare">HDFC ERGO Daycare Template</option>
+                    <option value="hdfc_agreed_2026">HDFC ERGO Centrally Agreed (2026)</option>
                 `;
             }
         }
@@ -3305,6 +3340,9 @@
         const u = tariffMapped.toUpperCase();
         const custUpper = customerName ? customerName.toUpperCase() : "";
         
+        if (u.includes("HDFC_AGREED_2026")) {
+            return { activeSOC: TARIFF_HDFC_ERGO_AGREED_2026, activeSOCMap: mapHdfcAgreed2026 };
+        }
         if (custUpper.includes("IOCL") || u.includes("IOCL") || custUpper.includes("INDIAN OIL") || u.includes("INDIAN OIL")) {
             return { activeSOC: TARIFF_2021_IOCL, activeSOCMap: map2021_iocl };
         }
@@ -11679,7 +11717,9 @@
                 
                 if (isValid && loggedInUser) {
                     // Step 1: Resolve Email Address
-                    const userEmail = (matchedUserObj && matchedUserObj.email) ? matchedUserObj.email : 'siddhantsurana@gmail.com';
+                    // Check for profile customized email override
+                    const profileEmail = (window.profileCustomizations && window.profileCustomizations[unit]) ? window.profileCustomizations[unit].email : null;
+                    const userEmail = profileEmail || ((matchedUserObj && matchedUserObj.email) ? matchedUserObj.email : 'siddhantsurana@gmail.com');
                     
                     // Step 2: Generate 6-digit OTP code
                     const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -11688,32 +11728,56 @@
                     window.activeOTPEmail = userEmail;
                     window.activeOTPExpiry = Date.now() + 5 * 60 * 1000; // 5 minutes
                     
-                    // Step 3: Trigger real email dispatch via FormSubmit.co
+                    // Step 3: Trigger real email dispatch via FormSubmit.co or backend
                     console.log(`[AUTH DEBUG] Generated OTP for user ${loggedInUser.username}: ${generatedOtp}`);
                     showToast(`Sending OTP to ${userEmail}...`, 'info');
 
-                    // Fire AJAX request to send email securely without backend
-                    fetch(`https://formsubmit.co/ajax/${userEmail}`, {
+                    // Try backend API first (secure SMTP / SMS dispatch)
+                    fetch('/api/send_otp', {
                         method: "POST",
-                        headers: { 
-                            "Content-Type": "application/json",
-                            "Accept": "application/json"
-                        },
+                        headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
-                            _subject: "Guwahati Revenue Assurance Portal - OTP Verification",
-                            _captcha: "false",
-                            message: `Your One-Time Password (OTP) for the BRC Guwahati Revenue Assurance Portal is: ${generatedOtp}.\n\nThis code will expire in 5 minutes.\n\nAuthorized BRC Portal Access Only.`
+                            email: userEmail,
+                            otp: generatedOtp,
+                            username: loggedInUser.username
                         })
                     })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) throw new Error("Backend OTP failed");
+                        return response.json();
+                    })
                     .then(data => {
-                        console.log("[AUTH DEBUG] FormSubmit response:", data);
-                        showToast(`OTP Sent successfully to ${userEmail}!`, 'success');
+                        if (data.status === "success") {
+                            console.log("[AUTH DEBUG] Server OTP sent successfully");
+                            showToast(`OTP Sent successfully to ${userEmail}!`, 'success');
+                        } else {
+                            throw new Error(data.message || "Server OTP failed");
+                        }
                     })
                     .catch(err => {
-                        console.error("[AUTH DEBUG] Failed to send real email:", err);
-                        // Fallback toast warning with mock code to ensure access if network blocks it
-                        showToast(`Email sending failed. Debug Code: ${generatedOtp}`, 'warning');
+                        console.warn("[AUTH DEBUG] Backend OTP failed, falling back to FormSubmit.co:", err);
+                        // Fallback to FormSubmit.co AJAX request (legacy behavior)
+                        fetch(`https://formsubmit.co/ajax/${userEmail}`, {
+                            method: "POST",
+                            headers: { 
+                                "Content-Type": "application/json",
+                                "Accept": "application/json"
+                            },
+                            body: JSON.stringify({
+                                _subject: "Guwahati Revenue Assurance Portal - OTP Verification",
+                                _captcha: "false",
+                                message: `Your One-Time Password (OTP) for the BRC Guwahati Revenue Assurance Portal is: ${generatedOtp}.\n\nThis code will expire in 5 minutes.\n\nAuthorized BRC Portal Access Only.`
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log("[AUTH DEBUG] FormSubmit response:", data);
+                            showToast(`OTP Sent successfully to ${userEmail}!`, 'success');
+                        })
+                        .catch(err2 => {
+                            console.error("[AUTH DEBUG] FormSubmit fallback failed:", err2);
+                            showToast(`Email sending failed. Debug Code: ${generatedOtp}`, 'warning');
+                        });
                     });
                     
                     // Step 4: Show OTP Input modal, Hide credentials form
@@ -12104,6 +12168,419 @@
             btnSavePerms.addEventListener('click', savePermissionsMatrix);
         }
     }
+    // HDFC Centrally Agreed 2026 tariff dashboard features
+    const COE_MAPPING = {
+        "Cardiac Sciences": ["Cardiology", "Cardio procedure", "Cardiac Surgical packages", "Procedure chgs"],
+        "Neurosciences": ["Neurology"],
+        "Gastroenterology": ["Gastro New", "Gastro Old"],
+        "Nephrology & Urology": ["renal biopsy", "Nephrology", "Urology surgeon fees"],
+        "Oncology": ["Chemotherapy"],
+        "Diagnostics": ["Lab", "Radiology", "investigations"],
+        "Surgical & OT": ["Surgery", "OT&Equipment Charges", "OT charges & surgeries", "DAY CARE PACKAGE", "surgical packages", "OT rent consult auto calc"],
+        "Room & Consult": ["Room Tariff", "Doc. Consult", "Room rent consult auto calc"],
+        "Blood Bank": ["Blood Bank", "blood bank"]
+    };
 
+    function getCoE(deptName) {
+        if (!deptName) return "Others";
+        for (const [coe, depts] of Object.entries(COE_MAPPING)) {
+            if (depts.some(d => d.toLowerCase() === deptName.toLowerCase())) {
+                return coe;
+            }
+        }
+        return "Others";
+    }
+
+    function setupHdfcListeners() {
+        const searchInput = document.getElementById('hdfc-search');
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                hdfcAgreedCurrentPage = 1;
+                filterAndRenderHdfcTable();
+            });
+        }
+
+        const deptFilter = document.getElementById('hdfc-filter-dept');
+        if (deptFilter) {
+            deptFilter.addEventListener('change', () => {
+                hdfcAgreedCurrentPage = 1;
+                filterAndRenderHdfcTable();
+            });
+        }
+
+        const statusFilter = document.getElementById('hdfc-filter-status');
+        if (statusFilter) {
+            statusFilter.addEventListener('change', () => {
+                hdfcAgreedCurrentPage = 1;
+                filterAndRenderHdfcTable();
+            });
+        }
+
+        const btnPrev = document.getElementById('hdfc-btn-prev');
+        if (btnPrev) {
+            btnPrev.addEventListener('click', () => {
+                if (hdfcAgreedCurrentPage > 1) {
+                    hdfcAgreedCurrentPage--;
+                    renderHdfcTablePage();
+                }
+            });
+        }
+
+        const btnNext = document.getElementById('hdfc-btn-next');
+        if (btnNext) {
+            btnNext.addEventListener('click', () => {
+                const totalPages = Math.ceil(hdfcAgreedFilteredRows.length / hdfcAgreedPageSize);
+                if (hdfcAgreedCurrentPage < totalPages) {
+                    hdfcAgreedCurrentPage++;
+                    renderHdfcTablePage();
+                }
+            });
+        }
+    }
+
+    function renderHdfcBoard() {
+        if (typeof TARIFF_HDFC_ERGO_AGREED_2026 === 'undefined') {
+            console.error('TARIFF_HDFC_ERGO_AGREED_2026 is not defined.');
+            const tbody = document.getElementById('hdfc-table-body');
+            if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--danger); padding: 2rem; font-weight: 700;">HDFC Ergo agreed database not loaded. Make sure compilation is run.</td></tr>';
+            return;
+        }
+
+        const rawData = TARIFF_HDFC_ERGO_AGREED_2026;
+        
+        // 1. Calculate KPI Statistics
+        const mappedCount = rawData.length;
+        let identicalCount = 0;
+        let driftSum = 0.0;
+        let driftCount = 0;
+        let maxGap = 0.0;
+        let maxGapItem = null;
+
+        rawData.forEach(item => {
+            const intl = item.intl_rate || 0;
+            const excl = item.excl_rate || 0;
+            if (intl > 0 && excl > 0) {
+                if (Math.abs(intl - excl) < 0.01) {
+                    identicalCount++;
+                } else {
+                    const drift = Math.abs(intl - excl) / excl;
+                    driftSum += drift;
+                    driftCount++;
+                }
+                const gap = Math.abs(intl - excl);
+                if (gap > maxGap) {
+                    maxGap = gap;
+                    maxGapItem = item;
+                }
+            }
+        });
+
+        const avgDrift = (driftCount > 0) ? ((driftSum / driftCount) * 100) : 0.0;
+
+        // Render KPIs
+        document.getElementById('hdfc-stat-total').textContent = mappedCount.toLocaleString();
+        document.getElementById('hdfc-stat-aligned').textContent = identicalCount.toLocaleString();
+        document.getElementById('hdfc-stat-drift').textContent = avgDrift.toFixed(2) + '%';
+        
+        const maxGapEl = document.getElementById('hdfc-stat-max-drift');
+        if (maxGapItem) {
+            maxGapEl.textContent = `₹${maxGap.toLocaleString()} (${maxGapItem.id})`;
+            maxGapEl.title = `${maxGapItem.name} - ${maxGapItem.department}`;
+        } else {
+            maxGapEl.textContent = 'None';
+            maxGapEl.title = '';
+        }
+
+        // 2. Populate dynamic dropdown options for departments (CoEs)
+        populateHdfcDepts();
+
+        // 3. Render Visual Graphics (Chart.js)
+        renderHdfcCharts();
+
+        // 4. Initial filter and render table
+        filterAndRenderHdfcTable();
+    }
+
+    function populateHdfcDepts() {
+        const select = document.getElementById('hdfc-filter-dept');
+        if (!select) return;
+
+        // Keep 'All Departments' as first option, remove other options
+        select.innerHTML = '<option value="all">All Departments</option>';
+
+        // Add CoE keys
+        Object.keys(COE_MAPPING).forEach(coe => {
+            const opt = document.createElement('option');
+            opt.value = coe;
+            opt.textContent = coe;
+            select.appendChild(opt);
+        });
+        
+        const optOthers = document.createElement('option');
+        optOthers.value = 'Others';
+        optOthers.textContent = 'Others';
+        select.appendChild(optOthers);
+    }
+
+    function filterAndRenderHdfcTable() {
+        if (typeof TARIFF_HDFC_ERGO_AGREED_2026 === 'undefined') return;
+
+        const query = (document.getElementById('hdfc-search').value || '').toLowerCase().trim();
+        const deptFilter = document.getElementById('hdfc-filter-dept').value;
+        const statusFilter = document.getElementById('hdfc-filter-status').value;
+
+        hdfcAgreedFilteredRows = TARIFF_HDFC_ERGO_AGREED_2026.filter(item => {
+            // Search filter
+            if (query) {
+                const matchId = item.id.toLowerCase().includes(query);
+                const matchName = item.name.toLowerCase().includes(query);
+                if (!matchId && !matchName) return false;
+            }
+
+            // Department (CoE) filter
+            if (deptFilter !== 'all') {
+                const itemCoE = getCoE(item.department);
+                if (itemCoE !== deptFilter) return false;
+            }
+
+            // Status filter
+            const intl = item.intl_rate || 0;
+            const excl = item.excl_rate || 0;
+            if (statusFilter === 'identical') {
+                return intl > 0 && excl > 0 && Math.abs(intl - excl) < 0.01;
+            } else if (statusFilter === 'drift') {
+                return intl > 0 && excl > 0 && Math.abs(intl - excl) >= 0.01;
+            } else if (statusFilter === 'excl_only') {
+                return intl === 0 && excl > 0;
+            } else if (statusFilter === 'intl_only') {
+                return intl > 0 && excl === 0;
+            }
+
+            return true;
+        });
+
+        // Reset to page 1 on filter
+        renderHdfcTablePage();
+    }
+
+    function renderHdfcTablePage() {
+        const tbody = document.getElementById('hdfc-table-body');
+        if (!tbody) return;
+
+        tbody.innerHTML = '';
+        const total = hdfcAgreedFilteredRows.length;
+        const start = (hdfcAgreedCurrentPage - 1) * hdfcAgreedPageSize;
+        const end = Math.min(start + hdfcAgreedPageSize, total);
+
+        const pageRows = hdfcAgreedFilteredRows.slice(start, end);
+
+        if (pageRows.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">No matching agreed tariffs found.</td></tr>';
+        } else {
+            pageRows.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid var(--border)';
+                
+                const variance = item.variance || 0;
+                let badgeClass = 'aligned';
+                let badgeText = 'Aligned';
+                
+                if (item.intl_rate === 0 && item.excl_rate > 0) {
+                    badgeClass = 'missing';
+                    badgeText = 'Excelcare Only';
+                } else if (item.intl_rate > 0 && item.excl_rate === 0) {
+                    badgeClass = 'missing';
+                    badgeText = 'International Only';
+                } else if (variance > 0) {
+                    badgeClass = 'drift-pos';
+                    badgeText = `+${variance}%`;
+                } else if (variance < 0) {
+                    badgeClass = 'drift-neg';
+                    badgeText = `${variance}%`;
+                }
+
+                tr.innerHTML = `
+                    <td style="padding: 0.6rem 0.75rem; font-family: monospace; color: var(--text-main); font-weight: 600;">${item.id}</td>
+                    <td style="padding: 0.6rem 0.75rem; color: var(--text-main); font-weight: 500;">${item.name}</td>
+                    <td style="padding: 0.6rem 0.75rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">${getCoE(item.department)}</td>
+                    <td style="padding: 0.6rem 0.75rem; text-align: right; font-family: monospace; font-weight: 700;">${item.intl_rate > 0 ? '₹' + item.intl_rate.toLocaleString() : '—'}</td>
+                    <td style="padding: 0.6rem 0.75rem; text-align: right; font-family: monospace; font-weight: 700;">${item.excl_rate > 0 ? '₹' + item.excl_rate.toLocaleString() : '—'}</td>
+                    <td style="padding: 0.6rem 0.75rem; text-align: center;">
+                        <span class="badge-variance ${badgeClass}">${badgeText}</span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Update pagination info and buttons
+        document.getElementById('hdfc-pagination-info').textContent = `Showing ${total > 0 ? start + 1 : 0} to ${end} of ${total} entries`;
+        
+        const btnPrev = document.getElementById('hdfc-btn-prev');
+        const btnNext = document.getElementById('hdfc-btn-next');
+        
+        if (btnPrev) btnPrev.disabled = (hdfcAgreedCurrentPage === 1);
+        if (btnNext) btnNext.disabled = (end >= total);
+    }
+
+    function renderHdfcCharts() {
+        if (typeof TARIFF_HDFC_ERGO_AGREED_2026 === 'undefined') return;
+
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const textColor = isDark ? '#94a3b8' : '#64748b';
+        const gridColor = isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.04)';
+
+        // 1. Compile Specialty Comparison Average Rates
+        const coeRates = {};
+        Object.keys(COE_MAPPING).forEach(coe => {
+            coeRates[coe] = { intlSum: 0.0, exclSum: 0.0, count: 0 };
+        });
+
+        TARIFF_HDFC_ERGO_AGREED_2026.forEach(item => {
+            const coe = getCoE(item.department);
+            if (coeRates[coe] && item.intl_rate > 0 && item.excl_rate > 0) {
+                coeRates[coe].intlSum += item.intl_rate;
+                coeRates[coe].exclSum += item.excl_rate;
+                coeRates[coe].count++;
+            }
+        });
+
+        const coeLabels = [];
+        const coeIntlAverages = [];
+        const coeExclAverages = [];
+
+        Object.entries(coeRates).forEach(([coe, data]) => {
+            if (data.count > 0) {
+                coeLabels.push(coe);
+                coeIntlAverages.push(Math.round(data.intlSum / data.count));
+                coeExclAverages.push(Math.round(data.exclSum / data.count));
+            }
+        });
+
+        const ctxComp = document.getElementById('chart-hdfc-comparison');
+        if (ctxComp) {
+            if (hdfcComparisonChartInstance) {
+                hdfcComparisonChartInstance.destroy();
+            }
+            hdfcComparisonChartInstance = new Chart(ctxComp.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: coeLabels,
+                    datasets: [
+                        {
+                            label: 'International Unit (₹)',
+                            data: coeIntlAverages,
+                            backgroundColor: isDark ? 'rgba(16, 185, 129, 0.85)' : 'rgba(5, 150, 105, 0.85)',
+                            borderColor: isDark ? '#10b981' : '#059669',
+                            borderWidth: 1.5,
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Excelcare Unit (₹)',
+                            data: coeExclAverages,
+                            backgroundColor: isDark ? 'rgba(59, 130, 246, 0.85)' : 'rgba(29, 78, 216, 0.85)',
+                            borderColor: isDark ? '#3b82f6' : '#1d4ed8',
+                            borderWidth: 1.5,
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: { color: textColor, font: { family: 'inherit', size: 10 } }
+                        },
+                        tooltip: {
+                            backgroundColor: isDark ? '#1e293b' : '#ffffff',
+                            titleColor: isDark ? '#ffffff' : '#0f172a',
+                            bodyColor: isDark ? '#cbd5e1' : '#334155',
+                            borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: textColor, font: { family: 'inherit', size: 9 } }
+                        },
+                        y: {
+                            grid: { color: gridColor },
+                            ticks: { color: textColor, font: { family: 'inherit', size: 10 } }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 2. Pricing Alignment Distribution Doughnut Chart
+        let aligned = 0;
+        let intlHigher = 0;
+        let exclHigher = 0;
+        let singleUnit = 0;
+
+        TARIFF_HDFC_ERGO_AGREED_2026.forEach(item => {
+            const intl = item.intl_rate || 0;
+            const excl = item.excl_rate || 0;
+            if (intl === 0 || excl === 0) {
+                singleUnit++;
+            } else if (Math.abs(intl - excl) < 0.01) {
+                aligned++;
+            } else if (intl > excl) {
+                intlHigher++;
+            } else {
+                exclHigher++;
+            }
+        });
+
+        const ctxDist = document.getElementById('chart-hdfc-distribution');
+        if (ctxDist) {
+            if (hdfcDistributionChartInstance) {
+                hdfcDistributionChartInstance.destroy();
+            }
+            hdfcDistributionChartInstance = new Chart(ctxDist.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Aligned (0% Drift)', 'Intl Unit Higher', 'Excelcare Higher', 'Single-Unit Only'],
+                    datasets: [{
+                        data: [aligned, intlHigher, exclHigher, singleUnit],
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.85)',
+                            'rgba(239, 68, 68, 0.85)',
+                            'rgba(59, 130, 246, 0.85)',
+                            'rgba(148, 163, 184, 0.85)'
+                        ],
+                        borderColor: isDark ? '#1e293b' : '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'right',
+                            labels: { color: textColor, font: { family: 'inherit', size: 10 } }
+                        },
+                        tooltip: {
+                            backgroundColor: isDark ? '#1e293b' : '#ffffff',
+                            titleColor: isDark ? '#ffffff' : '#0f172a',
+                            bodyColor: isDark ? '#cbd5e1' : '#334155',
+                            borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
+                            borderWidth: 1
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+        }
+    }
+
+    window.renderHdfcBoard = renderHdfcBoard;
+    window.setupHdfcListeners = setupHdfcListeners;
 
     document.addEventListener('DOMContentLoaded', init);

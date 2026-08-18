@@ -2,6 +2,7 @@ import openpyxl
 import zipfile
 import xml.etree.ElementTree as ET
 import os
+import hashlib
 import json
 import re
 import sys
@@ -12,6 +13,39 @@ output_path = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname
 
 xlsx_path = os.path.join(soc_dir, "SOC - 2021-22_IOCL.xlsx")
 docx_path = os.path.join(soc_dir, "SOC - 2021-22_IOCL.docx")
+
+# Caching optimization check
+def get_file_hash(filepath):
+    if not os.path.exists(filepath):
+        return ""
+    hasher = hashlib.md5()
+    try:
+        with open(filepath, 'rb') as f:
+            buf = f.read(65536)
+            while len(buf) > 0:
+                hasher.update(buf)
+                buf = f.read(65536)
+    except Exception:
+        return ""
+    return hasher.hexdigest()
+
+xlsx_hash = get_file_hash(xlsx_path)
+docx_hash = get_file_hash(docx_path)
+cache_info_path = os.path.join(os.path.dirname(__file__), "iocl_compile_cache.json")
+
+cache_valid = False
+if os.path.exists(cache_info_path) and os.path.exists(output_path):
+    try:
+        with open(cache_info_path, 'r', encoding='utf-8') as cf:
+            cache_data = json.load(cf)
+            if cache_data.get("xlsx_hash") == xlsx_hash and cache_data.get("docx_hash") == docx_hash:
+                cache_valid = True
+    except Exception:
+        pass
+
+if cache_valid:
+    print(f"Caching: Source IOCL files have not changed. Skipping IOCL compilation and using {output_path}.")
+    sys.exit(0)
 
 namespaces = {'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
 
@@ -305,4 +339,12 @@ if __name__ == "__main__":
     records = compile_iocl_data()
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(records, f, indent=4)
+        
+    # Save cache info
+    try:
+        with open(cache_info_path, "w", encoding="utf-8") as cf:
+            json.dump({"xlsx_hash": xlsx_hash, "docx_hash": docx_hash}, cf, indent=2)
+    except Exception as e:
+        print(f"Warning: Failed to save cache info: {e}")
+        
     print(f"Saved compiled IOCL records to {output_path}")
