@@ -724,6 +724,7 @@
     window.showToast = showToast;
 
     // Tab Selector clicks
+    const tabsList = [
         { btn: tabDashboardBtn, panel: panelDashboard, onShow: () => { updateDashboardView(); } },
         { btn: tabIngesterBtn, panel: panelIngester, onShow: () => { initIngesterPanel(); } },
         { btn: tabMasterBtn, panel: panelMaster, onShow: () => { applyFiltersAndSort(); } },
