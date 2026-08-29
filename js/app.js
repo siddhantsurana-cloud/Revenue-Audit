@@ -12969,6 +12969,11 @@
                     } catch (e) {}
                     refreshSettlementUI();
                     showToast("Settlement database cleared successfully.", "success");
+                    
+                    const emptyPanel = document.getElementById('set-details-empty');
+                    const contentPanel = document.getElementById('set-details-content');
+                    if (emptyPanel) emptyPanel.style.display = 'block';
+                    if (contentPanel) contentPanel.style.display = 'none';
                 }
             };
         }
@@ -13110,8 +13115,39 @@
         for (let i = 1; i <= pdf.numPages; i++) {
             const page = await pdf.getPage(i);
             const textContent = await page.getTextContent();
-            const textItems = textContent.items.map(item => item.str);
-            fullText += textItems.join('\n') + '\n';
+            
+            // Reconstruct horizontal lines by grouping text items with similar Y coordinates
+            const yGroups = {};
+            textContent.items.forEach(item => {
+                if (!item.str || item.str.trim() === '') return;
+                const y = item.transform[5];
+                
+                let foundGroup = null;
+                for (const gy of Object.keys(yGroups)) {
+                    if (Math.abs(parseFloat(gy) - y) < 4) {
+                        foundGroup = gy;
+                        break;
+                    }
+                }
+                
+                if (foundGroup) {
+                    yGroups[foundGroup].push(item);
+                } else {
+                    yGroups[y] = [item];
+                }
+            });
+            
+            // Sort vertically (top to bottom)
+            const sortedYs = Object.keys(yGroups).map(parseFloat).sort((a, b) => b - a);
+            
+            const pageLines = sortedYs.map(y => {
+                // Sort horizontally (left to right)
+                const items = yGroups[y];
+                items.sort((a, b) => a.transform[4] - b.transform[4]);
+                return items.map(item => item.str).join(' ');
+            });
+            
+            fullText += pageLines.join('\n') + '\n';
         }
         return fullText;
     }
@@ -13290,48 +13326,63 @@
 
         settlementDatabase.forEach(s => {
             totalDisallowed += s.deducted_amount;
-            s.recoverable_amount = 0;
+            let claimRec = 0;
             
             s.line_items.forEach(item => {
-                let rec = 0;
-                const desc = (item.description || '').toUpperCase();
-                const reason = (item.reason || '').toUpperCase();
-
                 // Group stats
                 disallowanceGroups[item.description] = (disallowanceGroups[item.description] || 0) + item.deducted;
 
-                // Dispute Reconciliation Logic
-                if (desc.includes('MONITORING') && (reason.includes('INCL') || reason.includes('PART OF') || reason.includes('ROOM RENT') || reason.includes('BUNDLE'))) {
-                    rec = item.deducted;
-                    item.dispute_reason = "Monitoring charges are billable separately according to Section 4.2 of TPA Agreement.";
-                    monLeak += rec;
-                }
-                else if (desc.includes('MISCELLANEOUS') && (reason.includes('ADMISSION') || reason.includes('MRD') || reason.includes('DOCUMENTATION'))) {
-                    rec = item.deducted;
-                    item.dispute_reason = "MRD and Admission documentation charges are billable separately as per agreement terms.";
-                    rcapLeak += rec; // MRD and Room rent capping are administration caps
-                }
-                else if (desc.includes('MEDICINE') && (reason.includes('GOWN') || reason.includes('GLOVES') || reason.includes('PLAIN SHEET'))) {
-                    rec = item.deducted * 0.5;
-                    item.dispute_reason = "Consumables (gloves/gown/sheet) are payable under active package rules.";
-                    conLeak += rec;
-                }
-                else if (reason.includes('MOU DISCOUNT') && desc.includes('ROOM')) {
-                    rec = item.deducted;
-                    item.dispute_reason = "5% MOU discount is not applicable to room rent as per the master agreement schedule.";
-                    mouLeak += rec;
-                }
-                else if (desc.includes('ROOM') && (reason.includes('LIMIT') || reason.includes('CAPPED') || reason.includes('SLAB'))) {
-                    rec = item.deducted * 0.8; // Capping limits dispute
-                    item.dispute_reason = "Room rent tier limit exceeded policy threshold. Flag for grievance review.";
-                    rcapLeak += rec;
+                // Smart pre-reconciliation if not edited yet
+                if (item.agreed_rate === undefined) {
+                    const desc = (item.description || '').toUpperCase();
+                    const reason = (item.reason || '').toUpperCase();
+
+                    // Pre-fill default agreed rate and justification
+                    if (desc.includes('MONITORING') && (reason.includes('INCL') || reason.includes('PART OF') || reason.includes('ROOM RENT'))) {
+                        item.agreed_rate = item.claimed;
+                        item.is_disputed = true;
+                        item.dispute_reason = "Monitoring charges are billable separately according to Section 4.2 of TPA Agreement.";
+                    }
+                    else if (desc.includes('MISCELLANEOUS') && (reason.includes('ADMISSION') || reason.includes('MRD'))) {
+                        item.agreed_rate = item.claimed;
+                        item.is_disputed = true;
+                        item.dispute_reason = "MRD and Admission documentation charges are billable separately as per agreement terms.";
+                    }
+                    else if (desc.includes('MEDICINE') && (reason.includes('GOWN') || reason.includes('GLOVES') || reason.includes('PLAIN SHEET'))) {
+                        item.agreed_rate = item.approved + (item.deducted * 0.5);
+                        item.is_disputed = true;
+                        item.dispute_reason = "Consumables (gloves/gown/sheet) are payable under active package rules.";
+                    }
+                    else if (reason.includes('MOU DISCOUNT') && desc.includes('ROOM')) {
+                        item.agreed_rate = item.claimed;
+                        item.is_disputed = true;
+                        item.dispute_reason = "5% MOU discount is not applicable to room rent as per the master agreement schedule.";
+                    }
+                    else {
+                        item.agreed_rate = item.approved;
+                        item.is_disputed = false;
+                        item.dispute_reason = "";
+                    }
                 }
 
-                item.recoverable = rec;
-                s.recoverable_amount += rec;
+                if (item.is_disputed) {
+                    item.recoverable = Math.max(0, Math.min(item.deducted, item.agreed_rate - item.approved));
+                    claimRec += item.recoverable;
+
+                    const desc = (item.description || '').toUpperCase();
+                    const reason = (item.reason || '').toUpperCase();
+                    if (desc.includes('MONITORING')) monLeak += item.recoverable;
+                    else if (desc.includes('MISCELLANEOUS')) rcapLeak += item.recoverable;
+                    else if (desc.includes('MEDICINE')) conLeak += item.recoverable;
+                    else if (reason.includes('MOU DISCOUNT')) mouLeak += item.recoverable;
+                    else if (desc.includes('ROOM')) rcapLeak += item.recoverable;
+                } else {
+                    item.recoverable = 0;
+                }
             });
 
-            totalRecoverable += s.recoverable_amount;
+            s.recoverable_amount = claimRec;
+            totalRecoverable += claimRec;
         });
 
         // Set KPI metrics
@@ -13366,7 +13417,6 @@
             return;
         }
 
-        // Sort categories by highest deduction
         const sorted = keys.map(k => ({ name: k, amt: groups[k] })).sort((a,b) => b.amt - a.amt);
 
         sorted.forEach(item => {
@@ -13502,35 +13552,161 @@
         const itemsContainer = document.getElementById('set-details-items');
         itemsContainer.innerHTML = '';
         
-        s.line_items.forEach(item => {
+        s.line_items.forEach((item, idx) => {
             const itemDiv = document.createElement('div');
-            itemDiv.style.background = 'rgba(255,255,255,0.03)';
+            itemDiv.style.background = 'rgba(255,255,255,0.02)';
             itemDiv.style.border = '1px solid var(--border)';
             itemDiv.style.borderRadius = '6px';
             itemDiv.style.padding = '0.6rem';
             itemDiv.style.fontSize = '0.78rem';
             itemDiv.style.marginBottom = '0.5rem';
             
-            const isLeakage = item.recoverable > 0;
-            const leakageSection = isLeakage 
-                ? `<div style="color: #ef4444; font-weight: 700; margin-top: 0.3rem; font-size: 0.72rem; display: flex; align-items: start; gap: 0.2rem;">
-                     <span>⚠️ Dispute:</span>
-                     <span>${item.dispute_reason} (Recoverable: ₹${item.recoverable.toLocaleString()})</span>
-                   </div>`
-                : '';
-                
             itemDiv.innerHTML = `
-                <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-main);">
+                <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-main); margin-bottom: 0.25rem;">
                     <span>${item.description}</span>
-                    <span style="font-family: monospace;">₹${item.deducted.toLocaleString()} deducted</span>
+                    <span style="font-family: monospace; color: var(--text-muted);">₹${item.claimed.toLocaleString()} billed</span>
                 </div>
-                <div style="color: var(--text-muted); font-size: 0.72rem; margin-top: 0.15rem; line-height: 1.35;">
+                <div style="font-size: 0.72rem; color: var(--text-muted); display: flex; gap: 0.75rem; margin-bottom: 0.4rem;">
+                    <span>Approved: <strong style="color:var(--text-main);">₹${item.approved.toLocaleString()}</strong></span>
+                    <span>Disallowed: <strong style="color:#ef4444;">₹${item.deducted.toLocaleString()}</strong></span>
+                </div>
+                <div style="color: var(--text-muted); font-size: 0.72rem; margin-bottom: 0.5rem; line-height: 1.35; padding: 0.25rem; background: rgba(0,0,0,0.1); border-radius: 4px;">
                     Reason: ${item.reason}
                 </div>
-                ${leakageSection}
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.4rem;">
+                    <div style="display: flex; align-items: center; gap: 0.3rem;">
+                        <span style="font-size: 0.72rem;">Agreed Rate:</span>
+                        <input type="number" class="agreed-rate-input" data-idx="${idx}" value="${item.agreed_rate}" style="width: 70px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 4px; color: var(--text-main); font-family: monospace; font-size: 0.72rem; padding: 0.1rem 0.2rem; text-align: right;">
+                    </div>
+                    <label style="display: flex; align-items: center; gap: 0.25rem; font-size: 0.72rem; cursor: pointer; user-select: none;">
+                        <input type="checkbox" class="dispute-checkbox" data-idx="${idx}" ${item.is_disputed ? 'checked' : ''} style="cursor: pointer; width: 12px; height: 12px;">
+                        Dispute Item
+                    </label>
+                </div>
+                
+                <div class="dispute-reason-container" style="display: ${item.is_disputed ? 'block' : 'none'}; margin-top: 0.4rem;">
+                    <textarea class="dispute-reason-input" data-idx="${idx}" placeholder="Enter dispute justification..." style="width: 100%; height: 42px; font-size: 0.72rem; background: rgba(0,0,0,0.25); border: 1px solid var(--border); border-radius: 4px; color: var(--text-main); padding: 0.2rem 0.4rem; resize: none; line-height: 1.3;">${item.dispute_reason}</textarea>
+                </div>
             `;
+            
             itemsContainer.appendChild(itemDiv);
         });
+
+        // Set up event listeners for inputs
+        const rateInputs = itemsContainer.querySelectorAll('.agreed-rate-input');
+        const checkboxes = itemsContainer.querySelectorAll('.dispute-checkbox');
+        const reasonInputs = itemsContainer.querySelectorAll('.dispute-reason-input');
+
+        const updateItemState = async (idx) => {
+            const item = s.line_items[idx];
+            const rateInput = itemsContainer.querySelector(`.agreed-rate-input[data-idx="${idx}"]`);
+            const checkbox = itemsContainer.querySelector(`.dispute-checkbox[data-idx="${idx}"]`);
+            const reasonInput = itemsContainer.querySelector(`.dispute-reason-input[data-idx="${idx}"]`);
+            const reasonContainer = checkbox.parentElement.parentElement.nextElementSibling;
+            
+            const agreed = parseFloat(rateInput.value) || 0;
+            item.agreed_rate = agreed;
+            item.is_disputed = checkbox.checked;
+            item.dispute_reason = reasonInput.value;
+            
+            // Show/hide reason
+            reasonContainer.style.display = item.is_disputed ? 'block' : 'none';
+            
+            if (item.is_disputed) {
+                item.recoverable = Math.max(0, Math.min(item.deducted, agreed - item.approved));
+            } else {
+                item.recoverable = 0;
+            }
+            
+            // Save state
+            localStorage.setItem('brc_v2_saved_settlements', JSON.stringify(settlementDatabase));
+            try {
+                await fetch('/api/save_settlements', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(settlementDatabase)
+                });
+            } catch (err) {}
+            
+            updateClaimSummaryTotals(s);
+        };
+
+        rateInputs.forEach(input => {
+            input.oninput = () => updateItemState(parseInt(input.dataset.idx));
+        });
+        checkboxes.forEach(cb => {
+            cb.onchange = () => updateItemState(parseInt(cb.dataset.idx));
+        });
+        reasonInputs.forEach(textarea => {
+            textarea.oninput = () => updateItemState(parseInt(textarea.dataset.idx));
+        });
+
+        updateClaimSummaryTotals(s);
+    }
+
+    function updateClaimSummaryTotals(s) {
+        let dispTotal = 0;
+        s.line_items.forEach(item => {
+            if (item.is_disputed) {
+                dispTotal += item.recoverable;
+            }
+        });
+        
+        const varianceEl = document.getElementById('set-details-disputed-total');
+        if (varianceEl) {
+            varianceEl.textContent = `₹${dispTotal.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        }
+        
+        let totalDisallowed = 0;
+        let totalRecoverable = 0;
+        const disallowanceGroups = {};
+        let rcapLeak = 0, monLeak = 0, conLeak = 0, mouLeak = 0;
+        
+        settlementDatabase.forEach(claim => {
+            totalDisallowed += claim.deducted_amount;
+            
+            let claimRec = 0;
+            claim.line_items.forEach(item => {
+                disallowanceGroups[item.description] = (disallowanceGroups[item.description] || 0) + item.deducted;
+                if (item.is_disputed) {
+                    claimRec += item.recoverable;
+                    
+                    const desc = (item.description || '').toUpperCase();
+                    const reason = (item.reason || '').toUpperCase();
+                    if (desc.includes('MONITORING')) monLeak += item.recoverable;
+                    else if (desc.includes('MISCELLANEOUS')) rcapLeak += item.recoverable;
+                    else if (desc.includes('MEDICINE')) conLeak += item.recoverable;
+                    else if (reason.includes('MOU DISCOUNT')) mouLeak += item.recoverable;
+                    else if (desc.includes('ROOM')) rcapLeak += item.recoverable;
+                }
+            });
+            claim.recoverable_amount = claimRec;
+            totalRecoverable += claimRec;
+        });
+        
+        const activeRowEl = document.querySelector('.settlement-row.active-row');
+        if (activeRowEl) {
+            const cells = activeRowEl.querySelectorAll('td');
+            if (cells.length >= 6) {
+                cells[5].textContent = `₹${s.recoverable_amount.toLocaleString(undefined, {maximumFractionDigits:0})}`;
+                cells[5].style.color = s.recoverable_amount > 0 ? '#ef4444' : 'var(--text-muted)';
+                cells[5].style.fontWeight = s.recoverable_amount > 0 ? '700' : 'normal';
+                
+                const isLeakage = s.recoverable_amount > 0;
+                cells[6].innerHTML = isLeakage 
+                    ? `<span style="background-color: var(--danger-bg); color: var(--danger); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700;">Leakage Flagged</span>` 
+                    : `<span style="background-color: var(--success-bg); color: var(--success); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700;">Verified Aligned</span>`;
+            }
+        }
+        
+        const disallowedEl = document.getElementById('set-metric-disallowed');
+        const recoverableEl = document.getElementById('set-metric-recoverable');
+        if (disallowedEl) disallowedEl.textContent = `₹${totalDisallowed.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        if (recoverableEl) recoverableEl.textContent = `₹${totalRecoverable.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        
+        renderInsightsDistribution(disallowanceGroups, totalDisallowed);
+        renderInsightsPrevention(rcapLeak, monLeak, conLeak, mouLeak);
         
         const disputeBtn = document.getElementById('btn-set-dispute');
         if (disputeBtn) {
@@ -13551,15 +13727,18 @@
         const dateStr = new Date().toLocaleDateString('en-IN', {day: 'numeric', month: 'long', year: 'numeric'});
         
         let disputeDetails = '';
-        s.line_items.forEach((item, idx) => {
-            if (item.recoverable > 0) {
+        let disputedCount = 0;
+        s.line_items.forEach((item) => {
+            if (item.is_disputed && item.recoverable > 0) {
+                disputedCount++;
                 disputeDetails += `
-${idx + 1}. Expense Category: ${item.description}
-   - Billed Amount: Rs. ${item.claimed.toLocaleString(undefined, {minimumFractionDigits: 2})}
-   - Approved Amount: Rs. ${item.approved.toLocaleString(undefined, {minimumFractionDigits: 2})}
-   - Disallowed Amount: Rs. ${item.deducted.toLocaleString(undefined, {minimumFractionDigits: 2})}
-   - TPA Reason: "${item.reason}"
-   - Hospital Dispute Ground: "${item.dispute_reason}"
+${disputedCount}. Disputed Head: ${item.description}
+   - Claimed/Billed: Rs. ${item.claimed.toLocaleString(undefined, {minimumFractionDigits: 2})}
+   - TPA Approved:  Rs. ${item.approved.toLocaleString(undefined, {minimumFractionDigits: 2})}
+   - Disallowed:    Rs. ${item.deducted.toLocaleString(undefined, {minimumFractionDigits: 2})}
+   - Agreed Rate:   Rs. ${item.agreed_rate.toLocaleString(undefined, {minimumFractionDigits: 2})}
+   - TPA Reason:    "${item.reason}"
+   - Dispute Ground: "${item.dispute_reason || 'Charges violate agreed tariff schedule.'}"
 `;
             }
         });
