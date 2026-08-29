@@ -7488,11 +7488,21 @@
         SYSTEM_TABS.forEach(tab => {
             const btn = document.getElementById(tab.id);
             if (btn) {
-                // Administrator needs window.currentUserUnit === 'all' (Global Admin) for the Tariff Repository
-                if (tab.id === 'tab-master-btn') {
-                    btn.style.display = (activePermissions.includes(tab.id) && window.currentUserUnit === 'all') ? 'flex' : 'none';
+                let hasPerm = activePermissions.includes(tab.id);
+                if (tab.id === 'tab-master-btn' && window.currentUserUnit !== 'all') {
+                    hasPerm = false;
+                }
+                
+                if (hasPerm) {
+                    btn.classList.remove('disabled-tab');
+                    btn.style.display = 'flex';
                 } else {
-                    btn.style.display = activePermissions.includes(tab.id) ? 'flex' : 'none';
+                    btn.classList.add('disabled-tab');
+                    if (tab.id === 'tab-admin-btn') {
+                        btn.style.display = 'none';
+                    } else {
+                        btn.style.display = 'flex';
+                    }
                 }
             }
         });
@@ -11085,8 +11095,8 @@
     window.loadUnitCustomDiscounts = function() {
         const activeUnit = getActiveOverrideUnit();
         try {
-            window.customDeptDiscounts = JSON.parse(localStorage.getItem(`customDeptDiscounts_${activeUnit}`)) || {};
-            window.customItemDiscounts = JSON.parse(localStorage.getItem(`customItemDiscounts_${activeUnit}`)) || {};
+            window.customDeptDiscounts = safeJsonParse(localStorage.getItem(`customDeptDiscounts_${activeUnit}`), {});
+            window.customItemDiscounts = safeJsonParse(localStorage.getItem(`customItemDiscounts_${activeUnit}`), {});
         } catch (e) {
             console.error("Error loading unit custom discounts:", e);
             window.customDeptDiscounts = {};
@@ -11429,7 +11439,20 @@
         const loginPanel = document.getElementById('full-page-login');
         
         if (savedSession) {
-            const sessionData = JSON.parse(savedSession);
+            const sessionData = safeJsonParse(savedSession);
+            if (!sessionData) {
+                // If corrupted, remove it and act as logged out
+                localStorage.removeItem('brc_v2_logged_in_user');
+                window.currentUserRole = 'Viewer';
+                window.previousUserRole = 'Viewer';
+                window.currentUserUnit = 'all';
+                if (userRoleSelect) userRoleSelect.value = 'Viewer';
+                if (loginPanel) loginPanel.classList.remove('hidden');
+                updateUserHeaderProfile('Guest', 'Viewer');
+                updateUIForRole();
+                applyUnitRestrictions();
+                return;
+            }
             window.currentUserRole = sessionData.role;
             window.previousUserRole = sessionData.role;
             window.currentUserUnit = sessionData.unit || 'all';
@@ -11469,6 +11492,13 @@
             }
         }
     }
+
+    // Sync login state across multiple open tabs
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'brc_v2_logged_in_user') {
+            checkUserLoginState();
+        }
+    });
 
     // Inactivity Timeout Management
     let lastActivityTime = Date.now();
@@ -11817,6 +11847,14 @@
                         if (data.status === "success") {
                             console.log("[AUTH DEBUG] Server OTP sent successfully");
                             showToast(`OTP Sent successfully to ${userEmail}!`, 'success');
+                            if (data.is_mock && data.otp) {
+                                showToast(`[Sandbox Mode] Auto-filling Mock OTP: ${data.otp}`, 'success');
+                                const otpInput = document.getElementById('login-otp');
+                                if (otpInput) {
+                                    otpInput.value = data.otp;
+                                    otpInput.dispatchEvent(new Event('input'));
+                                }
+                            }
                         } else {
                             throw new Error(data.message || "Server OTP failed");
                         }

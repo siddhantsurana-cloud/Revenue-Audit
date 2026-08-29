@@ -267,7 +267,14 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
                     success = True
                     
                 if success:
-                    self.send_success_response("OTP sent successfully")
+                    self.send_response(200)
+                    self.send_header('Content-type', 'application/json')
+                    self.end_headers()
+                    resp = {"status": "success", "message": "OTP sent successfully"}
+                    if provider == "mock":
+                        resp["is_mock"] = True
+                        resp["otp"] = otp
+                    self.wfile.write(json.dumps(resp).encode('utf-8'))
                 else:
                     self.send_error_response(400, error_msg or "OTP provider failed")
             else:

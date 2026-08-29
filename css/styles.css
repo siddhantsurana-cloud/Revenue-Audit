@@ -307,6 +307,14 @@
             box-shadow: 0 0 12px rgba(13, 148, 136, 0.4);
         }
 
+        .tab-btn.disabled-tab {
+            opacity: 0.35 !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
         .tab-badge {
             display: inline-flex;
             align-items: center;
