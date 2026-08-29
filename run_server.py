@@ -189,6 +189,13 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
             content = load_json_data('agreement_master', 'agreement_master.json', '{"agreements":[], "chargingMethods":[], "version":"1.0"}')
             self.wfile.write(content.encode('utf-8'))
             
+        elif self.path.startswith('/api/load_settlements'):
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            content = load_json_data('saved_settlements', 'saved_settlements.json', '[]')
+            self.wfile.write(content.encode('utf-8'))
+            
         else:
             # Fallback to serving static files normally
             super().do_GET()
@@ -221,6 +228,10 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
             elif self.path == '/api/save_permissions':
                 save_json_data('saved_permissions', 'saved_permissions.json', post_data.decode('utf-8'))
                 self.send_success_response("Permissions saved successfully")
+                
+            elif self.path == '/api/save_settlements':
+                save_json_data('saved_settlements', 'saved_settlements.json', post_data.decode('utf-8'))
+                self.send_success_response("Settlements saved successfully")
                 
             elif self.path == '/api/send_otp':
                 data = json.loads(post_data.decode('utf-8'))

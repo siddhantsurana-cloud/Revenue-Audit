@@ -12925,64 +12925,524 @@
     // =========================================================================
     // SETTLEMENT DISALLOWANCE AUDITOR PLATFORM METHODS
     // =========================================================================
-    function initSettlementAuditor() {
-        const settlements = (typeof SETTLEMENT_DATA !== 'undefined' && Array.isArray(SETTLEMENT_DATA)) ? SETTLEMENT_DATA : [];
+    let settlementDatabase = [];
+
+    async function initSettlementAuditor() {
+        // Load settlements database
+        try {
+            const response = await fetch('/api/load_settlements');
+            if (response.ok) {
+                settlementDatabase = await response.json();
+            }
+        } catch (err) {
+            console.log("Could not load settlements from server:", err);
+        }
         
-        let totalSettlements = settlements.length;
+        if (!settlementDatabase || settlementDatabase.length === 0) {
+            const local = localStorage.getItem('brc_v2_saved_settlements');
+            if (local) {
+                settlementDatabase = JSON.parse(local);
+            } else {
+                settlementDatabase = (typeof SETTLEMENT_DATA !== 'undefined' && Array.isArray(SETTLEMENT_DATA)) ? SETTLEMENT_DATA : [];
+            }
+        }
+        
+        // Setup dropzone listeners
+        setupSettlementDropzone();
+        
+        // Refresh UI
+        refreshSettlementUI();
+        
+        // Clear database button
+        const clearBtn = document.getElementById('btn-clear-settlements');
+        if (clearBtn) {
+            clearBtn.onclick = async () => {
+                if (confirm("Are you sure you want to clear all uploaded settlements? This will reset the database.")) {
+                    settlementDatabase = [];
+                    localStorage.removeItem('brc_v2_saved_settlements');
+                    try {
+                        await fetch('/api/save_settlements', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: '[]'
+                        });
+                    } catch (e) {}
+                    refreshSettlementUI();
+                    showToast("Settlement database cleared successfully.", "success");
+                }
+            };
+        }
+        
+        // Search Input
+        const searchInput = document.getElementById('set-search-input');
+        if (searchInput) {
+            searchInput.oninput = (e) => handleSettlementSearch(e, settlementDatabase);
+        }
+    }
+
+    function setupSettlementDropzone() {
+        const dropzone = document.getElementById('settlement-dropzone');
+        const fileInput = document.getElementById('settlement-file-input');
+        if (!dropzone || !fileInput) return;
+        
+        dropzone.onclick = () => fileInput.click();
+        
+        fileInput.onchange = (e) => {
+            if (e.target.files.length > 0) {
+                handleSettlementFileUpload(e.target.files[0]);
+            }
+        };
+        
+        dropzone.ondragover = dropzone.ondragenter = (e) => {
+            e.preventDefault();
+            dropzone.style.borderColor = 'var(--danger)';
+            dropzone.style.backgroundColor = 'rgba(239, 68, 68, 0.05)';
+        };
+        
+        dropzone.ondragleave = (e) => {
+            e.preventDefault();
+            dropzone.style.borderColor = 'var(--border)';
+            dropzone.style.backgroundColor = 'var(--bg-card)';
+        };
+        
+        dropzone.ondrop = (e) => {
+            e.preventDefault();
+            dropzone.style.borderColor = 'var(--border)';
+            dropzone.style.backgroundColor = 'var(--bg-card)';
+            if (e.dataTransfer.files.length > 0) {
+                handleSettlementFileUpload(e.dataTransfer.files[0]);
+            }
+        };
+    }
+
+    async function handleSettlementFileUpload(file) {
+        if (file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) {
+            showToast("Only PDF files are supported for settlement letters.", "error");
+            return;
+        }
+        
+        const progress = document.getElementById('settlement-upload-progress');
+        const bar = document.getElementById('set-progress-bar');
+        const text = document.getElementById('set-progress-text');
+        const percent = document.getElementById('set-progress-percent');
+        
+        if (progress) progress.style.display = 'block';
+        if (bar) bar.style.width = '10%';
+        if (text) text.textContent = "Reading PDF letter file...";
+        if (percent) percent.textContent = "10%";
+        
+        const reader = new FileReader();
+        reader.onload = async function() {
+            try {
+                const arrayBuffer = this.result;
+                if (bar) bar.style.width = '40%';
+                if (text) text.textContent = "Extracting claim text layers...";
+                if (percent) percent.textContent = "40%";
+                
+                const extractedText = await extractTextFromPDF(arrayBuffer);
+                
+                if (bar) bar.style.width = '70%';
+                if (text) text.textContent = "Auditing disallowed line-items...";
+                if (percent) percent.textContent = "70%";
+                
+                const claim = parseSettlementPDFText(extractedText, file.name);
+                
+                if (!claim.claim_id || claim.claimed_amount === 0) {
+                    throw new Error("Could not parse critical numbers. Please verify this is a valid Aditya Birla or HDFC settlement letter.");
+                }
+                
+                // Add or replace in database
+                const existingIdx = settlementDatabase.findIndex(c => c.claim_id === claim.claim_id);
+                if (existingIdx >= 0) {
+                    settlementDatabase[existingIdx] = claim;
+                } else {
+                    settlementDatabase.push(claim);
+                }
+                
+                // Save to local & server database
+                localStorage.setItem('brc_v2_saved_settlements', JSON.stringify(settlementDatabase));
+                try {
+                    await fetch('/api/save_settlements', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(settlementDatabase)
+                    });
+                } catch (err) {
+                    console.log("Could not sync to server database:", err);
+                }
+                
+                if (bar) bar.style.width = '100%';
+                if (text) text.textContent = "Audit complete!";
+                if (percent) percent.textContent = "100%";
+                
+                setTimeout(() => {
+                    if (progress) progress.style.display = 'none';
+                }, 1000);
+                
+                refreshSettlementUI();
+                showToast(`Successfully audited claim ID ${claim.claim_id} for Patient ${claim.patient_name}.`, "success");
+                
+                // Auto select the new row
+                const rows = document.querySelectorAll('.settlement-row');
+                if (rows.length > 0) {
+                    selectSettlementRow(claim, rows[rows.length - 1]);
+                }
+                
+            } catch (err) {
+                console.error(err);
+                if (progress) progress.style.display = 'none';
+                showToast(`PDF parsing failed: ${err.message}`, "error");
+            }
+        };
+        reader.readAsArrayBuffer(file);
+    }
+
+    async function extractTextFromPDF(arrayBuffer) {
+        if (typeof pdfjsLib === 'undefined') {
+            throw new Error("PDF.js library is not loaded. Check internet connection.");
+        }
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+        
+        const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+        const pdf = await loadingTask.promise;
+        let fullText = '';
+        
+        for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const textContent = await page.getTextContent();
+            const textItems = textContent.items.map(item => item.str);
+            fullText += textItems.join('\n') + '\n';
+        }
+        return fullText;
+    }
+
+    function parseSettlementPDFText(fullText, filename) {
+        const fileId = filename.replace(/\.[^/.]+$/, "");
+        const data = {
+            id: fileId,
+            filename: filename,
+            claim_id: "",
+            patient_name: "",
+            member_id: "",
+            policy_number: "",
+            admission_date: "",
+            discharge_date: "",
+            claimed_amount: 0.0,
+            approved_amount: 0.0,
+            deducted_amount: 0.0,
+            tds_amount: 0.0,
+            utr_number: "",
+            utr_amount: 0.0,
+            line_items: []
+        };
+
+        const cleanNum = (valStr) => {
+            if (!valStr) return 0.0;
+            const clean = valStr.replace(/Rs\./i, "").replace(/,/g, "").trim();
+            const f = parseFloat(clean);
+            return isNaN(f) ? 0.0 : f;
+        };
+
+        // Extract Claim ID
+        let claimMatch = fullText.match(/Claim ID\s+(\d+)\s+settled/i);
+        if (claimMatch) {
+            data.claim_id = claimMatch[1];
+        } else {
+            claimMatch = fullText.match(/Claim ID\s*[:\-]?\s*(\d+)/i);
+            data.claim_id = claimMatch ? claimMatch[1] : fileId;
+        }
+
+        // Extract Patient Name
+        let patientMatch = fullText.match(/Patient Name\s+([^\n]+)/i);
+        if (patientMatch) {
+            data.patient_name = patientMatch[1].trim();
+        } else {
+            patientMatch = fullText.match(/Dear\s+([^\n,]+)/i);
+            data.patient_name = patientMatch ? patientMatch[1].trim() : "Unknown Patient";
+        }
+
+        // Extract Member ID
+        let memberMatch = fullText.match(/Member ID\s+([^\n]+)/i);
+        if (memberMatch) {
+            const memberVal = memberMatch[1].trim();
+            const ptM = memberVal.match(/(PT\d+)/);
+            data.member_id = ptM ? ptM[1] : memberVal;
+        }
+
+        // Extract Policy Number
+        let policyMatch = fullText.match(/Policy Number\s*(?:\/\s*COI Number)?\s+([^\n]+)/i);
+        if (policyMatch) {
+            const policyVal = policyMatch[1].trim();
+            const polM = policyVal.match(/(\d+-\d+-\d+-\d+)/);
+            data.policy_number = polM ? polM[1] : policyVal;
+        }
+
+        // Extract Admission & Discharge
+        let admMatch = fullText.match(/Date of Admission\s+([^\n]+)/i);
+        if (admMatch) {
+            const admVal = admMatch[1].trim();
+            const dtM = admVal.match(/(\d{2}\/\d{2}\/\d{4}(?:\s+\d{2}:\d{2}:\d{2})?)/);
+            data.admission_date = dtM ? dtM[1] : admVal;
+        }
+        let disMatch = fullText.match(/Date of Discharge\s+([^\n]+)/i);
+        if (disMatch) {
+            const disVal = disMatch[1].trim();
+            const dtM = disVal.match(/(\d{2}\/\d{2}\/\d{4}(?:\s+\d{2}:\d{2}:\d{2})?)/);
+            data.discharge_date = dtM ? dtM[1] : disVal;
+        }
+
+        // Extract Totals
+        let claimedMatch = fullText.match(/Claimed Amount\s*(?:Rs\.)?\s*([\d\.,]+)/i);
+        if (claimedMatch) data.claimed_amount = cleanNum(claimedMatch[1]);
+
+        let approvedMatch = fullText.match(/Approved Amount\s*(?:Rs\.)?\s*([\d\.,]+)/i);
+        if (approvedMatch) data.approved_amount = cleanNum(approvedMatch[1]);
+
+        let deductedMatch = fullText.match(/Deducted Amount\s*(?:Rs\.)?\s*([\d\.,]+)/i);
+        if (deductedMatch) data.deducted_amount = cleanNum(deductedMatch[1]);
+
+        let tdsMatch = fullText.match(/TDS\s*(?:Rs\.)?\s*([\d\.,]+)/i);
+        if (tdsMatch) data.tds_amount = cleanNum(tdsMatch[1]);
+
+        // Payment UTR
+        let utrMatch = fullText.match(/(HDFCH\d+)/i);
+        if (utrMatch) {
+            data.utr_number = utrMatch[1].trim();
+        } else {
+            let utrOnly = fullText.match(/(?:UTR|UTR Number)\s*[:\-]?\s*(\S+)/i);
+            if (utrOnly) data.utr_number = utrOnly[1].trim();
+        }
+
+        // Expense heads
+        const expenseHeads = [
+            "Investigation Charges",
+            "Medicine And Consumable Charges",
+            "Miscellaneous Charges",
+            "OT Charges",
+            "Package Charges",
+            "Professional Fee Charges",
+            "Room and Nursing Charges"
+        ];
+
+        const lines = fullText.split("\n");
+        for (let i = 0; i < lines.length; i++) {
+            const lineStripped = lines[i].trim();
+            let matchedHead = null;
+            for (const head of expenseHeads) {
+                if (lineStripped.startsWith(head)) {
+                    matchedHead = head;
+                    break;
+                }
+            }
+
+            if (matchedHead) {
+                let rem = lineStripped.slice(matchedHead.length).trim();
+                let numMatches = rem.match(/([\d\.,]+)/g) || [];
+                if (numMatches.length >= 3) {
+                    const claimed = cleanNum(numMatches[0]);
+                    const approved = cleanNum(numMatches[1]);
+                    const deducted = cleanNum(numMatches[2]);
+
+                    let reasonPart = rem;
+                    for (let j = 0; j < 3; j++) {
+                        reasonPart = reasonPart.replace(numMatches[j], "");
+                    }
+                    let reason = reasonPart.replace(/,/g, "").trim();
+
+                    let nextIdx = i + 1;
+                    while (nextIdx < lines.length) {
+                        const nextLine = lines[nextIdx].trim();
+                        if (expenseHeads.some(h => nextLine.startsWith(h)) || nextLine.includes("Deduction Details") || nextLine.includes("Deduction Type")) {
+                            break;
+                        }
+                        if (nextLine) {
+                            reason += " " + nextLine;
+                        }
+                        nextIdx++;
+                    }
+
+                    reason = reason.replace(/\s+/g, " ").trim();
+                    data.line_items.push({
+                        description: matchedHead,
+                        claimed: claimed,
+                        approved: approved,
+                        deducted: deducted,
+                        reason: reason
+                    });
+                }
+            }
+        }
+
+        return data;
+    }
+
+    function refreshSettlementUI() {
+        let totalSettlements = settlementDatabase.length;
         let totalDisallowed = 0;
         let totalRecoverable = 0;
-        
-        settlements.forEach(s => {
+
+        // Analytics counters
+        const disallowanceGroups = {};
+        let rcapLeak = 0;
+        let monLeak = 0;
+        let conLeak = 0;
+        let mouLeak = 0;
+
+        settlementDatabase.forEach(s => {
             totalDisallowed += s.deducted_amount;
-            
             s.recoverable_amount = 0;
+            
             s.line_items.forEach(item => {
                 let rec = 0;
                 const desc = (item.description || '').toUpperCase();
                 const reason = (item.reason || '').toUpperCase();
-                
+
+                // Group stats
+                disallowanceGroups[item.description] = (disallowanceGroups[item.description] || 0) + item.deducted;
+
+                // Dispute Reconciliation Logic
                 if (desc.includes('MONITORING') && (reason.includes('INCL') || reason.includes('PART OF') || reason.includes('ROOM RENT') || reason.includes('BUNDLE'))) {
                     rec = item.deducted;
                     item.dispute_reason = "Monitoring charges are billable separately according to Section 4.2 of TPA Agreement.";
+                    monLeak += rec;
                 }
                 else if (desc.includes('MISCELLANEOUS') && (reason.includes('ADMISSION') || reason.includes('MRD') || reason.includes('DOCUMENTATION'))) {
                     rec = item.deducted;
                     item.dispute_reason = "MRD and Admission documentation charges are billable separately as per agreement terms.";
+                    rcapLeak += rec; // MRD and Room rent capping are administration caps
                 }
                 else if (desc.includes('MEDICINE') && (reason.includes('GOWN') || reason.includes('GLOVES') || reason.includes('PLAIN SHEET'))) {
                     rec = item.deducted * 0.5;
                     item.dispute_reason = "Consumables (gloves/gown/sheet) are payable under active package rules.";
+                    conLeak += rec;
                 }
                 else if (reason.includes('MOU DISCOUNT') && desc.includes('ROOM')) {
                     rec = item.deducted;
                     item.dispute_reason = "5% MOU discount is not applicable to room rent as per the master agreement schedule.";
+                    mouLeak += rec;
                 }
-                
+                else if (desc.includes('ROOM') && (reason.includes('LIMIT') || reason.includes('CAPPED') || reason.includes('SLAB'))) {
+                    rec = item.deducted * 0.8; // Capping limits dispute
+                    item.dispute_reason = "Room rent tier limit exceeded policy threshold. Flag for grievance review.";
+                    rcapLeak += rec;
+                }
+
                 item.recoverable = rec;
                 s.recoverable_amount += rec;
             });
-            
+
             totalRecoverable += s.recoverable_amount;
         });
-        
+
+        // Set KPI metrics
         const totalEl = document.getElementById('set-metric-total');
         const disallowedEl = document.getElementById('set-metric-disallowed');
         const recoverableEl = document.getElementById('set-metric-recoverable');
         const badgeEl = document.getElementById('tab-badge-settlement');
-        
+
         if (totalEl) totalEl.textContent = totalSettlements.toLocaleString();
         if (disallowedEl) disallowedEl.textContent = `₹${totalDisallowed.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         if (recoverableEl) recoverableEl.textContent = `₹${totalRecoverable.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         if (badgeEl) badgeEl.textContent = totalSettlements;
-        
-        renderSettlementGrid(settlements);
-        
-        const searchInput = document.getElementById('set-search-input');
-        if (searchInput) {
-            // Re-bind listener
-            const newSearchHandler = (e) => handleSettlementSearch(e, settlements);
-            searchInput.oninput = newSearchHandler;
+
+        // Render Claims Grid Table
+        renderSettlementGrid(settlementDatabase);
+
+        // Render Distribution Bars
+        renderInsightsDistribution(disallowanceGroups, totalDisallowed);
+
+        // Render Prevention Rules Warnings
+        renderInsightsPrevention(rcapLeak, monLeak, conLeak, mouLeak);
+    }
+
+    function renderInsightsDistribution(groups, totalDeducted) {
+        const container = document.getElementById('set-insights-distribution');
+        if (!container) return;
+        container.innerHTML = '';
+
+        const keys = Object.keys(groups);
+        if (keys.length === 0) {
+            container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 2rem; font-size: 0.85rem;">Upload letters to populate disallowance metrics.</div>';
+            return;
         }
+
+        // Sort categories by highest deduction
+        const sorted = keys.map(k => ({ name: k, amt: groups[k] })).sort((a,b) => b.amt - a.amt);
+
+        sorted.forEach(item => {
+            const pct = totalDeducted > 0 ? ((item.amt / totalDeducted) * 100).toFixed(0) : 0;
+            const row = document.createElement('div');
+            row.style.marginBottom = '0.5rem';
+            row.innerHTML = `
+                <div style="display: flex; justify-content: space-between; font-size: 0.78rem; margin-bottom: 0.2rem;">
+                    <span style="font-weight: 700; color: var(--text-main);">${item.name}</span>
+                    <span style="color: var(--text-muted);">₹${item.amt.toLocaleString(undefined, {maximumFractionDigits:0})} (${pct}%)</span>
+                </div>
+                <div style="background: var(--border); height: 8px; border-radius: 999px; overflow: hidden; width: 100%;">
+                    <div style="background: var(--danger); width: ${pct}%; height: 100%;"></div>
+                </div>
+            `;
+            container.appendChild(row);
+        });
+    }
+
+    function renderInsightsPrevention(rcap, mon, con, mou) {
+        const container = document.getElementById('set-insights-prevention');
+        if (!container) return;
+        container.innerHTML = '';
+
+        if (rcap === 0 && mon === 0 && con === 0 && mou === 0) {
+            container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 2rem; font-size: 0.85rem;">No preventative recommendations yet. Upload letters to audit.</div>';
+            return;
+        }
+
+        const alerts = [];
+        if (rcap > 0) {
+            alerts.push({
+                title: "Ward & Room Rent Limit Breaches",
+                amount: rcap,
+                desc: "Insurers capped room rent against the policy category limit. Ensure ward allocations match client eligibility pre-admission to avoid capping leakage."
+            });
+        }
+        if (mon > 0) {
+            alerts.push({
+                title: "Separate Monitoring Charge Bundling",
+                amount: mon,
+                desc: "Insurers incorrectly bundled Monitoring. billing desk must print Section 4.2 of TPA Agreement and attach it to claim files before submission."
+            });
+        }
+        if (con > 0) {
+            alerts.push({
+                title: "Medicine Exclusions & Gowns",
+                amount: con,
+                desc: "Medical gown and consumables deductions. Update hospital billing templates to remove non-payable items or replace with approved billable items."
+            });
+        }
+        if (mou > 0) {
+            alerts.push({
+                title: "Over-applied MOU Discounts",
+                amount: mou,
+                desc: "TPAs incorrectly deducted 5% discount on room rent. Reject pre-auth settlements with MOU discounts applied outside surgery package schedules."
+            });
+        }
+
+        alerts.forEach(alert => {
+            const div = document.createElement('div');
+            div.style.background = 'rgba(245, 158, 11, 0.05)';
+            div.style.border = '1px solid rgba(245, 158, 11, 0.2)';
+            div.style.borderRadius = '8px';
+            div.style.padding = '0.6rem 0.8rem';
+            div.style.fontSize = '0.78rem';
+            
+            div.innerHTML = `
+                <div style="display:flex; justify-content:space-between; font-weight:800; color:var(--text-main); margin-bottom:0.2rem;">
+                    <span>⚠️ ${alert.title}</span>
+                    <span style="color:#ef4444;">Est. Loss: ₹${alert.amount.toLocaleString(undefined, {maximumFractionDigits:0})}</span>
+                </div>
+                <div style="color:var(--text-muted); line-height:1.4;">${alert.desc}</div>
+            `;
+            container.appendChild(div);
+        });
     }
 
     function renderSettlementGrid(data) {

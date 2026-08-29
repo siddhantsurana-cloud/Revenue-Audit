@@ -492,6 +492,26 @@
             </p>
         </div>
 
+        <!-- UPLOAD DROPZONE -->
+        <div id="settlement-dropzone" class="controls-card" style="background-color: var(--bg-card); border: 2px dashed var(--border); border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: pointer; transition: all 0.3s ease; margin-bottom: 1.5rem; position: relative;">
+            <input type="file" id="settlement-file-input" accept=".pdf" style="display: none;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.75rem; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">📁</div>
+            <h4 style="font-size: 1rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.25rem;">Drop Settlement Letter PDF here or click to browse</h4>
+            <p style="color: var(--text-muted); font-size: 0.8rem; margin: 0; max-width: 450px;">
+                Supports Aditya Birla, HDFC Ergo, and standard TPA payment letters. Processing runs fully locally in your web browser.
+            </p>
+            
+            <div id="settlement-upload-progress" style="display: none; width: 100%; max-width: 300px; margin-top: 1rem;">
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem; font-weight: bold; display: flex; justify-content: space-between;">
+                    <span id="set-progress-text">Parsing PDF pages...</span>
+                    <span id="set-progress-percent">0%</span>
+                </div>
+                <div style="background: var(--border); border-radius: 999px; height: 6px; overflow: hidden; width: 100%;">
+                    <div id="set-progress-bar" style="background: var(--danger); width: 0%; height: 100%; transition: width 0.2s ease;"></div>
+                </div>
+            </div>
+        </div>
+
         <!-- METRICS ROW -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
             <div class="metric-card" style="background-color: var(--bg-card); border: 1px solid var(--border); padding: 1.25rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem;">
@@ -529,7 +549,12 @@
             <div class="table-card" style="background-color: var(--bg-card); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--card-shadow);">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; gap: 1rem; flex-wrap: wrap;">
                     <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin: 0;">Settled Claim Letters</h4>
-                    <input type="text" id="set-search-input" placeholder="Search Patient, UTR, Policy..." style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0.8rem; font-size: 0.82rem; color: var(--text-main); width: 250px;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="text" id="set-search-input" placeholder="Search Patient, UTR, Policy..." style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0.8rem; font-size: 0.82rem; color: var(--text-main); width: 220px;">
+                        <button id="btn-clear-settlements" class="export-btn" style="background: transparent; color: var(--text-muted); border-color: var(--border); font-size: 0.8rem; padding: 0.4rem 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 0.2rem;" title="Reset Settlement Database">
+                            🗑️ Clear
+                        </button>
+                    </div>
                 </div>
                 <div style="overflow-x: auto; max-height: 500px;">
                     <table class="audit-grid" style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
@@ -581,8 +606,35 @@
 
                     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                         <button id="btn-set-dispute" class="export-btn" style="background: var(--danger); color: white; border-color: var(--danger); font-weight: 700; width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.8rem; padding: 0.6rem;">
-                            ✉️ Generate Dispute Letter (.docx)
+                            ✉️ Generate Dispute Letter (.txt)
                         </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PREVENTATIVE ANALYTICS & INSIGHTS PANEL -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+            <!-- Top Disallowed Categories -->
+            <div class="controls-card" style="background-color: var(--bg-card); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border); min-height: 250px;">
+                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    📈 <span>Disallowance Distribution & Leakages</span>
+                </h4>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;" id="set-insights-distribution">
+                    <div style="text-align: center; color: var(--text-muted); padding: 2rem; font-size: 0.85rem;">
+                        Upload letters to populate disallowance metrics.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preventative Billing Alerts -->
+            <div class="controls-card" style="background-color: var(--bg-card); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--border); min-height: 250px; border-left: 4px solid var(--warning);">
+                <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    🛡️ <span>Preventative Billing Recommendations</span>
+                </h4>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;" id="set-insights-prevention">
+                    <div style="text-align: center; color: var(--text-muted); padding: 2rem; font-size: 0.85rem;">
+                        No preventative recommendations yet. Upload letters to audit.
                     </div>
                 </div>
             </div>
@@ -2929,6 +2981,8 @@
 <script src="revenue_assurance_engine.js"></script>
 <script src="revenue_assurance_dashboard.js"></script>
 
+<!-- PDF.js library for client-side PDF parsing -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
 <script src="js/app.js"></script>
 
 <!-- NETFLIX PROFILE SELECTOR INTEGRATION SCRIPT -->
