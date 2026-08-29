@@ -1178,7 +1178,12 @@ $jsonKolkataAgreements = if (Test-Path "$PSScriptRoot/kolkata_agreements.json") 
 Log-Info "Running HDFC Ergo Centrally Agreed Tariff compilation script..."
 & python "$PSScriptRoot/compile_hdfc_agreed_2026.py"
 
+# Run Settlement PDF parsing script
+Log-Info "Running Settlement tracker PDF parsing script..."
+& python "$PSScriptRoot/parse_settlements.py"
+
 $jsonHdfcAgreed2026 = if (Test-Path "$PSScriptRoot/hdfc_ergo_agreed_2026.json") { [IO.File]::ReadAllText("$PSScriptRoot/hdfc_ergo_agreed_2026.json") } else { "[]" }
+$jsonSettlements = if (Test-Path "$PSScriptRoot/compiled_settlements.json") { [IO.File]::ReadAllText("$PSScriptRoot/compiled_settlements.json") } else { "[]" }
 
 # Write everything to tariff_data.js
 Log-Info "Writing output file: $outputFile"
@@ -1239,6 +1244,7 @@ $jsonKolkataSoc = if ($jsonKolkataSoc) { $jsonKolkataSoc } else { "[]" }
 $jsonKolkataPkg = if ($jsonKolkataPkg) { $jsonKolkataPkg } else { "[]" }
 $jsonKolkataAgreements = if ($jsonKolkataAgreements) { $jsonKolkataAgreements } else { "[]" }
 $jsonHdfcAgreed2026 = if ($jsonHdfcAgreed2026) { $jsonHdfcAgreed2026 } else { "[]" }
+$jsonSettlements = if ($jsonSettlements) { $jsonSettlements } else { "[]" }
 
 $jsContent = @"
 const TARIFF_DATA = $jsonMaster;
@@ -1268,6 +1274,7 @@ const TARIFF_KOLKATA_SOC = $jsonKolkataSoc;
 const TARIFF_KOLKATA_PKG = $jsonKolkataPkg;
 const AGREEMENT_KOLKATA = $jsonKolkataAgreements;
 const AGREEMENT_DETAILS = $jsonAgreements;
+const SETTLEMENT_DATA = $jsonSettlements;
 "@
 
 $jsContent | Out-File -FilePath $outputFile -Encoding utf8
@@ -1276,6 +1283,10 @@ $endAll = Get-Date
 $listHdfcAgreedCount = 0
 if (Test-Path "$PSScriptRoot/hdfc_ergo_agreed_2026.json") {
     $listHdfcAgreedCount = (ConvertFrom-Json $jsonHdfcAgreed2026).Count
+}
+$listSettlementCount = 0
+if (Test-Path "$PSScriptRoot/compiled_settlements.json") {
+    $listSettlementCount = (ConvertFrom-Json $jsonSettlements).Count
 }
 
 Log-Info "=================================================="
@@ -1295,6 +1306,7 @@ Log-Info "International Cash SOC 26-27 records: $($listCash2026.Count)"
 Log-Info "Excelcare GIPSA 2026 records: $($listExcelcareGipsa2026.Count)"
 Log-Info "HDFC ERGO 2024 records: $($listHdfcErgo.Count)"
 Log-Info "HDFC ERGO Agreed 2026 records: $listHdfcAgreedCount"
+Log-Info "Settlement tracker records: $listSettlementCount"
 Log-Info "Agreements compiled: $($listAgreements.Count)"
 Log-Info "Total execution time: $(($endAll - $startAll).TotalSeconds) seconds"
 Log-Info "=================================================="

@@ -178,7 +178,8 @@
             'tab-dashboard-btn',
             'tab-checking-btn',
             'tab-manual-btn',
-            'tab-infra-btn'
+            'tab-infra-btn',
+            'tab-settlement-btn'
         ],
         'Auditor': [
             'tab-dashboard-btn',
@@ -189,7 +190,8 @@
             'tab-repository-btn',
             'tab-checking-btn',
             'tab-manual-btn',
-            'tab-infra-btn'
+            'tab-infra-btn',
+            'tab-settlement-btn'
         ],
         'Approver': [
             'tab-dashboard-btn',
@@ -200,7 +202,8 @@
             'tab-repository-btn',
             'tab-checking-btn',
             'tab-manual-btn',
-            'tab-infra-btn'
+            'tab-infra-btn',
+            'tab-settlement-btn'
         ],
         'Administrator': [
             'tab-dashboard-btn',
@@ -214,7 +217,8 @@
             'tab-checking-btn',
             'tab-manual-btn',
             'tab-infra-btn',
-            'tab-admin-btn'
+            'tab-admin-btn',
+            'tab-settlement-btn'
         ]
     };
 
@@ -229,10 +233,18 @@
         { id: 'tab-master-btn', name: 'Tariff Repository' },
         { id: 'tab-manual-btn', name: 'Process Manual' },
         { id: 'tab-infra-btn', name: 'Platform Infrastructure' },
-        { id: 'tab-admin-btn', name: 'Administration Center' }
+        { id: 'tab-admin-btn', name: 'Administration Center' },
+        { id: 'tab-settlement-btn', name: 'Settlement Auditor' }
     ];
 
-    window.rolePermissions = safeJsonParse(localStorage.getItem('brc_v2_role_permissions'), DEFAULT_ROLE_PERMISSIONS);
+    const storedPerms = safeJsonParse(localStorage.getItem('brc_v2_role_permissions'), {});
+    const mergedPerms = {};
+    for (const [role, defaultTabs] of Object.entries(DEFAULT_ROLE_PERMISSIONS)) {
+        const storedTabs = storedPerms[role] || [];
+        mergedPerms[role] = Array.from(new Set([...storedTabs, ...defaultTabs]));
+    }
+    window.rolePermissions = mergedPerms;
+    localStorage.setItem('brc_v2_role_permissions', JSON.stringify(mergedPerms));
 
     function renderPermissionsMatrix() {
         const tbody = document.getElementById('permissions-matrix-tbody');
@@ -430,6 +442,7 @@
     const tabAdminBtn = document.getElementById('tab-admin-btn');
     const tabInfraBtn = document.getElementById('tab-infra-btn');
     const tabIngesterBtn = document.getElementById('tab-ingester-btn');
+    const tabSettlementBtn = document.getElementById('tab-settlement-btn');
 
     const panelDashboard = document.getElementById('panel-dashboard');
     const panelMaster = document.getElementById('panel-master');
@@ -443,6 +456,7 @@
     const panelAdmin = document.getElementById('panel-admin');
     const panelInfra = document.getElementById('panel-infra');
     const panelIngester = document.getElementById('panel-ingester');
+    const panelSettlement = document.getElementById('panel-settlement');
 
     // HDFC Agreed Board State Variables
     let hdfcAgreedCurrentPage = 1;
@@ -736,7 +750,8 @@
         { btn: tabManualBtn, panel: panelManual, onShow: () => { } },
         { btn: tabCheckingBtn, panel: panelChecking, onShow: () => { updateCheckingDashboard(); } },
         { btn: tabAdminBtn, panel: panelAdmin, onShow: () => { window.renderAdminCenter(); } },
-        { btn: tabInfraBtn, panel: panelInfra, onShow: () => { if (window.renderInfraDashboard) window.renderInfraDashboard(); } }
+        { btn: tabInfraBtn, panel: panelInfra, onShow: () => { if (window.renderInfraDashboard) window.renderInfraDashboard(); } },
+        { btn: tabSettlementBtn, panel: panelSettlement, onShow: () => { if (window.initSettlementAuditor) window.initSettlementAuditor(); } }
     ];
 
     tabsList.forEach(tab => {
@@ -12907,6 +12922,248 @@
         showToast(`Successfully extracted ${ingestedRecords.length} unique records from sheet "${sheetName}".`, 'success');
     }
 
+    // =========================================================================
+    // SETTLEMENT DISALLOWANCE AUDITOR PLATFORM METHODS
+    // =========================================================================
+    function initSettlementAuditor() {
+        const settlements = (typeof SETTLEMENT_DATA !== 'undefined' && Array.isArray(SETTLEMENT_DATA)) ? SETTLEMENT_DATA : [];
+        
+        let totalSettlements = settlements.length;
+        let totalDisallowed = 0;
+        let totalRecoverable = 0;
+        
+        settlements.forEach(s => {
+            totalDisallowed += s.deducted_amount;
+            
+            s.recoverable_amount = 0;
+            s.line_items.forEach(item => {
+                let rec = 0;
+                const desc = (item.description || '').toUpperCase();
+                const reason = (item.reason || '').toUpperCase();
+                
+                if (desc.includes('MONITORING') && (reason.includes('INCL') || reason.includes('PART OF') || reason.includes('ROOM RENT') || reason.includes('BUNDLE'))) {
+                    rec = item.deducted;
+                    item.dispute_reason = "Monitoring charges are billable separately according to Section 4.2 of TPA Agreement.";
+                }
+                else if (desc.includes('MISCELLANEOUS') && (reason.includes('ADMISSION') || reason.includes('MRD') || reason.includes('DOCUMENTATION'))) {
+                    rec = item.deducted;
+                    item.dispute_reason = "MRD and Admission documentation charges are billable separately as per agreement terms.";
+                }
+                else if (desc.includes('MEDICINE') && (reason.includes('GOWN') || reason.includes('GLOVES') || reason.includes('PLAIN SHEET'))) {
+                    rec = item.deducted * 0.5;
+                    item.dispute_reason = "Consumables (gloves/gown/sheet) are payable under active package rules.";
+                }
+                else if (reason.includes('MOU DISCOUNT') && desc.includes('ROOM')) {
+                    rec = item.deducted;
+                    item.dispute_reason = "5% MOU discount is not applicable to room rent as per the master agreement schedule.";
+                }
+                
+                item.recoverable = rec;
+                s.recoverable_amount += rec;
+            });
+            
+            totalRecoverable += s.recoverable_amount;
+        });
+        
+        const totalEl = document.getElementById('set-metric-total');
+        const disallowedEl = document.getElementById('set-metric-disallowed');
+        const recoverableEl = document.getElementById('set-metric-recoverable');
+        const badgeEl = document.getElementById('tab-badge-settlement');
+        
+        if (totalEl) totalEl.textContent = totalSettlements.toLocaleString();
+        if (disallowedEl) disallowedEl.textContent = `₹${totalDisallowed.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        if (recoverableEl) recoverableEl.textContent = `₹${totalRecoverable.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        if (badgeEl) badgeEl.textContent = totalSettlements;
+        
+        renderSettlementGrid(settlements);
+        
+        const searchInput = document.getElementById('set-search-input');
+        if (searchInput) {
+            // Re-bind listener
+            const newSearchHandler = (e) => handleSettlementSearch(e, settlements);
+            searchInput.oninput = newSearchHandler;
+        }
+    }
+
+    function renderSettlementGrid(data) {
+        const tbody = document.getElementById('settlement-tbody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        
+        if (data.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">No settlements matched the search criteria.</td></tr>';
+            return;
+        }
+        
+        data.forEach(s => {
+            const tr = document.createElement('tr');
+            tr.style.borderBottom = '1px solid var(--border)';
+            tr.style.cursor = 'pointer';
+            tr.className = 'settlement-row';
+            
+            const isLeakage = s.recoverable_amount > 0;
+            const statusBadge = isLeakage 
+                ? `<span style="background-color: var(--danger-bg); color: var(--danger); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700;">Leakage Flagged</span>` 
+                : `<span style="background-color: var(--success-bg); color: var(--success); font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700;">Verified Aligned</span>`;
+            
+            tr.innerHTML = `
+                <td style="padding: 0.6rem 0.5rem; font-weight: 700; color: var(--accent, #6366f1);">${s.claim_id}</td>
+                <td style="padding: 0.6rem 0.5rem; color: var(--text-main); font-weight: 600;">${s.patient_name}</td>
+                <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-size: 0.75rem; font-family: monospace;">${s.policy_number}</td>
+                <td style="padding: 0.6rem 0.5rem; text-align: right; font-family: monospace;">₹${s.claimed_amount.toLocaleString(undefined, {maximumFractionDigits:0})}</td>
+                <td style="padding: 0.6rem 0.5rem; text-align: right; font-family: monospace; color: var(--text-main);">₹${s.deducted_amount.toLocaleString(undefined, {maximumFractionDigits:0})}</td>
+                <td style="padding: 0.6rem 0.5rem; text-align: right; font-family: monospace; color: ${isLeakage ? '#ef4444' : 'var(--text-muted)'}; font-weight: ${isLeakage ? '700' : 'normal'};">₹${s.recoverable_amount.toLocaleString(undefined, {maximumFractionDigits:0})}</td>
+                <td style="padding: 0.6rem 0.5rem; text-align: center;">${statusBadge}</td>
+            `;
+            
+            tr.addEventListener('click', () => selectSettlementRow(s, tr));
+            tbody.appendChild(tr);
+        });
+    }
+
+    function selectSettlementRow(s, rowEl) {
+        document.querySelectorAll('.settlement-row').forEach(el => el.classList.remove('active-row'));
+        rowEl.classList.add('active-row');
+        
+        const emptyPanel = document.getElementById('set-details-empty');
+        const contentPanel = document.getElementById('set-details-content');
+        
+        if (emptyPanel) emptyPanel.style.display = 'none';
+        if (contentPanel) contentPanel.style.display = 'flex';
+        
+        document.getElementById('set-details-patient').textContent = s.patient_name;
+        document.getElementById('set-details-claim').textContent = s.claim_id;
+        document.getElementById('set-details-policy').textContent = s.policy_number;
+        document.getElementById('set-details-claimed').textContent = `₹${s.claimed_amount.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        document.getElementById('set-details-approved').textContent = `₹${s.approved_amount.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        document.getElementById('set-details-disallowed').textContent = `₹${s.deducted_amount.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        document.getElementById('set-details-utr').textContent = s.utr_number || 'N/A';
+        
+        const itemsContainer = document.getElementById('set-details-items');
+        itemsContainer.innerHTML = '';
+        
+        s.line_items.forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.style.background = 'rgba(255,255,255,0.03)';
+            itemDiv.style.border = '1px solid var(--border)';
+            itemDiv.style.borderRadius = '6px';
+            itemDiv.style.padding = '0.6rem';
+            itemDiv.style.fontSize = '0.78rem';
+            itemDiv.style.marginBottom = '0.5rem';
+            
+            const isLeakage = item.recoverable > 0;
+            const leakageSection = isLeakage 
+                ? `<div style="color: #ef4444; font-weight: 700; margin-top: 0.3rem; font-size: 0.72rem; display: flex; align-items: start; gap: 0.2rem;">
+                     <span>⚠️ Dispute:</span>
+                     <span>${item.dispute_reason} (Recoverable: ₹${item.recoverable.toLocaleString()})</span>
+                   </div>`
+                : '';
+                
+            itemDiv.innerHTML = `
+                <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-main);">
+                    <span>${item.description}</span>
+                    <span style="font-family: monospace;">₹${item.deducted.toLocaleString()} deducted</span>
+                </div>
+                <div style="color: var(--text-muted); font-size: 0.72rem; margin-top: 0.15rem; line-height: 1.35;">
+                    Reason: ${item.reason}
+                </div>
+                ${leakageSection}
+            `;
+            itemsContainer.appendChild(itemDiv);
+        });
+        
+        const disputeBtn = document.getElementById('btn-set-dispute');
+        if (disputeBtn) {
+            disputeBtn.onclick = () => generateSettlementDisputeLetter(s);
+            if (s.recoverable_amount > 0) {
+                disputeBtn.disabled = false;
+                disputeBtn.style.opacity = '1';
+                disputeBtn.style.cursor = 'pointer';
+            } else {
+                disputeBtn.disabled = true;
+                disputeBtn.style.opacity = '0.5';
+                disputeBtn.style.cursor = 'not-allowed';
+            }
+        }
+    }
+
+    function generateSettlementDisputeLetter(s) {
+        const dateStr = new Date().toLocaleDateString('en-IN', {day: 'numeric', month: 'long', year: 'numeric'});
+        
+        let disputeDetails = '';
+        s.line_items.forEach((item, idx) => {
+            if (item.recoverable > 0) {
+                disputeDetails += `
+${idx + 1}. Expense Category: ${item.description}
+   - Billed Amount: Rs. ${item.claimed.toLocaleString(undefined, {minimumFractionDigits: 2})}
+   - Approved Amount: Rs. ${item.approved.toLocaleString(undefined, {minimumFractionDigits: 2})}
+   - Disallowed Amount: Rs. ${item.deducted.toLocaleString(undefined, {minimumFractionDigits: 2})}
+   - TPA Reason: "${item.reason}"
+   - Hospital Dispute Ground: "${item.dispute_reason}"
+`;
+            }
+        });
+        
+        const letter = `========================================================================
+OFFICIAL CLAIM RECOVERY & DISPUTE LETTER
+========================================================================
+Date: ${dateStr}
+
+To,
+The Grievance Redressal / Claims Audit Desk
+Aditya Birla Health Insurance Co. Limited
+Guwahati Assam / Corporate Hub
+
+Subject: Dispute for Unjustified Deductions in Claim ID: ${s.claim_id}
+
+Dear Sir/Madam,
+
+We are writing to formally dispute the settlement deductions applied to the claim of Patient ${s.patient_name} (Member ID: ${s.member_id}), who was hospitalized under Policy Number ${s.policy_number} from ${s.admission_date} to ${s.discharge_date}.
+
+Out of the total billed amount of Rs. ${s.claimed_amount.toLocaleString(undefined, {minimumFractionDigits: 2})}, a sum of Rs. ${s.deducted_amount.toLocaleString(undefined, {minimumFractionDigits: 2})} was disallowed. Upon reviewing the active agreed tariff schedule, we have identified that a total of Rs. ${s.recoverable_amount.toLocaleString(undefined, {minimumFractionDigits: 2})} was deducted in violation of the contract terms.
+
+A detailed description of the disputed items and grounds for appeal is given below:
+${disputeDetails}
+
+We request you to review the above-mentioned items and release the recoverable leakage amount of Rs. ${s.recoverable_amount.toLocaleString(undefined, {minimumFractionDigits: 2})} at your earliest convenience.
+
+Please credit the disputed amount to our registered bank account against UTR reference ${s.utr_number}.
+
+Thanking you,
+
+Yours sincerely,
+
+For Apollo Hospitals Guwahati
+Authorized Signatory
+Claims & Billing Assurance Desk
+`;
+        
+        const blob = new Blob([letter], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `Dispute_Letter_Claim_${s.claim_id}.txt`;
+        link.click();
+        showToast(`Dispute Letter for Claim ${s.claim_id} generated and downloaded!`, 'success');
+    }
+
+    function handleSettlementSearch(e, allSettlements) {
+        const query = e.target.value.toLowerCase().trim();
+        if (!query) {
+            renderSettlementGrid(allSettlements);
+            return;
+        }
+        
+        const filtered = allSettlements.filter(s => {
+            return (s.patient_name || '').toLowerCase().includes(query) ||
+                   (s.claim_id || '').toLowerCase().includes(query) ||
+                   (s.policy_number || '').toLowerCase().includes(query) ||
+                   (s.utr_number || '').toLowerCase().includes(query);
+        });
+        
+        renderSettlementGrid(filtered);
+    }
+
+    window.initSettlementAuditor = initSettlementAuditor;
     window.initIngesterPanel = initIngesterPanel;
 
     document.addEventListener('DOMContentLoaded', init);

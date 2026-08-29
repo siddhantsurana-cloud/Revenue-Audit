@@ -1,0 +1,21 @@
+{
+  "STORAGE_MODE": "local",
+  "SQLITE_DB_PATH": "revenue_audit.db",
+  "OTP_PROVIDER": "mock",
+  "SMTP_CONFIG": {
+    "host": "smtp.office365.com",
+    "port": 587,
+    "username": "billing-otp@hospital.com",
+    "password": "your-password-here",
+    "from_email": "billing-otp@hospital.com"
+  },
+  "SMS_CONFIG": {
+    "provider": "twilio",
+    "account_sid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "auth_token": "your_auth_token_here",
+    "from_number": "+1234567890",
+    "to_number_overrides": {
+      "admin": "+919876543210"
+    }
+  }
+}

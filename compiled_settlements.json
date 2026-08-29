@@ -1,0 +1,143 @@
+[
+    {
+        "id": "AHLG-ICR-20524-Settlement Letter",
+        "filename": "AHLG-ICR-20524-Settlement Letter.pdf",
+        "claim_id": "1112585416937",
+        "patient_name": "BHASKAR JYOTI HALOI",
+        "member_id": "PT85894309",
+        "policy_number": "21-21-3303760-03",
+        "admission_date": "12/11/2025 18:31:00",
+        "discharge_date": "12/11/2025 18:31:00",
+        "claimed_amount": 51925.0,
+        "approved_amount": 46948.15,
+        "deducted_amount": 4976.64,
+        "tds_amount": 4695.0,
+        "utr_number": "HDFCH00733098665",
+        "utr_amount": 0.0,
+        "line_items": [
+            {
+                "description": "Investigation Charges",
+                "claimed": 660.0,
+                "approved": 627.0,
+                "deducted": 33.0,
+                "reason": "5% MOU discount applied Rs. 250.0 deducted for encoreRs. 234.38 deducted for encore gloves-7Rs. 46.88 deducted for examination gloves latex medium) (hsn90183990 )"
+            },
+            {
+                "description": "Medicine And Consumable Charges",
+                "claimed": 1664.79,
+                "approved": 611.15,
+                "deducted": 1053.64,
+                "reason": "(pmin1931736454 )Rs. 73.0 deducted for half gown d-800Rs. 133.13 deducted for plain sheet large d-301(hsn9018399 0) (pmin1931736454 ) Rs. 900.0 deducted for admission chargeRs. 0.0 deducted for hospital services and treatment monitoring and"
+            },
+            {
+                "description": "Miscellaneous Charges",
+                "claimed": 1800.0,
+                "approved": 0.0,
+                "deducted": 1800.0,
+                "reason": "management charges(day care)Rs. 900.0 deducted for mrd documentation chargeRs. 0.0 deducted for bmw management"
+            },
+            {
+                "description": "OT Charges",
+                "claimed": 10000.0,
+                "approved": 9500.0,
+                "deducted": 500.0,
+                "reason": "5% MOU discount applied Miscellaneous Amount"
+            },
+            {
+                "description": "Package Charges",
+                "claimed": 36000.0,
+                "approved": 34500.0,
+                "deducted": 1500.0,
+                "reason": "1500.0 Rs. 0.0 deducted for"
+            },
+            {
+                "description": "Professional Fee Charges",
+                "claimed": 0.0,
+                "approved": 0.0,
+                "deducted": 0.0,
+                "reason": "resident doctor charge(day care 5% MOU discount applied"
+            },
+            {
+                "description": "Room and Nursing Charges",
+                "claimed": 1800.0,
+                "approved": 1710.0,
+                "deducted": 90.0,
+                "reason": ",5% MOU discount applied ,"
+            }
+        ]
+    },
+    {
+        "id": "AHLG-ICR-21152-Settlement Letter",
+        "filename": "AHLG-ICR-21152-Settlement Letter.pdf",
+        "claim_id": "1112585485664",
+        "patient_name": "MANJAY KUMAR",
+        "member_id": "PT92186083",
+        "policy_number": "31-25-0035908-02",
+        "admission_date": "26/12/2025 09:51:00",
+        "discharge_date": "29/12/2025 09:51:00",
+        "claimed_amount": 118897.0,
+        "approved_amount": 110398.48,
+        "deducted_amount": 8498.619999999999,
+        "tds_amount": 11040.0,
+        "utr_number": "HDFCH00728451351",
+        "utr_amount": 0.0,
+        "line_items": [
+            {
+                "description": "Investigation Charges",
+                "claimed": 14117.82,
+                "approved": 13411.93,
+                "deducted": 705.89,
+                "reason": ",5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,5% MOU discount applied ,"
+            },
+            {
+                "description": "Medicine And Consumable Charges",
+                "claimed": 13278.13,
+                "approved": 13041.1,
+                "deducted": 237.03,
+                "reason": "NA 5% MOU discount applied ,5% MOU discount applied"
+            },
+            {
+                "description": "Miscellaneous Charges",
+                "claimed": 7362.16,
+                "approved": 7271.55,
+                "deducted": 90.61,
+                "reason": ",5% MOU discount applied ,5% MOU discount applied ,"
+            },
+            {
+                "description": "OT Charges",
+                "claimed": 10000.0,
+                "approved": 9499.91,
+                "deducted": 500.09,
+                "reason": "5% MOU discount applied As per agreed Tariff Rs 0.0 / has been deducted against the charges of package of Rs 1200.0/.As per agreed Tariff Rs 0.0 / has been deducted against"
+            },
+            {
+                "description": "Package Charges",
+                "claimed": 50539.0,
+                "approved": 45039.0,
+                "deducted": 5500.0,
+                "reason": "the charges of package of Rs 18000.0/.As per agreed Tariff Rs 0.0 / has been deducted against the charges of package of Rs 30000.0/.As per agreed Deduction Expense Head Claimed Amount Approved Amount Deduction reason Amount Tariff Rs 0.0 / has been deducted against the charges of package of Rs 30000.0/., Miscellaneous Amount 5500.0As per agreed Tariff Rs 0.0 / has been deducted against the charges of package of Rs 589.0/.As per agreed Tariff Rs 0.0 / has been"
+            },
+            {
+                "description": "Package Charges",
+                "claimed": 50539.0,
+                "approved": 45039.0,
+                "deducted": 5500.0,
+                "reason": "deducted against the charges of package of Rs 0.0/.As per agreed Tariff Rs 0.0 / has been deducted against the charges of package of Rs 0.0/.As per agreed Tariff Rs 0.0 / has been deducted against the charges of package of Rs 0.0/.As per agreed Tariff Rs 0.0 / has been deducted against the charges of package of Rs 0.0/.As per agreed Tariff Rs 0.0 / has been deducted against the charges of package of Rs 750.0/.As per agreed Tariff Rs 0.0 / has been deducted against the charges of package of Rs 0.0/. 5% MOU discount applied ,5% MOU discount applied"
+            },
+            {
+                "description": "Professional Fee Charges",
+                "claimed": 12400.0,
+                "approved": 11780.0,
+                "deducted": 620.0,
+                "reason": ",5% MOU discount applied ,5% MOU discount applied , 5% MOU discount applied ,As per agreed Tariff Rs 300.0/ has been deducted"
+            },
+            {
+                "description": "Room and Nursing Charges",
+                "claimed": 11200.0,
+                "approved": 10355.0,
+                "deducted": 845.0,
+                "reason": "against the charges of Room Rent of Rs-10200.0/, 5% MOU discount applied ,"
+            }
+        ]
+    }
+]
