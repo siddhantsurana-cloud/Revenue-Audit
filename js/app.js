@@ -4348,6 +4348,35 @@
         let tempRowsMap = {};
 
         try {
+            // Header search dictionary supporting all variations across Apollo, Excelcare, Hyderabad, and TPAs
+            const headerDict = {
+                serviceid: ['serviceid', 'servicecode', 'code', 'codeid', 'itemcode', 'itemno', 'testid', 'testcode', 'procid', 'proccode', 'procedurecode', 'chargecode', 'tariffcode', 'activitycode', 'billingcode', 'hsncode', 'cptcode', 'servcode', 'service_id', 'item_code'],
+                servicename: ['servicename', 'servicedescription', 'description', 'service', 'particulars', 'particular', 'itemname', 'itemdescription', 'item', 'testname', 'testdescription', 'procedurename', 'proceduredescription', 'procedure', 'chargename', 'chargeitem', 'investigation', 'investigationname', 'details', 'servicetypename', 'activity', 'service_name', 'item_desc', 'procedure_name'],
+                rate: ['individualrate', 'billedrate', 'billedrates', 'rate', 'amount', 'charges', 'charge', 'price', 'unitrate', 'totalvalue', 'totalamount', 'netamount', 'grossamount', 'cost', 'total', 'billedamount', 'claimedamount', 'itemrate', 'unitprice', 'fee', 'rate_amt', 'grossrate'],
+                patient: ['patientname', 'patientname(ip)', 'patient', 'name', 'ptname', 'patient_name', 'beneficiaryname', 'membername', 'insuredname', 'customername'],
+                ipno: ['ipno', 'ipnumber', 'ip', 'admissionno', 'uhid', 'oppno', 'opno', 'regno', 'registrationno', 'caseno', 'mrno', 'ipdno', 'opdno', 'claimno', 'claimid', 'ip_no', 'uhid_no', 'ip_number'],
+                billno: ['billno', 'billnumber', 'bill', 'invoice', 'invoiceno', 'invoicenumber', 'bill_no', 'receiptno', 'voucher', 'voucherno', 'bill_number'],
+                dept: ['dept', 'department', 'deptname', 'specialty', 'speciality', 'section', 'costcentre', 'dept_name'],
+                category: ['categoryname', 'category', 'roomcategory', 'roomtype', 'room', 'ward', 'bedcategory', 'bedtype', 'class', 'wardname'],
+                customer: ['customer', 'customertype', 'payer', 'sponsor', 'insurance', 'tpa', 'company', 'corporate', 'payername', 'tpaname'],
+                doctor: ['primarydoctor', 'doctor', 'physician', 'docname', 'doctorid', 'doctorname', 'consultant', 'surgeon', 'treatingdoctor'],
+                quantity: ['quantity', 'qty', 'billedqty', 'units', 'vol', 'count', 'days', 'hours', 'duration', 'noofdays', 'quantity_billed'],
+                template: ['templatename', 'tarifftemplate', 'template'],
+                type: ['servicetype', 'rateclause', 'type', 'billingtype'],
+                agreement: ['agreementname', 'agreement', 'contractname', 'contract'],
+                startdate: ['otstart', 'otstarttime', 'otstartdate', 'surgerystart', 'otdatefrom', 'datefrom', 'starttime', 'startdate', 'start', 'fromdate', 'from'],
+                enddate: ['otend', 'otendtime', 'otenddate', 'surgeryend', 'otdateto', 'dateto', 'endtime', 'enddate', 'end', 'todate', 'to'],
+                ratePreDiscount: ['grosstariffbilled', 'grossbilled', 'grosstariff', 'grossrate', 'billedrateprediscount', 'rateprediscount', 'prediscount'],
+                manualTariff: ['expectedrate', 'expectedtariff', 'expected', 'tariffrate', 'tariff', 'socrate'],
+                manualDiscount: ['discount%', 'discountpercent', 'discountapplied', 'discount'],
+                manualRemarks: ['remarks', 'userremarks', 'comments', 'remark'],
+                matchedServiceCode: ['matchedservicecode', 'matchedservice', 'matchedcode'],
+                auditStatus: ['auditstatus', 'status'],
+                exceptionCategory: ['exceptioncategory', 'exception'],
+                validationStatus: ['validationstatus', 'validation'],
+                approvalStatus: ['approvalstatus', 'approval']
+            };
+
             // Build the files list and pre-scan their headers to identify which are re-uploads
             let originalFilesInfo = [];
             let revisedFilesInfo = [];
@@ -4356,74 +4385,111 @@
             for (let fIdx = 0; fIdx < selectedBillFiles.length; fIdx++) {
                 const file = selectedBillFiles[fIdx];
                 const fileData = await readFileAsArrayBuffer(file);
-                const workbook = XLSX.read(fileData, { type: 'array' });
+                const workbook = XLSX.read(fileData, { type: 'array', cellDates: true });
                 
-                let targetSheet = null;
-                let targetSheetName = "";
-                let maxRows = 0;
-                workbook.SheetNames.forEach(sheetName => {
-                    const sheet = workbook.Sheets[sheetName];
-                    const range = XLSX.utils.decode_range(sheet['!ref'] || 'A1:A1');
-                    const rowsCount = range.e.r - range.s.r + 1;
-                    const nameLower = sheetName.toLowerCase();
-                    if (nameLower.includes('ip services') || nameLower.includes('discharge') || nameLower.includes('report') || nameLower.includes('billing') || nameLower.includes('op services') || nameLower.includes('outpatient') || nameLower.includes('op bill')) {
-                        targetSheet = sheet;
-                        targetSheetName = sheetName;
-                    }
-                    if (rowsCount > maxRows) {
-                        maxRows = rowsCount;
-                        if (!targetSheet) {
-                            targetSheet = sheet;
-                            targetSheetName = sheetName;
-                        }
-                    }
-                });
+                let bestSheet = null;
+                let bestSheetName = "";
+                let bestHeaderRowIdx = -1;
+                let bestColMapping = {};
+                let maxValidRows = 0;
+                let bestRows = [];
 
-                if (!targetSheet) continue;
+                // Evaluate all sheets to find the one with the actual billing dataset
+                for (let sIdx = 0; sIdx < workbook.SheetNames.length; sIdx++) {
+                    const sname = workbook.SheetNames[sIdx];
+                    const sheet = workbook.Sheets[sname];
+                    if (!sheet) continue;
+                    const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                    if (!rows || rows.length < 2) continue;
 
-                const rows = XLSX.utils.sheet_to_json(targetSheet, { header: 1 });
-                let headerRowIdx = -1;
-                let colMapping = {};
+                    let sheetBestHeaderIdx = -1;
+                    let sheetBestScore = 0;
+                    let sheetColMapping = {};
 
-                for (let i = 0; i < Math.min(30, rows.length); i++) {
-                    const row = rows[i];
-                    if (row) {
-                        let hasServiceId = false;
-                        let basicHeaderMatchCount = 0;
-                        row.forEach(cell => {
-                            if (!cell) return;
-                            const cleaned = String(cell).toLowerCase().trim().replace(/[\s_]/g, '');
-                            if (cleaned === 'serviceid' || cleaned === 'servicecode' || cleaned === 'code' || cleaned === 'codeid') {
-                                hasServiceId = true;
-                            }
-                            if (cleaned === 'servicename' || cleaned === 'servicedescription' || cleaned === 'description') {
-                                basicHeaderMatchCount++;
-                            }
-                            if (cleaned === 'patientname' || cleaned === 'patient' || cleaned === 'uhid' || cleaned === 'oppno') {
-                                basicHeaderMatchCount++;
-                            }
-                            if (cleaned === 'billno' || cleaned === 'billnumber' || cleaned === 'bill') {
-                                basicHeaderMatchCount++;
+                    for (let rIdx = 0; rIdx < Math.min(100, rows.length); rIdx++) {
+                        const row = rows[rIdx];
+                        if (!row || !Array.isArray(row) || row.length === 0) continue;
+
+                        const colMap = {};
+                        const matchedCats = new Set();
+
+                        row.forEach((cell, cIdx) => {
+                            if (cell === null || cell === undefined) return;
+                            const clean = String(cell).toLowerCase().trim().replace(/[\s_\-\(\)\.\#\/]/g, '');
+                            if (!clean) return;
+                            colMap[clean] = cIdx;
+
+                            for (const [cat, kwList] of Object.entries(headerDict)) {
+                                if (kwList.some(kw => clean === kw || clean.startsWith(kw) || kw.startsWith(clean))) {
+                                    matchedCats.add(cat);
+                                }
                             }
                         });
 
-                        if (hasServiceId || basicHeaderMatchCount >= 3) {
-                            headerRowIdx = i;
-                            row.forEach((cell, idx) => {
-                                if (cell) {
-                                    const cleanCell = String(cell).toLowerCase().trim().replace(/[\s_]/g, '');
-                                    colMapping[cleanCell] = idx;
-                                }
-                            });
-                            break;
+                        let score = matchedCats.size;
+                        if (matchedCats.has('serviceid') || matchedCats.has('servicename')) score += 5;
+                        if (matchedCats.has('rate')) score += 4;
+                        if (matchedCats.has('patient') || matchedCats.has('ipno')) score += 3;
+
+                        if (score > sheetBestScore && score >= 2) {
+                            sheetBestScore = score;
+                            sheetBestHeaderIdx = rIdx;
+                            sheetColMapping = colMap;
+                        }
+                    }
+
+                    if (sheetBestHeaderIdx >= 0) {
+                        let validCount = 0;
+                        for (let r = sheetBestHeaderIdx + 1; r < rows.length; r++) {
+                            const row = rows[r];
+                            if (row && Array.isArray(row) && row.some(c => c !== null && c !== undefined && String(c).trim() !== '')) {
+                                validCount++;
+                            }
+                        }
+
+                        if (validCount > maxValidRows || !bestSheet) {
+                            maxValidRows = validCount;
+                            bestSheet = sheet;
+                            bestSheetName = sname;
+                            bestHeaderRowIdx = sheetBestHeaderIdx;
+                            bestColMapping = sheetColMapping;
+                            bestRows = rows;
                         }
                     }
                 }
 
-                if (headerRowIdx === -1) continue;
+                // Fallback: If no headers matched with high confidence, use first non-empty sheet
+                if (!bestSheet || bestHeaderRowIdx === -1) {
+                    if (workbook.SheetNames.length > 0) {
+                        const sname = workbook.SheetNames[0];
+                        const sheet = workbook.Sheets[sname];
+                        const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                        if (rows && rows.length > 1) {
+                            bestSheet = sheet;
+                            bestSheetName = sname;
+                            bestHeaderRowIdx = 0;
+                            bestRows = rows;
+                            bestColMapping = {};
+                            if (rows[0] && Array.isArray(rows[0])) {
+                                rows[0].forEach((c, idx) => {
+                                    if (c !== null && c !== undefined) {
+                                        const clean = String(c).toLowerCase().trim().replace(/[\s_\-\(\)\.\#\/]/g, '');
+                                        bestColMapping[clean] = idx;
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+
+                if (!bestSheet || bestHeaderRowIdx === -1) continue;
+
+                const rows = bestRows;
+                const headerRowIdx = bestHeaderRowIdx;
+                const colMapping = bestColMapping;
 
                 let isOPFile = false;
-                if (targetSheetName.toLowerCase().includes('op') || targetSheetName.toLowerCase().includes('outpatient')) {
+                if (bestSheetName.toLowerCase().includes('op') || bestSheetName.toLowerCase().includes('outpatient')) {
                     isOPFile = true;
                 }
                 if (colMapping['oppno'] !== undefined || (colMapping['uhid'] !== undefined && colMapping['ipno'] === undefined && colMapping['admissionno'] === undefined)) {
@@ -4474,8 +4540,8 @@
                         for (let i = origData.headerRowIdx + 1; i < origRows.length; i++) {
                             const row = origRows[i];
                             if (!row || row.length <= 1) continue;
-                            const serviceIdRaw = String(row[origColIdx.serviceid] || '').trim();
-                            const serviceNameRaw = String(row[origColIdx.servicename] || '').trim();
+                            const serviceIdRaw = origColIdx.serviceid >= 0 ? String(row[origColIdx.serviceid] || '').trim() : '';
+                            const serviceNameRaw = origColIdx.servicename >= 0 ? String(row[origColIdx.servicename] || '').trim() : '';
                             if (!serviceIdRaw && !serviceNameRaw) continue;
                             rawBillData.push({
                                 row: row,
@@ -4501,47 +4567,81 @@
                 
                 uploadedFilesRowsMap[file.name] = { rows: rows, headerRowIdx: headerRowIdx, colMapping: colMapping };
 
-                const getMappedColIndex = (keysList, defaultIdx) => {
+                const getMappedColIndex = (catName) => {
+                    const keysList = headerDict[catName] || [];
                     for (let key of keysList) {
-                        if (colMapping[key] !== undefined) return colMapping[key];
+                        const cleanKey = key.replace(/[\s_\-\(\)\.\#\/]/g, '');
+                        if (colMapping[cleanKey] !== undefined) return colMapping[cleanKey];
                     }
                     for (let cleanHeader in colMapping) {
                         for (let key of keysList) {
-                            // Prevent false positive loose matches for short keywords
-                            if (key === 'to' && cleanHeader !== 'to' && !cleanHeader.startsWith('to')) continue;
-                            if (key === 'end' && cleanHeader !== 'end' && !cleanHeader.startsWith('end')) continue;
-                            if (key === 'from' && cleanHeader !== 'from' && !cleanHeader.startsWith('from')) continue;
-                            if (key === 'start' && cleanHeader !== 'start' && !cleanHeader.startsWith('start')) continue;
-                            if (key === 'ip' && cleanHeader !== 'ip' && !cleanHeader.startsWith('ip')) continue;
-
-                            if (cleanHeader.includes(key) || key.includes(cleanHeader)) return colMapping[cleanHeader];
+                            const cleanKey = key.replace(/[\s_\-\(\)\.\#\/]/g, '');
+                            if (cleanHeader === cleanKey || cleanHeader.includes(cleanKey) || cleanKey.includes(cleanHeader)) {
+                                return colMapping[cleanHeader];
+                            }
                         }
                     }
-                    return defaultIdx;
+                    return -1;
                 };
 
                 const colIdx = {
-                    patient: getMappedColIndex(['patientname', 'patientname(ip)', 'patient', 'name'], 4),
-                    ipno: getMappedColIndex(['ipno', 'ipnumber', 'ip', 'admissionno', 'uhid', 'oppno', 'opno'], 3),
-                    billno: getMappedColIndex(['billno', 'billnumber', 'bill', 'invoice'], 7),
-                    type: getMappedColIndex(['servicetype', 'rateclause', 'type', 'billingtype'], 23), 
-                    category: getMappedColIndex(['categoryname', 'category', 'roomcategory', 'roomtype', 'room'], 16), 
-                    serviceid: getMappedColIndex(['serviceid', 'servicecode', 'code'], -1),
-                    servicename: getMappedColIndex(['servicename', 'servicedescription', 'description', 'service'], 18),
-                    dept: getMappedColIndex(['dept', 'department', 'deptname'], 19),
-                    rate: getMappedColIndex(['individualrate', 'billedrate', 'billedrates', 'rate', 'amount', 'charges', 'charge', 'price'], 21),
-                    customer: getMappedColIndex(['customer', 'customertype', 'payer', 'sponsor', 'insurance', 'tpa'], 24),
-                    agreement: getMappedColIndex(['agreementname', 'agreement', 'contractname', 'contract'], -1),
-                    doctor: getMappedColIndex(['primarydoctor', 'doctor', 'physician', 'docname', 'doctorid', 'doctorname'], 8),
-                    template: getMappedColIndex(['templatename', 'tarifftemplate', 'template'], 0),
-                    ratePreDiscount: getMappedColIndex(['grosstariffbilled', 'grossbilled', 'grosstariff', 'grossrate', 'billedrateprediscount', 'rateprediscount', 'prediscount'], -1),
-                    manualTariff: getMappedColIndex(['expectedrate', 'expectedtariff', 'expected', 'tariffrate', 'tariff', 'socrate'], -1),
-                    manualDiscount: getMappedColIndex(['discount%', 'discountpercent', 'discountapplied', 'discount'], -1),
-                    manualRemarks: getMappedColIndex(['remarks', 'userremarks', 'comments', 'remark'], -1),
-                    startdate: getMappedColIndex(['otstart', 'otstarttime', 'otstartdate', 'surgerystart', 'otdatefrom', 'datefrom', 'starttime', 'startdate', 'start', 'fromdate', 'from'], -1),
-                    enddate: getMappedColIndex(['otend', 'otendtime', 'otenddate', 'surgeryend', 'otdateto', 'dateto', 'endtime', 'enddate', 'end', 'todate', 'to'], -1),
-                    quantity: getMappedColIndex(['quantity', 'qty', 'billedqty', 'units', 'vol', 'count', 'days', 'hours', 'duration'], -1)
+                    patient: getMappedColIndex('patient'),
+                    ipno: getMappedColIndex('ipno'),
+                    billno: getMappedColIndex('billno'),
+                    type: getMappedColIndex('type'), 
+                    category: getMappedColIndex('category'), 
+                    serviceid: getMappedColIndex('serviceid'),
+                    servicename: getMappedColIndex('servicename'),
+                    dept: getMappedColIndex('dept'),
+                    rate: getMappedColIndex('rate'),
+                    customer: getMappedColIndex('customer'),
+                    agreement: getMappedColIndex('agreement'),
+                    doctor: getMappedColIndex('doctor'),
+                    template: getMappedColIndex('template'),
+                    ratePreDiscount: getMappedColIndex('ratePreDiscount'),
+                    manualTariff: getMappedColIndex('manualTariff'),
+                    manualDiscount: getMappedColIndex('manualDiscount'),
+                    manualRemarks: getMappedColIndex('manualRemarks'),
+                    startdate: getMappedColIndex('startdate'),
+                    enddate: getMappedColIndex('enddate'),
+                    quantity: getMappedColIndex('quantity')
                 };
+
+                // Safe fallback discovery if columns were not mapped by keywords
+                if (colIdx.servicename === -1 && colIdx.serviceid === -1) {
+                    for (let c = 0; c < 25; c++) {
+                        let textCount = 0;
+                        for (let r = headerRowIdx + 1; r < Math.min(rows.length, headerRowIdx + 15); r++) {
+                            const val = rows[r] ? rows[r][c] : null;
+                            if (val && typeof val === 'string' && isNaN(parseFloat(val)) && val.trim().length > 3) {
+                                textCount++;
+                            }
+                        }
+                        if (textCount >= 3) {
+                            colIdx.servicename = c;
+                            break;
+                        }
+                    }
+                    if (colIdx.servicename === -1 && rows[0] && rows[0].length > 0) {
+                        colIdx.servicename = 0;
+                    }
+                }
+
+                if (colIdx.rate === -1) {
+                    for (let c = 0; c < 30; c++) {
+                        let numCount = 0;
+                        for (let r = headerRowIdx + 1; r < Math.min(rows.length, headerRowIdx + 15); r++) {
+                            const val = rows[r] ? rows[r][c] : null;
+                            if (val !== null && val !== undefined && !isNaN(parseFloat(val)) && parseFloat(val) > 0) {
+                                numCount++;
+                            }
+                        }
+                        if (numCount >= 3) {
+                            colIdx.rate = c;
+                            break;
+                        }
+                    }
+                }
 
                 tempRowsMap[file.name] = { 
                     rows: rows.map(r => r ? [...r] : null), 
@@ -4552,11 +4652,21 @@
 
                 for (let i = headerRowIdx + 1; i < rows.length; i++) {
                     const row = rows[i];
-                    if (!row || row.length <= 1) continue;
+                    if (!row || !Array.isArray(row) || row.length === 0) continue;
 
-                    const serviceIdRaw = String(row[colIdx.serviceid] || '').trim();
-                    const serviceNameRaw = String(row[colIdx.servicename] || '').trim();
-                    if (!serviceIdRaw && !serviceNameRaw) continue;
+                    const serviceIdRaw = colIdx.serviceid >= 0 ? String(row[colIdx.serviceid] || '').trim() : '';
+                    const serviceNameRaw = colIdx.servicename >= 0 ? String(row[colIdx.servicename] || '').trim() : '';
+                    
+                    if (!serviceIdRaw && !serviceNameRaw) {
+                        const hasAnyContent = row.some((c, cIdx) => c !== null && c !== undefined && String(c).trim() !== '' && cIdx !== colIdx.patient && cIdx !== colIdx.ipno && cIdx !== colIdx.billno);
+                        if (!hasAnyContent) continue;
+                    }
+
+                    // Skip summary / grand total rows
+                    const firstFewCells = row.slice(0, 5).map(c => String(c || '').toLowerCase().trim()).join(' ');
+                    if (firstFewCells.includes('grand total') || firstFewCells.includes('total amount') || firstFewCells.includes('sub total') || firstFewCells.includes('page ') || firstFewCells.includes('report generated')) {
+                        continue;
+                    }
 
                     rawBillData.push({
                         row: row,
