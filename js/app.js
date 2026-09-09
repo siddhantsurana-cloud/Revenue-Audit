@@ -4399,6 +4399,29 @@
                     const sname = workbook.SheetNames[sIdx];
                     const sheet = workbook.Sheets[sname];
                     if (!sheet) continue;
+
+                    // Protect against phantom columns (e.g. 16,384 blank formatted columns exhausting browser memory)
+                    if (sheet['!ref']) {
+                        try {
+                            const range = XLSX.utils.decode_range(sheet['!ref']);
+                            if (range.e.c > 50) {
+                                let maxC = 0;
+                                for (let r = range.s.r; r <= Math.min(range.e.r, range.s.r + 30); r++) {
+                                    for (let c = range.s.c; c <= range.e.c; c++) {
+                                        const cell = sheet[XLSX.utils.encode_cell({ r: r, c: c })];
+                                        if (cell && cell.v !== undefined && cell.v !== null && String(cell.v).trim() !== '') {
+                                            if (c > maxC) maxC = c;
+                                        }
+                                    }
+                                }
+                                if (maxC > 0 && maxC < range.e.c) {
+                                    range.e.c = Math.min(range.e.c, maxC + 2);
+                                    sheet['!ref'] = XLSX.utils.encode_range(range);
+                                }
+                            }
+                        } catch (e) {}
+                    }
+
                     const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
                     if (!rows || rows.length < 2) continue;
 
