@@ -2063,305 +2063,829 @@
             font-size: 0.82rem;
         }
 
-        /* Netflix Style Login Redesign */
+        /* ==========================================================================
+           ENTERPRISE PORTAL AUTHENTICATION & LOGIN CONSOLE
+           ========================================================================== */
         .full-page-login {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle, rgba(13, 27, 42, 0.9) 0%, rgba(5, 10, 21, 0.99) 100%), 
-                        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%230d9488' fill-opacity='0.02'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29-49c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z'/%3E%3C/g%3E%3C/svg%3E");
-            background-size: cover;
+            background: 
+                radial-gradient(ellipse at 15% 15%, rgba(13, 148, 136, 0.18) 0%, transparent 45%),
+                radial-gradient(ellipse at 85% 85%, rgba(99, 102, 241, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, #050a15 0%, #020617 100%);
+            background-color: #020617;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #ffffff;
+            color: var(--text-main, #ffffff);
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
             overflow-y: auto;
-            padding: 4rem 1.5rem;
+            padding: 1.5rem;
             box-sizing: border-box;
             z-index: 100000;
         }
 
-        .netflix-container {
-            text-align: center;
-            max-width: 800px;
+        /* Top Bar Branding */
+        .auth-topbar {
             width: 100%;
-            margin: auto 0;
-            animation: netflixFadeIn 0.5s ease-out;
+            max-width: 1180px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
             box-sizing: border-box;
         }
 
-        @keyframes netflixFadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .netflix-title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 2.5rem;
-            letter-spacing: -1px;
-            color: #ffffff;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
-        .netflix-profiles {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 3.5rem;
-        }
-
-        .netflix-profile-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            width: 130px;
-            text-decoration: none;
-            transition: transform 0.2s ease;
-        }
-
-        .netflix-profile-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .netflix-avatar-box {
-            width: 120px;
-            height: 120px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: #ffffff;
-            border: 3.5px solid transparent;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-            user-select: none;
-            position: relative;
-        }
-
-        .edit-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.68);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-            border-radius: 4.5px;
-            z-index: 5;
-        }
-
-        .netflix-container.managing .edit-overlay {
-            opacity: 1;
-        }
-
-        .netflix-profile-card:hover .edit-overlay {
-            background: rgba(0, 0, 0, 0.45);
-        }
-
-        .netflix-profile-card:hover .netflix-avatar-box {
-            border-color: #ffffff;
-            box-shadow: 0 10px 25px rgba(255,255,255,0.15);
-        }
-
-        .netflix-profile-name {
-            margin-top: 0.9rem;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #808080;
-            transition: color 0.2s ease;
-            text-align: center;
-        }
-
-        .netflix-profile-card:hover .netflix-profile-name {
-            color: #ffffff;
-        }
-
-        .netflix-manage-btn {
-            background: transparent;
-            color: #808080;
-            border: 1px solid #808080;
-            padding: 0.5rem 1.8rem;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .netflix-manage-btn:hover {
-            color: #ffffff;
-            border-color: #ffffff;
-            background: rgba(255,255,255,0.05);
-        }
-
-        /* Netflix Login Box Redesigned */
-        .netflix-login-card {
-            background-color: rgba(10, 20, 40, 0.95);
-            border-radius: 8px;
-            padding: 3rem 2.5rem;
-            width: 100%;
-            max-width: 440px;
-            box-sizing: border-box;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(13, 148, 136, 0.25);
-            text-align: left;
-            position: relative;
-            animation: cardSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes cardSlideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .netflix-back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--primary);
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            margin-bottom: 1.8rem;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .netflix-back-link:hover {
-            color: var(--primary-hover);
-        }
-
-        .netflix-card-header {
+        .auth-topbar-brand {
             display: flex;
             align-items: center;
             gap: 1rem;
+        }
+
+        .auth-logo-badge {
+            background: #ffffff;
+            padding: 0.35rem 0.65rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-logo-img {
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .auth-brand-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .auth-brand-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            color: #ffffff;
+        }
+
+        .auth-brand-sub {
+            font-size: 0.72rem;
+            color: var(--text-muted, #94a3b8);
+            font-weight: 500;
+        }
+
+        .auth-topbar-status {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .auth-status-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            border: 1px solid transparent;
+        }
+
+        .auth-status-chip.online {
+            background: rgba(16, 185, 129, 0.12);
+            color: #10b981;
+            border-color: rgba(16, 185, 129, 0.25);
+        }
+
+        .auth-status-chip.sec {
+            background: rgba(99, 102, 241, 0.12);
+            color: #818cf8;
+            border-color: rgba(99, 102, 241, 0.25);
+        }
+
+        .status-pulse-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: #10b981;
+            box-shadow: 0 0 8px #10b981;
+            animation: pulseDot 2s infinite;
+        }
+
+        @keyframes pulseDot {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+
+        /* Dual-Panel Layout */
+        .auth-layout-container {
+            width: 100%;
+            max-width: 1180px;
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 2rem;
+            margin: auto 0;
+            box-sizing: border-box;
+            animation: authFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes authFadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Left Hero Panel */
+        .auth-hero-panel {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            box-sizing: border-box;
+        }
+
+        .auth-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(13, 148, 136, 0.12);
+            color: var(--primary, #0d9488);
+            border: 1px solid rgba(13, 148, 136, 0.3);
+            padding: 0.4rem 0.85rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            align-self: flex-start;
+            margin-bottom: 1.25rem;
+        }
+
+        .auth-hero-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.85rem;
+            background: linear-gradient(135deg, #ffffff 60%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .auth-hero-desc {
+            color: var(--text-muted, #94a3b8);
+            font-size: 0.92rem;
+            line-height: 1.6;
             margin-bottom: 2rem;
         }
 
-        .netflix-selected-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 4px;
+        .auth-features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .auth-feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            background: rgba(30, 41, 59, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 1rem 1.15rem;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .auth-feature-item:hover {
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(13, 148, 136, 0.3);
+            transform: translateX(4px);
+        }
+
+        .auth-feat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .auth-feat-icon.feat-teal {
+            background: rgba(13, 148, 136, 0.15);
+            color: #0d9488;
+        }
+        .auth-feat-icon.feat-emerald {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+        }
+        .auth-feat-icon.feat-indigo {
+            background: rgba(99, 102, 241, 0.15);
+            color: #6366f1;
+        }
+        .auth-feat-icon.feat-violet {
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+        }
+
+        .auth-feat-content h4 {
+            margin: 0 0 0.25rem 0;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #f8fafc;
+        }
+
+        .auth-feat-content p {
+            margin: 0;
+            font-size: 0.78rem;
+            color: var(--text-muted, #94a3b8);
+            line-height: 1.45;
+        }
+
+        .auth-trust-banner {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            background: rgba(13, 148, 136, 0.08);
+            border: 1px solid rgba(13, 148, 136, 0.2);
+            padding: 1rem 1.25rem;
+            border-radius: 10px;
+            margin-top: auto;
+        }
+
+        .auth-trust-icon {
+            color: var(--primary, #0d9488);
+            flex-shrink: 0;
+        }
+
+        .auth-trust-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .auth-trust-text strong {
+            font-size: 0.8rem;
+            color: #ffffff;
+        }
+
+        .auth-trust-text span {
+            font-size: 0.7rem;
+            color: var(--text-muted, #94a3b8);
+            line-height: 1.4;
+        }
+
+        /* Right Auth Console Panel */
+        .auth-console-panel {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(13, 148, 136, 0.25);
+            border-radius: 16px;
+            padding: 2.25rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(13, 148, 136, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .auth-card-header {
+            margin-bottom: 1.75rem;
+        }
+
+        .auth-step-tag {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--primary, #0d9488);
+            letter-spacing: 0.06em;
+            margin-bottom: 0.4rem;
+        }
+
+        .auth-card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 0.4rem 0;
+            letter-spacing: -0.01em;
+        }
+
+        .auth-card-sub {
+            font-size: 0.82rem;
+            color: var(--text-muted, #94a3b8);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Hospital Unit Selection Grid */
+        .auth-unit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .auth-unit-card {
+            background: rgba(30, 41, 59, 0.45);
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.15rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.22s ease;
+            user-select: none;
+            text-decoration: none;
+        }
+
+        .auth-unit-card:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .auth-unit-card.active-unit {
+            background: rgba(13, 148, 136, 0.12);
+            border-color: var(--primary, #0d9488);
+            box-shadow: 0 0 20px rgba(13, 148, 136, 0.2);
+        }
+
+        .auth-unit-badge-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            border: 1px solid transparent;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .auth-unit-card:hover .edit-overlay {
+            opacity: 1;
+        }
+
+        .auth-unit-details {
+            flex: 1;
+            min-width: 0;
+            text-align: left;
+        }
+
+        .auth-unit-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #ffffff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 0.15rem;
+        }
+
+        .auth-unit-tag {
+            font-size: 0.68rem;
+            color: var(--text-muted, #94a3b8);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .auth-unit-radio-indicator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            flex-shrink: 0;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .auth-unit-card.active-unit .auth-unit-radio-indicator {
+            border-color: var(--primary, #0d9488);
+            background: var(--primary, #0d9488);
+            box-shadow: 0 0 8px var(--primary, #0d9488);
+        }
+
+        .auth-unit-card.active-unit .auth-unit-radio-indicator::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #ffffff;
+        }
+
+        .auth-manage-bar {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 1.25rem;
+        }
+
+        .auth-btn-ghost {
+            background: transparent;
+            color: var(--text-muted, #94a3b8);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 0.5rem 1.25rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .auth-btn-ghost:hover {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Password & Role View */
+        .auth-back-btn {
+            background: none;
+            border: none;
+            color: var(--primary, #0d9488);
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            cursor: pointer;
+            padding: 0;
+            margin-bottom: 1.5rem;
+            transition: color 0.2s;
+            outline: none;
+        }
+
+        .auth-back-btn:hover {
+            color: var(--primary-hover, #0f766e);
+        }
+
+        .auth-selected-unit-banner {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.9rem 1.25rem;
+            border-radius: 12px;
+            margin-bottom: 1.75rem;
+        }
+
+        .auth-selected-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 1.5rem;
-            color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-size: 1.35rem;
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
         }
 
-        .netflix-selected-title {
-            font-size: 1.5rem;
+        .auth-selected-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .auth-selected-eyebrow {
+            font-size: 0.68rem;
+            color: var(--text-muted, #94a3b8);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .auth-selected-title {
+            font-size: 1.15rem;
             font-weight: 800;
+            color: #ffffff;
             margin: 0;
+        }
+
+        /* Form Inputs */
+        .auth-login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+        }
+
+        .auth-field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            text-align: left;
+        }
+
+        .auth-field-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #cbd5e1;
+            letter-spacing: 0.02em;
+        }
+
+        .auth-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-input-icon {
+            position: absolute;
+            left: 1rem;
+            color: #64748b;
+            pointer-events: none;
+            transition: color 0.2s;
+        }
+
+        .auth-input-field {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 8px !important;
+            height: 48px !important;
+            padding: 0 1rem 0 2.85rem !important;
+            color: #ffffff !important;
+            font-size: 0.9rem !important;
+            font-family: inherit;
+            box-sizing: border-box;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .auth-input-field:focus {
+            border-color: var(--primary, #0d9488) !important;
+            background: rgba(30, 41, 59, 0.9) !important;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.25) !important;
+        }
+
+        .auth-input-wrapper:focus-within .auth-input-icon {
+            color: var(--primary, #0d9488);
+        }
+
+        .auth-pwd-toggle-btn {
+            position: absolute;
+            right: 0.85rem;
+            background: none;
+            border: none;
+            color: #64748b;
+            cursor: pointer;
+            padding: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            transition: color 0.2s;
+        }
+
+        .auth-pwd-toggle-btn:hover {
             color: #ffffff;
         }
 
-        .netflix-input-group {
-            position: relative;
-            margin-bottom: 1.25rem;
-        }
-
-        .netflix-input-field {
+        .auth-select-field {
             width: 100%;
-            background: rgba(255, 255, 255, 0.08) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            border-radius: 4px !important;
-            height: 50px !important;
-            padding: 0 1rem !important;
+            background: rgba(15, 23, 42, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 8px !important;
+            height: 48px !important;
+            padding: 0 1rem 0 2.85rem !important;
             color: #ffffff !important;
-            font-size: 0.95rem !important;
-            box-sizing: border-box;
-            outline: none;
-            transition: background-color 0.2s, border-bottom-color 0.2s;
-        }
-
-        .netflix-input-field:focus {
-            background: rgba(255, 255, 255, 0.12) !important;
-            border-bottom: 2px solid var(--primary) !important;
-        }
-
-        .netflix-input-label {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.8rem;
-            color: #94a3b8;
-            pointer-events: none;
-            transition: all 0.15s ease;
-        }
-
-        .netflix-input-field:focus ~ .netflix-input-label,
-        .netflix-input-field:not(:placeholder-shown) ~ .netflix-input-label {
-            top: 15%;
-            font-size: 0.65rem;
-            color: var(--primary);
-        }
-
-        .netflix-select-field {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.08) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            border-radius: 4px !important;
-            height: 50px !important;
-            padding: 0 1rem !important;
-            color: #ffffff !important;
-            font-size: 0.95rem !important;
+            font-size: 0.9rem !important;
+            font-family: inherit;
             box-sizing: border-box;
             outline: none;
             cursor: pointer;
             appearance: none;
+            transition: all 0.2s ease;
         }
 
-        .netflix-select-field:focus {
-            background: rgba(255, 255, 255, 0.12) !important;
-            border-bottom: 2px solid var(--primary) !important;
+        .auth-select-field:focus {
+            border-color: var(--primary, #0d9488) !important;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.25) !important;
         }
 
-        .netflix-btn-red {
-            background-color: var(--primary) !important;
+        .auth-error-banner {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            line-height: 1.4;
+            text-align: left;
+            margin-top: 0.25rem;
+        }
+
+        .auth-btn-primary {
+            background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%) !important;
             color: #ffffff !important;
-            border: none !important;
-            border-radius: 4px !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            border-radius: 8px !important;
             height: 48px !important;
             font-size: 0.95rem !important;
+            font-weight: 800 !important;
+            font-family: inherit;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.65rem !important;
+            box-shadow: 0 4px 15px rgba(13, 148, 136, 0.35) !important;
+            transition: all 0.2s ease !important;
+            width: 100%;
+            margin-top: 0.75rem;
+        }
+
+        .auth-btn-primary:hover:not(:disabled) {
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%) !important;
+            box-shadow: 0 6px 20px rgba(13, 148, 136, 0.5) !important;
+            transform: translateY(-1px);
+        }
+
+        .auth-btn-primary:disabled {
+            background: rgba(30, 41, 59, 0.6) !important;
+            color: #64748b !important;
+            box-shadow: none !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+        }
+
+        .auth-btn-secondary {
+            background: rgba(30, 41, 59, 0.8) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 8px !important;
+            height: 48px !important;
+            font-size: 0.9rem !important;
             font-weight: 700 !important;
             cursor: pointer !important;
-            transition: background-color 0.2s !important;
-            width: 100%;
-            margin-top: 1.5rem;
+            transition: all 0.2s ease !important;
         }
 
-        .netflix-btn-red:hover:not(:disabled) {
-            background-color: var(--primary-hover) !important;
+        .auth-btn-secondary:hover {
+            background: rgba(51, 65, 85, 0.9) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
         }
 
-        .netflix-btn-red:disabled {
-            background-color: var(--bg-hover) !important;
-            cursor: not-allowed !important;
-            opacity: 0.5;
+        /* 2-Factor OTP Module */
+        .auth-otp-container {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1.5rem;
+            margin-top: 0.5rem;
         }
 
-        .netflix-otp-email {
-            color: var(--primary);
+        .auth-otp-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .auth-otp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(245, 158, 11, 0.12);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.72rem;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.6rem;
+        }
+
+        .auth-otp-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .auth-otp-target-msg {
+            font-size: 0.78rem;
+            color: var(--text-muted, #94a3b8);
+            line-height: 1.5;
+        }
+
+        .auth-otp-input {
+            height: 54px !important;
+            font-size: 1.5rem !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.35em !important;
+            text-align: center !important;
+            padding: 0 !important;
+            border-color: rgba(13, 148, 136, 0.4) !important;
+        }
+
+        .auth-otp-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .auth-security-notice {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            margin-top: 1.75rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.72rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        /* Backward Compatibility Class Aliases */
+        .netflix-container { max-width: 100%; }
+        .netflix-title { display: none; }
+        .netflix-profiles { margin-bottom: 1.5rem; }
+        .netflix-profile-card { }
+        .netflix-avatar-box { }
+        .netflix-profile-name { }
+        .netflix-manage-btn { }
+        .netflix-login-card { }
+        .netflix-back-link { }
+        .netflix-card-header { }
+        .netflix-selected-avatar { }
+        .netflix-selected-title { }
+        .netflix-input-group { margin-bottom: 1rem; }
+        .netflix-input-field { }
+        .netflix-select-field { }
+        .netflix-btn-red { }
+
+        /* Responsive Breakpoints for Auth Console */
+        @media (max-width: 960px) {
+            .auth-layout-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .auth-hero-panel {
+                padding: 1.75rem;
+            }
+            .auth-console-panel {
+                padding: 1.75rem;
+            }
+            .auth-topbar {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: flex-start;
+            }
+            .auth-topbar-status {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .auth-unit-grid {
+                grid-template-columns: 1fr;
+            }
+            .full-page-login {
+                padding: 1rem 0.75rem;
+            }
+            .auth-hero-title {
+                font-size: 1.45rem;
+            }
         }
 
         /* HDFC Ergo Centrally Agreed Tariff styling */
