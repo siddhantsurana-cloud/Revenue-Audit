@@ -14527,4 +14527,27 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
         window.print();
     };
 
+    window.forcePurgeAppCache = async function() {
+        showToast('Purging client caches and fetching latest V2.5.0 Enterprise build...', 'info');
+        try {
+            localStorage.clear();
+            sessionStorage.clear();
+            if ('caches' in window) {
+                const keys = await caches.keys();
+                await Promise.all(keys.map(k => caches.delete(k)));
+            }
+            if ('serviceWorker' in navigator) {
+                const registrations = await navigator.serviceWorker.getRegistrations();
+                for (let reg of registrations) {
+                    await reg.unregister();
+                }
+            }
+        } catch (e) {
+            console.warn('Cache purge error:', e);
+        }
+        setTimeout(() => {
+            window.location.reload(true);
+        }, 300);
+    };
+
     document.addEventListener('DOMContentLoaded', init);
