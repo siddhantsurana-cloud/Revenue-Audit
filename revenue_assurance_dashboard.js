@@ -94,8 +94,7 @@
             });
 
         } catch (err) {
-            console.error("Error rendering infra dashboard:", err);
-            showToast("Failed to fetch database statistics.", "danger");
+            console.warn("Infra dashboard auto-seed deferred until tab activation:", err);
         }
     }
 
