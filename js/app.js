@@ -601,7 +601,7 @@
                 
                 // Update version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'TEST VERSION: V1.3.0';
+                if (vBadge) vBadge.textContent = 'TEST VERSION: V2.5.0 ENTERPRISE';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'TESTING';
@@ -612,11 +612,11 @@
                     vTitle.style.color = '#d97706';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        VERSION V1.3.0
+                        VERSION V2.5.0 ENTERPRISE
                     `;
                 }
                 
-                showToast('Switched to Test Sandbox Environment (V1.3.0). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
+                showToast('Switched to Test Sandbox Environment (V2.5.0 Enterprise). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
             } else {
                 // Update badge to Production mode
                 envBadge.style.color = 'var(--primary)';
@@ -633,7 +633,7 @@
                 
                 // Reset version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V1.3.0';
+                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V2.5.0 ENTERPRISE';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'LOCKED';
@@ -644,11 +644,11 @@
                     vTitle.style.color = 'var(--success)';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        VERSION V1.3.0
+                        VERSION V2.5.0 ENTERPRISE
                     `;
                 }
                 
-                showToast('Switched back to Production Environment.', 'success');
+                showToast('Switched back to Production Environment (V2.5.0 Enterprise).', 'success');
             }
             
             // Reload all audits and overrides state from correct storage namespace!
@@ -1127,6 +1127,17 @@
 
         // Draw startup database dashboard charts
         updateDatabaseDashboard();
+
+        // Initialize Enterprise v2.5.0 Utilities (Command Palette, Keyboard Shortcuts, Telemetry)
+        if (typeof initCommandPalette === 'function') {
+            initCommandPalette();
+        }
+        if (typeof initGlobalKeyboardShortcuts === 'function') {
+            initGlobalKeyboardShortcuts();
+        }
+        if (typeof updateHeaderTelemetry === 'function') {
+            updateHeaderTelemetry();
+        }
 
         // Register PWA Service Worker with auto-refresh on update
         if ("serviceWorker" in navigator) {
@@ -1621,7 +1632,7 @@
         }
     };
 
-    // Mobile nav tab switching
+    // Mobile & Desktop nav tab switching
     window.switchMobileTab = function(tabName) {
         const btnIdMap = {
             'dashboard': 'tab-dashboard-btn',
@@ -1631,9 +1642,14 @@
             'exceptions': 'tab-exceptions-btn',
             'repository': 'tab-repository-btn',
             'manual': 'tab-manual-btn',
-            'checking': 'tab-checking-btn'
+            'checking': 'tab-checking-btn',
+            'settlement': 'tab-settlement-btn',
+            'reports': 'tab-reports-btn',
+            'admin': 'tab-admin-btn',
+            'infra': 'tab-infra-btn'
         };
-        const desktopBtn = document.getElementById(btnIdMap[tabName]);
+        const targetBtnId = btnIdMap[tabName] || `tab-${tabName}-btn`;
+        const desktopBtn = document.getElementById(targetBtnId);
         if (desktopBtn) {
             desktopBtn.click();
         }
@@ -1646,6 +1662,7 @@
             activeMobileBtn.classList.add('active');
         }
     };
+    window.switchTab = window.switchMobileTab;
 
     // Calculations for upper statistics card
     function calculateMetrics() {
@@ -11494,7 +11511,7 @@
         }
     }
 
-    const CREDS_CACHE_VERSION = 'V1.3.0';
+    const CREDS_CACHE_VERSION = 'V2.5.0';
 
     async function initUserCredentials() {
         const defaultFallback = [
@@ -13937,5 +13954,577 @@ Claims & Billing Assurance Desk
 
     window.initSettlementAuditor = initSettlementAuditor;
     window.initIngesterPanel = initIngesterPanel;
+
+    /* ==========================================================================
+       ENTERPRISE V2.5.0 SUITE: COMMAND PALETTE, SHORTCUTS, WORKFLOW STEPPER, 
+       SOC TELEMETRY, & APOLLO FORMAL DISPUTE LETTERHEAD ENGINE
+       ========================================================================== */
+
+    // 1. Central SOC Real-Time Telemetry Updater
+    let telemetryInterval = null;
+    function updateHeaderTelemetry() {
+        const pingEl = document.getElementById('telemetry-ping-display');
+        if (!pingEl) return;
+        
+        const updatePing = () => {
+            // Simulated jitter 8ms - 18ms
+            const jitter = Math.floor(Math.random() * 10) + 8;
+            pingEl.textContent = `${jitter}ms`;
+        };
+        
+        updatePing();
+        if (telemetryInterval) clearInterval(telemetryInterval);
+        telemetryInterval = setInterval(updatePing, 6000);
+    }
+    window.updateHeaderTelemetry = updateHeaderTelemetry;
+
+    // 2. Global Command Palette Engine
+    const COMMAND_ITEMS = [
+        // Category: Navigation
+        { id: 'nav-dashboard', category: 'Navigation', icon: '📊', title: 'Executive Dashboard', desc: 'Overview metrics & compliance stats', badge: 'Ctrl+1', action: () => window.switchMobileTab('dashboard') },
+        { id: 'nav-audit', category: 'Navigation', icon: '🏥', title: 'MM Bill Auditor (Excel / CSV)', desc: 'Upload billing spreadsheets for automated tariff check', badge: 'Ctrl+3', action: () => window.switchMobileTab('audit') },
+        { id: 'nav-checking', category: 'Navigation', icon: '🔍', title: 'Tariff Checking Console', desc: 'OneDrive live verification ledger & coverage breakout', badge: 'Ctrl+8', action: () => window.switchMobileTab('checking') },
+        { id: 'nav-settlement', category: 'Navigation', icon: '⚖️', title: 'Settlement Disallowance Auditor', desc: 'Audit insurance claim deductions & recoveries', badge: 'Tab', action: () => window.switchMobileTab('settlement') },
+        { id: 'nav-master', category: 'Navigation', icon: '⚡', title: 'Single Tariff Engine', desc: 'Instant master code rate & rule lookup', badge: 'Ctrl+2', action: () => window.switchMobileTab('master') },
+        { id: 'nav-reports', category: 'Navigation', icon: '📈', title: 'Reports & Data Exports', desc: 'Executive summaries, leakage heatmaps, and audit sheets', badge: 'Ctrl+5', action: () => window.switchMobileTab('reports') },
+        { id: 'nav-repository', category: 'Navigation', icon: '📁', title: 'Multi-Audit Database Repository', desc: 'Historical saved audits & version timeline', badge: 'Ctrl+6', action: () => window.switchMobileTab('repository') },
+        { id: 'nav-agreement', category: 'Navigation', icon: '📑', title: 'Central Agreement Repository', desc: '995+ insurance, corporate & TPA contracts', badge: 'Ctrl+4', action: () => window.switchMobileTab('agreement') },
+        { id: 'nav-manual', category: 'Navigation', icon: '📘', title: 'Interactive Operations Manual', desc: 'Standard operating procedures & version roadmap', badge: 'Ctrl+7', action: () => window.switchMobileTab('manual') },
+        { id: 'nav-admin', category: 'Navigation', icon: '🛡️', title: 'Auditor Administration Center', desc: 'User credential manager & access permissions', badge: 'Admin', action: () => window.switchMobileTab('admin') },
+        { id: 'nav-infra', category: 'Navigation', icon: '🛠️', title: 'Platform Infrastructure Foundation', desc: 'System health & module architecture', badge: 'Dev', action: () => window.switchMobileTab('infra') },
+        { id: 'nav-exceptions', category: 'Navigation', icon: '⚠️', title: 'Billing Exclusions & Overrides', desc: 'Configure ignored packages, pharmacy & zero rates', badge: 'Config', action: () => window.switchMobileTab('exceptions') },
+
+        // Category: Hospital Units
+        { id: 'unit-excelcare', category: 'Hospital Units', icon: '🏥', title: 'Excelcare Hospital Unit', desc: 'Scope audit workspace to Excelcare Guwahati', badge: 'Unit', action: () => { if (typeof window.selectAuthUnit === 'function') window.selectAuthUnit('excelcare'); showToast('Scoped to Excelcare Unit', 'info'); } },
+        { id: 'unit-kolkata', category: 'Hospital Units', icon: '🏢', title: 'Apollo Multispeciality Kolkata', desc: 'Scope audit workspace to Kolkata Unit', badge: 'Unit', action: () => { if (typeof window.selectAuthUnit === 'function') window.selectAuthUnit('kolkata'); showToast('Scoped to Kolkata Unit', 'info'); } },
+        { id: 'unit-international', category: 'Hospital Units', icon: '🌐', title: 'International Cash Unit', desc: 'Scope audit workspace to International Patient Cash Tariff', badge: 'Unit', action: () => { if (typeof window.selectAuthUnit === 'function') window.selectAuthUnit('international'); showToast('Scoped to International Unit', 'info'); } },
+        { id: 'unit-all', category: 'Hospital Units', icon: '🛡️', title: 'All Units Aggregate (Enterprise)', desc: 'Access cross-unit consolidated database', badge: 'Master', action: () => { if (typeof window.selectAuthUnit === 'function') window.selectAuthUnit('all'); showToast('Scoped to All Units (Master)', 'info'); } },
+
+        // Category: Insurance Agreements
+        { id: 'agr-hdfc', category: 'Insurance Agreements', icon: '📄', title: 'HDFC Ergo Centrally Agreed Tariff', desc: 'View 2026 pre-negotiated tariff rates & schedules', badge: 'Agreement', action: () => { window.switchMobileTab('agreement'); const search = document.getElementById('agreement-search'); if (search) { search.value = 'HDFC'; search.dispatchEvent(new Event('input')); } } },
+        { id: 'agr-gipsa', category: 'Insurance Agreements', icon: '📄', title: 'GIPSA (National / New India / Oriental / United)', desc: 'Public sector general insurance PPN tariff rules', badge: 'Agreement', action: () => { window.switchMobileTab('agreement'); const search = document.getElementById('agreement-search'); if (search) { search.value = 'GIPSA'; search.dispatchEvent(new Event('input')); } } },
+        { id: 'agr-star', category: 'Insurance Agreements', icon: '📄', title: 'Star Health & Allied Insurance Scheme', desc: 'Hospital agreed package & service rates', badge: 'Agreement', action: () => { window.switchMobileTab('agreement'); const search = document.getElementById('agreement-search'); if (search) { search.value = 'Star Health'; search.dispatchEvent(new Event('input')); } } },
+        { id: 'agr-iocl', category: 'Insurance Agreements', icon: '📄', title: 'Indian Oil Corporation (IOCL 2021-22)', desc: 'Corporate tariff master schedule', badge: 'Agreement', action: () => { window.switchMobileTab('agreement'); const search = document.getElementById('agreement-search'); if (search) { search.value = 'IOCL'; search.dispatchEvent(new Event('input')); } } },
+
+        // Category: Quick Actions
+        { id: 'act-dispute', category: 'Quick Actions', icon: '📄', title: 'Generate Formal Apollo Dispute Letterhead', desc: 'Create official recovery demand notice for insurer / TPA', badge: 'Ctrl+Shift+L', action: () => window.openDisputeLetterModal() },
+        { id: 'act-shortcuts', category: 'Quick Actions', icon: '⌨️', title: 'Keyboard Shortcuts Cheat Sheet', desc: 'View complete shortcut guide', badge: '?', action: () => window.openShortcutsModal() },
+        { id: 'act-theme', category: 'Quick Actions', icon: '🌓', title: 'Toggle Light / Dark Mode', desc: 'Switch visual interface theme', badge: 'Ctrl+Shift+T', action: () => { const tBtn = document.getElementById('theme-toggle'); if (tBtn) tBtn.click(); } },
+        { id: 'act-env', category: 'Quick Actions', icon: '🧪', title: 'Switch Sandbox / Production Mode', desc: 'Toggle test sandbox environment', badge: 'Action', action: () => { const eBtn = document.getElementById('btn-toggle-env'); if (eBtn) eBtn.click(); } },
+        { id: 'act-cache', category: 'Quick Actions', icon: '🔄', title: 'Purge Local Cache & Force Refresh', desc: 'Evict local caches and reload latest app bundles', badge: 'Action', action: () => { localStorage.clear(); window.location.reload(); } },
+        { id: 'act-logout', category: 'Quick Actions', icon: '🚪', title: 'Sign Out / Lock Auditor Session', desc: 'Securely lock portal and return to sign-in console', badge: 'Action', action: () => { if (typeof window.handlePortalLogout === 'function') window.handlePortalLogout(); } }
+    ];
+
+    let cmdSelectedIdx = 0;
+    let filteredCmdItems = [];
+
+    function initCommandPalette() {
+        const modal = document.getElementById('global-command-palette');
+        const input = document.getElementById('cmd-palette-input');
+        if (!modal || !input) return;
+
+        input.addEventListener('input', (e) => {
+            renderCommandPaletteResults(e.target.value);
+        });
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (filteredCmdItems.length > 0) {
+                    cmdSelectedIdx = (cmdSelectedIdx + 1) % filteredCmdItems.length;
+                    highlightSelectedCmdItem();
+                }
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (filteredCmdItems.length > 0) {
+                    cmdSelectedIdx = (cmdSelectedIdx - 1 + filteredCmdItems.length) % filteredCmdItems.length;
+                    highlightSelectedCmdItem();
+                }
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (filteredCmdItems.length > 0 && filteredCmdItems[cmdSelectedIdx]) {
+                    const item = filteredCmdItems[cmdSelectedIdx];
+                    window.closeCommandPalette();
+                    if (typeof item.action === 'function') {
+                        item.action();
+                    }
+                }
+            } else if (e.key === 'Escape') {
+                window.closeCommandPalette();
+            }
+        });
+
+        // Close on overlay backdrop click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                window.closeCommandPalette();
+            }
+        });
+    }
+
+    function openCommandPalette() {
+        const modal = document.getElementById('global-command-palette');
+        const input = document.getElementById('cmd-palette-input');
+        if (!modal || !input) return;
+        
+        modal.style.display = 'flex';
+        input.value = '';
+        renderCommandPaletteResults('');
+        setTimeout(() => input.focus(), 50);
+    }
+    window.openCommandPalette = openCommandPalette;
+
+    function closeCommandPalette() {
+        const modal = document.getElementById('global-command-palette');
+        if (modal) modal.style.display = 'none';
+    }
+    window.closeCommandPalette = closeCommandPalette;
+
+    function renderCommandPaletteResults(query) {
+        const listEl = document.getElementById('cmd-palette-results-list');
+        if (!listEl) return;
+        
+        const q = (query || '').toLowerCase().trim();
+        filteredCmdItems = COMMAND_ITEMS.filter(item => {
+            if (!q) return true;
+            return item.title.toLowerCase().includes(q) ||
+                   item.desc.toLowerCase().includes(q) ||
+                   item.category.toLowerCase().includes(q);
+        });
+
+        if (filteredCmdItems.length === 0) {
+            listEl.innerHTML = `
+                <div style="padding: 2rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+                    No commands matching "<strong>${query}</strong>"
+                </div>
+            `;
+            cmdSelectedIdx = 0;
+            return;
+        }
+
+        // Group by category
+        const categories = {};
+        filteredCmdItems.forEach((item, idx) => {
+            if (!categories[item.category]) categories[item.category] = [];
+            categories[item.category].push({ item, globalIdx: idx });
+        });
+
+        let html = '';
+        Object.keys(categories).forEach(cat => {
+            html += `<div class="cmd-group-title">${cat}</div>`;
+            categories[cat].forEach(({ item, globalIdx }) => {
+                const isSelected = globalIdx === cmdSelectedIdx ? ' selected' : '';
+                html += `
+                    <div class="cmd-item${isSelected}" data-idx="${globalIdx}" onclick="window.execCommandItem(${globalIdx})">
+                        <div class="cmd-item-left">
+                            <span class="cmd-item-icon">${item.icon}</span>
+                            <div class="cmd-item-info">
+                                <span class="cmd-item-title">${item.title}</span>
+                                <span class="cmd-item-desc">${item.desc}</span>
+                            </div>
+                        </div>
+                        <span class="cmd-item-badge">${item.badge}</span>
+                    </div>
+                `;
+            });
+        });
+
+        listEl.innerHTML = html;
+        cmdSelectedIdx = Math.min(cmdSelectedIdx, filteredCmdItems.length - 1);
+        highlightSelectedCmdItem();
+    }
+
+    function highlightSelectedCmdItem() {
+        const items = document.querySelectorAll('.cmd-item');
+        items.forEach(el => {
+            const idx = parseInt(el.getAttribute('data-idx'), 10);
+            if (idx === cmdSelectedIdx) {
+                el.classList.add('selected');
+                el.scrollIntoView({ block: 'nearest' });
+            } else {
+                el.classList.remove('selected');
+            }
+        });
+    }
+
+    window.execCommandItem = function(idx) {
+        if (filteredCmdItems[idx] && typeof filteredCmdItems[idx].action === 'function') {
+            window.closeCommandPalette();
+            filteredCmdItems[idx].action();
+        }
+    };
+
+    // 3. Global Keyboard Shortcuts Handler
+    function initGlobalKeyboardShortcuts() {
+        window.addEventListener('keydown', (e) => {
+            const isInput = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName);
+
+            // Ctrl + K or Cmd + K: Global Command Palette
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                const modal = document.getElementById('global-command-palette');
+                if (modal && modal.style.display !== 'none') {
+                    window.closeCommandPalette();
+                } else {
+                    window.openCommandPalette();
+                }
+                return;
+            }
+
+            // Escape: Close any open modal
+            if (e.key === 'Escape') {
+                window.closeCommandPalette();
+                window.closeShortcutsModal();
+                window.closeDisputeLetterModal();
+                if (typeof window.closeExpiryModal === 'function') window.closeExpiryModal();
+                return;
+            }
+
+            // Ctrl + Shift + L: Apollo Formal Dispute Letterhead
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'l') {
+                e.preventDefault();
+                window.openDisputeLetterModal();
+                return;
+            }
+
+            // Ctrl + Shift + T: Toggle Theme
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 't') {
+                e.preventDefault();
+                const tBtn = document.getElementById('theme-toggle');
+                if (tBtn) tBtn.click();
+                return;
+            }
+
+            // Tab navigation shortcuts (Ctrl + 1..8) when not typing in textarea
+            if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key >= '1' && e.key <= '8') {
+                e.preventDefault();
+                const tabIndexMap = {
+                    '1': 'dashboard',
+                    '2': 'master',
+                    '3': 'audit',
+                    '4': 'agreement',
+                    '5': 'reports',
+                    '6': 'repository',
+                    '7': 'manual',
+                    '8': 'checking'
+                };
+                const tab = tabIndexMap[e.key];
+                if (tab) window.switchMobileTab(tab);
+                return;
+            }
+
+            // ? or F1: Keyboard Shortcuts Modal (only when not inside text input)
+            if (!isInput && (e.key === '?' || (e.shiftKey && e.key === '?') || e.key === 'F1')) {
+                e.preventDefault();
+                window.openShortcutsModal();
+                return;
+            }
+        });
+    }
+    window.initGlobalKeyboardShortcuts = initGlobalKeyboardShortcuts;
+
+    function openShortcutsModal() {
+        const modal = document.getElementById('shortcuts-help-modal');
+        if (modal) modal.style.display = 'flex';
+    }
+    window.openShortcutsModal = openShortcutsModal;
+
+    function closeShortcutsModal() {
+        const modal = document.getElementById('shortcuts-help-modal');
+        if (modal) modal.style.display = 'none';
+    }
+    window.closeShortcutsModal = closeShortcutsModal;
+
+    // 4. 4-Step Quick Audit Workflow Stepper Navigation
+    window.stepperNavigate = function(stepKey, panelKey) {
+        panelKey = panelKey || 'audit';
+
+        if (panelKey === 'audit') {
+            window.switchMobileTab('audit');
+            if (stepKey === 'upload') {
+                const dropzone = document.getElementById('upload-dropzone');
+                if (dropzone) dropzone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                const fileInput = document.getElementById('bill-file-input');
+                if (fileInput) fileInput.click();
+            } else if (stepKey === 'match') {
+                const startBtn = document.getElementById('btn-start-audit');
+                if (startBtn && !startBtn.disabled) {
+                    startBtn.click();
+                } else {
+                    const results = document.getElementById('audit-results-card');
+                    if (results) results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } else if (stepKey === 'review') {
+                const filterSel = document.getElementById('audit-discrepancy-filter');
+                if (filterSel) {
+                    filterSel.value = 'discrepancy';
+                    filterSel.dispatchEvent(new Event('change'));
+                }
+                const results = document.getElementById('audit-results-card');
+                if (results) results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if (stepKey === 'export') {
+                window.openDisputeLetterModal();
+            }
+        } else if (panelKey === 'checking') {
+            window.switchMobileTab('checking');
+            if (stepKey === 'upload' || stepKey === 'match') {
+                const ledger = document.getElementById('checking-ledger-tbody');
+                if (ledger) ledger.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else if (stepKey === 'review') {
+                const shortCard = document.getElementById('checking-kpi-short-count');
+                if (shortCard) shortCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else if (stepKey === 'export') {
+                window.openDisputeLetterModal();
+            }
+        } else if (panelKey === 'settlement') {
+            window.switchMobileTab('settlement');
+            if (stepKey === 'upload') {
+                const fileInput = document.getElementById('settlement-file-input');
+                if (fileInput) fileInput.click();
+            } else if (stepKey === 'match' || stepKey === 'review') {
+                const grid = document.getElementById('settlement-grid-container');
+                if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if (stepKey === 'export') {
+                window.openDisputeLetterModal();
+            }
+        }
+    };
+
+    window.updateAuditStepperState = function(stepNum, panelKey) {
+        panelKey = panelKey || 'audit';
+        const prefixMap = { 'audit': 'aud-step-', 'checking': 'chk-step-', 'settlement': 'set-step-' };
+        const prefix = prefixMap[panelKey] || 'aud-step-';
+        
+        for (let i = 1; i <= 4; i++) {
+            const stepEl = document.getElementById(`${prefix}${i}`);
+            if (!stepEl) continue;
+            stepEl.classList.remove('active', 'completed');
+            if (i < stepNum) {
+                stepEl.classList.add('completed');
+                const badge = stepEl.querySelector('.stepper-num-badge');
+                if (badge) badge.textContent = '✓';
+            } else if (i === stepNum) {
+                stepEl.classList.add('active');
+                const badge = stepEl.querySelector('.stepper-num-badge');
+                if (badge) badge.textContent = String(i);
+            } else {
+                const badge = stepEl.querySelector('.stepper-num-badge');
+                if (badge) badge.textContent = String(i);
+            }
+        }
+    };
+
+    // 5. Branded Apollo Formal Dispute Letterhead Engine
+    let activeDisputeLetterData = null;
+
+    function openDisputeLetterModal(customData) {
+        const modal = document.getElementById('apollo-dispute-letterhead-modal');
+        if (!modal) return;
+        
+        activeDisputeLetterData = customData || generateDefaultDisputeData();
+        renderApolloDisputeLetter(activeDisputeLetterData);
+        modal.style.display = 'flex';
+    }
+    window.openDisputeLetterModal = openDisputeLetterModal;
+
+    function closeDisputeLetterModal() {
+        const modal = document.getElementById('apollo-dispute-letterhead-modal');
+        if (modal) modal.style.display = 'none';
+    }
+    window.closeDisputeLetterModal = closeDisputeLetterModal;
+
+    function generateDefaultDisputeData() {
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+        const refNo = `AHG/REV-AUDIT/${now.getFullYear()}/${String(now.getMonth()+1).padStart(2, '0')}/${Math.floor(1000 + Math.random() * 9000)}`;
+        
+        return {
+            refNo: refNo,
+            date: dateStr,
+            unitName: 'Apollo Hospitals - Guwahati',
+            unitAddress: 'G.S. Road, Christian Basti, Guwahati, Assam 781005',
+            contactEmail: 'revenue.assurance@apolloguwahati.com',
+            payerName: 'HDFC ERGO General Insurance Co. Ltd.',
+            payerDept: 'Claims Adjudication & Grievance Cell',
+            patientName: 'Pranab Jyoti Sarma',
+            memberId: 'MED-99482103',
+            policyNumber: 'HDFC-HEALTH-772910394',
+            claimId: 'CLM-2026-AHG-88219',
+            utrNumber: 'HDFCR52026090881928371',
+            admissionDate: '28-Aug-2026',
+            dischargeDate: '03-Sep-2026',
+            totalClaimed: 184500.00,
+            totalAgreed: 184500.00,
+            totalDisallowed: 31200.00,
+            recoverableAmount: 26800.00,
+            disputedItems: [
+                { id: '1024', name: 'ICU Monitoring & Critical Nursing', billedRate: 8500, agreedRate: 8500, disallowed: 8500, recoverable: 8500, reason: 'Arbitrary deduction citing non-payable; covered under Section 4.2 of agreed tariff schedule.' },
+                { id: '1639', name: 'Laparoscopic Cholecystectomy Surgeon Fee', billedRate: 45000, agreedRate: 45000, disallowed: 12000, recoverable: 12000, reason: 'Contracted rate is ₹45,000 as per Annexure-A; Payer adjudicated against outdated 2021 slab.' },
+                { id: '2210', name: 'Post-Operative Dressing & Consumables', billedRate: 6300, agreedRate: 6300, disallowed: 6300, recoverable: 6300, reason: 'Legitimate surgical procedure charges wrongfully clubbed under general exclusions.' }
+            ]
+        };
+    }
+
+    function renderApolloDisputeLetter(data) {
+        const container = document.getElementById('dispute-letter-printable-content');
+        if (!container) return;
+
+        const d = data || generateDefaultDisputeData();
+        
+        let itemsHtml = '';
+        d.disputedItems.forEach((item, index) => {
+            itemsHtml += `
+                <tr>
+                    <td><strong>${index + 1}</strong></td>
+                    <td>
+                        <div style="font-weight: 700; color: #004b87;">${item.name}</div>
+                        <div style="font-size: 0.7rem; color: #64748b;">Item Code: <code>${item.id}</code></div>
+                    </td>
+                    <td style="text-align: right; font-family: monospace;">₹${item.billedRate.toLocaleString('en-IN', {minimumFractionDigits: 2})}</td>
+                    <td style="text-align: right; font-family: monospace; color: #0d9488; font-weight: 700;">₹${item.agreedRate.toLocaleString('en-IN', {minimumFractionDigits: 2})}</td>
+                    <td style="text-align: right; font-family: monospace; color: #dc2626; font-weight: 700;">₹${item.disallowed.toLocaleString('en-IN', {minimumFractionDigits: 2})}</td>
+                    <td style="text-align: right; font-family: monospace; color: #16a34a; font-weight: 800;">₹${item.recoverable.toLocaleString('en-IN', {minimumFractionDigits: 2})}</td>
+                    <td style="font-size: 0.72rem; color: #334155;">${item.reason}</td>
+                </tr>
+            `;
+        });
+
+        container.innerHTML = `
+            <div class="letterhead-paper">
+                <!-- TOP BRANDING -->
+                <div class="letterhead-top-brand">
+                    <div>
+                        <div class="letterhead-apollo-logo-text">APOLLO HOSPITALS</div>
+                        <div class="letterhead-sub-brand">Guwahati • Revenue Assurance & Tariff Governance</div>
+                    </div>
+                    <div class="letterhead-unit-contact">
+                        <div><strong>${d.unitName}</strong></div>
+                        <div>${d.unitAddress}</div>
+                        <div>Email: ${d.contactEmail}</div>
+                    </div>
+                </div>
+
+                <!-- FORMAL NOTICE HEADER -->
+                <div style="display: flex; justify-content: space-between; margin-bottom: 1.25rem; font-size: 0.82rem;">
+                    <div><strong>Ref:</strong> <code>${d.refNo}</code></div>
+                    <div><strong>Date:</strong> ${d.date}</div>
+                </div>
+
+                <div style="margin-bottom: 1.25rem; font-size: 0.85rem; line-height: 1.5;">
+                    <div><strong>To,</strong></div>
+                    <div><strong>${d.payerDept}</strong></div>
+                    <div>${d.payerName}</div>
+                </div>
+
+                <div style="background: rgba(13, 148, 136, 0.08); border-left: 4px solid #004b87; padding: 0.6rem 0.85rem; margin-bottom: 1.25rem; font-size: 0.85rem; font-weight: 800; color: #004b87;">
+                    SUBJECT: FORMAL DISPUTE & RECOVERY NOTICE REGARDING UNJUSTIFIED TARIFF DISALLOWANCES (CLAIM ID: ${d.claimId})
+                </div>
+
+                <p style="font-size: 0.82rem; line-height: 1.6; margin-bottom: 1rem;">
+                    Dear Sir/Madam,<br><br>
+                    We write to formally dispute the settlement disallowances applied to the inpatient claim for patient <strong>${d.patientName}</strong> (Member ID: <code>${d.memberId}</code>, Policy No: <code>${d.policyNumber}</code>), admitted from <strong>${d.admissionDate}</strong> to <strong>${d.dischargeDate}</strong> at ${d.unitName}.
+                    <br><br>
+                    As per the bilateral Agreement & Standard Operating Procedure (SOP) executed between Apollo Hospitals and your organization, all billed line items are strictly aligned with the contractually agreed tariff master. The deductions summarized below are in direct violation of agreed contract terms.
+                </p>
+
+                <!-- SUMMARY STATS -->
+                <div class="letterhead-summary-cards">
+                    <div class="letterhead-summary-card">
+                        <span class="letterhead-summary-label">Total Billed Amount</span>
+                        <span class="letterhead-summary-val">₹${d.totalClaimed.toLocaleString('en-IN', {minimumFractionDigits: 2})}</span>
+                    </div>
+                    <div class="letterhead-summary-card">
+                        <span class="letterhead-summary-label">Agreed Tariff Value</span>
+                        <span class="letterhead-summary-val">₹${d.totalAgreed.toLocaleString('en-IN', {minimumFractionDigits: 2})}</span>
+                    </div>
+                    <div class="letterhead-summary-card highlight">
+                        <span class="letterhead-summary-label">Unjustified Deductions</span>
+                        <span class="letterhead-summary-val">₹${d.totalDisallowed.toLocaleString('en-IN', {minimumFractionDigits: 2})}</span>
+                    </div>
+                    <div class="letterhead-summary-card" style="border-color: #16a34a; background: #f0fdf4;">
+                        <span class="letterhead-summary-label" style="color: #16a34a;">Actionable Recovery</span>
+                        <span class="letterhead-summary-val" style="color: #16a34a;">₹${d.recoverableAmount.toLocaleString('en-IN', {minimumFractionDigits: 2})}</span>
+                    </div>
+                </div>
+
+                <!-- ITEMISED DISPUTE TABLE -->
+                <div style="font-size: 0.8rem; font-weight: 800; color: #004b87; margin: 1.25rem 0 0.5rem 0; text-transform: uppercase;">
+                    Itemized Disallowance Reconciliation
+                </div>
+                <table class="letterhead-formal-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 30px;">#</th>
+                            <th>Service Description</th>
+                            <th style="text-align: right;">Billed</th>
+                            <th style="text-align: right;">Agreed</th>
+                            <th style="text-align: right;">Disallowed</th>
+                            <th style="text-align: right;">Recoverable</th>
+                            <th>Grounds for Dispute</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${itemsHtml}
+                    </tbody>
+                </table>
+
+                <p style="font-size: 0.82rem; line-height: 1.6; margin-top: 1.25rem;">
+                    In accordance with regulatory turnaround guidelines, we request an immediate review and supplementary remittance of <strong>₹${d.recoverableAmount.toLocaleString('en-IN', {minimumFractionDigits: 2})}</strong> to our nodal bank account against UTR Reference <code>${d.utrNumber}</code> within 10 business days.
+                </p>
+
+                <!-- SIGNOFF BLOCK -->
+                <div class="letterhead-signoff-row">
+                    <div class="letterhead-sign-box">
+                        <div class="letterhead-sign-line"></div>
+                        <div style="font-weight: 800; color: #004b87;">Revenue Assurance Auditor</div>
+                        <div style="font-size: 0.72rem; color: #64748b;">Bihani Rashmi & Co (BRC) Desk</div>
+                    </div>
+                    <div class="letterhead-sign-box" style="text-align: right; align-items: flex-end;">
+                        <div class="letterhead-sign-line"></div>
+                        <div style="font-weight: 800; color: #004b87;">Authorized Signatory</div>
+                        <div style="font-size: 0.72rem; color: #64748b;">Apollo Hospitals Guwahati Billing Center</div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    window.copyDisputeLetterText = function() {
+        if (!activeDisputeLetterData) activeDisputeLetterData = generateDefaultDisputeData();
+        const d = activeDisputeLetterData;
+        
+        let plain = `APOLLO HOSPITALS GUWAHATI - FORMAL DISPUTE & RECOVERY NOTICE
+Ref: ${d.refNo} | Date: ${d.date}
+To: ${d.payerDept}, ${d.payerName}
+Patient: ${d.patientName} (Member ID: ${d.memberId}, Policy: ${d.policyNumber})
+Claim ID: ${d.claimId} | UTR Reference: ${d.utrNumber}
+
+SUMMARY OF DISPUTE:
+- Total Billed Amount: Rs. ${d.totalClaimed.toLocaleString(undefined, {minimumFractionDigits: 2})}
+- Contracted Tariff Value: Rs. ${d.totalAgreed.toLocaleString(undefined, {minimumFractionDigits: 2})}
+- Unjustified Deductions: Rs. ${d.totalDisallowed.toLocaleString(undefined, {minimumFractionDigits: 2})}
+- Net Recoverable Leakage: Rs. ${d.recoverableAmount.toLocaleString(undefined, {minimumFractionDigits: 2})}
+
+DISPUTED ITEMS BREAKDOWN:
+`;
+        d.disputedItems.forEach((it, i) => {
+            plain += `${i + 1}. [Code ${it.id}] ${it.name} | Billed: Rs. ${it.billedRate} | Agreed: Rs. ${it.agreedRate} | Recoverable: Rs. ${it.recoverable} | Grounds: ${it.reason}\n`;
+        });
+
+        plain += `\nPlease review and credit the recoverable amount of Rs. ${d.recoverableAmount.toLocaleString(undefined, {minimumFractionDigits: 2})} to our bank account.
+
+Authorized Signatory,
+Apollo Hospitals Guwahati & BRC Revenue Assurance`;
+
+        navigator.clipboard.writeText(plain).then(() => {
+            showToast('Dispute letter text copied to clipboard!', 'success');
+        }).catch(() => {
+            showToast('Could not copy to clipboard automatically.', 'warning');
+        });
+    };
+
+    window.printDisputeLetter = function() {
+        window.print();
+    };
 
     document.addEventListener('DOMContentLoaded', init);

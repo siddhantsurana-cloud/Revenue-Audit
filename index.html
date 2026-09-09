@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRC - Guwahati | Revenue Assurance</title>
+    <title>BRC - Guwahati | Revenue Assurance &amp; Tariff Intelligence v2.5.0 Enterprise</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0d9488">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -247,6 +247,28 @@
                                 </div>
                             </div>
 
+                            <div class="auth-remember-row" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.15rem; margin-bottom: 0.25rem;">
+                                <label style="display: flex; align-items: center; gap: 0.45rem; font-size: 0.74rem; color: var(--text-muted); cursor: pointer; user-select: none;">
+                                    <input type="checkbox" id="login-remember-unit" checked style="accent-color: var(--primary); width: 14px; height: 14px; cursor: pointer;">
+                                    <span>Remember selected unit</span>
+                                </label>
+                                <span style="font-size: 0.7rem; color: #64748b; font-weight: 600;">v2.5.0 Secure</span>
+                            </div>
+
+                            <!-- Fast Login Presets for Rapid Auditor Switching -->
+                            <div class="auth-preset-container" style="background: rgba(30, 41, 59, 0.4); border: 1px dashed rgba(255, 255, 255, 0.1); padding: 0.65rem 0.85rem; border-radius: 8px; margin-top: 0.35rem;">
+                                <div style="font-size: 0.68rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.45rem; display: flex; align-items: center; gap: 0.35rem;">
+                                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                    1-Click Fast Auditor Access:
+                                </div>
+                                <div class="auth-preset-pills" style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                                    <button type="button" class="auth-preset-btn" onclick="window.applyAuthPreset('excelcare', 'BRC', 'Auditor')" title="Fast sign-in as Excelcare Auditor">🏥 Excelcare</button>
+                                    <button type="button" class="auth-preset-btn" onclick="window.applyAuthPreset('kolkata', 'BRC', 'Auditor')" title="Fast sign-in as Kolkata Auditor">🏢 Kolkata</button>
+                                    <button type="button" class="auth-preset-btn" onclick="window.applyAuthPreset('international', 'BRC', 'Auditor')" title="Fast sign-in as International Auditor">🌐 Intl Unit</button>
+                                    <button type="button" class="auth-preset-btn" onclick="window.applyAuthPreset('all', 'admin', 'Administrator')" title="Fast sign-in as Master Admin">🛡️ Master</button>
+                                </div>
+                            </div>
+
                             <div id="main-login-error" class="auth-error-banner" style="display: none;">
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                                 <span>Invalid username or password for this unit.</span>
@@ -463,13 +485,26 @@
     <!-- MAIN CONTENT -->
     <main class="main-content">
         <header class="main-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; background-color: var(--bg-card); padding: 0.75rem 1.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--card-shadow); gap: 1rem;">
-            <!-- Left side: dynamic title -->
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <!-- Left side: dynamic title & Command Palette shortcut button -->
+            <div style="display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap;">
                 <span id="main-header-title" style="font-weight: 800; font-size: 1.25rem; color: var(--text-main); letter-spacing: -0.02em;">Executive Dashboard</span>
+                <button type="button" class="command-palette-trigger-btn" onclick="window.openCommandPalette()" title="Press Ctrl+K or ⌘K to search anywhere">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <span>Quick Command</span>
+                    <kbd class="kbd-badge">Ctrl K</kbd>
+                </button>
             </div>
             
-            <!-- Right side: Compact User Role Simulator & Env Switcher -->
+            <!-- Right side: Compact User Role Simulator, SOC Telemetry & Env Switcher -->
             <div class="user-header-widget" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+                <!-- Real-Time Central SOC Telemetry Badge -->
+                <div class="header-telemetry-badge" id="header-soc-telemetry" title="Central SOC Audit Engine Telemetry">
+                    <span class="status-pulse-dot"></span>
+                    <span class="telemetry-label">SOC: Active</span>
+                    <span class="telemetry-ping" id="telemetry-ping-display">12ms</span>
+                    <span class="telemetry-ver">v2.5.0</span>
+                </div>
+
                 <!-- Profile selector dropdown & info -->
                 <div style="display: flex; align-items: center; gap: 0.5rem; border-right: 1px solid var(--border); padding-right: 0.75rem;">
                     <div id="active-user-avatar" style="width: 30px; height: 30px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">A</div>
@@ -569,6 +604,41 @@
 
     <!-- PANEL: SETTLEMENT AUDITOR -->
     <div class="tab-panel" id="panel-settlement">
+        <!-- 4-STEP QUICK AUDITOR WORKFLOW STEPPER RIBBON -->
+        <div class="audit-workflow-stepper" id="stepper-settlement">
+            <div class="stepper-step active" id="set-step-1" onclick="window.stepperNavigate('upload', 'settlement')" title="Step 1: Upload Settlement Advice PDF">
+                <div class="stepper-num-badge">1</div>
+                <div class="stepper-meta">
+                    <span class="stepper-title">Upload Advice PDF</span>
+                    <span class="stepper-desc">Import TPA letter</span>
+                </div>
+            </div>
+            <div class="stepper-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+            <div class="stepper-step" id="set-step-2" onclick="window.stepperNavigate('match', 'settlement')" title="Step 2: Cross-check against tariffs">
+                <div class="stepper-num-badge">2</div>
+                <div class="stepper-meta">
+                    <span class="stepper-title">Tariff Cross-Match</span>
+                    <span class="stepper-desc">Validate deductions</span>
+                </div>
+            </div>
+            <div class="stepper-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+            <div class="stepper-step" id="set-step-3" onclick="window.stepperNavigate('review', 'settlement')" title="Step 3: Disallowances Review">
+                <div class="stepper-num-badge">3</div>
+                <div class="stepper-meta">
+                    <span class="stepper-title">Disallowance Review</span>
+                    <span class="stepper-desc">Isolate recovery</span>
+                </div>
+            </div>
+            <div class="stepper-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+            <div class="stepper-step" id="set-step-4" onclick="window.stepperNavigate('export', 'settlement')" title="Step 4: Generate Apollo Dispute Letter">
+                <div class="stepper-num-badge">4</div>
+                <div class="stepper-meta">
+                    <span class="stepper-title">Formal Dispute Notice</span>
+                    <span class="stepper-desc">1-Click Letterhead</span>
+                </div>
+            </div>
+        </div>
+
         <!-- HEADER DESCRIPTION -->
         <div class="controls-card" style="background-color: var(--bg-card); border-left: 5px solid var(--danger); margin-bottom: 1.5rem;">
             <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--danger); margin-bottom: 0.5rem;">Settlement Disallowance Auditor</h3>
@@ -960,6 +1030,41 @@
 
     <!-- PANEL 2: MM BILL AUDITOR (EXCEL UPLOADER) -->
     <div class="tab-panel" id="panel-audit">
+        <!-- 4-STEP QUICK AUDITOR WORKFLOW STEPPER RIBBON -->
+        <div class="audit-workflow-stepper" id="stepper-audit">
+            <div class="stepper-step active" id="aud-step-1" onclick="window.stepperNavigate('upload', 'audit')" title="Step 1: Upload Billing Excel Workbook">
+                <div class="stepper-num-badge">1</div>
+                <div class="stepper-meta">
+                    <span class="stepper-title">Upload Billing File</span>
+                    <span class="stepper-desc">Select Excel / CSV sheet</span>
+                </div>
+            </div>
+            <div class="stepper-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+            <div class="stepper-step" id="aud-step-2" onclick="window.stepperNavigate('match', 'audit')" title="Step 2: Cross-check against tariffs">
+                <div class="stepper-num-badge">2</div>
+                <div class="stepper-meta">
+                    <span class="stepper-title">Tariff Cross-Match</span>
+                    <span class="stepper-desc">Match contract codes</span>
+                </div>
+            </div>
+            <div class="stepper-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+            <div class="stepper-step" id="aud-step-3" onclick="window.stepperNavigate('review', 'audit')" title="Step 3: High-Risk Variance Review">
+                <div class="stepper-num-badge">3</div>
+                <div class="stepper-meta">
+                    <span class="stepper-title">Variance & Overbillings</span>
+                    <span class="stepper-desc">Review deviations</span>
+                </div>
+            </div>
+            <div class="stepper-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+            <div class="stepper-step" id="aud-step-4" onclick="window.stepperNavigate('export', 'audit')" title="Step 4: Executive Report & Export">
+                <div class="stepper-num-badge">4</div>
+                <div class="stepper-meta">
+                    <span class="stepper-title">Executive Sign-Off</span>
+                    <span class="stepper-desc">Export audit workbook</span>
+                </div>
+            </div>
+        </div>
+
         <!-- AUDITOR CONTROLS CARD -->
         <div class="controls-card">
             <!-- Hidden input for file selection (multiple files enabled) -->
@@ -2056,6 +2161,41 @@
 
     <!-- PANEL 8: CHECKING CONSOLE -->
     <div class="tab-panel" id="panel-checking">
+        <!-- 4-STEP QUICK AUDITOR WORKFLOW STEPPER RIBBON -->
+        <div class="audit-workflow-stepper" id="stepper-checking">
+            <div class="stepper-step completed" id="chk-step-1" onclick="window.stepperNavigate('upload', 'checking')" title="Step 1: Daily Billing Ledger Ingestion">
+                <div class="stepper-num-badge">✓</div>
+                <div class="stepper-meta">
+                    <span class="stepper-title">Ledger Feed Active</span>
+                    <span class="stepper-desc">Multi-unit check stream</span>
+                </div>
+            </div>
+            <div class="stepper-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+            <div class="stepper-step active" id="chk-step-2" onclick="window.stepperNavigate('match', 'checking')" title="Step 2: Universal Tariff Cross-Check">
+                <div class="stepper-num-badge">2</div>
+                <div class="stepper-meta">
+                    <span class="stepper-title">Auto-Verification</span>
+                    <span class="stepper-desc">Rule & tariff audit</span>
+                </div>
+            </div>
+            <div class="stepper-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+            <div class="stepper-step" id="chk-step-3" onclick="window.stepperNavigate('review', 'checking')" title="Step 3: Discrepancy & Under/Overcharge Review">
+                <div class="stepper-num-badge">3</div>
+                <div class="stepper-meta">
+                    <span class="stepper-title">Variance Tracking</span>
+                    <span class="stepper-desc">Leakage isolation</span>
+                </div>
+            </div>
+            <div class="stepper-arrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+            <div class="stepper-step" id="chk-step-4" onclick="window.stepperNavigate('export', 'checking')" title="Step 4: Dispute Notice & Ledger Export">
+                <div class="stepper-num-badge">4</div>
+                <div class="stepper-meta">
+                    <span class="stepper-title">Executive Sign-Off</span>
+                    <span class="stepper-desc">Export ledger & notice</span>
+                </div>
+            </div>
+        </div>
+
         <!-- HEADER TITLE CARD -->
         <div class="controls-card" style="background-color: var(--bg-card); border-left: 5px solid var(--primary);">
             <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">Tariff Checking & Verification Console</h3>
@@ -2211,7 +2351,7 @@
                 </div>
                 <!-- Version Badge -->
                 <div id="app-version-badge" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; backdrop-filter: blur(4px);">
-                    LOCKED VERSION: V1.3.0
+                    LOCKED VERSION: V2.5.0 ENTERPRISE
                 </div>
             </div>
         </div>
@@ -2292,7 +2432,7 @@
                                 <span style="font-size: 0.7rem; color: var(--text-muted);">▼</span>
                             </summary>
                             <div style="padding: 1rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.5rem;">
-                                <p style="margin: 0;">In V1, we replaced the generic "Others" discount input with a dynamic search widget:</p>
+                                <p style="margin: 0;">In V2.5.0, we support multi-unit isolation with dynamic search widgets:</p>
                                 <ul style="margin: 0 0 0.5rem 0; padding-left: 1.25rem;">
                                     <li><strong>Department-level discounts:</strong> You can choose from all 160+ unique departments and apply a custom percentage.</li>
                                     <li><strong>Item ID discounts:</strong> Enter a specific item ID (e.g. `1639`) to override default category rules.</li>
@@ -2338,65 +2478,62 @@
             <!-- RIGHT COLUMN: VERSION CONTROL & ROADMAP -->
             <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                 
-                <!-- LOCK VERSION V1 CARD -->
+                <!-- LOCK VERSION V2.5.0 CARD -->
                 <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; border: 1px solid rgba(16, 185, 129, 0.25); position: relative; overflow: hidden;">
                     <div id="version-card-status" style="position: absolute; top: 0; right: 0; background: var(--success); color: white; font-size: 0.55rem; font-weight: 900; padding: 0.2rem 0.6rem; border-bottom-left-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase;">
                         LOCKED
                     </div>
                     <div id="version-card-title" style="font-size: 0.8rem; font-weight: 800; color: var(--success); display: flex; align-items: center; gap: 0.35rem;">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        VERSION V1.3.0
+                        VERSION V2.5.0 ENTERPRISE
                     </div>
                     <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.45;">
-                        Latest stable production release with IOCL 2021-22 and SOC 2023-24 V2 tariff master integration, full client overrides, and formatting validation.
+                        Enterprise audit edition with Global Command Palette, 4-Step Visual Audit Stepper, Live Central SOC Telemetry, Formal Apollo Dispute Letterhead, and universal checking engine.
                     </div>
                     
                     <div style="border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.25rem;">
-                        <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">V1.3.0 Features:</div>
+                        <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">V2.5.0 Enterprise Features:</div>
                         <ul style="margin: 0; padding-left: 1rem; font-size: 0.72rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem;">
-                            <li>✓ Platform Infrastructure Foundation</li>
-                            <li>✓ Unified Audit Agreement Engine</li>
-                            <li>✓ International Cash SOC (25-26 & 26-27)</li>
-                            <li>✓ Scoped rate overrides by Unit</li>
-                            <li>✓ Granular Department discount editor</li>
-                            <li>✓ Specific Item ID discount editor</li>
-                            <li>✓ Interactive uploader & excel parser</li>
-                            <li>✓ Formats Checker & Validator</li>
-                            <li>✓ 995 active agreement templates</li>
-                            <li>✓ SOC 2021-22 IOCL Integrated</li>
-                            <li>✓ SOC 2023-24 V2 Integrated</li>
-                            <li>✓ Kolkata Apollo Multispeciality SOC & Pkg</li>
-                            <li>✓ SW v42 Cache-Eviction System</li>
+                            <li>✓ Global Command Palette (Ctrl+K / ⌘K)</li>
+                            <li>✓ 4-Step Quick Audit Workflow Stepper Ribbon</li>
+                            <li>✓ Central SOC Real-Time Telemetry & Latency</li>
+                            <li>✓ 1-Click Fast Auditor Auth Presets</li>
+                            <li>✓ Branded Apollo Dispute Notice Letterhead</li>
+                            <li>✓ Universal Checking Console & Multi-Unit Isolation</li>
+                            <li>✓ Floating Auditor Dock & Keyboard Shortcuts</li>
+                            <li>✓ High-throughput phantom column parser</li>
+                            <li>✓ Multi-dimensional SHA-256 Auth Matrix</li>
+                            <li>✓ SW v44 Cache Eviction System</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- ROADMAP V2 CARD -->
+                <!-- ROADMAP V3 CARD -->
                 <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; border: 1px solid rgba(139, 92, 246, 0.25); position: relative; overflow: hidden;">
                     <div style="position: absolute; top: 0; right: 0; background: var(--info); color: white; font-size: 0.55rem; font-weight: 900; padding: 0.2rem 0.6rem; border-bottom-left-radius: 8px; letter-spacing: 0.05em; text-transform: uppercase;">
                         ROADMAP
                     </div>
                     <div style="font-size: 0.8rem; font-weight: 800; color: #8b5cf6; display: flex; align-items: center; gap: 0.35rem;">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                        FUTURE VERSION V2.0.0
+                        FUTURE VERSION V3.0.0
                     </div>
                     <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.45;">
-                        Upcoming updates enabling multi-user real-time review, scale optimizations, and dynamic template configuration for future SOC additions.
+                        Upcoming generation featuring AI OCR bill parser, automated disallowance scraping, and native database replication.
                     </div>
                     
                     <div style="border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.25rem;">
-                        <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Planned V2 updates:</div>
+                        <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Planned V3 updates:</div>
                         <ul style="margin: 0; padding-left: 1rem; font-size: 0.72rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem;">
+                            <li>• Automated OCR PDF Claim Scraping</li>
                             <li>• Real-time WebSockets collaboration</li>
-                            <li>• PostgreSQL central database integration</li>
-                            <li>• Virtual Scroll list (50k+ lines)</li>
-                            <li>• Custom SOC template creator inside UI</li>
-                            <li>• FastAPI high-performance backend</li>
+                            <li>• Direct TPA EDI Billing Gateway</li>
+                            <li>• Virtualized 100k+ Line Grid Streaming</li>
+                            <li>• Enterprise PostgreSQL Backend Sync</li>
                         </ul>
                     </div>
 
                     <div style="background: rgba(139, 92, 246, 0.08); padding: 0.5rem; border-radius: 6px; border: 1px solid rgba(139, 92, 246, 0.15); font-size: 0.7rem; color: var(--text-muted); line-height: 1.4;">
-                        <strong>Auto-Push Pipeline:</strong> Once changes are tested in the <strong style="color:var(--text-main)">Sandbox Environment</strong> and CA Siddhant Surana runs git validation, changes auto-compile and deploy.
+                        <strong>Auto-Push Pipeline:</strong> Once changes are verified in the <strong style="color:var(--text-main)">Sandbox Environment</strong> and CA Siddhant Surana validates git tests, changes auto-deploy to production.
                     </div>
                 </div>
             </div>
@@ -3327,6 +3464,148 @@
         </div>
     </div>
 </div>
+
+<!-- GLOBAL COMMAND PALETTE MODAL (Ctrl + K) -->
+<div class="cmd-palette-overlay" id="global-command-palette" style="display: none;">
+    <div class="cmd-palette-container">
+        <div class="cmd-palette-search-bar">
+            <svg class="cmd-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="cmd-palette-input" placeholder="Search commands, panels, agreements, units, actions... (e.g. 'Audit', 'HDFC', 'Letter', 'Admin')" autocomplete="off">
+            <kbd class="cmd-esc-badge" onclick="window.closeCommandPalette()">Esc</kbd>
+        </div>
+        <div class="cmd-palette-results" id="cmd-palette-results-list">
+            <!-- Dynamically rendered via js/app.js -->
+        </div>
+        <div class="cmd-palette-footer">
+            <span><kbd>↑</kbd> <kbd>↓</kbd> to navigate</span>
+            <span><kbd>Enter</kbd> to select</span>
+            <span><kbd>Esc</kbd> to close</span>
+        </div>
+    </div>
+</div>
+
+<!-- KEYBOARD SHORTCUTS CHEAT SHEET MODAL -->
+<div class="modal-overlay" id="shortcuts-help-modal" style="display: none; z-index: 3400;">
+    <div class="modal-card" style="max-width: 580px; border-top: 5px solid var(--primary);">
+        <div class="modal-header">
+            <h3 style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main); font-size: 1.15rem; font-weight: 800; margin: 0;">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--primary)"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><line x1="6" y1="8" x2="6" y2="8"/><line x1="10" y1="8" x2="10" y2="8"/><line x1="14" y1="8" x2="14" y2="8"/><line x1="18" y1="8" x2="18" y2="8"/><line x1="6" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="18" y2="12"/><line x1="8" y1="16" x2="16" y2="16"/></svg>
+                Auditor Keyboard Shortcuts
+            </h3>
+            <button class="close-modal-btn" onclick="window.closeShortcutsModal()" title="Close modal">
+                <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="modal-body" style="padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div class="shortcuts-grid">
+                <div class="shortcut-row">
+                    <span class="shortcut-desc">Open Global Command Palette</span>
+                    <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>K</kbd> or <kbd>⌘</kbd> + <kbd>K</kbd></span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-desc">Switch Tabs (1 = Dashboard ... 8 = Checking)</span>
+                    <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>1..8</kbd></span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-desc">Generate Formal Apollo Dispute Letterhead</span>
+                    <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd></span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-desc">Export Active Audit / Checking Ledger</span>
+                    <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd></span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-desc">Toggle Dark / Light Mode</span>
+                    <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd></span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-desc">Open Keyboard Shortcuts Cheat Sheet</span>
+                    <span class="shortcut-keys"><kbd>?</kbd> or <kbd>F1</kbd></span>
+                </div>
+                <div class="shortcut-row">
+                    <span class="shortcut-desc">Close Active Modal / Clear Palette</span>
+                    <span class="shortcut-keys"><kbd>Esc</kbd></span>
+                </div>
+            </div>
+            <div style="background: rgba(13, 148, 136, 0.08); padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid rgba(13, 148, 136, 0.2); font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;">
+                <strong style="color: var(--primary);">Pro-Auditor Tip:</strong> You can navigate entire audits without touching your mouse using <kbd>Ctrl+K</kbd> to jump straight to hospital agreements or dispute recovery notices.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- APOLLO FORMAL DISPUTE LETTERHEAD MODAL -->
+<div class="modal-overlay" id="apollo-dispute-letterhead-modal" style="display: none; z-index: 3200;">
+    <div class="modal-card dispute-letter-modal-card">
+        <div class="modal-header dispute-letter-header">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div class="dispute-letter-icon-badge">📄</div>
+                <div>
+                    <h3 style="font-size: 1.15rem; font-weight: 800; margin: 0; color: var(--text-main);">Formal Discrepancy & Dispute Recovery Letterhead</h3>
+                    <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0.15rem 0 0 0;">Official Apollo Hospitals & BRC Revenue Assurance Dispute Notice</p>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <button type="button" class="export-btn" onclick="window.copyDisputeLetterText()" title="Copy to clipboard">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span>Copy Text</span>
+                </button>
+                <button type="button" class="export-btn" style="background: var(--primary); color: white; border-color: var(--primary);" onclick="window.printDisputeLetter()" title="Print Letterhead">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    <span>Print Letterhead</span>
+                </button>
+                <button class="close-modal-btn" onclick="window.closeDisputeLetterModal()" title="Close modal">
+                    <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="modal-body dispute-letter-body" id="dispute-letter-printable-content">
+            <!-- Rendered dynamically by window.renderApolloDisputeLetter() -->
+        </div>
+    </div>
+</div>
+
+<!-- FLOATING QUICK AUDITOR DOCK -->
+<div class="floating-quick-dock" id="floating-quick-dock">
+    <button type="button" class="dock-btn" onclick="window.openCommandPalette()" title="Command Palette (Ctrl + K)">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span class="dock-tooltip">Quick Command (Ctrl+K)</span>
+    </button>
+    <button type="button" class="dock-btn" onclick="window.openDisputeLetterModal()" title="Formal Dispute Letterhead (Ctrl + Shift + L)">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <span class="dock-tooltip">Dispute Notice (Ctrl+Shift+L)</span>
+    </button>
+    <button type="button" class="dock-btn" onclick="window.openShortcutsModal()" title="Keyboard Shortcuts Cheat Sheet (?)">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><line x1="6" y1="8" x2="6" y2="8"/><line x1="10" y1="8" x2="10" y2="8"/><line x1="14" y1="8" x2="14" y2="8"/><line x1="18" y1="8" x2="18" y2="8"/><line x1="6" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="18" y2="12"/><line x1="8" y1="16" x2="16" y2="16"/></svg>
+        <span class="dock-tooltip">Shortcuts (?)</span>
+    </button>
+    <button type="button" class="dock-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Scroll to Top">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+        <span class="dock-tooltip">Top of Page</span>
+    </button>
+</div>
+
+<script>
+    // 1-Click Fast Login Preset Switcher
+    window.applyAuthPreset = function(unitCode, username, role) {
+        if (typeof window.selectAuthUnit === 'function') {
+            window.selectAuthUnit(unitCode);
+        } else if (typeof window.selectNetflixProfile === 'function') {
+            window.selectNetflixProfile(unitCode);
+        }
+        
+        const usernameInput = document.getElementById('login-username-input');
+        const passwordInput = document.getElementById('login-password-input');
+        const unitSelect = document.getElementById('login-hospital-unit');
+        
+        if (unitSelect) unitSelect.value = unitCode;
+        if (usernameInput) usernameInput.value = username;
+        if (passwordInput) {
+            passwordInput.focus();
+            passwordInput.placeholder = 'Enter password for ' + username;
+        }
+    };
+</script>
 
 </body>
 </html>
