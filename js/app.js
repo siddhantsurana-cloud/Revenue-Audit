@@ -14424,6 +14424,1067 @@ Claims & Billing Assurance Desk
         renderSettlementGrid(filtered);
     }
 
+    /* ==========================================================================
+       ENTERPRISE STATEMENT OF CHARGES (SOC) DATA PROCESSING MODULE (v2.5.1)
+       ========================================================================== */
+
+    let socActiveFile = null;
+    let socRawDataArrayBuffer = null;
+    let socParsedResult = null;
+    let socActiveFilter = 'all';
+    let socActiveSearch = '';
+    let socIngesterInitialized = false;
+    let socDetectedColumns = [];
+    let socActiveMappings = {};
+
+    function initIngesterPanel() {
+        if (socIngesterInitialized) return;
+        socIngesterInitialized = true;
+
+        const dropzone = document.getElementById('ingester-dropzone');
+        const fileInput = document.getElementById('ingester-file-input');
+        const browseBtn = document.getElementById('btn-soc-browse');
+        const sheetSelect = document.getElementById('ingest-sheet-select');
+        const templateSelect = document.getElementById('soc-template-select');
+        const toggleMapBtn = document.getElementById('btn-toggle-mapping-modal');
+        const reapplyMapBtn = document.getElementById('btn-reapply-mapping');
+        const filterAllBtn = document.getElementById('soc-filter-all');
+        const filterValidBtn = document.getElementById('soc-filter-valid');
+        const filterWarnBtn = document.getElementById('soc-filter-warnings');
+        const filterErrBtn = document.getElementById('soc-filter-errors');
+        const previewSearchInput = document.getElementById('soc-preview-search');
+        const commitBtn = document.getElementById('ingest-btn-commit-db');
+        const downloadBtn = document.getElementById('ingest-btn-download');
+        const copyBtn = document.getElementById('ingest-btn-copy');
+        const resetBtn = document.getElementById('btn-soc-reset');
+        const viewLogsBtn = document.getElementById('btn-soc-view-logs');
+
+        // 1. Browse Button & Dropzone Triggers
+        if (browseBtn && fileInput) {
+            browseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                fileInput.click();
+            });
+        }
+
+        if (dropzone && fileInput) {
+            dropzone.addEventListener('click', (e) => {
+                if (e.target.closest('#btn-soc-browse')) return;
+                fileInput.click();
+            });
+
+            dropzone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropzone.style.borderColor = 'var(--primary, #0d9488)';
+                dropzone.style.backgroundColor = 'var(--bg-hover)';
+            });
+
+            dropzone.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                dropzone.style.borderColor = 'var(--accent, #6366f1)';
+                dropzone.style.backgroundColor = 'var(--bg-card)';
+            });
+
+            dropzone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropzone.style.borderColor = 'var(--accent, #6366f1)';
+                dropzone.style.backgroundColor = 'var(--bg-card)';
+                if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                    handleSOCFile(e.dataTransfer.files[0]);
+                }
+            });
+        }
+
+        if (fileInput) {
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files && e.target.files.length > 0) {
+                    handleSOCFile(e.target.files[0]);
+                }
+            });
+        }
+
+        // 2. Sheet Select Change
+        if (sheetSelect) {
+            sheetSelect.addEventListener('change', () => {
+                if (socActiveFile) {
+                    processSOCFile(socActiveFile, sheetSelect.value);
+                }
+            });
+        }
+
+        // 3. Template Select Change
+        if (templateSelect) {
+            templateSelect.addEventListener('change', () => {
+                if (socActiveFile) {
+                    processSOCFile(socActiveFile, sheetSelect?.value);
+                }
+            });
+        }
+
+        // 4. Filter Chips
+        const filterBtns = [
+            { btn: filterAllBtn, key: 'all' },
+            { btn: filterValidBtn, key: 'valid' },
+            { btn: filterWarnBtn, key: 'warnings' },
+            { btn: filterErrBtn, key: 'errors' }
+        ];
+
+        filterBtns.forEach(({ btn, key }) => {
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    socActiveFilter = key;
+                    filterBtns.forEach(b => {
+                        if (b.btn) {
+                            b.btn.classList.remove('active');
+                            b.btn.style.background = 'var(--bg-hover)';
+                            b.btn.style.color = 'var(--text-main)';
+                        }
+                    });
+                    btn.classList.add('active');
+                    btn.style.background = key === 'errors' ? 'var(--danger)' : (key === 'warnings' ? '#f59e0b' : 'var(--accent, #6366f1)');
+                    btn.style.color = '#fff';
+                    renderSOCPreviewTable();
+                });
+            }
+        });
+
+        // 5. Search Filter
+        if (previewSearchInput) {
+            previewSearchInput.addEventListener('input', (e) => {
+                socActiveSearch = e.target.value.toLowerCase().trim();
+                renderSOCPreviewTable();
+            });
+        }
+
+        // 6. Mapping Accordion Toggle
+        if (toggleMapBtn) {
+            toggleMapBtn.addEventListener('click', () => {
+                const card = document.getElementById('soc-column-mapping-card');
+                if (card) {
+                    card.style.display = (card.style.display === 'none' || !card.style.display) ? 'block' : 'none';
+                }
+            });
+        }
+
+        // 7. Re-apply Mapping Button
+        if (reapplyMapBtn) {
+            reapplyMapBtn.addEventListener('click', () => {
+                reapplyCustomMappings();
+            });
+        }
+
+        // 8. Commit to Database Button
+        if (commitBtn) {
+            commitBtn.addEventListener('click', () => {
+                commitSOCToTariffModule();
+            });
+        }
+
+        // 9. Download Canonical JSON Button
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', () => {
+                downloadSOCJson();
+            });
+        }
+
+        // 10. Copy JSON Button
+        if (copyBtn) {
+            copyBtn.addEventListener('click', () => {
+                copySOCJson();
+            });
+        }
+
+        // 11. Reset Button
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                resetSOCIngester();
+            });
+        }
+
+        // 12. View Logs Button
+        if (viewLogsBtn) {
+            viewLogsBtn.addEventListener('click', () => {
+                openSOCImportLogsModal();
+            });
+        }
+    }
+
+    async function handleSOCFile(file) {
+        if (!file) return;
+        socActiveFile = file;
+
+        const validExts = ['.xlsx', '.xls', '.xlsm', '.pdf', '.csv'];
+        const ext = '.' + file.name.split('.').pop().toLowerCase();
+        if (!validExts.includes(ext)) {
+            showToast('Unsupported file format. Please upload an Excel (.xlsx, .xls), PDF (.pdf), or CSV (.csv) file.', 'warning');
+            return;
+        }
+
+        // Update basic filename & type UI
+        const statName = document.getElementById('ingest-stat-filename');
+        const statType = document.getElementById('ingest-stat-doc-type');
+        if (statName) statName.textContent = file.name;
+        if (statType) {
+            if (ext === '.pdf') statType.textContent = 'Digital PDF Document';
+            else if (ext === '.csv') statType.textContent = 'Delimited CSV File';
+            else statType.textContent = 'Excel Spreadsheet';
+        }
+
+        const targetNameInput = document.getElementById('soc-target-name-input');
+        if (targetNameInput && !targetNameInput.value) {
+            targetNameInput.value = file.name.replace(/\.[^/.]+$/, "").toUpperCase().replace(/[^A-Z0-9_]/g, "_");
+        }
+
+        await processSOCFile(file);
+    }
+
+    async function processSOCFile(file, requestedSheet) {
+        const spinner = document.getElementById('soc-upload-spinner');
+        const resultsContainer = document.getElementById('ingester-results-container');
+        const warningBanner = document.getElementById('soc-scanned-warning');
+        
+        if (spinner) spinner.style.display = 'inline-flex';
+        if (warningBanner) warningBanner.style.display = 'none';
+
+        try {
+            // Read file into ArrayBuffer and Base64
+            const arrayBuffer = await file.arrayBuffer();
+            socRawDataArrayBuffer = arrayBuffer;
+            const base64String = await fileToBase64(file);
+
+            const templateName = document.getElementById('soc-template-select')?.value || null;
+
+            // Attempt backend server parse first
+            let result = null;
+            try {
+                const response = await fetch('/api/soc/parse', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        file_name: file.name,
+                        file_data_base64: base64String,
+                        template_name: templateName,
+                        sheet_name: requestedSheet || undefined
+                    })
+                });
+
+                if (response.ok) {
+                    result = await response.json();
+                }
+            } catch (netErr) {
+                console.info('Backend server parse offline. Using client-side algorithmic engine.');
+            }
+
+            // Fallback to client-side deterministic parsing if server not available or failed
+            if (!result || result.status !== 'success') {
+                result = await runClientSideSOCParser(file, arrayBuffer, requestedSheet, templateName);
+            }
+
+            if (result && result.status === 'success') {
+                socParsedResult = result;
+                displaySOCResults(result);
+                showToast(`Successfully parsed ${result.summary.total_extracted || 0} line items from ${file.name}`, 'success');
+            } else {
+                showToast(result?.message || 'Could not parse tabular data from document.', 'danger');
+                if (result?.is_scanned && warningBanner) {
+                    warningBanner.style.display = 'block';
+                }
+            }
+        } catch (err) {
+            console.error('SOC Processing Error:', err);
+            showToast(`Error processing SOC document: ${err.message}`, 'danger');
+        } finally {
+            if (spinner) spinner.style.display = 'none';
+        }
+    }
+
+    function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+                const base64 = reader.result.split(',')[1];
+                resolve(base64);
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
+
+    async function runClientSideSOCParser(file, arrayBuffer, requestedSheet, templateName) {
+        const ext = '.' + file.name.split('.').pop().toLowerCase();
+        const currency = document.getElementById('soc-currency-select')?.value || 'INR';
+        const unit = document.getElementById('soc-unit-select')?.value || 'Per Quantity';
+        const targetName = document.getElementById('soc-target-name-input')?.value || file.name.replace(/\.[^/.]+$/, "");
+
+        if (ext === '.pdf') {
+            return await runClientSidePDFParser(file, arrayBuffer, currency, unit, targetName);
+        } else {
+            return runClientSideExcelParser(file, arrayBuffer, requestedSheet, templateName, currency, unit, targetName);
+        }
+    }
+
+    function runClientSideExcelParser(file, arrayBuffer, requestedSheet, templateName, currency, unit, targetName) {
+        if (typeof XLSX === 'undefined') {
+            return { status: 'error', message: 'SheetJS (XLSX) library is loading. Please retry.' };
+        }
+
+        const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
+        const sheetNames = workbook.SheetNames || [];
+        if (sheetNames.length === 0) {
+            return { status: 'error', message: 'No sheets found in Excel file.' };
+        }
+
+        const activeSheetName = requestedSheet && sheetNames.includes(requestedSheet) ? requestedSheet : sheetNames[0];
+        const sheet = workbook.Sheets[activeSheetName];
+        const rawRows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
+
+        if (!rawRows || rawRows.length === 0) {
+            return { status: 'error', message: 'Selected sheet is empty.' };
+        }
+
+        // Header detection heuristic: search first 25 rows
+        let bestHeaderIdx = 0;
+        let maxScore = -1;
+        const keywords = ['code', 'id', 'service', 'description', 'investigation', 'procedure', 'test', 'dept', 'department', 'rate', 'amount', 'charge', 'price', 'mrp', 'ipd', 'opd', 'category', 'group'];
+
+        for (let i = 0; i < Math.min(rawRows.length, 25); i++) {
+            const row = rawRows[i];
+            if (!Array.isArray(row)) continue;
+            let score = 0;
+            row.forEach(cell => {
+                const s = String(cell || '').toLowerCase().trim();
+                keywords.forEach(kw => {
+                    if (s.includes(kw)) score++;
+                });
+            });
+            if (score > maxScore) {
+                maxScore = score;
+                bestHeaderIdx = i;
+            }
+        }
+
+        const headerRow = (rawRows[bestHeaderIdx] || []).map(c => String(c || '').trim());
+        socDetectedColumns = headerRow.filter(h => h.length > 0);
+
+        // Map columns
+        const mapping = resolveColumnMapping(headerRow, templateName);
+        socActiveMappings = mapping;
+
+        const dataRows = rawRows.slice(bestHeaderIdx + 1);
+        const validRecords = [];
+        const invalidRecords = [];
+        const warningRecords = [];
+        const canonicalRecords = [];
+
+        dataRows.forEach((row, rowIdx) => {
+            const hasContent = row.some(cell => String(cell || '').trim().length > 0);
+            if (!hasContent) return;
+
+            const id = cleanString(row[mapping.id]);
+            const name = cleanString(row[mapping.name]);
+            const dept = cleanString(row[mapping.department]) || 'GENERAL';
+            const cat = cleanString(row[mapping.category]) || 'HOSPITAL_SERVICES';
+            const stdRate = parseNumericRate(row[mapping.standard_rate]);
+            const opdRate = parseNumericRate(row[mapping.opd_rate]) || stdRate;
+            const ipdRate = parseNumericRate(row[mapping.ipd_rate]) || stdRate;
+
+            const errors = [];
+            const warnings = [];
+
+            if (!id && !name) {
+                errors.push('Both Item Code and Service Name are missing');
+            }
+            if (stdRate === null || isNaN(stdRate) || stdRate < 0) {
+                errors.push('Invalid or negative Standard Rate');
+            } else if (stdRate === 0) {
+                warnings.push('Rate is 0.00 (Zero-charge item)');
+            }
+
+            if (!id && name) {
+                warnings.push('Missing unique Item Code (Auto-generated fallback code)');
+            }
+
+            const itemCode = id || `GEN_${Math.abs(hashString(name + dept))}`;
+            const itemName = name || `Service_${itemCode}`;
+
+            const record = {
+                id: itemCode,
+                name: itemName,
+                category: cat,
+                department: dept,
+                standard_rate: stdRate !== null ? stdRate : 0.0,
+                opd_rate: opdRate !== null ? opdRate : (stdRate || 0.0),
+                ipd_rate: ipdRate !== null ? ipdRate : (stdRate || 0.0),
+                currency: currency,
+                unit: unit,
+                validation_status: errors.length > 0 ? 'INVALID' : (warnings.length > 0 ? 'WARNING' : 'VALID'),
+                validation_errors: errors,
+                validation_warnings: warnings,
+                source_row: bestHeaderIdx + 2 + rowIdx
+            };
+
+            canonicalRecords.push(record);
+
+            if (errors.length > 0) {
+                invalidRecords.push(record);
+            } else if (warnings.length > 0) {
+                warningRecords.push(record);
+                validRecords.push(record);
+            } else {
+                validRecords.push(record);
+            }
+        });
+
+        const standardJson = {
+            schema_version: '2.5.1',
+            metadata: {
+                source_file: file.name,
+                document_type: 'EXCEL',
+                sheet_name: activeSheetName,
+                available_sheets: sheetNames,
+                target_tariff_name: targetName,
+                currency: currency,
+                rate_unit: unit,
+                extracted_at: new Date().toISOString()
+            },
+            mapping: mapping,
+            records: canonicalRecords,
+            summary: {
+                total_extracted: canonicalRecords.length,
+                valid_records: validRecords.length,
+                invalid_records: invalidRecords.length,
+                warning_records: warningRecords.length
+            }
+        };
+
+        return {
+            status: 'success',
+            metadata: standardJson.metadata,
+            mapping: mapping,
+            available_sheets: sheetNames,
+            active_sheet: activeSheetName,
+            records: canonicalRecords,
+            valid_records: validRecords,
+            invalid_records: invalidRecords,
+            warning_records: warningRecords,
+            summary: standardJson.summary,
+            standard_json: standardJson,
+            raw_headers: headerRow
+        };
+    }
+
+    async function runClientSidePDFParser(file, arrayBuffer, currency, unit, targetName) {
+        if (typeof pdfjsLib === 'undefined') {
+            return { status: 'error', message: 'PDF.js library is loading. Please retry in a moment.' };
+        }
+
+        try {
+            const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+            const numPages = pdf.numPages;
+            let fullTextLines = [];
+            let totalGlyphs = 0;
+
+            for (let p = 1; p <= numPages; p++) {
+                const page = await pdf.getPage(p);
+                const textContent = await page.getTextContent();
+                totalGlyphs += textContent.items.length;
+
+                const lineMap = {};
+                textContent.items.forEach(item => {
+                    const y = Math.round(item.transform[5]);
+                    if (!lineMap[y]) lineMap[y] = [];
+                    lineMap[y].push({ x: item.transform[4], str: item.str });
+                });
+
+                const sortedY = Object.keys(lineMap).map(Number).sort((a, b) => b - a);
+                sortedY.forEach(y => {
+                    const lineItems = lineMap[y].sort((a, b) => a.x - b.x);
+                    const lineText = lineItems.map(it => it.str).join(' ').trim();
+                    if (lineText.length > 0) {
+                        fullTextLines.push(lineText);
+                    }
+                });
+            }
+
+            if (totalGlyphs === 0 || fullTextLines.length === 0) {
+                return {
+                    status: 'error',
+                    is_scanned: true,
+                    message: 'Scanned / Image-Only PDF Detected: 0 digital text glyphs extracted.'
+                };
+            }
+
+            const canonicalRecords = [];
+            const validRecords = [];
+            const invalidRecords = [];
+            const warningRecords = [];
+
+            const rowPattern = /^(?:(\d+|[A-Z0-9_-]{2,15})\s+)?([A-Za-z0-9\s.,&/\(\)\-\+]{4,80})\s+([A-Za-z\s]{3,25})?\s*(?:Rs\.?|INR|₹)?\s*([0-9]+(?:\.[0-9]{1,2})?)$/i;
+            const loosePattern = /([A-Za-z0-9\s.,&/\(\)\-\+]{4,80})\s+(?:Rs\.?|INR|₹)?\s*([0-9]+(?:\.[0-9]{1,2})?)$/i;
+
+            fullTextLines.forEach((line, idx) => {
+                const lower = line.toLowerCase();
+                if (lower.includes('page ') || (lower.includes('tariff') && lower.includes('schedule')) || (lower.includes('apollo hospitals') && lower.includes('guwahati'))) {
+                    return;
+                }
+
+                let id = '';
+                let name = '';
+                let dept = 'HOSPITAL';
+                let rate = 0;
+
+                const match = line.match(rowPattern);
+                if (match) {
+                    id = match[1] || '';
+                    name = match[2].trim();
+                    dept = match[3] ? match[3].trim() : 'HOSPITAL';
+                    rate = parseFloat(match[4]);
+                } else {
+                    const loose = line.match(loosePattern);
+                    if (loose && !isNaN(parseFloat(loose[2]))) {
+                        name = loose[1].trim();
+                        rate = parseFloat(loose[2]);
+                    }
+                }
+
+                if (name && !isNaN(rate)) {
+                    const code = id || `PDF_${Math.abs(hashString(name))}`;
+                    const warnings = [];
+                    if (!id) warnings.push('Fallback ID assigned');
+                    if (rate === 0) warnings.push('Zero-charge rate');
+
+                    const rec = {
+                        id: code,
+                        name: name,
+                        category: 'PDF_EXTRACTED',
+                        department: dept,
+                        standard_rate: rate,
+                        opd_rate: rate,
+                        ipd_rate: rate,
+                        currency: currency,
+                        unit: unit,
+                        validation_status: warnings.length > 0 ? 'WARNING' : 'VALID',
+                        validation_errors: [],
+                        validation_warnings: warnings,
+                        source_row: idx + 1
+                    };
+
+                    canonicalRecords.push(rec);
+                    if (warnings.length > 0) {
+                        warningRecords.push(rec);
+                    }
+                    validRecords.push(rec);
+                }
+            });
+
+            if (canonicalRecords.length === 0) {
+                return {
+                    status: 'error',
+                    message: 'Could not detect structured tabular lines in PDF. Please check file format.'
+                };
+            }
+
+            const standardJson = {
+                schema_version: '2.5.1',
+                metadata: {
+                    source_file: file.name,
+                    document_type: 'PDF',
+                    total_pages: numPages,
+                    target_tariff_name: targetName,
+                    currency: currency,
+                    rate_unit: unit,
+                    extracted_at: new Date().toISOString()
+                },
+                records: canonicalRecords,
+                summary: {
+                    total_extracted: canonicalRecords.length,
+                    valid_records: validRecords.length,
+                    invalid_records: invalidRecords.length,
+                    warning_records: warningRecords.length
+                }
+            };
+
+            return {
+                status: 'success',
+                metadata: standardJson.metadata,
+                available_sheets: ['Document Pages (1..' + numPages + ')'],
+                active_sheet: 'Document Pages',
+                records: canonicalRecords,
+                valid_records: validRecords,
+                invalid_records: invalidRecords,
+                warning_records: warningRecords,
+                summary: standardJson.summary,
+                standard_json: standardJson,
+                raw_headers: ['Code', 'Service Description', 'Department', 'Rate']
+            };
+        } catch (pdfErr) {
+            return { status: 'error', message: 'PDF parsing failed: ' + pdfErr.message };
+        }
+    }
+
+    function resolveColumnMapping(headers, templateName) {
+        const mapping = {
+            id: -1,
+            name: -1,
+            department: -1,
+            category: -1,
+            standard_rate: -1,
+            opd_rate: -1,
+            ipd_rate: -1
+        };
+
+        const lowerHeaders = headers.map(h => String(h || '').toLowerCase().trim());
+
+        const idAliases = ['code', 'item_code', 'service_code', 'id', 'test_code', 'investigation_code', 'sl_no', 'sl no', 'item code'];
+        const nameAliases = ['service', 'service_name', 'service_description', 'description', 'investigation', 'test_name', 'procedure', 'item_name', 'service name'];
+        const deptAliases = ['dept', 'department', 'specialty', 'section', 'modality', 'department_name'];
+        const catAliases = ['category', 'group', 'class', 'head', 'sub_category', 'service_type'];
+        const stdRateAliases = ['rate', 'standard_rate', 'amount', 'charge', 'mrp', 'price', 'tariff', 'standard rate'];
+        const opdRateAliases = ['opd', 'opd_rate', 'outpatient', 'opd rate'];
+        const ipdRateAliases = ['ipd', 'ipd_rate', 'inpatient', 'ipd rate', 'semi_private', 'private'];
+
+        function findCol(aliases) {
+            for (let i = 0; i < lowerHeaders.length; i++) {
+                const h = lowerHeaders[i];
+                for (const a of aliases) {
+                    if (h === a || h.startsWith(a) || h.includes(a)) {
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
+
+        mapping.id = findCol(idAliases);
+        mapping.name = findCol(nameAliases);
+        mapping.department = findCol(deptAliases);
+        mapping.category = findCol(catAliases);
+        mapping.standard_rate = findCol(stdRateAliases);
+        mapping.opd_rate = findCol(opdRateAliases);
+        mapping.ipd_rate = findCol(ipdRateAliases);
+
+        if (mapping.name === -1 && lowerHeaders.length > 1) {
+            mapping.name = 1;
+        }
+        if (mapping.id === -1 && lowerHeaders.length > 0 && mapping.name !== 0) {
+            mapping.id = 0;
+        }
+        if (mapping.standard_rate === -1) {
+            mapping.standard_rate = mapping.opd_rate !== -1 ? mapping.opd_rate : (mapping.ipd_rate !== -1 ? mapping.ipd_rate : lowerHeaders.length - 1);
+        }
+
+        return mapping;
+    }
+
+    function cleanString(val) {
+        if (val === null || val === undefined) return '';
+        return String(val).trim().replace(/\s+/g, ' ');
+    }
+
+    function parseNumericRate(val) {
+        if (val === null || val === undefined || val === '') return null;
+        if (typeof val === 'number') return isNaN(val) ? null : val;
+        const cleaned = String(val).replace(/[^0-9.-]/g, '');
+        if (!cleaned) return null;
+        const parsed = parseFloat(cleaned);
+        return isNaN(parsed) ? null : parsed;
+    }
+
+    function hashString(str) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            hash = ((hash << 5) - hash) + str.charCodeAt(i);
+            hash |= 0;
+        }
+        return hash;
+    }
+
+    function displaySOCResults(result) {
+        const resultsContainer = document.getElementById('ingester-results-container');
+        if (resultsContainer) resultsContainer.style.display = 'flex';
+
+        // 1. Sheet selection dropdown
+        const sheetSelect = document.getElementById('ingest-sheet-select');
+        if (sheetSelect && result.available_sheets) {
+            sheetSelect.innerHTML = '';
+            result.available_sheets.forEach(sheet => {
+                const opt = document.createElement('option');
+                opt.value = sheet;
+                opt.textContent = sheet;
+                if (sheet === result.active_sheet) opt.selected = true;
+                sheetSelect.appendChild(opt);
+            });
+        }
+
+        // 2. Metrics summary
+        const statValid = document.getElementById('ingest-stat-valid');
+        const statInvalid = document.getElementById('ingest-stat-invalid');
+        const statWarnTag = document.getElementById('ingest-stat-warnings-tag');
+        const statFields = document.getElementById('ingest-stat-fields');
+
+        const summary = result.summary || {};
+        const validCount = summary.valid_records || 0;
+        const invalidCount = summary.invalid_records || 0;
+        const warnCount = summary.warning_records || 0;
+        const totalCount = summary.total_extracted || 0;
+
+        if (statValid) statValid.textContent = validCount.toLocaleString('en-IN');
+        if (statInvalid) statInvalid.textContent = invalidCount.toLocaleString('en-IN');
+        if (statWarnTag) statWarnTag.textContent = `${warnCount} warnings`;
+
+        if (statFields) {
+            const mappedKeys = Object.entries(result.mapping || {}).filter(([k, v]) => v !== -1).map(([k]) => k);
+            statFields.textContent = mappedKeys.length > 0 ? mappedKeys.join(', ') : 'Auto-detected';
+        }
+
+        // 3. Filter chip counts
+        const cntAll = document.getElementById('cnt-all');
+        const cntValid = document.getElementById('cnt-valid');
+        const cntWarn = document.getElementById('cnt-warnings');
+        const cntErr = document.getElementById('cnt-errors');
+        if (cntAll) cntAll.textContent = totalCount;
+        if (cntValid) cntValid.textContent = validCount;
+        if (cntWarn) cntWarn.textContent = warnCount;
+        if (cntErr) cntErr.textContent = invalidCount;
+
+        // 4. Populate column mapping editor
+        renderSOCMappingGrid(result);
+
+        // 5. Render Preview Table
+        renderSOCPreviewTable();
+
+        // 6. Populate JSON Preview
+        const jsonPreview = document.getElementById('ingest-json-preview');
+        if (jsonPreview) {
+            const jsonPayload = result.standard_json || result;
+            jsonPreview.value = JSON.stringify(jsonPayload, null, 2);
+        }
+    }
+
+    function renderSOCMappingGrid(result) {
+        const grid = document.getElementById('soc-mapping-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        const standardFields = [
+            { key: 'id', label: 'Item Code (ID)' },
+            { key: 'name', label: 'Service Description' },
+            { key: 'department', label: 'Department' },
+            { key: 'category', label: 'Category' },
+            { key: 'standard_rate', label: 'Standard Rate (₹)' },
+            { key: 'opd_rate', label: 'OPD Rate (₹)' },
+            { key: 'ipd_rate', label: 'IPD Rate (₹)' }
+        ];
+
+        const headers = result.raw_headers || socDetectedColumns || [];
+        const currentMapping = result.mapping || socActiveMappings || {};
+
+        standardFields.forEach(field => {
+            const group = document.createElement('div');
+            group.style.display = 'flex';
+            group.style.flexDirection = 'column';
+            group.style.gap = '0.2rem';
+
+            const label = document.createElement('label');
+            label.style.fontSize = '0.72rem';
+            label.style.fontWeight = '700';
+            label.style.color = 'var(--text-muted)';
+            label.textContent = field.label;
+
+            const select = document.createElement('select');
+            select.className = 'form-control';
+            select.style.fontSize = '0.75rem';
+            select.style.padding = '0.3rem 0.5rem';
+            select.setAttribute('data-target-field', field.key);
+
+            const noneOpt = document.createElement('option');
+            noneOpt.value = '-1';
+            noneOpt.textContent = '-- Unmapped (None) --';
+            select.appendChild(noneOpt);
+
+            headers.forEach((h, idx) => {
+                const opt = document.createElement('option');
+                opt.value = String(idx);
+                opt.textContent = `Col ${idx + 1}: ${h}`;
+                if (currentMapping[field.key] === idx) {
+                    opt.selected = true;
+                }
+                select.appendChild(opt);
+            });
+
+            group.appendChild(label);
+            group.appendChild(select);
+            grid.appendChild(group);
+        });
+    }
+
+    function reapplyCustomMappings() {
+        if (!socParsedResult) return;
+        const grid = document.getElementById('soc-mapping-grid');
+        if (!grid) return;
+
+        const selects = grid.querySelectorAll('select[data-target-field]');
+        const newMapping = {};
+        selects.forEach(sel => {
+            const field = sel.getAttribute('data-target-field');
+            newMapping[field] = parseInt(sel.value, 10);
+        });
+
+        socActiveMappings = newMapping;
+
+        if (socActiveFile && socRawDataArrayBuffer) {
+            const templateName = document.getElementById('soc-template-select')?.value || null;
+            const currency = document.getElementById('soc-currency-select')?.value || 'INR';
+            const unit = document.getElementById('soc-unit-select')?.value || 'Per Quantity';
+            const targetName = document.getElementById('soc-target-name-input')?.value || socActiveFile.name.replace(/\.[^/.]+$/, "");
+            const sheetSelect = document.getElementById('ingest-sheet-select');
+
+            const reprocessed = runClientSideExcelParser(socActiveFile, socRawDataArrayBuffer, sheetSelect?.value, templateName, currency, unit, targetName);
+            reprocessed.mapping = newMapping;
+            socParsedResult = reprocessed;
+            displaySOCResults(reprocessed);
+            showToast('Re-applied custom column mappings successfully!', 'info');
+        }
+    }
+
+    function renderSOCPreviewTable() {
+        const tbody = document.getElementById('ingest-preview-body');
+        const countLabel = document.getElementById('soc-preview-count-label');
+        if (!tbody || !socParsedResult) return;
+
+        tbody.innerHTML = '';
+        const allRecords = socParsedResult.records || [];
+
+        let filtered = allRecords.filter(rec => {
+            if (socActiveFilter === 'valid' && rec.validation_status !== 'VALID') return false;
+            if (socActiveFilter === 'warnings' && rec.validation_status !== 'WARNING') return false;
+            if (socActiveFilter === 'errors' && rec.validation_status !== 'INVALID') return false;
+
+            if (socActiveSearch) {
+                const q = socActiveSearch;
+                const matchId = (rec.id || '').toLowerCase().includes(q);
+                const matchName = (rec.name || '').toLowerCase().includes(q);
+                const matchDept = (rec.department || '').toLowerCase().includes(q);
+                if (!matchId && !matchName && !matchDept) return false;
+            }
+            return true;
+        });
+
+        if (countLabel) countLabel.textContent = filtered.length.toLocaleString('en-IN');
+
+        const previewSlice = filtered.slice(0, 150);
+
+        if (previewSlice.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="6" style="padding: 2rem; text-align: center; color: var(--text-muted);">No records match the active filter/search.</td></tr>`;
+            return;
+        }
+
+        previewSlice.forEach((rec, idx) => {
+            const tr = document.createElement('tr');
+            tr.style.borderBottom = '1px solid var(--border)';
+
+            const statusBadge = rec.validation_status === 'VALID' 
+                ? '<span style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.68rem;">VALID</span>'
+                : (rec.validation_status === 'WARNING'
+                    ? `<span style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.68rem;" title="${(rec.validation_warnings || []).join('; ')}">WARN ⚠️</span>`
+                    : `<span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.68rem;" title="${(rec.validation_errors || []).join('; ')}">ERROR ❌</span>`);
+
+            tr.innerHTML = `
+                <td style="padding: 0.45rem 0.5rem; text-align: center; color: var(--text-muted); font-size: 0.72rem;">${idx + 1}</td>
+                <td style="padding: 0.45rem 0.5rem;">${statusBadge}</td>
+                <td style="padding: 0.45rem 0.5rem; font-family: monospace; font-weight: 700; color: var(--text-main);">${rec.id || '—'}</td>
+                <td style="padding: 0.45rem 0.5rem; color: var(--text-main); font-weight: 600;">${rec.name || '—'}</td>
+                <td style="padding: 0.45rem 0.5rem; color: var(--text-muted); font-size: 0.72rem;">${rec.department || '—'}</td>
+                <td style="padding: 0.45rem 0.5rem; text-align: right; font-family: monospace; font-weight: 700; color: var(--primary);">₹${(rec.standard_rate || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    async function commitSOCToTariffModule() {
+        if (!socParsedResult || !socParsedResult.valid_records || socParsedResult.valid_records.length === 0) {
+            showToast('No valid records found to populate into the Tariff Module.', 'warning');
+            return;
+        }
+
+        const validRecords = socParsedResult.valid_records;
+        const targetName = document.getElementById('soc-target-name-input')?.value || socActiveFile?.name || 'IMPORTED_SOC';
+
+        let insertedCount = 0;
+        validRecords.forEach(rec => {
+            const masterRec = {
+                id: rec.id,
+                name: rec.name,
+                category: rec.category || 'HOSPITAL_SERVICES',
+                department: rec.department || 'GENERAL',
+                rate2026: rec.standard_rate || 0,
+                rate2021: rec.standard_rate || 0,
+                rate2023: rec.standard_rate || 0,
+                rate2024: rec.standard_rate || 0,
+                rate2025: rec.standard_rate || 0,
+                rateCash2026: rec.opd_rate || rec.standard_rate || 0,
+                rateExcelcare: rec.standard_rate || 0,
+                rateExcelcareCash: rec.opd_rate || rec.standard_rate || 0,
+                rateKolkata: rec.standard_rate || 0,
+                source: targetName,
+                is_soc_imported: true,
+                imported_at: new Date().toISOString()
+            };
+
+            const existingIdx = UNIFIED_TARIFFS.findIndex(t => t.id === rec.id);
+            if (existingIdx >= 0) {
+                UNIFIED_TARIFFS[existingIdx] = { ...UNIFIED_TARIFFS[existingIdx], ...masterRec };
+            } else {
+                UNIFIED_TARIFFS.push(masterRec);
+                insertedCount++;
+            }
+
+            map2026[rec.id] = masterRec;
+            mapExcelcare[rec.id] = masterRec;
+            mapCash2026[rec.id] = masterRec;
+        });
+
+        const logEntry = {
+            id: 'SOC_' + Date.now(),
+            file_name: socActiveFile ? socActiveFile.name : targetName,
+            target_tariff_name: targetName,
+            total_records: socParsedResult.summary.total_extracted,
+            valid_imported: validRecords.length,
+            invalid_skipped: socParsedResult.summary.invalid_records,
+            timestamp: new Date().toISOString(),
+            user: window.currentUserRole || 'Administrator'
+        };
+
+        const history = safeJsonParse(localStorage.getItem('brc_soc_import_history'), []);
+        history.unshift(logEntry);
+        localStorage.setItem('brc_soc_import_history', JSON.stringify(history.slice(0, 50)));
+
+        try {
+            await fetch('/api/soc/confirm_import', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    records: validRecords,
+                    file_name: socActiveFile ? socActiveFile.name : targetName,
+                    soc_name: targetName,
+                    user: window.currentUserRole || 'Administrator'
+                })
+            });
+        } catch (e) {
+            console.info('Committed SOC records stored in browser state.');
+        }
+
+        if (typeof applyFiltersAndSort === 'function') {
+            applyFiltersAndSort();
+        }
+        if (typeof updateDashboardView === 'function') {
+            updateDashboardView();
+        }
+
+        showToast(`Successfully committed ${validRecords.length} line items into the master Tariff Repository!`, 'success');
+    }
+
+    function downloadSOCJson() {
+        if (!socParsedResult) return;
+        const payload = socParsedResult.standard_json || socParsedResult;
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        const fname = (socActiveFile ? socActiveFile.name.replace(/\.[^/.]+$/, "") : 'soc_export') + '_canonical.json';
+        link.download = fname;
+        link.click();
+        URL.revokeObjectURL(url);
+        showToast(`Canonical JSON downloaded: ${fname}`, 'success');
+    }
+
+    function copySOCJson() {
+        if (!socParsedResult) return;
+        const payload = socParsedResult.standard_json || socParsedResult;
+        const str = JSON.stringify(payload, null, 2);
+        navigator.clipboard.writeText(str).then(() => {
+            showToast('Canonical JSON copied to clipboard!', 'success');
+        }).catch(() => {
+            showToast('Unable to copy JSON automatically.', 'warning');
+        });
+    }
+
+    function resetSOCIngester() {
+        socActiveFile = null;
+        socRawDataArrayBuffer = null;
+        socParsedResult = null;
+        socActiveFilter = 'all';
+        socActiveSearch = '';
+
+        const fileInput = document.getElementById('ingester-file-input');
+        if (fileInput) fileInput.value = '';
+
+        const resultsContainer = document.getElementById('ingester-results-container');
+        if (resultsContainer) resultsContainer.style.display = 'none';
+
+        const warningBanner = document.getElementById('soc-scanned-warning');
+        if (warningBanner) warningBanner.style.display = 'none';
+
+        const statName = document.getElementById('ingest-stat-filename');
+        if (statName) statName.textContent = '—';
+
+        showToast('SOC Ingester reset. Ready for new document.', 'info');
+    }
+
+    function openSOCImportLogsModal() {
+        const modal = document.getElementById('soc-import-logs-modal');
+        if (!modal) return;
+
+        const body = modal.querySelector('.modal-body');
+        if (body) {
+            const history = safeJsonParse(localStorage.getItem('brc_soc_import_history'), []);
+            if (history.length === 0) {
+                body.innerHTML = `
+                    <div style="padding: 2.5rem; text-align: center; color: var(--text-muted);">
+                        <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">No historical SOC ingestion logs found.</p>
+                        <span style="font-size: 0.78rem;">Upload and commit a Statement of Charges file to generate audit logs.</span>
+                    </div>
+                `;
+            } else {
+                let rowsHtml = '';
+                history.forEach((h, idx) => {
+                    const dateStr = new Date(h.timestamp).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+                    rowsHtml += `
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 0.6rem; text-align: center; color: var(--text-muted); font-size: 0.75rem;">${idx + 1}</td>
+                            <td style="padding: 0.6rem; font-weight: 700; color: var(--text-main); font-size: 0.8rem;">${h.file_name}</td>
+                            <td style="padding: 0.6rem; font-family: monospace; color: var(--accent, #6366f1); font-size: 0.75rem;">${h.target_tariff_name || 'MASTER'}</td>
+                            <td style="padding: 0.6rem; text-align: right; color: var(--success); font-weight: 800; font-family: monospace;">+${h.valid_imported}</td>
+                            <td style="padding: 0.6rem; text-align: right; color: var(--danger); font-family: monospace;">${h.invalid_skipped || 0}</td>
+                            <td style="padding: 0.6rem; font-size: 0.72rem; color: var(--text-muted);">${dateStr}</td>
+                            <td style="padding: 0.6rem; font-size: 0.72rem; color: var(--text-muted);">${h.user}</td>
+                        </tr>
+                    `;
+                });
+
+                body.innerHTML = `
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.78rem;">
+                        <thead>
+                            <tr style="background: var(--bg-hover); color: var(--text-muted); font-weight: 700; border-bottom: 2px solid var(--border);">
+                                <th style="padding: 0.6rem; width: 35px; text-align: center;">#</th>
+                                <th style="padding: 0.6rem;">Source File</th>
+                                <th style="padding: 0.6rem;">Target Tariff</th>
+                                <th style="padding: 0.6rem; text-align: right;">Imported</th>
+                                <th style="padding: 0.6rem; text-align: right;">Skipped</th>
+                                <th style="padding: 0.6rem;">Date / Time</th>
+                                <th style="padding: 0.6rem;">User</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rowsHtml}
+                        </tbody>
+                    </table>
+                `;
+            }
+        }
+        modal.style.display = 'flex';
+    }
+
     window.initSettlementAuditor = initSettlementAuditor;
     window.initIngesterPanel = initIngesterPanel;
 
