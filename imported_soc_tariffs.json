@@ -1,0 +1,58 @@
+{
+  "TEST_E2E_SOC": [
+    {
+      "service_code": "E2E-001",
+      "description": "ENDOSCOPY UPPER GI",
+      "rate": 4500.0,
+      "category": "General",
+      "department": "Gastroenterology",
+      "unit": "Per Quantity",
+      "currency": "INR",
+      "effective_from": null,
+      "effective_to": null,
+      "quantity": 1.0,
+      "min_charge": null,
+      "max_charge": null,
+      "alias_code": null,
+      "alias_name": null,
+      "applicable_payer": null,
+      "room_category": null,
+      "conditions": null,
+      "source_file": "test_13_e2e.xlsx",
+      "source_row": 2,
+      "raw_data": {
+        "CODE": "E2E-001",
+        "SERVICE NAME": "ENDOSCOPY UPPER GI",
+        "DEPARTMENT": "Gastroenterology",
+        "RATE": 4500
+      }
+    },
+    {
+      "service_code": "E2E-002",
+      "description": "COLONOSCOPY DIAGNOSTIC",
+      "rate": 7500.0,
+      "category": "General",
+      "department": "Gastroenterology",
+      "unit": "Per Quantity",
+      "currency": "INR",
+      "effective_from": null,
+      "effective_to": null,
+      "quantity": 1.0,
+      "min_charge": null,
+      "max_charge": null,
+      "alias_code": null,
+      "alias_name": null,
+      "applicable_payer": null,
+      "room_category": null,
+      "conditions": null,
+      "source_file": "test_13_e2e.xlsx",
+      "source_row": 3,
+      "raw_data": {
+        "CODE": "E2E-002",
+        "SERVICE NAME": "COLONOSCOPY DIAGNOSTIC",
+        "DEPARTMENT": "Gastroenterology",
+        "RATE": 7500
+      }
+    }
+  ]
+}

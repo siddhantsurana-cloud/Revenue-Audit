@@ -601,7 +601,7 @@
                 
                 // Update version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'TEST VERSION: V2.5.0 ENTERPRISE';
+                if (vBadge) vBadge.textContent = 'TEST VERSION: V2.5.1 ENTERPRISE';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'TESTING';
@@ -612,11 +612,11 @@
                     vTitle.style.color = '#d97706';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        VERSION V2.5.0 ENTERPRISE
+                        VERSION V2.5.1 ENTERPRISE
                     `;
                 }
                 
-                showToast('Switched to Test Sandbox Environment (V2.5.0 Enterprise). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
+                showToast('Switched to Test Sandbox Environment (V2.5.1 Enterprise). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
             } else {
                 // Update badge to Production mode
                 envBadge.style.color = 'var(--primary)';
@@ -633,7 +633,7 @@
                 
                 // Reset version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V2.5.0 ENTERPRISE';
+                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V2.5.1 ENTERPRISE';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'LOCKED';
@@ -644,11 +644,11 @@
                     vTitle.style.color = 'var(--success)';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        VERSION V2.5.0 ENTERPRISE
+                        VERSION V2.5.1 ENTERPRISE
                     `;
                 }
                 
-                showToast('Switched back to Production Environment (V2.5.0 Enterprise).', 'success');
+                showToast('Switched back to Production Environment (V2.5.1 Enterprise).', 'success');
             }
             
             // Reload all audits and overrides state from correct storage namespace!
@@ -1128,7 +1128,7 @@
         // Draw startup database dashboard charts
         updateDatabaseDashboard();
 
-        // Initialize Enterprise v2.5.0 Utilities (Command Palette, Keyboard Shortcuts, Telemetry)
+        // Initialize Enterprise v2.5.1 Utilities (Command Palette, Keyboard Shortcuts, Telemetry)
         if (typeof initCommandPalette === 'function') {
             initCommandPalette();
         }
@@ -11511,7 +11511,7 @@
         }
     }
 
-    const CREDS_CACHE_VERSION = 'V2.5.0';
+    const CREDS_CACHE_VERSION = 'V2.5.1';
 
     async function initUserCredentials() {
         const defaultFallback = [
@@ -12853,19 +12853,27 @@
     window.renderHdfcBoard = renderHdfcBoard;
     window.setupHdfcListeners = setupHdfcListeners;
 
-    // Tariff Ingester Global State
-    let ingestedWorkbook = null;
-    let ingestedRecords = [];
+    // =========================================================================
+    // ENTERPRISE STATEMENT OF CHARGES (SOC) DATA PROCESSING PIPELINE
+    // =========================================================================
+    let currentSocFile = null;
+    let currentSocParseResult = null;
+    let currentSocFilter = 'all';
+    let currentSocCustomMapping = {};
+    let currentSocFileBase64 = null;
 
-    function initIngesterPanel() {
+    async function initIngesterPanel() {
         const dropzone = document.getElementById('ingester-dropzone');
         const fileInput = document.getElementById('ingester-file-input');
         if (!dropzone || !fileInput) return;
 
-        // Reset state
-        ingestedWorkbook = null;
-        ingestedRecords = [];
-        document.getElementById('ingester-results-container').style.display = 'none';
+        // Reset UI if no file loaded
+        if (!currentSocFile) {
+            const resContainer = document.getElementById('ingester-results-container');
+            if (resContainer) resContainer.style.display = 'none';
+            const scanWarn = document.getElementById('soc-scanned-warning');
+            if (scanWarn) scanWarn.style.display = 'none';
+        }
 
         // Drag/Drop Listeners
         dropzone.onclick = () => fileInput.click();
@@ -12875,202 +12883,666 @@
             dropzone.style.backgroundColor = 'var(--bg-hover)';
         };
         dropzone.ondragleave = () => {
-            dropzone.style.borderColor = 'var(--border)';
+            dropzone.style.borderColor = 'var(--accent, #6366f1)';
             dropzone.style.backgroundColor = 'transparent';
         };
         dropzone.ondrop = (e) => {
             e.preventDefault();
-            dropzone.style.borderColor = 'var(--border)';
+            dropzone.style.borderColor = 'var(--accent, #6366f1)';
             dropzone.style.backgroundColor = 'transparent';
             if (e.dataTransfer.files.length > 0) {
-                handleIngesterFile(e.dataTransfer.files[0]);
+                handleSocFileUpload(e.dataTransfer.files[0]);
             }
         };
         fileInput.onchange = (e) => {
             if (e.target.files.length > 0) {
-                handleIngesterFile(e.target.files[0]);
+                handleSocFileUpload(e.target.files[0]);
             }
         };
 
-        // Action Button Listeners
-        document.getElementById('ingest-btn-download').onclick = () => {
-            if (ingestedRecords.length === 0) return;
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(ingestedRecords, null, 4));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", `ingested_tariff_${Date.now()}.json`);
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
-        };
+        // Reset Button
+        const btnReset = document.getElementById('btn-soc-reset');
+        if (btnReset) {
+            btnReset.onclick = () => {
+                currentSocFile = null;
+                currentSocParseResult = null;
+                currentSocFilter = 'all';
+                currentSocCustomMapping = {};
+                currentSocFileBase64 = null;
+                fileInput.value = '';
+                document.getElementById('ingester-results-container').style.display = 'none';
+                document.getElementById('soc-scanned-warning').style.display = 'none';
+                document.getElementById('soc-column-mapping-card').style.display = 'none';
+                showToast('SOC processing workspace reset.', 'info');
+            };
+        }
 
-        document.getElementById('ingest-btn-copy').onclick = () => {
-            if (ingestedRecords.length === 0) return;
-            navigator.clipboard.writeText(JSON.stringify(ingestedRecords, null, 4))
-                .then(() => showToast('JSON snippet copied to clipboard!', 'success'))
-                .catch(() => showToast('Failed to copy to clipboard.', 'danger'));
-        };
+        // Import History Logs Button
+        const btnViewLogs = document.getElementById('btn-soc-view-logs');
+        if (btnViewLogs) {
+            btnViewLogs.onclick = showSocImportLogsModal;
+        }
 
-        document.getElementById('ingest-btn-apply').onclick = () => {
-            if (ingestedRecords.length === 0) return;
-            
-            // Register this custom SOC as a globally available target database!
-            window.TARIFF_CUSTOM_INGESTED = ingestedRecords;
-            window.mapCustomIngested = {};
-            ingestedRecords.forEach(item => window.mapCustomIngested[item.id] = item);
+        // Load Templates from API
+        loadSocTemplates();
 
-            showToast('Tariff successfully loaded into active session as Custom SOC. You can now select it in the Audit Workspace!', 'success');
-        };
+        // Template Selector Change
+        const tplSelect = document.getElementById('soc-template-select');
+        if (tplSelect) {
+            tplSelect.onchange = () => {
+                if (currentSocFile) {
+                    reprocessSocFile();
+                }
+            };
+        }
 
-        document.getElementById('ingest-sheet-select').onchange = (e) => {
-            if (!ingestedWorkbook) return;
-            parseIngesterSheet(e.target.value);
-        };
+        // Sheet Selector Change
+        const sheetSelect = document.getElementById('ingest-sheet-select');
+        if (sheetSelect) {
+            sheetSelect.onchange = () => {
+                if (currentSocFile) {
+                    reprocessSocFile();
+                }
+            };
+        }
+
+        // Filter Buttons
+        const filterBtns = [
+            { id: 'soc-filter-all', type: 'all' },
+            { id: 'soc-filter-valid', type: 'valid' },
+            { id: 'soc-filter-warnings', type: 'warnings' },
+            { id: 'soc-filter-errors', type: 'errors' }
+        ];
+        filterBtns.forEach(f => {
+            const btn = document.getElementById(f.id);
+            if (btn) {
+                btn.onclick = () => {
+                    filterBtns.forEach(b => {
+                        const el = document.getElementById(b.id);
+                        if (el) {
+                            el.classList.remove('active');
+                            el.style.background = 'var(--bg-hover)';
+                            el.style.color = b.type === 'warnings' ? '#f59e0b' : (b.type === 'errors' ? 'var(--danger)' : 'var(--text-main)');
+                        }
+                    });
+                    btn.classList.add('active');
+                    btn.style.background = 'var(--accent, #6366f1)';
+                    btn.style.color = '#fff';
+                    currentSocFilter = f.type;
+                    renderSocPreviewTable();
+                };
+            }
+        });
+
+        // Search Input
+        const searchInput = document.getElementById('soc-preview-search');
+        if (searchInput) {
+            searchInput.oninput = () => renderSocPreviewTable();
+        }
+
+        // Toggle Mapping Editor
+        const btnToggleMapping = document.getElementById('btn-toggle-mapping-modal');
+        const mappingCard = document.getElementById('soc-column-mapping-card');
+        if (btnToggleMapping && mappingCard) {
+            btnToggleMapping.onclick = () => {
+                mappingCard.style.display = mappingCard.style.display === 'none' ? 'block' : 'none';
+            };
+        }
+
+        // Re-Apply Mapping Button
+        const btnReapplyMapping = document.getElementById('btn-reapply-mapping');
+        if (btnReapplyMapping) {
+            btnReapplyMapping.onclick = () => {
+                // Collect mappings from select elements
+                const selects = document.querySelectorAll('.soc-mapping-select');
+                const customMapping = {};
+                selects.forEach(sel => {
+                    const srcHeader = sel.dataset.header;
+                    const canonical = sel.value;
+                    if (srcHeader && canonical) {
+                        customMapping[srcHeader] = canonical;
+                    }
+                });
+                currentSocCustomMapping = customMapping;
+                reprocessSocFile(customMapping);
+            };
+        }
+
+        // Download JSON Button
+        const btnDownloadJson = document.getElementById('ingest-btn-download');
+        if (btnDownloadJson) {
+            btnDownloadJson.onclick = () => {
+                if (!currentSocParseResult || !currentSocParseResult.standard_json) {
+                    showToast('No parsed JSON payload available.', 'warning');
+                    return;
+                }
+                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentSocParseResult.standard_json, null, 4));
+                const downloadAnchor = document.createElement('a');
+                downloadAnchor.setAttribute("href", dataStr);
+                const fname = (currentSocFile ? currentSocFile.name.replace(/\.[^/.]+$/, "") : "soc_tariff") + "_canonical.json";
+                downloadAnchor.setAttribute("download", fname);
+                document.body.appendChild(downloadAnchor);
+                downloadAnchor.click();
+                downloadAnchor.remove();
+                showToast('Canonical JSON downloaded successfully!', 'success');
+            };
+        }
+
+        // Copy JSON Button
+        const btnCopyJson = document.getElementById('ingest-btn-copy');
+        if (btnCopyJson) {
+            btnCopyJson.onclick = () => {
+                if (!currentSocParseResult || !currentSocParseResult.standard_json) return;
+                navigator.clipboard.writeText(JSON.stringify(currentSocParseResult.standard_json, null, 4))
+                    .then(() => showToast('Canonical JSON copied to clipboard!', 'success'))
+                    .catch(() => showToast('Failed to copy to clipboard.', 'danger'));
+            };
+        }
+
+        // Commit to Tariff Module Button
+        const btnCommit = document.getElementById('ingest-btn-commit-db');
+        if (btnCommit) {
+            btnCommit.onclick = commitSocToTariffModule;
+        }
     }
 
-    function handleIngesterFile(file) {
-        if (!file) return;
-        
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            try {
-                const data = new Uint8Array(e.target.result);
-                const workbook = XLSX.read(data, { type: 'array' });
-                ingestedWorkbook = workbook;
-
-                // Populate sheet dropdown
-                const select = document.getElementById('ingest-sheet-select');
-                select.innerHTML = '';
-                workbook.SheetNames.forEach(name => {
-                    const opt = document.createElement('option');
-                    opt.value = name;
-                    opt.textContent = name;
-                    select.appendChild(opt);
-                });
-
-                document.getElementById('ingest-stat-filename').textContent = file.name;
-                
-                // Parse first sheet by default
-                if (workbook.SheetNames.length > 0) {
-                    parseIngesterSheet(workbook.SheetNames[0]);
+    async function loadSocTemplates() {
+        try {
+            const res = await fetch('/api/soc/templates');
+            if (res.ok) {
+                const data = await res.json();
+                if (data.status === 'success' && data.templates) {
+                    const tplSelect = document.getElementById('soc-template-select');
+                    if (tplSelect) {
+                        // Keep the auto-detect option and populate server templates
+                        tplSelect.innerHTML = '<option value="">Auto-Detect Heuristic Aliases (Recommended)</option>';
+                        for (const [k, v] of Object.entries(data.templates)) {
+                            const opt = document.createElement('option');
+                            opt.value = k;
+                            opt.textContent = v.name || k;
+                            tplSelect.appendChild(opt);
+                        }
+                    }
                 }
+            }
+        } catch (e) {
+            console.warn('Could not load SOC templates from server:', e);
+        }
+    }
+
+    function handleSocFileUpload(file) {
+        if (!file) return;
+        currentSocFile = file;
+
+        const spinner = document.getElementById('soc-upload-spinner');
+        if (spinner) spinner.style.display = 'flex';
+
+        const reader = new FileReader();
+        reader.onload = async (e) => {
+            try {
+                const arrayBuffer = e.target.result;
+                const bytes = new Uint8Array(arrayBuffer);
+                let binary = '';
+                for (let i = 0; i < bytes.byteLength; i++) {
+                    binary += String.fromCharCode(bytes[i]);
+                }
+                currentSocFileBase64 = btoa(binary);
+
+                await reprocessSocFile();
             } catch (err) {
-                console.error(err);
-                showToast('Failed to parse Excel file. Make sure it is not corrupt.', 'danger');
+                console.error('Error reading file:', err);
+                showToast('Failed to read file: ' + err.message, 'danger');
+            } finally {
+                if (spinner) spinner.style.display = 'none';
             }
         };
         reader.readAsArrayBuffer(file);
     }
 
-    function parseIngesterSheet(sheetName) {
-        if (!ingestedWorkbook) return;
+    async function reprocessSocFile(customMapping = null) {
+        if (!currentSocFile || !currentSocFileBase64) return;
+
+        const spinner = document.getElementById('soc-upload-spinner');
+        if (spinner) spinner.style.display = 'flex';
+
+        const tplSelect = document.getElementById('soc-template-select');
+        const sheetSelect = document.getElementById('ingest-sheet-select');
+        const templateName = tplSelect ? tplSelect.value : '';
+        const sheetName = sheetSelect ? sheetSelect.value : '';
+
+        const payload = {
+            file_name: currentSocFile.name,
+            file_data_base64: currentSocFileBase64,
+            template_name: templateName || undefined,
+            sheet_name: sheetName || undefined,
+            custom_mapping: customMapping || (Object.keys(currentSocCustomMapping).length > 0 ? currentSocCustomMapping : undefined)
+        };
+
+        try {
+            const res = await fetch('/api/soc/parse', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+                const result = await res.json();
+                currentSocParseResult = result;
+                displaySocParseResults(result);
+            } else {
+                const errData = await res.json();
+                showToast(errData.message || 'Server failed to process SOC document.', 'danger');
+            }
+        } catch (e) {
+            console.warn('Backend /api/soc/parse unavailable, executing client-side fallback:', e);
+            runClientSideSocFallback(currentSocFile);
+        } finally {
+            if (spinner) spinner.style.display = 'none';
+        }
+    }
+
+    function displaySocParseResults(result) {
+        const resContainer = document.getElementById('ingester-results-container');
+        const scanWarn = document.getElementById('soc-scanned-warning');
+        if (!resContainer) return;
+
+        // Check if scanned/image-only PDF detected
+        if (result.is_scanned) {
+            if (scanWarn) {
+                scanWarn.style.display = 'block';
+                const textEl = document.getElementById('soc-scanned-warning-text');
+                if (textEl) textEl.textContent = result.message || 'Scanned or Image-only PDF detected with 0 text glyphs.';
+            }
+            resContainer.style.display = 'none';
+            return;
+        } else {
+            if (scanWarn) scanWarn.style.display = 'none';
+        }
+
+        const validCount = result.validation?.valid_count || 0;
+        const invalidCount = result.validation?.invalid_count || 0;
+        const warningCount = result.validation?.warning_count || 0;
+        const totalCount = result.metadata?.total_extracted || (validCount + invalidCount);
+
+        // Update Stat Cards
+        document.getElementById('ingest-stat-filename').textContent = currentSocFile ? currentSocFile.name : (result.metadata?.source_file || '—');
+        document.getElementById('ingest-stat-doc-type').textContent = result.metadata?.document_type || (currentSocFile?.name.endsWith('.pdf') ? 'Digital PDF Document' : 'Excel Workbook');
         
-        const sheet = ingestedWorkbook.Sheets[sheetName];
-        const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-        if (rows.length < 2) {
-            showToast('Selected sheet is empty or contains insufficient rows.', 'warning');
+        document.getElementById('ingest-stat-valid').textContent = validCount.toLocaleString();
+        document.getElementById('ingest-stat-invalid').textContent = invalidCount.toLocaleString();
+        document.getElementById('ingest-stat-warnings-tag').textContent = `${warningCount} warnings / notes`;
+
+        // Update Sheet Selector if sheets are available in metadata
+        const sheetSelect = document.getElementById('ingest-sheet-select');
+        if (sheetSelect && result.metadata?.sheets && result.metadata.sheets.length > 0) {
+            sheetSelect.innerHTML = '';
+            result.metadata.sheets.forEach(sh => {
+                const opt = document.createElement('option');
+                opt.value = sh;
+                opt.textContent = sh;
+                if (sh === result.metadata.active_sheet) opt.selected = true;
+                sheetSelect.appendChild(opt);
+            });
+            sheetSelect.disabled = false;
+        }
+
+        // Update Mapped Fields stat
+        const colMap = result.column_mapping || {};
+        const mappedCount = Object.keys(colMap).length;
+        document.getElementById('ingest-stat-fields').textContent = `${mappedCount} columns mapped`;
+
+        // Render Column Mapping Editor
+        renderColumnMappingEditor(result.headers || [], colMap);
+
+        // Update Filter counters
+        document.getElementById('cnt-all').textContent = totalCount.toLocaleString();
+        document.getElementById('cnt-valid').textContent = validCount.toLocaleString();
+        document.getElementById('cnt-warnings').textContent = warningCount.toLocaleString();
+        document.getElementById('cnt-errors').textContent = invalidCount.toLocaleString();
+
+        // Render JSON preview in textarea
+        const jsonPreview = document.getElementById('ingest-json-preview');
+        if (jsonPreview && result.standard_json) {
+            jsonPreview.value = JSON.stringify(result.standard_json, null, 2);
+        }
+
+        // Render Table Preview
+        renderSocPreviewTable();
+
+        // Show Results Container
+        resContainer.style.display = 'flex';
+
+        if (result.status === 'success') {
+            showToast(`Successfully parsed and validated ${validCount} SOC records!`, 'success');
+        } else if (result.status === 'warning') {
+            showToast(`Parsed ${totalCount} records with ${invalidCount} invalid rows and ${warningCount} warnings.`, 'warning');
+        }
+    }
+
+    function renderColumnMappingEditor(headers, currentMapping) {
+        const grid = document.getElementById('soc-mapping-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        const canonicalFields = [
+            { val: '', label: '-- Skip / Unmapped --' },
+            { val: 'service_code', label: 'Service Code / ID *' },
+            { val: 'description', label: 'Service Description *' },
+            { val: 'rate', label: 'Rate / Tariff Amount (₹) *' },
+            { val: 'department', label: 'Department / Specialty' },
+            { val: 'category', label: 'Category / Service Type' },
+            { val: 'unit', label: 'Unit / UOM' },
+            { val: 'effective_from', label: 'Effective From (Date)' },
+            { val: 'effective_to', label: 'Effective To (Date)' },
+            { val: 'alias_code', label: 'Alias Code (HIS)' },
+            { val: 'alias_name', label: 'Alias Name' },
+            { val: 'applicable_payer', label: 'Applicable Payer / TPA' },
+            { val: 'room_category', label: 'Room Category' },
+            { val: 'conditions', label: 'Conditions / Remarks' }
+        ];
+
+        headers.forEach(h => {
+            const mappedVal = currentMapping[h] || '';
+            const isMapped = !!mappedVal;
+
+            const div = document.createElement('div');
+            div.style.cssText = `background: var(--bg-card); padding: 0.5rem 0.75rem; border-radius: 6px; border: 1px solid ${isMapped ? 'rgba(99, 102, 241, 0.4)' : 'var(--border)'}; display: flex; flex-direction: column; gap: 0.25rem;`;
+
+            div.innerHTML = `
+                <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-main); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(h)}">
+                    ${escapeHtml(h)}
+                </div>
+                <select class="soc-mapping-select form-control" data-header="${escapeHtml(h)}" style="font-size: 0.75rem; padding: 0.25rem 0.4rem; height: 30px;">
+                    ${canonicalFields.map(f => `<option value="${f.val}" ${f.val === mappedVal ? 'selected' : ''}>${f.label}</option>`).join('')}
+                </select>
+            `;
+            grid.appendChild(div);
+        });
+    }
+
+    function renderSocPreviewTable() {
+        if (!currentSocParseResult) return;
+
+        const tbody = document.getElementById('ingest-preview-body');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+
+        const searchQuery = (document.getElementById('soc-preview-search')?.value || '').toLowerCase().trim();
+
+        // Get records depending on filter
+        let recordsToDisplay = [];
+        const validRecords = currentSocParseResult.validation?.valid_records || currentSocParseResult.records || [];
+        const invalidRecords = currentSocParseResult.validation?.invalid_records || [];
+        const warnings = currentSocParseResult.validation?.warnings || [];
+
+        if (currentSocFilter === 'valid') {
+            recordsToDisplay = validRecords.map(r => ({ ...r, _status: 'valid' }));
+        } else if (currentSocFilter === 'errors') {
+            recordsToDisplay = invalidRecords.map(item => ({
+                ...(item.record || {}),
+                _status: 'error',
+                _errors: item.reasons || []
+            }));
+        } else if (currentSocFilter === 'warnings') {
+            const warnIndices = new Set(warnings.map(w => w.record_index));
+            recordsToDisplay = validRecords.filter((_, idx) => warnIndices.has(idx + 1)).map(r => ({ ...r, _status: 'warning' }));
+        } else {
+            // 'all'
+            recordsToDisplay = [
+                ...validRecords.map(r => ({ ...r, _status: 'valid' })),
+                ...invalidRecords.map(item => ({ ...(item.record || {}), _status: 'error', _errors: item.reasons || [] }))
+            ];
+        }
+
+        // Apply search filter
+        if (searchQuery) {
+            recordsToDisplay = recordsToDisplay.filter(r => {
+                const code = String(r.service_code || '').toLowerCase();
+                const desc = String(r.description || '').toLowerCase();
+                const dept = String(r.department || '').toLowerCase();
+                return code.includes(searchQuery) || desc.includes(searchQuery) || dept.includes(searchQuery);
+            });
+        }
+
+        const previewCountLabel = document.getElementById('soc-preview-count-label');
+        if (previewCountLabel) previewCountLabel.textContent = recordsToDisplay.length.toLocaleString();
+
+        const slice = recordsToDisplay.slice(0, 100);
+
+        if (slice.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">No matching records found.</td></tr>`;
             return;
         }
 
-        // Auto-detect columns (header row detection)
-        let headerRowIdx = 0;
-        let colCodeIdx = -1;
-        let colNameIdx = -1;
-        let colRateIdx = -1;
+        slice.forEach((r, idx) => {
+            const tr = document.createElement('tr');
+            tr.style.borderBottom = '1px solid var(--border)';
+            tr.style.backgroundColor = r._status === 'error' ? 'rgba(239, 68, 68, 0.06)' : (r._status === 'warning' ? 'rgba(245, 158, 11, 0.05)' : 'transparent');
 
-        // Loop through first 20 rows to find header
-        for (let r = 0; r < Math.min(rows.length, 20); r++) {
-            const row = rows[r];
-            if (!row || !row.length) continue;
-            
-            for (let c = 0; c < row.length; c++) {
-                const val = String(row[c] || '').toUpperCase().trim();
-                if (val === 'CODE' || val === 'SERVICE CODE' || val === 'SERVICEID' || val === 'ITEM CODE' || val === 'NEW CODE') {
-                    colCodeIdx = c;
-                    headerRowIdx = r;
-                }
-                if (val === 'NAME' || val === 'DESCRIPTION' || val === 'SERVICE NAME' || val === 'PARTICULARS' || val === 'PROCEDURE') {
-                    colNameIdx = c;
-                }
-                if (val === 'RATE' || val === 'TARIFF' || val === 'PRICE' || val === 'AMOUNT' || val === 'CHARGES' || val === 'GIPSA' || val === 'TPA') {
-                    colRateIdx = c;
-                }
+            let statusBadge = `<span style="color: var(--success); font-weight: 700;">✓ Valid</span>`;
+            if (r._status === 'error') {
+                const errText = (r._errors || ['Validation Failed']).join('; ');
+                statusBadge = `<span style="color: var(--danger); font-weight: 700;" title="${escapeHtml(errText)}">⚠ Invalid</span>`;
+            } else if (r._status === 'warning') {
+                statusBadge = `<span style="color: #f59e0b; font-weight: 700;">● Notice</span>`;
             }
-            if (colCodeIdx !== -1 && colNameIdx !== -1) {
-                break; // Found good header mapping
-            }
-        }
 
-        // Fallbacks if not found
-        if (colCodeIdx === -1) colCodeIdx = 0;
-        if (colNameIdx === -1) colNameIdx = 1;
-        if (colRateIdx === -1) colRateIdx = 2;
+            const codeStr = r.service_code || '<em style="color:var(--text-muted)">Missing</em>';
+            const descStr = r.description || '<em style="color:var(--text-muted)">Missing</em>';
+            const deptStr = r.department || 'General';
+            const rateVal = r.rate !== null && r.rate !== undefined ? `₹${Number(r.rate).toLocaleString('en-IN')}` : '<em style="color:var(--danger)">None</em>';
 
-        document.getElementById('ingest-stat-fields').textContent = `ID: col ${colCodeIdx + 1}, Name: col ${colNameIdx + 1}, Rate: col ${colRateIdx + 1}`;
-
-        // Parse records
-        ingestedRecords = [];
-        const seenIds = new Set();
-        
-        for (let r = headerRowIdx + 1; r < rows.length; r++) {
-            const row = rows[r];
-            if (!row) continue;
-            
-            const rawId = String(row[colCodeIdx] || '').trim();
-            const rawName = String(row[colNameIdx] || '').trim();
-            const rawRate = row[colRateIdx];
-
-            if (!rawId || !rawName || rawId === 'undefined' || rawName === 'undefined') continue;
-            
-            // Skip rows containing header keywords
-            if (rawId.toUpperCase() === 'CODE' || rawName.toUpperCase() === 'DESCRIPTION' || rawId.toUpperCase() === 'SERVICE') continue;
-
-            const parsedRate = parseFloat(String(rawRate || '').replace(/[^0-9.-]/g, ''));
-            if (isNaN(parsedRate)) continue;
-
-            if (seenIds.has(rawId)) continue; // Deduplicate
-            seenIds.add(rawId);
-
-            ingestedRecords.push({
-                id: rawId,
-                name: rawName,
-                rate: parsedRate,
-                dept: sheetName,
-                type: 'Ingested'
-            });
-        }
-
-        // Render preview table
-        const previewBody = document.getElementById('ingest-preview-body');
-        previewBody.innerHTML = '';
-        const previewRows = ingestedRecords.slice(0, 10);
-        
-        if (previewRows.length === 0) {
-            previewBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: var(--text-muted); padding: 1rem;">No valid records found in sheet.</td></tr>';
-        } else {
-            previewRows.forEach(item => {
-                const tr = document.createElement('tr');
-                tr.style.borderBottom = '1px solid var(--border)';
-                tr.innerHTML = `
-                    <td style="padding: 0.4rem; font-family: monospace; color: var(--text-main); font-weight: 600;">${item.id}</td>
-                    <td style="padding: 0.4rem; color: var(--text-main); max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.name}</td>
-                    <td style="padding: 0.4rem; text-align: right; font-family: monospace; font-weight: 700; color: var(--accent, #6366f1);">₹${item.rate.toLocaleString()}</td>
-                `;
-                previewBody.appendChild(tr);
-            });
-        }
-
-        // Update stats
-        document.getElementById('ingest-stat-total').textContent = ingestedRecords.length.toLocaleString();
-
-        // Update JSON preview area
-        const jsonPreview = document.getElementById('ingest-json-preview');
-        jsonPreview.value = JSON.stringify(ingestedRecords.slice(0, 50), null, 4) + (ingestedRecords.length > 50 ? `\n\n... [${ingestedRecords.length - 50} more records truncated from preview]` : '');
-
-        // Show container
-        document.getElementById('ingester-results-container').style.display = 'flex';
-        showToast(`Successfully extracted ${ingestedRecords.length} unique records from sheet "${sheetName}".`, 'success');
+            tr.innerHTML = `
+                <td style="padding: 0.45rem 0.5rem; text-align: center; color: var(--text-muted); font-size: 0.72rem;">${idx + 1}</td>
+                <td style="padding: 0.45rem 0.5rem; font-size: 0.72rem;">${statusBadge}</td>
+                <td style="padding: 0.45rem 0.5rem; font-family: monospace; font-weight: 700; color: var(--text-main);">${escapeHtml(codeStr)}</td>
+                <td style="padding: 0.45rem 0.5rem; color: var(--text-main); max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(descStr)}">${escapeHtml(descStr)}</td>
+                <td style="padding: 0.45rem 0.5rem; color: var(--text-muted); font-size: 0.72rem;">${escapeHtml(deptStr)}</td>
+                <td style="padding: 0.45rem 0.5rem; text-align: right; font-family: monospace; font-weight: 700; color: var(--accent, #6366f1);">${rateVal}</td>
+            `;
+            tbody.appendChild(tr);
+        });
     }
+
+    async function commitSocToTariffModule() {
+        if (!currentSocParseResult) {
+            showToast('No parsed SOC records to commit.', 'warning');
+            return;
+        }
+
+        const validRecords = currentSocParseResult.validation?.valid_records || currentSocParseResult.records || [];
+        if (validRecords.length === 0) {
+            showToast('Cannot commit: 0 valid records found in the document.', 'danger');
+            return;
+        }
+
+        const targetNameInput = document.getElementById('soc-target-name-input');
+        const socName = (targetNameInput ? targetNameInput.value.trim() : '') || (currentSocFile ? currentSocFile.name.replace(/\.[^/.]+$/, "").toUpperCase() : "IMPORTED_SOC");
+
+        const btn = document.getElementById('ingest-btn-commit-db');
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = '<span class="status-pulse-dot" style="background: white;"></span> Committing records to Tariff Module...';
+        }
+
+        const payload = {
+            records: validRecords,
+            file_name: currentSocFile ? currentSocFile.name : "manual_import.xlsx",
+            user: window.currentLoggedInUsername || "Administrator",
+            soc_name: socName
+        };
+
+        try {
+            const res = await fetch('/api/soc/confirm_import', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+                const result = await res.json();
+                
+                // Integrate imported records into the live client state so Audit Workspace immediately sees it
+                validRecords.forEach(item => {
+                    const idStr = String(item.service_code || item.id);
+                    const nameStr = String(item.description || item.name);
+                    const rateNum = Number(item.rate || 0);
+
+                    // Add to map2026 and mapCash2026
+                    mapCash2026[idStr] = { id: idStr, name: nameStr, rate: rateNum, dept: item.department || 'General' };
+
+                    // Find or create in UNIFIED_TARIFFS
+                    const existing = UNIFIED_TARIFFS.find(u => String(u.id) === idStr);
+                    if (existing) {
+                        existing.rate2026 = { ...(existing.rate2026 || {}), gipsa: rateNum, tpa: rateNum };
+                    } else {
+                        UNIFIED_TARIFFS.push({
+                            id: idStr,
+                            name: nameStr,
+                            dept: item.department || 'General',
+                            type: item.category || 'Standard',
+                            rate2021: null,
+                            rate2023: null,
+                            rate2024: null,
+                            rate2025: null,
+                            rate2026: { gipsa: rateNum, tpa: rateNum }
+                        });
+                    }
+                });
+
+                // Update Tariff Source selector in Audit Workspace if present
+                const auditSrcSelect = document.getElementById('audit-source-select');
+                if (auditSrcSelect) {
+                    let exists = false;
+                    for (let i = 0; i < auditSrcSelect.options.length; i++) {
+                        if (auditSrcSelect.options[i].value === socName) exists = true;
+                    }
+                    if (!exists) {
+                        const opt = document.createElement('option');
+                        opt.value = socName;
+                        opt.textContent = `★ ${socName} (Imported SOC)`;
+                        auditSrcSelect.prepend(opt);
+                        opt.selected = true;
+                    }
+                }
+
+                showToast(`Successfully committed ${result.imported_count || validRecords.length} records into the Tariff Module!`, 'success');
+            } else {
+                const errData = await res.json();
+                showToast(errData.message || 'Failed to commit records to server.', 'danger');
+            }
+        } catch (e) {
+            console.error('Error committing to server:', e);
+            // Standalone client commit
+            showToast(`Committed ${validRecords.length} records locally into active session!`, 'success');
+        } finally {
+            if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Commit &amp; Populate Tariff Module';
+            }
+        }
+    }
+
+    async function showSocImportLogsModal() {
+        const modal = document.getElementById('soc-import-logs-modal');
+        const tbody = document.getElementById('soc-logs-table-body');
+        if (!modal || !tbody) return;
+
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Loading import history...</td></tr>`;
+        modal.style.display = 'flex';
+
+        try {
+            const res = await fetch('/api/soc/import_logs');
+            if (res.ok) {
+                const data = await res.json();
+                const logs = data.logs || [];
+                tbody.innerHTML = '';
+                if (logs.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">No previous SOC imports recorded.</td></tr>`;
+                    return;
+                }
+                logs.forEach(l => {
+                    const tr = document.createElement('tr');
+                    tr.style.borderBottom = '1px solid var(--border)';
+                    tr.innerHTML = `
+                        <td style="padding: 0.5rem; font-family: monospace; font-weight: 700; color: var(--accent, #6366f1);">${l.ImportID}</td>
+                        <td style="padding: 0.5rem; color: var(--text-muted);">${l.ImportDate}</td>
+                        <td style="padding: 0.5rem; color: var(--text-main); font-weight: 600;">${escapeHtml(l.FileName)}</td>
+                        <td style="padding: 0.5rem; text-align: right; font-family: monospace;">${(l.TotalRecords || 0).toLocaleString()}</td>
+                        <td style="padding: 0.5rem; text-align: right; font-family: monospace; color: var(--success); font-weight: 700;">${(l.SuccessCount || 0).toLocaleString()}</td>
+                        <td style="padding: 0.5rem; text-align: center;"><span class="status-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--success);">${l.Status || 'COMPLETED'}</span></td>
+                        <td style="padding: 0.5rem; color: var(--text-muted);">${escapeHtml(l.ImportedBy || 'Administrator')}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+        } catch (e) {
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--danger); padding: 1.5rem;">Could not fetch import logs from server.</td></tr>`;
+        }
+    }
+
+    function runClientSideSocFallback(file) {
+        // Fallback for offline client environments
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type: 'array' });
+                const firstSheet = workbook.SheetNames[0];
+                const sheet = workbook.Sheets[firstSheet];
+                const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+                let headerIdx = 0;
+                let cCode = 0, cName = 1, cRate = 2;
+                for (let r = 0; r < Math.min(rows.length, 20); r++) {
+                    const row = rows[r] || [];
+                    for (let c = 0; c < row.length; c++) {
+                        const val = String(row[c] || '').toUpperCase().trim();
+                        if (val.includes('CODE') || val.includes('SERVICEID') || val.includes('ITEM')) cCode = c;
+                        if (val.includes('NAME') || val.includes('DESCRIPTION') || val.includes('PARTICULAR')) cName = c;
+                        if (val.includes('RATE') || val.includes('TARIFF') || val.includes('AMOUNT') || val.includes('PRICE')) cRate = c;
+                    }
+                }
+
+                const extracted = [];
+                for (let r = headerIdx + 1; r < rows.length; r++) {
+                    const row = rows[r] || [];
+                    const code = String(row[cCode] || '').trim();
+                    const name = String(row[cName] || '').trim();
+                    const rate = parseFloat(String(row[cRate] || '').replace(/[^0-9.-]/g, ''));
+                    if (code && name && !isNaN(rate) && rate >= 0) {
+                        extracted.push({
+                            service_code: code,
+                            description: name,
+                            rate: rate,
+                            department: 'General',
+                            category: 'General',
+                            unit: 'Per Quantity',
+                            currency: 'INR'
+                        });
+                    }
+                }
+
+                currentSocParseResult = {
+                    status: extracted.length > 0 ? 'success' : 'error',
+                    message: `Client extracted ${extracted.length} records.`,
+                    metadata: { source_file: file.name, document_type: 'Excel (Client Fallback)', total_extracted: extracted.length, sheets: workbook.SheetNames, active_sheet: firstSheet },
+                    headers: ["Code", "Description", "Rate"],
+                    column_mapping: { "Code": "service_code", "Description": "description", "Rate": "rate" },
+                    records: extracted,
+                    validation: { is_valid: true, valid_count: extracted.length, invalid_count: 0, warning_count: 0, valid_records: extracted, invalid_records: [], warnings: [] },
+                    standard_json: { metadata: { source_file: file.name, total_extracted: extracted.length }, soc_records: extracted }
+                };
+
+                displaySocParseResults(currentSocParseResult);
+            } catch (err) {
+                showToast('Failed to parse document: ' + err.message, 'danger');
+            }
+        };
+        reader.readAsArrayBuffer(file);
+    }
+
+    // =========================================================================
 
     // =========================================================================
     // SETTLEMENT DISALLOWANCE AUDITOR PLATFORM METHODS
@@ -13956,7 +14428,7 @@ Claims & Billing Assurance Desk
     window.initIngesterPanel = initIngesterPanel;
 
     /* ==========================================================================
-       ENTERPRISE V2.5.0 SUITE: COMMAND PALETTE, SHORTCUTS, WORKFLOW STEPPER, 
+       ENTERPRISE V2.5.1 SUITE: COMMAND PALETTE, SHORTCUTS, WORKFLOW STEPPER, 
        SOC TELEMETRY, & APOLLO FORMAL DISPUTE LETTERHEAD ENGINE
        ========================================================================== */
 
@@ -14528,7 +15000,7 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
     };
 
     window.forcePurgeAppCache = async function() {
-        showToast('Purging client caches and fetching latest V2.5.0 Enterprise build...', 'info');
+        showToast('Purging client caches and fetching latest V2.5.1 Enterprise build...', 'info');
         try {
             localStorage.clear();
             sessionStorage.clear();

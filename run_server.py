@@ -10,6 +10,12 @@ import urllib.parse
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from http.server import SimpleHTTPRequestHandler, HTTPServer
+import tempfile
+
+# SOC Processing Module Import
+from soc_module.soc_manager import SOCProcessingManager
+from soc_module.config import MappingConfigManager
+from soc_module.tariff_integrator import TariffIntegrator
 
 PORT = 8500
 HOST = '0.0.0.0'
@@ -196,6 +202,32 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
             content = load_json_data('saved_settlements', 'saved_settlements.json', '[]')
             self.wfile.write(content.encode('utf-8'))
             
+        elif self.path.startswith('/api/soc/templates'):
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            mgr = MappingConfigManager()
+            templates_dict = {
+                k: {
+                    "key": k,
+                    "name": v.get("name", k),
+                    "description": v.get("description", ""),
+                    "mapping": v.get("mapping", {}),
+                    "default_currency": v.get("default_currency", "INR"),
+                    "default_unit": v.get("default_unit", "Per Quantity")
+                }
+                for k, v in mgr.templates.items()
+            }
+            self.wfile.write(json.dumps({"status": "success", "templates": templates_dict}).encode('utf-8'))
+
+        elif self.path.startswith('/api/soc/import_logs'):
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            integrator = TariffIntegrator(db_path=config.get("SQLITE_DB_PATH", "revenue_audit.db"))
+            logs = integrator.get_import_history()
+            self.wfile.write(json.dumps({"status": "success", "logs": logs}).encode('utf-8'))
+
         else:
             # Fallback to serving static files normally
             super().do_GET()
@@ -288,6 +320,88 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
                     self.wfile.write(json.dumps(resp).encode('utf-8'))
                 else:
                     self.send_error_response(400, error_msg or "OTP provider failed")
+
+            elif self.path == '/api/soc/parse':
+                data = json.loads(post_data.decode('utf-8'))
+                file_name = data.get("file_name", "soc_upload.xlsx")
+                file_data_b64 = data.get("file_data_base64", "")
+                template_name = data.get("template_name")
+                custom_mapping = data.get("custom_mapping")
+                sheet_name = data.get("sheet_name")
+
+                if not file_data_b64:
+                    self.send_error_response(400, "No file content provided in file_data_base64")
+                    return
+
+                # Decode file data and save to temporary file
+                file_bytes = base64.b64decode(file_data_b64)
+                _, ext = os.path.splitext(file_name)
+                with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp_file:
+                    tmp_file.write(file_bytes)
+                    tmp_file_path = tmp_file.name
+
+                try:
+                    manager = SOCProcessingManager(db_path=config.get("SQLITE_DB_PATH", "revenue_audit.db"))
+                    result = manager.process_file(
+                        tmp_file_path,
+                        sheet_name=sheet_name,
+                        template_name=template_name,
+                        custom_mapping=custom_mapping
+                    )
+                    # Override source_file name in metadata to original file_name
+                    if "metadata" in result:
+                        result["metadata"]["source_file"] = file_name
+                    if "standard_json" in result and "metadata" in result["standard_json"]:
+                        result["standard_json"]["metadata"]["source_file"] = file_name
+
+                    self.send_response(200)
+                    self.send_header('Content-type', 'application/json')
+                    self.end_headers()
+                    self.wfile.write(json.dumps(result).encode('utf-8'))
+                finally:
+                    if os.path.exists(tmp_file_path):
+                        try:
+                            os.remove(tmp_file_path)
+                        except Exception:
+                            pass
+
+            elif self.path == '/api/soc/confirm_import':
+                data = json.loads(post_data.decode('utf-8'))
+                records = data.get("records", [])
+                file_name = data.get("file_name", "manual_import.xlsx")
+                user = data.get("user", "Administrator")
+                soc_name = data.get("soc_name", "IMPORTED_SOC")
+
+                if not records:
+                    self.send_error_response(400, "No valid records to import")
+                    return
+
+                manager = SOCProcessingManager(db_path=config.get("SQLITE_DB_PATH", "revenue_audit.db"))
+                commit_result = manager.commit_to_tariff_module(
+                    valid_records=records,
+                    file_name=file_name,
+                    user=user,
+                    soc_name=soc_name
+                )
+                self.send_response(200)
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps(commit_result).encode('utf-8'))
+
+            elif self.path == '/api/soc/save_template':
+                data = json.loads(post_data.decode('utf-8'))
+                tpl_key = data.get("template_key")
+                tpl_data = data.get("template_data")
+                if not tpl_key or not tpl_data:
+                    self.send_error_response(400, "Missing template_key or template_data")
+                    return
+                mgr = MappingConfigManager()
+                saved = mgr.save_custom_template(tpl_key, tpl_data)
+                if saved:
+                    self.send_success_response(f"Template '{tpl_key}' saved successfully")
+                else:
+                    self.send_error_response(500, "Failed to save template")
+
             else:
                 self.send_error_response(404, "Endpoint not found")
         except Exception as e:

@@ -1928,11 +1928,11 @@
             color: var(--primary);
         }
         
-        /* Sandbox Prototype Upgrades (V2.5.0 Enterprise) */
+        /* Sandbox Prototype Upgrades (V2.5.1 Enterprise) */
         
         /* Permanent sandbox indicator strip */
         body.sandbox-active::before {
-            content: "TEST SANDBOX ENVIRONMENT ACTIVE • VERSION V2.5.0 ENTERPRISE • NO PRODUCTION DATA MODIFICATION" !important;
+            content: "TEST SANDBOX ENVIRONMENT ACTIVE • VERSION V2.5.1 ENTERPRISE • NO PRODUCTION DATA MODIFICATION" !important;
             height: 28px !important;
             background: repeating-linear-gradient(45deg, #f59e0b, #f59e0b 10px, #d97706 10px, #d97706 20px) !important;
             font-size: 0.72rem !important;
@@ -2926,7 +2926,7 @@
         }
 
         /* ==========================================================================
-           ENTERPRISE V2.5.0 STYLES (Command Palette, Stepper, Telemetry, Letterhead)
+           ENTERPRISE V2.5.1 STYLES (Command Palette, Stepper, Telemetry, Letterhead)
            ========================================================================== */
 
         /* Header Command Palette Trigger & KBD Badges */
