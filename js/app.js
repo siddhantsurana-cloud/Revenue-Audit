@@ -465,6 +465,10 @@
     let hdfcComparisonChartInstance = null;
     let hdfcDistributionChartInstance = null;
 
+    // Agreement Manager State Variables
+    let currentAgreementPage = 1;
+    let agreementPageSize = 50;
+
     // Checking Console State Variables
     let checkingLedgerCurrentPage = 1;
     let checkingLedgerPageSize = 25;
@@ -796,22 +800,27 @@
     // COLLAPSIBLE SIDEBAR & SYNCED NAVIGATION & CONTEXT SELECTOR LOGIC
     
     // Sidebar state initialization
-    const sidebar = document.querySelector('.sidebar');
-    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.querySelector('.sidebar') || document.getElementById('app-sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle') || document.getElementById('btn-collapse-sidebar');
+    
+    window.toggleSidebar = function() {
+        const sb = document.querySelector('.sidebar') || document.getElementById('app-sidebar');
+        if (sb) {
+            sb.classList.toggle('collapsed');
+            localStorage.setItem('brc_v2_sidebar-collapsed', sb.classList.contains('collapsed'));
+        }
+    };
     
     if (localStorage.getItem('brc_v2_sidebar-collapsed') === 'true') {
         if (sidebar) sidebar.classList.add('collapsed');
     }
     
     if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('collapsed');
-            localStorage.setItem('brc_v2_sidebar-collapsed', sidebar.classList.contains('collapsed'));
-        });
+        sidebarToggle.addEventListener('click', window.toggleSidebar);
     }
     
     // Sync Navigation Links Filtering with Search
-    const navSearch = document.getElementById('nav-search');
+    const navSearch = document.getElementById('sidebar-search-input') || document.getElementById('nav-search');
     if (navSearch) {
         navSearch.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
@@ -1885,23 +1894,45 @@
                 agSubtabs.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 currentAgreementFilter = btn.getAttribute('data-filter');
+                currentAgreementPage = 1;
                 renderAgreementManager();
             });
         });
 
-        // Agreements search and select filters
+        // Agreements search and select filters with debounce & pagination
         const agreementSearch = document.getElementById('agreement-search-input');
         const agreementTariff = document.getElementById('agreement-tariff-select');
         const agreementStatus = document.getElementById('agreement-status-select');
+        const agreementPageSizeSel = document.getElementById('agreement-page-size');
 
+        let agSearchTimeout = null;
         if (agreementSearch) {
-            agreementSearch.addEventListener('input', renderAgreementManager);
+            agreementSearch.addEventListener('input', () => {
+                clearTimeout(agSearchTimeout);
+                agSearchTimeout = setTimeout(() => {
+                    currentAgreementPage = 1;
+                    renderAgreementManager();
+                }, 120);
+            });
         }
         if (agreementTariff) {
-            agreementTariff.addEventListener('change', renderAgreementManager);
+            agreementTariff.addEventListener('change', () => {
+                currentAgreementPage = 1;
+                renderAgreementManager();
+            });
         }
         if (agreementStatus) {
-            agreementStatus.addEventListener('change', renderAgreementManager);
+            agreementStatus.addEventListener('change', () => {
+                currentAgreementPage = 1;
+                renderAgreementManager();
+            });
+        }
+        if (agreementPageSizeSel) {
+            agreementPageSizeSel.addEventListener('change', () => {
+                agreementPageSize = parseInt(agreementPageSizeSel.value, 10) || 50;
+                currentAgreementPage = 1;
+                renderAgreementManager();
+            });
         }
     }
 
@@ -8375,10 +8406,14 @@
         const accuracyRate = activeAuditedCount > 0 ? Math.round((matchesCount / activeAuditedCount) * 100) : 100;
         const exceptionsRate = totalCount > 0 ? Math.round((exceptionsCount / totalCount) * 100) : 0;
 
-        document.getElementById('report-accuracy-rate').textContent = accuracyRate + "%";
-        document.getElementById('report-leakage-rate').textContent = "₹" + Math.round(leakageVal).toLocaleString('en-IN');
-        document.getElementById('report-short-billed').textContent = "₹" + Math.round(shortVal).toLocaleString('en-IN');
-        document.getElementById('report-exceptions-rate').textContent = exceptionsRate + "%";
+        const elAcc = document.getElementById('report-accuracy-rate');
+        if (elAcc) elAcc.textContent = accuracyRate + "%";
+        const elLeak = document.getElementById('report-leakage-rate');
+        if (elLeak) elLeak.textContent = "₹" + Math.round(leakageVal).toLocaleString('en-IN');
+        const elShort = document.getElementById('report-short-billed');
+        if (elShort) elShort.textContent = "₹" + Math.round(shortVal).toLocaleString('en-IN');
+        const elExc = document.getElementById('report-exceptions-rate');
+        if (elExc) elExc.textContent = exceptionsRate + "%";
     }
 
     function updateMTDAndYTDMetrics() {
@@ -10580,13 +10615,35 @@
             });
         }
 
+        const pagContainer = document.getElementById('agreement-pagination-container');
+        const rangeDisplay = document.getElementById('agreement-page-range-display');
+        const buttonsContainer = document.getElementById('agreement-pagination-buttons');
+
         if (filteredAgreements.length === 0) {
             tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">No matching agreements found for the active filters.</td></tr>';
+            if (pagContainer) pagContainer.style.display = 'none';
             return;
         }
 
+        if (pagContainer) pagContainer.style.display = 'flex';
+
+        const totalRecords = filteredAgreements.length;
+        const totalPages = Math.ceil(totalRecords / agreementPageSize);
+
+        if (currentAgreementPage > totalPages) currentAgreementPage = totalPages || 1;
+        if (currentAgreementPage < 1) currentAgreementPage = 1;
+
+        const startIndex = (currentAgreementPage - 1) * agreementPageSize;
+        const endIndex = Math.min(startIndex + agreementPageSize, totalRecords);
+
+        if (rangeDisplay) {
+            rangeDisplay.textContent = `${startIndex + 1}-${endIndex} of ${totalRecords}`;
+        }
+
+        const pageData = filteredAgreements.slice(startIndex, endIndex);
+
         let html = '';
-        filteredAgreements.forEach(ag => {
+        pageData.forEach(ag => {
             const scope = getAgreementScope(ag);
             let scopeLabel = '';
             let scopeClass = '';
@@ -10642,6 +10699,47 @@
             `;
         });
         tbody.innerHTML = html;
+
+        if (buttonsContainer) {
+            buttonsContainer.innerHTML = '';
+            
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'page-btn';
+            prevBtn.disabled = currentAgreementPage === 1;
+            prevBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>';
+            prevBtn.addEventListener('click', () => {
+                currentAgreementPage--;
+                renderAgreementManager();
+            });
+            buttonsContainer.appendChild(prevBtn);
+
+            let startPage = Math.max(1, currentAgreementPage - 2);
+            let endPage = Math.min(totalPages, startPage + 4);
+            if (endPage - startPage < 4) {
+                startPage = Math.max(1, endPage - 4);
+            }
+
+            for (let page = startPage; page <= endPage; page++) {
+                const btn = document.createElement('button');
+                btn.className = `page-btn ${page === currentAgreementPage ? 'active' : ''}`;
+                btn.textContent = page;
+                btn.addEventListener('click', () => {
+                    currentAgreementPage = page;
+                    renderAgreementManager();
+                });
+                buttonsContainer.appendChild(btn);
+            }
+
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'page-btn';
+            nextBtn.disabled = currentAgreementPage === totalPages || totalPages === 0;
+            nextBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>';
+            nextBtn.addEventListener('click', () => {
+                currentAgreementPage++;
+                renderAgreementManager();
+            });
+            buttonsContainer.appendChild(nextBtn);
+        }
     }
 
     function renderExceptionsTable() {
@@ -12704,17 +12802,22 @@
         const avgDrift = (driftCount > 0) ? ((driftSum / driftCount) * 100) : 0.0;
 
         // Render KPIs
-        document.getElementById('hdfc-stat-total').textContent = mappedCount.toLocaleString();
-        document.getElementById('hdfc-stat-aligned').textContent = identicalCount.toLocaleString();
-        document.getElementById('hdfc-stat-drift').textContent = avgDrift.toFixed(2) + '%';
+        const elTot = document.getElementById('hdfc-stat-total');
+        if (elTot) elTot.textContent = mappedCount.toLocaleString();
+        const elAlg = document.getElementById('hdfc-stat-aligned');
+        if (elAlg) elAlg.textContent = identicalCount.toLocaleString();
+        const elDrf = document.getElementById('hdfc-stat-drift');
+        if (elDrf) elDrf.textContent = avgDrift.toFixed(2) + '%';
         
         const maxGapEl = document.getElementById('hdfc-stat-max-drift');
-        if (maxGapItem) {
-            maxGapEl.textContent = `₹${maxGap.toLocaleString()} (${maxGapItem.id})`;
-            maxGapEl.title = `${maxGapItem.name} - ${maxGapItem.department}`;
-        } else {
-            maxGapEl.textContent = 'None';
-            maxGapEl.title = '';
+        if (maxGapEl) {
+            if (maxGapItem) {
+                maxGapEl.textContent = `₹${maxGap.toLocaleString()} (${maxGapItem.id})`;
+                maxGapEl.title = `${maxGapItem.name} - ${maxGapItem.department}`;
+            } else {
+                maxGapEl.textContent = 'None';
+                maxGapEl.title = '';
+            }
         }
 
         // 2. Populate dynamic dropdown options for departments (CoEs)

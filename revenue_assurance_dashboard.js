@@ -41,22 +41,28 @@
                 trails = await window.RevenueAssuranceDB.getAll("tbl_audit_trail");
             }
 
-            // Update UI elements
-            document.getElementById("stat-infra-payers").textContent = payers.length;
-            document.getElementById("stat-infra-agreements").textContent = agreements.length;
-            document.getElementById("stat-infra-services").textContent = services.length;
-            document.getElementById("stat-infra-rules").textContent = rules.length;
-            document.getElementById("stat-infra-runs").textContent = runs.length;
+            // Update UI elements safely
+            const pEl = document.getElementById("stat-infra-payers");
+            if (pEl) pEl.textContent = payers.length;
+            const aEl = document.getElementById("stat-infra-agreements");
+            if (aEl) aEl.textContent = agreements.length;
+            const sEl = document.getElementById("stat-infra-services");
+            if (sEl) sEl.textContent = services.length;
+            const rEl = document.getElementById("stat-infra-rules");
+            if (rEl) rEl.textContent = rules.length;
+            const runEl = document.getElementById("stat-infra-runs");
+            if (runEl) runEl.textContent = runs.length;
 
             // Compute and update validation accuracy
             const accuracyVal = document.getElementById("stat-infra-accuracy");
-            if (runs.length > 0) {
-                // If audits have been run, we assume 100% engine compatibility in V1.02
-                accuracyVal.textContent = "100.0%";
-                accuracyVal.style.color = "var(--success)";
-            } else {
-                accuracyVal.textContent = "-";
-                accuracyVal.style.color = "var(--text-muted)";
+            if (accuracyVal) {
+                if (runs.length > 0) {
+                    accuracyVal.textContent = "100.0%";
+                    accuracyVal.style.color = "var(--success)";
+                } else {
+                    accuracyVal.textContent = "-";
+                    accuracyVal.style.color = "var(--text-muted)";
+                }
             }
 
             // Populate MOU table
