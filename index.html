@@ -151,7 +151,77 @@
                     </div>
 
                     <div class="auth-unit-grid" id="auth-facility-grid">
-                        <!-- Rendered dynamically by renderFacilityDirectory() -->
+                        <!-- 1. Excelcare Hospital - Guwahati -->
+                        <div class="auth-unit-card auth-facility-card" data-unit="excelcare" onclick="window.selectFacilityNode('excelcare')">
+                            <div class="auth-card-avatar" style="background-color: #0d9488;">
+                                <span class="auth-avatar-char">🏥</span>
+                                <div class="auth-edit-badge" title="Configure Facility">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                                </div>
+                            </div>
+                            <div class="auth-card-content">
+                                <div class="auth-card-eyebrow">East Hub · Assam</div>
+                                <h3 class="auth-card-name" id="profile-name-excelcare">Excelcare Hospital - Guwahati</h3>
+                                <div class="auth-card-scope">
+                                    <span class="auth-scope-tag">Excelcare Unit</span>
+                                    <span class="auth-currency-tag">INR</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Apollo Multispeciality Hospitals - Kolkata -->
+                        <div class="auth-unit-card auth-facility-card" data-unit="kolkata" onclick="window.selectFacilityNode('kolkata')">
+                            <div class="auth-card-avatar" style="background-color: #3b82f6;">
+                                <span class="auth-avatar-char">🏢</span>
+                                <div class="auth-edit-badge" title="Configure Facility">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                                </div>
+                            </div>
+                            <div class="auth-card-content">
+                                <div class="auth-card-eyebrow">East Hub · West Bengal</div>
+                                <h3 class="auth-card-name" id="profile-name-kolkata">Apollo Multispeciality Hospitals - Kolkata</h3>
+                                <div class="auth-card-scope">
+                                    <span class="auth-scope-tag">Kolkata Unit</span>
+                                    <span class="auth-currency-tag">INR</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Apollo International Patient Cash Hub -->
+                        <div class="auth-unit-card auth-facility-card" data-unit="international" onclick="window.selectFacilityNode('international')">
+                            <div class="auth-card-avatar" style="background-color: #10b981;">
+                                <span class="auth-avatar-char">🌐</span>
+                                <div class="auth-edit-badge" title="Configure Facility">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                                </div>
+                            </div>
+                            <div class="auth-card-content">
+                                <div class="auth-card-eyebrow">Global Healthcare Division</div>
+                                <h3 class="auth-card-name" id="profile-name-international">Apollo International Patient Cash Hub</h3>
+                                <div class="auth-card-scope">
+                                    <span class="auth-scope-tag">International Unit</span>
+                                    <span class="auth-currency-tag">USD</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Corporate Head Office (Global Master Console) -->
+                        <div class="auth-unit-card auth-facility-card" data-unit="all" onclick="window.selectFacilityNode('all')">
+                            <div class="auth-card-avatar" style="background-color: #8b5cf6;">
+                                <span class="auth-avatar-char">🛡️</span>
+                                <div class="auth-edit-badge" title="Configure Facility">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                                </div>
+                            </div>
+                            <div class="auth-card-content">
+                                <div class="auth-card-eyebrow">Enterprise Governance · HO</div>
+                                <h3 class="auth-card-name" id="profile-name-all">Corporate Head Office (Global Master Console)</h3>
+                                <div class="auth-card-scope">
+                                    <span class="auth-scope-tag">Master Admin</span>
+                                    <span class="auth-currency-tag">INR</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Directory Management Action Bar -->
