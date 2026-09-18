@@ -601,7 +601,7 @@
                 
                 // Update version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'TEST VERSION: V2.5.1 ENTERPRISE';
+                if (vBadge) vBadge.textContent = 'TEST VERSION: V2.5.2 ENTERPRISE';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'TESTING';
@@ -612,11 +612,11 @@
                     vTitle.style.color = '#d97706';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        VERSION V2.5.1 ENTERPRISE
+                        VERSION V2.5.2 - ENTERPRISE COCKPIT
                     `;
                 }
                 
-                showToast('Switched to Test Sandbox Environment (V2.5.1 Enterprise). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
+                showToast('Switched to Test Sandbox Environment (V2.5.2 Enterprise). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
             } else {
                 // Update badge to Production mode
                 envBadge.style.color = 'var(--primary)';
@@ -633,7 +633,7 @@
                 
                 // Reset version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V2.5.1 ENTERPRISE';
+                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V2.5.2 ENTERPRISE';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'LOCKED';
@@ -644,11 +644,11 @@
                     vTitle.style.color = 'var(--success)';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        VERSION V2.5.1 ENTERPRISE
+                        VERSION V2.5.2 - ENTERPRISE COCKPIT
                     `;
                 }
                 
-                showToast('Switched back to Production Environment (V2.5.1 Enterprise).', 'success');
+                showToast('Switched back to Production Environment (V2.5.2 Enterprise).', 'success');
             }
             
             // Reload all audits and overrides state from correct storage namespace!
@@ -11511,7 +11511,7 @@
         }
     }
 
-    const CREDS_CACHE_VERSION = 'V2.5.1';
+    const CREDS_CACHE_VERSION = 'V2.5.2';
 
     async function initUserCredentials() {
         const defaultFallback = [
@@ -12200,6 +12200,16 @@
 
         // Load permissions matrix dynamically
         renderPermissionsMatrix();
+
+        // Render dynamic hospital facilities table
+        if (typeof window.renderAdminFacilitiesTable === 'function') {
+            window.renderAdminFacilitiesTable();
+        }
+
+        // Sync unit dropdowns across forms
+        if (typeof window.syncUnitDropdowns === 'function') {
+            window.syncUnitDropdowns();
+        }
     };
 
     window.editAdminUser = function(index) {
@@ -12438,6 +12448,152 @@
             btnSavePerms.addEventListener('click', savePermissionsMatrix);
         }
     }
+
+    // ENTERPRISE FACILITY DIRECTORY ADMIN RENDERING & SYNCHRONIZATION
+    window.renderAdminFacilitiesTable = function() {
+        const tbody = document.getElementById('admin-facilities-tbody');
+        if (!tbody) return;
+
+        const units = (typeof window.getHospitalUnits === 'function') ? window.getHospitalUnits() : [];
+        tbody.innerHTML = '';
+
+        if (units.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 1.5rem; color: var(--text-muted);">No hospital facilities provisioned. Click "+ Provision New Hospital Node" to add.</td></tr>';
+            return;
+        }
+
+        units.forEach((unit, idx) => {
+            const tr = document.createElement('tr');
+            tr.style.borderBottom = '1px solid var(--border)';
+            tr.style.transition = 'background-color 0.2s';
+            tr.addEventListener('mouseenter', () => tr.style.backgroundColor = 'var(--bg-hover)');
+            tr.addEventListener('mouseleave', () => tr.style.backgroundColor = 'transparent');
+
+            const statusBadge = unit.status === 'ACTIVE'
+                ? '<span style="background: rgba(16,185,129,0.15); color: var(--success); font-weight: 700; font-size: 0.72rem; padding: 0.15rem 0.5rem; border-radius: 4px; border: 1px solid rgba(16,185,129,0.3);">ACTIVE</span>'
+                : '<span style="background: rgba(239,68,68,0.15); color: var(--danger); font-weight: 700; font-size: 0.72rem; padding: 0.15rem 0.5rem; border-radius: 4px; border: 1px solid rgba(239,68,68,0.3);">' + (unit.status || 'INACTIVE') + '</span>';
+
+            const isDefault = unit.isDefault || ['excelcare', 'kolkata', 'international', 'all'].includes(unit.code);
+
+            tr.innerHTML = `
+                <td style="padding: 0.75rem 0.5rem; text-align: center; color: var(--text-muted); font-size: 0.78rem;">${idx + 1}</td>
+                <td style="padding: 0.75rem 0.5rem;">
+                    <div style="display: flex; align-items: center; gap: 0.55rem;">
+                        <div style="width: 30px; height: 30px; border-radius: 6px; background-color: ${unit.color || '#0d9488'}; color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            ${unit.icon || '🏥'}
+                        </div>
+                        <div>
+                            <div style="font-weight: 800; color: var(--text-main); font-size: 0.84rem;">${escapeHtml(unit.name)}</div>
+                            <div style="font-size: 0.72rem; color: var(--text-muted); font-family: monospace;">Code: <strong style="color: var(--primary);">${escapeHtml(unit.code)}</strong> · ${escapeHtml(unit.shortName || '')}</div>
+                        </div>
+                    </div>
+                </td>
+                <td style="padding: 0.75rem 0.5rem; font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">${escapeHtml(unit.hub || 'Standard Node')}</td>
+                <td style="padding: 0.75rem 0.5rem; font-size: 0.8rem; font-weight: 700; color: var(--text-main);"><span style="background: var(--bg-page); padding: 0.15rem 0.4rem; border-radius: 4px; border: 1px solid var(--border); font-family: monospace;">${escapeHtml(unit.currency || 'INR')}</span></td>
+                <td style="padding: 0.75rem 0.5rem; font-size: 0.78rem; color: var(--text-muted);"><a href="mailto:${escapeHtml(unit.email || '')}" style="color: var(--primary); text-decoration: none;">${escapeHtml(unit.email || '—')}</a></td>
+                <td style="padding: 0.75rem 0.5rem; text-align: center;">${statusBadge}</td>
+                <td style="padding: 0.75rem 0.5rem; text-align: right;">
+                    <div style="display: flex; gap: 0.35rem; justify-content: flex-end;">
+                        <button class="export-btn" onclick="window.openProvisionUnitModal('${escapeHtml(unit.code)}')" style="padding: 0.2rem 0.5rem; font-size: 0.72rem; background: var(--bg-page); border-color: var(--border); color: var(--text-main);" title="Configure facility node">Edit</button>
+                        ${!isDefault ? `<button class="export-btn" onclick="window.deleteProvisionedUnit('${escapeHtml(unit.code)}')" style="padding: 0.2rem 0.5rem; font-size: 0.72rem; background: rgba(244, 67, 54, 0.1); border-color: rgba(244, 67, 54, 0.2); color: var(--danger);" title="Decommission facility node">Delete</button>` : `<span style="font-size: 0.68rem; color: var(--text-muted); padding: 0.2rem 0.4rem;" title="Core System Unit (Protected)">Core</span>`}
+                    </div>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    };
+
+    window.syncUnitDropdowns = function() {
+        const units = (typeof window.getHospitalUnits === 'function') ? window.getHospitalUnits() : [];
+        if (!units || units.length === 0) return;
+
+        // 1. Sync #admin-unit
+        const adminUnitSelect = document.getElementById('admin-unit');
+        if (adminUnitSelect) {
+            const curVal = adminUnitSelect.value;
+            adminUnitSelect.innerHTML = '';
+            units.forEach(u => {
+                if (u.code !== 'all') {
+                    const opt = document.createElement('option');
+                    opt.value = u.code;
+                    opt.textContent = `${u.icon || '🏥'} ${u.shortName || u.name}`;
+                    adminUnitSelect.appendChild(opt);
+                }
+            });
+            if (curVal && Array.from(adminUnitSelect.options).some(o => o.value === curVal)) {
+                adminUnitSelect.value = curVal;
+            }
+        }
+
+        // 2. Sync #login-unit
+        const loginUnitSelect = document.getElementById('login-unit');
+        if (loginUnitSelect) {
+            const curVal = loginUnitSelect.value;
+            loginUnitSelect.innerHTML = '';
+            units.forEach(u => {
+                const opt = document.createElement('option');
+                opt.value = u.code;
+                opt.textContent = `${u.icon || '🏥'} ${u.shortName || u.name}`;
+                loginUnitSelect.appendChild(opt);
+            });
+            if (curVal && Array.from(loginUnitSelect.options).some(o => o.value === curVal)) {
+                loginUnitSelect.value = curVal;
+            }
+        }
+
+        // 3. Sync #master-bu-select
+        const masterBuSelect = document.getElementById('master-bu-select');
+        if (masterBuSelect) {
+            const curVal = masterBuSelect.value;
+            masterBuSelect.innerHTML = '';
+            units.forEach(u => {
+                const opt = document.createElement('option');
+                opt.value = u.code;
+                opt.textContent = `${u.icon || '🏥'} ${u.shortName || u.name}`;
+                masterBuSelect.appendChild(opt);
+            });
+            if (curVal && Array.from(masterBuSelect.options).some(o => o.value === curVal)) {
+                masterBuSelect.value = curVal;
+            }
+        }
+
+        // 4. Sync #repo-filter-bu
+        const repoFilterBu = document.getElementById('repo-filter-bu');
+        if (repoFilterBu) {
+            const curVal = repoFilterBu.value;
+            repoFilterBu.innerHTML = '<option value="all">🌐 All Hospital Units</option>';
+            units.forEach(u => {
+                if (u.code !== 'all') {
+                    const opt = document.createElement('option');
+                    opt.value = u.code;
+                    opt.textContent = `${u.icon || '🏥'} ${u.shortName || u.name}`;
+                    repoFilterBu.appendChild(opt);
+                }
+            });
+            if (curVal && Array.from(repoFilterBu.options).some(o => o.value === curVal)) {
+                repoFilterBu.value = curVal;
+            }
+        }
+
+        // 5. Sync #custom-agreement-scope
+        const agreementScope = document.getElementById('custom-agreement-scope');
+        if (agreementScope) {
+            const curVal = agreementScope.value;
+            agreementScope.innerHTML = '<option value="both">Centralised (All Units)</option>';
+            units.forEach(u => {
+                if (u.code !== 'all') {
+                    const opt = document.createElement('option');
+                    opt.value = u.code;
+                    opt.textContent = `${u.icon || '🏥'} ${u.name}`;
+                    agreementScope.appendChild(opt);
+                }
+            });
+            if (curVal && Array.from(agreementScope.options).some(o => o.value === curVal)) {
+                agreementScope.value = curVal;
+            }
+        }
+    };
+
     // HDFC Centrally Agreed 2026 tariff dashboard features
     const COE_MAPPING = {
         "Cardiac Sciences": ["Cardiology", "Cardio procedure", "Cardiac Surgical packages", "Procedure chgs"],
@@ -14836,7 +14992,7 @@ Claims & Billing Assurance Desk
         });
 
         const standardJson = {
-            schema_version: '2.5.1',
+            schema_version: '2.5.2',
             metadata: {
                 source_file: file.name,
                 document_type: 'EXCEL',
@@ -14985,7 +15141,7 @@ Claims & Billing Assurance Desk
             }
 
             const standardJson = {
-                schema_version: '2.5.1',
+                schema_version: '2.5.2',
                 metadata: {
                     source_file: file.name,
                     document_type: 'PDF',
@@ -16061,7 +16217,7 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
     };
 
     window.forcePurgeAppCache = async function() {
-        showToast('Purging client caches and fetching latest V2.5.1 Enterprise build...', 'info');
+        showToast('Purging client caches and fetching latest V2.5.2 Enterprise build...', 'info');
         try {
             localStorage.clear();
             sessionStorage.clear();

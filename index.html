@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRC - Guwahati | Revenue Assurance &amp; Tariff Intelligence v2.5.1 Enterprise</title>
+    <title>BRC - Guwahati | Revenue Assurance &amp; Tariff Intelligence v2.5.2 Enterprise Multi-Unit</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0d9488">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
     <!-- Automatic Client Cache Synchronizer -->
     <script>
         (function() {
-            const CURRENT_BUILD = 'V2.5.1_ENTERPRISE_COCKPIT';
+            const CURRENT_BUILD = 'V2.5.2_ENTERPRISE_MULTIUNIT_COCKPIT';
             const localBuild = localStorage.getItem('brc_active_build');
             if (localBuild !== CURRENT_BUILD) {
                 localStorage.setItem('brc_active_build', CURRENT_BUILD);
@@ -48,7 +48,7 @@
         })();
     </script>
 
-    <link rel="stylesheet" href="css/styles.css?v=2.5.1">
+    <link rel="stylesheet" href="css/styles.css?v=2.5.2">
 </head>
 <body>
     <!-- FULL PAGE PORTAL LOGIN (ENTERPRISE HEALTHCARE REVENUE INTELLIGENCE) -->
@@ -66,7 +66,7 @@
             </div>
             <div class="auth-topbar-status">
                 <span class="auth-status-chip build-ver" style="background: rgba(13, 148, 136, 0.18); color: #2dd4bf; border: 1px solid rgba(13, 148, 136, 0.4); font-weight: 800; letter-spacing: 0.02em;">
-                    <span class="status-pulse-dot" style="background: #2dd4bf;"></span> BUILD v2.5.1 ENTERPRISE
+                    <span class="status-pulse-dot" style="background: #2dd4bf;"></span> BUILD v2.5.2 ENTERPRISE
                 </span>
                 <span class="auth-status-chip online"><span class="status-pulse-dot"></span> System Operational</span>
                 <span class="auth-status-chip sec"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> AES-256 Encrypted</span>
@@ -79,7 +79,7 @@
             <div class="auth-hero-panel">
                 <div class="auth-hero-badge">
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    Enterprise Financial Governance · v2.5.1 Cockpit
+                    Enterprise Financial Governance · v2.5.2 Multi-Unit Cockpit
                 </div>
                 <h1 class="auth-hero-title">Next-Gen Revenue Integrity for Enterprise Healthcare</h1>
                 <p class="auth-hero-desc">
@@ -142,97 +142,40 @@
 
             <!-- Right Panel: Interactive Authentication Console -->
             <div class="auth-console-panel">
-                <!-- 1. Unit Selector View -->
-                <div id="netflix-profile-selector" class="auth-step-container">
+                <!-- 1. Enterprise Hospital Facility Directory -->
+                <div id="auth-facility-selector" class="auth-step-container">
                     <div class="auth-card-header">
-                        <div class="auth-step-tag">Step 1 of 2</div>
-                        <h2 class="auth-card-title">Select Hospital Business Unit</h2>
-                        <p class="auth-card-sub">Choose your assigned clinical entity or administrative scope to proceed with tariff auditing.</p>
+                        <div class="auth-step-tag">Step 1 of 2 · Facility Access</div>
+                        <h2 class="auth-card-title">Hospital Facility &amp; Scope Directory</h2>
+                        <p class="auth-card-sub">Select your designated hospital facility, regional healthcare node, or corporate governance scope.</p>
                     </div>
 
-                    <div class="auth-unit-grid netflix-profiles">
-                        <!-- Excelcare Unit Card -->
-                        <div class="auth-unit-card netflix-profile-card active-unit" data-unit="excelcare" onclick="window.selectNetflixProfile('excelcare', 'Excelcare Unit', '#0d9488')">
-                            <div class="auth-unit-badge-icon" style="background: rgba(13, 148, 136, 0.15); color: #0d9488; border-color: rgba(13, 148, 136, 0.3);">
-                                🏥
-                                <div class="edit-overlay" title="Edit Profile Configuration">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                                </div>
-                            </div>
-                            <div class="auth-unit-details">
-                                <div id="profile-name-excelcare" class="auth-unit-name netflix-profile-name">Excelcare Unit</div>
-                                <div class="auth-unit-tag">SOC Cash &amp; TPA Master</div>
-                            </div>
-                            <div class="auth-unit-radio-indicator"></div>
-                        </div>
-
-                        <!-- Kolkata Unit Card -->
-                        <div class="auth-unit-card netflix-profile-card" data-unit="kolkata" onclick="window.selectNetflixProfile('kolkata', 'Kolkata Multispeciality', '#3b82f6')">
-                            <div class="auth-unit-badge-icon" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; border-color: rgba(59, 130, 246, 0.3);">
-                                🏢
-                                <div class="edit-overlay" title="Edit Profile Configuration">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                                </div>
-                            </div>
-                            <div class="auth-unit-details">
-                                <div id="profile-name-kolkata" class="auth-unit-name netflix-profile-name">Kolkata Unit</div>
-                                <div class="auth-unit-tag">Apollo Multispeciality</div>
-                            </div>
-                            <div class="auth-unit-radio-indicator"></div>
-                        </div>
-
-                        <!-- International Unit Card -->
-                        <div class="auth-unit-card netflix-profile-card" data-unit="international" onclick="window.selectNetflixProfile('international', 'International Unit', '#10b981')">
-                            <div class="auth-unit-badge-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">
-                                🌐
-                                <div class="edit-overlay" title="Edit Profile Configuration">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                                </div>
-                            </div>
-                            <div class="auth-unit-details">
-                                <div id="profile-name-international" class="auth-unit-name netflix-profile-name">International Unit</div>
-                                <div class="auth-unit-tag">Global Payer &amp; TPA</div>
-                            </div>
-                            <div class="auth-unit-radio-indicator"></div>
-                        </div>
-
-                        <!-- Master Admin Card -->
-                        <div class="auth-unit-card netflix-profile-card" data-unit="all" onclick="window.selectNetflixProfile('all', 'Global Admin', '#8b5cf6')">
-                            <div class="auth-unit-badge-icon" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border-color: rgba(139, 92, 246, 0.3);">
-                                🛡️
-                                <div class="edit-overlay" title="Edit Profile Configuration">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                                </div>
-                            </div>
-                            <div class="auth-unit-details">
-                                <div id="profile-name-all" class="auth-unit-name netflix-profile-name">Master Admin</div>
-                                <div class="auth-unit-tag">Global Executive Governance</div>
-                            </div>
-                            <div class="auth-unit-radio-indicator"></div>
-                        </div>
+                    <div class="auth-unit-grid" id="auth-facility-grid">
+                        <!-- Rendered dynamically by renderFacilityDirectory() -->
                     </div>
 
-                    <!-- Manage Profiles Action Bar -->
-                    <div class="auth-manage-bar">
-                        <button id="netflix-manage-toggle-btn" class="auth-btn-ghost netflix-manage-btn" onclick="window.toggleManageProfiles(event)">
-                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-                            <span>Configure Unit Profiles</span>
+                    <!-- Directory Management Action Bar -->
+                    <div class="auth-manage-bar" style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;" id="auth-facility-count-badge">4 Enterprise Facilities Active</span>
+                        <button id="btn-manage-facilities-toggle" class="auth-btn-ghost" onclick="window.toggleManageFacilityDirectory(event)" style="font-size: 0.75rem; display: flex; align-items: center; gap: 0.35rem;">
+                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                            <span>Configure Facility Nodes</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- 2. Password & Role Entry Screen -->
-                <div id="netflix-password-card" class="auth-step-container auth-login-card" style="display: none;">
-                    <button type="button" class="auth-back-btn netflix-back-link" onclick="window.showNetflixProfiles()">
+                <div id="auth-password-card" class="auth-step-container auth-login-card" style="display: none;">
+                    <button type="button" class="auth-back-btn" onclick="window.showFacilityDirectory()">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                        <span>Change Unit</span>
+                        <span>Change Facility Node</span>
                     </button>
 
                     <div class="auth-selected-unit-banner">
-                        <div id="netflix-selected-avatar" class="auth-selected-avatar" style="background-color: #0d9488;">E</div>
+                        <div id="auth-selected-avatar" class="auth-selected-avatar" style="background-color: #0d9488;">E</div>
                         <div class="auth-selected-info">
-                            <div class="auth-selected-eyebrow">Signing into Unit:</div>
-                            <h3 id="netflix-selected-title" class="auth-selected-title">Excelcare Unit</h3>
+                            <div class="auth-selected-eyebrow" id="auth-selected-hub">East Hub · Assam</div>
+                            <h3 id="auth-selected-title" class="auth-selected-title">Excelcare Hospital - Guwahati</h3>
                         </div>
                     </div>
 
@@ -351,40 +294,100 @@
             </div>
         </div>
 
-        <!-- 3. Edit Profile Modal -->
-        <div id="netflix-edit-modal" class="modal-overlay" style="display: none; z-index: 100005;">
-            <div class="modal-card" style="max-width: 440px; border-top: 4px solid var(--primary);">
+        <!-- 3. Provision / Edit Hospital Facility Node Modal -->
+        <div id="modal-provision-unit" class="modal-overlay" style="display: none; z-index: 100005;">
+            <div class="modal-card" style="max-width: 580px; border-top: 4px solid var(--primary, #0d9488);">
                 <div class="modal-header">
-                    <h2 style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main);">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                        Edit Unit Profile
-                    </h2>
-                    <button class="close-modal-btn" onclick="window.closeNetflixProfileEdit()" title="Close">
+                    <h3 style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main); margin: 0; font-size: 1.1rem; font-weight: 800;" id="provision-modal-title">
+                        🏢 Provision New Hospital Facility Node
+                    </h3>
+                    <button class="close-modal-btn" onclick="window.closeProvisionUnitModal()" title="Close">
                         <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
                     </button>
                 </div>
-                <div class="modal-body" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem;">
-                    <div style="display: flex; gap: 1rem; align-items: center;">
-                        <div id="netflix-edit-avatar" style="width: 54px; height: 54px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">E</div>
-                        <div style="flex: 1;">
-                            <label class="auth-field-label">Unit Display Name</label>
-                            <input type="text" id="netflix-edit-name-input" class="auth-input-field" placeholder="Unit Name" style="height: 42px;">
+                <div class="modal-body" style="padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                    <input type="hidden" id="provision-unit-is-edit" value="false">
+                    <input type="hidden" id="provision-unit-orig-code" value="">
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        <div class="input-group" style="padding: 0;">
+                            <label class="auth-field-label" style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Facility Unique Code <span style="color:var(--danger)">*</span></label>
+                            <input type="text" id="provision-code-input" class="form-control" placeholder="e.g. chennai_main" style="padding: 0.45rem 0.65rem; font-size: 0.82rem; font-family: monospace;">
+                        </div>
+                        <div class="input-group" style="padding: 0;">
+                            <label class="auth-field-label" style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Regional Zone / Hub <span style="color:var(--danger)">*</span></label>
+                            <select id="provision-hub-select" class="form-control" style="padding: 0.45rem 0.65rem; font-size: 0.82rem; font-weight: 700;">
+                                <option value="East Hub · Assam">East Hub (Assam / North East)</option>
+                                <option value="East Hub · West Bengal">East Hub (Kolkata / WB)</option>
+                                <option value="South Hub · Tamil Nadu">South Hub (Chennai / TN)</option>
+                                <option value="South Hub · Telangana">South Hub (Hyderabad / TG)</option>
+                                <option value="South Hub · Karnataka">South Hub (Bangalore / KA)</option>
+                                <option value="North Hub · Delhi NCR">North Hub (Delhi / NCR)</option>
+                                <option value="West Hub · Maharashtra">West Hub (Mumbai / MH)</option>
+                                <option value="Global Healthcare Division">Global Healthcare Division</option>
+                                <option value="Enterprise Governance · HO">Corporate Head Office (HO)</option>
+                            </select>
                         </div>
                     </div>
 
-                    <div>
-                        <label class="auth-field-label">Default Username (Optional)</label>
-                        <input type="text" id="netflix-edit-username-input" class="auth-input-field" placeholder="e.g. auditor_excelcare" style="height: 42px;">
+                    <div class="input-group" style="padding: 0;">
+                        <label class="auth-field-label" style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Full Facility Display Name <span style="color:var(--danger)">*</span></label>
+                        <input type="text" id="provision-name-input" class="form-control" placeholder="e.g. Apollo Main Hospital - Chennai (Greams Road)" style="padding: 0.45rem 0.65rem; font-size: 0.82rem;">
                     </div>
 
-                    <div>
-                        <label class="auth-field-label">Default 2FA OTP Email</label>
-                        <input type="email" id="netflix-edit-email-input" class="auth-input-field" placeholder="e.g. user@apollohospitals.com" style="height: 42px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        <div class="input-group" style="padding: 0;">
+                            <label class="auth-field-label" style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Short Title / Abbreviation</label>
+                            <input type="text" id="provision-shortname-input" class="form-control" placeholder="e.g. Chennai Unit" style="padding: 0.45rem 0.65rem; font-size: 0.82rem;">
+                        </div>
+                        <div class="input-group" style="padding: 0;">
+                            <label class="auth-field-label" style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Billing Currency &amp; Bed Standard</label>
+                            <select id="provision-currency-select" class="form-control" style="padding: 0.45rem 0.65rem; font-size: 0.82rem;">
+                                <option value="INR" selected>INR (₹) - Indian Rupee</option>
+                                <option value="USD">USD ($) - US Dollar</option>
+                                <option value="EUR">EUR (€) - Euro</option>
+                                <option value="GBP">GBP (£) - British Pound</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group" style="padding: 0;">
+                        <label class="auth-field-label" style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Nodal Facility Address</label>
+                        <input type="text" id="provision-address-input" class="form-control" placeholder="e.g. 21 Greams Lane, Off Greams Road, Chennai 600006" style="padding: 0.45rem 0.65rem; font-size: 0.82rem;">
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        <div class="input-group" style="padding: 0;">
+                            <label class="auth-field-label" style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Nodal Billing / Grievance Email</label>
+                            <input type="email" id="provision-email-input" class="form-control" placeholder="e.g. billing.chennai@apollohospitals.com" style="padding: 0.45rem 0.65rem; font-size: 0.82rem;">
+                        </div>
+                        <div class="input-group" style="padding: 0;">
+                            <label class="auth-field-label" style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Theme Color &amp; Badge Icon</label>
+                            <div style="display: flex; gap: 0.4rem; align-items: center;">
+                                <select id="provision-icon-select" class="form-control" style="width: 45%; padding: 0.45rem; font-size: 0.82rem;">
+                                    <option value="🏥">🏥 Hospital</option>
+                                    <option value="🏢">🏢 Clinical Ctr</option>
+                                    <option value="🌐">🌐 Global Hub</option>
+                                    <option value="🩺">🩺 Specialty</option>
+                                    <option value="🛡️">🛡️ Governance</option>
+                                </select>
+                                <select id="provision-color-select" class="form-control" style="width: 55%; padding: 0.45rem; font-size: 0.82rem;">
+                                    <option value="#0d9488" selected>Teal Green</option>
+                                    <option value="#3b82f6">Corporate Blue</option>
+                                    <option value="#6366f1">Indigo Accent</option>
+                                    <option value="#8b5cf6">Purple Master</option>
+                                    <option value="#10b981">Emerald Hub</option>
+                                    <option value="#f59e0b">Amber Gold</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer" style="padding: 1rem 1.5rem; background: var(--bg-hover); border-top: 1px solid var(--border); display: flex; gap: 0.75rem; justify-content: flex-end;">
-                    <button class="export-btn" onclick="window.closeNetflixProfileEdit()" style="background: var(--bg-page); color: var(--text-muted); border-color: var(--border);">Cancel</button>
-                    <button class="export-btn" onclick="window.saveNetflixProfileEdit()" style="background: var(--primary); color: white; border-color: var(--primary); font-weight: 700;">Save Profile</button>
+                    <button class="export-btn" onclick="window.closeProvisionUnitModal()" style="background: var(--bg-page); color: var(--text-muted); border-color: var(--border);">Cancel</button>
+                    <button class="export-btn" onclick="window.saveProvisionedUnit()" style="background: var(--primary, #0d9488); color: white; border-color: var(--primary); font-weight: 800;">
+                        Save Facility Node
+                    </button>
                 </div>
             </div>
         </div>
@@ -540,7 +543,7 @@
                     <span class="status-pulse-dot"></span>
                     <span class="telemetry-label">SOC: Active</span>
                     <span class="telemetry-ping" id="telemetry-ping-display">12ms</span>
-                    <span class="telemetry-ver">v2.5.1</span>
+                    <span class="telemetry-ver">v2.5.2</span>
                 </div>
 
                 <!-- Profile selector dropdown & info -->
@@ -573,9 +576,9 @@
                 </button>
 
                 <!-- Version & Roadmap Quick Jump -->
-                <button type="button" onclick="window.switchTab('manual')" title="Active Build: v2.5.1 Enterprise | Click to open V3.0 Quantum Roadmap" style="display: flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.65rem; background: rgba(13, 148, 136, 0.12); border: 1px solid rgba(13, 148, 136, 0.3); border-radius: 6px; color: var(--primary); font-size: 0.72rem; font-weight: 800; cursor: pointer; transition: all 0.2s;">
+                <button type="button" onclick="window.switchTab('manual')" title="Active Build: v2.5.2 Enterprise | Click to open V3.0 Quantum Roadmap" style="display: flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.65rem; background: rgba(13, 148, 136, 0.12); border: 1px solid rgba(13, 148, 136, 0.3); border-radius: 6px; color: var(--primary); font-size: 0.72rem; font-weight: 800; cursor: pointer; transition: all 0.2s;">
                     <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--primary);"></span>
-                    <span>v2.5.1</span>
+                    <span>v2.5.2</span>
                     <span style="font-size: 0.65rem; padding: 0.1rem 0.35rem; background: var(--primary); color: white; border-radius: 4px; font-weight: 800;">Roadmap V3.0 ➔</span>
                 </button>
 
@@ -590,13 +593,13 @@
 
     <!-- PANEL 0: EXECUTIVE DASHBOARD -->
     <div class="tab-panel active" id="panel-dashboard">
-        <!-- ENTERPRISE V2.5.1 COCKPIT HERO BANNER -->
+        <!-- ENTERPRISE V2.5.2 COCKPIT HERO BANNER -->
         <div class="controls-card" style="background: linear-gradient(135deg, rgba(13, 148, 136, 0.12) 0%, rgba(99, 102, 241, 0.08) 100%); border: 1px solid rgba(13, 148, 136, 0.35); border-left: 6px solid var(--primary); margin-bottom: 1.25rem; border-radius: 12px; padding: 1.25rem 1.5rem; position: relative; overflow: hidden;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
                 <div style="flex: 1; min-width: 280px;">
                     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; flex-wrap: wrap;">
                         <span style="background: var(--primary); color: white; font-size: 0.68rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em;">
-                            ACTIVE: V2.5.1 ENTERPRISE COCKPIT
+                            ACTIVE: V2.5.2 ENTERPRISE COCKPIT
                         </span>
                         <span style="background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); font-size: 0.68rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em;">
                             ROADMAP: V3.0 ENTERPRISE QUANTUM
@@ -2614,7 +2617,7 @@
                 </div>
                 <!-- Version Badge -->
                 <div id="app-version-badge" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; backdrop-filter: blur(4px);">
-                    LOCKED VERSION: V2.5.1 ENTERPRISE
+                    LOCKED VERSION: V2.5.2 ENTERPRISE
                 </div>
             </div>
         </div>
@@ -2695,7 +2698,7 @@
                                 <span style="font-size: 0.7rem; color: var(--text-muted);">▼</span>
                             </summary>
                             <div style="padding: 1rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.5rem;">
-                                <p style="margin: 0;">In V2.5.1, we support multi-unit isolation with dynamic search widgets:</p>
+                                <p style="margin: 0;">In V2.5.2, we support multi-unit isolation with dynamic search widgets:</p>
                                 <ul style="margin: 0 0 0.5rem 0; padding-left: 1.25rem;">
                                     <li><strong>Department-level discounts:</strong> You can choose from all 160+ unique departments and apply a custom percentage.</li>
                                     <li><strong>Item ID discounts:</strong> Enter a specific item ID (e.g. `1639`) to override default category rules.</li>
@@ -2714,7 +2717,7 @@
                                 <table style="width: 100%; font-size: 0.75rem; border-collapse: collapse; text-align: left;">
                                     <thead>
                                         <tr style="border-bottom: 1px solid var(--border); background-color: var(--bg-page);">
-                                            <th style="padding: 0.4rem; color: var(--text-muted);">Field Type</th>
+                                             <th style="padding: 0.4rem; color: var(--text-muted);">Field Type</th>
                                             <th style="padding: 0.4rem; color: var(--danger);">Invalid Examples</th>
                                             <th style="padding: 0.4rem; color: var(--success);">Valid Examples</th>
                                         </tr>
@@ -2741,22 +2744,23 @@
             <!-- RIGHT COLUMN: VERSION CONTROL & ROADMAP -->
             <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                 
-                <!-- LOCK VERSION V2.5.1 CARD -->
+                <!-- LOCK VERSION V2.5.2 CARD -->
                 <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; border: 1.5px solid rgba(16, 185, 129, 0.35); position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.08);">
                     <div id="version-card-status" style="position: absolute; top: 0; right: 0; background: var(--success); color: white; font-size: 0.58rem; font-weight: 900; padding: 0.2rem 0.7rem; border-bottom-left-radius: 8px; letter-spacing: 0.06em; text-transform: uppercase;">
                         PROD ACTIVE
                     </div>
                     <div id="version-card-title" style="font-size: 0.85rem; font-weight: 800; color: var(--success); display: flex; align-items: center; gap: 0.4rem;">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        VERSION V2.5.1 - ENTERPRISE COCKPIT
+                        VERSION V2.5.2 - ENTERPRISE COCKPIT
                     </div>
                     <div style="font-size: 0.74rem; color: var(--text-muted); line-height: 1.45;">
-                        Current stable production release equipped with SOC PDF/Excel Ingestion Engine, Global Command Palette (<kbd style="font-size: 0.65rem; background: var(--bg-page); padding: 0.1rem 0.3rem; border-radius: 3px; border: 1px solid var(--border);">Ctrl+K</kbd>), Visual 4-Step Audit Stepper, Live Central SOC Telemetry, Apollo Dispute Letterhead, and multi-unit tariff isolation.
+                        Current stable production release equipped with SOC PDF/Excel Ingestion Engine, Global Command Palette (<kbd style="font-size: 0.65rem; background: var(--bg-page); padding: 0.1rem 0.3rem; border-radius: 3px; border: 1px solid var(--border);">Ctrl+K</kbd>), Visual 4-Step Audit Stepper, Live Central SOC Telemetry, Dynamic Multi-Unit Facility Directory, Apollo Dispute Letterhead, and multi-unit tariff isolation.
                     </div>
                     
                     <div style="border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.25rem;">
-                        <div style="font-size: 0.7rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.03em;">V2.5.1 Enterprise Modules:</div>
+                        <div style="font-size: 0.7rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.03em;">V2.5.2 Enterprise Modules:</div>
                         <ul style="margin: 0; padding-left: 1rem; font-size: 0.72rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem;">
+                            <li>✓ <strong>Enterprise Hospital Facility &amp; Regional Node Directory</strong> (Dynamic Multi-Unit Provisioning)</li>
                             <li>✓ <strong>SOC Ingestion &amp; Transformation Engine</strong> (PDF/Excel deterministic parser)</li>
                             <li>✓ <strong>Global Command Palette</strong> (Spotlight search & navigation)</li>
                             <li>✓ <strong>Visual 4-Step Quick Audit Stepper</strong> across all modules</li>
@@ -2775,6 +2779,9 @@
                         <button type="button" class="export-btn" onclick="window.forcePurgeAppCache()" style="background: rgba(13, 148, 136, 0.12); border: 1px solid var(--primary); color: var(--primary); font-size: 0.72rem; font-weight: 800; padding: 0.45rem 0.75rem; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem; width: 100%; transition: all 0.2s ease;">
                             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
                             <span>⚡ Force Sync / Clear Client Cache</span>
+                        </button>
+                    </div>
+                </div>
                         </button>
                     </div>
                 </div>
@@ -2848,10 +2855,54 @@
 
     <!-- ADMIN CENTER PANEL -->
     <div class="tab-panel" id="panel-admin">
-            <div>
-                <h1 class="dashboard-title">Admin Center</h1>
-                <p class="dashboard-subtitle">Configure system users, passwords, and security role access permissions</p>
+        <div style="margin-bottom: 1.25rem;">
+            <h1 class="dashboard-title">Administration Center &amp; Facility Governance</h1>
+            <p class="dashboard-subtitle">Centrally manage enterprise hospital facilities, user credentials, 2FA gateways, and role-based permissions.</p>
+        </div>
+
+        <!-- 1. HOSPITAL FACILITY & REGIONAL NODE DIRECTORY MANAGEMENT -->
+        <div class="controls-card" style="background-color: var(--bg-card); margin-bottom: 1.5rem; border-left: 5px solid var(--accent, #6366f1); display: flex; flex-direction: column; gap: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; flex-wrap: wrap; gap: 0.75rem;">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.2rem;">
+                        <span style="background: rgba(99, 102, 241, 0.15); color: #818cf8; font-size: 0.7rem; font-weight: 800; padding: 0.15rem 0.55rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Enterprise Node Directory</span>
+                        <span style="font-size: 0.72rem; color: var(--text-muted);">Multi-Unit Governance</span>
+                    </div>
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                        🏢 Hospital Facilities &amp; Regional Node Directory
+                    </h3>
+                </div>
+                <div style="display: flex; gap: 0.6rem; align-items: center;">
+                    <button class="export-btn" id="btn-open-provision-modal" type="button" onclick="window.openProvisionUnitModal()" style="background: var(--primary, #0d9488); color: white; border-color: var(--primary); font-weight: 800; font-size: 0.78rem; display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.9rem;">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        + Provision New Hospital Node
+                    </button>
+                </div>
             </div>
+
+            <p style="color: var(--text-muted); font-size: 0.82rem; margin: 0; line-height: 1.5;">
+                Centrally create, configure, and manage hospital units across regional hubs (Guwahati, Kolkata, Chennai, Hyderabad, Delhi, Mumbai, International). Newly provisioned nodes automatically appear in the IAM Facility Directory, Tariff Ingester, and Audit Repositories.
+            </p>
+
+            <div style="overflow-x: auto; border: 1px solid var(--border); border-radius: 8px;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.8rem;">
+                    <thead>
+                        <tr style="background: var(--bg-hover); color: var(--text-muted); font-size: 0.74rem; font-weight: 700; text-transform: uppercase; border-bottom: 2px solid var(--border);">
+                            <th style="padding: 0.75rem 0.75rem; width: 40px; text-align: center;">#</th>
+                            <th style="padding: 0.75rem 0.75rem;">Facility Node &amp; Code</th>
+                            <th style="padding: 0.75rem 0.75rem;">Regional Zone / Hub</th>
+                            <th style="padding: 0.75rem 0.75rem;">Default Currency</th>
+                            <th style="padding: 0.75rem 0.75rem;">Nodal Contact Email</th>
+                            <th style="padding: 0.75rem 0.75rem; text-align: center;">Status</th>
+                            <th style="padding: 0.75rem 0.75rem; text-align: right;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-facilities-tbody">
+                        <!-- Rendered dynamically by renderAdminFacilitiesTable() -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
         <div style="display: grid; grid-template-columns: 1fr 320px; gap: 1.5rem; align-items: start;">
             <!-- Credential Registry Card -->
@@ -3474,142 +3525,204 @@
     </div>
 </div>
 
+<!-- DYNAMIC HOSPITAL FACILITY / UNIT PROVISIONING MODAL -->
+<div class="modal-overlay" id="modal-provision-unit" style="display: none; z-index: 3100;">
+    <div class="modal-card" style="max-width: 580px; width: 92%; border-top: 5px solid var(--primary, #0d9488);">
+        <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 id="provision-modal-title" style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Provision Hospital Facility Node
+            </h3>
+            <button type="button" class="close-modal-btn" onclick="window.closeProvisionUnitModal()" title="Close modal">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <form id="form-provision-unit" onsubmit="window.saveProvisionedUnit(event)" style="display: flex; flex-direction: column; gap: 1rem; padding: 1.25rem 1.5rem;">
+            <input type="hidden" id="provision-original-code" value="">
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div>
+                    <label for="provision-code" style="display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Facility Code / ID <span style="color:var(--danger)">*</span></label>
+                    <input type="text" id="provision-code" placeholder="e.g. chennai, hyd, delhi" class="form-control" required style="width: 100%; padding: 0.5rem; font-size: 0.85rem; text-transform: lowercase;">
+                    <span style="font-size: 0.68rem; color: var(--text-muted);">Unique lowercase code (e.g. 'chennai')</span>
+                </div>
+                <div>
+                    <label for="provision-shortname" style="display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Short Display Name <span style="color:var(--danger)">*</span></label>
+                    <input type="text" id="provision-shortname" placeholder="e.g. Chennai Unit" class="form-control" required style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">
+                </div>
+            </div>
+
+            <div>
+                <label for="provision-name" style="display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Full Hospital Facility / Scope Name <span style="color:var(--danger)">*</span></label>
+                <input type="text" id="provision-name" placeholder="e.g. Apollo Main Hospital - Greams Road, Chennai" class="form-control" required style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1rem;">
+                <div>
+                    <label for="provision-hub" style="display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Regional Hub / Zone <span style="color:var(--danger)">*</span></label>
+                    <input type="text" id="provision-hub" placeholder="e.g. South Hub · Tamil Nadu" class="form-control" required style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">
+                </div>
+                <div>
+                    <label for="provision-currency" style="display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Billing Currency <span style="color:var(--danger)">*</span></label>
+                    <select id="provision-currency" class="form-control" style="width: 100%; padding: 0.5rem; font-size: 0.85rem; font-weight: 700;">
+                        <option value="INR">INR (₹)</option>
+                        <option value="USD">USD ($)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="GBP">GBP (£)</option>
+                        <option value="AED">AED (د.إ)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div>
+                    <label for="provision-email" style="display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Nodal Contact Email <span style="color:var(--danger)">*</span></label>
+                    <input type="email" id="provision-email" placeholder="billing.nodal@apollohospitals.com" class="form-control" required style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">
+                </div>
+                <div>
+                    <label for="provision-status" style="display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Operational Status</label>
+                    <select id="provision-status" class="form-control" style="width: 100%; padding: 0.5rem; font-size: 0.85rem; font-weight: 700;">
+                        <option value="ACTIVE">ACTIVE (Operational)</option>
+                        <option value="MAINTENANCE">MAINTENANCE</option>
+                        <option value="INACTIVE">INACTIVE</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label for="provision-address" style="display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Facility Postal Address / Campus</label>
+                <input type="text" id="provision-address" placeholder="e.g. 21 Greams Lane, Off Greams Road, Chennai 600006" class="form-control" style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div>
+                    <label for="provision-icon" style="display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Facility Icon / Glyph</label>
+                    <select id="provision-icon" class="form-control" style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">
+                        <option value="🏥">🏥 Hospital Campus</option>
+                        <option value="🏢">🏢 Multispeciality Center</option>
+                        <option value="🌐">🌐 International Desk</option>
+                        <option value="🛡️">🛡️ Corporate Governance</option>
+                        <option value="⚕️">⚕️ Clinical Institute</option>
+                        <option value="🔬">🔬 Diagnostic Hub</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="provision-color" style="display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Brand Accent Color</label>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <input type="color" id="provision-color" value="#0d9488" style="width: 44px; height: 38px; padding: 2px; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; background: transparent;" oninput="document.getElementById('provision-color-hex').value = this.value">
+                        <input type="text" id="provision-color-hex" value="#0d9488" class="form-control" style="flex: 1; padding: 0.5rem; font-size: 0.82rem;" oninput="document.getElementById('provision-color').value = this.value">
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border);">
+                <button type="button" class="export-btn" onclick="window.closeProvisionUnitModal()" style="background: var(--bg-page); color: var(--text-muted); border-color: var(--border);">Cancel</button>
+                <button type="submit" class="export-btn" style="background: var(--primary); color: white; border-color: var(--primary); font-weight: 700;">Save Facility Node</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <!-- DATA SCRIPT IMPORT -->
-<script src="tariff_data.js?v=2.5.1"></script>
-<script src="revenue_assurance_db.js?v=2.5.1"></script>
-<script src="revenue_assurance_engine.js?v=2.5.1"></script>
-<script src="revenue_assurance_dashboard.js?v=2.5.1"></script>
+<script src="tariff_data.js?v=2.5.2"></script>
+<script src="revenue_assurance_db.js?v=2.5.2"></script>
+<script src="revenue_assurance_engine.js?v=2.5.2"></script>
+<script src="revenue_assurance_dashboard.js?v=2.5.2"></script>
 
 <!-- PDF.js library for client-side PDF parsing -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
-<script src="js/app.js?v=2.5.1"></script>
+<script src="js/app.js?v=2.5.2"></script>
 
-<!-- NETFLIX PROFILE SELECTOR INTEGRATION SCRIPT -->
+<!-- ENTERPRISE FACILITY DIRECTORY & IAM SCRIPT -->
 <script>
-    // Default customizations mapping dictionary
-    window.profileCustomizations = {
-        excelcare: { name: 'Excelcare Unit', username: '', email: 'siddhantsurana@gmail.com' },
-        kolkata: { name: 'Kolkata Unit', username: '', email: 'siddhantsurana@gmail.com' },
-        international: { name: 'International Unit', username: '', email: 'siddhantsurana@gmail.com' },
-        all: { name: 'Master Admin', username: '', email: 'siddhantsurana@gmail.com' }
-    };
+    // Dynamic Hospital Facilities Model & Storage
+    const DEFAULT_HOSPITAL_UNITS = [
+        { code: 'excelcare', name: 'Excelcare Hospital - Guwahati', shortName: 'Excelcare Unit', hub: 'East Hub · Assam', icon: '🏥', color: '#0d9488', currency: 'INR', address: 'Paschim Boragaon, NH-37, Guwahati 781033', email: 'billing.excelcare@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'kolkata', name: 'Apollo Multispeciality Hospitals - Kolkata', shortName: 'Kolkata Unit', hub: 'East Hub · West Bengal', icon: '🏢', color: '#3b82f6', currency: 'INR', address: '58 Canal Circular Road, Kolkata 700054', email: 'billing.kolkata@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'international', name: 'Apollo International Patient Cash Hub', shortName: 'International Unit', hub: 'Global Healthcare Division', icon: '🌐', color: '#10b981', currency: 'USD', address: 'Apollo International Desk, Chennai & Delhi', email: 'international.billing@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'all', name: 'Corporate Head Office (Global Master Console)', shortName: 'Master Admin', hub: 'Enterprise Governance · HO', icon: '🛡️', color: '#8b5cf6', currency: 'INR', address: 'Apollo Hospitals Enterprise Headquarters', email: 'revenue.assurance@apollohospitals.com', status: 'ACTIVE', isDefault: true }
+    ];
 
-    // Load from localStorage if present
-    const savedCustomizations = localStorage.getItem('brc_v2_profile_customizations');
-    if (savedCustomizations) {
+    window.getHospitalUnits = function() {
+        const raw = localStorage.getItem('brc_v2_hospital_units');
+        if (!raw) {
+            localStorage.setItem('brc_v2_hospital_units', JSON.stringify(DEFAULT_HOSPITAL_UNITS));
+            return DEFAULT_HOSPITAL_UNITS;
+        }
         try {
-            const parsed = JSON.parse(savedCustomizations);
-            window.profileCustomizations = Object.assign({}, window.profileCustomizations, parsed);
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
         } catch(e) {
-            console.error("Failed to parse profile customizations", e);
+            console.error("Error reading hospital units:", e);
         }
-    }
+        return DEFAULT_HOSPITAL_UNITS;
+    };
 
-    // Apply customizations on initial load
-    function applyProfileCustomizations() {
-        for (const [code, val] of Object.entries(window.profileCustomizations)) {
-            const el = document.getElementById(`profile-name-${code}`);
-            if (el) {
-                el.textContent = val.name;
-            }
+    window.saveHospitalUnits = function(units) {
+        localStorage.setItem('brc_v2_hospital_units', JSON.stringify(units));
+        window.renderFacilityDirectory();
+        if (typeof window.renderAdminFacilitiesTable === 'function') {
+            window.renderAdminFacilitiesTable();
         }
-    }
-
-    // Active edit state
-    let activeEditProfileCode = null;
-
-    window.toggleManageProfiles = function(event) {
-        if (event) event.preventDefault();
-        const selector = document.getElementById('netflix-profile-selector');
-        const toggleBtn = document.getElementById('netflix-manage-toggle-btn');
-        if (!selector || !toggleBtn) return;
-
-        const isManaging = selector.classList.toggle('managing');
-        if (isManaging) {
-            toggleBtn.textContent = 'Done';
-            toggleBtn.style.borderColor = '#ffffff';
-            toggleBtn.style.color = '#ffffff';
-        } else {
-            toggleBtn.textContent = 'Manage Profiles';
-            toggleBtn.style.borderColor = '#808080';
-            toggleBtn.style.color = '#808080';
+        if (typeof window.syncUnitDropdowns === 'function') {
+            window.syncUnitDropdowns();
         }
     };
 
-    window.editNetflixProfile = function(unitCode, unitName, avatarColor) {
-        activeEditProfileCode = unitCode;
-        const modal = document.getElementById('netflix-edit-modal');
-        const avatar = document.getElementById('netflix-edit-avatar');
-        const nameInput = document.getElementById('netflix-edit-name-input');
-        const usernameInput = document.getElementById('netflix-edit-username-input');
-        const emailInput = document.getElementById('netflix-edit-email-input');
+    window.renderFacilityDirectory = function() {
+        const grid = document.getElementById('auth-facility-grid');
+        const countBadge = document.getElementById('auth-facility-count-badge');
+        if (!grid) return;
 
-        if (!modal) return;
-
-        const current = window.profileCustomizations[unitCode] || { name: unitName, username: '', email: '' };
-
-        if (avatar) {
-            avatar.textContent = current.name.charAt(0);
-            avatar.style.backgroundColor = avatarColor;
+        const units = window.getHospitalUnits();
+        if (countBadge) {
+            countBadge.textContent = `${units.length} Enterprise Facilities Active`;
         }
 
-        if (nameInput) nameInput.value = current.name;
-        if (usernameInput) usernameInput.value = current.username || '';
-        if (emailInput) emailInput.value = current.email || '';
+        grid.innerHTML = '';
 
-        modal.style.display = 'flex';
+        units.forEach(unit => {
+            const card = document.createElement('div');
+            card.className = 'auth-unit-card auth-facility-card';
+            card.setAttribute('data-unit', unit.code);
+            card.onclick = () => window.selectFacilityNode(unit.code);
+
+            const initial = unit.name ? unit.name.charAt(0).toUpperCase() : (unit.code.charAt(0).toUpperCase());
+
+            card.innerHTML = `
+                <div class="auth-card-avatar" style="background-color: ${unit.color || '#0d9488'};">
+                    <span class="auth-avatar-char">${unit.icon || initial}</span>
+                    <div class="auth-edit-badge" title="Configure Facility">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                    </div>
+                </div>
+                <div class="auth-card-content">
+                    <div class="auth-card-eyebrow">${unit.hub || 'Enterprise Hub'}</div>
+                    <h3 class="auth-card-name" id="profile-name-${unit.code}">${unit.name}</h3>
+                    <div class="auth-card-scope">
+                        <span class="auth-scope-tag">${unit.shortName || unit.code}</span>
+                        <span class="auth-currency-tag">${unit.currency || 'INR'}</span>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
     };
 
-    window.closeNetflixProfileEdit = function() {
-        const modal = document.getElementById('netflix-edit-modal');
-        if (modal) modal.style.display = 'none';
-        activeEditProfileCode = null;
-    };
-
-    window.saveNetflixProfileEdit = function() {
-        if (!activeEditProfileCode) return;
-        const nameInput = document.getElementById('netflix-edit-name-input');
-        const usernameInput = document.getElementById('netflix-edit-username-input');
-        const emailInput = document.getElementById('netflix-edit-email-input');
-
-        const newName = nameInput ? nameInput.value.trim() : '';
-        const newUsername = usernameInput ? usernameInput.value.trim() : '';
-        const newEmail = emailInput ? emailInput.value.trim() : '';
-
-        if (!newName) {
-            alert('Profile name cannot be empty!');
-            return;
-        }
-
-        // Save customized values
-        window.profileCustomizations[activeEditProfileCode] = {
-            name: newName,
-            username: newUsername,
-            email: newEmail
-        };
-
-        // Persist to localStorage
-        localStorage.setItem('brc_v2_profile_customizations', JSON.stringify(window.profileCustomizations));
-
-        // Reapply visual updates
-        applyProfileCustomizations();
-        
-        // Hide Modal
-        window.closeNetflixProfileEdit();
-    };
-
-    // Netflix / Auth Profile Select Logic
-    window.selectNetflixProfile = function(unitCode, unitName, avatarColor) {
-        const selector = document.getElementById('netflix-profile-selector');
+    window.selectFacilityNode = function(unitCode) {
+        const selector = document.getElementById('auth-facility-selector');
         const isManaging = selector && selector.classList.contains('managing');
         if (isManaging) {
-            window.editNetflixProfile(unitCode, unitName, avatarColor);
+            window.openProvisionUnitModal(unitCode);
             return;
         }
 
-        const profileSelector = document.getElementById('netflix-profile-selector');
-        const passwordCard = document.getElementById('netflix-password-card');
+        const facilitySelector = document.getElementById('auth-facility-selector');
+        const passwordCard = document.getElementById('auth-password-card');
         
+        const units = window.getHospitalUnits();
+        const unit = units.find(u => u.code === unitCode) || units[0];
+
         // Highlight active unit card
         document.querySelectorAll('.auth-unit-card').forEach(card => {
             if (card.getAttribute('data-unit') === unitCode) {
@@ -3623,93 +3736,248 @@
         const loginUnit = document.getElementById('login-unit');
         if (loginUnit) {
             loginUnit.value = unitCode;
-            // Trigger select change event for Global Admin settings
             const event = new Event('change');
             loginUnit.dispatchEvent(event);
         }
-        
-        // Retrieve customized profile values
-        const config = window.profileCustomizations[unitCode] || { name: unitName, username: '', email: '' };
 
-        // Update the selected profile visuals in the card
-        const selectedAvatar = document.getElementById('netflix-selected-avatar');
-        const selectedTitle = document.getElementById('netflix-selected-title');
-        
+        // Update the selected facility visuals in the password card
+        const selectedAvatar = document.getElementById('auth-selected-avatar');
+        const selectedTitle = document.getElementById('auth-selected-title');
+        const selectedHub = document.getElementById('auth-selected-hub');
+
         if (selectedAvatar) {
-            selectedAvatar.textContent = config.name.charAt(0);
-            selectedAvatar.style.backgroundColor = avatarColor;
+            selectedAvatar.textContent = unit.icon || unit.name.charAt(0);
+            selectedAvatar.style.backgroundColor = unit.color || '#0d9488';
         }
-        
         if (selectedTitle) {
-            selectedTitle.textContent = config.name;
+            selectedTitle.textContent = unit.name;
+        }
+        if (selectedHub) {
+            selectedHub.textContent = unit.hub || 'Enterprise Scope';
         }
 
-        // Pre-fill username field if configured
-        const usernameField = document.getElementById('login-username');
-        if (usernameField) {
-            usernameField.value = config.username || '';
-            if (config.username) {
-                usernameField.setAttribute('value', config.username);
-            }
-        }
-        
-        // Clear previous username/password error
+        // Clear previous error
         const errorMsg = document.getElementById('main-login-error');
         if (errorMsg) errorMsg.style.display = 'none';
-        
-        // Hide profile selection screen, show password screen with fade
-        if (profileSelector) profileSelector.style.display = 'none';
+
+        // Hide directory, show password card
+        if (facilitySelector) facilitySelector.style.display = 'none';
         if (passwordCard) passwordCard.style.display = 'block';
-        
-        // Focus password input
+
         const pwdInput = document.getElementById('login-password');
         if (pwdInput) pwdInput.focus();
     };
 
-    window.selectAuthUnit = window.selectNetflixProfile;
+    // Aliases for compatibility
+    window.selectNetflixProfile = window.selectFacilityNode;
+    window.selectAuthUnit = window.selectFacilityNode;
 
-    window.showNetflixProfiles = function() {
-        const profileSelector = document.getElementById('netflix-profile-selector');
-        const passwordCard = document.getElementById('netflix-password-card');
-        
-        if (profileSelector) profileSelector.style.display = 'block';
+    window.showFacilityDirectory = function() {
+        const facilitySelector = document.getElementById('auth-facility-selector');
+        const passwordCard = document.getElementById('auth-password-card');
+        if (facilitySelector) facilitySelector.style.display = 'block';
         if (passwordCard) passwordCard.style.display = 'none';
-        
-        // Hide OTP group and restore standard credentials group for next try
+
         const otpVerificationGroup = document.getElementById('otp-verification-group');
         const loginCredentialsGroup = document.getElementById('login-credentials-group');
         if (otpVerificationGroup) otpVerificationGroup.style.display = 'none';
         if (loginCredentialsGroup) loginCredentialsGroup.style.display = 'block';
     };
 
-    window.showAuthUnits = window.showNetflixProfiles;
+    window.showNetflixProfiles = window.showFacilityDirectory;
+    window.showAuthUnits = window.showFacilityDirectory;
+
+    window.toggleManageFacilityDirectory = function(event) {
+        if (event) event.preventDefault();
+        const selector = document.getElementById('auth-facility-selector');
+        const toggleBtn = document.getElementById('btn-manage-facilities-toggle');
+        if (!selector || !toggleBtn) return;
+
+        const isManaging = selector.classList.toggle('managing');
+        if (isManaging) {
+            toggleBtn.innerHTML = '<span>Done Configuring</span>';
+            toggleBtn.style.color = '#10b981';
+            toggleBtn.style.borderColor = '#10b981';
+        } else {
+            toggleBtn.innerHTML = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg><span>Configure Facility Nodes</span>';
+            toggleBtn.style.color = '';
+            toggleBtn.style.borderColor = '';
+        }
+    };
+
+    window.toggleManageProfiles = window.toggleManageFacilityDirectory;
+
+    // Unit Provisioning Modal Handlers
+    window.openProvisionUnitModal = function(unitCode) {
+        const modal = document.getElementById('modal-provision-unit');
+        if (!modal) return;
+
+        const units = window.getHospitalUnits();
+        const titleEl = document.getElementById('provision-modal-title');
+        const origCodeInput = document.getElementById('provision-original-code');
+        const codeInput = document.getElementById('provision-code');
+        const shortNameInput = document.getElementById('provision-shortname');
+        const nameInput = document.getElementById('provision-name');
+        const hubInput = document.getElementById('provision-hub');
+        const currencySelect = document.getElementById('provision-currency');
+        const emailInput = document.getElementById('provision-email');
+        const statusSelect = document.getElementById('provision-status');
+        const addressInput = document.getElementById('provision-address');
+        const iconSelect = document.getElementById('provision-icon');
+        const colorInput = document.getElementById('provision-color');
+        const colorHexInput = document.getElementById('provision-color-hex');
+
+        if (unitCode) {
+            const unit = units.find(u => u.code === unitCode);
+            if (!unit) return;
+
+            if (titleEl) titleEl.innerHTML = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Configure Facility Node (${unit.shortName || unit.code})`;
+            if (origCodeInput) origCodeInput.value = unit.code;
+            if (codeInput) {
+                codeInput.value = unit.code;
+                codeInput.readOnly = unit.isDefault || ['excelcare', 'kolkata', 'international', 'all'].includes(unit.code);
+            }
+            if (shortNameInput) shortNameInput.value = unit.shortName || '';
+            if (nameInput) nameInput.value = unit.name || '';
+            if (hubInput) hubInput.value = unit.hub || '';
+            if (currencySelect) currencySelect.value = unit.currency || 'INR';
+            if (emailInput) emailInput.value = unit.email || '';
+            if (statusSelect) statusSelect.value = unit.status || 'ACTIVE';
+            if (addressInput) addressInput.value = unit.address || '';
+            if (iconSelect) iconSelect.value = unit.icon || '🏥';
+            if (colorInput) colorInput.value = unit.color || '#0d9488';
+            if (colorHexInput) colorHexInput.value = unit.color || '#0d9488';
+        } else {
+            if (titleEl) titleEl.innerHTML = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Provision New Hospital Node`;
+            if (origCodeInput) origCodeInput.value = '';
+            if (codeInput) {
+                codeInput.value = '';
+                codeInput.readOnly = false;
+            }
+            if (shortNameInput) shortNameInput.value = '';
+            if (nameInput) nameInput.value = '';
+            if (hubInput) hubInput.value = '';
+            if (currencySelect) currencySelect.value = 'INR';
+            if (emailInput) emailInput.value = '';
+            if (statusSelect) statusSelect.value = 'ACTIVE';
+            if (addressInput) addressInput.value = '';
+            if (iconSelect) iconSelect.value = '🏥';
+            if (colorInput) colorInput.value = '#0d9488';
+            if (colorHexInput) colorHexInput.value = '#0d9488';
+        }
+
+        modal.style.display = 'flex';
+    };
+
+    window.closeProvisionUnitModal = function() {
+        const modal = document.getElementById('modal-provision-unit');
+        if (modal) modal.style.display = 'none';
+    };
+
+    window.saveProvisionedUnit = function(e) {
+        if (e) e.preventDefault();
+
+        const origCode = document.getElementById('provision-original-code').value.trim();
+        const code = document.getElementById('provision-code').value.trim().toLowerCase().replace(/[^a-z0-9_-]/g, '');
+        const shortName = document.getElementById('provision-shortname').value.trim();
+        const name = document.getElementById('provision-name').value.trim();
+        const hub = document.getElementById('provision-hub').value.trim();
+        const currency = document.getElementById('provision-currency').value;
+        const email = document.getElementById('provision-email').value.trim();
+        const status = document.getElementById('provision-status').value;
+        const address = document.getElementById('provision-address').value.trim();
+        const icon = document.getElementById('provision-icon').value;
+        const color = document.getElementById('provision-color').value;
+
+        if (!code || !shortName || !name || !email) {
+            alert('Please fill out all required facility fields (Code, Short Name, Full Name, Email).');
+            return;
+        }
+
+        const units = window.getHospitalUnits();
+
+        if (!origCode) {
+            if (units.some(u => u.code === code)) {
+                alert(`A facility with code "${code}" already exists. Please choose another identifier.`);
+                return;
+            }
+            units.push({
+                code,
+                shortName,
+                name,
+                hub: hub || 'General Hub',
+                currency: currency || 'INR',
+                email,
+                status,
+                address,
+                icon,
+                color,
+                isDefault: false
+            });
+        } else {
+            const idx = units.findIndex(u => u.code === origCode);
+            if (idx !== -1) {
+                units[idx] = Object.assign({}, units[idx], {
+                    code: (units[idx].isDefault ? origCode : code),
+                    shortName,
+                    name,
+                    hub: hub || 'General Hub',
+                    currency: currency || 'INR',
+                    email,
+                    status,
+                    address,
+                    icon,
+                    color
+                });
+            }
+        }
+
+        window.saveHospitalUnits(units);
+        window.closeProvisionUnitModal();
+        if (typeof showToast === 'function') {
+            showToast(`Hospital Facility Node "${shortName}" successfully saved.`);
+        } else {
+            alert(`Hospital Facility Node "${shortName}" saved.`);
+        }
+    };
+
+    window.deleteProvisionedUnit = function(unitCode) {
+        const units = window.getHospitalUnits();
+        const target = units.find(u => u.code === unitCode);
+        if (!target) return;
+
+        if (target.isDefault || ['excelcare', 'kolkata', 'international', 'all'].includes(unitCode)) {
+            alert('Core default hospital units cannot be deleted.');
+            return;
+        }
+
+        if (confirm(`Are you sure you want to permanently decommission hospital node "${target.name}" (${target.code})?`)) {
+            const filtered = units.filter(u => u.code !== unitCode);
+            window.saveHospitalUnits(filtered);
+            if (typeof showToast === 'function') {
+                showToast(`Hospital Facility Node "${target.shortName}" decommissioned.`);
+            }
+        }
+    };
 
     // Run on document load
-    document.addEventListener('DOMContentLoaded', applyProfileCustomizations);
-    // Also run immediately just in case DOMContentLoaded has already fired
+    document.addEventListener('DOMContentLoaded', function() {
+        window.renderFacilityDirectory();
+    });
     if (document.readyState === "complete" || document.readyState === "interactive") {
-        applyProfileCustomizations();
+        window.renderFacilityDirectory();
     }
 
-    // Wrap portal logout to show profiles page on logout
-    if (typeof window.handlePortalLogout === 'function') {
-        const originalLogout = window.handlePortalLogout;
-        window.handlePortalLogout = function() {
-            originalLogout();
-            window.showNetflixProfiles();
-        };
-    } else {
-        // Wait for app.js script loading to complete
-        window.addEventListener('load', function() {
-            if (typeof window.handlePortalLogout === 'function') {
-                const originalLogout = window.handlePortalLogout;
-                window.handlePortalLogout = function() {
-                    originalLogout();
-                    window.showNetflixProfiles();
-                };
-            }
-        });
-    }
+    // Wrap portal logout to show facility directory page on logout
+    window.addEventListener('load', function() {
+        if (typeof window.handlePortalLogout === 'function') {
+            const originalLogout = window.handlePortalLogout;
+            window.handlePortalLogout = function() {
+                originalLogout();
+                window.showFacilityDirectory();
+            };
+        }
+    });
 </script>
 
 
@@ -3853,7 +4121,7 @@
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><line x1="6" y1="8" x2="6" y2="8"/><line x1="10" y1="8" x2="10" y2="8"/><line x1="14" y1="8" x2="14" y2="8"/><line x1="18" y1="8" x2="18" y2="8"/><line x1="6" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="18" y2="12"/><line x1="8" y1="16" x2="16" y2="16"/></svg>
         <span class="dock-tooltip">Shortcuts (?)</span>
     </button>
-    <button type="button" class="dock-btn" onclick="window.switchTab('manual')" title="View V2.5.1 Specs &amp; V3.0 Quantum Roadmap" style="background: rgba(99, 102, 241, 0.2); color: #818cf8; border-color: rgba(99, 102, 241, 0.4);">
+    <button type="button" class="dock-btn" onclick="window.switchTab('manual')" title="View V2.5.2 Specs &amp; V3.0 Quantum Roadmap" style="background: rgba(99, 102, 241, 0.2); color: #818cf8; border-color: rgba(99, 102, 241, 0.4);">
         <span style="font-size: 0.95rem; font-weight: 800;">✦</span>
         <span class="dock-tooltip">V3.0 Quantum Roadmap</span>
     </button>
