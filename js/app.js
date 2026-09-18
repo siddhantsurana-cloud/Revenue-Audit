@@ -1128,7 +1128,7 @@
         // Draw startup database dashboard charts
         updateDatabaseDashboard();
 
-        // Initialize Enterprise v2.5.1 Utilities (Command Palette, Keyboard Shortcuts, Telemetry)
+        // Initialize Enterprise v2.5.2 Utilities (Command Palette, Keyboard Shortcuts, Telemetry)
         if (typeof initCommandPalette === 'function') {
             initCommandPalette();
         }
@@ -14581,7 +14581,7 @@ Claims & Billing Assurance Desk
     }
 
     /* ==========================================================================
-       ENTERPRISE STATEMENT OF CHARGES (SOC) DATA PROCESSING MODULE (v2.5.1)
+       ENTERPRISE STATEMENT OF CHARGES (SOC) DATA PROCESSING MODULE (v2.5.2)
        ========================================================================== */
 
     let socActiveFile = null;
@@ -15645,7 +15645,7 @@ Claims & Billing Assurance Desk
     window.initIngesterPanel = initIngesterPanel;
 
     /* ==========================================================================
-       ENTERPRISE V2.5.1 SUITE: COMMAND PALETTE, SHORTCUTS, WORKFLOW STEPPER, 
+       ENTERPRISE V2.5.2 SUITE: COMMAND PALETTE, SHORTCUTS, WORKFLOW STEPPER, 
        SOC TELEMETRY, & APOLLO FORMAL DISPUTE LETTERHEAD ENGINE
        ========================================================================== */
 
