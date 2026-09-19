@@ -612715,7 +612715,21899 @@ const AGREEMENT_KOLKATA = [
     "extensionRemarks": "Extended by CEO/Indrajit D. until June 30, 2025, pending negotiation of new central agreement."
   }
 ];
-const AGREEMENT_DETAILS = [];
+const AGREEMENT_DETAILS = [
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "20% OFF – ALL YES BANK RETAIL AND BUSINESS CREDIT CARDS (YES BANK LIMITED AHC AGREEMENT)",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-09-2025",
+
+        "toDate":  "15-09-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "25% OFF– ARISE ClUB MEMBERS (NUCLEI – CDNA TECHNOLOGIES) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-10-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "25% off - TIMES BLACK CARD (TIMES INTERNET LIMITED) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "11-06-2025",
+
+        "toDate":  "31-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "3XPER INNOVENTURE LIMITED (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "3XPER INNOVENTURE LIMITED (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "3XPER INNOVENTURE LIMITED (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AAYUV TECHNOLOGIES PRIVATE LIMITED (EKINCARE) - ACCENTURE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-09-2025",
+
+        "toDate":  "20-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ADINATH JAIN TRUST - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-09-2024",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ADINATH JAIN TRUST - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-09-2024",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ADINATH JAIN TRUST - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-09-2024",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ADITYA BIRLA HEALTH INSURANCE CO LTD 2024 IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "07-11-2024",
+
+        "toDate":  "10-11-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ADITYA BIRLA HEALTH INSURANCE CO LTD 2024 OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "07-11-2024",
+
+        "toDate":  "10-11-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "AIRPORT AUTHORITY IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-05-2019",
+
+        "toDate":  "13-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ALANKARAM AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ALANKARAM IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ALANKARAM OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ALANKIT HEALTH CARE TPA LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ALANKIT HEALTH CARE TPA LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ALGAVISTA GREENTECH (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ALGAVISTA GREENTECH (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ALGAVISTA GREENTECH (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "All India Marwari Yuva Manch IP Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2024",
+
+        "toDate":  "20-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "All India Marwari Yuva Manch OP Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2024",
+
+        "toDate":  "20-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "All India Marwari Yuva Manch  AHC Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2024",
+
+        "toDate":  "20-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AMBADI ENTERPRISES LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AMBADI ENTERPRISES LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AMBADI ENTERPRISES LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AMM FOUNDATION (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AMM FOUNDATION (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AMM FOUNDATION (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ANABOND LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-06-2025",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ANABOND LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-06-2025",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ANABOND LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-06-2025",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO EMPLOYEE BENEFIT- INVESTIGATION-PARENTS",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2024-25, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO EMPLOYEE BENEFIT- INVESTIGATION-SELF",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2024-25, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO EMPLOYEE BENEFIT- INVESTIGATION-SPOUSE \u0026CHILDREN",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2024-25, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO GUWAHATI STAFF",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "APOLLO HEALTH RESOURCES LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2024-25, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-03-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "APOLLO HEALTH RESOURCES LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-03-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "APOLLO HEALTH RESOURCES LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2024-25, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-03-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO HOSPITALS EDUCATIONAL TRUST AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2022-23",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-10-2023",
+
+        "toDate":  "30-04-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO HOSPITALS EDUCATION TRUST OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-05-2024",
+
+        "toDate":  "30-04-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO LEADERSHIP CREDIT IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF APR 2026-27, APOLLO GUWAHATI SEMI CABIN IP TARIFF APR 2026-27, APOLLO GUWAHATI DELUXE IP TARIFF APR 2026-27, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-12-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO LEADERSHIP CREDIT OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-12-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO MANAGEMENT CREDIT IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF APR 2026-27, APOLLO GUWAHATI SEMI CABIN IP TARIFF APR 2026-27, APOLLO GUWAHATI DELUXE IP TARIFF APR 2026-27, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-12-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO MANAGEMENT CREDIT OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-12-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "APOLLO PROHEALTH NCC 15% CAMPAIGN AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-01-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "APOLLO PROHEALTH RETENTION 15% OFF AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO SHINE FOUNDATION AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO SHINE FOUNDATION OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO SINDOORI HOTELS LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-01-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ARYA VYSYA CHARITABLE AROGYAA FOUNDATION AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ARYA VYSYA CHARITABLE AROGYAA FOUNDATION OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ATOS GLOBAL - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ATOS GLOBAL - GENERAL OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ATOS GLOBAL - SENIOR MANAGEMENT OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AUSTRALIAN CONSULATE-GENERAL AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "31-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AUSTRALIAN CONSULATE-GENERAL IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "31-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AUSTRALIAN CONSULATE-GENERAL OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "31-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AYUSHMAN BHARAT IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  GENERAL IP TARIFF 2021, APOLLO GUWAHATI  SEMI CABIN  IP TARIFF 2021, APOLLO GUWAHATI  DELUXE IP TARIFF 2021, APOLLO GUWAHATI  CREDIT IP TARIFF 2020, APOLLO GUWAHATI  CGHS IP TARIFF 2020",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-12-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BABCOCK POWER APAC PVT LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-07-2010",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "BAJAJ ALLIANZ GENERAL INSURANCE COMPANY LTD IP AGREEMENT",
+
+        "tariffMapped":  "BAJAJ ALLIANZ INSURANCE GUWAHATI DELUXE IP TARIFF 2024, BAJAJ ALLIANZ INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-01-2025",
+
+        "toDate":  "20-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "BAJAJ ALLIANZ GENERAL INSURANCE COMPANY LTD OP AGREEMENT",
+
+        "tariffMapped":  "BAJAJ ALLIANZ INSURANCE GUWAHATI OP TARIFF 2024, BAJAJ ALLIANZ INSURANCE EXCELCARE OP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-01-2025",
+
+        "toDate":  "20-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "BAJAJ ALLIANZ GENERAL INSURANCE LTD FOR DELOITTE CREDIT AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2022-23",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-01-2014",
+
+        "toDate":  "10-02-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "Bajaj Allianz – TVS Credit IP Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "Bajaj Allianz – TVS Credit OP Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "BAJAJ FINSERV HEALTH EDGE - STANDARD PACKAGE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-12-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "BAJAJ FINSERV HEALTH LTD - BFL PURELIFE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-03-2026",
+
+        "toDate":  "24-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BALMER LAWRIE CO LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2024-25, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2025",
+
+        "toDate":  "31-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BALMER LAWRIE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2025",
+
+        "toDate":  "31-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BALMER LAWRIE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2024-25, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2025",
+
+        "toDate":  "31-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "BETACURA HEALTH SOLUTIONS PVT LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "26-03-2026",
+
+        "toDate":  "26-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BPL card holders IP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF APR 2026-27, APOLLO GUWAHATI SEMI CABIN IP TARIFF APR 2026-27, APOLLO GUWAHATI DELUXE IP TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BSR AND CO LLP - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "04-01-2026",
+
+        "toDate":  "21-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BSR AND CO LLP - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF NOV 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF NOV 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF NOV 2025-26, APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "04-01-2026",
+
+        "toDate":  "21-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BSR AND CO LLP - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "04-01-2026",
+
+        "toDate":  "21-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CARBORUNDUM UNIVERSAL LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CARBORUNDUM UNIVERSAL LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CARBORUNDUM UNIVERSAL LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CARE HEALTH INSURANCE IP AGREEMENT",
+
+        "tariffMapped":  "GUWAHATI INSURANCE SOC 2025 TARIFF TEMPLATE",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "25-10-2019",
+
+        "toDate":  "21-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "CENTRAL BANK OF INDIA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF APR 2026-27, APOLLO GUWAHATI SEMI CABIN IP TARIFF APR 2026-27, APOLLO GUWAHATI DELUXE IP TARIFF APR 2026-27, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "CENTRAL BANK OF INDIA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CG POWER AND INDUSTRIAL SOLUTIONS LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CG POWER AND INDUSTRIAL SOLUTIONS LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CG POWER AND INDUSTRIAL SOLUTIONS LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CG SEMI PRIVATE LIMITED (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CG SEMI PRIVATE LIMITED (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CG SEMI PRIVATE LIMITED (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CHAMBER OF INDIAN MSME AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-07-2025",
+
+        "toDate":  "30-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CHAMBER OF INDIAN MSME IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-07-2025",
+
+        "toDate":  "30-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CHAMBER OF INDIAN MSME OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-07-2025",
+
+        "toDate":  "30-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CHEMPLAST SANMAR AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-06-2025",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CHEMPLAST SANMAR IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-06-2025",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CHEMPLAST SANMAR OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-06-2025",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM DISTRIBUTION SERVICES LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM DISTRIBUTION SERVICES LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM DISTRIBUTION SERVICES LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM FINANCIAL HOLDINGS LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM FINANCIAL HOLDINGS LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM FINANCIAL HOLDINGS LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM INVESTMENT AND FINANCE CO LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM INVESTMENT AND FINANCE CO LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM INVESTMENT AND FINANCE CO LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM MS GENERAL (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM MS GENERAL (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM MS GENERAL (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM MS RISK SERVICES LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM MS RISK SERVICES LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM MS RISK SERVICES LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM SECURITIES LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM SECURITIES LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM SECURITIES LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLA MS GENERAL INSURANCE AHC AGREEMENT - 2025",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE OP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLA MS GENERAL INSURANCE IP AGREEMENT - 2025",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE IP TARIFF EXECUTIVE MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLA MS GENERAL INSURANCE OP AGREEMENT - 2025",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE OP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "COAL INDIA  LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "COAL INDIA GUWAHATI OP CASH TARIFF 2025-26, COAL INDIA  EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-10-2025",
+
+        "toDate":  "31-10-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "COAL INDIA  LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "COAL INDIA GUWAHATI DELUXE IP TARIFF 2025-26, COAL INDIA EXCELCARE IP TARIFF EXECUTIVE  2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-10-2025",
+
+        "toDate":  "31-10-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "COAL INDIA  LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "COAL INDIA GUWAHATI OP CASH TARIFF 2025-26, COAL INDIA  EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-10-2025",
+
+        "toDate":  "31-10-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "COMPUTER AGE MANAGEMENT SERVICES - CAMS AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "COMPUTER AGE MANAGEMENT SERVICES - CAMS OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONCORD ONE TECHNOLOGIES AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONCORD ONE TECHNOLOGIES IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONCORD ONE TECHNOLOGIES OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONNECT AND HEAL - CONTROL COMPONENT IMI AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-12-2025",
+
+        "toDate":  "08-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONNECT AND HEAL PRIMARY CARE PRIVATE LIMITED - MOTUL AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "25-02-2026",
+
+        "toDate":  "25-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONNECT AND HEAL PRIMARY CARE PRIVATE LIMITED - STELLANTIS INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "25-02-2026",
+
+        "toDate":  "25-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "COROMANDEL ENGINEERING CO LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "COROMANDEL ENGINEERING CO LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "COROMANDEL ENGINEERING CO LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "COROMANDEL INTERNATIONAL LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "COROMANDEL INTERNATIONAL LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "COROMANDEL INTERNATIONAL LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CORONIS AJUBA SOLUTIONS AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-05-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CORONIS AJUBA SOLUTIONS IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-05-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CORONIS AJUBA SOLUTIONS OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-05-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "DALET INDIA PVT LTD. - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "DALET INDIA PVT LTD. - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "DALET INDIA PVT LTD. - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "DIRECTOR PLATINUM CARD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2019-20",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "DOCONLINE HEALTH INDIA PRIVATE LIMITED - SONEPAR INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-12-2025",
+
+        "toDate":  "30-11-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "DOCONLINE HEALTH INDIA PRIVATE LIMITED - SONEPAR INDIA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-12-2025",
+
+        "toDate":  "30-11-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "DOCTORS GENERAL CREDIT  IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF APR 2026-27, APOLLO GUWAHATI SEMI CABIN IP TARIFF APR 2026-27, APOLLO GUWAHATI DELUXE IP TARIFF APR 2026-27, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-12-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "DOCTORS GENERAL CREDIT  OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-12-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "DR.TONMOY DAS ACCOUNT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2024-25, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "EAST WEST ASSIST INSURANCE TPA PVT LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "EAST WEST ASSIST INSURANCE TPA PVT LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EID PARRY INDIA LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EID PARRY INDIA LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EID PARRY INDIA LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - CANARA HSBC AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-12-2025",
+
+        "toDate":  "22-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - GOODS AND SERVICES TAX(GST) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-12-2025",
+
+        "toDate":  "03-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - ION EXCHANGE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-12-2025",
+
+        "toDate":  "22-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - KOTAK SECURITIES AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-12-2025",
+
+        "toDate":  "22-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE TARGET CORPORATION AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2026",
+
+        "toDate":  "01-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ERICSON TPA HEALTHCARE PVT LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ERICSON TPA HEALTHCARE PVT LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "TPA",
+
+        "agreementName":  "ERICSON TPA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-03-2019",
+
+        "toDate":  "01-02-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "FABINDIA LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-03-2026",
+
+        "toDate":  "19-03-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "FABINDIA LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-03-2026",
+
+        "toDate":  "19-03-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN LTD-FUTURE GENERALI INDIA INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE IP TARIFF EXECUTIVE MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN LTD-HDFC ERGO GENERAL INSURANCE IP AGREEMENT",
+
+        "tariffMapped":  "HDFC GUWAHATI GENERAL IP TARIFF 2024, HDFC GUWAHATI SEMI CABIN IP TARIFF 2024, HDFC GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN LTD-HDFC ERGO GENERAL INSURANCE OP AGREEMENT",
+
+        "tariffMapped":  "HDFC GUWAHATI OP CASH TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN LTD-MAGMA HDI GENERAL INSURANCE CO. LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN LTD-MANIPAL CIGNA HEALTH INSURANCE COMPANY LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN LTD STAFF IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  DELUXE IP TARIFF 2021, APOLLO GUWAHATI DELUXE IP TARIFF 2023, APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN LTD STAFF OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2019-20, APOLLO GUWAHATI OP CASH TARIFF 2018-19, APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN (TPA) LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN (TPA) LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FHPL (EMP) GIPSA PPN 2025 IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FHPL (EMP) GIPSA PPN 2025 OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "FLEXTRONICS TECHNOLOGIES AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "FLEXTRONICS TECHNOLOGIES IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "FLEXTRONICS TECHNOLOGIES OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "GAIL IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-03-2019",
+
+        "toDate":  "30-11-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "GAIL -OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-08-2021",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "GALAXY HEALTH INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "GALAXY HEALTH INSURANCE GUWAHATI DELUXE IP TARIFF 2024, GALAXY HEALTH INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-11-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "GALAXY HEALTH INSURANCE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "GALAXY HEALTH INSURANCE GUWAHATI OP CASH TARIFF 2024, GALAXY HEALTH INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-11-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "GARDEN REACH SHIPBUILDERS AND ENGINEERS LIMITED(GRSE) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-09-2023",
+
+        "toDate":  "31-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "GARDEN REACH SHIPBUILDERS AND ENGINEERS LIMITED(GRSE) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-09-2023",
+
+        "toDate":  "31-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "GARDEN REACH SHIPBUILDERS AND ENGINEERS LIMITED(GRSE) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-09-2023",
+
+        "toDate":  "31-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "GENERALI CENTRAL INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "GUWAHATI INSURANCE SOC 2025 TARIFF TEMPLATE",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-03-2019",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "TPA",
+
+        "agreementName":  "GENINS INDIA LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "TPA",
+
+        "agreementName":  "GENINS INDIA LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "GMONEY PRIVATE LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-01-2029",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "GMONEY PRIVATE LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF NOV 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF NOV 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF NOV 2025-26, APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-01-2029",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "GMONEY PRIVATE LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-01-2029",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "GO DIGIT GENERAL INSURANCE LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-01-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "GO DIGIT GENERAL INSURANCE LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-01-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "GOOD HEALTH TPA SERVICES LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "GOOD HEALTH TPA SERVICES LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "GRID CONTROLLER OF INDIA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2023",
+
+        "toDate":  "15-09-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "GRID CONTROLLER OF INDIA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2025",
+
+        "toDate":  "15-09-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HCL AVITAS PVT LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF NOV 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF NOV 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF NOV 2025-26, APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-12-2025",
+
+        "toDate":  "14-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HCL AVITAS PVT LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-12-2025",
+
+        "toDate":  "14-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HDFC ERGO GENERAL INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "HDFC GUWAHATI GENERAL IP TARIFF 2024, HDFC GUWAHATI SEMI CABIN IP TARIFF 2024, HDFC GUWAHATI DELUXE IP TARIFF 2024, HDFC ERGO EXCELCARE DAYCARE TARIFF 2024, HDFC ERGO EXCELCARE GEN/4 SHARING TARIFF 2024, HDFC ERGO EXCELCARE 2 SHARING TARIFF 2024, HDFC ERGO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF 2024, HDFC ERGO EXCELCARE SUITE TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-03-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH INDIA INS TPA SERVICES PVT LTD-FUTURE GEN INDIA INS CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHINDIA INSURANCE TPA SERVICES PVT LTD-HDFC ERGO GENERAL INSURANCE IP AGREEMENT",
+
+        "tariffMapped":  "HDFC GUWAHATI GENERAL IP TARIFF 2024, HDFC GUWAHATI SEMI CABIN IP TARIFF 2024, HDFC GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHINDIA INSURANCE TPA SERVICES PVT LTD-HDFC ERGO GENERAL INSURANCE OP AGREEMENT",
+
+        "tariffMapped":  "HDFC GUWAHATI OP CASH TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHINDIA INSURANCE TPA SERVICES PVT LTD-ICICI LOMBARD GENERAL INSURANCE CO. LTD. IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-02-2026",
+
+        "toDate":  "17-02-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHINDIA INSURANCE TPA SERVICES PVT LTD-TATA AIG GIC LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHINDIA INSURANCE TPA SERVICES PVT LTD-UNIVERSAL SOMPO GENERAL INSURANCE IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH INDIA TPA SERVICE IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2019",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH INDIA TPA SERVICES PVT LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH INDIA TPA SERVICES PVT LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH INSURANCE TPA INDIA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-12-2019",
+
+        "toDate":  "29-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH INSURANCE TPA OF INDIA LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH INSURANCE TPA OF INDIA LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH INSURANCE TPA OF INDIA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO GUWAHATI OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "04-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHI TATA MOTORS AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-03-2026",
+
+        "toDate":  "24-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHQUARTERS - STANDARD PACKAGE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-12-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HERITAGE HEALTH INSURANCE TPA PVT LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HERITAGE HEALTH INSURANCE TPA PVT LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HERO FINCORP LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-07-2025",
+
+        "toDate":  "17-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HERO FINCORP LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-07-2025",
+
+        "toDate":  "17-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HERO FINCORP LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-07-2025",
+
+        "toDate":  "17-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HERO MOTOCORP LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-08-2024",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEXA HEALTH AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-11-2025",
+
+        "toDate":  "09-11-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEXA HEALTH IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF NOV 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF NOV 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF NOV 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-11-2025",
+
+        "toDate":  "09-11-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEXA HEALTH OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-11-2025",
+
+        "toDate":  "09-11-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HTL LIMITED - EMBS AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-04-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HTL LIMITED - EMBS IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-04-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HTL LIMITED - EMBS OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-04-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HUDCO IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-05-2019",
+
+        "toDate":  "29-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HYUNDAI MOTOR INDIA LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2025",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HYUNDAI MOTOR INDIA LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2025",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HYUNDAI MOTOR INDIA LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2025",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ICFRE Rain Forest IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "18-11-2024",
+
+        "toDate":  "17-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ICFRE Rain Forest OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "18-11-2024",
+
+        "toDate":  "17-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ICICI LOMBARD GENERAL INSURANCE COMPANY LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE OP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-02-2026",
+
+        "toDate":  "17-02-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ICICI LOMBARD GENERAL INSURANCE COMPANY LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE IP TARIFF EXECUTIVE MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-02-2026",
+
+        "toDate":  "17-02-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ICICI LOMBARD GENERAL INSURANCE COMPANY LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE OP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-02-2026",
+
+        "toDate":  "17-02-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ICSI IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-10-2023",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "IFFCO TOKIO GEN. INS IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-08-2019",
+
+        "toDate":  "09-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IITH ALUMINI ASSOCIATION AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IITH ALUMINI ASSOCIATION OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "IMAGINE (ALYVE HEALTH) - IBM AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-11-2025",
+
+        "toDate":  "17-11-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "IMAGINE HEALTHFIN PRIVATE LIMITED (ALYVE HEALTH) - ANGLO AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2026",
+
+        "toDate":  "01-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "IMAGINE HEALTHFIN PRIVATE LIMITED (ALYVE HEALTH) - BMW AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-12-2025",
+
+        "toDate":  "08-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "IMAGINE HEALTHFIN PRIVATE LIMITED (ALYVE HEALTH) - PIRAMAL AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-12-2025",
+
+        "toDate":  "08-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "IMAGINE HEALTHFIN PRIVATE LIMITED (ALYVE HEALTH) - SERB BANK AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-01-2026",
+
+        "toDate":  "14-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INDIA INFRASTRUCTURE FINANCE COMPANY LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-11-2024",
+
+        "toDate":  "31-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INDIA INFRASTRUCTURE FINANCE COMPANY LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-11-2024",
+
+        "toDate":  "31-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INDIA INFRASTRUCTURE FINANCE COMPANY LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-11-2024",
+
+        "toDate":  "31-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "INDIAN OVERSEAS BANK - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2024",
+
+        "toDate":  "05-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "INDIAN OVERSEAS BANK - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-08-2025",
+
+        "toDate":  "05-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "INDIAN OVERSEAS BANK - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2024",
+
+        "toDate":  "05-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "INDUSIND GENERAL INSURANCE LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "INDUSIND GENERAL INSURANCE LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INTERNATIONAL PATIENT (CASH IPS) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO GUWAHATI GENERAL IP TARIFF APR 2026-27, APOLLO GUWAHATI SEMI CABIN IP TARIFF APR 2026-27, APOLLO GUWAHATI DELUXE IP TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-06-2024",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INTERNATIONAL PATIENT (CASH IPS) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-06-2024",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INTERNATIONAL VAISH FEDERATION AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-03-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INTERNATIONAL VAISH FEDERATION OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-03-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IOC(ASSAM OIL DIVISION)-IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  GENERAL IP TARIFF 2021, APOLLO GUWAHATI  SEMI CABIN  IP TARIFF 2021, APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IOC(ASSAM OIL DIVISON) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IOC(BAMUNIMOIDAM)",
+
+        "tariffMapped":  "APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IOC(BETKUCHI)-IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  GENERAL IP TARIFF 2021, APOLLO GUWAHATI  SEMI CABIN  IP TARIFF 2021, APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IOC(BRPL)-IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  GENERAL IP TARIFF 2021, APOLLO GUWAHATI  SEMI CABIN  IP TARIFF 2021, APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IOC(BRPL) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IOC- IP AGREEMENT(NOONMATI)",
+
+        "tariffMapped":  "APOLLO GUWAHATI  GENERAL IP TARIFF 2021, APOLLO GUWAHATI  SEMI CABIN  IP TARIFF 2021, APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IOCL BAMUNIMAIDAM IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  GENERAL IP TARIFF 2021, APOLLO GUWAHATI  SEMI CABIN  IP TARIFF 2021, APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IOCL OP AGREEMENT(NOONMATI)",
+
+        "tariffMapped":  "APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "04-07-2023",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IPLTECH ELECTRIC PRIVATE LIMITED (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IPLTECH ELECTRIC PRIVATE LIMITED (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IPLTECH ELECTRIC PRIVATE LIMITED (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IPS (CASH) GENERAL CREDIT  IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF APR 2026-27, APOLLO GUWAHATI SEMI CABIN IP TARIFF APR 2026-27, APOLLO GUWAHATI DELUXE IP TARIFF APR 2026-27, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-12-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IPS (CASH) GENERAL CREDIT  OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2022-23, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-12-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JABRA CONNECT INDIA PVT LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-04-2026",
+
+        "toDate":  "08-04-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JABRA CONNECT INDIA PVT LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-04-2026",
+
+        "toDate":  "08-04-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JACKSON LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-01-2026",
+
+        "toDate":  "02-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JACKSON LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-01-2026",
+
+        "toDate":  "02-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JASMIN INFOTECH PRIVATE LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JASMIN INFOTECH PRIVATE LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JAYEM AUTOMOTIVES PRIVATE LIMITED (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JAYEM AUTOMOTIVES PRIVATE LIMITED (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JAYEM AUTOMOTIVES PRIVATE LIMITED (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JITO PLUS - CHENNAI CHAPTER AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JITO PLUS - CHENNAI CHAPTER IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JITO PLUS - CHENNAI CHAPTER OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JSW MI CHENNAI STEEL SERVICES CENTER PRIVATE LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-01-2026",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JSW MI CHENNAI STEEL SERVICES CENTER PRIVATE LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF NOV 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF NOV 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF NOV 2025-26, APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-01-2026",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JSW MI CHENNAI STEEL SERVICES CENTER PRIVATE LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-01-2026",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "KADAMANE ESTATES COMPANY (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "KADAMANE ESTATES COMPANY (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "KADAMANE ESTATES COMPANY (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "KPMG ASSURANCE AND CONSULTING SERVICES LLP - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-12-2025",
+
+        "toDate":  "21-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "KPMG ASSURANCE AND CONSULTING SERVICES LLP - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-12-2025",
+
+        "toDate":  "21-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "LABSTACK NETTWORK PVT LTD - STANDARD VIP AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "26-03-2026",
+
+        "toDate":  "26-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "LABSTACK - PLUM AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP APR TARIFF 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-05-2026",
+
+        "toDate":  "07-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "LAFARGE UMIAM MINING PVT LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2025",
+
+        "toDate":  "05-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "LAFARGE UMIAM MINING PVT LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2025",
+
+        "toDate":  "05-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "LIBERTY GENERAL INSURANCE LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-01-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "LIBERTY GENERAL INSURANCE LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-01-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "LIFECELL INTERNATIONAL PRIVATE LIMITED (MFINE) - FRESHWORKS AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-01-2026",
+
+        "toDate":  "09-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "LIFECELL INT (MFINE) - ACE DESIGNERS AGREEMENT AHC",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP APR TARIFF 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-04-2026",
+
+        "toDate":  "26-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "LIFECELL INT PVT LTD (MFINE) - SAMSUNG INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-04-2026",
+
+        "toDate":  "09-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "LINK-K INSURANCE TPA PVT LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "LINK-K INSURANCE TPA PVT LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "LINK-K INSURANCE TPA PVT LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MADRAS ELECTRIC TRADERS ASSOCIATION - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-08-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MADRAS ELECTRIC TRADERS ASSOCIATION - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-08-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MADRAS ELECTRIC TRADERS ASSOCIATION - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-08-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MAGMA GENERAL INSURANCE CO LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF MAGMA GENERAL INSURANCE DEC 2025, APOLLO EXCELCARE OP TARIFF MAGMA GENERAL INSURANCE DEC 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MAGMA GENERAL INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MAGMA GENERAL INSURANCE DEC 2025, APOLLO EXCELCARE IP TARIFF EXECUTIVE MAGMA GENERAL INSURANCE DEC 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MAGMA GENERAL INSURANCE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF MAGMA GENERAL INSURANCE DEC 2025, APOLLO EXCELCARE OP TARIFF MAGMA GENERAL INSURANCE DEC 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MAHINDRA \u0026 MAHINDRA, AUTO \u0026 FARM DIVISION - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MAHINDRA \u0026 MAHINDRA, AUTO \u0026 FARM DIVISION - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MAHINDRA \u0026 MAHINDRA, AUTO \u0026 FARM DIVISION - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MANIPAL CIGNA HEALTH INSURANCE COMPANY LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE OP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2025",
+
+        "toDate":  "30-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MANIPAL CIGNA HEALTH INSURANCE COMPANY LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE IP TARIFF EXECUTIVE MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2025",
+
+        "toDate":  "30-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MANIPAL CIGNA HEALTH INSURANCE COMPANY LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE OP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2025",
+
+        "toDate":  "30-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MASTEK LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MASTEK LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MD INDIA-FUTURE GENERALI INDIA INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MDIndia Health Insurance IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-11-2022",
+
+        "toDate":  "05-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MD INDIA HEALTH INSURANCE TPA (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MD INDIA HEALTH INSURANCE TPA (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MD INDIA-ROYAL SUNDARAM ALLIANCE INSURANCE CO. LTD. IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MD INDIA-ROYAL SUNDARAM ALLIANCE INSURANCE CO. LTD. OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-BAJAJ ALLIANZ GENERAL INSURANCE IP AGREEMENT",
+
+        "tariffMapped":  "BAJAJ ALLIANZ INSURANCE GUWAHATI DELUXE IP TARIFF 2024, BAJAJ ALLIANZ INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-BAJAJ ALLIANZ GENERAL INSURANCE OP AGREEMENT",
+
+        "tariffMapped":  "BAJAJ ALLIANZ INSURANCE GUWAHATI OP TARIFF 2024, BAJAJ ALLIANZ INSURANCE EXCELCARE OP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-CHOLAMANDALAM GENERAL INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-CHOLAMANDALAM GENERAL INSURANCE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-FUTURE GENERALI INDIA INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE IP TARIFF EXECUTIVE MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-GO DIGIT GENERAL INSURANCE LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-GO DIGIT GENERAL INSURANCE LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-HDFC ERGO GENERAL INSURANCE IP AGREEMENT",
+
+        "tariffMapped":  "HDFC GUWAHATI GENERAL IP TARIFF 2024, HDFC GUWAHATI SEMI CABIN IP TARIFF 2024, HDFC GUWAHATI DELUXE IP TARIFF 2024, HDFC ERGO EXCELCARE DAYCARE TARIFF 2024, HDFC ERGO EXCELCARE GEN/4 SHARING TARIFF 2024, HDFC ERGO EXCELCARE 2 SHARING TARIFF 2024, HDFC ERGO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF 2024, HDFC ERGO EXCELCARE SUITE TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-HDFC ERGO GENERAL INSURANCE OP AGREEMENT",
+
+        "tariffMapped":  "HDFC GUWAHATI OP CASH TARIFF 2024, HDFC ERGO EXCELCARE OP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-ICICI LOMBARD GENERAL INSURANCE CO. LTD. IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE IP TARIFF EXECUTIVE MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-02-2026",
+
+        "toDate":  "17-02-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "TPA",
+
+        "agreementName":  "MEDI ASSIST INDIA PVT. LTD. OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2019-20, APOLLO GUWAHATI OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST INDIA TPA PVT LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST INDIA TPA PVT LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-MAGMA HDI GENERAL INSURANCE CO. LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE IP TARIFF EXECUTIVE MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-MANIPAL CIGNA HEALTH INSURANCE COMPANY LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025, APOLLO EXCELCARE IP TARIFF EXECUTIVE MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-RELIANCE GENERAL INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-RELIANCE GENERAL INSURANCE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-ROYAL SUNDARAM ALLIANCE INSURANCE CO. LTD. IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-ROYAL SUNDARAM ALLIANCE INSURANCE CO. LTD. OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-TATA AIG GIC LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "TPA",
+
+        "agreementName":  "MEDI ASSIST TPA- IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDSAVE HEALTH INSURANCE TPA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-03-2019",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDSAVE HEALTH INSURANCE TPA LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDSAVE HEALTH INSURANCE TPA LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDSAVE HEALTH INSURANCE TPA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-07-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDVANTAGE INSURANCE TPA PVT LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDVANTAGE INSURANCE TPA PVT LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MIXED MARTIAL ARTS FEDERATION INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MIXED MARTIAL ARTS FEDERATION INDIA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MIXED MARTIAL ARTS FEDERATION INDIA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MOSHINE ELECTRONICS PRIVATE LIMITED (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MOSHINE ELECTRONICS PRIVATE LIMITED (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MOSHINE ELECTRONICS PRIVATE LIMITED (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA AND SONS (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA AND SONS (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA AND SONS (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA MANAGEMENT SERVICES LIMITED (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA MANAGEMENT SERVICES LIMITED (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA MANAGEMENT SERVICES LIMITED (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA MORGAN THERMAL CERAMICS LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA MORGAN THERMAL CERAMICS LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA MORGAN THERMAL CERAMICS LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA ORGANO  WATER SOLUTIONS PVT LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA ORGANO  WATER SOLUTIONS PVT LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA ORGANO  WATER SOLUTIONS PVT LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MYLAN LABORATORIES LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "NABARD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2019",
+
+        "toDate":  "23-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "NABARD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19, APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NATIONAL STOCK EXCHANGE OF INDIA LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2025",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NATIONAL STOCK EXCHANGE OF INDIA LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2025",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "NAVI GENERAL INSURANCE LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF INSURANCE TEMPLATE FY 24 - V2 JAN 2026, APOLLO EXCELCARE OP TARIFF INSURANCE TEMPLATE FY 24 - V2 JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-01-2026",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "NAVI GENERAL INSURANCE LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF INSURANCE TEMPLATE FY 24 - V2 JAN 2026, APOLLO EXCELCARE IP TARIFF EXECUTIVE INSURANCE TEMPLATE FY 24 - V2 JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-01-2026",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "NAVI GENERAL INSURANCE LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF INSURANCE TEMPLATE FY 24 - V2 JAN 2026, APOLLO EXCELCARE OP TARIFF INSURANCE TEMPLATE FY 24 - V2 JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-01-2026",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NEEPCO IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-06-2019",
+
+        "toDate":  "10-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NEEPCO OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-08-2024",
+
+        "toDate":  "10-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NEHU-IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "20-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NETACCCESS INDIA LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NETACCCESS INDIA LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NETACCCESS INDIA LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NEW AMBADI ESTATES PVT LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NEW AMBADI ESTATES PVT LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NEW AMBADI ESTATES PVT LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NHPC IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-06-2022",
+
+        "toDate":  "24-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NHPC OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI CREDIT OP TARIFF 2021, APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-06-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NIHU OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-02-2020",
+
+        "toDate":  "20-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "NIVA BUPA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  DELUXE IP TARIFF 2021, APOLLO GUWAHATI DELUXE IP TARIFF 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-05-2019",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NOTION PRESS MEDIA PVT LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "11-05-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NRL- IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI NRL TARIFF NOV 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "19-11-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NRL OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI NRL TARIFF NOV 2025-26, APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE ADMINISTRATION AND SUPERVISION LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE ADMINISTRATION AND SUPERVISION LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE CLEARING LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE CLEARING LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE DATA AND ANALYTICS LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE DATA AND ANALYTICS LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE FOUNDATION AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE FOUNDATION AHC OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE INDICES LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE INDICES LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE INVESTMENTS LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE INVESTMENTS LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE SUSTAINABILITY AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE SUSTAINABILITY OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NTPC IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-09-2020",
+
+        "toDate":  "30-04-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NTPC OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-09-2020",
+
+        "toDate":  "30-04-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "OIL INDIA GUWAHATI IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OIL INDIA TARIFF 2024-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-08-2024",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "OIL INDIA GUWAHATI OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OIL INDIA TARIFF 2024-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-08-2024",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "OIL INDIA LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OIL INDIA TARIFF 2024-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "OIL INDIA LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OIL INDIA TARIFF 2024-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "ONGC GUWAHATI LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-02-2022",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "ONGC GUWAHATI LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "11-07-2023",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "ONGC JORHAT LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-02-2022",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "ONGC JORHAT LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "11-07-2023",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "ONGC NAZIRA LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-02-2022",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "ONGC NAZIRA LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "11-07-2023",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "ONGC SILCHAR LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-02-2022",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "ONGC SILCHAR LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "11-07-2023",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "ONGC SIVSAGAR LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "ONGC SIVSAGAR LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "PARAMOUNT HEALTH SERVICES AND INSURANCE TPA PVT LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "PARAMOUNT HEALTH SERVICES AND INSURANCE TPA PVT LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "PARAMOUNT TPA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-12-2019",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "TPA",
+
+        "agreementName":  "PARK MEDICLAIM TPA PVT LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "TPA",
+
+        "agreementName":  "PARK MEDICLAIM TPA PVT LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY AGRO INDUSTRIES LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY AGRO INDUSTRIES LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY AGRO INDUSTRIES LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY ENTERPRISES INDIA LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY ENTERPRISES INDIA LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY ENTERPRISES INDIA LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY INFRASTRUCTURE CO PVT LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY INFRASTRUCTURE CO PVT LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY INFRASTRUCTURE CO PVT LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY MURRAY AND CO LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY MURRAY AND CO LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY MURRAY AND CO LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY NUTRACEUTICALS LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY NUTRACEUTICALS LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY NUTRACEUTICALS LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY SUGAR INDUSTRIES LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY SUGAR INDUSTRIES LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY SUGAR INDUSTRIES LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY SUGAR REFINERY INDIA PVT LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY SUGAR REFINERY INDIA PVT LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PARRY SUGAR REFINERY INDIA PVT LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "POLICYBAZAAR INSURANCE BROKERS PRIVATE LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP APR TARIFF 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2026",
+
+        "toDate":  "14-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "POLICYBAZAAR INSURANCE BROKERS PRIVATE LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP APR TARIFF 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2026",
+
+        "toDate":  "14-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "POWER FINANCE CORPORATION LTD - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "POWER FINANCE CORPORATION LTD - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "POWER FINANCE CORPORATION LTD - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "POWER GRID CORPORATION OF INDIA LTD  OP AGREEMENT.",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO GUWAHATI CREDIT OP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "POWER GRID- IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PRAJAPITA BRAHMA KUMARIS ISHWARIYA VISWA VIDYALAYA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP APR TARIFF 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2026",
+
+        "toDate":  "30-04-2031",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PRAJAPITA BRAHMA KUMARIS ISHWARIYA VISWA VIDYALAYA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP APR TARIFF 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2026",
+
+        "toDate":  "30-04-2031",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PRAVIN MASALAWALE (SUHANA) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-12-2025",
+
+        "toDate":  "20-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PRAVIN MASALAWALE (SUHANA) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-12-2025",
+
+        "toDate":  "20-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PRICEWATERHOUSECOPPERS PROFESSIONAL SERVICES LLP AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-03-2026",
+
+        "toDate":  "31-03-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PRICEWATERHOUSECOPPERS PROFESSIONAL SERVICES LLP OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-03-2026",
+
+        "toDate":  "31-03-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "PROHEALTH 15%OFF AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "PROHEALTH 25% OFF AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-07-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "PROHEALTH 30% OFF AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-03-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "PROHEALTH IPSC 25% OFF AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "04-02-2026",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PROMOTERS PRIVILEGE CARD -OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI OP CASH TARIFF 2019-20",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "RAKSHA HEALTH INSURANCE TPA PVT LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "RAKSHA HEALTH INSURANCE TPA PVT LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "RAKSHA TPA PVT.LTD-HDFC ERGO GENERAL INSURANCE IP AGREEMENT",
+
+        "tariffMapped":  "HDFC GUWAHATI GENERAL IP TARIFF 2024, HDFC GUWAHATI SEMI CABIN IP TARIFF 2024, HDFC GUWAHATI DELUXE IP TARIFF 2024, HDFC ERGO EXCELCARE DAYCARE TARIFF 2024, HDFC ERGO EXCELCARE GEN/4 SHARING TARIFF 2024, HDFC ERGO EXCELCARE 2 SHARING TARIFF 2024, HDFC ERGO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF 2024, HDFC ERGO EXCELCARE SUITE TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "RAKSHA TPA PVT.LTD-HDFC ERGO GENERAL INSURANCE OP AGREEMENT",
+
+        "tariffMapped":  "HDFC GUWAHATI OP CASH TARIFF 2024, HDFC ERGO EXCELCARE OP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "RBI IP AGREEMENT",
+
+        "tariffMapped":  "RBI APOLLO GUWAHATI  TARIFF 2024-25",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-12-2019",
+
+        "toDate":  "03-11-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "RBI OP AGREEMENT",
+
+        "tariffMapped":  "RBI APOLLO GUWAHATI  TARIFF 2024-25",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-11-2025",
+
+        "toDate":  "03-11-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RELIANCE FOUNDATION HOSPITAL TRUST AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "13-03-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RELIANCE FOUNDATION HOSPITAL TRUST IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "13-03-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RELIANCE FOUNDATION HOSPITAL TRUST OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "13-03-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RELIANCE INDUSTRIES LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2022-23, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2023",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RELIANCE INDUSTRIES LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2024, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2024, APOLLO GUWAHATI DELUXE IP TARIFF 2024, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-06-2019",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RELIANCE IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2023",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RELIANCE OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2023",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RIGHTCONNEKT SOLUTIONS AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RIGHTCONNEKT SOLUTIONS IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF NOV 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF NOV 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF NOV 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RIGHTCONNEKT SOLUTIONS OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ROTHSHIELD HEALTHCARE TPA SERVICES LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ROTHSHIELD HEALTHCARE TPA SERVICES LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ROYAL SUNDARAM GENERAL INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-12-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ROYAL SUNDARAM GENERAL INSURANCE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-12-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RR DONNELLEY INDIA OUTSOURCE PVT LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-05-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RR DONNELLEY INDIA OUTSOURCE PVT LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF NOV 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF NOV 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF NOV 2025-26, APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-05-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RR DONNELLEY INDIA OUTSOURCE PVT LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF NOV 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-05-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "SAFEWAY INSURANCE TPA PVT LTD-CHOLAMANDALAM GENERAL INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "SAFEWAY INSURANCE TPA PVT LTD-CHOLAMANDALAM GENERAL INSURANCE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "SAFEWAY INSURANCE TPA PVT LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "SAFEWAY INSURANCE TPA PVT LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "SAFEWAY INSURANCE TPA PVT LTD-MANIPAL CIGNA HEALTH INSURANCE COMPANY LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SAIL-IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SAIL TARIFF",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SAIL-OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SAIL TARIFF",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SATSANG VIHAR OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2022-23, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SATSANG VIHARR-IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SAWAI BLACK CONCIERGE SERVICES 15% AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2025",
+
+        "toDate":  "30-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SAWAI BLACK CONCIERGE SERVICES 15% IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2025",
+
+        "toDate":  "30-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SAWAI BLACK CONCIERGE SERVICES 15% OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2025",
+
+        "toDate":  "30-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "SBI GENERAL INSURANCE COMPANY LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "SBI GENERAL INSURANCE COMPANY LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "SBI-IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI SBI IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2020",
+
+        "toDate":  "12-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SBOA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SBI IP TARIFF 2021, APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-07-2023",
+
+        "toDate":  "12-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SBOA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SBI OP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-07-2023",
+
+        "toDate":  "12-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Senior Citizen IP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF APR 2026-27, APOLLO GUWAHATI SEMI CABIN IP TARIFF APR 2026-27, APOLLO GUWAHATI DELUXE IP TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Senior citizen OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SERUM INSTITUTE OF INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP APR TARIFF 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "11-04-2026",
+
+        "toDate":  "10-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SHANTHI GEARS LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SHANTHI GEARS LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SHANTHI GEARS LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SIDBI IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-06-2025",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SIFY TECHNOLOGIES LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SIFY TECHNOLOGIES LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SIFY TECHNOLOGIES LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SILKROAD SUGAR PVT LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SILKROAD SUGAR PVT LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SILKROAD SUGAR PVT LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SODICK TECHNOLOGIES INDIA PVT LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SODICK TECHNOLOGIES INDIA PVT LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SOUTHERN ENERGY DEVELOPMENT CORPN LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SOUTHERN ENERGY DEVELOPMENT CORPN LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SOUTHERN ENERGY DEVELOPMENT CORPN LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STAFF GENERAL CREDIT  IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF APR 2026-27, APOLLO GUWAHATI SEMI CABIN IP TARIFF APR 2026-27, APOLLO GUWAHATI DELUXE IP TARIFF APR 2026-27, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-12-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STAFF GENERAL CREDIT  OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-12-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STAR CEMENT OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-03-2023",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "STAR HEALTH INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "STAR HEALTH GUWAHATI DELUXE IP TARIFF 2024, STAR HEALTH EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "13-08-2024",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "STAR HEALTH INSURANCE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "STAR HEALTH GUWAHATI OP CASH TARIFF 2024, STAR HEALTH EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "13-08-2024",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STERLING ABRASIVES LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STERLING ABRASIVES LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STERLING ABRASIVES LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STERLING SOFTWARE PRIVATE LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STERLING SOFTWARE PRIVATE LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "SVASTH LIFE PRIVATE LIMITED (HEALTHI) - ENDOR SOFTWARE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-04-2026",
+
+        "toDate":  "17-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SYNERGY MARITIME PVT. LTD. IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TAILOREDCARE INDIA PVT LTD. - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TAILOREDCARE INDIA PVT LTD. - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TAILOREDCARE INDIA PVT LTD. - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TAKASAGO INTERNATIONAL (INDIA) PVT LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TAKASAGO INTERNATIONAL (INDIA) PVT LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TAKASAGO INTERNATIONAL (INDIA) PVT LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TATA AIG GENERAL INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "13-08-2024",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TATA AIG GENERAL INSURANCE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "13-08-2024",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TATA COMMUNICATION LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TATA COMMUNICATION LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TATA COMMUNICATION LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "THE INSTITUTE OF COST ACCOUNTANTS OF INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-02-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "THE INSTITUTE OF COST ACCOUNTANTS OF INDIA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-02-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "THE INSTITUTE OF COST ACCOUNTANTS OF INDIA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-02-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "THERMAX LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-01-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "THERMAX LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-01-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TI CLEAN MOBILITY PVT LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TI CLEAN MOBILITY PVT LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TI CLEAN MOBILITY PVT LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TI CYCLES OF INDIA (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TI CYCLES OF INDIA (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TI CYCLES OF INDIA (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TIDC LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TIDC LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TIDC LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TIMES NETWORK GROUP - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TIMES NETWORK GROUP - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TIMES NETWORK GROUP - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2024",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TI METAL FORMING (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TI METAL FORMING (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TI METAL FORMING (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TIVOLT ELECTRIC VEHICLES PRIVATE LIMITED (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TIVOLT ELECTRIC VEHICLES PRIVATE LIMITED (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TIVOLT ELECTRIC VEHICLES PRIVATE LIMITED (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TOYOTA CONNECTED INDIA PVT LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TOYOTA CONNECTED INDIA PVT LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TOYOTA CONNECTED INDIA PVT LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TRACTOR AND FARM EQUIPMENT LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2024",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TRACTOR AND FARM EQUIPMENT LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2024",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TRACTOR AND FARM EQUIPMENT LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2024",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Transplant follow up OP Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2022-23, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUWORTH HEALTH TECHNOLOGIES PRIVATE LIMITED - ALLSTOM AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-03-2026",
+
+        "toDate":  "16-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUWORTH HEALTH TECHNOLOGIES PRIVATE LIMITED - MORNING STAR AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "07-04-2026",
+
+        "toDate":  "07-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUWORTH HEALTH TECHNOLOGIES PVT LTD (VIASAT) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUWORTH HEALTH TECHNOLOGIES PVT LTD (VIASAT) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TUBE INVESTMENTS OF INDIA LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TUBE INVESTMENTS OF INDIA LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TUBE INVESTMENTS OF INDIA LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TUBE PRODUCTS OF INDIA (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TUBE PRODUCTS OF INDIA (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TUBE PRODUCTS OF INDIA (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "UNIVERSAL SOMPO GENERAL INSURANCE IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "UNIVERSAL SOMPO GENERAL INSURANCE OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VEDANTA LTD (CAIRN OIL AND GAS) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VEDANTA LTD (CAIRN OIL AND GAS) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VEDANTA LTD (CAIRN OIL AND GAS) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VH MEDCARE CGPSS GIPSA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-05-2024",
+
+        "toDate":  "31-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VH MEDCARE CGPSS GIPSA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2022-23, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-05-2024",
+
+        "toDate":  "31-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VH MEDCARE MPEB GIPSA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-05-2024",
+
+        "toDate":  "31-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VH MEDCARE MPEB GIPSA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2022-23, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-05-2024",
+
+        "toDate":  "31-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VH MEDCARE PRIVATE LIMITED - MINDSPRINT GROUP AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-03-2026",
+
+        "toDate":  "24-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VIDAL HEALTH INSURANCE TPA PVT LTD (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VIDAL HEALTH INSURANCE TPA PVT LTD (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VIDAL HEALTH TPA PVT LTD-ICICI LOMBARD GENERAL INSURANCE CO. LTD. IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-02-2026",
+
+        "toDate":  "17-02-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VIDAL HEALTH TPA PVT LTD-MANIPAL CIGNA HEALTH INSURANCE COMPANY LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI IP TARIFF MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VIDAL HEALTH TPA PVT LTD-RELIANCE GENERAL INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VIDAL HEALTH TPA PVT LTD-RELIANCE GENERAL INSURANCE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VIDAL HEALTH TPA PVT LTD-ROYAL SUNDARAM ALLIANCE INSURANCE CO. LTD. IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI DELUXE IP TARIFF 2024 WIHOUT PACKAGES, INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VIDAL HEALTH TPA PVT LTD-ROYAL SUNDARAM ALLIANCE INSURANCE CO. LTD. OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE GUWAHATI OP CASH TARIFF 2024, INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VIGNANS FOUNDATION FOR SCIENCE TECHNOLOGY AND RESEARCH AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-03-2026",
+
+        "toDate":  "14-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VIGNANS FOUNDATION FOR SCIENCE TECHNOLOGY AND RESEARCH OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-03-2026",
+
+        "toDate":  "14-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VIRTUSA CONSULTING SERVICES AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP APR TARIFF 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "29-01-2026",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VIRTUSA CONSULTING SERVICES OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP APR TARIFF 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "29-01-2026",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2022-23, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "04-07-2023",
+
+        "toDate":  "31-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - ICICI LOMBARD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2026",
+
+        "toDate":  "01-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - NEW INDIA INSURANCE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2026",
+
+        "toDate":  "01-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VOLO HEALTH INSURANCE TPA PRIVATE LIMITED (GIPSA PPN 2025) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE IP GIPSA TARIFF 4 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF 2 SHARING JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SINGLE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF ICU JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF SUITE  JAN 2026, APOLLO EXCELCARE IP GIPSA TARIFF EXECUTIVE JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VOLO HEALTH INSURANCE TPA PRIVATE LIMITED (GIPSA PPN 2025) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GIPSA TARIFF 2026, APOLLO EXCELCARE OP GIPSA TARIFF JAN 2026",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VOLVO HEALTH INSURANCE IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  DELUXE IP TARIFF 2021, APOLLO GUWAHATI  CREDIT IP TARIFF 2020",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-03-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "WENDT INDIA LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "WENDT INDIA LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "WENDT INDIA LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "WORLD ARYA VYSYA MAHASABHA  AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "WORLD ARYA VYSYA MAHASABHA  IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025, APOLLO GUWAHATI DELUXE IP TARIFF 2025, APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "WORLD ARYA VYSYA MAHASABHA  OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "YANMAR CORAMANDEL AGRI SOLUTIONS PVT LTD (MURUGAPPA GROUP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "YANMAR CORAMANDEL AGRI SOLUTIONS PVT LTD (MURUGAPPA GROUP) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI GENERAL IP TARIFF 2025-26, APOLLO GUWAHATI SEMI CABIN IP TARIFF 2025-26, APOLLO GUWAHATI DELUXE IP TARIFF 2025-26, APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "YANMAR CORAMANDEL AGRI SOLUTIONS PVT LTD (MURUGAPPA GROUP) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2025-26, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "YANMAR ENGINE MANUFACTURING INDIA PRIVATE LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP APR TARIFF 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-04-2026",
+
+        "toDate":  "19-04-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "YANMAR ENGINE MANUFACTURING INDIA PRIVATE LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF APR 2026-27, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP APR TARIFF 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-04-2026",
+
+        "toDate":  "19-04-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited – Guwahati | Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "15% OFF – FOR ALL MASTERCARD, VISA, RUPAY \u0026 DINERS CLUB CARDS (THRIWE CONSULTING AHC AGREEMENT)",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-04-2025",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "15% OFF – REGULAR AMEX CONSUMER, NETWORK AND CORPORATE PLATINUM CARDS (AMERICAN EXPRESS AHC AGREEMENT)",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-09-2025",
+
+        "toDate":  "05-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "20% OFF – SAMSUNG ELECTRONICS (BIG CITY PREMIER SALES PROMOTION PVT LTD) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-07-2025",
+
+        "toDate":  "31-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "20% Off - Times Prime Users(Times Internet Limited AHC Agreement)",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-07-2024",
+
+        "toDate":  "05-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "25% OFF – AMEX CENTURION, PLATINUM AND GOLD CARDS (AMERICAN EXPRESS AHC AGREEMENT)",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-09-2025",
+
+        "toDate":  "05-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Aayuv Technologies  Ekincare ATPL AHC Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ADANI WILMAR LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AHEL SHARE HOLDER COUPON AHC AGREEMENT 2025 - 2026",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-09-2025",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AHEL SHARE HOLDER COUPON NON SENIOR CITIZEN OP AGREEMENT 2025 - 2026",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-09-2025",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AHEL SHARE HOLDER COUPON SENIOR CITIZEN OP AGREEMENT 2025 - 2026",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-09-2025",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "AHLL - INGERSOLL AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "25-05-2025",
+
+        "toDate":  "24-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "AIRPORT AUTHORITY AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI CREDIT OP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-09-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ALSTHOM INDUSTRIES LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "26-12-2022",
+
+        "toDate":  "05-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AMALGAMATED PLANTATIONS PVT. LTD. OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ANARA INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-05-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "APOLLO DIAGNOSTIC OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-08-2021",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "APOLLO HOME HEALTHCARE LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-11-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "APOLLO IP REFERRAL WHO5000 AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "11-01-2024",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO SHINE EMPLOYEE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "07-10-2025",
+
+        "toDate":  "30-09-2030",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO SINDOORI OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-05-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Apollo Staff Discount ( On duty Injury ) OP Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Apollo UrLife HPCL AHC Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-10-2024",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Apollo UrLife TSAT AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-03-2026",
+
+        "toDate":  "08-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ASSAM CANCER CARE OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2021",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ASSAM VALLEY SCHOOL OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ATAL AMRIT OP AGREEMENT(COVID)",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM CGHS OP CASH TARIFF",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "AXIS BANK OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "BAJAJ FINSERV AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "07-10-2025",
+
+        "toDate":  "07-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "BANDHAN BANK AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-08-2023",
+
+        "toDate":  "07-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BAYER BIOSCIENCE OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BAYER CROPSCIENCE OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BAYER PHARMACEUTICALS OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BAYER ZYDUS PHARMA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Board of Directors OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BPL card holders OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BRAHMAPUTRA CRACKERS AND POLYMER LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BUSINESS STANDARD PRIVATE LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-08-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "BUSINESS STANDARD PRIVATE LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-08-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CALLMEDLIFE - DMART AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-06-2025",
+
+        "toDate":  "09-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CALLMEDLIFE - RELIANCE FCA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-10-2025",
+
+        "toDate":  "28-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CARE HEALTH INSURANCE LIMITED – AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-12-2024",
+
+        "toDate":  "30-11-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "CENTRAL BANK OF INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2026",
+
+        "toDate":  "23-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CHENNAI CAMP OPD AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2019-20",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLAMANDALAM MS GENERAL INSURANCE COMPANY OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONNECT AND HEAL - ACCENTURE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-09-2025",
+
+        "toDate":  "08-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONNECT AND HEAL - AMWAY AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2022-23",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-06-2024",
+
+        "toDate":  "09-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONNECT AND HEAL - ATKINS REALIS AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-09-2025",
+
+        "toDate":  "07-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONNECT AND HEAL - HPE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "29-01-2024",
+
+        "toDate":  "31-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONNECT AND HEAL - NOMURA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-03-2024",
+
+        "toDate":  "31-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONNECT AND HEAL - NPCI AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "26-04-2025",
+
+        "toDate":  "31-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CONNECT AND HEAL - SBI MUTUAL FUND AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-01-2025",
+
+        "toDate":  "28-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "DCB BANK LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-09-2025",
+
+        "toDate":  "31-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "DCB BANK LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-09-2025",
+
+        "toDate":  "31-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "DOCONLINE HEALTH INDIA PRIVATE LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-08-2024",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "DOCONLINE HEALTH INDIA PRIVATE LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-08-2024",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - APTIV COMPONENTS INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-09-2024",
+
+        "toDate":  "13-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - BOTHERS INTERNATIONAL AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-06-2025",
+
+        "toDate":  "15-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - BRISTOL MYERS SQUIBB AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-09-2024",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - CAPGEMINI AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-07-2025",
+
+        "toDate":  "13-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - COCA COLA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2024-25, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-03-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - CORNING TECHNOLOGIES AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-07-2025",
+
+        "toDate":  "30-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - FORD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "26-11-2024",
+
+        "toDate":  "08-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE – GSK  AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-04-2024",
+
+        "toDate":  "31-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - HELLA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-02-2025",
+
+        "toDate":  "31-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "EKINCARE - INVOQ HEALTHCARE INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "13-12-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Ekincare - Keller AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-05-2024",
+
+        "toDate":  "21-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - KPMG AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-07-2025",
+
+        "toDate":  "13-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Ekincare - Lear AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-05-2024",
+
+        "toDate":  "21-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - RAMCO AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-08-2024",
+
+        "toDate":  "11-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - ROCHE DIAGNOSTICS AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "18-09-2024",
+
+        "toDate":  "17-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Ekincare - Tata Motors AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-06-2024",
+
+        "toDate":  "14-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "EKINCARE - TATA MOTORS INSURANCE(TMR) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-06-2025",
+
+        "toDate":  "19-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE- WNS CONSULTANCY AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-07-2025",
+
+        "toDate":  "08-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EKINCARE - WORLEY INDIA PRIVATE LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "13-12-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EMAMI PVT LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Employees shares 100000 OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Employees shares 25000 OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Employees shares 50000 OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Employees shares 75000 OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "EQUITAS SMALL FINANCE BANK AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-02-2025",
+
+        "toDate":  "05-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "EQUITAS SMALL FINANCE BANK OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-02-2025",
+
+        "toDate":  "05-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EVERLife CPC Diagnostics Private Limited AHC Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-07-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EVERLife CPC Diagnostics Private Limited OP Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-07-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EVERSENDAI CONSTRUCTION AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2025",
+
+        "toDate":  "01-09-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EVERSENDAI CONSTRUCTION OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2025",
+
+        "toDate":  "01-09-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "FANUC INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-07-2025",
+
+        "toDate":  "09-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "FLENDER DRIVES AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "31-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "FLENDER DRIVES OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "31-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Free covid 19 AG test prior procedure OP Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "GODREJ GROUP OF COMPANIES OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "GURUDWARA RAMGADIYA SEWA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-11-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "GUWAHATI UNIVERSITY OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-07-2025",
+
+        "toDate":  "21-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HCL TECHNOLOGIES LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-03-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HCL TECHNOLOGIES LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26, APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-03-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HDFC ERGO GENERAL INSURANCE OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-08-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "Health Assure - Aditya Birla Group (ABG) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-07-2024",
+
+        "toDate":  "22-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH ASSURE - HDFC BANK AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2024",
+
+        "toDate":  "31-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH ASSURE - INDUS TOWER AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-02-2024",
+
+        "toDate":  "31-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH ASSURE – PEARSON AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-05-2024",
+
+        "toDate":  "31-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH ASSURE - TAGIC I ENERGIZER AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-09-2025",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHI - SIEMENS AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-11-2024",
+
+        "toDate":  "15-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHI - SVASTH LIFE PRIVATE LIMITED - STANDARD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-11-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHI - SWIGGY AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-11-2025",
+
+        "toDate":  "06-11-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "Healthi - Thyssenkrupp AHC Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "18-04-2024",
+
+        "toDate":  "31-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHQUARTERS - HP AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-07-2025",
+
+        "toDate":  "29-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHQUARTERS - MSH INTERNATIONAL AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-09-2025",
+
+        "toDate":  "19-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTHQUARTERS - RAKUTEN INTERNATIONAL AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-10-2025",
+
+        "toDate":  "06-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HINDUSTAN UNILEVER ONSITE HEALTH CAMP OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-11-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HITACHI ENERGY INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2024",
+
+        "toDate":  "30-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HITACHI ENERGY TECHNOLOGY SOLUTIONS PVT LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2024",
+
+        "toDate":  "30-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Hospital premises fumigation OP Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HPCL ONSITE Health Camp OP Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-03-2023",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ICICI LOMBARD GENERAL INSURANCE OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ICSI OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-10-2023",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "IITG HEALTHCARE FOUNDATION OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2025",
+
+        "toDate":  "18-11-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INDORAMA INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-04-2024",
+
+        "toDate":  "23-04-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INDRADHANUSH GAS GRID LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IOC(BAMUNIMOIDAM) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IOC (BETKUCHI ) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  DELUXE IP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ITC LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-09-2025",
+
+        "toDate":  "10-09-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ITC LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-09-2025",
+
+        "toDate":  "10-09-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ITC LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JINDAL SAW  AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-10-2024",
+
+        "toDate":  "07-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JUST DIAL LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-11-2025",
+
+        "toDate":  "31-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JUST DIAL LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-11-2025",
+
+        "toDate":  "31-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "L and T GROUP EMPLOYEES AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-05-2024",
+
+        "toDate":  "21-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "LifeCell International (Mfine) - HONEYWELL INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-05-2025",
+
+        "toDate":  "31-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "LIFECELL INTERNATIONAL (MFINE) - WIPRO AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "25-11-2023",
+
+        "toDate":  "31-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "LifeCell International - WEIR ENSCI AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-11-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "LifeCell International - W MINERAL AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "07-11-2023",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "LIFE INSURANCE CORPORATION OF INDIA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "L \u0026 T CONSTRUCTION  OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Marico OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MARUTI SUZUKI INDIA LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "METSO OUTOTEC INDIA PVT. LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-09-2023",
+
+        "toDate":  "14-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MFINE - BARODA GLOBAL (BGSSL) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-06-2025",
+
+        "toDate":  "15-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MFINE - DALMIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-08-2024",
+
+        "toDate":  "22-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MFINE – MFINE  - ALVAREZ \u0026 MARSAL AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-10-2025",
+
+        "toDate":  "17-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MFINE - NEXTEER AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-07-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MFINE - NEXTEER OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-07-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MFINE - NEXTGEN AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-10-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MFINE – PORTER INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-09-2025",
+
+        "toDate":  "23-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MFINE – PROGRESS SOFTWARE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "29-09-2025",
+
+        "toDate":  "29-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MFINE - S AND P AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-05-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MFINE-SP AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-12-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MFINE - TRANSUNION  AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "13-08-2025",
+
+        "toDate":  "12-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MFINE – ZS TECHNOLOGY AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-09-2025",
+
+        "toDate":  "07-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURGAPPA GROUP OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MURUGAPPA GROUP OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NDDB-AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NEDFI AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "31-10-2025",
+
+        "toDate":  "31-10-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NEDFI OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-01-2020",
+
+        "toDate":  "31-10-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NEHU OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-08-2021",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NESTLE INDIA LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2020-21",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NF RLY OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM CGHS OP CASH TARIFF",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-04-2014",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NORTHEAST NUTRIENTS PVT LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2020-21",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "NTPC HEALTH CHECK AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "25-11-2022",
+
+        "toDate":  "30-04-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ONEBANC TECHNOLOGIE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-08-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ONEBANC TECHNOLOGIE OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-08-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Pension card holders OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Phasorz Technologies - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2020",
+
+        "toDate":  "03-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "POWER SYSTEM ORGANIZATION CORPORATION LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Premises Landlord OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "PrognoHealth-RBI-RBT AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-07-2024",
+
+        "toDate":  "23-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "PROHEALTH20%OFF AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-02-2024",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "QC - Lab tests OP Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "QIKWELL TECHNOLOGIES - HUDSON BAY (EMP) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-10-2025",
+
+        "toDate":  "06-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "QIKWELL TECHNOLOGIES - PORTER INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-10-2025",
+
+        "toDate":  "06-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RELIANCE INDUSTRIES LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "RESERVE BANK OF INDIA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RIGHTCONNEKT SOLUTIONS AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RIGHTCONNEKT SOLUTIONS OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "RITES AHC Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SAIL -OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI CREDIT OP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SCHWING STETTER INDIA PVT LTD  AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "24-02-2023",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "SECURENOW INSURANCE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-10-2025",
+
+        "toDate":  "01-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Senior citizen AHC agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SHARE HOLDER BROWN/PINK",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2019-20",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SHARE HOLDER-GOLD CARD",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2019-20",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SHARE HOLDER-GREEN CARD",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2019-20",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Share holders 10000 OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Share holders 1000 OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Share holders 20000 OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Share holders 2500 OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Share holders 50000 OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Share holders 5000 OP agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "28-04-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SHARE HOLDER SILVER CARD",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2019-20",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SIDBI  AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SIDBI OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SODEXO OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "STAR HEALTH AND ALLIED INSURANCE CO . LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "04-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "STATE BANK OF INDIA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SBI OP TARIFF 2021",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STERLING HOLIDAYS AND RESORTS LTD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-11-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STERLING HOLIDAYS AND RESORTS LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF NOV 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-11-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STRIDES PHARMA SCIENCE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "29-09-2025",
+
+        "toDate":  "29-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STRIDES PHARMA SCIENCE OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "29-09-2025",
+
+        "toDate":  "29-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "TAMILNAD MERCANTILE BANK LIMITED - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-08-2025",
+
+        "toDate":  "31-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "TAMILNAD MERCANTILE BANK LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-08-2025",
+
+        "toDate":  "31-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TATA MOTORS OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TATA POWER RENEWABLE ENERGY LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "20-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TATA POWER RENEWABLE ENERGY LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "20-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TECHNIP INDIA LTD, OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-01-2020",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "THE NATIONAL SHIPPING COMPANY OF SAUDI ARABIA (BAHRI) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "Times Prime OP Agreement",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-07-2024",
+
+        "toDate":  "05-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUEWORTH HEALTH TECHNOLOGIES PRIVATE LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "17-03-2023",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUWORTH - CET POWER SOLUTIONS AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "23-08-2024",
+
+        "toDate":  "22-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUWORTH - GUARDIAN AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-05-2024",
+
+        "toDate":  "21-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUWORTH HEALTH CHECKUP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI SUBHAM OP CASH TARIFF 2019-20, APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2018-19",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2019",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUWORTH HEALTH TECHNOLOGIES AHC AGREEMENT - ATT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-08-2023",
+
+        "toDate":  "22-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUWORTH HEALTH TECHNOLOGIES ICICI BANK AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "11-08-2023",
+
+        "toDate":  "11-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUWORTH  HEALTH TECHNOLOGIES - UTZ FRESH AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-04-2025",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUWORTH - MSD AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI OP CASH TARIFF 2022-23",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-06-2024",
+
+        "toDate":  "09-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ULTRATECH CEMENT AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-08-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ULTRATECH CEMENT OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-08-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "UNESCO MGIEP - AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-08-2024",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "UNESCO MGIEP - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-08-2024",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VEDANTA LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-06-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VH MEDCARE ACCENTURE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-11-2025",
+
+        "toDate":  "03-11-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - GSTIN AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-06-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - HDFC LIFE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "11-09-2024",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - IGT AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-06-2024",
+
+        "toDate":  "09-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - JINDAL STEELS AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-09-2024",
+
+        "toDate":  "13-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - JUNIPER AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-07-2025",
+
+        "toDate":  "18-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - MICHELIN AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "18-04-2024",
+
+        "toDate":  "31-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH PRIVATE LIMITED – AECOM AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-11-2023",
+
+        "toDate":  "23-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - RBI AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-09-2025",
+
+        "toDate":  "19-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - RIO TINTO AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-09-2024",
+
+        "toDate":  "09-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - STAR HEALTH AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-06-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - THALES AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-07-2025",
+
+        "toDate":  "13-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VSL INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-08-2025",
+
+        "toDate":  "31-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VSL INDIA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-08-2025",
+
+        "toDate":  "31-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "WARTSILA INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "07-04-2025",
+
+        "toDate":  "10-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "WELLEAZY HEALTHTECH - AZBIL INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "18-08-2025",
+
+        "toDate":  "17-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "WELLEAZY HEALTHTECH- PORTER INDIA AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-06-2025",
+
+        "toDate":  "29-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "WWF OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-06-2022",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ZYLA HEALTH - AMERICAN TELEPHONE AND TELEGRAPH (AT\u0026T) AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "07-10-2025",
+
+        "toDate":  "07-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ZYLA HEALTH - COLGATE PALMOLIVE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-06-2025",
+
+        "toDate":  "29-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ZYLA HEALTH - DHL AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "07-10-2024",
+
+        "toDate":  "15-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ZYLA HEALTH - DHL GLOBAL AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-10-2025",
+
+        "toDate":  "03-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ZYLA HEALTH - HERO MOTOR AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-07-2024",
+
+        "toDate":  "15-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ZYLA HEALTH -JOHN DEERE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "07-10-2025",
+
+        "toDate":  "07-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ZYLA HEALTH - L \u0026 T FINANCE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF 2025-26, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "07-10-2025",
+
+        "toDate":  "07-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ZYLA HEALTH - TECHNIP AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO GUWAHATI  SUBHAM OP CASH TARIFF APR 2026-27, APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2024",
+
+        "toDate":  "31-05-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Assam Hospitals Limited –APHC Subham | Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "AHCCSL IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF SINGLE  2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "29-06-2025",
+
+        "toDate":  "29-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "AHCCSL OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-07-2025",
+
+        "toDate":  "10-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AHEL SHARE HOLDER COUPON NON SENIOR CITIZEN IP AGREEMENT 2025 - 2026",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-09-2025",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AHEL SHARE HOLDER COUPON SENIOR CITIZEN IP AGREEMENT 2025 - 2026",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-09-2025",
+
+        "toDate":  "30-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "AIRPORT AUTHORITY OF INDIA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF SINGLE  2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "03-11-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "AIRPORT AUTHORITY OF INDIA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-04-2025",
+
+        "toDate":  "02-01-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AJANTA PHARMA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-09-2024",
+
+        "toDate":  "15-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AJANTA PHARMA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-09-2024",
+
+        "toDate":  "15-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ALANKIT INSURANCE IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AMALGAMATED PLANTATIONS- IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "01-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AMALGAMATED PLANTATIONS- OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "01-04-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO EXCELCARE STAFF WELFARE 40% DISCOUNT OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-03-2026",
+
+        "toDate":  "13-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO EXCELCARE STAFF WELFARE OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-03-2026",
+
+        "toDate":  "13-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "APOLLO SHINE FOUNDATION IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-02-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ARYA VYSYA CHARITABLE AROGYAA FOUNDATION IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ASSAM KAZIRANGA UNIVERSITY IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF SINGLE  2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-08-2025",
+
+        "toDate":  "10-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ASSAM KAZIRANGA UNIVERSITY OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF SINGLE  2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-08-2025",
+
+        "toDate":  "10-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ATOS GLOBAL - GENERAL IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ATOS GLOBAL - SENIOR MANAGEMENT IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AYUSHMAN BHARAT(PMJAY) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "AYUSHMAN BHARAT(PMJAY) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "14-09-2023",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CARE HEALTH INSURANCE LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CASCADE STUDY OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-08-2025",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CHIEF MINISTER AROGYA ARUNACHAL YOJANA(CMAAY) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLA MS GENERAL INSURANCE IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "CHOLA MS GENERAL INSURANCE OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "COMPUTER AGE MANAGEMENT SERVICES - CAMS IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CWC IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2024",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "CWC OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2024",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "DCB BANK LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-09-2025",
+
+        "toDate":  "31-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ENGINEERING PROJECTS (INDIA) LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF SINGLE  2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "10-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ENGINEERING PROJECTS (INDIA) LTD OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-07-2025",
+
+        "toDate":  "10-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "EQUITAS SMALL FINANCE BANK IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "06-02-2025",
+
+        "toDate":  "05-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ERICSON INSURANCE TPA LIMITED-CHOLAMANDALAM GENERAL INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "ERICSON INSURANCE TPA LIMITED-CHOLAMANDALAM GENERAL INSURANCE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "EVERSENDAI CONSTRUCTION IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2025",
+
+        "toDate":  "01-09-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN LTD-GO DIGIT GENERAL INSURANCE LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN LTD-GO DIGIT GENERAL INSURANCE LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN LTD-NIVA BUPA HEALTH INSURANCE IP AGREEMENT",
+
+        "tariffMapped":  "NIVA BUPA EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "FAMILY HEALTH PLAN TPA INSURANCE LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "FLENDER DRIVES IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-07-2025",
+
+        "toDate":  "31-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "GENERALI CENTRAL INSURANCE CO LTD  IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "GRID CONTROLLER OF INDIA LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-01-2024",
+
+        "toDate":  "30-06-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "GUWAHATI UNIVERSITY IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF SINGLE  2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "21-07-2025",
+
+        "toDate":  "21-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HCL TECHNOLOGIES LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-03-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HDFC ERGO GENERAL INSURANCE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "HDFC ERGO EXCELCARE OP TARIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-03-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HEALTH INSURANCE TPA INDIA LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "HERITAGE HEALTH TPA PVT. LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HICC -OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2024",
+
+        "toDate":  "13-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "HOUSING AND URBAN DEVELOPMENT CORPORATION(HUDCO) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "13-05-2024",
+
+        "toDate":  "02-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "IFFCO TOKIO GENERAL INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-02-2025",
+
+        "toDate":  "09-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "IFFCO TOKIO GENERAL INSURANCE CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-02-2025",
+
+        "toDate":  "09-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IITH ALUMINI ASSOCIATION IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INTERNATIONAL PATIENT (CASH IPS) NON SARC-IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INTERNATIONAL PATIENT (CASH IPS) NONSARC-OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INTERNATIONAL PATIENT (CASH IPS) SARC-IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INTERNATIONAL PATIENT (CASH IPS) SARC-OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "INTERNATIONAL VAISH FEDERATION IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-03-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IPS (CASH) GENERAL CREDIT OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-05-2023",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IQC EXCELCARE OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2024",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "IQVA RDS INDIA OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-04-2026",
+
+        "toDate":  "30-04-2029",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ITC LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-09-2025",
+
+        "toDate":  "10-09-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JABRA CONNECT INDIA PVT LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-04-2026",
+
+        "toDate":  "08-04-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JACKSON LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-01-2026",
+
+        "toDate":  "02-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JASMIN INFOTECH PRIVATE LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "JUST DIAL LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-11-2025",
+
+        "toDate":  "31-10-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "KPMG ASSURANCE AND CONSULTING SERVICES LLP - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "22-12-2025",
+
+        "toDate":  "21-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MARICO LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2023",
+
+        "toDate":  "31-03-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MARICO LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-09-2023",
+
+        "toDate":  "31-03-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MASTEK LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MD INDIA HEALTH INSURANCE TPA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF SINGLE  2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-06-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-IFFCO TOKIO GENERAL INSURANCE CO. LTD IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDI ASSIST-IFFCO TOKIO GENERAL INSURANCE CO. LTD OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "TPA",
+
+        "agreementName":  "Medi Assist India Private Limited IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "MEDSAVE HEALTH INSURANCE TPA LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MEERA RESCUE SERVICES 1P AGREEMENTS",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF SINGLE  2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-05-2025",
+
+        "toDate":  "10-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "MEERA RESCUE SERVICES OP AGREEMENTS",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "10-05-2025",
+
+        "toDate":  "10-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NATIONAL STOCK EXCHANGE OF INDIA LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "NIVA BUPA HEALTH INSUR. CO LTD AHC AGREEMENT",
+
+        "tariffMapped":  "NIVA BUPA EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "NIVA BUPA HEALTH INSUR. CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "NIVA BUPA EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "NIVA BUPA HEALTH INSUR. CO LTD OP AGREEMENT",
+
+        "tariffMapped":  "NIVA BUPA EXCELCARE OP NOV TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "27-12-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE ADMINISTRATION AND SUPERVISION LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE CLEARING LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE DATA AND ANALYTICS LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE FOUNDATION AHC IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE INDICES LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE INVESTMENTS LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NSE SUSTAINABILITY IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NUMALIGARH REFINERY LIMITED(NRL) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-04-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "NUMALIGARH REFINERY LIMITED(NRL) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "03-04-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "OIL INDIA LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OIL INDIA  TARIFF 2025-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "OIL INDIA LIMITED OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OIL INDIA  TARIFF 2025-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ONEBANC TECHNOLOGIE IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "08-08-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "ONGC JORHAT LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "25-07-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "State Govt. Organization",
+
+        "agreementName":  "ONGC JORHAT LIMITED - OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "25-07-2024",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "PARAMOUNT HEALTH SERVICES AND INSURANCE TPA PVT LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PEPSOCO LIMITED AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-06-2025",
+
+        "toDate":  "30-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PHARMAZZ CLINICAL TRIAL STUDY OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2024",
+
+        "toDate":  "13-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "POLICYBAZAAR INSURANCE BROKERS PRIVATE LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP APR TARIFF 4 SHARING 2026-27, APOLLO EXCELCARE IP APR TARIFF 2 SHARING 2026-27, APOLLO EXCELCARE IP APR TARIFF SINGLE  2026-27, APOLLO EXCELCARE IP APR TARIFF ICU 2026-27, APOLLO EXCELCARE IP APR TARIFF SUITE  2026-27, APOLLO EXCELCARE IP APR TARIFF EXECUTIVE 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2026",
+
+        "toDate":  "14-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "POWER GRID CORPORATION OF INDIA LTD. IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-03-2024",
+
+        "toDate":  "14-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "POWER GRID CORPORATION OF INDIA LTD.OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-03-2024",
+
+        "toDate":  "14-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PRAJAPITA BRAHMA KUMARIS ISHWARIYA VISWA VIDYALAYA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP APR TARIFF 4 SHARING 2026-27, APOLLO EXCELCARE IP APR TARIFF 2 SHARING 2026-27, APOLLO EXCELCARE IP APR TARIFF SINGLE  2026-27, APOLLO EXCELCARE IP APR TARIFF ICU 2026-27, APOLLO EXCELCARE IP APR TARIFF SUITE  2026-27, APOLLO EXCELCARE IP APR TARIFF EXECUTIVE 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2026",
+
+        "toDate":  "30-04-2031",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PRAVIN MASALAWALE (SUHANA) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-12-2025",
+
+        "toDate":  "20-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "PRICEWATERHOUSECOPPERS PROFESSIONAL SERVICES LLP IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-03-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "RAKSHA HEALTH INSURANCE TPA PVT. LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "RAKSHA TPA PVT.LTD-ROYAL SUNDARAM ALLIANCE INSURANCE CO. LTD. IP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2024 WIHOUT PACKAGES",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "RAKSHA TPA PVT.LTD-ROYAL SUNDARAM ALLIANCE INSURANCE CO. LTD. OP AGREEMENT",
+
+        "tariffMapped":  "INSURANCE EXCELCARE OP TARIFF AUG 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "30-09-2025",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "RELIANCE GIC LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "RESERVE BANK OF INDIA - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-09-2024",
+
+        "toDate":  "15-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "SODICK TECHNOLOGIES INDIA PVT LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-01-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STAFF GENERAL CREDIT OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "09-05-2023",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "STATE BANK OF INDIA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE SBI IP TERIFF 2024",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-05-2024",
+
+        "toDate":  "15-05-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STENOSIS -OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2024",
+
+        "toDate":  "13-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STERLING SOFTWARE PRIVATE LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "STRIDES PHARMA SCIENCE IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "29-09-2025",
+
+        "toDate":  "29-09-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Bank",
+
+        "agreementName":  "TAMILNAD MERCANTILE BANK LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-08-2025",
+
+        "toDate":  "31-07-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TATA POWER RENEWABLE ENERGY LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE DAYCARE TARIFF AUG 2023, APOLLO EXCELCARE GEN/4 SHARING TARIFF AUG 2023, APOLLO EXCELCARE 2 SHARING TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023, APOLLO EXCELCARE SUITE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-01-2025",
+
+        "toDate":  "20-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "THERMAX LIMITED IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-01-2026",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TRACTORS AND FARM EQUIPMENT LIMITED – TAFE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TRACTORS AND FARM EQUIPMENT LIMITED – TAFE IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "TRACTORS AND FARM EQUIPMENT LIMITED (TAFE) OP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-05-2025",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "TRUWORTH HEALTH TECHNOLOGIES PVT LTD (VIASAT) IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-02-2026",
+
+        "toDate":  "31-12-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "ULTRATECH CEMENT IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "01-08-2025",
+
+        "toDate":  "31-12-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VIDAL HEALTH INSURANCE TPA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OLDCREDITBASE TARIFF AUG 2023, APOLLO EXCELCARE SINGLE/ ICU/EXECUTIVE TARIFF AUG 2023",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "15-07-2021",
+
+        "toDate":  "30-06-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VIDAL HEALTH TPA PVT LTD-FUTURE GENERALI INDIA INSURANCE CO LTD IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF EXECUTIVE MANIPAL CIGNA SEP 2025",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "12-01-2026",
+
+        "toDate":  "31-07-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VIGNANS FOUNDATION FOR SCIENCE TECHNOLOGY AND RESEARCH IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP NOV TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP NOV TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP NOV TARIFF ICU 2025-26, APOLLO EXCELCARE IP NOV TARIFF SUITE  2025-26, APOLLO EXCELCARE IP NOV TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "19-03-2026",
+
+        "toDate":  "14-02-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VIRTUSA CONSULTING SERVICES IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP APR TARIFF 4 SHARING 2026-27, APOLLO EXCELCARE IP APR TARIFF 2 SHARING 2026-27, APOLLO EXCELCARE IP APR TARIFF SINGLE  2026-27, APOLLO EXCELCARE IP APR TARIFF ICU 2026-27, APOLLO EXCELCARE IP APR TARIFF SUITE  2026-27, APOLLO EXCELCARE IP APR TARIFF EXECUTIVE 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "29-01-2026",
+
+        "toDate":  "31-03-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VISIT HEALTH - STANDARD PACKAGE AHC AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE OP TARIFF 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "05-08-2025",
+
+        "toDate":  "04-08-2026",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Insurance Company",
+
+        "agreementName":  "VOLO HEALTH INSURANCE TPA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF SINGLE  2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "02-08-2025",
+
+        "toDate":  "31-12-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "VSL INDIA IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP TARIFF 4 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF 2 SHARING 2025-26, APOLLO EXCELCARE IP TARIFF SINGLE  2025-26, APOLLO EXCELCARE IP TARIFF ICU 2025-26, APOLLO EXCELCARE IP TARIFF SUITE  2025-26, APOLLO EXCELCARE IP TARIFF EXECUTIVE 2025-26",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "16-08-2025",
+
+        "toDate":  "31-08-2027",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    },
+
+    {
+
+        "customerType":  "Corporate",
+
+        "agreementName":  "YANMAR ENGINE MANUFACTURING INDIA PRIVATE LIMITED - IP AGREEMENT",
+
+        "tariffMapped":  "APOLLO EXCELCARE IP APR TARIFF 4 SHARING 2026-27, APOLLO EXCELCARE IP APR TARIFF 2 SHARING 2026-27, APOLLO EXCELCARE IP APR TARIFF SINGLE  2026-27, APOLLO EXCELCARE IP APR TARIFF ICU 2026-27, APOLLO EXCELCARE IP APR TARIFF SUITE  2026-27, APOLLO EXCELCARE IP APR TARIFF EXECUTIVE 2026-27",
+
+        "discountMapped":  "Refer to master discount schedule",
+
+        "status":  "Available/Valid",
+
+        "fromDate":  "20-04-2026",
+
+        "toDate":  "19-04-2028",
+
+        "discountAgreed":  "Refer to master discount schedule",
+
+        "locations":  "Apollo Excelcare Hospital – Guwahati"
+
+    }
+
+];
 const SETTLEMENT_DATA = [
     {
         "id": "AHLG-ICR-20524-Settlement Letter",
