@@ -3668,6 +3668,8 @@
     window.renderFacilityDirectory = function() {
         const grid = document.getElementById('auth-facility-grid');
         const countBadge = document.getElementById('auth-facility-count-badge');
+        const selector = document.getElementById('auth-facility-selector');
+        const isManaging = selector && selector.classList.contains('managing');
         if (!grid) return;
 
         const units = window.getHospitalUnits();
@@ -3703,6 +3705,28 @@
             `;
             grid.appendChild(card);
         });
+
+        if (isManaging) {
+            const addCard = document.createElement('div');
+            addCard.className = 'auth-unit-card auth-facility-card auth-add-facility-card';
+            addCard.style.border = '2px dashed var(--primary)';
+            addCard.style.background = 'rgba(13, 148, 136, 0.08)';
+            addCard.style.cursor = 'pointer';
+            addCard.onclick = () => window.openProvisionUnitModal();
+            addCard.innerHTML = `
+                <div class="auth-card-avatar" style="background-color: var(--primary); color: white;">
+                    <span class="auth-avatar-char">+</span>
+                </div>
+                <div class="auth-card-content">
+                    <div class="auth-card-eyebrow" style="color: var(--primary); font-weight: 700;">PROVISIONING CONSOLE</div>
+                    <h3 class="auth-card-name" style="color: var(--primary); font-weight: 800;">+ Add New Hospital Node</h3>
+                    <div class="auth-card-scope">
+                        <span class="auth-scope-tag" style="background: var(--primary); color: white; font-weight: 700;">Provision Node</span>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(addCard);
+        }
     };
 
     window.selectFacilityNode = function(unitCode) {
@@ -3799,6 +3823,7 @@
             toggleBtn.style.color = '';
             toggleBtn.style.borderColor = '';
         }
+        window.renderFacilityDirectory();
     };
 
     window.toggleManageProfiles = window.toggleManageFacilityDirectory;
@@ -3862,12 +3887,16 @@
             if (colorHexInput) colorHexInput.value = '#0d9488';
         }
 
+        modal.classList.add('show');
         modal.style.display = 'flex';
     };
 
     window.closeProvisionUnitModal = function() {
         const modal = document.getElementById('modal-provision-unit');
-        if (modal) modal.style.display = 'none';
+        if (modal) {
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+        }
     };
 
     window.saveProvisionedUnit = function(e) {
@@ -3959,10 +3988,26 @@
     // Run on document load
     document.addEventListener('DOMContentLoaded', function() {
         window.renderFacilityDirectory();
+        
+        const provModal = document.getElementById('modal-provision-unit');
+        if (provModal) {
+            provModal.addEventListener('click', function(e) {
+                if (e.target === provModal) {
+                    window.closeProvisionUnitModal();
+                }
+            });
+        }
     });
     if (document.readyState === "complete" || document.readyState === "interactive") {
         window.renderFacilityDirectory();
     }
+
+    // Handle Escape key to close modal
+    window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            window.closeProvisionUnitModal();
+        }
+    });
 
     // Wrap portal logout to show facility directory page on logout
     window.addEventListener('load', function() {
