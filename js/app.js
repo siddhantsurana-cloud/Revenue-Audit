@@ -832,24 +832,27 @@
 
     // COLLAPSIBLE SIDEBAR & SYNCED NAVIGATION & CONTEXT SELECTOR LOGIC
     
-    // Sidebar state initialization
-    const sidebar = document.querySelector('.sidebar') || document.getElementById('app-sidebar');
-    const sidebarToggle = document.getElementById('sidebar-toggle') || document.getElementById('btn-collapse-sidebar');
-    
-    window.toggleSidebar = function() {
+    window.toggleSidebar = function(forceState) {
         const sb = document.querySelector('.sidebar') || document.getElementById('app-sidebar');
+        const btn = document.getElementById('btn-collapse-sidebar') || document.getElementById('sidebar-toggle');
+        const icon = document.getElementById('collapse-icon');
         if (sb) {
-            sb.classList.toggle('collapsed');
-            localStorage.setItem('brc_v2_sidebar-collapsed', sb.classList.contains('collapsed'));
+            const willCollapse = typeof forceState === 'boolean' ? forceState : !sb.classList.contains('collapsed');
+            sb.classList.toggle('collapsed', willCollapse);
+            localStorage.setItem('brc_v2_sidebar-collapsed', willCollapse ? 'true' : 'false');
+            if (btn) {
+                btn.title = willCollapse ? 'Expand Sidebar' : 'Collapse Sidebar';
+                btn.setAttribute('aria-label', willCollapse ? 'Expand Sidebar Navigation' : 'Collapse Sidebar Navigation');
+            }
+            if (icon) {
+                icon.style.transform = willCollapse ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
         }
     };
     
+    // Restore persistent sidebar state on page load
     if (localStorage.getItem('brc_v2_sidebar-collapsed') === 'true') {
-        if (sidebar) sidebar.classList.add('collapsed');
-    }
-    
-    if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener('click', window.toggleSidebar);
+        window.toggleSidebar(true);
     }
     
     // Sync Navigation Links Filtering with Search

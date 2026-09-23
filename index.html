@@ -417,7 +417,7 @@
     <!-- SIDEBAR -->
     <aside class="sidebar" id="app-sidebar">
         <!-- Collapse Button sitting on boundary -->
-        <button id="btn-collapse-sidebar" class="sidebar-collapse-btn" onclick="window.toggleSidebar()" style="position: absolute; top: 1.5rem; right: -12px; width: 24px; height: 24px; border-radius: 50%; background: var(--primary); border: 1px solid var(--border); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.3s; outline: none;">
+        <button type="button" id="btn-collapse-sidebar" class="sidebar-collapse-btn" onclick="event.stopPropagation(); window.toggleSidebar()" title="Collapse Sidebar" aria-label="Toggle Sidebar Navigation">
             <svg id="collapse-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 19l-7-7 7-7"/></svg>
         </button>
 
