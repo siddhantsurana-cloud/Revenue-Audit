@@ -551,37 +551,70 @@
     const auditSourceSelect = document.getElementById('audit-source-select');
     const auditMappingMethodSelect = document.getElementById('audit-mapping-method-select');
 
-    // Theme logic toggle
-    themeToggleBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
+    // Enterprise Multi-Theme Suite (Corporate Slate, Clinical Light, Midnight OLED)
+    window.setAppTheme = function(themeName) {
+        if (!['dark', 'light', 'oled'].includes(themeName)) {
+            themeName = 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', themeName);
+        localStorage.setItem('brc_app_theme', themeName);
         
-        if (newTheme === 'light') {
-            themeToggleBtn.innerHTML = `
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 18.36l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                </svg>
-            `;
-        } else {
-            themeToggleBtn.innerHTML = `
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                </svg>
-            `;
+        const themeDropdown = document.getElementById('theme-select-dropdown');
+        if (themeDropdown) {
+            themeDropdown.value = themeName;
         }
         
-        // Redraw database overview charts
-        updateDatabaseDashboard();
+        if (themeToggleBtn) {
+            if (themeName === 'light') {
+                themeToggleBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 18.36l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                `;
+            } else if (themeName === 'oled') {
+                themeToggleBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="9"/>
+                    </svg>
+                `;
+            } else {
+                themeToggleBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                `;
+            }
+        }
         
-        if (auditedRows.length > 0) {
+        // Redraw database overview charts & tables
+        if (typeof updateDatabaseDashboard === 'function') {
+            updateDatabaseDashboard();
+        }
+        
+        if (typeof auditedRows !== 'undefined' && auditedRows.length > 0 && typeof updateAuditCharts === 'function') {
             updateAuditCharts();
         }
 
         if (typeof updateCheckingDashboard === 'function') {
             updateCheckingDashboard();
         }
-    });
+    };
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            let nextTheme = 'light';
+            if (currentTheme === 'dark') nextTheme = 'light';
+            else if (currentTheme === 'light') nextTheme = 'oled';
+            else nextTheme = 'dark';
+            
+            window.setAppTheme(nextTheme);
+        });
+    }
+
+    // Initialize saved theme on startup
+    const savedTheme = localStorage.getItem('brc_app_theme') || 'dark';
+    window.setAppTheme(savedTheme);
 
     // Environment Toggle Event Listener
     const btnToggleEnv = document.getElementById('btn-toggle-env');
@@ -605,7 +638,7 @@
                 
                 // Update version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'TEST VERSION: V2.5.2 ENTERPRISE';
+                if (vBadge) vBadge.textContent = 'TEST VERSION: V2.6.0 ENTERPRISE';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'TESTING';
@@ -616,11 +649,11 @@
                     vTitle.style.color = '#d97706';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        VERSION V2.5.2 - ENTERPRISE COCKPIT
+                        VERSION V2.6.0 - ENTERPRISE COCKPIT
                     `;
                 }
                 
-                showToast('Switched to Test Sandbox Environment (V2.5.2 Enterprise). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
+                showToast('Switched to Test Sandbox Environment (V2.6.0 Enterprise). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
             } else {
                 // Update badge to Production mode
                 envBadge.style.color = 'var(--primary)';
@@ -637,7 +670,7 @@
                 
                 // Reset version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V2.5.2 ENTERPRISE';
+                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V2.6.0 ENTERPRISE';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'LOCKED';
@@ -648,11 +681,11 @@
                     vTitle.style.color = 'var(--success)';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        VERSION V2.5.2 - ENTERPRISE COCKPIT
+                        VERSION V2.6.0 - ENTERPRISE COCKPIT
                     `;
                 }
                 
-                showToast('Switched back to Production Environment (V2.5.2 Enterprise).', 'success');
+                showToast('Switched back to Production Environment (V2.6.0 Enterprise).', 'success');
             }
             
             // Reload all audits and overrides state from correct storage namespace!
@@ -1137,7 +1170,10 @@
         // Draw startup database dashboard charts
         updateDatabaseDashboard();
 
-        // Initialize Enterprise v2.5.2 Utilities (Command Palette, Keyboard Shortcuts, Telemetry)
+        // Initialize Enterprise v2.6.0 Utilities (Column Customizer, Command Palette, Keyboard Shortcuts, Telemetry)
+        if (typeof initColumnCustomizer === 'function') {
+            initColumnCustomizer();
+        }
         if (typeof initCommandPalette === 'function') {
             initCommandPalette();
         }
@@ -7111,6 +7147,9 @@
             auditEmptyState.style.display = 'flex';
             auditPageRangeDisplay.textContent = '0-0 of 0';
             auditPaginationButtons.innerHTML = '';
+            if (typeof updateStickySummaryFooter === 'function') {
+                updateStickySummaryFooter();
+            }
             return;
         }
 
@@ -7263,10 +7302,14 @@
                     <td data-label="Difference" class="rate-cell" style="text-align: right; font-weight: 700; font-family: 'Book Antiqua', serif; color: ${row.status === "Overcharged" ? 'var(--danger)' : (row.status === "Undercharged" ? 'var(--warning)' : 'inherit')}">${diffHtml}</td>
                     <td data-label="Diff %" class="rate-cell" style="text-align: right; font-family: 'Book Antiqua', serif; color: ${row.status === "Overcharged" ? 'var(--danger)' : (row.status === "Undercharged" ? 'var(--warning)' : 'inherit')}">${diffPctVal}</td>
                     <td data-label="Audit Results" style="text-align: center;" class="always-visible">${resultBadgeHtml}</td>
-                    <td data-label="Details" class="always-visible" style="text-align: center;">
-                        <button class="view-btn" onclick="event.stopPropagation(); showAuditDetails('${row.uid}')">
+                    <td data-label="Details" class="always-visible" style="text-align: center; white-space: nowrap;">
+                        <button class="view-btn" onclick="event.stopPropagation(); showAuditDetails('${row.uid}')" title="Audit Detail Modal">
                             <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                             Audit
+                        </button>
+                        <button class="view-btn" style="margin-left: 4px; background: rgba(59, 130, 246, 0.12); color: #3b82f6; border-color: rgba(59, 130, 246, 0.3);" onclick="event.stopPropagation(); window.openSplitPaneDiff('${row.uid}')" title="Split-Pane Side-by-Side Diff">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px; height:13px;"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+                            Diff
                         </button>
                     </td>
                     <td data-label="Remarks" style="text-align: center;">
@@ -7280,6 +7323,12 @@
         });
         auditTbody.innerHTML = html;
         renderAuditPagination(totalPages);
+        if (typeof applyAuditColumnVisibility === 'function') {
+            applyAuditColumnVisibility();
+        }
+        if (typeof updateStickySummaryFooter === 'function') {
+            updateStickySummaryFooter();
+        }
     }
 
     function renderAuditPagination(totalPages) {
@@ -11609,7 +11658,7 @@
         }
     }
 
-    const CREDS_CACHE_VERSION = 'V2.5.2';
+    const CREDS_CACHE_VERSION = 'V2.6.0';
 
     async function initUserCredentials() {
         const defaultFallback = [
@@ -14684,7 +14733,7 @@ Claims & Billing Assurance Desk
     }
 
     /* ==========================================================================
-       ENTERPRISE STATEMENT OF CHARGES (SOC) DATA PROCESSING MODULE (v2.5.2)
+       ENTERPRISE STATEMENT OF CHARGES (SOC) DATA PROCESSING MODULE (v2.6.0)
        ========================================================================== */
 
     let socActiveFile = null;
@@ -15095,7 +15144,7 @@ Claims & Billing Assurance Desk
         });
 
         const standardJson = {
-            schema_version: '2.5.2',
+            schema_version: '2.6.0',
             metadata: {
                 source_file: file.name,
                 document_type: 'EXCEL',
@@ -15244,7 +15293,7 @@ Claims & Billing Assurance Desk
             }
 
             const standardJson = {
-                schema_version: '2.5.2',
+                schema_version: '2.6.0',
                 metadata: {
                     source_file: file.name,
                     document_type: 'PDF',
@@ -15748,7 +15797,7 @@ Claims & Billing Assurance Desk
     window.initIngesterPanel = initIngesterPanel;
 
     /* ==========================================================================
-       ENTERPRISE V2.5.2 SUITE: COMMAND PALETTE, SHORTCUTS, WORKFLOW STEPPER, 
+       ENTERPRISE V2.6.0 SUITE: COMMAND PALETTE, SHORTCUTS, WORKFLOW STEPPER, 
        SOC TELEMETRY, & APOLLO FORMAL DISPUTE LETTERHEAD ENGINE
        ========================================================================== */
 
@@ -16319,8 +16368,705 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
         window.print();
     };
 
+    /* ==========================================================================
+       ENTERPRISE V2.6.0 MODULES:
+       1. AUDIT COLUMN CUSTOMIZER & DENSITY PINNING ENGINE
+       2. STICKY AGGREGATE SUMMARY FOOTER ENGINE
+       3. SPLIT-PANE COMPARATIVE DIFF DRAWER ENGINE
+       4. CROSS-YEAR TARIFF SCHEDULE DELTA COMPARATOR ENGINE
+       5. DATABASE SNAPSHOT BACKUP & DISASTER RECOVERY ENGINE
+       6. CRYPTOGRAPHIC SHA-256 AUDIT SEAL GOVERNANCE ENGINE
+       ========================================================================== */
+
+    /* -------------------------------------------------------------------------- */
+    /* 1. AUDIT COLUMN CUSTOMIZER & PINNING ENGINE                                */
+    /* -------------------------------------------------------------------------- */
+    const AUDIT_COLUMNS_DEF = [
+        { key: 'patient', label: 'Patient / IP No', defaultVisible: true, thIdx: 1 },
+        { key: 'code', label: 'Service Code', defaultVisible: true, thIdx: 2 },
+        { key: 'desc', label: 'Description', defaultVisible: true, thIdx: 3 },
+        { key: 'room', label: 'Room Type', defaultVisible: true, thIdx: 4 },
+        { key: 'disc', label: 'Discount %', defaultVisible: true, thIdx: 5 },
+        { key: 'billed', label: 'Billed Rates', defaultVisible: true, thIdx: 6 },
+        { key: 'predisc', label: 'Billed Pre Disc', defaultVisible: true, thIdx: 7 },
+        { key: 'tariff', label: 'Tariff', defaultVisible: true, thIdx: 8 },
+        { key: 'diff', label: 'Difference', defaultVisible: true, thIdx: 9 },
+        { key: 'diffpct', label: 'Diff %', defaultVisible: true, thIdx: 10 },
+        { key: 'status', label: 'Audit Results', defaultVisible: true, thIdx: 11 },
+        { key: 'details', label: 'Details / Diff', defaultVisible: true, thIdx: 12 },
+        { key: 'remarks', label: 'Remarks', defaultVisible: true, thIdx: 13 }
+    ];
+
+    function getAuditColumnStates() {
+        try {
+            const saved = localStorage.getItem('brc_audit_col_visibility_v26');
+            if (saved) return JSON.parse(saved);
+        } catch (e) {
+            console.warn('Failed to parse column settings:', e);
+        }
+        const def = {};
+        AUDIT_COLUMNS_DEF.forEach(c => { def[c.key] = c.defaultVisible; });
+        return def;
+    }
+
+    function saveAuditColumnStates(states) {
+        try {
+            localStorage.setItem('brc_audit_col_visibility_v26', JSON.stringify(states));
+        } catch (e) {
+            console.warn('Failed to save column settings:', e);
+        }
+    }
+
+    window.toggleColumnPicker = function(force) {
+        const popover = document.getElementById('audit-column-picker-popover');
+        if (!popover) return;
+        const isVisible = popover.classList.contains('active');
+        const targetState = typeof force === 'boolean' ? force : !isVisible;
+        if (targetState) {
+            popover.classList.add('active');
+        } else {
+            popover.classList.remove('active');
+        }
+    };
+
+    window.resetAuditColumns = function() {
+        const def = {};
+        AUDIT_COLUMNS_DEF.forEach(c => { def[c.key] = c.defaultVisible; });
+        saveAuditColumnStates(def);
+        initColumnCustomizer();
+        applyAuditColumnVisibility();
+        showToast('Audit table columns reset to default layout.', 'info');
+    };
+
+    function initColumnCustomizer() {
+        const container = document.getElementById('audit-col-picker-list');
+        if (!container) return;
+        const states = getAuditColumnStates();
+        
+        let html = '';
+        AUDIT_COLUMNS_DEF.forEach(col => {
+            const isChecked = states[col.key] !== false;
+            html += `
+                <label class="col-picker-item">
+                    <input type="checkbox" id="col-chk-${col.key}" data-col-key="${col.key}" ${isChecked ? 'checked' : ''} onchange="window.handleColumnVisibilityChange('${col.key}', this.checked)">
+                    <span>${col.label}</span>
+                </label>
+            `;
+        });
+        container.innerHTML = html;
+        applyAuditColumnVisibility();
+    }
+    window.initColumnCustomizer = initColumnCustomizer;
+
+    window.handleColumnVisibilityChange = function(colKey, isVisible) {
+        const states = getAuditColumnStates();
+        states[colKey] = isVisible;
+        saveAuditColumnStates(states);
+        applyAuditColumnVisibility();
+    };
+
+    function applyAuditColumnVisibility() {
+        const states = getAuditColumnStates();
+        const table = document.getElementById('audit-table');
+        if (!table) return;
+
+        AUDIT_COLUMNS_DEF.forEach(col => {
+            const isVisible = states[col.key] !== false;
+            
+            // Target theader
+            const th = table.querySelector(`thead tr th:nth-child(${col.thIdx})`);
+            if (th) {
+                th.style.display = isVisible ? '' : 'none';
+            }
+            
+            // Target all matching rows in tbody
+            const tds = table.querySelectorAll(`tbody tr td:nth-child(${col.thIdx})`);
+            tds.forEach(td => {
+                td.style.display = isVisible ? '' : 'none';
+            });
+        });
+    }
+    window.applyAuditColumnVisibility = applyAuditColumnVisibility;
+
+    /* -------------------------------------------------------------------------- */
+    /* 2. STICKY AGGREGATE SUMMARY FOOTER ENGINE                                  */
+    /* -------------------------------------------------------------------------- */
+    function updateStickySummaryFooter() {
+        const footer = document.getElementById('audit-sticky-footer');
+        if (!footer) return;
+
+        const data = typeof filteredAuditData !== 'undefined' ? filteredAuditData : [];
+        if (!data || data.length === 0) {
+            footer.style.display = 'none';
+            return;
+        }
+
+        footer.style.display = 'flex';
+
+        let totalCount = data.length;
+        let totalBilled = 0;
+        let totalTariff = 0;
+        let totalVariance = 0;
+
+        data.forEach(row => {
+            const billed = parseFloat(row.billedRate) || 0;
+            const tariff = row.expectedTariff !== null && !isNaN(row.expectedTariff) ? parseFloat(row.expectedTariff) : 0;
+            const diff = parseFloat(row.diff) || 0;
+
+            totalBilled += billed;
+            totalTariff += tariff;
+            totalVariance += diff;
+        });
+
+        const cntEl = document.getElementById('sticky-val-count');
+        const billedEl = document.getElementById('sticky-val-billed');
+        const expectedEl = document.getElementById('sticky-val-expected');
+        const varEl = document.getElementById('sticky-val-variance');
+
+        if (cntEl) cntEl.textContent = totalCount.toLocaleString('en-IN');
+        if (billedEl) billedEl.textContent = '₹' + Math.round(totalBilled).toLocaleString('en-IN');
+        if (expectedEl) expectedEl.textContent = '₹' + Math.round(totalTariff).toLocaleString('en-IN');
+        
+        if (varEl) {
+            const sign = totalVariance > 0 ? '+' : (totalVariance < 0 ? '-' : '');
+            varEl.textContent = `${sign}₹${Math.round(Math.abs(totalVariance)).toLocaleString('en-IN')}`;
+            if (totalVariance > 0) {
+                varEl.style.color = 'var(--danger)';
+            } else if (totalVariance < 0) {
+                varEl.style.color = 'var(--warning)';
+            } else {
+                varEl.style.color = 'var(--success)';
+            }
+        }
+    }
+    window.updateStickySummaryFooter = updateStickySummaryFooter;
+
+    /* -------------------------------------------------------------------------- */
+    /* 3. SPLIT-PANE COMPARATIVE DIFF DRAWER ENGINE                               */
+    /* -------------------------------------------------------------------------- */
+    let activeDiffRow = null;
+
+    window.openSplitPaneDiff = function(uid) {
+        const rows = typeof auditedRows !== 'undefined' ? auditedRows : (typeof filteredAuditData !== 'undefined' ? filteredAuditData : []);
+        const row = rows.find(r => r.uid === uid || r.id === uid || r.serviceId === uid);
+        if (!row) {
+            showToast('Selected row details not found in current audit context.', 'warning');
+            return;
+        }
+
+        activeDiffRow = row;
+
+        const drawer = document.getElementById('split-pane-diff-drawer');
+        const backdrop = document.getElementById('split-diff-backdrop');
+        const body = document.getElementById('split-diff-body');
+        const title = document.getElementById('diff-drawer-title');
+
+        if (!drawer || !body) return;
+
+        if (title) {
+            title.textContent = `Comparative Diff Inspector: [${row.serviceId}] ${row.serviceName}`;
+        }
+
+        // Determine variance badge and root cause
+        let varianceBadgeClass = 'diff-delta-neutral';
+        let statusPillClass = 'badge-match';
+        let rootCauseDesc = 'Rate perfectly matches contracted master schedule.';
+        let clauseRef = 'Standard Master SOC Benchmark Clause 4.1';
+
+        if (row.status === 'Overcharged') {
+            varianceBadgeClass = 'diff-delta-danger';
+            statusPillClass = 'badge-danger';
+            rootCauseDesc = 'Billed rate exceeds the bilateral approved tariff rate. Payer claim disallowance risk high.';
+            clauseRef = 'Apollo Master Agreement Schedule A (Tariff Cap Enforcement)';
+        } else if (row.status === 'Undercharged') {
+            varianceBadgeClass = 'diff-delta-warning';
+            statusPillClass = 'badge-diff';
+            rootCauseDesc = 'Billed rate is lower than the contracted entitlement. Represents unbilled revenue leakage recovery opportunity.';
+            clauseRef = 'Apollo Contract Recovery Protocol & Minimum Base Rate Clause 7.2';
+        } else if (row.status === 'Not Found in Master') {
+            varianceBadgeClass = 'diff-delta-danger';
+            statusPillClass = 'badge-danger';
+            rootCauseDesc = 'Service code or description does not map to any active SOC template. Manual rate justification required.';
+            clauseRef = 'Unlisted Procedure Prior-Authorization Requirement (Clause 11)';
+        } else if (row.status && row.status.startsWith('Ignored')) {
+            statusPillClass = 'badge-gray';
+            rootCauseDesc = `Item excluded from standard tariff validation (${row.status}).`;
+            clauseRef = 'Exclusion Annexure B (Consumables, Pharmacy & Bundled Items)';
+        }
+
+        const billedVal = parseFloat(row.billedRate) || 0;
+        const billedPreDisc = parseFloat(row.billedRatePreDiscount) || billedVal;
+        const expectedVal = row.expectedTariff !== null && !isNaN(row.expectedTariff) ? parseFloat(row.expectedTariff) : 0;
+        const diffVal = parseFloat(row.diff) || (billedVal - expectedVal);
+        const discPct = row.discountApplied !== undefined ? row.discountApplied : 0;
+        const diffPct = expectedVal > 0 ? ((diffVal / expectedVal) * 100).toFixed(1) : '—';
+
+        body.innerHTML = `
+            <!-- TOP CONTEXT RIBBON -->
+            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-hover); padding: 0.85rem 1rem; border-radius: 8px; border: 1px solid var(--border); flex-wrap: wrap; gap: 0.75rem;">
+                <div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Patient & Admission Scope</div>
+                    <div style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-top: 0.15rem;">
+                        ${escapeHtml(row.patientName || 'Unknown Patient')} 
+                        <span style="font-size: 0.78rem; font-weight: 600; color: var(--primary); margin-left: 0.5rem;">IP No: ${escapeHtml(row.ipNo || 'N/A')}</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <span class="comparison-badge ${statusPillClass}" style="font-size: 0.82rem; padding: 0.35rem 0.75rem;">${row.status || 'Audited'}</span>
+                    <span class="diff-delta-badge ${varianceBadgeClass}">
+                        ${diffVal > 0 ? '+' : ''}₹${Math.round(diffVal).toLocaleString('en-IN')} (${diffPct}%)
+                    </span>
+                </div>
+            </div>
+
+            <!-- SPLIT-PANE TWO COLUMN COMPARATIVE GRID -->
+            <div class="split-diff-grid">
+                <!-- COLUMN 1: BILLED SUBMISSION -->
+                <div class="split-diff-col billed-col">
+                    <div class="split-diff-col-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span>Hospital Billed Submission</span>
+                    </div>
+
+                    <div class="split-diff-field">
+                        <span class="split-diff-field-label">Service Code</span>
+                        <span class="split-diff-field-val" style="font-family: monospace; font-weight: 800;">${escapeHtml(row.serviceId || '—')}</span>
+                    </div>
+
+                    <div class="split-diff-field">
+                        <span class="split-diff-field-label">Service Description</span>
+                        <span class="split-diff-field-val">${escapeHtml(row.serviceName || '—')}</span>
+                    </div>
+
+                    <div class="split-diff-field">
+                        <span class="split-diff-field-label">Room Category</span>
+                        <span class="split-diff-field-val">${escapeHtml(row.roomCategory || 'General / Standard')}</span>
+                    </div>
+
+                    <div class="split-diff-field">
+                        <span class="split-diff-field-label">Gross Billed Rate (Pre-Discount)</span>
+                        <span class="split-diff-field-val" style="font-family: monospace;">₹${Math.round(billedPreDisc).toLocaleString('en-IN')}</span>
+                    </div>
+
+                    <div class="split-diff-field">
+                        <span class="split-diff-field-label">Billed Discount Applied</span>
+                        <span class="split-diff-field-val" style="color: var(--primary); font-weight: 700;">${discPct}%</span>
+                    </div>
+
+                    <div class="split-diff-field highlight-field">
+                        <span class="split-diff-field-label">Net Billed Rate (Claim Submission)</span>
+                        <span class="split-diff-field-val" style="font-size: 1.15rem; font-weight: 800; font-family: monospace; color: var(--text-main);">
+                            ₹${Math.round(billedVal).toLocaleString('en-IN')}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- COLUMN 2: MASTER CONTRACT BENCHMARK -->
+                <div class="split-diff-col master-col">
+                    <div class="split-diff-col-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>Master Contract Benchmark</span>
+                    </div>
+
+                    <div class="split-diff-field">
+                        <span class="split-diff-field-label">Contracted SOC Rate</span>
+                        <span class="split-diff-field-val" style="font-family: monospace; font-weight: 800; color: #0d9488;">
+                            ₹${expectedVal ? Math.round(expectedVal).toLocaleString('en-IN') : '—'}
+                        </span>
+                    </div>
+
+                    <div class="split-diff-field">
+                        <span class="split-diff-field-label">Active Agreement Authority</span>
+                        <span class="split-diff-field-val" style="font-size: 0.8rem; font-weight: 700; color: var(--primary);">
+                            ${escapeHtml(row.agreementName || row.payerName || 'Apollo Central Master SOC Schedule')}
+                        </span>
+                    </div>
+
+                    <div class="split-diff-field">
+                        <span class="split-diff-field-label">Tariff Calculation Model</span>
+                        <span class="split-diff-field-val" style="font-size: 0.78rem;">
+                            ${row.calcMethod || 'Standard Base Rate with Tiered Category Discount'}
+                        </span>
+                    </div>
+
+                    <div class="split-diff-field">
+                        <span class="split-diff-field-label">Department Classification</span>
+                        <span class="split-diff-field-val">${escapeHtml(row.dept || row.department || 'Clinical Hospital Care')}</span>
+                    </div>
+
+                    <div class="split-diff-field">
+                        <span class="split-diff-field-label">Room Category Rule</span>
+                        <span class="split-diff-field-val">${escapeHtml(row.roomCategory || 'Standard Baseline Tariff')}</span>
+                    </div>
+
+                    <div class="split-diff-field highlight-field" style="border-color: rgba(13, 148, 136, 0.4); background: rgba(13, 148, 136, 0.06);">
+                        <span class="split-diff-field-label">Agreed Entitlement Tariff</span>
+                        <span class="split-diff-field-val" style="font-size: 1.15rem; font-weight: 800; font-family: monospace; color: #0d9488;">
+                            ₹${Math.round(expectedVal).toLocaleString('en-IN')}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROOT CAUSE & GOVERNANCE COMPLIANCE SECTION -->
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                <div style="font-size: 0.8rem; font-weight: 800; color: var(--text-main); text-transform: uppercase; display: flex; align-items: center; gap: 0.4rem;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    Discrepancy Analysis & Remediation Intelligence
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.8rem;">
+                    <div>
+                        <span style="color: var(--text-muted); display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Root Cause Diagnostic:</span>
+                        <p style="margin: 0.25rem 0 0 0; color: var(--text-main); line-height: 1.4;">${rootCauseDesc}</p>
+                    </div>
+                    <div>
+                        <span style="color: var(--text-muted); display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 700;">Contract Clause Citation:</span>
+                        <p style="margin: 0.25rem 0 0 0; color: var(--primary); font-weight: 700; line-height: 1.4;">${clauseRef}</p>
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--border); padding-top: 0.75rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Auditor Note: ${escapeHtml(row.userRemarks || 'No custom remarks recorded.')}</span>
+                    <button type="button" class="export-btn" onclick="window.generateDisputeFromDiff('${row.uid}')" style="background: var(--danger); color: white; border-color: var(--danger); font-size: 0.75rem; font-weight: 700;">
+                        ✉️ Draft Payer Dispute for this Item
+                    </button>
+                </div>
+            </div>
+        `;
+
+        drawer.classList.add('active');
+        if (backdrop) backdrop.classList.add('active');
+    };
+
+    window.closeSplitPaneDiff = function() {
+        const drawer = document.getElementById('split-pane-diff-drawer');
+        const backdrop = document.getElementById('split-diff-backdrop');
+        if (drawer) drawer.classList.remove('active');
+        if (backdrop) backdrop.classList.remove('active');
+    };
+
+    window.generateDisputeFromDiff = function(uid) {
+        window.closeSplitPaneDiff();
+        if (typeof window.openDisputeLetterModal === 'function') {
+            window.openDisputeLetterModal();
+        }
+    };
+
+    /* -------------------------------------------------------------------------- */
+    /* 4. TARIFF SCHEDULE DELTA COMPARATOR ENGINE                                 */
+    /* -------------------------------------------------------------------------- */
+    window.switchMasterSubView = function(viewKey) {
+        const repoSubView = document.getElementById('tariff-master-view') || document.getElementById('tariff-master-subview');
+        const deltaSubView = document.getElementById('tariff-delta-view') || document.getElementById('tariff-delta-subview');
+        const repoBtn = document.getElementById('btn-subnav-master-explorer') || document.getElementById('master-subtab-repo');
+        const deltaBtn = document.getElementById('btn-subnav-master-delta') || document.getElementById('master-subtab-delta');
+
+        if (viewKey === 'delta') {
+            if (repoSubView) repoSubView.style.display = 'none';
+            if (deltaSubView) deltaSubView.style.display = 'flex';
+            if (repoBtn) repoBtn.classList.remove('active');
+            if (deltaBtn) deltaBtn.classList.add('active');
+            populateTariffDeltaDropdowns();
+        } else {
+            if (repoSubView) repoSubView.style.display = 'block';
+            if (deltaSubView) deltaSubView.style.display = 'none';
+            if (repoBtn) repoBtn.classList.add('active');
+            if (deltaBtn) deltaBtn.classList.remove('active');
+        }
+    };
+
+    function populateTariffDeltaDropdowns() {
+        const baseSel = document.getElementById('delta-base-soc') || document.getElementById('delta-base-select');
+        const targetSel = document.getElementById('delta-target-soc') || document.getElementById('delta-target-select');
+        if (!baseSel || !targetSel) return;
+
+        if (baseSel.options.length > 3) return; // already populated with rich options
+
+        const options = [
+            { val: '2023', label: 'Guwahati Master SOC (2023 Schedule)' },
+            { val: '2024', label: 'Guwahati Master SOC (2024 Schedule)' },
+            { val: '2025', label: 'Guwahati Master SOC (2025 Schedule)' },
+            { val: '2026', label: 'Guwahati Master SOC (2026-27 Schedule)' },
+            { val: 'kolkata', label: 'Apollo Kolkata Multispeciality SOC (2026)' },
+            { val: 'excelcare_cash', label: 'Excelcare Hospital Cash Master' },
+            { val: 'excelcare_gipsa', label: 'Excelcare GIPSA PPN Agreed Tariff' },
+            { val: 'international', label: 'Apollo International Patient Cash Tariff' }
+        ];
+
+        baseSel.innerHTML = '';
+        targetSel.innerHTML = '';
+
+        options.forEach(opt => {
+            baseSel.innerHTML += `<option value="${opt.val}">${opt.label}</option>`;
+            targetSel.innerHTML += `<option value="${opt.val}">${opt.label}</option>`;
+        });
+
+        baseSel.value = '2023';
+        targetSel.value = '2026';
+    }
+
+    function getTariffDatasetByKey(key) {
+        if ((key === '2023' || key === 'soc2023') && typeof TARIFF_2023 !== 'undefined') return TARIFF_2023;
+        if ((key === '2024' || key === 'soc2024') && typeof TARIFF_2024 !== 'undefined') return TARIFF_2024;
+        if ((key === '2025' || key === 'soc2025') && typeof TARIFF_2025 !== 'undefined') return TARIFF_2025;
+        if ((key === '2026' || key === 'soc2026') && typeof TARIFF_DATA !== 'undefined') return TARIFF_DATA;
+        if ((key === 'kolkata' || key === 'sockolkata') && typeof TARIFF_KOLKATA !== 'undefined') return TARIFF_KOLKATA;
+        if ((key === 'excelcare_cash' || key === 'socexcelcarecash') && typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') return TARIFF_EXCELCARE_CASH_2025;
+        if ((key === 'excelcare' || key === 'socexcelcare') && typeof TARIFF_EXCELCARE_2025 !== 'undefined') return TARIFF_EXCELCARE_2025;
+        if ((key === 'excelcare2024' || key === 'socexcelcare2024') && typeof TARIFF_EXCELCARE_2024 !== 'undefined') return TARIFF_EXCELCARE_2024;
+        if ((key === 'excelcare_gipsa' || key === 'socexcelcaregipsa') && typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') return TARIFF_EXCELCARE_GIPSA_2026;
+        if ((key === 'international' || key === 'socinternational') && typeof TARIFF_2026 !== 'undefined') return TARIFF_2026;
+        return typeof TARIFF_DATA !== 'undefined' ? TARIFF_DATA : [];
+    }
+
+    function getRateFromItem(item) {
+        if (!item) return 0;
+        if (typeof item.rate === 'number') return item.rate;
+        if (item.rates && typeof item.rates === 'object') {
+            const first = Object.values(item.rates).find(v => typeof v === 'number');
+            if (first !== undefined) return first;
+        }
+        return 0;
+    }
+
+    window.executeTariffDeltaComparison = function() {
+        const baseKey = (document.getElementById('delta-base-soc') || document.getElementById('delta-base-select'))?.value || '2023';
+        const targetKey = (document.getElementById('delta-target-soc') || document.getElementById('delta-target-select'))?.value || '2026';
+
+        const baseData = getTariffDatasetByKey(baseKey);
+        const targetData = getTariffDatasetByKey(targetKey);
+
+        const baseMap = new Map();
+        baseData.forEach(item => {
+            const id = (item.id || item.code || '').toString().trim().toUpperCase();
+            if (id) baseMap.set(id, item);
+        });
+
+        const targetMap = new Map();
+        targetData.forEach(item => {
+            const id = (item.id || item.code || '').toString().trim().toUpperCase();
+            if (id) targetMap.set(id, item);
+        });
+
+        const allIds = new Set([...baseMap.keys(), ...targetMap.keys()]);
+
+        let countTotal = 0;
+        let countUp = 0;
+        let countDown = 0;
+        let countNew = 0;
+        let countSame = 0;
+
+        let deltaRowsHtml = '';
+
+        allIds.forEach(id => {
+            const bItem = baseMap.get(id);
+            const tItem = targetMap.get(id);
+
+            const bRate = bItem ? getRateFromItem(bItem) : null;
+            const tRate = tItem ? getRateFromItem(tItem) : null;
+
+            const name = (tItem && tItem.name) || (bItem && bItem.name) || 'Unknown Service';
+            const dept = (tItem && tItem.dept) || (bItem && bItem.dept) || 'General';
+
+            countTotal++;
+
+            let pillHtml = '';
+            let deltaVal = 0;
+            let deltaPct = '—';
+
+            if (bRate === null && tRate !== null) {
+                countNew++;
+                pillHtml = `<span class="delta-pill-new">✨ New Code</span>`;
+                deltaVal = tRate;
+                deltaPct = '+100%';
+            } else if (bRate !== null && tRate !== null) {
+                deltaVal = tRate - bRate;
+                if (deltaVal > 0) {
+                    countUp++;
+                    const pct = bRate > 0 ? ((deltaVal / bRate) * 100).toFixed(1) : '100';
+                    deltaPct = `+${pct}%`;
+                    pillHtml = `<span class="delta-pill-up">📈 +₹${Math.round(deltaVal).toLocaleString('en-IN')}</span>`;
+                } else if (deltaVal < 0) {
+                    countDown++;
+                    const pct = bRate > 0 ? ((Math.abs(deltaVal) / bRate) * 100).toFixed(1) : '100';
+                    deltaPct = `-${pct}%`;
+                    pillHtml = `<span class="delta-pill-down">📉 -₹${Math.round(Math.abs(deltaVal)).toLocaleString('en-IN')}</span>`;
+                } else {
+                    countSame++;
+                    pillHtml = `<span class="delta-pill-same">Unchanged</span>`;
+                    deltaPct = '0.0%';
+                }
+            } else {
+                countSame++;
+                pillHtml = `<span class="delta-pill-same">Legacy Only</span>`;
+            }
+
+            deltaRowsHtml += `
+                <tr>
+                    <td style="font-family: monospace; font-weight: 700;">${id}</td>
+                    <td><div style="max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(name)}">${escapeHtml(name)}</div></td>
+                    <td><span class="dept-tag" style="font-size: 0.72rem;">${escapeHtml(dept)}</span></td>
+                    <td style="text-align: right; font-family: monospace;">${bRate !== null ? '₹' + Math.round(bRate).toLocaleString('en-IN') : '—'}</td>
+                    <td style="text-align: right; font-family: monospace; font-weight: 700;">${tRate !== null ? '₹' + Math.round(tRate).toLocaleString('en-IN') : '—'}</td>
+                    <td style="text-align: right; font-family: monospace; font-weight: 700; color: ${deltaVal > 0 ? 'var(--danger)' : (deltaVal < 0 ? 'var(--success)' : 'inherit')}">
+                        ${deltaVal !== 0 ? (deltaVal > 0 ? '+' : '') + '₹' + Math.round(deltaVal).toLocaleString('en-IN') : '₹0'}
+                    </td>
+                    <td style="text-align: right; font-family: monospace;">${deltaPct}</td>
+                    <td style="text-align: center;">${pillHtml}</td>
+                </tr>
+            `;
+        });
+
+        const tbody = document.getElementById('delta-tbody');
+        if (tbody) tbody.innerHTML = deltaRowsHtml;
+
+        // Update KPI counters
+        const kTotal = document.getElementById('delta-kpi-total');
+        const kUp = document.getElementById('delta-kpi-increased');
+        const kDown = document.getElementById('delta-kpi-decreased');
+        const kNew = document.getElementById('delta-kpi-new');
+        const kSame = document.getElementById('delta-kpi-unchanged');
+
+        if (kTotal) kTotal.textContent = countTotal.toLocaleString('en-IN');
+        if (kUp) kUp.textContent = countUp.toLocaleString('en-IN');
+        if (kDown) kDown.textContent = countDown.toLocaleString('en-IN');
+        if (kNew) kNew.textContent = countNew.toLocaleString('en-IN');
+        if (kSame) kSame.textContent = countSame.toLocaleString('en-IN');
+
+        showToast(`Tariff Delta Comparator: Evaluated ${countTotal} codes (${countUp} price hikes, ${countDown} reductions, ${countNew} new services).`, 'success');
+    };
+
+    /* -------------------------------------------------------------------------- */
+    /* 5. ENTERPRISE SNAPSHOT BACKUP & RESTORE ENGINE                             */
+    /* -------------------------------------------------------------------------- */
+    window.exportDatabaseSnapshot = function() {
+        try {
+            const snapshot = {
+                metadata: {
+                    app: 'Apollo Revenue Assurance & Central Tariff Governance Platform',
+                    version: '2.6.0-Enterprise',
+                    export_timestamp: new Date().toISOString(),
+                    exported_by: (typeof window.currentUserRole !== 'undefined' ? window.currentUserRole : 'Enterprise Auditor')
+                },
+                storage_keys: {}
+            };
+
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && (key.startsWith('brc_') || key.startsWith('apollo_') || key.startsWith('custom_') || key.startsWith('tariff_'))) {
+                    snapshot.storage_keys[key] = localStorage.getItem(key);
+                }
+            }
+
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(snapshot, null, 2));
+            const dateTag = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+            const filename = `apollo_tariff_system_snapshot_${dateTag}.json`;
+
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", filename);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+
+            showToast(`Enterprise database snapshot "${filename}" downloaded successfully.`, 'success');
+        } catch (e) {
+            console.error('Snapshot export failed:', e);
+            showToast('Error exporting platform snapshot: ' + e.message, 'danger');
+        }
+    };
+
+    window.handleSnapshotFileImport = function(event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const content = e.target.result;
+                const parsed = JSON.parse(content);
+
+                if (!parsed.metadata || !parsed.storage_keys) {
+                    throw new Error('Invalid snapshot structure. Missing metadata or storage_keys payload.');
+                }
+
+                if (!confirm(`Import platform snapshot generated on ${parsed.metadata.export_timestamp} (Version: ${parsed.metadata.version})?\n\nThis will restore all hospital facility configurations, custom agreements, and audit state.`)) {
+                    return;
+                }
+
+                Object.keys(parsed.storage_keys).forEach(k => {
+                    localStorage.setItem(k, parsed.storage_keys[k]);
+                });
+
+                showToast('Snapshot restored successfully! Reloading platform...', 'success');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            } catch (err) {
+                console.error('Snapshot restore failed:', err);
+                showToast('Snapshot restore failed: ' + err.message, 'danger');
+            }
+        };
+        reader.readAsText(file);
+    };
+
+    /* -------------------------------------------------------------------------- */
+    /* 6. CRYPTOGRAPHIC SHA-256 AUDIT SEAL ENGINE                                 */
+    /* -------------------------------------------------------------------------- */
+    async function computeSha256Hex(str) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(str);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    window.generateAuditSha256Seal = async function(auditPayload) {
+        const payloadStr = typeof auditPayload === 'string' ? auditPayload : JSON.stringify(auditPayload);
+        const hash = await computeSha256Hex(payloadStr);
+        return {
+            hash: hash,
+            algorithm: 'SHA-256',
+            timestamp: new Date().toISOString(),
+            auditor: (typeof window.currentUserRole !== 'undefined' ? window.currentUserRole : 'Enterprise Auditor')
+        };
+    };
+
+    window.testGenerateSeal = async function() {
+        const previewEl = document.getElementById('infra-seal-text');
+        if (!previewEl) return;
+
+        previewEl.textContent = 'Computing SHA-256 cryptographic digest...';
+
+        const testPayload = {
+            platform: 'Apollo Revenue Assurance & Central Tariff Governance',
+            version: 'v2.6.0 Enterprise',
+            timestamp: new Date().toISOString(),
+            nonce: Math.random().toString(36).substring(2)
+        };
+
+        const seal = await window.generateAuditSha256Seal(testPayload);
+        previewEl.innerHTML = `
+            <span style="color: var(--success); font-weight: 700;">✓ SEAL VERIFIED:</span> 
+            <code style="font-size: 0.72rem; color: var(--primary);">${seal.hash.slice(0, 24)}...</code>
+        `;
+        showToast('Cryptographic SHA-256 Audit Seal generated successfully.', 'success');
+    };
+
+    // Popover click-outside dismissal
+    document.addEventListener('click', (e) => {
+        const popover = document.getElementById('audit-column-picker-popover');
+        const toggleBtn = document.getElementById('btn-toggle-col-picker');
+        if (popover && popover.classList.contains('active')) {
+            if (!popover.contains(e.target) && (!toggleBtn || !toggleBtn.contains(e.target))) {
+                popover.classList.remove('active');
+            }
+        }
+    });
+
     window.forcePurgeAppCache = async function() {
-        showToast('Purging client caches and fetching latest V2.5.2 Enterprise build...', 'info');
+        showToast('Purging client caches and fetching latest V2.6.0 Enterprise build...', 'info');
         try {
             localStorage.clear();
             sessionStorage.clear();

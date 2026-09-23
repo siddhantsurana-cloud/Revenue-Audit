@@ -30,27 +30,53 @@
             --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%23004b87' fill-opacity='0.07' d='M0,160L48,154.7C96,149,192,139,288,149.3C384,160,480,192,576,197.3C672,203,768,181,864,165.3C960,149,1056,139,1152,144C1248,149,1344,171,1392,181.3L1440,192L1440,0L1392,0L1152,0L864,0L576,0L288,0L0,0Z'%3E%3C/path%3E%3C/svg%3E"), 
                         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%233b82f6' fill-opacity='0.05' d='M0,96L48,112C96,128,192,160,288,181.3C384,203,480,213,576,197.3C672,181,768,139,864,122.7C960,107,1056,117,1152,138.7C1248,160,1344,192,1392,208L1440,224L1440,0L1392,0L1152,0L864,0L576,0L288,0L0,0Z'%3E%3C/path%3E%3C/svg%3E"),
                         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%2300a19c' fill-opacity='0.04' d='M0,224L48,218.7C96,213,192,203,288,181.3C384,160,480,128,576,138.7C672,149,768,203,864,213.3C960,224,1056,192,1152,170.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320L1152,320L864,320L576,320L288,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-            --bg-card: rgba(255, 255, 255, 0.45);
-            --bg-hover: rgba(255, 255, 255, 0.65);
-            --border: rgba(255, 255, 255, 0.25);
+            --bg-card: rgba(255, 255, 255, 0.75);
+            --bg-hover: rgba(241, 245, 249, 0.9);
+            --border: rgba(203, 213, 225, 0.8);
             --text-main: #0f172a;
-            --text-muted: #64748b;
+            --text-muted: #475569;
             --primary: #0f766e;
             --primary-hover: #115e59;
-            --primary-bg: rgba(15, 118, 110, 0.08);
+            --primary-bg: rgba(15, 118, 110, 0.1);
             
             --success: #15803d;
-            --success-bg: rgba(21, 128, 61, 0.08);
+            --success-bg: rgba(21, 128, 61, 0.1);
             --warning: #b45309;
-            --warning-bg: rgba(180, 83, 9, 0.08);
+            --warning-bg: rgba(180, 83, 9, 0.1);
             --danger: #b91c1c;
-            --danger-bg: rgba(185, 28, 28, 0.08);
+            --danger-bg: rgba(185, 28, 28, 0.1);
             --info: #1d4ed8;
-            --info-bg: rgba(37, 99, 235, 0.08);
+            --info-bg: rgba(37, 99, 235, 0.1);
             
-            --card-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.04);
+            --card-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.06);
             --scrollbar-thumb: #cbd5e1;
             --scrollbar-bg: #f8fafc;
+        }
+
+        :root[data-theme="oled"] {
+            --bg-page: #000000;
+            --bg-image: none;
+            --bg-card: #090b10;
+            --bg-hover: #121620;
+            --border: rgba(255, 255, 255, 0.12);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --primary: #14b8a6;
+            --primary-hover: #2dd4bf;
+            --primary-bg: rgba(20, 184, 166, 0.16);
+            
+            --success: #22c55e;
+            --success-bg: rgba(34, 197, 94, 0.16);
+            --warning: #fbbf24;
+            --warning-bg: rgba(251, 191, 36, 0.16);
+            --danger: #f87171;
+            --danger-bg: rgba(248, 113, 113, 0.16);
+            --info: #60a5fa;
+            --info-bg: rgba(96, 165, 250, 0.16);
+            
+            --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.95);
+            --scrollbar-thumb: #27272a;
+            --scrollbar-bg: #000000;
         }
 
         /* Sandbox Mode Styling */
@@ -1939,11 +1965,11 @@
             color: var(--primary);
         }
         
-        /* Sandbox Prototype Upgrades (V2.5.2 Enterprise) */
+        /* Sandbox Prototype Upgrades (V2.6.0 Enterprise) */
         
         /* Permanent sandbox indicator strip */
         body.sandbox-active::before {
-            content: "TEST SANDBOX ENVIRONMENT ACTIVE • VERSION V2.5.2 ENTERPRISE • NO PRODUCTION DATA MODIFICATION" !important;
+            content: "TEST SANDBOX ENVIRONMENT ACTIVE • VERSION V2.6.0 ENTERPRISE • NO PRODUCTION DATA MODIFICATION" !important;
             height: 28px !important;
             background: repeating-linear-gradient(45deg, #f59e0b, #f59e0b 10px, #d97706 10px, #d97706 20px) !important;
             font-size: 0.72rem !important;
@@ -2997,7 +3023,7 @@
         }
 
         /* ==========================================================================
-           ENTERPRISE V2.5.2 STYLES (Command Palette, Stepper, Telemetry, Letterhead)
+           ENTERPRISE V2.6.0 STYLES (Command Palette, Stepper, Telemetry, Letterhead)
            ========================================================================== */
 
         /* Header Command Palette Trigger & KBD Badges */
@@ -3743,4 +3769,384 @@
                 box-shadow: none !important;
                 padding: 0 !important;
             }
+        }
+
+        /* ==========================================================================
+           ENTERPRISE V2.6.0 UPGRADE SUITE: SPLIT-PANE DIFF, COLUMN CUSTOMIZER,
+           STICKY AGGREGATES, TARIFF DELTA MATRIX & CRYPTOGRAPHIC AUDIT SEAL
+           ========================================================================== */
+
+        /* 1. Header Theme Picker Dropdown */
+        .theme-select-widget {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: var(--bg-app);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .theme-select-widget select {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 0.72rem;
+            font-weight: 700;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* 2. Split-Pane Side-by-Side Comparative Diff Drawer */
+        .split-diff-drawer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70vh;
+            max-height: 700px;
+            min-height: 380px;
+            background: var(--bg-card);
+            border-top: 2px solid var(--primary);
+            box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .split-diff-drawer.open {
+            transform: translateY(0);
+        }
+        .split-diff-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .split-diff-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .split-diff-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.85rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .split-diff-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .split-diff-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.25rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1.25rem;
+            align-items: stretch;
+        }
+        .split-diff-col {
+            background: var(--bg-page);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.15rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+        .split-diff-col.billed-side {
+            border-left: 4px solid var(--info);
+        }
+        .split-diff-col.contract-side {
+            border-left: 4px solid var(--primary);
+        }
+        .split-diff-col-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+        .split-diff-hub {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.85rem;
+            padding: 0.5rem;
+            min-width: 140px;
+        }
+        .diff-delta-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            border: 1px solid var(--border);
+        }
+        .diff-delta-badge.over {
+            background: rgba(239, 68, 68, 0.12);
+            border-color: rgba(239, 68, 68, 0.35);
+            color: var(--danger);
+        }
+        .diff-delta-badge.under {
+            background: rgba(245, 158, 11, 0.12);
+            border-color: rgba(245, 158, 11, 0.35);
+            color: var(--warning);
+        }
+        .diff-delta-badge.match {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.35);
+            color: var(--success);
+        }
+        .diff-data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            padding: 0.25rem 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+        }
+        .diff-data-label {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .diff-data-val {
+            font-weight: 700;
+            color: var(--text-main);
+            text-align: right;
+        }
+
+        /* 3. Column Visibility & Pinning Customizer Popover */
+        .column-picker-popover {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 6px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+            border-radius: 10px;
+            padding: 0.85rem;
+            width: 250px;
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            gap: 0.6rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .column-picker-popover.active {
+            display: flex;
+        }
+        .col-picker-title {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.35rem;
+        }
+        .col-picker-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            max-height: 240px;
+            overflow-y: auto;
+        }
+        .col-picker-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            color: var(--text-main);
+            padding: 0.25rem 0.35rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .col-picker-item:hover {
+            background: var(--bg-hover);
+        }
+        .col-picker-item input[type="checkbox"] {
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* 4. Sticky Aggregate Summary Footer */
+        .sticky-summary-footer {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 0.65rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 12px 12px;
+        }
+        .sticky-metrics-group {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .sticky-metric-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.78rem;
+        }
+        .sticky-metric-label {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .sticky-metric-val {
+            font-weight: 800;
+            color: var(--text-main);
+            font-family: 'Book Antiqua', serif;
+        }
+        .sticky-metric-val.val-over {
+            color: var(--danger);
+        }
+        .sticky-metric-val.val-under {
+            color: var(--warning);
+        }
+        .sticky-metric-val.val-match {
+            color: var(--success);
+        }
+
+        /* 5. Tariff Schedule Delta Comparator */
+        .tariff-delta-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .delta-pill-up {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: rgba(239, 68, 68, 0.12);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 4px;
+            padding: 0.15rem 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .delta-pill-down {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 4px;
+            padding: 0.15rem 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .delta-pill-new {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: rgba(59, 130, 246, 0.12);
+            color: var(--info);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 4px;
+            padding: 0.15rem 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .delta-pill-same {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: rgba(148, 163, 184, 0.12);
+            color: var(--text-muted);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 4px;
+            padding: 0.15rem 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        /* 6. Cryptographic SHA-256 Audit Seal & Snapshot Backup */
+        .crypto-seal-card {
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.1) 0%, rgba(59, 130, 246, 0.08) 100%);
+            border: 1px solid rgba(13, 148, 136, 0.3);
+            border-left: 5px solid var(--primary);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .crypto-hash-pill {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.72rem;
+            background: var(--bg-page);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.65rem;
+            border-radius: 6px;
+            color: var(--primary);
+            word-break: break-all;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+        .snapshot-dropzone {
+            border: 2px dashed var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--bg-page);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .snapshot-dropzone:hover {
+            border-color: var(--primary);
+            background: var(--primary-bg);
         }
