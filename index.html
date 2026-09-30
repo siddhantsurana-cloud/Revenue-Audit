@@ -30,7 +30,7 @@
     <!-- Automatic Client Cache Synchronizer -->
     <script>
         (function() {
-            const CURRENT_BUILD = 'V2.6.0_ENTERPRISE_MULTIUNIT_COCKPIT';
+            const CURRENT_BUILD = 'V2.6.1_ENTERPRISE_MULTIUNIT_COCKPIT';
             const localBuild = localStorage.getItem('brc_active_build');
             if (localBuild !== CURRENT_BUILD) {
                 localStorage.setItem('brc_active_build', CURRENT_BUILD);
@@ -48,7 +48,7 @@
         })();
     </script>
 
-    <link rel="stylesheet" href="css/styles.css?v=2.6.0">
+    <link rel="stylesheet" href="css/styles.css?v=2.6.1">
 </head>
 <body>
     <!-- FULL PAGE PORTAL LOGIN (ENTERPRISE HEALTHCARE REVENUE INTELLIGENCE) -->
@@ -871,6 +871,10 @@
                     </p>
                 </div>
                 <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                    <button id="btn-soc-download-template" onclick="window.downloadStandardSOCTemplate()" class="export-btn" style="background-color: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem;" title="Download clean Excel template formatted for instant ingestion">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download Standard Template (.xlsx)
+                    </button>
                     <button id="btn-soc-view-logs" class="export-btn" style="background-color: var(--bg-hover); color: var(--text-main); border: 1px solid var(--border); font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; gap: 0.4rem;">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                         Import History
@@ -1067,6 +1071,10 @@
                         <button id="ingest-btn-commit-db" class="export-btn" style="font-weight: 800; padding: 0.55rem 0.75rem; font-size: 0.78rem; background-color: var(--primary, #0d9488); color: #fff; border-color: var(--primary); display: flex; align-items: center; justify-content: center; gap: 0.4rem; grid-column: span 2;">
                             <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
                             Commit &amp; Populate Tariff Module
+                        </button>
+                        <button id="ingest-btn-export-excel" onclick="window.exportExtractedSOCToExcel()" class="export-btn" style="font-weight: 800; padding: 0.5rem 0.6rem; font-size: 0.76rem; background-color: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.35); display: flex; align-items: center; justify-content: center; gap: 0.4rem; grid-column: span 2;" title="Export all extracted and validated records directly to Excel">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            📊 Export Extracted Data (.xlsx)
                         </button>
                         <button id="ingest-btn-download" class="export-btn" style="font-weight: 700; padding: 0.4rem 0.5rem; font-size: 0.75rem; background-color: var(--bg-hover); color: var(--text-main); border: 1px solid var(--border);">
                             📥 Download JSON
@@ -3821,12 +3829,12 @@
 </div>
 
 <!-- DATA SCRIPT IMPORT -->
-<script src="tariff_data.js?v=2.6.0"></script>
-<script src="revenue_assurance_db.js?v=2.6.0"></script>
-<script src="revenue_assurance_engine.js?v=2.6.0"></script>
-<script src="revenue_assurance_dashboard.js?v=2.6.0"></script>
+<script src="tariff_data.js?v=2.6.1"></script>
+<script src="revenue_assurance_db.js?v=2.6.1"></script>
+<script src="revenue_assurance_engine.js?v=2.6.1"></script>
+<script src="revenue_assurance_dashboard.js?v=2.6.1"></script>
 
-<script src="js/app.js?v=2.6.0"></script>
+<script src="js/app.js?v=2.6.1"></script>
 
 <!-- ENTERPRISE FACILITY DIRECTORY & IAM SCRIPT -->
 <script>
