@@ -228,6 +228,13 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
             logs = integrator.get_import_history()
             self.wfile.write(json.dumps({"status": "success", "logs": logs}).encode('utf-8'))
 
+        elif self.path.startswith('/api/deploy_tariff'):
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            content = load_json_data('central_tariff_deployments', 'central_tariff_deployments.json', '[]')
+            self.wfile.write(content.encode('utf-8'))
+
         else:
             # Fallback to serving static files normally
             super().do_GET()
@@ -401,6 +408,27 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
                     self.send_success_response(f"Template '{tpl_key}' saved successfully")
                 else:
                     self.send_error_response(500, "Failed to save template")
+
+            elif self.path == '/api/deploy_tariff':
+                payload = json.loads(post_data.decode('utf-8'))
+                existing_str = load_json_data('central_tariff_deployments', 'central_tariff_deployments.json', '[]')
+                try:
+                    deployments = json.loads(existing_str)
+                    if not isinstance(deployments, list):
+                        deployments = []
+                except Exception:
+                    deployments = []
+                deployments.append(payload)
+                save_json_data('central_tariff_deployments', 'central_tariff_deployments.json', json.dumps(deployments, indent=2))
+                self.send_response(200)
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                resp = {
+                    "status": "success",
+                    "message": "Master tariff schedule deployed successfully to target hospital unit nodes",
+                    "deployment_id": payload.get("deployment_id")
+                }
+                self.wfile.write(json.dumps(resp).encode('utf-8'))
 
             else:
                 self.send_error_response(404, "Endpoint not found")

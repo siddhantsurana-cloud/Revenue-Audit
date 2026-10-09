@@ -150,6 +150,11 @@
                         <p class="auth-card-sub">Select your designated hospital facility, regional healthcare node, or corporate governance scope.</p>
                     </div>
 
+                    <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: center;">
+                        <input type="text" id="facility-search-input" oninput="window.filterFacilityDirectory(this.value)" placeholder="🔍 Search 65+ hospital units by name, city, state, or unit code..." class="form-control" style="font-size: 0.82rem; padding: 0.5rem 0.75rem; flex: 1; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); color: var(--text-main);">
+                        <span class="auth-card-eyebrow" id="auth-facility-count-badge" style="white-space: nowrap; font-size: 0.75rem; background: var(--bg-hover); padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid var(--border);">65+ Units Active</span>
+                    </div>
+
                     <div class="auth-unit-grid" id="auth-facility-grid">
                         <!-- 1. Excelcare Hospital - Guwahati -->
                         <div class="auth-unit-card auth-facility-card" data-unit="excelcare" onclick="window.selectFacilityNode('excelcare')">
@@ -1088,6 +1093,90 @@
                 </div>
             </div>
         </div>
+
+        <!-- CENTRAL MULTI-UNIT TARIFF BUILD & DEPLOYMENT CONSOLE -->
+        <div class="controls-card" style="background-color: var(--bg-card); border-left: 5px solid #10b981; margin-top: 1.5rem; padding: 1.25rem 1.5rem;" id="central-deployment-console">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                        <span style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(16, 185, 129, 0.3);">Central Governance Console</span>
+                        <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">Corporate Master Admin Exclusive</span>
+                    </div>
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin: 0;">Multi-Unit Tariff Build &amp; Cluster Deployment Hub</h3>
+                    <p style="color: var(--text-muted); font-size: 0.82rem; margin: 0.2rem 0 0 0;">
+                        Build, package, and securely deploy validated master tariff schedules from Central Head Office to all <strong>65+ Apollo Hospital Units</strong>. Individual hospital nodes strictly consume deployed master schedules without access to modify or cross-inspect peer units' rate agreements.
+                    </p>
+                </div>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">Active Governance Scope:</span>
+                    <span style="background: rgba(139, 92, 246, 0.15); color: #a78bfa; font-weight: 800; font-size: 0.75rem; padding: 0.25rem 0.65rem; border-radius: 6px; border: 1px solid rgba(139, 92, 246, 0.3);">🌐 Corporate HO Master (65+ Units)</span>
+                </div>
+            </div>
+
+            <!-- Deployment Configuration Grid -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 1rem; align-items: end; margin-bottom: 1.25rem;">
+                <div class="input-group" style="padding: 0; margin: 0;">
+                    <label for="deploy-target-scope-select" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Target Hospital Unit(s) Deployment Scope</label>
+                    <select id="deploy-target-scope-select" class="form-control" style="font-size: 0.82rem; padding: 0.5rem 0.65rem; font-weight: 600;">
+                        <option value="all" selected>🌐 Broadcast to All 65+ Apollo Hospital Units (Corporate Master)</option>
+                        <optgroup label="── Regional Zone Clusters ──">
+                            <option value="cluster_east">East Zone Cluster (Guwahati, Kolkata, Bhubaneswar, Rourkela, Ranchi, Shillong, Siliguri)</option>
+                            <option value="cluster_south_tn">South Zone Cluster · TN &amp; Kerala (Chennai Greams, Vanagaram, OMR, Madurai, Trichy, Karur, Kochi)</option>
+                            <option value="cluster_south_ap_ts">South Zone Cluster · AP &amp; Telangana (Hyderabad Jubilee, Hyderguda, Secunderabad, Vizag, Nellore)</option>
+                            <option value="cluster_south_ka">South Zone Cluster · Karnataka (Bangalore Bannerghatta, Jayanagar, Sheshadripuram, Mysore)</option>
+                            <option value="cluster_north">North Zone Cluster (Indraprastha Delhi, Noida, Lucknow, Chandigarh, Amritsar, Kanpur)</option>
+                            <option value="cluster_west_central">West &amp; Central Cluster (Navi Mumbai, Ahmedabad, Bilaspur, Indore, Nashik, Pune, Goa)</option>
+                        </optgroup>
+                        <optgroup label="── Individual Hospital Unit Nodes (65+ Facilities) ──" id="deploy-units-optgroup">
+                            <!-- Populated dynamically with all 65+ units -->
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="input-group" style="padding: 0; margin: 0;">
+                    <label for="deploy-effective-date" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Effective From Date</label>
+                    <input type="date" id="deploy-effective-date" class="form-control" style="font-size: 0.82rem; padding: 0.5rem 0.65rem;">
+                </div>
+                <div class="input-group" style="padding: 0; margin: 0;">
+                    <label for="deploy-version-tag" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">SOC Release Version</label>
+                    <input type="text" id="deploy-version-tag" class="form-control" value="SOC-AHEL-2026-v2.6" placeholder="e.g. SOC-AHEL-2026-v2.6" style="font-size: 0.82rem; padding: 0.5rem 0.65rem;">
+                </div>
+                <div>
+                    <button id="btn-deploy-to-units" onclick="window.deployMasterSOCToUnits()" class="export-btn" style="background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; font-weight: 800; font-size: 0.85rem; padding: 0.65rem 1.4rem; border-radius: 8px; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; white-space: nowrap;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        🚀 Deploy to Hospital Units
+                    </button>
+                </div>
+            </div>
+
+            <!-- Live Deployment Status Banner -->
+            <div id="deployment-live-status-banner" style="display: none; padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: var(--text-main); font-size: 0.82rem;"></div>
+
+            <!-- Central Deployment History & Multi-Unit Distribution Ledger -->
+            <div style="margin-top: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h4 style="font-size: 0.88rem; font-weight: 800; color: var(--text-main); margin: 0; text-transform: uppercase; letter-spacing: 0.04em;">Central Multi-Unit Deployment &amp; Audit Log</h4>
+                    <span id="deployment-active-count-badge" style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">0 Deployments Active</span>
+                </div>
+                <div style="max-height: 220px; overflow-y: auto; border: 1px solid var(--border); border-radius: 8px;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.78rem;">
+                        <thead>
+                            <tr style="background: var(--bg-hover); border-bottom: 1px solid var(--border); color: var(--text-muted); position: sticky; top: 0;">
+                                <th style="padding: 0.5rem 0.75rem;">Deployment ID</th>
+                                <th style="padding: 0.5rem 0.75rem;">Tariff / SOC Schedule</th>
+                                <th style="padding: 0.5rem 0.75rem;">Target Facility Scope</th>
+                                <th style="padding: 0.5rem 0.75rem; text-align: right;">Line Items</th>
+                                <th style="padding: 0.5rem 0.75rem;">Deployed By</th>
+                                <th style="padding: 0.5rem 0.75rem;">Timestamp</th>
+                                <th style="padding: 0.5rem 0.75rem; text-align: center;">Cluster Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="central-deployment-tbody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- SOC IMPORT AUDIT LOGS MODAL -->
@@ -1231,7 +1320,7 @@
                         <button class="pill-btn" data-filter="soc2025">In 2025-26 SOC</button>
                         <button class="pill-btn" data-filter="socexcelcare2024">In Excelcare 2024</button>
                         <button class="pill-btn" data-filter="socexcelcare">In Excelcare 2025</button>
-                        <button class="pill-btn" data-filter="socexcelcarecash">In Excelcare 2026 - Cash</button>
+                        <button class="pill-btn" data-filter="socexcelcarecash">In Excelcare Cash 2026-27</button>
                         <button class="pill-btn" data-filter="hdfcergo">In HDFC ERGO 2024</button>
                     </div>
                     <button class="export-btn" id="export-csv" title="Export current search results to CSV">
@@ -1262,7 +1351,7 @@
                                 <th style="width: 80px; text-align: right;" data-sort="rate2025">2025 SOC <span class="sort-indicator" id="sort-rate2025"></span></th>
                                 <th style="width: 90px; text-align: right;" data-sort="rateExcelcare2024">Excelcare 2024 <span class="sort-indicator" id="sort-rateExcelcare2024"></span></th>
                                 <th style="width: 90px; text-align: right;" data-sort="rateExcelcare">Excelcare 2025 <span class="sort-indicator" id="sort-rateExcelcare"></span></th>
-                                <th style="width: 100px; text-align: right;" data-sort="rateExcelcareCash">Excelcare 2026 - Cash <span class="sort-indicator" id="sort-rateExcelcareCash"></span></th>
+                                <th style="width: 100px; text-align: right;" data-sort="rateExcelcareCash">Excelcare 2026-27 Cash <span class="sort-indicator" id="sort-rateExcelcareCash"></span></th>
                                 <th style="width: 100px; text-align: right;" data-sort="rate2026">2026 Master <span class="sort-indicator" id="sort-rate2026"></span></th>
                                 <th style="width: 100px; text-align: right;" data-sort="rateHdfc">HDFC ERGO <span class="sort-indicator" id="sort-rateHdfc"></span></th>
                                 <th style="width: 100px; text-align: right;" data-sort="contractRate">Contract Rate <span class="sort-indicator" id="sort-contractRate"></span></th>
@@ -1314,18 +1403,20 @@
                             <option value="soc2024" selected>Apollo Guwahati 2024-25 SOC</option>
                             <option value="soc2023">Apollo Guwahati 2023-24 SOC</option>
                             <option value="soc2021">Apollo Guwahati 2021-22 SOC</option>
-                            <option value="socexcelcare2024">Excelcare Hospital 2024</option>
+                            <option value="socexcelcarecash">Excelcare Cash FY 2026-27 (OP &amp; IP)</option>
                             <option value="socexcelcare">Excelcare Hospital 2025</option>
+                            <option value="socexcelcare2024">Excelcare Hospital 2024</option>
                             <option value="hdfcergo">HDFC ERGO 2024 Tariff</option>
                         </select>
                     </div>
                     <div class="input-group" style="padding: 0;">
                         <label for="delta-target-soc" style="font-size: 0.72rem; font-weight: 700;">Target Comparative Schedule</label>
                         <select id="delta-target-soc" class="form-control" style="font-size: 0.8rem;">
-                            <option value="soc2025" selected>Apollo Guwahati 2025-26 SOC</option>
-                            <option value="socexcelcarecash">Excelcare 2026 - Cash</option>
+                            <option value="socexcelcarecash" selected>Excelcare Cash FY 2026-27 (OP &amp; IP)</option>
+                            <option value="soc2025">Apollo Guwahati 2025-26 SOC</option>
                             <option value="soc2024">Apollo Guwahati 2024-25 SOC</option>
                             <option value="socexcelcare">Excelcare Hospital 2025</option>
+                            <option value="socexcelcare2024">Excelcare Hospital 2024</option>
                         </select>
                     </div>
                     <div class="input-group" style="padding: 0;">
@@ -3520,6 +3611,7 @@
                             <option value="TARIFF_2021">TARIFF_2021 (Guwahati SOC 2021-22)</option>
                             <option value="TARIFF_2021_IOCL">TARIFF_2021_IOCL (Guwahati IOCL SOC 2021-22)</option>
                             <option value="TARIFF_EXCELCARE_2025">TARIFF_EXCELCARE_2025 (Excelcare Credit 2025)</option>
+                            <option value="TARIFF_EXCELCARE_CASH_2026_27">TARIFF_EXCELCARE_CASH_2026_27 (Excelcare Cash FY 2026-27 - OP &amp; IP)</option>
                             <option value="TARIFF_EXCELCARE_CASH_2026">TARIFF_EXCELCARE_CASH_2026 (Excelcare Cash 2026)</option>
                             <option value="TARIFF_EXCELCARE_2024">TARIFF_EXCELCARE_2024 (Excelcare SOC 2024)</option>
                             <option value="TARIFF_EXCELCARE_GIPSA_2026">TARIFF_EXCELCARE_GIPSA_2026 (Excelcare GIPSA 2026)</option>
@@ -3840,10 +3932,84 @@
 <script>
     // Dynamic Hospital Facilities Model & Storage
     const DEFAULT_HOSPITAL_UNITS = [
-        { code: 'excelcare', name: 'Excelcare Hospital - Guwahati', shortName: 'Excelcare Unit', hub: 'East Hub · Assam', icon: '🏥', color: '#0d9488', currency: 'INR', address: 'Paschim Boragaon, NH-37, Guwahati 781033', email: 'billing.excelcare@apollohospitals.com', status: 'ACTIVE', isDefault: true },
-        { code: 'kolkata', name: 'Apollo Multispeciality Hospitals - Kolkata', shortName: 'Kolkata Unit', hub: 'East Hub · West Bengal', icon: '🏢', color: '#3b82f6', currency: 'INR', address: '58 Canal Circular Road, Kolkata 700054', email: 'billing.kolkata@apollohospitals.com', status: 'ACTIVE', isDefault: true },
-        { code: 'international', name: 'Apollo International Patient Cash Hub', shortName: 'International Unit', hub: 'East Hub · Assam / Guwahati', icon: '🌐', color: '#10b981', currency: 'INR', address: 'Apollo International Desk, Guwahati', email: 'international.billing@apollohospitals.com', status: 'ACTIVE', isDefault: true },
-        { code: 'all', name: 'Corporate Head Office (Global Master Console)', shortName: 'Master Admin', hub: 'Enterprise Governance · HO', icon: '🛡️', color: '#8b5cf6', currency: 'INR', address: 'Apollo Hospitals Enterprise Headquarters', email: 'revenue.assurance@apollohospitals.com', status: 'ACTIVE', isDefault: true }
+        // Central Corporate Master
+        { code: 'all', name: 'Corporate Head Office (Global Master Console)', shortName: 'Corporate Admin', hub: 'Central Governance · HO', zone: 'Corporate', icon: '🛡️', color: '#8b5cf6', currency: 'INR', address: 'Apollo Hospitals Enterprise Headquarters, Greams Road, Chennai 600006', email: 'revenue.assurance@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        
+        // East Hub (Assam, West Bengal, Odisha, Jharkhand, Meghalaya)
+        { code: 'excelcare', name: 'Excelcare Hospital - Guwahati', shortName: 'Excelcare Guwahati', hub: 'East Hub · Assam', zone: 'East Zone', icon: '🏥', color: '#0d9488', currency: 'INR', address: 'Paschim Boragaon, NH-37, Guwahati 781033', email: 'billing.excelcare@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'kolkata', name: 'Apollo Multispeciality Hospitals - Kolkata', shortName: 'Kolkata Multispeciality', hub: 'East Hub · West Bengal', zone: 'East Zone', icon: '🏢', color: '#3b82f6', currency: 'INR', address: '58 Canal Circular Road, Kolkata 700054', email: 'billing.kolkata@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'international', name: 'Apollo International Patient Cash Hub', shortName: 'Guwahati Intl Hub', hub: 'East Hub · Assam / Guwahati', zone: 'East Zone', icon: '🌐', color: '#10b981', currency: 'INR', address: 'Apollo International Desk, Guwahati 781005', email: 'international.billing@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'guwahati_clinic', name: 'Apollo Clinic & Diagnostic Centre - Christianbasti', shortName: 'Guwahati Christianbasti', hub: 'East Hub · Assam', zone: 'East Zone', icon: '🔬', color: '#06b6d4', currency: 'INR', address: 'GS Road, Christianbasti, Guwahati 781005', email: 'clinic.guwahati@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'kolkata_gleneagles', name: 'Apollo Gleneagles Medical Centre - Gariahat', shortName: 'Kolkata Gariahat', hub: 'East Hub · West Bengal', zone: 'East Zone', icon: '🏥', color: '#2563eb', currency: 'INR', address: '48/1F Leela Roy Sarani, Gariahat, Kolkata 700019', email: 'gariahat@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'bhubaneswar', name: 'Apollo Hospitals - Bhubaneswar', shortName: 'Apollo Bhubaneswar', hub: 'East Hub · Odisha', zone: 'East Zone', icon: '🏥', color: '#0284c7', currency: 'INR', address: 'Plot No. 251, Sainik School Road, Unit 15, Bhubaneswar 751005', email: 'billing.bbsr@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'rourkela', name: 'Apollo Clinic & Super Speciality - Rourkela', shortName: 'Apollo Rourkela', hub: 'East Hub · Odisha', zone: 'East Zone', icon: '🏥', color: '#0891b2', currency: 'INR', address: 'Civil Township, Rourkela 769004', email: 'rourkela@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'ranchi', name: 'Apollo Clinic - Morabadi Ranchi', shortName: 'Apollo Ranchi', hub: 'East Hub · Jharkhand', zone: 'East Zone', icon: '🏥', color: '#0d9488', currency: 'INR', address: 'Tagore Hill Road, Morabadi, Ranchi 834008', email: 'ranchi@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'shillong', name: 'Apollo Information & Medical Centre - Shillong', shortName: 'Apollo Shillong', hub: 'East Hub · Meghalaya', zone: 'East Zone', icon: '🏥', color: '#059669', currency: 'INR', address: 'Laitumkhrah Main Road, Shillong 793003', email: 'shillong@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'siliguri', name: 'Apollo Clinic - Sevoke Road Siliguri', shortName: 'Apollo Siliguri', hub: 'East Hub · West Bengal', zone: 'East Zone', icon: '🏥', color: '#16a34a', currency: 'INR', address: 'Sevoke Road, Siliguri 734001', email: 'siliguri@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+
+        // South Hub 1: Tamil Nadu & Kerala
+        { code: 'chennai_greams', name: 'Apollo Hospitals - Greams Road, Chennai (Main Flagship)', shortName: 'Chennai Greams Main', hub: 'South Hub · Tamil Nadu', zone: 'South Zone', icon: '🏥', color: '#dc2626', currency: 'INR', address: '21 Greams Lane, Off Greams Road, Thousand Lights, Chennai 600006', email: 'billing.greams@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'chennai_vanagaram', name: 'Apollo Speciality Hospitals - Vanagaram, Chennai', shortName: 'Chennai Vanagaram', hub: 'South Hub · Tamil Nadu', zone: 'South Zone', icon: '🏥', color: '#ea580c', currency: 'INR', address: 'No. 64, Vanagaram-Ambattur Main Road, Chennai 600095', email: 'vanagaram@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'chennai_omr', name: 'Apollo Speciality Hospitals - OMR, Chennai', shortName: 'Chennai OMR', hub: 'South Hub · Tamil Nadu', zone: 'South Zone', icon: '🏥', color: '#d97706', currency: 'INR', address: '05/639 Old Mahabalipuram Rd, Perungudi, Chennai 600096', email: 'omr@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'chennai_firstmed', name: 'Apollo First Med Hospitals - Kilpauk, Chennai', shortName: 'Chennai First Med', hub: 'South Hub · Tamil Nadu', zone: 'South Zone', icon: '🏥', color: '#b45309', currency: 'INR', address: '154 Poonamallee High Road, Kilpauk, Chennai 600010', email: 'firstmed@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'chennai_children', name: 'Apollo Children\'s Hospital - Thousand Lights, Chennai', shortName: 'Chennai Children\'s', hub: 'South Hub · Tamil Nadu', zone: 'South Zone', icon: '👶', color: '#f59e0b', currency: 'INR', address: 'No. 15 Shafee Mohammed Road, Thousand Lights, Chennai 600006', email: 'childrens@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'chennai_proton', name: 'Apollo Proton Cancer Centre - Taramani, Chennai', shortName: 'Apollo Proton Centre', hub: 'South Hub · Tamil Nadu', zone: 'South Zone', icon: '⚛️', color: '#7c3aed', currency: 'INR', address: '100 Feet Road, Taramani, Chennai 600113', email: 'proton@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'madurai_specialty', name: 'Apollo Speciality Hospitals - KK Nagar, Madurai', shortName: 'Madurai Speciality', hub: 'South Hub · Tamil Nadu', zone: 'South Zone', icon: '🏥', color: '#9333ea', currency: 'INR', address: 'Lake View Road, K.K. Nagar, Madurai 625020', email: 'madurai@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'madurai_city', name: 'Apollo Hospital - Lake View Road, Madurai', shortName: 'Madurai City', hub: 'South Hub · Tamil Nadu', zone: 'South Zone', icon: '🏥', color: '#a855f7', currency: 'INR', address: 'Lake View Road, Madurai 625020', email: 'madurai.city@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'trichy', name: 'Apollo Speciality Hospitals - Ariyamangalam, Trichy', shortName: 'Trichy Speciality', hub: 'South Hub · Tamil Nadu', zone: 'South Zone', icon: '🏥', color: '#c026d3', currency: 'INR', address: 'Old Thanjavur Road, Ariyamangalam, Trichy 620010', email: 'trichy@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'karur', name: 'Apollo Speciality Hospitals - Coimbatore Road, Karur', shortName: 'Karur Speciality', hub: 'South Hub · Tamil Nadu', zone: 'South Zone', icon: '🏥', color: '#db2777', currency: 'INR', address: 'Covai Road, Karur 639002', email: 'karur@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'kochi', name: 'Apollo Adlux Hospital - Angamaly, Kochi', shortName: 'Apollo Kochi Adlux', hub: 'South Hub · Kerala', zone: 'South Zone', icon: '🏥', color: '#0d9488', currency: 'INR', address: 'Cable Junction, NH 544, Karukutty, Angamaly, Kochi 683576', email: 'kochi@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'calicut', name: 'Apollo Cradle & Children\'s Hospital - Calicut', shortName: 'Apollo Calicut', hub: 'South Hub · Kerala', zone: 'South Zone', icon: '👶', color: '#059669', currency: 'INR', address: 'Mini Bypass Road, Govindapuram, Calicut 673016', email: 'calicut@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+
+        // South Hub 2: Telangana & Andhra Pradesh
+        { code: 'hyderabad_jubilee', name: 'Apollo Health City - Jubilee Hills, Hyderabad', shortName: 'Hyderabad Jubilee Hills', hub: 'South Hub · Telangana', zone: 'South Zone', icon: '🏥', color: '#2563eb', currency: 'INR', address: 'Road No. 72, Opp. Bharatiya Vidya Bhavan, Jubilee Hills, Hyderabad 500033', email: 'billing.hyd@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'hyderabad_hyderguda', name: 'Apollo Hospitals - Hyderguda, Hyderabad', shortName: 'Hyderabad Hyderguda', hub: 'South Hub · Telangana', zone: 'South Zone', icon: '🏥', color: '#3b82f6', currency: 'INR', address: 'Old MLA Quarters Road, Hyderguda, Hyderabad 500029', email: 'hyderguda@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'hyderabad_secunderabad', name: 'Apollo Hospitals - Secunderabad', shortName: 'Apollo Secunderabad', hub: 'South Hub · Telangana', zone: 'South Zone', icon: '🏥', color: '#1d4ed8', currency: 'INR', address: 'Pollicetty Towers, St. John\'s Road, Secunderabad 500003', email: 'secunderabad@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'hyderabad_drdo', name: 'Apollo DRDO Hospital - Kanchanbagh, Hyderabad', shortName: 'Apollo DRDO Hyd', hub: 'South Hub · Telangana', zone: 'South Zone', icon: '🛡️', color: '#4338ca', currency: 'INR', address: 'DRDO Township, Kanchanbagh, Hyderabad 500058', email: 'drdo@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'hyderabad_cradle', name: 'Apollo Cradle - Kondapur, Hyderabad', shortName: 'Hyderabad Kondapur', hub: 'South Hub · Telangana', zone: 'South Zone', icon: '👶', color: '#6366f1', currency: 'INR', address: 'Raghavendra Colony, Kondapur, Hyderabad 500084', email: 'cradle.hyd@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'vizag_healthcity', name: 'Apollo Hospitals - Health City, Arilova, Visakhapatnam', shortName: 'Vizag Health City', hub: 'South Hub · Andhra Pradesh', zone: 'South Zone', icon: '🏥', color: '#0284c7', currency: 'INR', address: 'Plot No. 1, Health City, Chinagadila, Arilova, Visakhapatnam 530040', email: 'vizag@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'vizag_ramnagar', name: 'Apollo Hospitals - Ramnagar, Visakhapatnam', shortName: 'Vizag Ramnagar', hub: 'South Hub · Andhra Pradesh', zone: 'South Zone', icon: '🏥', color: '#0369a1', currency: 'INR', address: 'Waltair Main Road, Ramnagar, Visakhapatnam 530002', email: 'ramnagar@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'kakinada', name: 'Apollo Hospitals - Kakinada', shortName: 'Apollo Kakinada', hub: 'South Hub · Andhra Pradesh', zone: 'South Zone', icon: '🏥', color: '#0891b2', currency: 'INR', address: '13-1-3 Main Road, Suryaraopeta, Kakinada 533001', email: 'kakinada@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'nellore', name: 'Apollo Speciality Hospitals - Pinakini Nagar, Nellore', shortName: 'Apollo Nellore', hub: 'South Hub · Andhra Pradesh', zone: 'South Zone', icon: '🏥', color: '#0e7490', currency: 'INR', address: 'Muthukur Road, Pinakini Nagar, Nellore 524004', email: 'nellore@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'chittoor', name: 'Apollo Hospital - Aragonda, Chittoor', shortName: 'Apollo Aragonda', hub: 'South Hub · Andhra Pradesh', zone: 'South Zone', icon: '🏥', color: '#047857', currency: 'INR', address: 'Aragonda Village, Thavanampalle Mandal, Chittoor 517129', email: 'aragonda@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'vijayawada', name: 'Apollo Health City - Vijayawada', shortName: 'Apollo Vijayawada', hub: 'South Hub · Andhra Pradesh', zone: 'South Zone', icon: '🏥', color: '#059669', currency: 'INR', address: 'Ring Road, Near Benz Circle, Vijayawada 520008', email: 'vijayawada@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+
+        // South Hub 3: Karnataka
+        { code: 'bangalore_bannerghatta', name: 'Apollo Hospitals - Bannerghatta Road, Bangalore', shortName: 'Bangalore Bannerghatta', hub: 'South Hub · Karnataka', zone: 'South Zone', icon: '🏥', color: '#7c3aed', currency: 'INR', address: '154/11 Opp. IIMB, Bannerghatta Road, Bangalore 560076', email: 'billing.bg@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'bangalore_jayanagar', name: 'Apollo Speciality Hospitals - Jayanagar, Bangalore', shortName: 'Bangalore Jayanagar', hub: 'South Hub · Karnataka', zone: 'South Zone', icon: '🏥', color: '#6d28d9', currency: 'INR', address: '21/2 Old No. 2, 14th Cross, 3rd Block, Jayanagar, Bangalore 560011', email: 'jayanagar@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'bangalore_sheshadripuram', name: 'Apollo Hospitals - Sheshadripuram, Bangalore', shortName: 'Bangalore Sheshadripuram', hub: 'South Hub · Karnataka', zone: 'South Zone', icon: '🏥', color: '#5b21b6', currency: 'INR', address: 'No. 1 Old No. 28, Plat Form Road, Sheshadripuram, Bangalore 560020', email: 'sheshadripuram@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'bangalore_cradle', name: 'Apollo Cradle - Koramangala, Bangalore', shortName: 'Bangalore Koramangala', hub: 'South Hub · Karnataka', zone: 'South Zone', icon: '👶', color: '#4c1d95', currency: 'INR', address: '58 5th Cross, 18th Main, 6th Block, Koramangala, Bangalore 560095', email: 'cradle.blr@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'mysore', name: 'Apollo BGS Hospitals - Kuvempunagar, Mysore', shortName: 'Apollo Mysore BGS', hub: 'South Hub · Karnataka', zone: 'South Zone', icon: '🏥', color: '#831843', currency: 'INR', address: 'Adichunchanagiri Road, Kuvempunagar, Mysore 570023', email: 'mysore@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'hubli', name: 'Apollo Clinic - Deshpande Nagar, Hubli', shortName: 'Apollo Hubli', hub: 'South Hub · Karnataka', zone: 'South Zone', icon: '🏥', color: '#9d174d', currency: 'INR', address: 'Club Road, Deshpande Nagar, Hubli 580029', email: 'hubli@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'mangalore', name: 'Apollo Clinic - Balmatta, Mangalore', shortName: 'Apollo Mangalore', hub: 'South Hub · Karnataka', zone: 'South Zone', icon: '🏥', color: '#be185d', currency: 'INR', address: 'Balmatta New Road, Mangalore 575001', email: 'mangalore@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+
+        // North Hub: Delhi NCR, UP, Punjab, Haryana, Rajasthan
+        { code: 'delhi_indraprastha', name: 'Indraprastha Apollo Hospitals - Sarita Vihar, New Delhi', shortName: 'Delhi Indraprastha Main', hub: 'North Hub · Delhi NCR', zone: 'North Zone', icon: '🏥', color: '#dc2626', currency: 'INR', address: 'Delhi-Mathura Road, Sarita Vihar, New Delhi 110076', email: 'billing.delhi@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'noida', name: 'Apollo Hospitals - Sector 26, Noida', shortName: 'Apollo Noida', hub: 'North Hub · Delhi NCR', zone: 'North Zone', icon: '🏥', color: '#b91c1c', currency: 'INR', address: 'E-2, Sector 26, Noida, Uttar Pradesh 201301', email: 'noida@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'delhi_cradle', name: 'Apollo Cradle - Nehru Enclave, New Delhi', shortName: 'Delhi Nehru Enclave', hub: 'North Hub · Delhi NCR', zone: 'North Zone', icon: '👶', color: '#991b1b', currency: 'INR', address: 'B-9, Nehru Enclave, Kalkaji, New Delhi 110019', email: 'cradle.delhi@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'lucknow_medics', name: 'Apollo Medics Super Speciality Hospital - Lucknow', shortName: 'Apollo Lucknow Medics', hub: 'North Hub · Uttar Pradesh', zone: 'North Zone', icon: '🏥', color: '#ea580c', currency: 'INR', address: 'Sector B, LDA Colony, Kanpur - Lucknow Road, Lucknow 226012', email: 'lucknow@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'kanpur', name: 'Apollo Clinic & Information Centre - Civil Lines, Kanpur', shortName: 'Apollo Kanpur', hub: 'North Hub · Uttar Pradesh', zone: 'North Zone', icon: '🏥', color: '#c2410c', currency: 'INR', address: 'Mall Road, Civil Lines, Kanpur 208001', email: 'kanpur@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'amritsar', name: 'Apollo Clinic & Telemedicine - Ranjit Avenue, Amritsar', shortName: 'Apollo Amritsar', hub: 'North Hub · Punjab', zone: 'North Zone', icon: '🏥', color: '#9a3412', currency: 'INR', address: 'B-Block, Ranjit Avenue, Amritsar 143001', email: 'amritsar@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'chandigarh', name: 'Apollo Clinic - Sector 8C, Chandigarh', shortName: 'Apollo Chandigarh', hub: 'North Hub · Punjab & Haryana', zone: 'North Zone', icon: '🏥', color: '#d97706', currency: 'INR', address: 'SCO 180-182, Madhya Marg, Sector 8C, Chandigarh 160018', email: 'chandigarh@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'jaipur', name: 'Apollo Clinic - Tonk Road, Jaipur', shortName: 'Apollo Jaipur', hub: 'North Hub · Rajasthan', zone: 'North Zone', icon: '🏥', color: '#b45309', currency: 'INR', address: 'Tonk Road, Near SMS Stadium, Jaipur 302015', email: 'jaipur@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'ludhiana', name: 'Apollo Clinic - The Mall Road, Ludhiana', shortName: 'Apollo Ludhiana', hub: 'North Hub · Punjab', zone: 'North Zone', icon: '🏥', color: '#f59e0b', currency: 'INR', address: 'The Mall Road, Civil Lines, Ludhiana 141001', email: 'ludhiana@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'varanasi', name: 'Apollo Information Centre - Sigra, Varanasi', shortName: 'Apollo Varanasi', hub: 'North Hub · Uttar Pradesh', zone: 'North Zone', icon: '🏥', color: '#eab308', currency: 'INR', address: 'Sigra Main Road, Varanasi 221010', email: 'varanasi@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+
+        // West & Central Hub: Maharashtra, Gujarat, MP, Chhattisgarh, Goa
+        { code: 'navi_mumbai', name: 'Apollo Hospitals - Belapur, Navi Mumbai', shortName: 'Apollo Navi Mumbai', hub: 'West Hub · Maharashtra', zone: 'West Zone', icon: '🏥', color: '#0d9488', currency: 'INR', address: 'Plot No. 13, Off Uran Road, Parsik Hill Rd, Sector 23, CBD Belapur, Navi Mumbai 400614', email: 'billing.mum@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'mumbai_tardeo', name: 'Apollo Spectra Hospitals - Tardeo, Mumbai', shortName: 'Mumbai Tardeo', hub: 'West Hub · Maharashtra', zone: 'West Zone', icon: '🏥', color: '#0f766e', currency: 'INR', address: '156 Famous Cine Building, Pandit MM Malviya Road, Tardeo, Mumbai 400034', email: 'tardeo@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'mumbai_chembur', name: 'Apollo Spectra Hospitals - Chembur, Mumbai', shortName: 'Mumbai Chembur', hub: 'West Hub · Maharashtra', zone: 'West Zone', icon: '🏥', color: '#115e59', currency: 'INR', address: 'Sion-Trombay Road, Chembur, Mumbai 400071', email: 'chembur@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'pune', name: 'Apollo Clinic - Viman Nagar, Pune', shortName: 'Apollo Pune', hub: 'West Hub · Maharashtra', zone: 'West Zone', icon: '🏥', color: '#059669', currency: 'INR', address: 'Phoenix Marketcity Road, Viman Nagar, Pune 411014', email: 'pune@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'nashik', name: 'Apollo Hospitals - Panchavati, Nashik', shortName: 'Apollo Nashik', hub: 'West Hub · Maharashtra', zone: 'West Zone', icon: '🏥', color: '#047857', currency: 'INR', address: 'Swaminarayan Nagar, Panchavati, Nashik 422003', email: 'nashik@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'ahmedabad_bhat', name: 'Apollo Hospitals International - Gandhinagar / Ahmedabad', shortName: 'Apollo Ahmedabad Bhat', hub: 'West Hub · Gujarat', zone: 'West Zone', icon: '🏥', color: '#16a34a', currency: 'INR', address: 'Plot No. 1A, Bhat GIDC Estate, Gandhinagar, Gujarat 382428', email: 'ahmedabad@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'ahmedabad_city', name: 'Apollo City Centre Hospitals - Ambawadi, Ahmedabad', shortName: 'Apollo Ahmedabad City', hub: 'West Hub · Gujarat', zone: 'West Zone', icon: '🏥', color: '#15803d', currency: 'INR', address: 'Tulsi Complex, Ellisbridge, Ambawadi, Ahmedabad 380006', email: 'citycentre.ahm@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'surat', name: 'Apollo Clinic - Athwa Gate, Surat', shortName: 'Apollo Surat', hub: 'West Hub · Gujarat', zone: 'West Zone', icon: '🏥', color: '#166534', currency: 'INR', address: 'Athwa Gate, Ring Road, Surat 395001', email: 'surat@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'vadodara', name: 'Apollo Clinic - Alkapuri, Vadodara', shortName: 'Apollo Vadodara', hub: 'West Hub · Gujarat', zone: 'West Zone', icon: '🏥', color: '#14532d', currency: 'INR', address: 'RC Dutt Road, Alkapuri, Vadodara 390007', email: 'vadodara@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'bilaspur', name: 'Apollo Hospitals - Rajkishore Nagar, Bilaspur', shortName: 'Apollo Bilaspur', hub: 'Central Hub · Chhattisgarh', zone: 'Central Zone', icon: '🏥', color: '#0284c7', currency: 'INR', address: 'Seepat Road, Rajkishore Nagar, Bilaspur, Chhattisgarh 495006', email: 'billing.bsp@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'raipur', name: 'Apollo Clinic - Devendra Nagar, Raipur', shortName: 'Apollo Raipur', hub: 'Central Hub · Chhattisgarh', zone: 'Central Zone', icon: '🏥', color: '#0369a1', currency: 'INR', address: 'Sector 4, Devendra Nagar, Raipur 492001', email: 'raipur@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'indore', name: 'Apollo Hospitals - Vijay Nagar, Indore', shortName: 'Apollo Indore', hub: 'Central Hub · Madhya Pradesh', zone: 'Central Zone', icon: '🏥', color: '#2563eb', currency: 'INR', address: 'Sector D, Scheme No 74C, Vijay Nagar, Indore 452010', email: 'indore@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'bhopal', name: 'Apollo Clinic - Arera Colony, Bhopal', shortName: 'Apollo Bhopal', hub: 'Central Hub · Madhya Pradesh', zone: 'Central Zone', icon: '🏥', color: '#1d4ed8', currency: 'INR', address: 'E-3/12, Arera Colony, Bhopal 462016', email: 'bhopal@apollohospitals.com', status: 'ACTIVE', isDefault: true },
+        { code: 'goa', name: 'Apollo Victor Hospital - Malbhat, Margao, Goa', shortName: 'Apollo Victor Goa', hub: 'West Hub · Goa', zone: 'West Zone', icon: '🏥', color: '#4338ca', currency: 'INR', address: 'Malbhat, Margao, Goa 403601', email: 'goa@apollohospitals.com', status: 'ACTIVE', isDefault: true }
     ];
 
     window.getHospitalUnits = function() {
@@ -3855,17 +4021,12 @@
         try {
             const parsed = JSON.parse(raw);
             if (Array.isArray(parsed) && parsed.length > 0) {
-                // Ensure international unit has INR as currency and Guwahati hub
-                let changed = false;
-                parsed.forEach(u => {
-                    if (u.code === 'international') {
-                        if (u.currency !== 'INR') { u.currency = 'INR'; changed = true; }
-                        if (u.hub !== 'East Hub · Assam / Guwahati') { u.hub = 'East Hub · Assam / Guwahati'; changed = true; }
-                        if (u.address !== 'Apollo International Desk, Guwahati') { u.address = 'Apollo International Desk, Guwahati'; changed = true; }
-                    }
-                });
-                if (changed) {
-                    localStorage.setItem('brc_v2_hospital_units', JSON.stringify(parsed));
+                // Auto-upgrade if previous stored list was old 4-item list
+                if (parsed.length < 20) {
+                    const existingCustom = parsed.filter(u => !DEFAULT_HOSPITAL_UNITS.some(d => d.code === u.code));
+                    const merged = [...DEFAULT_HOSPITAL_UNITS, ...existingCustom];
+                    localStorage.setItem('brc_v2_hospital_units', JSON.stringify(merged));
+                    return merged;
                 }
                 return parsed;
             }
@@ -3873,6 +4034,30 @@
             console.error("Error reading hospital units:", e);
         }
         return DEFAULT_HOSPITAL_UNITS;
+    };
+
+    window.filterFacilityDirectory = function(query) {
+        const q = (query || '').toLowerCase().trim();
+        const cards = document.querySelectorAll('#auth-facility-grid .auth-facility-card');
+        let visibleCount = 0;
+        cards.forEach(card => {
+            if (card.classList.contains('auth-add-facility-card')) {
+                card.style.display = '';
+                return;
+            }
+            const text = card.textContent.toLowerCase();
+            const code = (card.getAttribute('data-unit') || '').toLowerCase();
+            if (!q || text.includes(q) || code.includes(q)) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        const badge = document.getElementById('auth-facility-count-badge');
+        if (badge) {
+            badge.textContent = q ? `${visibleCount} Units Matched` : `${cards.length} Enterprise Facilities Active`;
+        }
     };
 
     window.saveHospitalUnits = function(units) {

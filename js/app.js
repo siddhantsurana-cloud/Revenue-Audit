@@ -183,7 +183,6 @@
         ],
         'Auditor': [
             'tab-dashboard-btn',
-            'tab-ingester-btn',
             'tab-audit-btn',
             'tab-exceptions-btn',
             'tab-reports-btn',
@@ -195,7 +194,6 @@
         ],
         'Approver': [
             'tab-dashboard-btn',
-            'tab-ingester-btn',
             'tab-audit-btn',
             'tab-exceptions-btn',
             'tab-reports-btn',
@@ -225,7 +223,7 @@
     const SYSTEM_TABS = [
         { id: 'tab-dashboard-btn', name: 'Dashboard' },
         { id: 'tab-checking-btn', name: 'Checking Console' },
-        { id: 'tab-ingester-btn', name: 'Tariff Ingester' },
+        { id: 'tab-ingester-btn', name: 'Tariff Ingester (HO Master Admin)' },
         { id: 'tab-audit-btn', name: 'Audit Workspace' },
         { id: 'tab-exceptions-btn', name: 'Exception Command Centre' },
         { id: 'tab-reports-btn', name: 'Reports & Exports' },
@@ -241,7 +239,11 @@
     const mergedPerms = {};
     for (const [role, defaultTabs] of Object.entries(DEFAULT_ROLE_PERMISSIONS)) {
         const storedTabs = storedPerms[role] || [];
-        mergedPerms[role] = Array.from(new Set([...storedTabs, ...defaultTabs]));
+        if (role !== 'Administrator') {
+            mergedPerms[role] = defaultTabs.filter(t => t !== 'tab-ingester-btn' && t !== 'tab-admin-btn');
+        } else {
+            mergedPerms[role] = Array.from(new Set([...storedTabs, ...defaultTabs]));
+        }
     }
     window.rolePermissions = mergedPerms;
     localStorage.setItem('brc_v2_role_permissions', JSON.stringify(mergedPerms));
@@ -797,10 +799,24 @@
                 // Access permission guards from dynamic permissions map
                 const activePerms = window.rolePermissions[window.currentUserRole] || [];
                 const tabId = tab.btn.id;
-                const isAuthorized = activePerms.includes(tabId) && (tabId !== 'tab-master-btn' || window.currentUserUnit === 'all');
+                const isCentralAdmin = (window.currentUserRole === 'Administrator') && (window.currentUserUnit === 'all' || !window.currentUserUnit || window.currentUserUnit === 'corporate');
+                let isAuthorized = activePerms.includes(tabId);
+                if (tabId === 'tab-master-btn' && window.currentUserUnit !== 'all') {
+                    isAuthorized = false;
+                }
+                if (tabId === 'tab-ingester-btn' && !isCentralAdmin) {
+                    isAuthorized = false;
+                }
+                if (tabId === 'tab-admin-btn' && (!isCentralAdmin || window.currentUserUnit !== 'all')) {
+                    isAuthorized = false;
+                }
 
                 if (!isAuthorized) {
-                    showToast('Access Denied: You do not have permission to view this section.', 'danger');
+                    if (tabId === 'tab-ingester-btn') {
+                        showToast('Access Restricted: Master Tariff Ingestor is centrally governed from Corporate Head Office (Central Revenue Assurance Team). Hospital unit nodes cannot ingest or modify master rate schedules.', 'danger');
+                    } else {
+                        showToast('Access Denied: You do not have permission to view this section.', 'danger');
+                    }
                     return;
                 }
 
@@ -957,7 +973,9 @@
         if (typeof TARIFF_EXCELCARE_2025 !== 'undefined') {
             safeForEach(TARIFF_EXCELCARE_2025, item => { mapExcelcare[item.id] = item; });
         }
-        if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') {
+        if (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined') {
+            safeForEach(TARIFF_EXCELCARE_CASH_2026_27, item => { mapExcelcareCash[item.id] = item; });
+        } else if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') {
             safeForEach(TARIFF_EXCELCARE_CASH_2025, item => { mapExcelcareCash[item.id] = item; });
         }
         if (typeof TARIFF_CASH_2025 !== 'undefined') {
@@ -1011,7 +1029,8 @@
         if (typeof TARIFF_2024 !== 'undefined') TARIFF_2024.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_2025 !== 'undefined') TARIFF_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2025 !== 'undefined') TARIFF_EXCELCARE_2025.forEach(item => allIds.add(item.id));
-        if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') TARIFF_EXCELCARE_CASH_2025.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined') TARIFF_EXCELCARE_CASH_2026_27.forEach(item => allIds.add(item.id));
+        else if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') TARIFF_EXCELCARE_CASH_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_CASH_2025 !== 'undefined') TARIFF_CASH_2025.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_CASH_2026 !== 'undefined') TARIFF_CASH_2026.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') TARIFF_EXCELCARE_2024.forEach(item => allIds.add(item.id));
@@ -3945,6 +3964,37 @@
     }
 
     function lookupExcelcareRoomRent(cleanedRoom, activeSourceVal) {
+        const ratesCash2026_27 = {
+            "SUITE": 15000,
+            "SUITE ROOM": 15000,
+            "EXECUTIVE": 8700,
+            "EXECUTIVE ROOM": 8700,
+            "EXECUTIVE ROOMS": 8700,
+            "SINGLE PRIVATE": 7400,
+            "SINGLE ROOM": 7400,
+            "SINGLE ROOMS": 7400,
+            "SEMI PRIVATE": 3800,
+            "2 BEDDED ROOM": 3800,
+            "2 SHARING": 3800,
+            "STANDARD WARD": 1900,
+            "4 BEDDED ROOM": 1900,
+            "4 SHARING": 1900,
+            "GENERAL WARD": 1900,
+            "ICU": 7600,
+            "KTU- INTENSIVE CARE UNIT": 7600,
+            "KTU INTENSIVE CARE UNIT": 7600,
+            "CTVS ICU": 7200,
+            "CCU": 7200,
+            "ICCU": 7200,
+            "CARDIAC SDU": 4600,
+            "CTVS SDU": 4600,
+            "SDU": 4600,
+            "HDU": 4600,
+            "NICU": 3900,
+            "NEONATAL ICU": 3900,
+            "PICU": 3900,
+            "DAYCARE": 400
+        };
         const ratesGipsa2026 = {
             "SUITE": 14250,
             "SUITE ROOM": 14250,
@@ -3998,14 +4048,37 @@
         };
         const is2024 = (activeSourceVal === "excelcare_2024" || activeSourceVal === "socexcelcare2024" || activeSourceVal === "excelcare_soc_2024");
         const isGipsa26 = (activeSourceVal === "excelcare_gipsa_2026");
-        const rates = isGipsa26 ? ratesGipsa2026 : (is2024 ? rates2024 : rates2025);
+        const isCash = (activeSourceVal === "excelcare_cash" || activeSourceVal === "excelcare_cash_2026_27" || activeSourceVal === "excelcare_cash_2026" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_soc_cash" || activeSourceVal === "socexcelcarecash");
+        const rates = isCash ? ratesCash2026_27 : (isGipsa26 ? ratesGipsa2026 : (is2024 ? rates2024 : rates2025));
         const simpleRoom = toSimpleRoom(cleanedRoom);
         if (rates[cleanedRoom] !== undefined) return rates[cleanedRoom];
         if (rates[simpleRoom] !== undefined) return rates[simpleRoom];
-        return isGipsa26 ? 7125 : (is2024 ? 1500 : 1600);
+        return isCash ? 7400 : (isGipsa26 ? 7125 : (is2024 ? 1500 : 1600));
     }
 
     function lookupExcelcareNursing(cleanedRoom, activeSourceVal) {
+        const ratesCash2026_27 = {
+            "SUITE": 2200,
+            "SUITE ROOM": 2200,
+            "EXECUTIVE": 2000,
+            "EXECUTIVE ROOM": 2000,
+            "SINGLE PRIVATE": 1700,
+            "SINGLE ROOM": 1700,
+            "SEMI PRIVATE": 1400,
+            "2 BEDDED ROOM": 1400,
+            "2 SHARING": 1400,
+            "STANDARD WARD": 1000,
+            "4 BEDDED ROOM": 1000,
+            "4 SHARING": 1000,
+            "GENERAL WARD": 1000,
+            "ICU": 2000,
+            "ICCU": 2000,
+            "HDU": 2000,
+            "SDU": 2000,
+            "NICU": 2000,
+            "PICU": 2000,
+            "DAYCARE": 400
+        };
         const ratesGipsa2026 = {
             "SUITE": 1400,
             "SUITE ROOM": 1400,
@@ -4040,9 +4113,35 @@
             "DAYCARE": 500
         };
         const isGipsa26 = (activeSourceVal === "excelcare_gipsa_2026");
-        const rates = isGipsa26 ? ratesGipsa2026 : ratesStandard;
+        const isCash = (activeSourceVal === "excelcare_cash" || activeSourceVal === "excelcare_cash_2026_27" || activeSourceVal === "excelcare_cash_2026" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_soc_cash" || activeSourceVal === "socexcelcarecash");
+        const rates = isCash ? ratesCash2026_27 : (isGipsa26 ? ratesGipsa2026 : ratesStandard);
         const simpleRoom = toSimpleRoom(cleanedRoom);
-        return rates[cleanedRoom] !== undefined ? rates[cleanedRoom] : (rates[simpleRoom] !== undefined ? rates[simpleRoom] : (isGipsa26 ? 1200 : 500));
+        return rates[cleanedRoom] !== undefined ? rates[cleanedRoom] : (rates[simpleRoom] !== undefined ? rates[simpleRoom] : (isCash ? 1700 : (isGipsa26 ? 1200 : 500)));
+    }
+
+    function resolveExcelcareCashRate(item, isOP, roomCategory, cleanedRoom) {
+        if (!item) return null;
+        if (isOP) {
+            if (typeof item.opd_rate === 'number' && item.opd_rate > 0) return item.opd_rate;
+            if (typeof item.rate === 'number' && item.rate > 0) return item.rate;
+            if (typeof item.single === 'number' && item.single > 0) return item.single;
+            if (typeof item.sharing_4 === 'number' && item.sharing_4 > 0) return item.sharing_4;
+            return typeof item.rate === 'number' ? item.rate : null;
+        }
+        const normRoom = (roomCategory || cleanedRoom || '').toUpperCase().trim();
+        if (normRoom.includes('SUITE') && typeof item.suite === 'number' && item.suite > 0) return item.suite;
+        if (normRoom.includes('EXECUTIVE') && typeof item.executive === 'number' && item.executive > 0) return item.executive;
+        if ((normRoom.includes('ICU') || normRoom.includes('ICCU') || normRoom.includes('CCU') || normRoom.includes('KTU') || normRoom.includes('SDU') || normRoom.includes('NICU') || normRoom.includes('PICU') || normRoom.includes('HDU')) && typeof item.icu === 'number' && item.icu > 0) return item.icu;
+        if ((normRoom.includes('SINGLE') || normRoom.includes('PRIVATE') || normRoom.includes('DAYCARE') || normRoom.includes('DAY CARE')) && typeof item.single === 'number' && item.single > 0) return item.single;
+        if ((normRoom.includes('2') || normRoom.includes('SEMI') || normRoom.includes('TWIN') || normRoom.includes('DOUBLE')) && typeof item.sharing_2 === 'number' && item.sharing_2 > 0) return item.sharing_2;
+        if ((normRoom.includes('4') || normRoom.includes('GENERAL') || normRoom.includes('WARD') || normRoom.includes('STANDARD')) && typeof item.sharing_4 === 'number' && item.sharing_4 > 0) return item.sharing_4;
+        
+        // Default to base standard rate or first non-zero room category rate
+        if (typeof item.rate === 'number' && item.rate > 0) return item.rate;
+        if (typeof item.single === 'number' && item.single > 0) return item.single;
+        if (typeof item.sharing_4 === 'number' && item.sharing_4 > 0) return item.sharing_4;
+        if (typeof item.opd_rate === 'number' && item.opd_rate > 0) return item.opd_rate;
+        return typeof item.rate === 'number' ? item.rate : null;
     }
 
     const ROOM_RENT_2025 = {
@@ -5231,8 +5330,9 @@
 
         function getCashSOCForYear(unit, year) {
             if (unit === 'excelcare') {
-                if ((year === '2025' || year === '2026') && typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') {
-                    return { array: TARIFF_EXCELCARE_CASH_2025, map: mapExcelcareCash, name: "Excelcare 2026 - Cash" };
+                if ((year === '2025' || year === '2026' || year === '2027') && (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' || typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined')) {
+                    const arr = typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2026_27 : TARIFF_EXCELCARE_CASH_2025;
+                    return { array: arr, map: mapExcelcareCash, name: "Excelcare Cash (FY 2026-27)" };
                 }
                 if (year === '2024' && typeof TARIFF_EXCELCARE_CASH_2024 !== 'undefined') {
                     return { array: TARIFF_EXCELCARE_CASH_2024, map: mapExcelcareCash2024, name: "Excelcare 2024 - Cash" };
@@ -5509,9 +5609,9 @@
                         } else if (activeSourceVal === "excelcare_2025") {
                             activeSOC = TARIFF_EXCELCARE_2025;
                             explanation = `Billed against SOC: ${activeSourceVal}.`;
-                        } else if (activeSourceVal === "excelcare_cash_2025") {
-                            activeSOC = TARIFF_EXCELCARE_CASH_2025;
-                            explanation = `Billed against SOC: ${activeSourceVal}.`;
+                        } else if (activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_cash_2026" || activeSourceVal === "excelcare_cash_2026_27" || activeSourceVal === "excelcare_cash" || activeSourceVal === "socexcelcarecash") {
+                            activeSOC = typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2026_27 : TARIFF_EXCELCARE_CASH_2025;
+                            explanation = `Billed against SOC: Excelcare Cash FY 2026-27 (OP & IP).`;
                         } else if (activeSourceVal === "excelcare_2024") {
                             activeSOC = TARIFF_EXCELCARE_2024;
                             explanation = `Billed against SOC: ${activeSourceVal}.`;
@@ -5534,8 +5634,8 @@
                             activeSOC = TARIFF_EXCELCARE_2025;
                             explanation = "Billed against Excelcare SOC.";
                         } else if (activeSourceVal === "excelcare_soc_cash") {
-                            activeSOC = TARIFF_EXCELCARE_CASH_2025;
-                            explanation = "Billed against Excelcare 2026 - Cash SOC.";
+                            activeSOC = typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2026_27 : TARIFF_EXCELCARE_CASH_2025;
+                            explanation = "Billed against Excelcare Cash FY 2026-27 (OP & IP).";
                         } else if (activeSourceVal === "excelcare_soc_2024") {
                             activeSOC = TARIFF_EXCELCARE_2024;
                             explanation = "Billed against Excelcare SOC 2024.";
@@ -5559,9 +5659,9 @@
                         } else if (mappedSource === "excelcare_soc") {
                             activeSOC = TARIFF_EXCELCARE_2025;
                             explanation = `Room-wise: ${cleanedRoom} -> Excelcare SOC.`;
-                        } else if (mappedSource === "excelcare_soc_cash") {
-                            activeSOC = TARIFF_EXCELCARE_CASH_2025;
-                            explanation = `Room-wise: ${cleanedRoom} -> Excelcare 2026 - Cash SOC.`;
+                        } else if (mappedSource === "excelcare_soc_cash" || mappedSource === "socexcelcarecash") {
+                            activeSOC = typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2026_27 : TARIFF_EXCELCARE_CASH_2025;
+                            explanation = `Room-wise: ${cleanedRoom} -> Excelcare Cash FY 2026-27.`;
                         } else if (mappedSource === "excelcare_soc_2024") {
                             activeSOC = TARIFF_EXCELCARE_2024;
                             explanation = `Room-wise: ${cleanedRoom} -> Excelcare SOC 2024.`;
@@ -5572,7 +5672,9 @@
                             if (activeBU === "kolkata") {
                                 activeSOC = TARIFF_KOLKATA_SOC;
                             } else {
-                                activeSOC = activeBU === "excelcare" ? (activeSourceVal === "excelcare_2024" ? TARIFF_EXCELCARE_2024 : (activeSourceVal === "excelcare_cash_2025" ? TARIFF_EXCELCARE_CASH_2025 : (activeSourceVal === "excelcare_gipsa_2026" ? TARIFF_EXCELCARE_GIPSA_2026 : TARIFF_EXCELCARE_2025))) : TARIFF_2024;
+                                const isEcCash = (activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_cash_2026" || activeSourceVal === "excelcare_cash_2026_27" || activeSourceVal === "socexcelcarecash");
+                                const ecCashSOC = typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2026_27 : TARIFF_EXCELCARE_CASH_2025;
+                                activeSOC = activeBU === "excelcare" ? (activeSourceVal === "excelcare_2024" ? TARIFF_EXCELCARE_2024 : (isEcCash ? ecCashSOC : (activeSourceVal === "excelcare_gipsa_2026" ? TARIFF_EXCELCARE_GIPSA_2026 : TARIFF_EXCELCARE_2025))) : TARIFF_2024;
                             }
                             explanation = `Room-wise fallback SOC applied.`;
                         }
@@ -5972,6 +6074,11 @@
                                     }
                                     // ─────────────────────────────────────────────────────────────────
 
+                                } else if (activeSOCMap === mapExcelcareCash || (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2026_27) || (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2025)) {
+                                    expectedTariff = resolveExcelcareCashRate(match, isOpAudit, roomCategory, cleanedRoom);
+                                    if (expectedTariff !== null) {
+                                        explanation += isOpAudit ? " Resolved Excelcare Cash OPD rate." : ` Resolved Excelcare Cash (${cleanedRoom || roomCategory || 'Standard'}) rate.`;
+                                    }
                                 } else {
                                     if (match.rates) {
                                         const mappedCat = mapIOCLRoomCategory(roomCategory, cleanedRoom);
@@ -6013,7 +6120,12 @@
 
                                 if (descMatches.length > 0) {
                                     const matchedItem = descMatches[0];
-                                    if (matchedItem.rates) {
+                                    if (activeSOCMap === mapExcelcareCash || (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2026_27) || (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2025)) {
+                                        expectedTariff = resolveExcelcareCashRate(matchedItem, isOpAudit, roomCategory, cleanedRoom);
+                                        if (expectedTariff !== null) {
+                                            explanation += isOpAudit ? " Resolved Excelcare Cash OPD rate." : ` Resolved Excelcare Cash (${cleanedRoom || roomCategory || 'Standard'}) rate.`;
+                                        }
+                                    } else if (matchedItem.rates) {
                                         const mappedCat = mapIOCLRoomCategory(roomCategory, cleanedRoom);
                                         expectedTariff = matchedItem.rates[mappedCat];
                                         if (expectedTariff === undefined || expectedTariff === null) {
@@ -6157,6 +6269,11 @@
                                     }
                                 } else {
                                     expectedTariff = null;
+                                }
+                            } else if (fallbackSOCMap === mapExcelcareCash || (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' && fallbackSOCArray === TARIFF_EXCELCARE_CASH_2026_27) || (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && fallbackSOCArray === TARIFF_EXCELCARE_CASH_2025)) {
+                                expectedTariff = resolveExcelcareCashRate(fallbackMatch, isOpAudit, roomCategory, cleanedRoom);
+                                if (expectedTariff !== null) {
+                                    explanation += isOpAudit ? " Resolved Excelcare Cash fallback OPD rate." : ` Resolved Excelcare Cash fallback (${cleanedRoom || roomCategory || 'Standard'}) rate.`;
                                 }
                             } else {
                                 if (fallbackMatch.rates) {
@@ -7732,6 +7849,7 @@
 
         // Dynamic Role-Based Access Enforcement
         const activePermissions = window.rolePermissions[role] || [];
+        const isCentralAdmin = (role === 'Administrator') && (window.currentUserUnit === 'all' || !window.currentUserUnit || window.currentUserUnit === 'corporate');
         
         SYSTEM_TABS.forEach(tab => {
             const btn = document.getElementById(tab.id);
@@ -7740,13 +7858,19 @@
                 if (tab.id === 'tab-master-btn' && window.currentUserUnit !== 'all') {
                     hasPerm = false;
                 }
+                if (tab.id === 'tab-ingester-btn' && !isCentralAdmin) {
+                    hasPerm = false;
+                }
+                if (tab.id === 'tab-admin-btn' && (!isCentralAdmin || window.currentUserUnit !== 'all')) {
+                    hasPerm = false;
+                }
                 
                 if (hasPerm) {
                     btn.classList.remove('disabled-tab');
                     btn.style.display = 'flex';
                 } else {
                     btn.classList.add('disabled-tab');
-                    if (tab.id === 'tab-admin-btn') {
+                    if (tab.id === 'tab-admin-btn' || tab.id === 'tab-ingester-btn' || (tab.id === 'tab-master-btn' && window.currentUserUnit !== 'all')) {
                         btn.style.display = 'none';
                     } else {
                         btn.style.display = 'flex';
@@ -7759,7 +7883,10 @@
         const activeTabBtn = document.querySelector('.tab-btn.active');
         if (activeTabBtn) {
             const tabId = activeTabBtn.id;
-            const hasAccess = activePermissions.includes(tabId) && (tabId !== 'tab-master-btn' || window.currentUserUnit === 'all');
+            const hasAccess = activePermissions.includes(tabId) && 
+                              (tabId !== 'tab-master-btn' || window.currentUserUnit === 'all') &&
+                              (tabId !== 'tab-ingester-btn' || isCentralAdmin) &&
+                              (tabId !== 'tab-admin-btn' || (isCentralAdmin && window.currentUserUnit === 'all'));
             if (!hasAccess) {
                 const fallbackTab = activePermissions.find(tId => {
                     const btn = document.getElementById(tId);
@@ -10578,13 +10705,49 @@
         if (badgeCentralised) badgeCentralised.textContent = countCentralised;
         if (badgeKolkata) badgeKolkata.textContent = countKolkata;
 
+        // Multi-Tenant Isolation: Hide other units' sub-tabs for unit users
+        const isCorporateAdmin = (window.currentUserUnit === 'all' || !window.currentUserUnit);
+        const userUnit = window.currentUserUnit || 'all';
+
+        const tabIntl = document.getElementById('ag-tab-international');
+        const tabExcelcare = document.getElementById('ag-tab-excelcare');
+        const tabCentralised = document.getElementById('ag-tab-centralised');
+        const tabKolkata = document.getElementById('ag-tab-kolkata');
+
+        if (!isCorporateAdmin) {
+            if (tabIntl) tabIntl.style.display = (userUnit === 'international') ? '' : 'none';
+            if (tabExcelcare) tabExcelcare.style.display = (userUnit === 'excelcare') ? '' : 'none';
+            if (tabKolkata) tabKolkata.style.display = (userUnit === 'kolkata') ? '' : 'none';
+            if (tabCentralised) tabCentralised.style.display = '';
+
+            if (currentAgreementFilter !== 'all' && currentAgreementFilter !== 'centralised' && currentAgreementFilter !== userUnit) {
+                currentAgreementFilter = 'all';
+            }
+        } else {
+            if (tabIntl) tabIntl.style.display = '';
+            if (tabExcelcare) tabExcelcare.style.display = '';
+            if (tabKolkata) tabKolkata.style.display = '';
+            if (tabCentralised) tabCentralised.style.display = '';
+        }
+
+        // Hide Master Agreement create/import buttons for non-corporate users
+        const btnAddAg = document.getElementById('btn-add-agreement');
+        const btnBulkAg = document.getElementById('btn-bulk-agreement');
+        if (btnAddAg) btnAddAg.style.display = isCorporateAdmin ? '' : 'none';
+        if (btnBulkAg) btnBulkAg.style.display = isCorporateAdmin ? '' : 'none';
+
         // Update description box content based on active sub-tab
         const descBox = document.getElementById('agreements-desc-box');
         if (descBox) {
-            if (currentAgreementFilter === 'all') {
+            if (!isCorporateAdmin) {
                 descBox.innerHTML = `
-                    <div style="font-weight: 700; margin-bottom: 0.2rem; color: var(--primary);">Payer Agreement Mapping Architecture</div>
-                    <div style="line-height: 1.4;">Showing all active hospital payer agreements. These agreements define contract tariffs, billing validation rules, and discount schedules used during cycle audits.</div>
+                    <div style="font-weight: 700; margin-bottom: 0.2rem; color: var(--primary);">Unit Data Isolation Active · Facility Scope: ${escapeHtml(userUnit)}</div>
+                    <div style="line-height: 1.4;">Only agreements mapped to your assigned hospital facility node and corporate master contracts are accessible. Cross-unit agreements and master schedules are centrally maintained by Apollo Corporate Revenue Assurance Head Office.</div>
+                `;
+            } else if (currentAgreementFilter === 'all') {
+                descBox.innerHTML = `
+                    <div style="font-weight: 700; margin-bottom: 0.2rem; color: var(--primary);">Corporate Master Agreement Repository (Central Team Console)</div>
+                    <div style="line-height: 1.4;">Showing active hospital payer agreements across all 65+ Apollo Units. Master agreements and rate contracts are governed and deployed from Central Corporate Office.</div>
                 `;
             } else if (currentAgreementFilter === 'international') {
                 descBox.innerHTML = `
@@ -10637,10 +10800,23 @@
         const selectedTariff = document.getElementById('agreement-tariff-select')?.value || 'all';
         const selectedStatus = document.getElementById('agreement-status-select')?.value || 'all';
 
-        // Filter agreements list
+        // Filter agreements list with Strict Multi-Tenant Isolation
         let filteredAgreements = AGREEMENT_DETAILS.filter(ag => {
+            const scope = getAgreementScope(ag);
+            
+            // STRICT MULTI-TENANT ISOLATION
+            if (!isCorporateAdmin) {
+                const isMyUnit = (scope === userUnit) || 
+                                 (ag.unit === userUnit) || 
+                                 (ag.facility_scope && Array.isArray(ag.facility_scope) && (ag.facility_scope.includes(userUnit) || ag.facility_scope.includes('all')));
+                const isCentral = (scope === 'centralised' || ag.scope === 'centralised' || ag.scope === 'corporate');
+                if (!isMyUnit && !isCentral) {
+                    return false; // Cross-unit confidential agreements strictly sequestered!
+                }
+            }
+
             if (currentAgreementFilter === 'all') return true;
-            return getAgreementScope(ag) === currentAgreementFilter;
+            return scope === currentAgreementFilter;
         });
 
         // Apply search query filter
@@ -14866,7 +15042,176 @@ Claims & Billing Assurance Desk
                 openSOCImportLogsModal();
             });
         }
+
+        // 13. Initialize Central Multi-Unit Deployment Console
+        populateDeployUnitsDropdown();
+        renderCentralDeploymentTable();
     }
+
+    function populateDeployUnitsDropdown() {
+        const optgroup = document.getElementById('deploy-units-optgroup');
+        if (!optgroup) return;
+        const units = (typeof window.getHospitalUnits === 'function') ? window.getHospitalUnits() : [];
+        optgroup.innerHTML = '';
+        units.forEach(u => {
+            if (u.code !== 'all') {
+                const opt = document.createElement('option');
+                opt.value = u.code;
+                opt.textContent = `${u.icon || '🏥'} ${u.name} (${u.code}) · ${u.hub || ''}`;
+                optgroup.appendChild(opt);
+            }
+        });
+    }
+
+    function renderCentralDeploymentTable() {
+        const tbody = document.getElementById('central-deployment-tbody');
+        const countBadge = document.getElementById('deployment-active-count-badge');
+        if (!tbody) return;
+
+        let deployments = [];
+        try {
+            const raw = localStorage.getItem('brc_central_deployments_v2');
+            if (raw) deployments = JSON.parse(raw);
+        } catch(e) {}
+
+        if (!deployments || !Array.isArray(deployments) || deployments.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">No central multi-unit deployments dispatched yet. Select target scope and deploy master SOC.</td></tr>';
+            if (countBadge) countBadge.textContent = '0 Deployments Active';
+            return;
+        }
+
+        if (countBadge) countBadge.textContent = `${deployments.length} Deployments Active`;
+
+        let html = '';
+        deployments.slice().reverse().forEach(dep => {
+            const dateStr = dep.deployed_at ? new Date(dep.deployed_at).toLocaleString('en-IN') : '—';
+            html += `
+                <tr style="border-bottom: 1px solid var(--border); transition: background 0.15s;">
+                    <td style="padding: 0.5rem 0.75rem; font-family: monospace; font-weight: 700; color: var(--primary); font-size: 0.75rem;">${escapeHtml(dep.deployment_id || 'DEP-AHEL')}</td>
+                    <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--text-main); font-size: 0.78rem;">${escapeHtml(dep.soc_name || 'MASTER_SOC')}</td>
+                    <td style="padding: 0.5rem 0.75rem; font-size: 0.76rem; color: var(--text-muted);"><span style="background: var(--bg-page); border: 1px solid var(--border); padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 600;">${escapeHtml(dep.target_scope_title || dep.target_scope || 'All 65+ Units')}</span></td>
+                    <td style="padding: 0.5rem 0.75rem; text-align: right; font-weight: 700; color: var(--success); font-size: 0.78rem;">${(dep.total_records || 0).toLocaleString()} items</td>
+                    <td style="padding: 0.5rem 0.75rem; font-size: 0.75rem; color: var(--text-muted);">${escapeHtml(dep.deployed_by || 'Corporate Admin')}</td>
+                    <td style="padding: 0.5rem 0.75rem; font-size: 0.74rem; color: var(--text-muted);">${dateStr}</td>
+                    <td style="padding: 0.5rem 0.75rem; text-align: center;"><span style="background: rgba(16, 185, 129, 0.15); color: var(--success); font-weight: 800; font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.3);">DEPLOYED &amp; ACTIVE</span></td>
+                </tr>
+            `;
+        });
+        tbody.innerHTML = html;
+    }
+
+    async function deployMasterSOCToUnits() {
+        const isCentralAdmin = (window.currentUserRole === 'Administrator') && (window.currentUserUnit === 'all' || !window.currentUserUnit || window.currentUserUnit === 'corporate');
+        if (!isCentralAdmin) {
+            showToast('Access Restricted: Only Apollo Corporate Master Admin (Central Team) can build and deploy tariffs to hospital units.', 'danger');
+            return;
+        }
+
+        // Check if records exist
+        let records = [];
+        if (socParsedResult) {
+            records = socParsedResult.records || (socParsedResult.standard_json && socParsedResult.standard_json.records) || [];
+        }
+        if (!records || records.length === 0) {
+            showToast('No validated SOC records to deploy. Please upload and parse an SOC schedule first.', 'warning');
+            return;
+        }
+
+        const scopeSelect = document.getElementById('deploy-target-scope-select');
+        const targetScope = scopeSelect ? scopeSelect.value : 'all';
+        const effectiveDate = document.getElementById('deploy-effective-date')?.value || new Date().toISOString().split('T')[0];
+        const version = document.getElementById('deploy-version-tag')?.value.trim() || 'SOC-AHEL-2026-v2.6';
+        const socName = document.getElementById('soc-target-name-input')?.value.trim() || (socActiveFile ? socActiveFile.name.replace(/\.[^/.]+$/, '').toUpperCase() : 'APOLLO_MASTER_SOC_2026');
+
+        // Resolve target units
+        const allUnits = (typeof window.getHospitalUnits === 'function') ? window.getHospitalUnits() : [];
+        let resolvedUnits = [];
+        let scopeTitle = '';
+
+        if (targetScope === 'all') {
+            resolvedUnits = allUnits.filter(u => u.code !== 'all').map(u => u.code);
+            scopeTitle = `All 65+ Apollo Hospital Units (${resolvedUnits.length} Nodes)`;
+        } else if (targetScope === 'cluster_east') {
+            resolvedUnits = allUnits.filter(u => (u.zone === 'East Zone' || (u.hub && u.hub.includes('East'))) && u.code !== 'all').map(u => u.code);
+            scopeTitle = `East Zone Cluster (${resolvedUnits.length} Nodes)`;
+        } else if (targetScope === 'cluster_south_tn') {
+            resolvedUnits = allUnits.filter(u => u.hub && (u.hub.includes('Tamil') || u.hub.includes('Kerala'))).map(u => u.code);
+            scopeTitle = `South Zone TN & Kerala Cluster (${resolvedUnits.length} Nodes)`;
+        } else if (targetScope === 'cluster_south_ap_ts') {
+            resolvedUnits = allUnits.filter(u => u.hub && (u.hub.includes('Telangana') || u.hub.includes('Andhra'))).map(u => u.code);
+            scopeTitle = `South Zone AP & Telangana Cluster (${resolvedUnits.length} Nodes)`;
+        } else if (targetScope === 'cluster_south_ka') {
+            resolvedUnits = allUnits.filter(u => u.hub && u.hub.includes('Karnataka')).map(u => u.code);
+            scopeTitle = `South Zone Karnataka Cluster (${resolvedUnits.length} Nodes)`;
+        } else if (targetScope === 'cluster_north') {
+            resolvedUnits = allUnits.filter(u => (u.zone === 'North Zone' || (u.hub && u.hub.includes('North'))) && u.code !== 'all').map(u => u.code);
+            scopeTitle = `North Zone Cluster (${resolvedUnits.length} Nodes)`;
+        } else if (targetScope === 'cluster_west_central') {
+            resolvedUnits = allUnits.filter(u => (u.zone === 'West Zone' || u.zone === 'Central Zone' || (u.hub && (u.hub.includes('West') || u.hub.includes('Central')))) && u.code !== 'all').map(u => u.code);
+            scopeTitle = `West & Central Zone Cluster (${resolvedUnits.length} Nodes)`;
+        } else {
+            const found = allUnits.find(u => u.code === targetScope);
+            resolvedUnits = [targetScope];
+            scopeTitle = found ? found.name : targetScope;
+        }
+
+        const depId = 'DEP-AHEL-' + Date.now().toString().slice(-6);
+        const deployPayload = {
+            deployment_id: depId,
+            soc_name: socName,
+            version: version,
+            effective_date: effectiveDate,
+            target_scope: targetScope,
+            target_scope_title: scopeTitle,
+            target_units: resolvedUnits,
+            total_records: records.length,
+            deployed_by: window.currentUserEmail || 'Corporate Master Admin',
+            deployed_at: new Date().toISOString(),
+            status: 'ACTIVE_DEPLOYED'
+        };
+
+        // Save to localStorage
+        let existing = [];
+        try {
+            const raw = localStorage.getItem('brc_central_deployments_v2');
+            if (raw) existing = JSON.parse(raw);
+        } catch(e) {}
+        existing.push(deployPayload);
+        localStorage.setItem('brc_central_deployments_v2', JSON.stringify(existing));
+
+        // Sync to server if running
+        try {
+            await fetch('/api/deploy_tariff', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(deployPayload)
+            });
+        } catch(e) {
+            console.log("Local offline deployment saved:", e);
+        }
+
+        // Show feedback banner
+        const banner = document.getElementById('deployment-live-status-banner');
+        if (banner) {
+            banner.style.display = 'block';
+            banner.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+                    <div>
+                        <strong style="color: var(--success);">✓ Central Deployment Dispatched:</strong>
+                        <span> Master Schedule <strong>${escapeHtml(socName)}</strong> (${records.length.toLocaleString()} items, ${escapeHtml(version)}) deployed to <strong>${escapeHtml(scopeTitle)}</strong>.</span>
+                    </div>
+                    <span style="font-family: monospace; font-size: 0.72rem; color: var(--text-muted);">${depId} · Active</span>
+                </div>
+            `;
+        }
+
+        renderCentralDeploymentTable();
+        showToast(`Successfully deployed ${records.length.toLocaleString()} items to ${scopeTitle}!`, 'success');
+    }
+
+    window.populateDeployUnitsDropdown = populateDeployUnitsDropdown;
+    window.renderCentralDeploymentTable = renderCentralDeploymentTable;
+    window.deployMasterSOCToUnits = deployMasterSOCToUnits;
 
     async function handleSOCFile(file) {
         if (!file) return;
@@ -17050,12 +17395,12 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
         if (baseSel.options.length > 3) return; // already populated with rich options
 
         const options = [
-            { val: '2023', label: 'Guwahati Master SOC (2023 Schedule)' },
-            { val: '2024', label: 'Guwahati Master SOC (2024 Schedule)' },
-            { val: '2025', label: 'Guwahati Master SOC (2025 Schedule)' },
+            { val: '2023', label: 'Guwahati Credit SOC (2023-24 Schedule)' },
+            { val: '2024', label: 'Guwahati Credit SOC (2024-25 Schedule)' },
+            { val: '2025', label: 'Guwahati Credit SOC (2025-26 Schedule)' },
             { val: '2026', label: 'Guwahati Master SOC (2026-27 Schedule)' },
             { val: 'kolkata', label: 'Apollo Kolkata Multispeciality SOC (2026)' },
-            { val: 'excelcare_cash', label: 'Excelcare Hospital Cash Master' },
+            { val: 'excelcare_cash', label: 'Excelcare Hospital Cash Master (FY 2026-27 - OP & IP)' },
             { val: 'excelcare_gipsa', label: 'Excelcare GIPSA PPN Agreed Tariff' },
             { val: 'international', label: 'Apollo International Patient Cash Tariff' }
         ];
@@ -17077,8 +17422,8 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
         if ((key === '2024' || key === 'soc2024') && typeof TARIFF_2024 !== 'undefined') return TARIFF_2024;
         if ((key === '2025' || key === 'soc2025') && typeof TARIFF_2025 !== 'undefined') return TARIFF_2025;
         if ((key === '2026' || key === 'soc2026') && typeof TARIFF_DATA !== 'undefined') return TARIFF_DATA;
-        if ((key === 'kolkata' || key === 'sockolkata') && typeof TARIFF_KOLKATA !== 'undefined') return TARIFF_KOLKATA;
-        if ((key === 'excelcare_cash' || key === 'socexcelcarecash') && typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') return TARIFF_EXCELCARE_CASH_2025;
+        if ((key === 'kolkata' || key === 'sockolkata') && (typeof TARIFF_KOLKATA_SOC !== 'undefined' || typeof TARIFF_KOLKATA !== 'undefined')) return (typeof TARIFF_KOLKATA_SOC !== 'undefined' ? TARIFF_KOLKATA_SOC : TARIFF_KOLKATA);
+        if ((key === 'excelcare_cash' || key === 'socexcelcarecash' || key === 'excelcare_cash_2026_27') && (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' || typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined')) return (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2026_27 : TARIFF_EXCELCARE_CASH_2025);
         if ((key === 'excelcare' || key === 'socexcelcare') && typeof TARIFF_EXCELCARE_2025 !== 'undefined') return TARIFF_EXCELCARE_2025;
         if ((key === 'excelcare2024' || key === 'socexcelcare2024') && typeof TARIFF_EXCELCARE_2024 !== 'undefined') return TARIFF_EXCELCARE_2024;
         if ((key === 'excelcare_gipsa' || key === 'socexcelcaregipsa') && typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') return TARIFF_EXCELCARE_GIPSA_2026;
