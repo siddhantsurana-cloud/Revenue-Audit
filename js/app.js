@@ -3648,7 +3648,7 @@
         });
 
         let cleanCustomer = customerStr.toUpperCase().replace(/[.,()\-]/g, ' ');
-        cleanCustomer = cleanCustomer.replace(/\bALLIANCE\b/g, 'ALLIANZ');
+        cleanCustomer = cleanCustomer.replace(/\bALLIANCE\b/g, 'ALLIANZ').replace(/\bBRILA\b/g, 'BIRLA');
         if (cleanCustomer.includes("INDIAN OIL") || cleanCustomer.includes("INDIAN OIL CORPORATION")) {
             cleanCustomer += " IOCL";
         }
@@ -3913,13 +3913,15 @@
         if (deptLower.includes('pharmacy') || nameUpper.includes('HSN:') || nameUpper.includes('PHARMACY') || deptLower.includes('drug')) {
             return "Pharmacy";
         }
-        if (deptLower.includes('bed') || deptLower.includes('room') || deptLower.includes('ward') || deptLower.includes('nursing') || deptLower.includes('monitoring')) {
+        if (deptLower.includes('bed') || deptLower.includes('room') || deptLower.includes('ward') || deptLower.includes('nursing') || deptLower.includes('monitoring') || 
+            nameUpper.includes('ROOM RENT') || nameUpper.includes('BED CHARGE') || nameUpper.includes('BED RENT') || nameUpper.includes('CABIN') || nameUpper.includes('DAY CARE') || nameUpper.includes('DAYCARE') || nameUpper.includes('TRIAGE')) {
             return "Room";
         }
         if (deptLower.includes('visit') || nameUpper.includes('VISIT') || nameUpper.includes('CONSULTATION') || deptLower.includes('consultation')) {
             return "Consultations";
         }
-        if (deptLower.includes('procedure') || deptLower.includes('ot') || deptLower.includes('surgery') || deptLower.includes('operation') || deptLower.includes('anesthesia')) {
+        if (deptLower.includes('procedure') || deptLower.includes('ot') || deptLower.includes('surgery') || deptLower.includes('operation') || deptLower.includes('anesthesia') || 
+            nameUpper.includes('PROCEDURE') || nameUpper.includes('SURGERY') || nameUpper.includes('OPERATION')) {
             return "Procedures";
         }
         return "Others";
@@ -5228,6 +5230,97 @@
         }
     };
 
+    function isPediatricConsultation(serviceName, dept, doctor, serviceId) {
+        const nameUpper = (serviceName || '').toUpperCase();
+        const deptUpper = (dept || '').toUpperCase();
+        const docUpper = (doctor || '').toUpperCase();
+        const idStr = String(serviceId || '');
+        
+        const isPed = nameUpper.includes('PAED') || nameUpper.includes('PEDIAT') || nameUpper.includes('(PAE') ||
+                      deptUpper.includes('PAED') || deptUpper.includes('PEDIAT') || deptUpper.includes('(PAE') ||
+                      docUpper.includes('PAED') || docUpper.includes('PEDIAT');
+                      
+        if (!isPed) return false;
+        
+        const isConsult = nameUpper.includes('CONSULT') || nameUpper.includes('VISIT') || nameUpper.includes('FEE') || nameUpper.includes('CHARGE') ||
+                          deptUpper.includes('CONSULT') || deptUpper.includes('VISIT') || deptUpper.includes('FEE') || deptUpper.includes('CHARGE') ||
+                          idStr.includes('INDOOR_CONSULTATION_FEE') || idStr === '1116888' || idStr === '1116889';
+                          
+        return isConsult;
+    }
+    window.isPediatricConsultation = isPediatricConsultation;
+
+    function findPediatricSpecialtyRate(nameUpper, activeSOCArray, serviceIdRaw) {
+        // 1. First, check TARIFF_DATA for specific doctor consultation match (e.g. Dr. Dipanjan Goswami -> ₹1600)
+        if (typeof TARIFF_DATA !== 'undefined' && Array.isArray(TARIFF_DATA)) {
+            const cleanId = String(serviceIdRaw || '').replace(/^[A-Za-z]+/, '').trim();
+            const docItem = TARIFF_DATA.find(x => 
+                (cleanId && (x.id === cleanId || x.code === cleanId)) ||
+                (x.name && x.name.toUpperCase().trim() === nameUpper.trim())
+            );
+            if (docItem && (docItem.type === "Consultation fee" || docItem.dept === "Consultation" || (docItem.name && docItem.name.includes("CONSULT")))) {
+                const r = docItem.tpa_rate || docItem.gipsa_rate || docItem.rate;
+                if (r && r > 0 && r <= 5000) {
+                    return r;
+                }
+            }
+        }
+
+        if (!activeSOCArray || !Array.isArray(activeSOCArray)) return null;
+        const isGroup = nameUpper.includes("GROUP");
+        
+        // Filter candidates: strictly exclude operative surgery procedures and fees > 5000
+        const consultCandidates = activeSOCArray.filter(x => {
+            const typeUpper = (x.type || '').toUpperCase();
+            const deptUpper = (x.dept || '').toUpperCase();
+            const n = (x.name || '').toUpperCase();
+            if (typeUpper.includes("SURGERY CHARGES") || deptUpper.includes("SURGERY CHARGES")) return false;
+            if (n.includes("HEART") || n.includes("OPERATION") || n.includes("COMPLEX") || n.includes("SIMPLE") || n.includes("REPAIR") || n.includes("EXCISION") || n.includes("GRAFT")) return false;
+            if (x.rate && x.rate > 5000) return false;
+            return true;
+        });
+
+        let matchedItem = null;
+        if (isGroup) {
+            matchedItem = consultCandidates.find(x => {
+                const n = (x.name || '').toUpperCase().trim();
+                const id = (x.id || '').toUpperCase().trim();
+                return n === "PAEDIATRIC GROUP" || n === "PEDIATRIC GROUP" || n === "PAEDIATRICS GROUP" ||
+                       id === "PAEDIATRIC GROUP" || id === "PEDIATRIC GROUP" || id === "PAEDIATRICS GROUP";
+            });
+        } else {
+            matchedItem = consultCandidates.find(x => {
+                const n = (x.name || '').toUpperCase().trim();
+                const id = (x.id || '').toUpperCase().trim();
+                return n === "PAEDIATRICS INDIVIDUAL" || n === "PAEDIATRIC INDIVIDUAL" || n === "PAEDIATRICS" || n === "PEDIATRICS" || n === "PAEDIATRICS SURGERY" ||
+                       id === "PAEDIATRICS INDIVIDUAL" || id === "PAEDIATRIC INDIVIDUAL" || id === "PAEDIATRICS" || id === "PEDIATRICS" || id === "PAEDIATRICS SURGERY";
+            });
+        }
+        
+        if (!matchedItem) {
+            matchedItem = consultCandidates.find(x => {
+                const n = (x.name || '').toUpperCase();
+                const id = (x.id || '').toUpperCase();
+                const isPedName = n.includes("PAED") || n.includes("PEDIAT") || id.includes("PAED") || id.includes("PEDIAT");
+                if (!isPedName) return false;
+                
+                const isConsult = n.includes("CONSULT") || n.includes("VISIT") || n.includes("INDIVIDUAL") || n.includes("GROUP") || n.includes("FEE") || 
+                                  id.includes("CONSULT") || id.includes("VISIT") || id.includes("INDIVIDUAL") || id.includes("GROUP") || id.includes("FEE") ||
+                                  x.type === "Indoor consultation fee";
+                if (!isConsult) return false;
+                
+                if (isGroup) {
+                    return n.includes("GROUP") || id.includes("GROUP");
+                } else {
+                    return !(n.includes("GROUP") || id.includes("GROUP"));
+                }
+            });
+        }
+        
+        return matchedItem ? matchedItem.rate : null;
+    }
+    window.findPediatricSpecialtyRate = findPediatricSpecialtyRate;
+
     async function executeActualAudit() {
         auditedRows = [];
 
@@ -5337,69 +5430,6 @@
                 }
             }
             return null;
-        }
-
-        function isPediatricConsultation(serviceName, dept, doctor, serviceId) {
-            const nameUpper = (serviceName || '').toUpperCase();
-            const deptUpper = (dept || '').toUpperCase();
-            const docUpper = (doctor || '').toUpperCase();
-            const idStr = String(serviceId || '');
-            
-            const isPed = nameUpper.includes('PAED') || nameUpper.includes('PEDIAT') || nameUpper.includes('(PAE') ||
-                          deptUpper.includes('PAED') || deptUpper.includes('PEDIAT') || deptUpper.includes('(PAE') ||
-                          docUpper.includes('PAED') || docUpper.includes('PEDIAT');
-                          
-            if (!isPed) return false;
-            
-            const isConsult = nameUpper.includes('CONSULT') || nameUpper.includes('VISIT') || nameUpper.includes('FEE') || nameUpper.includes('CHARGE') ||
-                              deptUpper.includes('CONSULT') || deptUpper.includes('VISIT') || deptUpper.includes('FEE') || deptUpper.includes('CHARGE') ||
-                              idStr.includes('INDOOR_CONSULTATION_FEE') || idStr === '1116888' || idStr === '1116889';
-                              
-            return isConsult;
-        }
-
-        function findPediatricSpecialtyRate(nameUpper, activeSOCArray) {
-            if (!activeSOCArray || !Array.isArray(activeSOCArray)) return null;
-            const isGroup = nameUpper.includes("GROUP");
-            
-            let matchedItem = null;
-            if (isGroup) {
-                matchedItem = activeSOCArray.find(x => {
-                    const n = (x.name || '').toUpperCase().trim();
-                    const id = (x.id || '').toUpperCase().trim();
-                    return n === "PAEDIATRIC GROUP" || n === "PEDIATRIC GROUP" || n === "PAEDIATRICS GROUP" ||
-                           id === "PAEDIATRIC GROUP" || id === "PEDIATRIC GROUP" || id === "PAEDIATRICS GROUP";
-                });
-            } else {
-                matchedItem = activeSOCArray.find(x => {
-                    const n = (x.name || '').toUpperCase().trim();
-                    const id = (x.id || '').toUpperCase().trim();
-                    return n === "PAEDIATRICS INDIVIDUAL" || n === "PAEDIATRIC INDIVIDUAL" || n === "PAEDIATRICS" || n === "PEDIATRICS" || n === "PAEDIATRICS SURGERY" ||
-                           id === "PAEDIATRICS INDIVIDUAL" || id === "PAEDIATRIC INDIVIDUAL" || id === "PAEDIATRICS" || id === "PEDIATRICS" || id === "PAEDIATRICS SURGERY";
-                });
-            }
-            
-            if (!matchedItem) {
-                matchedItem = activeSOCArray.find(x => {
-                    const n = (x.name || '').toUpperCase();
-                    const id = (x.id || '').toUpperCase();
-                    const isPedName = n.includes("PAED") || n.includes("PEDIAT") || id.includes("PAED") || id.includes("PEDIAT");
-                    if (!isPedName) return false;
-                    
-                    const isConsult = n.includes("CONSULT") || n.includes("VISIT") || n.includes("INDIVIDUAL") || n.includes("GROUP") || n.includes("FEE") || n.includes("SURGERY") || 
-                                      id.includes("CONSULT") || id.includes("VISIT") || id.includes("INDIVIDUAL") || id.includes("GROUP") || id.includes("FEE") || id.includes("SURGERY") ||
-                                      x.type === "Indoor consultation fee";
-                    if (!isConsult) return false;
-                    
-                    if (isGroup) {
-                        return n.includes("GROUP") || id.includes("GROUP");
-                    } else {
-                        return !(n.includes("GROUP") || id.includes("GROUP"));
-                    }
-                });
-            }
-            
-            return matchedItem ? matchedItem.rate : null;
         }
 
         function isHourlyServiceItem(serviceId, serviceIdRaw, nameUpper, deptLower) {
@@ -6240,10 +6270,10 @@
                             // If still not matched, check if it is a pediatric consultation and resolve specialty rate from activeSOC
                             if (expectedTariff === null) {
                                 if (isPediatricConsultation(serviceName, dept, doctor, serviceIdRaw)) {
-                                    const pedRate = findPediatricSpecialtyRate(nameUpper, activeSOC);
+                                    const pedRate = findPediatricSpecialtyRate(nameUpper, activeSOC, serviceIdRaw);
                                     if (pedRate !== null) {
                                         expectedTariff = pedRate;
-                                        explanation += ` Resolved pediatric specialty rate (₹${pedRate}) from active SOC.`;
+                                        explanation += ` Resolved pediatric consultation rate (₹${pedRate}) from active SOC/Master.`;
                                     }
                                 }
                             }
@@ -6327,9 +6357,9 @@
                         // Try pediatric specialty rate lookup in fallback SOC if not matched by ID/Description
                         if (!fallbackMatch) {
                             if (isPediatricConsultation(serviceName, dept, doctor, serviceIdRaw)) {
-                                const pedRate = findPediatricSpecialtyRate(nameUpper, fallbackSOCArray);
+                                const pedRate = findPediatricSpecialtyRate(nameUpper, fallbackSOCArray, serviceIdRaw);
                                 if (pedRate !== null) {
-                                    fallbackMatch = { rate: pedRate, name: "Pediatric Specialty Rate Fallback" };
+                                    fallbackMatch = { rate: pedRate, name: "Pediatric Consultation Fallback" };
                                     fallbackMatchedByDesc = true;
                                 }
                             }
@@ -6388,39 +6418,38 @@
                             status = "Matching"; // reset status from Not Found
                             explanation += ` Not found in Template; fetched ₹${expectedTariff} from ${activeYear} SOC` + (fallbackMatchedByDesc ? ` (Matched by Description: ${fallbackMatch.name})` : "") + ".";
                         } else {
-                            // If it's a pediatric consultation, skip fallback to 2026 GIPSA/TPA Master
-                            if (isPediatricConsultation(serviceName, dept, doctor, serviceIdRaw)) {
+                            // As a final fallback, check the 2026 GIPSA/TPA Master database (TARIFF_DATA)
+                            let masterMatch = map2026[serviceId];
+                            let masterMatchedByDesc = false;
+                            if (!masterMatch) {
+                                const cleanBillName = nameUpper.trim();
+                                const descMatches = TARIFF_DATA.filter(x => {
+                                    const nameVal = (x.name || '').toUpperCase().trim();
+                                    const aliasNameVal = (x.aliasName || '').toUpperCase().trim();
+                                    return nameVal === cleanBillName || (aliasNameVal && aliasNameVal === cleanBillName);
+                                });
+                                if (descMatches.length > 0) {
+                                    masterMatch = descMatches[0];
+                                    masterMatchedByDesc = true;
+                                }
+                            }
+
+                            // If it's a pediatric consultation without an exact doctor/service match in Master, bypass generic fallback
+                            if (isPediatricConsultation(serviceName, dept, doctor, serviceIdRaw) && !masterMatch) {
                                 status = "Not Found in Master";
                                 explanation += ` Service not found in Template or ${activeYear} SOC. Fallback to 2026 GIPSA Master bypassed.`;
-                            } else {
-                                // As a final fallback, check the 2026 GIPSA/TPA Master database (TARIFF_DATA)
-                                let masterMatch = map2026[serviceId];
-                                let masterMatchedByDesc = false;
-                                if (!masterMatch) {
-                                    const cleanBillName = nameUpper.trim();
-                                    const descMatches = TARIFF_DATA.filter(x => {
-                                        const nameVal = (x.name || '').toUpperCase().trim();
-                                        const aliasNameVal = (x.aliasName || '').toUpperCase().trim();
-                                        return nameVal === cleanBillName || (aliasNameVal && aliasNameVal === cleanBillName);
-                                    });
-                                    if (descMatches.length > 0) {
-                                        masterMatch = descMatches[0];
-                                        masterMatchedByDesc = true;
-                                    }
-                                }
-                                if (masterMatch) {
-                                    expectedTariff = isGipsa ? masterMatch.gipsa_rate : masterMatch.tpa_rate;
-                                    if (expectedTariff !== null && expectedTariff !== undefined) {
-                                        status = "Matching";
-                                        explanation += ` Not found in Template or ${activeYear} SOC; fetched ₹${expectedTariff} from 2026 Master (TPA/GIPSA)` + (masterMatchedByDesc ? ` (Matched by Description: ${masterMatch.name})` : "") + ".";
-                                    } else {
-                                        status = "Not Found in Master";
-                                        explanation += ` Service Code found in 2026 Master but has no valid rate.`;
-                                    }
+                            } else if (masterMatch) {
+                                expectedTariff = isGipsa ? masterMatch.gipsa_rate : masterMatch.tpa_rate;
+                                if (expectedTariff !== null && expectedTariff !== undefined) {
+                                    status = "Matching";
+                                    explanation += ` Not found in Template or ${activeYear} SOC; fetched ₹${expectedTariff} from 2026 Master (TPA/GIPSA)` + (masterMatchedByDesc ? ` (Matched by Description: ${masterMatch.name})` : "") + ".";
                                 } else {
                                     status = "Not Found in Master";
-                                    explanation += ` Service Code not found in Template or ${activeYear} SOC.`;
+                                    explanation += ` Service Code found in 2026 Master but has no valid rate.`;
                                 }
+                            } else {
+                                status = "Not Found in Master";
+                                explanation += ` Service Code not found in Template or ${activeYear} SOC.`;
                             }
                         }
                     }
@@ -6453,22 +6482,39 @@
                         }
                     }
                     
-                    // 2. Department-specific custom override
-                    if (!customApplied && window.customDeptDiscounts && window.customDeptDiscounts[dept] !== undefined) {
-                        appliedDiscountPercent = window.customDeptDiscounts[dept];
-                        explanation += " (Custom Dept Discount: " + appliedDiscountPercent + "% for " + dept + ")";
+                    const serviceCat = getDiscountCategory(deptLower, nameUpper);
+                    const manualCatDisc = getManualDiscountForCategory(serviceCat);
+
+                    // 2. Room Rent Category MOU discount priority:
+                    // If this item is Room Rent and the user explicitly configured a Room Rent MOU discount in the UI,
+                    // apply that Room Rent discount unless an item-level override was explicitly set above.
+                    if (!customApplied && serviceCat === "Room" && manualCatDisc > 0) {
+                        appliedDiscountPercent = manualCatDisc;
+                        explanation += " (MOU Room Rent Discount: " + appliedDiscountPercent + "%)";
                         customApplied = true;
+                    }
+
+                    // 3. Department-specific custom override
+                    if (!customApplied && window.customDeptDiscounts && window.customDeptDiscounts[dept] !== undefined) {
+                        const deptVal = Number(window.customDeptDiscounts[dept]);
+                        if (deptVal > 0) {
+                            appliedDiscountPercent = deptVal;
+                            explanation += " (Custom Dept Discount: " + appliedDiscountPercent + "% for " + dept + ")";
+                            customApplied = true;
+                        } else if (deptVal === 0 && manualCatDisc <= 0) {
+                            appliedDiscountPercent = 0;
+                            explanation += " (Custom Dept Discount: 0% for " + dept + ")";
+                            customApplied = true;
+                        }
                     }
                     
                     if (!customApplied) {
-                        const serviceCat = getDiscountCategory(deptLower, nameUpper);
-                        
                         if (uploadedDiscountMap && uploadedDiscountMap[serviceCat] !== undefined) {
                             appliedDiscountPercent = uploadedDiscountMap[serviceCat];
                             explanation += " (Discount Master: " + appliedDiscountPercent + "% for " + serviceCat + ")";
                         } else if (mappingMethod !== "customer") {
-                            appliedDiscountPercent = getManualDiscountForCategory(serviceCat);
-                            if (appliedDiscountPercent > 0) {
+                            if (manualCatDisc > 0) {
+                                appliedDiscountPercent = manualCatDisc;
                                 explanation += " (Manual Discount: " + appliedDiscountPercent + "% for " + serviceCat + ")";
                             }
                         } else {
@@ -6476,9 +6522,8 @@
                                 explanation += " (Contract Discount: " + appliedDiscountPercent + "%)";
                             } else {
                                 // Fallback to Category-wise MOU Discount entered in the UI
-                                const fallbackDisc = getManualDiscountForCategory(serviceCat);
-                                if (fallbackDisc > 0) {
-                                    appliedDiscountPercent = fallbackDisc;
+                                if (manualCatDisc > 0) {
+                                    appliedDiscountPercent = manualCatDisc;
                                     explanation += " (MOU Category Discount: " + appliedDiscountPercent + "% for " + serviceCat + ")";
                                 }
                             }
@@ -10686,6 +10731,14 @@
                 const discNum = parseFloat(agreement.discountAgreed);
                 if (!isNaN(discNum)) {
                     res.discountApplied = discNum;
+                }
+            }
+            if (res.discountApplied === 0) {
+                const sCat = getDiscountCategory(item.dept ? item.dept.toLowerCase() : '', (item.serviceName || '').toUpperCase());
+                const manualCatDisc = getManualDiscountForCategory(sCat);
+                if (manualCatDisc > 0) {
+                    res.discountApplied = manualCatDisc;
+                    res.explanation += ` (MOU Category Discount: ${manualCatDisc}% for ${sCat})`;
                 }
             }
             res.expectedDiscountedRate = res.expectedTariff * (1 - res.discountApplied / 100);
