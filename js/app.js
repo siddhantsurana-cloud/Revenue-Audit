@@ -3900,41 +3900,143 @@
         });
     }
 
-    function getDiscountCategory(deptLower, nameUpper) {
-        if (deptLower === 'consumables' || nameUpper.includes('CONSUMABLE') || deptLower.includes('material')) {
+    function isActualRoomRentItem(nameUpper, serviceId, deptLower) {
+        const sId = String(serviceId || '').replace(/^[A-Za-z#]+/, '').trim();
+        const rawId = String(serviceId || '').trim();
+        const dLower = (deptLower || '').toLowerCase().trim();
+        const nUpper = (nameUpper || '').toUpperCase().trim();
+
+        // 1. Explicit Exclusions:
+        // Emergency / Casualty services are Emergency department charges, NEVER Inpatient Room Rent
+        if (dLower.includes('emergency') || dLower.includes('casualty') || dLower === 'ems' || dLower === 'er') {
+            return false;
+        }
+        // Hourly charges (e.g. per hour, hourly observation/monitoring) are NOT Inpatient Room Rent
+        if (nUpper.includes('PER HOUR') || nUpper.includes('HOURLY') || nUpper.includes('/HR') || nUpper.includes('/ HR') || nUpper.includes('P/H')) {
+            return false;
+        }
+        // Nursing, allied, RMO, equipment, or monitoring charges are not room rent
+        if (nUpper.includes('NURSING') || nUpper.includes('RMO CHARGE') || nUpper.includes('MONITOR')) {
+            return false;
+        }
+        // Daycare or Triage observation charges are not Inpatient Room Rent
+        if (nUpper.includes('DAY CARE') || nUpper.includes('DAYCARE') || nUpper.includes('TRIAGE')) {
+            return false;
+        }
+
+        // 2. Universal Inpatient Room Rent Service Code (Code 2127)
+        if (sId === "2127" || rawId === "2127") return true;
+
+        // 3. Department explicitly Room Rent / Bed Charges
+        if (dLower === "room rent" || dLower === "bed charges" || dLower === "room charges" || dLower === "bed rent" || dLower === "room") {
+            return true;
+        }
+
+        // 4. Inpatient Room Rent / Bed Charges by Name:
+        if (
+            nUpper.includes("ROOM RENT") || 
+            nUpper.includes("BED CHARGES") || 
+            nUpper.includes("BED CHARGE") || 
+            nUpper.includes("BED RENT") || 
+            nUpper.includes("CABIN CHARGE") || 
+            nUpper.includes("CABIN RENT") || 
+            nUpper.includes("DELUXE CABIN") || 
+            nUpper.includes("PRIVATE CABIN") || 
+            nUpper.includes("SEMI CABIN")
+        ) {
+            return true;
+        }
+        return false;
+    }
+    window.isActualRoomRentItem = isActualRoomRentItem;
+
+    function getDiscountCategory(deptLower, nameUpper, serviceId) {
+        if (!deptLower) deptLower = '';
+        if (!nameUpper) nameUpper = '';
+        const dLower = deptLower.toLowerCase().trim();
+        const nUpper = nameUpper.toUpperCase().trim();
+
+        // 1. Consumables / Materials
+        if (dLower === 'consumables' || nUpper.includes('CONSUMABLE') || dLower.includes('material')) {
             return "Pharmacy"; // or Consumables
         }
-        if (deptLower.includes('laboratory') || deptLower.includes('pathology') || deptLower.includes('microbiology') || deptLower.includes('biochemistry') || deptLower.includes('bio-chemistry') || deptLower.includes('bio chemistry') || deptLower.includes('biochem') || deptLower.includes('hematology') || deptLower.includes('lab') || deptLower.includes('path') || deptLower.includes('investigation') || deptLower.includes('inv')) {
-            return "Lab";
-        }
-        if (deptLower.includes('radiology') || deptLower.includes('imaging') || deptLower.includes('scan') || deptLower.includes('ultrasound') || deptLower.includes('usg') || deptLower.includes('mri') || deptLower.includes('ct ') || deptLower.includes('ct-') || deptLower.includes('x-ray') || deptLower.includes('xray')) {
-            return "Radiology";
-        }
-        if (deptLower.includes('pharmacy') || nameUpper.includes('HSN:') || nameUpper.includes('PHARMACY') || deptLower.includes('drug')) {
+
+        // 2. Pharmacy / Drugs
+        if (dLower.includes('pharmacy') || nUpper.includes('HSN:') || nUpper.includes('PHARMACY') || dLower.includes('drug')) {
             return "Pharmacy";
         }
-        if (deptLower.includes('bed') || deptLower.includes('room') || deptLower.includes('ward') || deptLower.includes('nursing') || deptLower.includes('monitoring') || 
-            nameUpper.includes('ROOM RENT') || nameUpper.includes('BED CHARGE') || nameUpper.includes('BED RENT') || nameUpper.includes('CABIN') || nameUpper.includes('DAY CARE') || nameUpper.includes('DAYCARE') || nameUpper.includes('TRIAGE')) {
+
+        // 3. Emergency / Casualty (unless explicit laboratory / radiology panel)
+        if (dLower.includes('emergency') || dLower.includes('casualty') || dLower === 'ems' || dLower === 'er') {
+            if (
+                nUpper.includes('PROFILE') || nUpper.includes('PANEL') || nUpper.includes('ASSAY') || nUpper.includes('CULTURE') ||
+                nUpper.includes('X-RAY') || nUpper.includes('XRAY') || nUpper.includes('CT SCAN') || nUpper.includes('USG')
+            ) {
+                // allow diagnostic investigations to be categorized as Lab / Radiology below
+            } else {
+                return "Emergency";
+            }
+        }
+
+        // 4. Lab / Investigations
+        if (
+            dLower.includes('laboratory') || dLower.includes('pathology') || 
+            dLower.includes('microbiology') || dLower.includes('biochemistry') || 
+            dLower.includes('bio-chemistry') || dLower.includes('bio chemistry') || 
+            dLower.includes('biochem') || dLower.includes('hematology') || 
+            dLower.includes('lab') || dLower.includes('path') || 
+            dLower.includes('investigation') || dLower.includes('inv') ||
+            nUpper.includes('PROFILE') || nUpper.includes('PANEL') ||
+            nUpper.includes('ASSAY') || nUpper.includes('CULTURE')
+        ) {
+            return "Lab";
+        }
+
+        // 5. Radiology / Imaging
+        if (
+            dLower.includes('radiology') || dLower.includes('imaging') || dLower.includes('scan') || 
+            dLower.includes('ultrasound') || dLower.includes('usg') || dLower.includes('mri') || 
+            dLower.includes('ct ') || dLower.includes('ct-') || dLower.includes('x-ray') || dLower.includes('xray') ||
+            nUpper.includes('X-RAY') || nUpper.includes('XRAY') || nUpper.includes('ULTRASOUND') || nUpper.includes('USG') || nUpper.includes('MRI') || nUpper.includes('CT SCAN')
+        ) {
+            return "Radiology";
+        }
+
+        // 6. Inpatient Room Rent (Strict)
+        if (isActualRoomRentItem(nUpper, serviceId, dLower)) {
             return "Room";
         }
-        if (deptLower.includes('visit') || nameUpper.includes('VISIT') || nameUpper.includes('CONSULTATION') || deptLower.includes('consultation')) {
+
+        // 7. Doctor Consultations / Visits
+        if (dLower.includes('visit') || nUpper.includes('VISIT') || nUpper.includes('CONSULTATION') || dLower.includes('consultation')) {
             return "Consultations";
         }
-        if (deptLower.includes('procedure') || deptLower.includes('ot') || deptLower.includes('surgery') || deptLower.includes('operation') || deptLower.includes('anesthesia') || 
-            nameUpper.includes('PROCEDURE') || nameUpper.includes('SURGERY') || nameUpper.includes('OPERATION')) {
+
+        // 8. Procedures / Surgery / OT
+        if (
+            dLower.includes('procedure') || dLower.includes('ot') || dLower.includes('surgery') || dLower.includes('operation') || dLower.includes('anesthesia') || 
+            nUpper.includes('PROCEDURE') || nUpper.includes('SURGERY') || nUpper.includes('OPERATION')
+        ) {
             return "Procedures";
         }
+
         return "Others";
     }
+    window.getDiscountCategory = getDiscountCategory;
 
     function getManualDiscountForCategory(serviceCat) {
-        if (serviceCat === "Room") return Number(document.getElementById('disc-room').value) || 0;
-        if (serviceCat === "Lab") return Number(document.getElementById('disc-investigations').value) || 0;
-        if (serviceCat === "Radiology") return Number(document.getElementById('disc-investigations').value) || 0;
-        if (serviceCat === "Consultations") return Number(document.getElementById('disc-consultations').value) || 0;
-        if (serviceCat === "Procedures") return Number(document.getElementById('disc-procedures').value) || 0;
+        const getVal = (id) => {
+            const el = document.getElementById(id);
+            return el ? (Number(el.value) || 0) : 0;
+        };
+        if (serviceCat === "Room") return getVal('disc-room');
+        if (serviceCat === "Lab") return getVal('disc-investigations');
+        if (serviceCat === "Radiology") return getVal('disc-investigations');
+        if (serviceCat === "Consultations") return getVal('disc-consultations');
+        if (serviceCat === "Procedures") return getVal('disc-procedures');
         return 0;
     }
+    window.getManualDiscountForCategory = getManualDiscountForCategory;
 
     function parseAgreementDiscountForCategory(ag, deptLower, nameUpper) {
         if (!ag) return 0;
@@ -6482,29 +6584,40 @@
                         }
                     }
                     
-                    const serviceCat = getDiscountCategory(deptLower, nameUpper);
+                    const isActualRoomRent = isActualRoomRentItem(nameUpper, serviceIdRaw || serviceId, deptLower);
+                    const serviceCat = getDiscountCategory(deptLower, nameUpper, serviceIdRaw || serviceId);
                     const manualCatDisc = getManualDiscountForCategory(serviceCat);
 
                     // 2. Room Rent Category MOU discount priority:
-                    // If this item is Room Rent and the user explicitly configured a Room Rent MOU discount in the UI,
+                    // If this item is TRUE Room Rent and user configured Room Rent MOU discount > 0,
                     // apply that Room Rent discount unless an item-level override was explicitly set above.
-                    if (!customApplied && serviceCat === "Room" && manualCatDisc > 0) {
+                    if (!customApplied && isActualRoomRent && manualCatDisc > 0) {
                         appliedDiscountPercent = manualCatDisc;
                         explanation += " (MOU Room Rent Discount: " + appliedDiscountPercent + "%)";
                         customApplied = true;
                     }
 
                     // 3. Department-specific custom override
-                    if (!customApplied && window.customDeptDiscounts && window.customDeptDiscounts[dept] !== undefined) {
-                        const deptVal = Number(window.customDeptDiscounts[dept]);
-                        if (deptVal > 0) {
-                            appliedDiscountPercent = deptVal;
-                            explanation += " (Custom Dept Discount: " + appliedDiscountPercent + "% for " + dept + ")";
-                            customApplied = true;
-                        } else if (deptVal === 0 && manualCatDisc <= 0) {
-                            appliedDiscountPercent = 0;
-                            explanation += " (Custom Dept Discount: 0% for " + dept + ")";
-                            customApplied = true;
+                    if (!customApplied && window.customDeptDiscounts) {
+                        let deptVal = undefined;
+                        if (window.customDeptDiscounts[dept] !== undefined) {
+                            deptVal = window.customDeptDiscounts[dept];
+                        } else {
+                            const trimmedDept = (dept || '').trim().toLowerCase();
+                            for (const k in window.customDeptDiscounts) {
+                                if (k.trim().toLowerCase() === trimmedDept) {
+                                    deptVal = window.customDeptDiscounts[k];
+                                    break;
+                                }
+                            }
+                        }
+                        if (deptVal !== undefined && deptVal !== null && deptVal !== '') {
+                            const numDeptVal = Number(deptVal);
+                            if (!isNaN(numDeptVal)) {
+                                appliedDiscountPercent = numDeptVal;
+                                explanation += " (Custom Dept Discount: " + appliedDiscountPercent + "% for " + dept + ")";
+                                customApplied = true;
+                            }
                         }
                     }
                     
@@ -10727,15 +10840,63 @@
         }
 
         if (res.expectedTariff !== null) {
-            if (res.discountApplied === 0 && agreement.discountAgreed) {
+            let customDiscApplied = false;
+            if (window.customItemDiscounts) {
+                const sId = String(item.serviceId || '').replace(/^[A-Za-z#]+/, '').trim();
+                const rawId = String(item.serviceId || '').trim();
+                const customItem = (window.customItemDiscounts[sId] !== undefined) ? window.customItemDiscounts[sId] : window.customItemDiscounts[rawId];
+                if (customItem !== undefined && customItem.discount !== undefined) {
+                    res.discountApplied = Number(customItem.discount) || 0;
+                    res.explanation += ` (Custom Item Discount: ${res.discountApplied}%)`;
+                    customDiscApplied = true;
+                }
+            }
+
+            const deptStr = item.dept || '';
+            const deptLower = deptStr.toLowerCase().trim();
+            const nameUpper = (item.serviceName || '').toUpperCase().trim();
+            const sCat = getDiscountCategory(deptLower, nameUpper, item.serviceId);
+            const isActualRoomRent = isActualRoomRentItem(nameUpper, item.serviceId, deptLower);
+            const manualCatDisc = getManualDiscountForCategory(sCat);
+
+            // Room Rent Category MOU discount priority: only for true Inpatient Room Rent
+            if (!customDiscApplied && isActualRoomRent && manualCatDisc > 0) {
+                res.discountApplied = manualCatDisc;
+                res.explanation += ` (MOU Room Rent Discount: ${manualCatDisc}%)`;
+                customDiscApplied = true;
+            }
+
+            // Department-specific custom override
+            if (!customDiscApplied && window.customDeptDiscounts && deptStr) {
+                let deptVal = undefined;
+                if (window.customDeptDiscounts[deptStr] !== undefined) {
+                    deptVal = window.customDeptDiscounts[deptStr];
+                } else {
+                    const trimmedDept = deptStr.trim().toLowerCase();
+                    for (const k in window.customDeptDiscounts) {
+                        if (k.trim().toLowerCase() === trimmedDept) {
+                            deptVal = window.customDeptDiscounts[k];
+                            break;
+                        }
+                    }
+                }
+                if (deptVal !== undefined && deptVal !== null && deptVal !== '') {
+                    const numDeptVal = Number(deptVal);
+                    if (!isNaN(numDeptVal)) {
+                        res.discountApplied = numDeptVal;
+                        res.explanation += ` (Custom Dept Discount: ${res.discountApplied}% for ${deptStr})`;
+                        customDiscApplied = true;
+                    }
+                }
+            }
+
+            if (!customDiscApplied && res.discountApplied === 0 && agreement.discountAgreed) {
                 const discNum = parseFloat(agreement.discountAgreed);
                 if (!isNaN(discNum)) {
                     res.discountApplied = discNum;
                 }
             }
-            if (res.discountApplied === 0) {
-                const sCat = getDiscountCategory(item.dept ? item.dept.toLowerCase() : '', (item.serviceName || '').toUpperCase());
-                const manualCatDisc = getManualDiscountForCategory(sCat);
+            if (!customDiscApplied && res.discountApplied === 0) {
                 if (manualCatDisc > 0) {
                     res.discountApplied = manualCatDisc;
                     res.explanation += ` (MOU Category Discount: ${manualCatDisc}% for ${sCat})`;
