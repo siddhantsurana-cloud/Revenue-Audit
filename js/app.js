@@ -5402,6 +5402,47 @@
             return matchedItem ? matchedItem.rate : null;
         }
 
+        function isHourlyServiceItem(serviceId, serviceIdRaw, nameUpper, deptLower) {
+            const sId = String(serviceIdRaw || serviceId || '').replace(/^[A-Za-z]+/, '').trim();
+            const knownHourlyIds = new Set([
+                "1045742", // Oxygen charge 1 hour
+                "1113178", // Oxygen charge 1 hour PICU/NICU
+                "1102989", // ACLS Ambulance oxygen charge/hour
+                "1087262", // Cardiac Monitor
+                "1087267", // BiPAP
+                "1113180", // CPAP 1 hour
+                "1045744", // Ventilator charges
+                "1102990", // Ventilator per hour
+                "6366",    // Phototherapy per hour
+                "1087266", // Syringe pump / infusion pump per hour
+                "3068764"  // Femoral access dialysis per hour
+            ]);
+            if (knownHourlyIds.has(sId)) return true;
+
+            const hourlyPatterns = [
+                /\b(?:1|ONE)\s*HOUR\b/i,
+                /\bPER\s*HOUR\b/i,
+                /\/\s*HOUR\b/i,
+                /\bCHG\s*\/\s*HR\b/i,
+                /\bPER\s*HR\b/i,
+                /\/\s*HR\b/i,
+                /\bHOURLY\b/i,
+                /\b(?:PER|FOR)\s*1\s*HOUR\b/i,
+                /\b(?:1|ONE)\s*HR\b/i
+            ];
+            if (hourlyPatterns.some(p => p.test(nameUpper))) return true;
+
+            if (nameUpper.includes("OXYGEN CHARGE") || nameUpper.includes("OXYGEN CHARGES") || nameUpper.includes("OXYGEN CYLINDER") || nameUpper.includes("OXYGEN INHALATION")) return true;
+            if (nameUpper.includes("CARDIAC MONITOR") || nameUpper.includes("CARDIAC-MONITOR") || nameUpper.includes("CARDIAC MONITORING")) return true;
+            if (nameUpper.includes("BIPAP") || nameUpper.includes("CPAP") || nameUpper.includes("HIGH FLOW NASAL CANNULA")) return true;
+            if (nameUpper.includes("VENTILATOR") && (nameUpper.includes("CHARGE") || nameUpper.includes("HOUR") || deptLower.includes("equipment"))) return true;
+            if (nameUpper.includes("PHOTOTHERAPY")) return true;
+            if (nameUpper.includes("INFUSION PUMP") || nameUpper.includes("SYRINGE PUMP")) return true;
+            if ((nameUpper.includes("CRRT") || nameUpper.includes("SLED")) && (nameUpper.includes("HOUR") || nameUpper.includes("PER"))) return true;
+
+            return false;
+        }
+
         function getCashSOCForYear(unit, year) {
             if (unit === 'excelcare') {
                 if ((year === '2025' || year === '2026' || year === '2027') && (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' || typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined')) {
@@ -5898,125 +5939,100 @@
                             const simpleRoom = toSimpleRoom(cleanedRoom);
                             expectedTariff = MONITORING_CHARGES[cleanedRoom] || MONITORING_CHARGES[simpleRoom];
                             explanation += ` Resolved Monitoring for ${cleanedRoom}.`;
-                        } else if (serviceId === "1087262" || nameUpper.includes("CARDIAC MONITOR") || nameUpper.includes("CARDIAC-MONITOR") || nameUpper.includes("CARDIAC MONITORING")) {
+                        } else if (isHourlyServiceItem(serviceId, serviceIdRaw, nameUpper, deptLower)) {
                             let start = parseExcelDate(startDateVal);
                             let end = parseExcelDate(endDateVal);
                             
                             const activeSOCMap = getActiveSOCMap(activeSOC);
-                            const nameMatch = lookupSOCItemByName(activeSOCMap, "CARDIAC MONITOR") || lookupSOCItemByName(activeSOCMap, "CARDIAC-MONITOR") || lookupSOCItemByName(activeSOCMap, "CARDIAC MONITORING");
-                            const baseMatch = activeSOCMap["1087262"] || nameMatch;
-                            const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 90;
+                            const cleanId = String(serviceIdRaw || serviceId || '').replace(/^[A-Za-z]+/, '').trim();
                             
-                            if (start && end && end >= start) {
-                                let durationHours = (end - start) / (3600 * 1000);
-                                let roundedHours = Math.ceil(durationHours);
-                                if (roundedHours < 1) roundedHours = 1;
-                                
-                                let diffUnit = Math.abs(billedRate - baseRate);
-                                let diffTotal = Math.abs(billedRate - (roundedHours * baseRate));
-                                
-                                if (diffUnit < diffTotal) {
-                                    expectedTariff = baseRate;
-                                    explanation += ` Resolved Cardiac Monitor unit rate: ₹${baseRate}/hour (Duration: ${roundedHours} hours).`;
-                                } else {
-                                    expectedTariff = roundedHours * baseRate;
-                                    explanation += ` Resolved Cardiac Monitor: ${roundedHours} hours at ₹${baseRate}/hour.`;
-                                }
-                                if (Math.abs(quantity - roundedHours) > 0.1) {
-                                    explanation += ` [Note: Billed Qty ${quantity} vs Duration ${roundedHours}h].`;
-                                }
-                            } else {
-                                let checkQty = (quantity > 0) ? quantity : 1;
-                                let diffUnit = Math.abs(billedRate - baseRate);
-                                let diffTotal = Math.abs(billedRate - (checkQty * baseRate));
-                                
-                                if (diffUnit < diffTotal && checkQty > 1) {
-                                    expectedTariff = baseRate;
-                                    explanation += ` Resolved Cardiac Monitor unit rate: ₹${baseRate}/hour (Qty: ${checkQty}).`;
-                                } else {
-                                    expectedTariff = checkQty * baseRate;
-                                    explanation += ` Resolved Cardiac Monitor: ${checkQty} hours at ₹${baseRate}/hour.`;
-                                }
+                            // 1. Dynamic unit rate lookup from active SOC
+                            let baseMatch = activeSOCMap[cleanId] || activeSOCMap[serviceId];
+                            if (!baseMatch) {
+                                baseMatch = lookupSOCItemByName(activeSOCMap, serviceName) || lookupSOCItemByName(activeSOCMap, nameUpper);
                             }
-                        } else if (serviceId === "1087267" || nameUpper.includes("BIPAP")) {
-                            let start = parseExcelDate(startDateVal);
-                            let end = parseExcelDate(endDateVal);
-                            
-                            const activeSOCMap = getActiveSOCMap(activeSOC);
-                            const nameMatch = lookupSOCItemByName(activeSOCMap, "BIPAP");
-                            const baseMatch = activeSOCMap["1087267"] || nameMatch;
-                            const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 80;
-                            
-                            if (start && end && end >= start) {
-                                let durationHours = (end - start) / (3600 * 1000);
-                                let roundedHours = Math.ceil(durationHours);
-                                if (roundedHours < 1) roundedHours = 1;
-                                
-                                let diffUnit = Math.abs(billedRate - baseRate);
-                                let diffTotal = Math.abs(billedRate - (roundedHours * baseRate));
-                                
-                                if (diffUnit < diffTotal) {
-                                    expectedTariff = baseRate;
-                                    explanation += ` Resolved BIPAP unit rate: ₹${baseRate}/hour (Duration: ${roundedHours} hours).`;
-                                } else {
-                                    expectedTariff = roundedHours * baseRate;
-                                    explanation += ` Resolved BIPAP: ${roundedHours} hours at ₹${baseRate}/hour.`;
-                                }
-                                if (Math.abs(quantity - roundedHours) > 0.1) {
-                                    explanation += ` [Note: Billed Qty ${quantity} vs Duration ${roundedHours}h].`;
-                                }
-                            } else {
-                                let checkQty = (quantity > 0) ? quantity : 1;
-                                let diffUnit = Math.abs(billedRate - baseRate);
-                                let diffTotal = Math.abs(billedRate - (checkQty * baseRate));
-                                
-                                if (diffUnit < diffTotal && checkQty > 1) {
-                                    expectedTariff = baseRate;
-                                    explanation += ` Resolved BIPAP unit rate: ₹${baseRate}/hour (Qty: ${checkQty}).`;
-                                } else {
-                                    expectedTariff = checkQty * baseRate;
-                                    explanation += ` Resolved BIPAP: ${checkQty} hours at ₹${baseRate}/hour.`;
-                                }
+                            if (!baseMatch && typeof fallbackSOCMap !== 'undefined' && fallbackSOCMap) {
+                                baseMatch = fallbackSOCMap[cleanId] || fallbackSOCMap[serviceId] || lookupSOCItemByName(fallbackSOCMap, serviceName);
                             }
-                        } else if (serviceId === "1045742" || nameUpper.includes("OXYGEN CHARGE") || nameUpper.includes("OXYGEN CHARGES")) {
-                            let start = parseExcelDate(startDateVal);
-                            let end = parseExcelDate(endDateVal);
                             
-                            const activeSOCMap = getActiveSOCMap(activeSOC);
-                            const nameMatch = lookupSOCItemByName(activeSOCMap, "OXYGEN CHARGE") || lookupSOCItemByName(activeSOCMap, "OXYGEN CHARGES");
-                            const baseMatch = activeSOCMap["1045742"] || nameMatch;
-                            const baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : 135;
+                            let baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : null;
                             
-                            if (start && end && end >= start) {
-                                let durationHours = (end - start) / (3600 * 1000);
-                                let roundedHours = Math.ceil(durationHours);
-                                if (roundedHours < 1) roundedHours = 1;
-                                
-                                let diffUnit = Math.abs(billedRate - baseRate);
-                                let diffTotal = Math.abs(billedRate - (roundedHours * baseRate));
-                                
-                                if (diffUnit < diffTotal) {
-                                    expectedTariff = baseRate;
-                                    explanation += ` Resolved Oxygen unit rate: ₹${baseRate}/hour (Duration: ${roundedHours} hours).`;
+                            // Fallback to known standards if not in SOC
+                            if (!baseRate || baseRate <= 0) {
+                                if (cleanId === "1113178" || nameUpper.includes("PICU/NICU")) baseRate = 50;
+                                else if (cleanId === "1045742" || nameUpper.includes("OXYGEN")) baseRate = 135;
+                                else if (cleanId === "1087262" || nameUpper.includes("CARDIAC MONITOR")) baseRate = 80;
+                                else if (cleanId === "1087267" || nameUpper.includes("BIPAP")) baseRate = 80;
+                                else if (cleanId === "1113180" || nameUpper.includes("CPAP")) baseRate = 80;
+                                else if (cleanId === "6366" || nameUpper.includes("PHOTOTHERAPY")) baseRate = 100;
+                                else if (cleanId === "1087266" || nameUpper.includes("PUMP")) baseRate = 70;
+                                else if (cleanId === "1045744" || cleanId === "1102990" || nameUpper.includes("VENTILATOR")) baseRate = 200;
+                            }
+                            
+                            let serviceLabel = "Hourly Service";
+                            if (nameUpper.includes("OXYGEN")) serviceLabel = "Oxygen";
+                            else if (nameUpper.includes("CARDIAC MONITOR")) serviceLabel = "Cardiac Monitor";
+                            else if (nameUpper.includes("BIPAP")) serviceLabel = "BIPAP";
+                            else if (nameUpper.includes("CPAP")) serviceLabel = "CPAP";
+                            else if (nameUpper.includes("VENTILATOR")) serviceLabel = "Ventilator";
+                            else if (nameUpper.includes("PHOTOTHERAPY")) serviceLabel = "Phototherapy";
+                            else if (nameUpper.includes("PUMP")) serviceLabel = "Pump";
+                            else if (nameUpper.includes("DIALYSIS") || nameUpper.includes("CRRT") || nameUpper.includes("SLED")) serviceLabel = "Dialysis";
+                            
+                            if (baseRate && baseRate > 0) {
+                                if (start && end && end >= start) {
+                                    let durationHours = (end - start) / (3600 * 1000);
+                                    let roundedHours = Math.ceil(durationHours);
+                                    if (roundedHours < 1) roundedHours = 1;
+                                    
+                                    let diffUnit = Math.abs(billedRate - baseRate);
+                                    let diffTotal = Math.abs(billedRate - (roundedHours * baseRate));
+                                    
+                                    if (diffUnit < diffTotal && diffUnit <= 1.0) {
+                                        expectedTariff = baseRate;
+                                        explanation += ` Resolved ${serviceLabel} unit rate: ₹${baseRate}/hour (Duration: ${roundedHours} hours).`;
+                                    } else {
+                                        expectedTariff = roundedHours * baseRate;
+                                        explanation += ` Resolved ${serviceLabel}: ${roundedHours} hours at ₹${baseRate}/hour.`;
+                                    }
+                                    if (quantity > 0 && Math.abs(quantity - roundedHours) > 0.1) {
+                                        explanation += ` [Note: Billed Qty ${quantity} vs Duration ${roundedHours}h].`;
+                                    }
+                                } else if (quantity > 1) {
+                                    expectedTariff = quantity * baseRate;
+                                    explanation += ` Resolved ${serviceLabel}: ${quantity} hours at ₹${baseRate}/hour.`;
+                                } else if (billedRate > baseRate) {
+                                    const inferredHours = Math.round(billedRate / baseRate);
+                                    const remainder = Math.abs(billedRate - (inferredHours * baseRate));
+                                    
+                                    const inferredPreHours = (billedRatePreDiscount && billedRatePreDiscount > baseRate) ? Math.round(billedRatePreDiscount / baseRate) : 0;
+                                    const remainderPre = (billedRatePreDiscount && billedRatePreDiscount > baseRate) ? Math.abs(billedRatePreDiscount - (inferredPreHours * baseRate)) : 999;
+                                    
+                                    if (remainder <= 1.0 && inferredHours >= 1 && inferredHours <= 720) {
+                                        expectedTariff = billedRate;
+                                        explanation += ` Resolved ${serviceLabel}: auto-matched ${inferredHours} hours at ₹${baseRate}/hour (Billed amount: ₹${billedRate}).`;
+                                    } else if (remainderPre <= 1.0 && inferredPreHours >= 1 && inferredPreHours <= 720) {
+                                        expectedTariff = billedRatePreDiscount;
+                                        explanation += ` Resolved ${serviceLabel}: auto-matched ${inferredPreHours} hours at ₹${baseRate}/hour (Pre-discount amount: ₹${billedRatePreDiscount}).`;
+                                    } else {
+                                        let checkQty = (quantity > 0) ? quantity : 1;
+                                        let diffUnit = Math.abs(billedRate - baseRate);
+                                        let diffTotal = Math.abs(billedRate - (checkQty * baseRate));
+                                        
+                                        if (diffUnit < diffTotal && checkQty > 1) {
+                                            expectedTariff = baseRate;
+                                            explanation += ` Resolved ${serviceLabel} unit rate: ₹${baseRate}/hour (Qty: ${checkQty}).`;
+                                        } else {
+                                            expectedTariff = checkQty * baseRate;
+                                            explanation += ` Resolved ${serviceLabel}: ${checkQty} hours at ₹${baseRate}/hour.`;
+                                        }
+                                    }
                                 } else {
-                                    expectedTariff = roundedHours * baseRate;
-                                    explanation += ` Resolved Oxygen: ${roundedHours} hours at ₹${baseRate}/hour.`;
-                                }
-                                if (Math.abs(quantity - roundedHours) > 0.1) {
-                                    explanation += ` [Note: Billed Qty ${quantity} vs Duration ${roundedHours}h].`;
+                                    expectedTariff = baseRate;
+                                    explanation += ` Resolved ${serviceLabel}: 1 hour at ₹${baseRate}/hour.`;
                                 }
                             } else {
-                                let checkQty = (quantity > 0) ? quantity : 1;
-                                let diffUnit = Math.abs(billedRate - baseRate);
-                                let diffTotal = Math.abs(billedRate - (checkQty * baseRate));
-                                
-                                if (diffUnit < diffTotal && checkQty > 1) {
-                                    expectedTariff = baseRate;
-                                    explanation += ` Resolved Oxygen unit rate: ₹${baseRate}/hour (Qty: ${checkQty}).`;
-                                } else {
-                                    expectedTariff = checkQty * baseRate;
-                                    explanation += ` Resolved Oxygen: ${checkQty} hours at ₹${baseRate}/hour.`;
-                                }
+                                expectedTariff = baseRate;
                             }
                         } else if (serviceId === "2103" || nameUpper.includes("OPERATION THEATRE CHARGES") || nameUpper.includes("OPERATION THEATRE CHARGE")) {
                             if (activeBU === "kolkata") {

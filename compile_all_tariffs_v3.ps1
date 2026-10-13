@@ -343,12 +343,18 @@ function Deduplicate-TariffList($list) {
     $unique = New-Object System.Collections.Generic.List[Object]
     if ($null -eq $list) { return $unique }
     $seen = @{}
+    $itemIndex = @{}
     foreach ($item in $list) {
         if ($null -ne $item.id) {
             $idStr = $item.id.ToString().Trim()
-            if ($idStr -ne "" -and -not $seen.ContainsKey($idStr)) {
-                $unique.Add($item)
-                $seen[$idStr] = $true
+            if ($idStr -ne "") {
+                if (-not $seen.ContainsKey($idStr)) {
+                    $unique.Add($item)
+                    $seen[$idStr] = $true
+                    $itemIndex[$idStr] = $unique.Count - 1
+                } elseif ($unique[$itemIndex[$idStr]].rate -eq 0 -and $item.rate -gt 0) {
+                    $unique[$itemIndex[$idStr]] = $item
+                }
             }
         }
     }
@@ -363,7 +369,7 @@ function Parse-MultiSheetFile($file) {
     for ($i = 1; $i -le $wb.Worksheets.Count; $i++) {
         $sheet = $wb.Worksheets.Item($i)
         $sheetName = $sheet.Name
-        if ($sheetName -in @("Index", "cover page", "01 Billing terms", "1.1 Additional Terms", "Room Tariff", "end page")) {
+        if ($sheetName -in @("Index", "cover page", "01 Billing terms", "1.1 Additional Terms", "Room Tariff", "end page", "Doctor Consultancy", "Dialysis")) {
             continue
         }
         
