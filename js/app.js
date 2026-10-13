@@ -49,6 +49,7 @@
     let mapCash2026 = {};
     let mapExcelcare2024 = {};
     let mapExcelcareGipsa2026 = {};
+    let mapExcelcareOilIndia2025_27 = {};
     let mapKolkata = {};       // Standard Kolkata SOC (no payer-specific entries)
     let mapKolkataHdfc = {};   // Kolkata SOC + HDFC ERGO package entries (applicablePayer = HDFC_ERGO)
     let mapHdfc = {}; // id -> Array of HDFC records (Excelcare templates)
@@ -990,6 +991,9 @@
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') {
             safeForEach(TARIFF_EXCELCARE_GIPSA_2026, item => { mapExcelcareGipsa2026[item.id] = item; });
         }
+        if (typeof TARIFF_EXCELCARE_OIL_INDIA_2025_27 !== 'undefined') {
+            safeForEach(TARIFF_EXCELCARE_OIL_INDIA_2025_27, item => { mapExcelcareOilIndia2025_27[item.id] = item; });
+        }
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') {
             safeForEach(TARIFF_KOLKATA_SOC, item => {
                 // Standard map: only entries without a payer restriction
@@ -1035,6 +1039,7 @@
         if (typeof TARIFF_CASH_2026 !== 'undefined') TARIFF_CASH_2026.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') TARIFF_EXCELCARE_2024.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') TARIFF_EXCELCARE_GIPSA_2026.forEach(item => allIds.add(item.id));
+        if (typeof TARIFF_EXCELCARE_OIL_INDIA_2025_27 !== 'undefined') TARIFF_EXCELCARE_OIL_INDIA_2025_27.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') TARIFF_KOLKATA_SOC.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_HDFC_ERGO_2024 !== 'undefined') TARIFF_HDFC_ERGO_2024.forEach(item => allIds.add(item.id));
         if (typeof TARIFF_HDFC_ERGO_AGREED_2026 !== 'undefined') TARIFF_HDFC_ERGO_AGREED_2026.forEach(item => allIds.add(item.id));
@@ -1057,6 +1062,7 @@
             let mEcCash = mapExcelcareCash[id];
             let mEc24 = mapExcelcare2024[id];
             let mEcGipsa2026 = mapExcelcareGipsa2026[id];
+            let mEcOil = mapExcelcareOilIndia2025_27[id];
             let mKol = mapKolkata[id];
             let mHdfcList = mapHdfc[id] || [];
             let mHdfc = mHdfcList.length > 0 ? mHdfcList[0] : null;
@@ -1080,6 +1086,8 @@
                 name = mKol.name; dept = mKol.dept; type = mKol.type;
             } else if (mEcGipsa2026) {
                 name = mEcGipsa2026.name; dept = 'Excelcare SOC'; type = 'Excelcare GIPSA';
+            } else if (mEcOil) {
+                name = mEcOil.name; dept = mEcOil.dept || 'Excelcare Oil India'; type = mEcOil.type || 'Procedures';
             } else if (mEc) {
                 name = mEc.name; dept = 'Excelcare SOC'; type = 'Excelcare Room/Bed';
             } else if (mEcCash) {
@@ -1109,6 +1117,7 @@
                 rateExcelcareCash: mEcCash ? mEcCash.rate : null,
                 rateExcelcare2024: mEc24 ? mEc24.rate : null,
                 rateExcelcareGipsa2026: mEcGipsa2026 ? mEcGipsa2026.rate : null,
+                rateExcelcareOilIndia: mEcOil ? mEcOil.rate : null,
                 rateKolkata: mKol ? mKol.rates : null,
                 rateHdfcAgreed2026: mHdfcAgreed ? { intl_rate: mHdfcAgreed.intl_rate, excl_rate: mHdfcAgreed.excl_rate, variance: mHdfcAgreed.variance } : null
             });
@@ -1261,6 +1270,7 @@
         let countExcelcareCash = 0;
         let countExcelcare2024 = 0;
         let countExcelcareGipsa2026 = 0;
+        let countExcelcareOilIndia = 0;
         let count2026 = 0;
         let countKolkataSoc = 0;
         let countKolkataPkg = 0;
@@ -1275,6 +1285,7 @@
         if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') countExcelcareCash = TARIFF_EXCELCARE_CASH_2025.length;
         if (typeof TARIFF_EXCELCARE_2024 !== 'undefined') countExcelcare2024 = TARIFF_EXCELCARE_2024.length;
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') countExcelcareGipsa2026 = TARIFF_EXCELCARE_GIPSA_2026.length;
+        if (typeof TARIFF_EXCELCARE_OIL_INDIA_2025_27 !== 'undefined') countExcelcareOilIndia = TARIFF_EXCELCARE_OIL_INDIA_2025_27.length;
         if (typeof TARIFF_DATA !== 'undefined') count2026 = TARIFF_DATA.length;
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') countKolkataSoc = TARIFF_KOLKATA_SOC.length;
         if (typeof TARIFF_KOLKATA_PKG !== 'undefined') countKolkataPkg = TARIFF_KOLKATA_PKG.length;
@@ -1321,7 +1332,7 @@
             if (dbEcEl) dbEcEl.textContent = "0";
         } else if (activeUnit === 'excelcare') {
             if (dbMouEl) dbMouEl.textContent = ecCount.toLocaleString();
-            if (dbMasterEl) dbMasterEl.textContent = (countExcelcare + countExcelcareCash + countExcelcare2024 + countExcelcareGipsa2026).toLocaleString();
+            if (dbMasterEl) dbMasterEl.textContent = (countExcelcare + countExcelcareCash + countExcelcare2024 + countExcelcareGipsa2026 + countExcelcareOilIndia).toLocaleString();
             if (dbCbEl) dbCbEl.textContent = "0";
             if (dbEcEl) dbEcEl.textContent = ecCount.toLocaleString();
         } else if (activeUnit === 'international') {
@@ -1348,14 +1359,14 @@
             labels = ['Kolkata SOC', 'Kolkata Pkg'];
             data = [countKolkataSoc, countKolkataPkg];
         } else if (activeUnit === 'excelcare') {
-            labels = ['Excelcare 24', 'Excelcare 25', 'Excelcare Cash', 'Excelcare GIPSA'];
-            data = [countExcelcare2024, countExcelcare, countExcelcareCash, countExcelcareGipsa2026];
+            labels = ['Excelcare 24', 'Excelcare 25', 'Excelcare Cash', 'Excelcare GIPSA', 'Oil India 25-27'];
+            data = [countExcelcare2024, countExcelcare, countExcelcareCash, countExcelcareGipsa2026, countExcelcareOilIndia];
         } else if (activeUnit === 'international') {
             labels = ['2021-22', '2021-22 IOCL', '2023-24', '2023-24 V2', '2024-25', '2025-26'];
             data = [count2021, count2021_iocl, count2023, count2023_v2, count2024, count2025];
         } else {
-            labels = ['2021-22', '2021-22 IOCL', '2023-24', '2023-24 V2', '2024-25', '2025-26', 'Excelcare 24', 'Excelcare 25', 'Excelcare Cash', 'Excelcare GIPSA', 'Kolkata SOC', 'Kolkata Pkg', '2026 Master'];
-            data = [count2021, count2021_iocl, count2023, count2023_v2, count2024, count2025, countExcelcare2024, countExcelcare, countExcelcareCash, countExcelcareGipsa2026, countKolkataSoc, countKolkataPkg, count2026];
+            labels = ['2021-22', '2021-22 IOCL', '2023-24', '2023-24 V2', '2024-25', '2025-26', 'Excelcare 24', 'Excelcare 25', 'Excelcare Cash', 'Excelcare GIPSA', 'Oil India 25-27', 'Kolkata SOC', 'Kolkata Pkg', '2026 Master'];
+            data = [count2021, count2021_iocl, count2023, count2023_v2, count2024, count2025, countExcelcare2024, countExcelcare, countExcelcareCash, countExcelcareGipsa2026, countExcelcareOilIndia, countKolkataSoc, countKolkataPkg, count2026];
         }
 
         const ctxYears = document.getElementById('chart-db-years');
@@ -1780,6 +1791,25 @@
         if (tariffUpper.includes("DELUXE") || tariffUpper.includes("TPA")) {
             return item.rate2026 ? item.rate2026.tpa : null;
         }
+        if (tariffUpper.includes("OIL INDIA") || tariffUpper.includes("OIL_INDIA")) {
+            if (item.rateExcelcareOilIndia !== undefined && item.rateExcelcareOilIndia !== null) return item.rateExcelcareOilIndia;
+            return item.rateExcelcareOilIndia || null;
+        }
+        if (tariffUpper.includes("EXCELCARE")) {
+            if (tariffUpper.includes("OIL INDIA") || tariffUpper.includes("OIL")) {
+                return item.rateExcelcareOilIndia;
+            }
+            if (tariffUpper.includes("CASH")) {
+                return item.rateExcelcareCash;
+            }
+            if (tariffUpper.includes("GIPSA")) {
+                return item.rateExcelcareGipsa2026;
+            }
+            if (tariffUpper.includes("2024") || tariffUpper.includes("24-25")) {
+                return item.rateExcelcare2024;
+            }
+            return item.rateExcelcare;
+        }
         if (tariffUpper.includes("2021")) {
             return item.rate2021;
         }
@@ -1791,12 +1821,6 @@
         }
         if (tariffUpper.includes("2025")) {
             return item.rate2025;
-        }
-        if (tariffUpper.includes("EXCELCARE")) {
-            if (tariffUpper.includes("2024") || tariffUpper.includes("24-25")) {
-                return item.rateExcelcare2024;
-            }
-            return item.rateExcelcare;
         }
         return null;
     }
@@ -1825,6 +1849,7 @@
             sourceSelect.innerHTML += `
                 <option value="socexcelcare">2025-26 SOC (Excelcare)</option>
                 <option value="socexcelcarecash">2026 - Cash (Excelcare)</option>
+                <option value="socexcelcareoilindia">2025-27 Oil India (Excelcare)</option>
                 <option value="socexcelcare2024">2024-25 SOC (Excelcare)</option>
                 <option value="hdfcergo">2024 HDFC ERGO Template</option>
             `;
@@ -2020,6 +2045,7 @@
         const pill2025 = document.querySelector('.pill-btn[data-filter="soc2025"]');
         const pillExcelcare = document.querySelector('.pill-btn[data-filter="socexcelcare"]');
         const pillExcelcareCash = document.querySelector('.pill-btn[data-filter="socexcelcarecash"]');
+        const pillExcelcareOilIndia = document.querySelector('.pill-btn[data-filter="socexcelcareoilindia"]');
         const pillExcelcare2024 = document.querySelector('.pill-btn[data-filter="socexcelcare2024"]');
         const pillHdfc = document.querySelector('.pill-btn[data-filter="hdfcergo"]');
 
@@ -2032,12 +2058,13 @@
         if (pill2025) pill2025.style.display = isAllOrInt ? '' : 'none';
         if (pillExcelcare) pillExcelcare.style.display = isAllOrEc ? '' : 'none';
         if (pillExcelcareCash) pillExcelcareCash.style.display = isAllOrEc ? '' : 'none';
+        if (pillExcelcareOilIndia) pillExcelcareOilIndia.style.display = isAllOrEc ? '' : 'none';
         if (pillExcelcare2024) pillExcelcare2024.style.display = isAllOrEc ? '' : 'none';
         if (pillHdfc) pillHdfc.style.display = isAllOrEc ? '' : 'none';
 
         // Reset filter tab if it was hidden
         if ((!isAllOrInt && ['soc2021', 'soc2023', 'soc2024', 'soc2025'].includes(currentFilterCategory)) ||
-            (!isAllOrEc && ['socexcelcare', 'socexcelcare2024', 'socexcelcarecash', 'hdfcergo'].includes(currentFilterCategory))) {
+            (!isAllOrEc && ['socexcelcare', 'socexcelcare2024', 'socexcelcarecash', 'socexcelcareoilindia', 'hdfcergo'].includes(currentFilterCategory))) {
             currentFilterCategory = 'all';
             document.querySelectorAll('#filter-pills .pill-btn').forEach(btn => {
                 if (btn.getAttribute('data-filter') === 'all') {
@@ -2055,6 +2082,7 @@
         const show2025 = isAllOrInt && (source === 'all' || source === 'soc2025');
         const showExcelcare = isAllOrEc && (source === 'all' || source === 'socexcelcare');
         const showExcelcareCash = isAllOrEc && (source === 'all' || source === 'socexcelcarecash');
+        const showExcelcareOilIndia = isAllOrEc && (source === 'all' || source === 'socexcelcareoilindia');
         const showExcelcare2024 = isAllOrEc && (source === 'all' || source === 'socexcelcare2024');
         const show2026Master = isAllOrInt && (source === 'all' || source === 'gipsa' || source === 'tpa');
         const showHdfc = isAllOrEc && (source === 'all' || source === 'hdfcergo');
@@ -2067,6 +2095,7 @@
         if (currentSortColumn === 'rate2025' && !show2025) currentSortColumn = 'id';
         if (currentSortColumn === 'rateExcelcare' && !showExcelcare) currentSortColumn = 'id';
         if (currentSortColumn === 'rateExcelcareCash' && !showExcelcareCash) currentSortColumn = 'id';
+        if (currentSortColumn === 'rateExcelcareOilIndia' && !showExcelcareOilIndia) currentSortColumn = 'id';
         if (currentSortColumn === 'rateExcelcare2024' && !showExcelcare2024) currentSortColumn = 'id';
         if (currentSortColumn === 'rate2026' && !show2026Master) currentSortColumn = 'id';
         if (currentSortColumn === 'rateHdfc' && !showHdfc) currentSortColumn = 'id';
@@ -2099,6 +2128,8 @@
                     if (!hasInternationalRate) return false;
                 } else if (bu === 'excelcare') {
                     const hasExcelcareRate = item.rateExcelcare !== null || 
+                                             item.rateExcelcareCash !== null ||
+                                             item.rateExcelcareOilIndia !== null ||
                                              item.rateExcelcare2024 !== null ||
                                              (mapHdfc[item.id] !== undefined && mapHdfc[item.id].length > 0);
                     if (!hasExcelcareRate) return false;
@@ -2118,6 +2149,7 @@
                 if (source === 'tpa' && (!item.rate2026 || item.rate2026.tpa === null)) return false;
                 if (source === 'socexcelcare' && item.rateExcelcare === null) return false;
                 if (source === 'socexcelcarecash' && item.rateExcelcareCash === null) return false;
+                if (source === 'socexcelcareoilindia' && item.rateExcelcareOilIndia === null) return false;
                 if (source === 'socexcelcare2024' && item.rateExcelcare2024 === null) return false;
                 if (source === 'hdfcergo' && (!mapHdfc[item.id] || mapHdfc[item.id].length === 0)) return false;
                 if (source === 'sockolkata' && item.rateKolkata === null) return false;
@@ -2147,6 +2179,8 @@
                     return item.rateExcelcare !== null;
                 case 'socexcelcarecash':
                     return item.rateExcelcareCash !== null;
+                case 'socexcelcareoilindia':
+                    return item.rateExcelcareOilIndia !== null;
                 case 'socexcelcare2024':
                     return item.rateExcelcare2024 !== null;
                 case 'hdfcergo':
@@ -2164,6 +2198,7 @@
         const th2025 = document.querySelector('th[data-sort="rate2025"]');
         const thExcelcare = document.querySelector('th[data-sort="rateExcelcare"]');
         const thExcelcareCash = document.querySelector('th[data-sort="rateExcelcareCash"]');
+        const thExcelcareOilIndia = document.querySelector('th[data-sort="rateExcelcareOilIndia"]');
         const thExcelcare2024 = document.querySelector('th[data-sort="rateExcelcare2024"]');
         const th2026Master = document.querySelector('th[data-sort="rate2026"]');
         const thHdfc = document.querySelector('th[data-sort="rateHdfc"]');
@@ -2175,6 +2210,7 @@
         if (th2025) th2025.style.display = show2025 ? '' : 'none';
         if (thExcelcare) thExcelcare.style.display = showExcelcare ? '' : 'none';
         if (thExcelcareCash) thExcelcareCash.style.display = showExcelcareCash ? '' : 'none';
+        if (thExcelcareOilIndia) thExcelcareOilIndia.style.display = showExcelcareOilIndia ? '' : 'none';
         if (thExcelcare2024) thExcelcare2024.style.display = showExcelcare2024 ? '' : 'none';
         if (th2026Master) th2026Master.style.display = show2026Master ? '' : 'none';
         if (thHdfc) thHdfc.style.display = showHdfc ? '' : 'none';
@@ -2182,7 +2218,7 @@
 
         // Save visibility flags globally so renderTable can access them
         window.activeColumnVisibility = {
-            show2021, show2023, show2024, show2025, showExcelcare, showExcelcareCash, showExcelcare2024, show2026Master, showHdfc, showContract
+            show2021, show2023, show2024, show2025, showExcelcare, showExcelcareCash, showExcelcareOilIndia, showExcelcare2024, show2026Master, showHdfc, showContract
         };
 
         sortData();
@@ -2233,6 +2269,10 @@
                 case 'rateExcelcareCash':
                     valA = a.rateExcelcareCash !== null ? Number(a.rateExcelcareCash) : (currentSortDirection === 'asc' ? Infinity : -Infinity);
                     valB = b.rateExcelcareCash !== null ? Number(b.rateExcelcareCash) : (currentSortDirection === 'asc' ? Infinity : -Infinity);
+                    break;
+                case 'rateExcelcareOilIndia':
+                    valA = a.rateExcelcareOilIndia !== null ? Number(a.rateExcelcareOilIndia) : (currentSortDirection === 'asc' ? Infinity : -Infinity);
+                    valB = b.rateExcelcareOilIndia !== null ? Number(b.rateExcelcareOilIndia) : (currentSortDirection === 'asc' ? Infinity : -Infinity);
                     break;
                 case 'rateExcelcare2024':
                     valA = a.rateExcelcare2024 !== null ? Number(a.rateExcelcare2024) : (currentSortDirection === 'asc' ? Infinity : -Infinity);
@@ -2308,6 +2348,8 @@
                 'gipsa': '2026 GIPSA',
                 'tpa': '2024 TPA Deluxe',
                 'socexcelcare': '2025-26 SOC (Excelcare)',
+                'socexcelcarecash': '2026 - Cash (Excelcare)',
+                'socexcelcareoilindia': '2025-27 Oil India (Excelcare)',
                 'socexcelcare2024': '2024-25 SOC (Excelcare)',
                 'hdfcergo': '2024 HDFC ERGO'
             };
@@ -2324,6 +2366,8 @@
                 'soc2024': 'In 2024-25 SOC',
                 'soc2025': 'In 2025-26 SOC',
                 'socexcelcare': 'In Excelcare 2025',
+                'socexcelcarecash': 'In Excelcare Cash',
+                'socexcelcareoilindia': 'In Excelcare Oil India',
                 'socexcelcare2024': 'In Excelcare 2024',
                 'hdfcergo': 'In HDFC ERGO 2024'
             };
@@ -2391,7 +2435,7 @@
         const ag = (selectedCustName !== 'all') ? AGREEMENT_DETAILS.find(x => x.agreementName === selectedCustName) : null;
 
         const vis = window.activeColumnVisibility || {
-            show2021: true, show2023: true, show2024: true, show2025: true, showExcelcare: true, showExcelcareCash: true, showExcelcare2024: true, show2026Master: true, showHdfc: true, showContract: true
+            show2021: true, show2023: true, show2024: true, show2025: true, showExcelcare: true, showExcelcareCash: true, showExcelcareOilIndia: true, showExcelcare2024: true, show2026Master: true, showHdfc: true, showContract: true
         };
 
         pageData.forEach(item => {
@@ -2425,6 +2469,7 @@
                     <td data-label="Excelcare 2024" class="rate-cell" style="text-align: right; display: ${vis.showExcelcare2024 ? '' : 'none'};">${formatCurrency(item.rateExcelcare2024)}</td>
                     <td data-label="Excelcare 2025" class="rate-cell" style="text-align: right; display: ${vis.showExcelcare ? '' : 'none'};">${formatCurrency(item.rateExcelcare)}</td>
                     <td data-label="Excelcare 2026 - Cash" class="rate-cell" style="text-align: right; display: ${vis.showExcelcareCash ? '' : 'none'};">${formatCurrency(item.rateExcelcareCash)}</td>
+                    <td data-label="Oil India 2025-27" class="rate-cell" style="text-align: right; display: ${vis.showExcelcareOilIndia ? '' : 'none'};">${formatCurrency(item.rateExcelcareOilIndia)}</td>
                     <td data-label="2026 Master" class="rate-cell" style="text-align: right; display: ${vis.show2026Master ? '' : 'none'};">${formatMaster2026(item)}</td>
                     <td data-label="HDFC ERGO" class="rate-cell" style="text-align: right; font-size: 0.8rem; line-height: 1.2; display: ${vis.showHdfc ? '' : 'none'};">${formatHdfcRange(item.id)}</td>
                     <td data-label="Contract Rate" class="rate-cell" style="text-align: right; font-size: 0.85rem; display: ${vis.showContract ? '' : 'none'};">${contractRateHtml}</td>
@@ -2514,6 +2559,7 @@
             { label: '2024-25 SOC (Excelcare)', rate: item.rateExcelcare2024 },
             { label: '2025-26 SOC (Excelcare)', rate: item.rateExcelcare },
             { label: '2026 - Cash (Excelcare)', rate: item.rateExcelcareCash },
+            { label: '2025-27 Oil India (Excelcare)', rate: item.rateExcelcareOilIndia },
             { label: '2026 Master (GIPSA)', rate: item.rate2026 ? item.rate2026.gipsa : null },
             { label: '2026 Master (TPA)', rate: item.rate2026 ? item.rate2026.tpa : null }
         ].filter(y => y.rate !== null && y.rate !== undefined);
@@ -2621,6 +2667,7 @@
         const valExcelcare2024 = item.rateExcelcare2024;
         const valExcelcare = item.rateExcelcare;
         const valExcelcareCash = item.rateExcelcareCash;
+        const valExcelcareOilIndia = item.rateExcelcareOilIndia;
         const val26G = item.rate2026 ? item.rate2026.gipsa : null;
         const val26T = item.rate2026 ? item.rate2026.tpa : null;
         const hdfcRates = getHdfcRatesForId(item.id);
@@ -2697,6 +2744,10 @@
                             <td style="padding: 0.5rem; border-bottom: 1px solid var(--border); text-align: right; font-family: monospace; font-size: 0.85rem; font-weight: 700;">${formatRate(valExcelcareCash)}</td>
                         </tr>
                         <tr>
+                            <td style="padding: 0.5rem; border-bottom: 1px solid var(--border); font-size: 0.8rem;">2025-27 Oil India (Excelcare)</td>
+                            <td style="padding: 0.5rem; border-bottom: 1px solid var(--border); text-align: right; font-family: monospace; font-size: 0.85rem; font-weight: 700;">${formatRate(valExcelcareOilIndia)}</td>
+                        </tr>
+                        <tr>
                             <td style="padding: 0.5rem; border-bottom: 1px solid var(--border); font-size: 0.8rem;">2026 Master (GIPSA)</td>
                             <td style="padding: 0.5rem; border-bottom: 1px solid var(--border); text-align: right; font-family: monospace; font-size: 0.85rem; font-weight: 700;">${formatRate(val26G)}</td>
                         </tr>
@@ -2769,7 +2820,7 @@
         let csvContent = '\uFEFF'; 
         const headers = [
             'Service ID', 'Description', 'Department', 'Service Type', 
-            '2021-22 SOC', '2023-24 SOC', '2024-25 SOC', '2025-26 SOC International', '2024-25 SOC Excelcare', '2025-26 SOC Excelcare', '2026 - Cash Excelcare', 
+            '2021-22 SOC', '2023-24 SOC', '2024-25 SOC', '2025-26 SOC International', '2024-25 SOC Excelcare', '2025-26 SOC Excelcare', '2026 - Cash Excelcare', '2025-27 Oil India Excelcare',
             '2026 Master GIPSA', '2026 Master TPA', 
             'HDFC Gen/4 Sharing', 'HDFC 2 Sharing', 'HDFC Single/ICU/Exec', 'HDFC Suite', 'HDFC Daycare',
             'Alias Code', 'Alias Name', 'Contracted Customer', 'Contracted Rate'
@@ -2810,6 +2861,7 @@
                 item.rateExcelcare2024 !== null ? item.rateExcelcare2024 : 'N/A',
                 item.rateExcelcare !== null ? item.rateExcelcare : 'N/A',
                 item.rateExcelcareCash !== null ? item.rateExcelcareCash : 'N/A',
+                item.rateExcelcareOilIndia !== null ? item.rateExcelcareOilIndia : 'N/A',
                 item.rate2026 ? (item.rate2026.gipsa !== null ? item.rate2026.gipsa : 'N/A') : 'N/A',
                 item.rate2026 ? (item.rate2026.tpa !== null ? item.rate2026.tpa : 'N/A') : 'N/A',
                 hdfc['Gen/4 Sharing'] !== null ? hdfc['Gen/4 Sharing'] : 'N/A',
@@ -3235,6 +3287,7 @@
                 sourceSelect.innerHTML = `
                     <option value="excelcare_2025" selected>2025-26 SOC (Excelcare)</option>
                     <option value="excelcare_cash_2025">2026 - Cash (Excelcare)</option>
+                    <option value="excelcare_oil_india_2025_27">2025-27 Oil India (Excelcare)</option>
                     <option value="excelcare_gipsa_2026">SOC - GIPSA 2026 (Excelcare)</option>
                     <option value="excelcare_2024">2024-25 SOC (Excelcare)</option>
                     <option value="custom_ingested">Custom Ingested SOC (Session)</option>
@@ -3243,6 +3296,7 @@
                 sourceSelect.innerHTML = `
                     <option value="excelcare_soc">Standard Excelcare SOC Template (Credit)</option>
                     <option value="excelcare_soc_cash">Standard Excelcare SOC Template (Cash)</option>
+                    <option value="excelcare_oil_india">Oil India Tariff Template (Excelcare)</option>
                     <option value="hdfc_single" selected>HDFC ERGO Single/ICU/Exec Template</option>
                     <option value="hdfc_gen">HDFC ERGO General/4 Sharing Template</option>
                     <option value="hdfc_twin">HDFC ERGO Twin/2 Sharing Template</option>
@@ -3286,6 +3340,7 @@
         } else {
             html = `
                 <option value="excelcare_soc">Standard Excelcare SOC 2025</option>
+                <option value="excelcare_oil_india">Oil India Tariff Template (Excelcare)</option>
                 <option value="excelcare_gipsa_2026">SOC - GIPSA 2026 (Excelcare)</option>
                 <option value="excelcare_soc_2024">Standard Excelcare SOC 2024</option>
                 <option value="hdfc_gen">HDFC ERGO General/4 Sharing</option>
@@ -3535,15 +3590,22 @@
         if (custUpper.includes("IOCL") || u.includes("IOCL") || custUpper.includes("INDIAN OIL") || u.includes("INDIAN OIL")) {
             return { activeSOC: TARIFF_2021_IOCL, activeSOCMap: map2021_iocl };
         }
+        if (u.includes("OIL INDIA") || custUpper.includes("OIL INDIA") || u.includes("OIL_INDIA")) {
+            return { activeSOC: TARIFF_EXCELCARE_OIL_INDIA_2025_27, activeSOCMap: mapExcelcareOilIndia2025_27 };
+        }
         if (u.includes("KOLKATA")) {
             return { activeSOC: TARIFF_KOLKATA_SOC, activeSOCMap: mapKolkata };
         }
         if (u.includes("EXCELCARE")) {
+            if (u.includes("OIL INDIA") || u.includes("OIL") || custUpper.includes("OIL INDIA")) {
+                return { activeSOC: TARIFF_EXCELCARE_OIL_INDIA_2025_27, activeSOCMap: mapExcelcareOilIndia2025_27 };
+            }
             if (u.includes("2024") || u.includes("24-25")) {
                 return { activeSOC: TARIFF_EXCELCARE_2024, activeSOCMap: mapExcelcare2024 };
             }
             if (u.includes("CASH")) {
-                return { activeSOC: TARIFF_EXCELCARE_CASH_2025, activeSOCMap: mapExcelcareCash };
+                const arr = typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2026_27 : TARIFF_EXCELCARE_CASH_2025;
+                return { activeSOC: arr, activeSOCMap: mapExcelcareCash };
             }
             if (u.includes("GIPSA")) {
                 return { activeSOC: TARIFF_EXCELCARE_GIPSA_2026, activeSOCMap: mapExcelcareGipsa2026 };
@@ -3590,6 +3652,9 @@
         if (cleanCustomer.includes("INDIAN OIL") || cleanCustomer.includes("INDIAN OIL CORPORATION")) {
             cleanCustomer += " IOCL";
         }
+        if (cleanCustomer.includes("OIL INDIA")) {
+            cleanCustomer += " OILINDIA";
+        }
         
         const stopwords = [
             "LTD", "PVT", "LIMITED", "PRIVATE", "AGREEMENT", "COMPANY", "INSURANCE", 
@@ -3625,6 +3690,12 @@
             
             let cleanAgName = agName.replace(/[.,()\-]/g, ' ');
             cleanAgName = cleanAgName.replace(/\bALLIANCE\b/g, 'ALLIANZ');
+            if (cleanAgName.includes("INDIAN OIL") || cleanAgName.includes("INDIAN OIL CORPORATION")) {
+                cleanAgName += " IOCL";
+            }
+            if (cleanAgName.includes("OIL INDIA")) {
+                cleanAgName += " OILINDIA";
+            }
             
             const agWords = cleanAgName.split(/\s+/).map(w => w.trim()).filter(w => {
                 return w.length > 2 && !stopwords.includes(w);
@@ -5173,7 +5244,8 @@
                 else if (selectedSocName === '2021') activeSOCArray = TARIFF_2021;
                 else if (selectedSocName === '2021_iocl') activeSOCArray = TARIFF_2021_IOCL;
                 else if (selectedSocName === 'excelcare') activeSOCArray = typeof TARIFF_EXCELCARE_2025 !== 'undefined' ? TARIFF_EXCELCARE_2025 : [];
-                else if (selectedSocName === 'excelcare_cash') activeSOCArray = typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2025 : [];
+                else if (selectedSocName === 'excelcare_cash') activeSOCArray = typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2026_27 : (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2025 : []);
+                else if (selectedSocName === 'excelcare_oil_india_2025_27' || selectedSocName === 'socexcelcareoilindia' || selectedSocName === 'excelcare_oil_india') activeSOCArray = typeof TARIFF_EXCELCARE_OIL_INDIA_2025_27 !== 'undefined' ? TARIFF_EXCELCARE_OIL_INDIA_2025_27 : [];
                 else if (selectedSocName === 'cash_2025') activeSOCArray = typeof TARIFF_CASH_2025 !== 'undefined' ? TARIFF_CASH_2025 : [];
                 else if (selectedSocName === 'cash_2026') activeSOCArray = typeof TARIFF_CASH_2026 !== 'undefined' ? TARIFF_CASH_2026 : [];
                 else if (selectedSocName === 'excelcare_2024') activeSOCArray = typeof TARIFF_EXCELCARE_2024 !== 'undefined' ? TARIFF_EXCELCARE_2024 : [];
@@ -5244,7 +5316,9 @@
             if (socArray === TARIFF_2023_V2) return map2023_v2;
             if (socArray === TARIFF_2021) return map2021;
             if (socArray === TARIFF_2021_IOCL) return map2021_iocl;
+            if (typeof TARIFF_EXCELCARE_OIL_INDIA_2025_27 !== 'undefined' && socArray === TARIFF_EXCELCARE_OIL_INDIA_2025_27) return mapExcelcareOilIndia2025_27;
             if (typeof TARIFF_EXCELCARE_2025 !== 'undefined' && socArray === TARIFF_EXCELCARE_2025) return mapExcelcare;
+            if (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' && socArray === TARIFF_EXCELCARE_CASH_2026_27) return mapExcelcareCash;
             if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && socArray === TARIFF_EXCELCARE_CASH_2025) return mapExcelcareCash;
             if (typeof TARIFF_CASH_2025 !== 'undefined' && socArray === TARIFF_CASH_2025) return mapCash2025;
             if (typeof TARIFF_CASH_2026 !== 'undefined' && socArray === TARIFF_CASH_2026) return mapCash2026;
@@ -5612,6 +5686,9 @@
                         } else if (activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_cash_2026" || activeSourceVal === "excelcare_cash_2026_27" || activeSourceVal === "excelcare_cash" || activeSourceVal === "socexcelcarecash") {
                             activeSOC = typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2026_27 : TARIFF_EXCELCARE_CASH_2025;
                             explanation = `Billed against SOC: Excelcare Cash FY 2026-27 (OP & IP).`;
+                        } else if (activeSourceVal === "excelcare_oil_india_2025_27" || activeSourceVal === "socexcelcareoilindia" || activeSourceVal === "excelcare_oil_india") {
+                            activeSOC = TARIFF_EXCELCARE_OIL_INDIA_2025_27;
+                            explanation = `Billed against SOC: Excelcare Oil India 2025-27 (OP & IP).`;
                         } else if (activeSourceVal === "excelcare_2024") {
                             activeSOC = TARIFF_EXCELCARE_2024;
                             explanation = `Billed against SOC: ${activeSourceVal}.`;
@@ -5662,6 +5739,9 @@
                         } else if (mappedSource === "excelcare_soc_cash" || mappedSource === "socexcelcarecash") {
                             activeSOC = typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2026_27 : TARIFF_EXCELCARE_CASH_2025;
                             explanation = `Room-wise: ${cleanedRoom} -> Excelcare Cash FY 2026-27.`;
+                        } else if (mappedSource === "excelcare_oil_india" || mappedSource === "socexcelcareoilindia" || mappedSource === "excelcare_oil_india_2025_27") {
+                            activeSOC = TARIFF_EXCELCARE_OIL_INDIA_2025_27;
+                            explanation = `Room-wise: ${cleanedRoom} -> Excelcare Oil India 2025-27.`;
                         } else if (mappedSource === "excelcare_soc_2024") {
                             activeSOC = TARIFF_EXCELCARE_2024;
                             explanation = `Room-wise: ${cleanedRoom} -> Excelcare SOC 2024.`;
@@ -5673,8 +5753,9 @@
                                 activeSOC = TARIFF_KOLKATA_SOC;
                             } else {
                                 const isEcCash = (activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_cash_2026" || activeSourceVal === "excelcare_cash_2026_27" || activeSourceVal === "socexcelcarecash");
+                                const isEcOil = (activeSourceVal === "excelcare_oil_india_2025_27" || activeSourceVal === "socexcelcareoilindia" || activeSourceVal === "excelcare_oil_india");
                                 const ecCashSOC = typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2026_27 : TARIFF_EXCELCARE_CASH_2025;
-                                activeSOC = activeBU === "excelcare" ? (activeSourceVal === "excelcare_2024" ? TARIFF_EXCELCARE_2024 : (isEcCash ? ecCashSOC : (activeSourceVal === "excelcare_gipsa_2026" ? TARIFF_EXCELCARE_GIPSA_2026 : TARIFF_EXCELCARE_2025))) : TARIFF_2024;
+                                activeSOC = activeBU === "excelcare" ? (activeSourceVal === "excelcare_2024" ? TARIFF_EXCELCARE_2024 : (isEcCash ? ecCashSOC : (isEcOil ? TARIFF_EXCELCARE_OIL_INDIA_2025_27 : (activeSourceVal === "excelcare_gipsa_2026" ? TARIFF_EXCELCARE_GIPSA_2026 : TARIFF_EXCELCARE_2025)))) : TARIFF_2024;
                             }
                             explanation = `Room-wise fallback SOC applied.`;
                         }
@@ -6158,12 +6239,12 @@
                         let activeYear = "2024"; // default fallback year
                         if (activeSourceVal === "2025" || activeSourceVal === "2024" || activeSourceVal === "2023" || activeSourceVal === "2021" || activeSourceVal === "soc_2023_v2" || activeSourceVal === "soc_2021_iocl" || activeSourceVal === "2025_cash" || activeSourceVal === "2026_cash") {
                             activeYear = activeSourceVal === "soc_2023_v2" ? "2023_v2" : (activeSourceVal === "soc_2021_iocl" ? "2021_iocl" : activeSourceVal);
-                        } else if (activeSourceVal === "excelcare_2025" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_gipsa_2026" || activeSourceVal === "excelcare_soc" || activeSourceVal === "excelcare_soc_cash") {
+                        } else if (activeSourceVal === "excelcare_2025" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_oil_india_2025_27" || activeSourceVal === "socexcelcareoilindia" || activeSourceVal === "excelcare_oil_india" || activeSourceVal === "excelcare_gipsa_2026" || activeSourceVal === "excelcare_soc" || activeSourceVal === "excelcare_soc_cash") {
                             activeYear = "2025";
                         } else if (activeSourceVal === "excelcare_2024" || activeSourceVal === "excelcare_soc_2024") {
                             activeYear = "2024";
                         } else {
-                            if (activeSOC === TARIFF_2025 || activeSOC === TARIFF_EXCELCARE_2025 || activeSOC === TARIFF_EXCELCARE_CASH_2025 || activeSOC === TARIFF_EXCELCARE_GIPSA_2026) activeYear = "2025";
+                            if (activeSOC === TARIFF_2025 || activeSOC === TARIFF_EXCELCARE_2025 || activeSOC === TARIFF_EXCELCARE_CASH_2025 || activeSOC === TARIFF_EXCELCARE_OIL_INDIA_2025_27 || activeSOC === TARIFF_EXCELCARE_GIPSA_2026) activeYear = "2025";
                             else if (activeSOC === TARIFF_2024 || activeSOC === TARIFF_EXCELCARE_2024) activeYear = "2024";
                             else if (activeSOC === TARIFF_2023) activeYear = "2023";
                             else if (activeSOC === TARIFF_2023_V2) activeYear = "2023_v2";
@@ -17401,6 +17482,7 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
             { val: '2026', label: 'Guwahati Master SOC (2026-27 Schedule)' },
             { val: 'kolkata', label: 'Apollo Kolkata Multispeciality SOC (2026)' },
             { val: 'excelcare_cash', label: 'Excelcare Hospital Cash Master (FY 2026-27 - OP & IP)' },
+            { val: 'excelcare_oil_india', label: 'Excelcare Oil India Tariff (2025-27 - OP & IP)' },
             { val: 'excelcare_gipsa', label: 'Excelcare GIPSA PPN Agreed Tariff' },
             { val: 'international', label: 'Apollo International Patient Cash Tariff' }
         ];
@@ -17424,6 +17506,7 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
         if ((key === '2026' || key === 'soc2026') && typeof TARIFF_DATA !== 'undefined') return TARIFF_DATA;
         if ((key === 'kolkata' || key === 'sockolkata') && (typeof TARIFF_KOLKATA_SOC !== 'undefined' || typeof TARIFF_KOLKATA !== 'undefined')) return (typeof TARIFF_KOLKATA_SOC !== 'undefined' ? TARIFF_KOLKATA_SOC : TARIFF_KOLKATA);
         if ((key === 'excelcare_cash' || key === 'socexcelcarecash' || key === 'excelcare_cash_2026_27') && (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' || typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined')) return (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' ? TARIFF_EXCELCARE_CASH_2026_27 : TARIFF_EXCELCARE_CASH_2025);
+        if ((key === 'excelcare_oil_india' || key === 'socexcelcareoilindia' || key === 'excelcare_oil_india_2025_27') && typeof TARIFF_EXCELCARE_OIL_INDIA_2025_27 !== 'undefined') return TARIFF_EXCELCARE_OIL_INDIA_2025_27;
         if ((key === 'excelcare' || key === 'socexcelcare') && typeof TARIFF_EXCELCARE_2025 !== 'undefined') return TARIFF_EXCELCARE_2025;
         if ((key === 'excelcare2024' || key === 'socexcelcare2024') && typeof TARIFF_EXCELCARE_2024 !== 'undefined') return TARIFF_EXCELCARE_2024;
         if ((key === 'excelcare_gipsa' || key === 'socexcelcaregipsa') && typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') return TARIFF_EXCELCARE_GIPSA_2026;

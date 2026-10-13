@@ -1321,6 +1321,7 @@
                         <button class="pill-btn" data-filter="socexcelcare2024">In Excelcare 2024</button>
                         <button class="pill-btn" data-filter="socexcelcare">In Excelcare 2025</button>
                         <button class="pill-btn" data-filter="socexcelcarecash">In Excelcare Cash 2026-27</button>
+                        <button class="pill-btn" data-filter="socexcelcareoilindia">In Excelcare Oil India</button>
                         <button class="pill-btn" data-filter="hdfcergo">In HDFC ERGO 2024</button>
                     </div>
                     <button class="export-btn" id="export-csv" title="Export current search results to CSV">
@@ -1352,6 +1353,7 @@
                                 <th style="width: 90px; text-align: right;" data-sort="rateExcelcare2024">Excelcare 2024 <span class="sort-indicator" id="sort-rateExcelcare2024"></span></th>
                                 <th style="width: 90px; text-align: right;" data-sort="rateExcelcare">Excelcare 2025 <span class="sort-indicator" id="sort-rateExcelcare"></span></th>
                                 <th style="width: 100px; text-align: right;" data-sort="rateExcelcareCash">Excelcare 2026-27 Cash <span class="sort-indicator" id="sort-rateExcelcareCash"></span></th>
+                                <th style="width: 100px; text-align: right;" data-sort="rateExcelcareOilIndia">Oil India 2025-27 <span class="sort-indicator" id="sort-rateExcelcareOilIndia"></span></th>
                                 <th style="width: 100px; text-align: right;" data-sort="rate2026">2026 Master <span class="sort-indicator" id="sort-rate2026"></span></th>
                                 <th style="width: 100px; text-align: right;" data-sort="rateHdfc">HDFC ERGO <span class="sort-indicator" id="sort-rateHdfc"></span></th>
                                 <th style="width: 100px; text-align: right;" data-sort="contractRate">Contract Rate <span class="sort-indicator" id="sort-contractRate"></span></th>
@@ -1404,6 +1406,7 @@
                             <option value="soc2023">Apollo Guwahati 2023-24 SOC</option>
                             <option value="soc2021">Apollo Guwahati 2021-22 SOC</option>
                             <option value="socexcelcarecash">Excelcare Cash FY 2026-27 (OP &amp; IP)</option>
+                            <option value="socexcelcareoilindia">Excelcare Oil India 2025-27 (OP &amp; IP)</option>
                             <option value="socexcelcare">Excelcare Hospital 2025</option>
                             <option value="socexcelcare2024">Excelcare Hospital 2024</option>
                             <option value="hdfcergo">HDFC ERGO 2024 Tariff</option>
@@ -1413,6 +1416,7 @@
                         <label for="delta-target-soc" style="font-size: 0.72rem; font-weight: 700;">Target Comparative Schedule</label>
                         <select id="delta-target-soc" class="form-control" style="font-size: 0.8rem;">
                             <option value="socexcelcarecash" selected>Excelcare Cash FY 2026-27 (OP &amp; IP)</option>
+                            <option value="socexcelcareoilindia">Excelcare Oil India 2025-27 (OP &amp; IP)</option>
                             <option value="soc2025">Apollo Guwahati 2025-26 SOC</option>
                             <option value="soc2024">Apollo Guwahati 2024-25 SOC</option>
                             <option value="socexcelcare">Excelcare Hospital 2025</option>
@@ -3613,6 +3617,7 @@
                             <option value="TARIFF_EXCELCARE_2025">TARIFF_EXCELCARE_2025 (Excelcare Credit 2025)</option>
                             <option value="TARIFF_EXCELCARE_CASH_2026_27">TARIFF_EXCELCARE_CASH_2026_27 (Excelcare Cash FY 2026-27 - OP &amp; IP)</option>
                             <option value="TARIFF_EXCELCARE_CASH_2026">TARIFF_EXCELCARE_CASH_2026 (Excelcare Cash 2026)</option>
+                            <option value="TARIFF_EXCELCARE_OIL_INDIA_2025_27">TARIFF_EXCELCARE_OIL_INDIA_2025_27 (Excelcare Oil India 2025-27 - OP &amp; IP)</option>
                             <option value="TARIFF_EXCELCARE_2024">TARIFF_EXCELCARE_2024 (Excelcare SOC 2024)</option>
                             <option value="TARIFF_EXCELCARE_GIPSA_2026">TARIFF_EXCELCARE_GIPSA_2026 (Excelcare GIPSA 2026)</option>
                             <option value="TARIFF_HDFC_ERGO_2024">TARIFF_HDFC_ERGO_2024 (HDFC ERGO Templates)</option>

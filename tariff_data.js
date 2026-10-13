@@ -512283,6 +512283,28282 @@ const TARIFF_EXCELCARE_GIPSA_2026 = [
         "rate":  260.0
     }
 ];
+
+const TARIFF_EXCELCARE_OIL_INDIA_2025_27 = [
+    {
+        "id": "99387",
+        "name": "ARTERIAL LINE(BS)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 9500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "65947",
+        "name": "MRI KNEE",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 10330.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "58517",
+        "name": "PEG INSERTION",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 1140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "59301",
+        "name": "MRI CERVICAL MOBIVIEW",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 13340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "59305",
+        "name": "X-RAY FOOT AP AND OBLIQUE",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "59306",
+        "name": "X-RAY HAND AP AND OBLIQUE",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "59307",
+        "name": "X-RAY LOOPOGRAM",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 2620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "59309",
+        "name": "CT FACIAL 3D",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 4020.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "60645",
+        "name": "CONTINUOUS GLUCOSE MONITORING",
+        "type": "Equipment",
+        "dept": "Medical",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "61756",
+        "name": "EPILEPSY SURGERY.",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "62098",
+        "name": "FORAMEN MAGNUM DECOMPRESSION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "62101",
+        "name": "PROGRAMMABLE SHUNTS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "62423",
+        "name": "PTBD",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 5030.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "62505",
+        "name": "OESOPHAGEAL PH METRY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 5290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "62607",
+        "name": "LIVER BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "62676",
+        "name": "REPAIR OF URETEROCOEL-ENDOSCOPIC INCISION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "63641",
+        "name": "GENEXPERT HCV RNA QUANTITATIVE",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 3830.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "69124",
+        "name": "XRAY MAMMOGRPAHY UNILATERAL",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 2420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "69582",
+        "name": "FUNGUS C/S (NAIL CLIPPING)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "69598",
+        "name": "CULTURE AND SENSITIVITY(EAR SWAB)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 870.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "69606",
+        "name": "LIVER ABSCESS FOR E.HISTOLYTICA",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 930.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "70804",
+        "name": "TEMPORARY PACEMAKER IMPLANTATION (TPI)",
+        "type": "Cath Lab Procedures",
+        "dept": "Cath Lab",
+        "rate": 15750.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "71413",
+        "name": "DSA",
+        "type": "Cath Lab Procedures",
+        "dept": "Cath Lab",
+        "rate": 25200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "75851",
+        "name": "SKELETAL TRACTION",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 2610.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "76400",
+        "name": "CORONARY ANGIOGRAPHY (S)",
+        "type": "Cath Lab Procedures",
+        "dept": "Cath Lab",
+        "rate": 14700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "79976",
+        "name": "LUMBER PUNCTURE",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 2850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "80062",
+        "name": "LAMINECTOMY AND DISCECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "88149",
+        "name": "URETEROCELE-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "91612",
+        "name": "CHEMOTHERAPHY WAFERS FOR MALIGNANT BRAIN TUMORS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 74100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "91866",
+        "name": "PHIMOSIS UNDER LA (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "91993",
+        "name": "NASAL ENDOSCOPIC DCR",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "91999",
+        "name": "EXCISION OF ANGIOFIBROMA",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92019",
+        "name": "OESOPHAGOSCOPY+FOREIGN BODY REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92046",
+        "name": "GLOSSOTOMY-MEDIAN",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92048",
+        "name": "GLOSSECTOMY-TOAL",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92050",
+        "name": "PAROTIDECTOMY-SUPERFICIAL",
+        "type": "Invasive Procedures",
+        "dept": "Oncology Surgical",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92092",
+        "name": "EXCISION OF CERVICAL LYMPH NODE (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 10260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92093",
+        "name": "EXCISION OF AXILLARY LYMPH NODE (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 10260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92094",
+        "name": "EXCISION OF INGUINAL LYMPH NODE (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92095",
+        "name": "EXCISION BIOPSY OF ULCERS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92096",
+        "name": "EXCISION BIOPSY OF SUPERFICIAL LUMPS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92097",
+        "name": "INCISION BIOPSY OF GROWTHS OR ULCERS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92101",
+        "name": "MUSCLE BIOPSY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 10830.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92102",
+        "name": "SCALENE NODE BIOPSY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92103",
+        "name": "EXCISION OF SEBACEOUS CYSTS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92107",
+        "name": "HAEMORRHOIDECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92109",
+        "name": "KELOID EXCISION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92110",
+        "name": "VERICOSE VEIN SURGERY;TENDELENBURG OPERATION WITH SUTURING OR LIGATION. (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92113",
+        "name": "OESOPHAGECTOMY FOR CARCINOMA EASOPHAGUS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 54720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92116",
+        "name": "ACHALASIA CARDIA ABDOMINAL (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 54720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92117",
+        "name": "OESOPHAGO GASTRECTOMY FOR MID 1 OR 3 LESION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 62700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92118",
+        "name": "HELLERS OPERATION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 54720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92119",
+        "name": "COLON - INTER POSITION OR REPLACEMENT OF OESOPHAGUS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 62700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92125",
+        "name": "PYLOROMYOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Paediatrics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92126",
+        "name": "CYSTO-GASTROSTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92127",
+        "name": "SIMPLE CLOSURE OF PERFORATED PEPTIC ULCER (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 31920.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92128",
+        "name": "VAGOTOMY PYLEROPLASTY OR GASTRO JEJUNOSTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92129",
+        "name": "DUODENOJEJUNOSTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92131",
+        "name": "PARTIAL OR SUBTOTAL GASTRECTOMY FOR ULCER (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92132",
+        "name": "OPERATION FOR BLEEDING PEPTIC ULCER (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92133",
+        "name": "OPERATION FOR GASTROJEJUNAL ULCER (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92134",
+        "name": "TOTAL GASTRECTOMY FOR CANCER (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 52440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92135",
+        "name": "HIGHLY SELECTIVE VAGOTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92136",
+        "name": "SELECTIVE VAGOTOMY AND DRAINAGE (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92137",
+        "name": "CONGENITAL DIAPHRAGMATIC HERNIA (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 54720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92138",
+        "name": "HIATUS HERNIA REPAIR - ABDOMINAL (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 54720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92140",
+        "name": "EXPLORATORY LAPAROTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92141",
+        "name": "EPIGASTRIC HERNIA REPAIR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 21660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92146",
+        "name": "FEMORAL HERNIA REPAIR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92147",
+        "name": "RARE HERNIAS REPAIR (SPIGALION, OBTURATOR, LUMBAR, SCIATIC) (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92148",
+        "name": "SPLENECTOMY - FOR TRAUMA (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92149",
+        "name": "SPLENECTOMY - FOR HYPERSPLENISM (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92155",
+        "name": "PANCERATO DUODENECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 74100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92156",
+        "name": "BY PASS PROCEDURE FOR INOPERABLE CARCINOMA OF PANCREAS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92157",
+        "name": "CYSTOJEJUNOSTOMY OR CYSTOGASTROSTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 47880.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92158",
+        "name": "CHOLECYSTECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92159",
+        "name": "CHOLECYSTECTOMY AND EXPLORATION OF CBD (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92160",
+        "name": "REPAIR OF CBD (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92163",
+        "name": "HEPATIC RESECTIONS (LOBECTOMY OR HEPATECTOMY) (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 62700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92166",
+        "name": "APPENDICECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92170",
+        "name": "JEJUNOSTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92171",
+        "name": "ILEOSTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92172",
+        "name": "RESECTION AND ANASTOMOSIS OF SMALL INTESTINE (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92173",
+        "name": "DUODENAL DIVERTICULUM (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92174",
+        "name": "OPERATION FOR INTESTINAL OBSTRUCTION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92175",
+        "name": "OPERATION FOR INTESTINAL PERFORATION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92176",
+        "name": "BENIGN TUMOURS OF SMALL INTESTINE (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92177",
+        "name": "EXCISION OF SMALL INTESTINE FISTULA (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92179",
+        "name": "OPERATIONS FOR HAEMORRHAGE OF SMALL INTESTINES (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92182",
+        "name": "ILIEOSIGMOIDOSTOMY AND RELATED RESECTION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92185",
+        "name": "LOOP COLOSTOMY TRANSVERSE SIGMOID (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92186",
+        "name": "TERMINAL COLOSTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92187",
+        "name": "COLOSTOMY CLOSURE",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92190",
+        "name": "TOTAL COLECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 102600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92192",
+        "name": "OPERATIONS FOR SIGMOID DIVERTICULITIS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92195",
+        "name": "RECTAL POLYP - EXCISION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92196",
+        "name": "FISTULA IN ANO - HIGH FISTULECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92197",
+        "name": "FISTULA IN ANO - LOW FISTULECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92199",
+        "name": "PROLAPSE RECTUM - RECTOPEXY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92200",
+        "name": "PROLAPSE RECTUM - GRAHAMS OPERATION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92202",
+        "name": "EXCISION OF PILONIDAL SINUS (OPEN) (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92204",
+        "name": "ABDOMINO - PERINEAL EXCISION OF RECTUM (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92206",
+        "name": "PULL THROUGH ABDOMINAL RESECTION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 43320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92210",
+        "name": "LAPROSCOPIC FUNDOPLICATION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92211",
+        "name": "LAPROSCOPIC SPLEENECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92212",
+        "name": "LAPROSCOPIC REMOVAL OF HYDATID CYST (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92213",
+        "name": "LAPROSCOPIC TREATMENT OF PSEUDO PANCREATIC CYST (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92214",
+        "name": "LAPROSCOPIC WHIPPLES OPERATION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 74100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92215",
+        "name": "LAPROSCOPIC GI BYPASS OPERATION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 43320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92216",
+        "name": "LAPROSCOPIC TOTAL COLECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 68400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92217",
+        "name": "LAPROSCOPIC HEMI COLECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 54720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92218",
+        "name": "LAPROSCOPIC ANTERIOR RESECTION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92219",
+        "name": "LAPROSCOPIC CHOLECYSTETOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 25080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92220",
+        "name": "LAPROSCOPIC APPEDICECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 25080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92221",
+        "name": "LAPROSCOPIC HERNIA INGUINAL REPAIR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 31920.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92222",
+        "name": "LAPROSCOPIC VENTRAL HERNIA REPAIR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 31920.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92223",
+        "name": "LAPROSCOPIC PARAUMBLICAL HERNIA REPAIR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92275",
+        "name": "EXTERNAL LOOP OR EVENT RECORDING (NORMAL)",
+        "type": "Non Invasive Procedure",
+        "dept": "CARDIOLOGY",
+        "rate": 23600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92295",
+        "name": "2 D ECHOCARDIOGRAPHY (NORMAL)",
+        "type": "Investigations",
+        "dept": "Echo Lab",
+        "rate": 2830.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92296",
+        "name": "3 D ECHOCARDIOGRAPHY (NORMAL)",
+        "type": "Investigations",
+        "dept": "CARDIOLOGY",
+        "rate": 3960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92313",
+        "name": "NORMAL DELIVERY WITH OR WITHOUT EPISIOTOMY AND P. REPAIR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92323",
+        "name": "LAP OVARIAN CYSTECTOMY-SURGERY(AP)",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92325",
+        "name": "LAP SALPINGO-OPHORECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92327",
+        "name": "EXPLORATION OF PERINEAL HAEMATOMA AND REPAIR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 15960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92332",
+        "name": "GAPING PERINEAL WOUND SECONDARY SUTURING (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92338",
+        "name": "COLPOTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 15960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92359",
+        "name": "EXCISION VAGINAL SEPTUM (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92368",
+        "name": "HYSTEROSCOPIC CANNULATION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92382",
+        "name": "LAPAROSCOPIC ABDOMINAL SACRO - COLPOPEXY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92384",
+        "name": "LAPAROSCOPIC PELVIC LYMPHADENECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92408",
+        "name": "PARTIAL NEPHRECTOMY - OPEN (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92412",
+        "name": "PYELOLITHOTOMY - OPEN (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92413",
+        "name": "PYELOLITHOTOMY - LAPROSCOPIC OR ENDOSCOPIC (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92421",
+        "name": "PERCUTANEOUS DRAINAGE OF PERINEPHRIC ABSCESS - ULTRASOUND GUIDED (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92425",
+        "name": "URETEROLITHOTOMY - OPEN (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92435",
+        "name": "URETERO - COLIC ANASTOMOSIS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92441",
+        "name": "OPEN -CYSTECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92442",
+        "name": "DIVERTICULECTOMY - OPEN (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92449",
+        "name": "REPAIR OF URETEROCOEL - OPEN (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92451",
+        "name": "REPAIR OF URETEROCOEL - ENDOSCOPIC INCISION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92454",
+        "name": "TRANSURETHRAL RESECTION OF PROSTATE (TURP) (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 25080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92458",
+        "name": "URETHRAL RECONSTRUCTION - END TO END ANSATAMOSIS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92461",
+        "name": "POSTERIOR URETHRAL VALVE FULGURATION. (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92468",
+        "name": "REDUCTION OF PARAPHIMOSIS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 4750.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92478",
+        "name": "PARTIAL AMPUTATION OF THE PENIS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92479",
+        "name": "TOTAL AMPUTATION OF THE PENIS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92538",
+        "name": "RADICAL NEPHRECTOMY - OPEN (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92539",
+        "name": "RADICAL NEPHRECTOMY - LAP OR ENDOSCOPIC (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92540",
+        "name": "RADICAL NEPHRECTOMY PLUS IV THROMBUS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92541",
+        "name": "RADICAL NEPHRECTOMY PLUS IV THROMBUS PLUS CARDIAC BYPASS. (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92542",
+        "name": "VESICO VAGINAL FISTULA REPAIR (OPEN) (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 25080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92543",
+        "name": "VESICO VAGINAL FISTULA REPAIR (LAPROSCOPIC) (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92544",
+        "name": "RADICAL CYSTECTOMY - ILEAL CONDUIT (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92545",
+        "name": "RADICAL CYSTECTOMY - CONTINENT DIVERSION. (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92546",
+        "name": "RADICAL CYSTECTOMY - NEO BLADDER (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92547",
+        "name": "NEPHRECTOMY SIMPLE - OPEN (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 25080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92551",
+        "name": "URETERIC RE - IMPLANT FOR MEGAURETER OR VESICOURETERIC REFLEX OR UTEROCELE (OPEN) (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92553",
+        "name": "PARTIAL CYSTECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92554",
+        "name": "TURP AND TUR BLADDER TUMOUR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92563",
+        "name": "RESECTION BLADDER NECK ENDOSCOPIC OR BLADDER NECK INCISION(NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92564",
+        "name": "URETEROSCOPIC SURGERY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92565",
+        "name": "URETHROPLASTY 1ST STAGE (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92566",
+        "name": "SCROTAL EXPLORATION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92569",
+        "name": "DILATATION OF STRICTURE URETHRA UNDER LA (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 7980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92571",
+        "name": "LAPROSCOPIC PARTIAL NEPHRECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92572",
+        "name": "LAPROSCOPIC PYELOLITHOTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92581",
+        "name": "RADICAL PROSTATECTOMY - OPEN (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92582",
+        "name": "RADICAL PROSTATECTOMY - LAPROSCOPIC (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92594",
+        "name": "PROSTHETIC SURGERY FOR URINARY INCONTINENCE (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92601",
+        "name": "EXCISION OF BRAIN TUMOURS - SUPRATENTORIAL",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92602",
+        "name": "EXCISION OF BRAIN TUMOURS - INFRATENTORIAL",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92603",
+        "name": "SURGERY OF SPINAL CORD TUMOURS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92605",
+        "name": "TWIST DRILL CRANIOSTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92606",
+        "name": "SUBDURAL TAPPING",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92607",
+        "name": "VENTRICULAR TAPPING (EVD)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92609",
+        "name": "PLACEMENT OF ICP MONITOR-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92610",
+        "name": "SKULL TRACTION APPLICATION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92612",
+        "name": "VASCULAR MALFORMATIONS(AVM -SURGERY)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92623",
+        "name": "NERVE BIOPSY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92624",
+        "name": "BRAIN BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92625",
+        "name": "ANTERIOR CERVICAL SPINE SURGERY WITH FUSION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92629",
+        "name": "C.V. JUNCTION SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92632",
+        "name": "ENDARTERECTOMY (CAROTID)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92634",
+        "name": "SPASTICITY SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92635",
+        "name": "SPINAL FUSION PROCEDURE",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92639",
+        "name": "STEREOTAXIC PROCEDURES - BIOPSY OR ASPIRATION OF CYST",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92640",
+        "name": "TRANS SPHENOIDAL SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92644",
+        "name": "ENDOSCOPIC AQUEDUCTOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 68400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92648",
+        "name": "LUMBAR DISC ARTHROPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 62700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92649",
+        "name": "CORPUS CALLOSTOMY FOR EPILEPSY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92650",
+        "name": "HEMISHPHEROTOMY FOR EPILEPSY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92654",
+        "name": "RF LESION FOR FACET JOINT PAIN SYNDROME",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92655",
+        "name": "CERVICAL LAMINOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92656",
+        "name": "LATERAL MASS C1 - C2 SCREW FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92658",
+        "name": "MICROSURGICAL DECOMPRESSION FOR HEMIFACIAL SPASM",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92660",
+        "name": "IMAGE GUIDED CRANIOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92662",
+        "name": "PROGRAMABLE V.P SHUNT",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92664",
+        "name": "EXTERNAL VENTRICULAR DRAINAGE (EVD)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92669",
+        "name": "SURGERY FOR SKULL FRACTURES (DEPRESSED FRACTURES)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92673",
+        "name": "FORAMEN MAGNUM DECOMPRESSION FOR CHARI MALFORMATION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92675",
+        "name": "SURGERY FOR RECURRENT DISC PROLAPSE",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92676",
+        "name": "SURGERY FOR BRAIN STEM TUMOURS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 68400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92679",
+        "name": "STERIOTACTIC ASPIRATION OF INTRACEREBRAL HAEMATOMA",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92684",
+        "name": "BATTERY PLACEMENT FOR DBS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92685",
+        "name": "BACLOFEN PUMP",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92686",
+        "name": "PERIPHERAL NERVE TUMOR SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92687",
+        "name": "SURGERY INTRA CRANIAL MENINGIOMA",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92688",
+        "name": "SURGERY FOR INTRACRANIAL SCHWANNOMA",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92689",
+        "name": "SURGERY FOR GLIOMAS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92690",
+        "name": "SURGERY FOR ORBITAL TUMORS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92691",
+        "name": "SURGERY FOR (SKULL) TUMORS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92692",
+        "name": "SURGERY FOR SCALP",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92693",
+        "name": "KYPHOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92694",
+        "name": "BALLON KYPHOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92695",
+        "name": "LESIONING PROCEDURES FOR PARKINSONS DISEASE, DYSTONIA",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92696",
+        "name": "OTHER MAJOR SURGERY (NEURO)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92697",
+        "name": "OTHER SURGERY (NEURO)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92708",
+        "name": "B/L HERNIOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Paediatrics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92747",
+        "name": "SKIN FLAPS - ROTATION FLAPS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92748",
+        "name": "SKIN FLAPS - ADVANCEMENT FLAPS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92750",
+        "name": "SKIN FLAPS - CROSS FINGER (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92765",
+        "name": "CLEFT PALATE REPAIR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92781",
+        "name": "ABOVE KNEE FULL PLASTER (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92782",
+        "name": "ABOVE KNEE FULL SLAB (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92783",
+        "name": "MINERVA JACKET (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92787",
+        "name": "DOUBLE HIP SPICA (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92788",
+        "name": "APPLICATION OF FUNCTIOL CAST BRACE (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92789",
+        "name": "APPLICATION OF P.O.P SPICES AND JACKETS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92790",
+        "name": "CLOSE REDUCTION OF FRACTURES OF LIMB AND P.O.P (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92794",
+        "name": "OPEN REDUCTION OF FRACTURE OF LONG BONES OF UPPER OR LOWER LIMB - AO PROCEDURES (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92796",
+        "name": "BONE GRAFTING-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92798",
+        "name": "EXCISION OR OTHER OPERATIONS FOR SCAPHOID FRACTURES (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92799",
+        "name": "SEQUESTRECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92803",
+        "name": "A.O.COMPRESSION PROCEDURES FOR FRACTURE NECK FEMUR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92805",
+        "name": "CLOSE REDUCTION POP-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92808",
+        "name": "NEUROLYSIS OR NERVE REPAIR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92809",
+        "name": "NERVE REPAIR WITH GRAFTING (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92813",
+        "name": "LAMINECTOMY EXCISION DISC AND TUMOURS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92815",
+        "name": "ANTEROLATERAL DECOMPRESSION FOR TUBERCULOSIS OR COSTO - TRANSVERSECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92816",
+        "name": "ANTEREOLATERAL DECOMPRESSION AND SPIL FUSION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92817",
+        "name": "CORRECTIVE OSTECTOMY AND INTERNAL FIXATION - SHORT BONES (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92818",
+        "name": "CORRECTIVE OSTECTOMY AND INTERNAL FIXATION - LONG BONES (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92823",
+        "name": "HEMIARTHROPLASTY - HIP (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92824",
+        "name": "HEMIARTHROPLASTY - SHOULDER (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92825",
+        "name": "OPERATIONS FOR BRACHIAL PLEXUS AND CERVICAL RIB (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92826",
+        "name": "AMPUTATION BELOW KNEE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92827",
+        "name": "AMPUTATIONS - BELOW ELBOW (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92831",
+        "name": "AMPUTATIONS - HIND QUARTER AND HEMIPELVECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92832",
+        "name": "DISARTICULATIONS - MAJOR JOINT (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92833",
+        "name": "DISARTICULATIONS - MINOR JOINT (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92834",
+        "name": "ARTHROGRAPHY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92835",
+        "name": "ARTHROSCOPY - DIAGNOSTIC (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92836",
+        "name": "ARTHROSCOPY - THERAPEUTIC: WITHOUT IMPLANT (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92837",
+        "name": "ARTHROSCOPY - THERAPEUTIC: WITH IMPLANT (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92840",
+        "name": "MYOCUTANEOUS AND FASCIOCUTANEOUS FLAP PROCEDURES FOR LIMBS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92851",
+        "name": "ILIZAROVS EXTERNAL FIXATOR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92853",
+        "name": "MEDIAL MENISCECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92854",
+        "name": "MENISCUS REPAIR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92857",
+        "name": "KNEE COLLATERAL LIGAMENT RECONSTRUCTION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92858",
+        "name": "BENCARF REPAIR SHOULDER (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92860",
+        "name": "BICEPS TENODESIS (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92861",
+        "name": "DISTAL BICEPS TENDON REPAIR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92862",
+        "name": "ARTHROLYSIS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92863",
+        "name": "CAPSULOTOMY OF SHOULDER (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92865",
+        "name": "APPLICATION FOR CTEV PER SITTING (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92870",
+        "name": "ILLIZAROV OR EXTERNAL FIXATION FOR LIMB LENGTHENING OR DEFORMITY CORRECTION (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92871",
+        "name": "DISCECTOMY OR MICRO DISCECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92872",
+        "name": "LAMINECTOMY (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92874",
+        "name": "FUSION SURGERY CERVICAL OR LUMBAR SPINE UPTO 2 LEVEL (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92878",
+        "name": "DHS FOR FRACTURE NECK FEMUR (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92881",
+        "name": "ILLIZAROVS OR EXTERNAL FIXATION FOR TRAUMA (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92883",
+        "name": "MINI FIXATOR FOR HAND OR FOOT (NORMAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92891",
+        "name": "ESOPHAGEAL METAL STENT PLACEMENT",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 52440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92901",
+        "name": "PILES BANDING (NORMAL)",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 1940.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92902",
+        "name": "COLONIC STRICTURE DILATATION (NORMAL)",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 8480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92927",
+        "name": "METALIC ANTRAL/COLONIC STENT",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 7300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "93636",
+        "name": "EXTERNAL FIXATION-RADIUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "95467",
+        "name": "MASTOIDECTOMY-MODIFIED RADICAL(MRM)",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "95532",
+        "name": "TONSILLECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "95562",
+        "name": "HEMI THYROIDECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 27360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "95664",
+        "name": "RECTAL MANOMETRY (NRSA 382)",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "95731",
+        "name": "GASTRECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "95759",
+        "name": "EXICISION OF LYMPHANGIOMA(BIG)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "95867",
+        "name": "SCALP WOUND REPAIR-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "95923",
+        "name": "ASPIRATION OF JOINT(IN MINOR O.T.)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "95930",
+        "name": "BELOW ELBOW",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "95985",
+        "name": "AUSTINE MOORE PINNING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "95992",
+        "name": "BELOW KNEE AMPUTATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96009",
+        "name": "PATELLECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96032",
+        "name": "PROXIMAL HUMERUS # ORIF",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96055",
+        "name": "BARTONS FRACTURE ORIF",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96244",
+        "name": "DECORTICATION",
+        "type": "Invasive Procedures",
+        "dept": "Paediatrics",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96443",
+        "name": "SKIN GRAFTING-SMALL",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96479",
+        "name": "PROSTATIC NEEDLE BIOPSY(INCLUSIVE OF NEEDLE/GUN)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96486",
+        "name": "ADRENALECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96521",
+        "name": "STAGHORN PYELONEPHROLITHOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96544",
+        "name": "REPAIR OF BLADDER",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 14820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96545",
+        "name": "REPAIR OF VESICAL/URETHRAL FISTULA",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96546",
+        "name": "RETROGRADE CATHETERIZATION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96547",
+        "name": "ROVESINGS OPERATION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96552",
+        "name": "TOTAL CYSTECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96556",
+        "name": "URETERIC REPLACEMENT",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "96558",
+        "name": "URETERO SIGMOIDOSTOMY-1ST STAGE",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "97191",
+        "name": "HARMONIC SCALPEL",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 6500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "97407",
+        "name": "PERICARDIAL TAP",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 4750.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "101559",
+        "name": "THERAPEUTIC EUS",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 13300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "103458",
+        "name": "MRI CARDIAC CONTRAST",
+        "type": "Outsource Investigations",
+        "dept": "Wards Others",
+        "rate": 16800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "103625",
+        "name": "MICTURATING CYSTOURETHROGRAM (MCU)",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 3200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "105323",
+        "name": "LAP VAULT SUSPENSION",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1022137",
+        "name": "TUIP",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1025078",
+        "name": "CT GUIDED FNAC",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 5780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1028118",
+        "name": "DENGUE NS-1 ANTIGEN DETECTION",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1028778",
+        "name": "CARCINO EMBRYONIC ANTIGEN ( CEA ) PANCREATIC FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 2920.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1028780",
+        "name": "AMYLASE PANCREATIC FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1030349",
+        "name": "ESOPHAGEAL MANOMETRY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1031771",
+        "name": "SURFACTANT THERAPY",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 10450.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034072",
+        "name": "SURGICAL CORRECTION OF CHORDEE",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034082",
+        "name": "URSL",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034123",
+        "name": "VENTRICULOPERITONEAL SHUNT",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034127",
+        "name": "TAPPING OF BRAIN ABSCESS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034132",
+        "name": "SURGICAL MANAGEMENT OF ENCEPHALOCELE",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034134",
+        "name": "SURGICAL MANAGEMENT OF C.S.F. RHINORRHOEA",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034146",
+        "name": "EXCISION OF C P ANGLE BRAIN TUMOUR",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034147",
+        "name": "EXCISION OF OTHER BRAIN TUMOURS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034165",
+        "name": "ENDOSCOPY PROCEDURES -BRAIN",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034167",
+        "name": "EVACUATION OF INTRA-CEREBRAL HEMATOMA",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034168",
+        "name": "ENDOSCOPIC THIRD VENTRICULOSTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 62700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034171",
+        "name": "CORPECTOMY FOR SPINAL FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034172",
+        "name": "ARTIFICIAL DISCS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034173",
+        "name": "SURGICAL MANAGEMENT OF SYRINGOMYELIA",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034174",
+        "name": "SURGICAL TREATMENT FOR BRACHIAL PLEXUS INJURIES",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1034810",
+        "name": "VIDEO BRONCHOSCOPY WITH TBNA",
+        "type": "Non Invasive Procedure",
+        "dept": "Pulmonary Function Lab",
+        "rate": 4650.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1035945",
+        "name": "NAILING FEMUR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1038755",
+        "name": "BILIARY METAL STENTING - SINGLE",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 70450.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1042013",
+        "name": "SCLEROTHERAPY",
+        "type": "Cath Lab Procedures",
+        "dept": "Cath Lab",
+        "rate": 10180.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1042843",
+        "name": "CREATININE - serum",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1044263",
+        "name": "DJ STENT REMOVAL-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1053426",
+        "name": "CA(CANCER ANTIGEN)19-9-PANCREATIC FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 2790.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1055232",
+        "name": "HSTNI - HIGH SENSITIVE TROPONIN-I: PLASMA, BASAL SAMPLE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 2790.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1055256",
+        "name": "VITAMIN B12-SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1930.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057213",
+        "name": "Colposcopy",
+        "type": "Non Invasive Procedure",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 2280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057832",
+        "name": "DEPRESSED/ ELEVATED FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057834",
+        "name": "CRANIOPLASTY WITH TITANIUM MESH",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057839",
+        "name": "VENTRICULO PERITONEAL SHUNT(PROGRAMMABLE)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057842",
+        "name": "ENDOSCOPY - SPINAL",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057844",
+        "name": "FACET, NERVE ROOT BLOCKS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057847",
+        "name": "MICROVASCULAR DECOMPRESSION FORTRIGEMINAL NEURALGIA",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057848",
+        "name": "SURGICAL MANAGEMENT CARPAL TUNNEL SYNDROME",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057851",
+        "name": "INTRA CRANIAL VASCULAR BYPASS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 62700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057862",
+        "name": "TEMPORAL LOBECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057866",
+        "name": "SURGICAL MANAGEMENT OFMENINGOMYELOCELE",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057869",
+        "name": "EXCISION OF BRAIN ABSCESS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057879",
+        "name": "VENTRICULOATRIAL",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057881",
+        "name": "LAMINOPLASTY WITH IMPLANTS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057883",
+        "name": "SURGICAL MANAGEMENT OF INTRA MEDULLARYSPINAL TUMOURS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057895",
+        "name": "SURGICAL MANAGEMENT OF VASCULARMALFORMATIONS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057897",
+        "name": "POSTIRIOR CERVICAL DISECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057902",
+        "name": "DISECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057905",
+        "name": "COMBINED TRANS-ORAL SURGERY & CVJUNCTION FUSION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 85500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1057907",
+        "name": "EXCISION OF SCALP LESIONS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1058122",
+        "name": "QUADRICEP PLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1058126",
+        "name": "BELOW ELBOW AMPUTATIONS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1058427",
+        "name": "SURGICAL CORRRECTION OF URETEROCELE",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1058430",
+        "name": "URETERO URETEROSTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1058452",
+        "name": "SCROTAL/PERINEAL INJURIES",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1058457",
+        "name": "SURGERY FOR PRIAPISM",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1058485",
+        "name": "RETROGRADE INTRARENAL SURGERY(RIRS)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1059133",
+        "name": "ASPIRATION & INTRA ARTICULAR INJECTIONS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1059182",
+        "name": "TENDON / NERVE INJURY ( SINGLE ) ( PLASTIC SURGERY )",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1059183",
+        "name": "TISSUE EXPANSION ( PLASTIC SURGERY )",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1059214",
+        "name": "TP SHUNT-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1059216",
+        "name": "B/L BUR HOLE",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1059226",
+        "name": "T N (BLOCK)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1059229",
+        "name": "ENDOSCOPIC SCULL BASE",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1059235",
+        "name": "THALAMOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1059464",
+        "name": "CHEST PHYSIOTHERAPY",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1059465",
+        "name": "LIMB PHYSIOTHERAPY",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1059468",
+        "name": "AMBULATION",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1059469",
+        "name": "ONE MODALITY AND EXERCISES",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1060020",
+        "name": "SERUM VDRL",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1068621",
+        "name": "MRD DOCUMENTATION CHARGE",
+        "type": "Medical Services",
+        "dept": "Medical",
+        "rate": 900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1069361",
+        "name": "SEMEN ANALYSIS.",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1069924",
+        "name": "USG GUIDED BIOPSY(MATRIX)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 5230.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1072208",
+        "name": "BILATERAL MAMMOGRAPHY",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 4050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1075656",
+        "name": "CENTRAL LINE(BSP)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 6650.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1077592",
+        "name": "HOSPITAL SERVICES AND TREATMENT MONITORING AND MANAGEMENT CHARGES",
+        "type": "Medical Services",
+        "dept": "Medical",
+        "rate": 0.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1087262",
+        "name": "CARDIAC MONITOR",
+        "type": "Equipment",
+        "dept": "Medical",
+        "rate": 80.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1098444",
+        "name": "PLASMAPHERESIS",
+        "type": "Non Invasive Procedure",
+        "dept": "Dialysis",
+        "rate": 9540.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101526",
+        "name": "ADENOIDS",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101527",
+        "name": "X RAY-ANKLE JOINT AP &amp; OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101528",
+        "name": "X RAY-ANKLE JOINT AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101529",
+        "name": "X RAY-ANKLE LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101530",
+        "name": "X RAY-ARM AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101531",
+        "name": "X-RAY BOTH FOOT AP &amp; OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 1760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101532",
+        "name": "COCCYX AP & LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101533",
+        "name": "COCCYX LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101534",
+        "name": "HEEL AP & LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101535",
+        "name": "X RAY-HIP JOINT OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101536",
+        "name": "KNEE OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101537",
+        "name": "LEG AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101538",
+        "name": "LEG LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101540",
+        "name": "PLAIN PICTURE ABDOMEN (ERECT&SUPINE )",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101541",
+        "name": "SACRO-COCCYX AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101542",
+        "name": "SACRO-COCCYX LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101543",
+        "name": "SCAPULA AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101544",
+        "name": "X RAY -SHOULDER (RT) AP/OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101545",
+        "name": "X RAY-SHOULDER JOINT AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101546",
+        "name": "SHOULDER JOINT LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101547",
+        "name": "STYLOID PROCESS AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101548",
+        "name": "THIGH AP &amp; LAT VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101549",
+        "name": "WRIST AP & OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101550",
+        "name": "WRIST LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101551",
+        "name": "BOTH SACRO-ILIAC OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101552",
+        "name": "HUMERUS (LEFT) AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101553",
+        "name": "LUMBER SACRAL SPINE LAT VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101554",
+        "name": "NECK AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101555",
+        "name": "S I JOINT OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101556",
+        "name": "FINGER OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101557",
+        "name": "ANKLE AXIAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101558",
+        "name": "X-RAY B/L TEMPORO MANDIBULAR JOINT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 1470.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101559",
+        "name": "KNEE WITH FEMUR AP & LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 740.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101561",
+        "name": "X RAY-ANKLE OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101562",
+        "name": "THORAX SPINE AP/LAT VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 1040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101563",
+        "name": "X RAY -BOTH FEET OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101564",
+        "name": "FACE PA VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101565",
+        "name": "FACE LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101566",
+        "name": "ANCA (ANTI NEUTROPHIL CYTOPLASMIC ANTIBODY) SCREEN WITHOUT TITER - IFA",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101567",
+        "name": "ABSCESS DRAIN WITH PIGTAIL CATHETER",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 7150.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101568",
+        "name": "PCN / ABSCESS DRAINAGE",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 7950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101570",
+        "name": "PREGNANCY-SCREENING",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 1760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101571",
+        "name": "RENAL BIOPSY",
+        "type": "Investigations",
+        "dept": "Radiology",
+        "rate": 7560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101572",
+        "name": "SCROTUM",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2490.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101573",
+        "name": "SCROTUM(SCREENING)",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101574",
+        "name": "SCROTUM-TESTIES",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101577",
+        "name": "ULTRASOUND OF SMALL PARTS",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2490.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101578",
+        "name": "UPPER ABD &amp; DOPPLER STUDY",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 3210.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101579",
+        "name": "UPPER-ABDOMEN-SCREENING",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 1540.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101580",
+        "name": "USG (SPINE)",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 1620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101581",
+        "name": "USG GUIDED FNAC",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 4810.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101582",
+        "name": "USG GUIDED DIAGNOSTIC ASPIRATION",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 3650.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101583",
+        "name": "USG GUIDED PIGTAIL DRAINAGE",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 7000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101584",
+        "name": "USG GUIDED THERAPEUTIC ASPIRATION",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 5400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101585",
+        "name": "USG GUIDED TRUE CUT BIOPSY",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 5530.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101586",
+        "name": "USG-NECK",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101587",
+        "name": "WHOLE-ABDOMEN-SCREENING",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 1760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101588",
+        "name": "DOPPLER USG OF AORTA ,ABDOMEN AORTA",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 3650.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101601",
+        "name": "RAN-PV JAK 2 REFLEX PANEL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 10260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101607",
+        "name": "SERUM ZINC",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101610",
+        "name": "PARATHYROID HORMONE(INTACT PTH) (AYURSUNDRA)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3060.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101615",
+        "name": "RAN-RBC FOLATE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101623",
+        "name": "LIFECELL-Triple marker",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101624",
+        "name": "LIFECELL-Quadruple Marker",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 5040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101626",
+        "name": "RAN-ANTI NMDA RECEPTOR-ENCEPHALITIS IGG ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 8940.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101628",
+        "name": "RAN-C DIFFICILE TOXIN A/B : RAPID TEST (STOOL)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101632",
+        "name": "RAN-JC/BK VIRUS(QUNTITATIVE)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 10500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101635",
+        "name": "RAN-ANCA",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101639",
+        "name": "COPPER SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101640",
+        "name": "RAN-CALCIUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101641",
+        "name": "RAN-CREATININE",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101645",
+        "name": "RAN-T3(TRllDOTHYROINE),TOTAL ONLY,SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101646",
+        "name": "ANTI PHOSPHOLIPASE A2 RECETOR PLAR2R IGG",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 7260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101647",
+        "name": "RAN-T4(THYROXINE),TOTAL ONLY,SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101648",
+        "name": "RAN- 24 HRS URINE CREATNINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101649",
+        "name": "24 HRS URINE PROTEIN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101652",
+        "name": "RAN-CALCIUM FOR URINE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101660",
+        "name": "RAN-TSH",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101664",
+        "name": "RAN-T4(THYROXINE)FREE SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101669",
+        "name": "RAN-FUNGAL STAIN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101670",
+        "name": "URINE CS",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101673",
+        "name": "RAN-THYROID PANEL IV (T3,T4,TSH)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101680",
+        "name": "RAN-LUTEINIZING HORMONE(LH)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101681",
+        "name": "RAN-PROLACTIN (SERUM)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101684",
+        "name": "RAN-C-REACTIVE PROTEIN(CRP)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101687",
+        "name": "RAN-FOLLICLE STIMULATING HORMONE(FSH)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1020.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101688",
+        "name": "RAN-LITHIUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101689",
+        "name": "LITHIUM SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101695",
+        "name": "RAN-CPK",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101696",
+        "name": "DIRECT COOMBS TEST/DIRECT ANTIGLOBULIN TEST",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101697",
+        "name": "INDIRECT COOMBS TEST/INDIRECT ANTI GLOBULIN TEST",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101699",
+        "name": "RAN-ESTRADIOL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101701",
+        "name": "RAN-PROGESTERONE (SERUM)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101703",
+        "name": "RAN-RHEUMATOID FACTOR",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101704",
+        "name": "RAN-TREPONEMA PALLIDIUM HEMAGGLUPANABION SSAY(TPHA",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101705",
+        "name": "C3 COMPLEMENT FUNCTIONAL SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101706",
+        "name": "C4 COMPLEMENT FUNCTIONA SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101708",
+        "name": "RAN-COMPLEMENT PROTEIN CONCENTRATION(C3)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101709",
+        "name": "RAN-COMPLEMENT PROTEIN CONCENTRATION(C4)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101710",
+        "name": "GROWTH HORMONE SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101712",
+        "name": "SMALL TISSUE BIOPSY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2160.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101713",
+        "name": "RAN-TESTOSTERONE,TOTAL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101716",
+        "name": "RAN-ALPHA-FETOPROTIEN (AFP)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101717",
+        "name": "RAN-FERRITIN,SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101718",
+        "name": "RAN-HIGH SENSITIVITY C-REACTIVE PROTEIN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101720",
+        "name": "RAN-PROTEIN ELECTROPHORESIS (SERUM)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101726",
+        "name": "RAN-CYTOMEGALO VIRUS IGM ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101727",
+        "name": "RAN-CYTOMEGALOVIRUS IgG ANTIBODIES",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 1320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101728",
+        "name": "RAN-CYTOMEGALOVIRUS IgM ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101732",
+        "name": "IgA",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101733",
+        "name": "IgG",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101735",
+        "name": "RAN-IgM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101736",
+        "name": "RAN-INSULIN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101748",
+        "name": "RAN-VALPROIC ACID",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 1620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101753",
+        "name": "RAN-CARBAMAZEPINE",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 1620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101762",
+        "name": "SCRUB TYPHUS IGM ANTIBODY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101766",
+        "name": "RAN-IgE total",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101772",
+        "name": "RAN-HEPATITIS B SURFACE ANTIBODIES(HBsAb),TOTAL WI",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101776",
+        "name": "DEHYDROEPIANDROSTERONE SULFATE(DHEAS)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1640.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101777",
+        "name": "RAN-FIBRINOGEN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1020.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101780",
+        "name": "RAN-PROSTATE SPECIFIC ANTIGEN FREE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101781",
+        "name": "RAN-WEIL FELIX TEST",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101782",
+        "name": "RAN-ANGIOPENSIN CONVERTING ENZYME (ACE)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101783",
+        "name": "RAN-ANTINUCLEAR ANTIBODIES (ANA),SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2220.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101786",
+        "name": "RAN-CRYO GLOBULIN QUALITATIVE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1920.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101789",
+        "name": "RAN-KIDNEY STONE ANALYSIS",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101790",
+        "name": "RAN-CERULOPLASMIN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101792",
+        "name": "RAN-C-PEPTIDE (SERUM)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101798",
+        "name": "FOLIC ACID",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101799",
+        "name": "RAN-HEPATITIS B CORE TOTAL ANTIBODIES",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 1860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101800",
+        "name": "RAN-HEPATITIS B VIRUS CORE IgM ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101809",
+        "name": "RAN-VITAMIN B12",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2160.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101810",
+        "name": "RAN-CMV VIRAL LOAD",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 12660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101813",
+        "name": "RAN-AFB CULTURE (SPUTUM)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1020.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101814",
+        "name": "RAN-BETA 2 GLYCOPROTEIN IGG",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101815",
+        "name": "RAN-BETA 2 GLYCOPROTEIN IGM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101817",
+        "name": "RAN-HOMOCYSTINE",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 2040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101823",
+        "name": "RAN-GALACTOMANNAN (FLUID)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 7920.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101826",
+        "name": "RAN-HEPATITIS A VIRUS IgM ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101830",
+        "name": "CA 125",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101832",
+        "name": "RAN-ALLERGEN-COMPREHENSIVE ALLERGY PANEL-INFANCY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 16560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101833",
+        "name": "RAN-THYROGLOBULIN ANTIBODIES (THG)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2640.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101834",
+        "name": "RAN-BIOPSY MUSCLE BIOPSY WITH SPECIAL STAINS",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101835",
+        "name": "BIOPSY(MEDIUM TISSUE-SPECIMAN)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2940.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101837",
+        "name": "RAN-CA 19-9",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 2340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101842",
+        "name": "RAN-LEPTOSPIRA IgG ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101843",
+        "name": "RAN-LEPTOSPIRA IgM ANTIBODIES",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 2340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101846",
+        "name": "RAN-SKIN BIOPSY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101848",
+        "name": "APLA TOTAL",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101850",
+        "name": "RAN-SKIN BIOPSY[PHOTO]",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101851",
+        "name": "THYROID PEROXIDASE ANTIBODIES (TPO)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101853",
+        "name": "RAN-TOXOPLASMA IGG &amp; IGM ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101868",
+        "name": "RAN-FDP.PLASMA-(FIBRINOGEN DEGRADATION PRODUCTS)(S",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101873",
+        "name": "RAN-17-ALPHA-HYDROXYPROGESTERONE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101877",
+        "name": "RAN-HTTG-DGP",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101879",
+        "name": "RAN-THYROGLOBULIN SERUM",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 3060.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101884",
+        "name": "RAN-GASTRIN",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 2640.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101886",
+        "name": "RAN-CARDIOLIPIN IgG & IgM ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101892",
+        "name": "RAN-ANTIPR3 ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3060.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101894",
+        "name": "RAN-H & E SLIDE FOR REVIEW(UPTO TWO SLIDE/PARAFFIN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101896",
+        "name": "RAN-ANTI ds - DNA",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101901",
+        "name": "RAN-HEPATITIS E VIRUS IgM ANTIBODIES(ANTI HEV)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101904",
+        "name": "RAN-ADRENOCORTICOTROPIC HORMONE (ACTH)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2160.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101911",
+        "name": "RAN-LYME DISEASE BORRELIA BURGDORFERI IgG",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2580.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101912",
+        "name": "RAN-LYME DISEASE BORRELIA BURGDORFERI IgM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101913",
+        "name": "PTH-INTACT INCLUDING TOTAL CALCIUM",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 3060.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101916",
+        "name": "RAN-ENTAMOEBA HISTOLYTICA ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101920",
+        "name": "RAN-LUPUS ANTICOAGULANT",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3540.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101923",
+        "name": "RAN-24 HOURS URINE OXALATE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101927",
+        "name": "RAN-ANTISMOOTH MUSCLE ANTIBODIES(ASMA)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101931",
+        "name": "RAN-TESTOSTERONE,FREE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101936",
+        "name": "RAN-ANTI MULLERIAN HORMONE (AMH)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101940",
+        "name": "RAN-ECHINOCOCCUS IgG ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101943",
+        "name": "RAN-IgA,IgM &amp; IgG IMMUNOGLOBULIN,QUANTITATIVE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101945",
+        "name": "RAN-LIVER KIDNEY MICROSOME AUTOANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101953",
+        "name": "RAN-ERYTHROPOIETIN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101955",
+        "name": "RAN-ANTIMITOCHONDRIAL ANTIBODIES(AMA)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101956",
+        "name": "RAN-CD4 (Lymphocite Enumeration T-HELPER CELLS)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3180.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101963",
+        "name": "COPPER 24 hrs URINE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101964",
+        "name": "RAN-COPPER TEST",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101965",
+        "name": "RAN-LEAD LEVEL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3180.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101968",
+        "name": "RAN-BIOPSY (LARGE TISSUE / SPECIMEN)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101976",
+        "name": "RAN-ANTI INSULIN ANTIBODIES",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 3060.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101977",
+        "name": "RAN-FACTOR IX ACTIVITY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101978",
+        "name": "RAN-ANDROSTENEDIONE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3540.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101981",
+        "name": "RAN-DOUBLE MARKER TEST",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3540.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101986",
+        "name": "RAN-INTRINSIC FACTOR IGG",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101988",
+        "name": "RAN-MYCOPLASMA PNEUMONIAE IGM ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101991",
+        "name": "RAN-TESTOSTERONE TOTAL AND FREE SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1101992",
+        "name": "RAN-TESTOSTERONE,FREE/TOTAL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102000",
+        "name": "RAN-MYOGLOBIN URINE-URINE SPOT ECLIA",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102002",
+        "name": "BAL-EXPERT PLUS",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102004",
+        "name": "RAN-ALDOSTERONE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102005",
+        "name": "RAN-CALCITONIN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102006",
+        "name": "RAN-CD4/CD8(LYMPHOCYTE ENUMARATION STUDY)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3180.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102007",
+        "name": "RAN-HLAB27 TYPING",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 4260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102024",
+        "name": "RAN-CHROMOGRANIN A(PHOTO)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 10500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102049",
+        "name": "RAN-GAMMA INTERFERON",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102053",
+        "name": "RAN-TRIPLE TEST(2ND TRIMESTER 14-22 WEEKS)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102056",
+        "name": "RAN-ANA REFLEX PANNEL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102057",
+        "name": "RAN-CLOSTRIDIUM DEFFICILE TOXIN PCR",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102062",
+        "name": "RAN-PNEUMOCYSTIS CARINII DEPECTION",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102064",
+        "name": "RAN-ToRCH IgG&IgM ANTIBODIES EVALUATION(10 PARAMET",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4740.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102065",
+        "name": "RAN-CYCLOSPORINE A,WB,HPLC",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102071",
+        "name": "RAN-DEHYDROEPIANDROSTERONE (DHEA)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102083",
+        "name": "RAN-ASPERGILLUS ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 5100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102085",
+        "name": "RAN-BLOOD LYMPHO CULTURE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 5520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102090",
+        "name": "RAN-QUADRUPLE MARKER TEST",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 5040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102091",
+        "name": "RAN-VITAMIN B1",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102092",
+        "name": "RAN-VITAMIN B6 (SERUM / PLASMA - EDTA)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 5340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102095",
+        "name": "RAN-TACROLIMUS",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 7020.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102096",
+        "name": "RAN-VANILMANDELIC ACID(VMA)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 6120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102097",
+        "name": "RAN-ANTITHROMBIN III ACTIVITY (FUNCTIONAL)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 5940.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102098",
+        "name": "RAN-1,25 DIHYDROXY VITAMIN D3 SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 5760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102108",
+        "name": "RAN-HERPES SIMPLEX VIRUS DNA DECTOR(PCR)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 7920.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102112",
+        "name": "RAN-PROTEIN C ACTIVITY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 6600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102113",
+        "name": "RAN-PROTEIN S ACTIVITY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 6120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102114",
+        "name": "RAN-ANTI PHOSPHOLIPASE A2 RECEPTOR IGG",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 7260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102119",
+        "name": "RAN-ACETYLCHOLINT RECEPTOR AUTO ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 7140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102123",
+        "name": "RAN-FECAL CALPROTECTIN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102124",
+        "name": "RAN-INSULIN LIKE GROWTH FACTOR-1",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 6900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102133",
+        "name": "RAN-ANTI PHOSPHOLIPID SYNDROME PENAL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 7260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102136",
+        "name": "RAN-OLIGOCLONAL BANDS CSF",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 8640.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102137",
+        "name": "RAN-TSH RECEPTOR ANTIBODY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 7260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102138",
+        "name": "RAN-BCR / abl- QUANTITATIVE (PHILADELPHIA CHROMOSO",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 9960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102139",
+        "name": "RAN-CATECHOLAMINES URINE",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 7560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102140",
+        "name": "RAN-PAN NEURO TROPIC VIRUS PANEL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 10680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102142",
+        "name": "RAN-ANTI DIURETIC HORMONE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 8400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102150",
+        "name": "RAN-RAAS SCREENING PANEL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 8220.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102155",
+        "name": "RAN-PLASMA RENIN ACTIVITY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 8160.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102162",
+        "name": "RAN-FACTOR V MUTATION DETECTION/LEIDEN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 8760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102169",
+        "name": "RAN-PML-Ra Ra(15.17) QUANTITATIVE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 7980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102180",
+        "name": "PHILADELPHIA CHROMOSOME ( BCR / ABL QUANTITATI",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 9960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102188",
+        "name": "RAN-HCV GENOTYPING",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 11760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102189",
+        "name": "RAN-HEPATITIS C VIRUS GENOTYPING",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 11760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102194",
+        "name": "RAN-IMMUNOFIXATION ELECTROPHORESIS (SERUM)",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 10080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102195",
+        "name": "RAN-HIV MONITOR (VIRALLOAD,CD4/CD8)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 10080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102198",
+        "name": "RAN-CHROMAGRANIN A",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 10500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102203",
+        "name": "RAN-CATECHOLAMINES PLAMA",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 10620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102208",
+        "name": "RAN-HEPATITIS B-VIRUS DNA QUANTITATIVE(COBAS TAQMA",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 13620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102209",
+        "name": "CELIAC PROFILE (Ttgiga ABS) (Gliadin IGG and IG)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102222",
+        "name": "RAN-B.K.VIRUS QUANTITATIVE REAL TIME PCR",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 10500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102229",
+        "name": "RAN-BCR-ABL 1 KINASE DOMAIN MUTATION ANALYSIS",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 14700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102230",
+        "name": "RAN-HEPATITIS A ANTIBODY IGM ONLY (ANTI HAV,IGM SE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102253",
+        "name": "RAN-ANCA WITH REFLEX PANEL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102258",
+        "name": "RAN-DUCHENNE/BECKER MUSCULAR DYSTROPHY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 9360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102260",
+        "name": "RAN-METANEPHRINE FREE'PLASMA'",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 8100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102265",
+        "name": "RAN-SCA PANEL (SCA TYPE-1,12,2,3,6)",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 18180.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102271",
+        "name": "RAN-THROMBOCHECK MINI",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 24960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102285",
+        "name": "RAN-C1 ESTERACE FUNCTIONAL SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 7740.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102291",
+        "name": "RAN-TPMT",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 8340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102301",
+        "name": "CYTOGENETICS",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 6120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102303",
+        "name": "RAN-H-PYLORI ANTIGEN DETECTION",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102305",
+        "name": "RAN-FACTOR VIII ACTIVITY.",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102310",
+        "name": "HLA B27 (PCR)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 5820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102311",
+        "name": "RAN-SHBG",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102314",
+        "name": "FOB WITH BAL &amp; BIOPSY",
+        "type": "Non Invasive Procedure",
+        "dept": "Pulmonary Function Lab",
+        "rate": 4140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102326",
+        "name": "AMP-ANCA (ANTI NEUTROPHIL CYTOPLASMIC ANTIBODY) - IFA WITH REFLEX TITERS",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102329",
+        "name": "HYSTEROSALPINOGRAPHY PROCEDURE CHARGE",
+        "type": "Professional Charges",
+        "dept": "X Ray",
+        "rate": 270.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102340",
+        "name": "MANUAL THERAPY",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102341",
+        "name": "CPM ELECTRO THERAPY",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102345",
+        "name": "SLEEP STUDY-LEVEL ONE",
+        "type": "Investigations",
+        "dept": "Sleep Lab",
+        "rate": 9340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102346",
+        "name": "SLEEP STUDY-LEVEL TWO",
+        "type": "Investigations",
+        "dept": "Sleep Lab",
+        "rate": 4200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102383",
+        "name": "OQUEST-Jak2 Reflex panel",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 10260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102395",
+        "name": "ANCA(P-ANCA+C-ANCA) WITH TITRE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102400",
+        "name": "OQUEST-Procalcitonin, serum",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 6120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102438",
+        "name": "RAN-MUSK ANTIBODY (SERUM,RIA)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 14280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102442",
+        "name": "RAN-ANTI PLAR2 ANTI BODY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 7260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102443",
+        "name": "RAN-CHRONIC LYMPHOPROLIFERATIVE DISORDER PANEL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 18720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102444",
+        "name": "SLEEP DEPRIVATION EEG",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 4430.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102445",
+        "name": "ROUTINE VIDEO EEG(1 HR)",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 3160.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102447",
+        "name": "NERVE CONDUCTION STUDY",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 5280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102448",
+        "name": "PROLONGED EEG(1 HR)",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 9420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102449",
+        "name": "PROLONGED EEG(4 HR)",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 9420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102450",
+        "name": "AEP(AUDIOTORY EVOKE POTENTIAL)",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 4500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102451",
+        "name": "SSEP(SOMATO SENSORY EVOKE POTENTIAL)",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 4400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102452",
+        "name": "RNS(REPETATIVE NURVE SCIMALITION)",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 4400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102453",
+        "name": "ELECTROMYOGRAPHY( EMG)&NERVE CONDUCTION STUDY",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 5030.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102461",
+        "name": "RENAL BIOPSY-PROCEDURE CHARGE",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 4280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102466",
+        "name": "MRI-BRAIN+CERVICAL SPINE SCREENING",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 13340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102468",
+        "name": "MRI-NECK ANGIO",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 10640.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102469",
+        "name": "FOB WITH BAL-PROCEDURE CHARGE",
+        "type": "Consultation fee",
+        "dept": "Pulmonary Function Lab",
+        "rate": 5440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102473",
+        "name": "DRESSING SMALL",
+        "type": "Miscellaneous",
+        "dept": "Emergency Medical Services",
+        "rate": 290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102474",
+        "name": "DRESSING BIG",
+        "type": "Miscellaneous",
+        "dept": "Emergency Medical Services",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102475",
+        "name": "RBS BY GLUCOMETER",
+        "type": "Miscellaneous",
+        "dept": "Emergency Medical Services",
+        "rate": 100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102476",
+        "name": "NEBULISATION",
+        "type": "Miscellaneous",
+        "dept": "Emergency Medical Services",
+        "rate": 140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102477",
+        "name": "CATHETERISATION",
+        "type": "Non Invasive Procedure",
+        "dept": "Emergency Medical Services",
+        "rate": 290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102478",
+        "name": "MINOR STITCHING",
+        "type": "Miscellaneous",
+        "dept": "Emergency Medical Services",
+        "rate": 330.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102479",
+        "name": "POP CHARGE",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102480",
+        "name": "FORMALIN CHARGE",
+        "type": "Miscellaneous",
+        "dept": "Medical",
+        "rate": 1520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102481",
+        "name": "SOB PROFILE",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 2850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102482",
+        "name": "STEROID INJECTION",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 2380.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102483",
+        "name": "IM INJECTION",
+        "type": "Hospital services (others)",
+        "dept": "Emergency Medical Services",
+        "rate": 100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102484",
+        "name": "IV FLUID",
+        "type": "Hospital services (others)",
+        "dept": "Emergency Medical Services",
+        "rate": 190.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102487",
+        "name": "FORMALIN CHARGE FOR INDOR PATIENTS",
+        "type": "Hospital services (others)",
+        "dept": "MISCELLANEOUS",
+        "rate": 2380.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102500",
+        "name": "DENGUE ELISA (NS1 + IgM)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 4730.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102501",
+        "name": "DENGUE IgM ELISA",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102502",
+        "name": "DENGUE NS1 ANTIGEN AND IgG - IgM ANTI BODIES",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1770.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102503",
+        "name": "ENTEROCHECK TEST",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 870.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102504",
+        "name": "FOLYS CATHETER FOR C/S (Antibiotic History Require",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 930.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102505",
+        "name": "FUNGAL CULTURE (Antibiotic History Required)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2310.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102507",
+        "name": "HBcIgM Antibody",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102508",
+        "name": "HBeAB (HEPATITIS BE ANTIBODY) - ARYA WELLNESS CENTRE",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1870.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102509",
+        "name": "HBeAG (HEPATITIS BE VIRUS ANTIGEN)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1770.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102510",
+        "name": "HBSAG-ELISA",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102511",
+        "name": "HERPES SIMPLEX VIRUS TYPE 1&amp;amp;amp;2 IgG &amp;amp;amp; IgM ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 3590.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102512",
+        "name": "HIV-ELISA",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102513",
+        "name": "JE IgM ELISA",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102514",
+        "name": "MONOSPOT",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1460.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102515",
+        "name": "NEEDLE STICK INJURY PANEL",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 10.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102516",
+        "name": "RETROVIRUS TEST",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 990.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102517",
+        "name": "SKIN SCRAPPING FOR FUNGUS",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102518",
+        "name": "SPUTUM FOR AFB 1ST DAY",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102519",
+        "name": "SPUTUM FOR AFB 2ND DAY",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102520",
+        "name": "SPUTUM FOR AFB 24HRS (CONS.METHOD)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102521",
+        "name": "SPUTUM FOR AFB(SPOT TEST)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102522",
+        "name": "STOOL FOR COCCIDIAN PARASITE",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 270.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102525",
+        "name": "SWAB FOR C/S",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102526",
+        "name": "TYPHIDOT IGg-igm",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102527",
+        "name": "VDRL WITH TITRE",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102551",
+        "name": "RAN-IgG4",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 10620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102552",
+        "name": "PARATHYROID HORMONE (Intact) with Calcium",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 3960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102553",
+        "name": "ANTI TPO ANTIBODY",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102557",
+        "name": "HPE-LARGE 8 BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 6600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102558",
+        "name": "PLEURAL FLUID FOR CELL BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102559",
+        "name": "RAN-AUTOIMMUNE ENCEPHALITIS PANEL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 29580.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102704",
+        "name": "TROPICAL FEVER PANEL",
+        "type": "Profile",
+        "dept": "Microbiology",
+        "rate": 5530.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102717",
+        "name": "CSF FOR RBC",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 230.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102718",
+        "name": "RDW (CV)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 210.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102720",
+        "name": "BLOOD RE.",
+        "type": "Profile",
+        "dept": "Haematology",
+        "rate": 600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102721",
+        "name": "PBS FOR BASOPHILIC STIPPLING",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102722",
+        "name": "PBS FOR RBC MORPHOLOGY",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102723",
+        "name": "CSF FOR CELL COUNT",
+        "type": "Profile",
+        "dept": "Haematology",
+        "rate": 340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102725",
+        "name": "ABSCESS DRAINAGE-PROFESSIONAL CHARGE",
+        "type": "Professional Charges",
+        "dept": "Gastroenterology",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102726",
+        "name": "ACHALASIA BALLOON DILATATION-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102727",
+        "name": "ASCITIC FLUID TAPPING(DIAGNOSTIC)-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 510.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102728",
+        "name": "ASCITIC FLUID TAPPING(THERAPEUTIC)-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 1370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102730",
+        "name": "ERCP( THERAPEUTIC)-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102736",
+        "name": "RECTAL MANOMETRY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 1710.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102737",
+        "name": "PH METRY -PROFESSIONAL CHARGE",
+        "type": "Professional Charges",
+        "dept": "Gastroenterology",
+        "rate": 2850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102739",
+        "name": "FIBROSCAN-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 1140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102741",
+        "name": "LEVEL-I ANESTHESIA CHARGE FOR GASTRO PROCEDURE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102742",
+        "name": "LEVEL-iI ANESTHESIA CHARGE FOR GASTRO PROCEDURE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102744",
+        "name": "COLONOSCOPY EMERGENCY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 5130.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102745",
+        "name": "COLONOSCOPY FULL-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 2220.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102746",
+        "name": "COLONSCOPY FULL WITH ANESTHESIA-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102747",
+        "name": "COLONSCOPY LEFT SIDE-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 1250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102748",
+        "name": "CRE BALLOON DILATATION-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102752",
+        "name": "ENDOSCOPIC HEMOCLIP 1-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 2280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102753",
+        "name": "ENDOSCOPIC HEMOCLIP-2-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102754",
+        "name": "ENDOSCOPIC HEMOCLIP-3-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 3990.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102755",
+        "name": "ENDOSCOPIC HEMOCLIP-4-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102756",
+        "name": "ENDOSCOPIC-SCLEROTHERAPY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102757",
+        "name": "ENDOSCOPIC FEEDING TUBE PLACEMENT-PROFESSIONAL CHARGECHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 2850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102758",
+        "name": "ERCP MECHANICAL LITHOTRYPSY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 27360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102759",
+        "name": "ERCP PAPILLOTOMY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102760",
+        "name": "ERCP(DIAGNOSTIC)-PROFESSIONAL CHARGE",
+        "type": "Consultations",
+        "dept": "Gastroenterology",
+        "rate": 15960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102761",
+        "name": "ESOPHAGEAL DILATATION (BUGIE)-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102762",
+        "name": "ESOPHEGEAL METAL STENTING-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 7410.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102763",
+        "name": "FOREIGN BODY REMOVAL UNDER ANAESTHESIA-PROFESSIONAL CHARGE",
+        "type": "Professional Charges",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102766",
+        "name": "PILE BANDING-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 2850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102769",
+        "name": "SIDE VIEW ENDOSCOPY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 1940.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102770",
+        "name": "SIGMOIDOSCOPY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 1140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102771",
+        "name": "SIGMOIDOSCOPY EMERGENCY/BEDSIDE-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 2620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102772",
+        "name": "UGI ENDOSCOPY &amp; EVL(5B)-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 5930.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102773",
+        "name": "UGI ENDOSCOPY BED SIDE-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 2620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102774",
+        "name": "UGI ENDOSCOPY EMERGENCY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102775",
+        "name": "UGI ENDOSCOPY EMERGENCY EVL(5B)-PROFESSIONAL CHARGE",
+        "type": "Consultations",
+        "dept": "Gastroenterology",
+        "rate": 10490.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102776",
+        "name": "UGI ENDOSCOPY WITH ANESTHESIA-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102777",
+        "name": "PEG-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 2280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102778",
+        "name": "ENDOSCOPIC SONOGRAPHY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102779",
+        "name": "UPPER-GI-ENDOSCOPY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 1140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102780",
+        "name": "ENDOSCOPIC SONOGRAPHY WITH FNAC-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102781",
+        "name": "ENDOSCOPIC BALOON DILATION UNDER ANESTHESIA-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102782",
+        "name": "SIGMOIDOSCOPY UNDER ANAESTHESIA-PROFESSIONAL CHARGE",
+        "type": "Professional Charges",
+        "dept": "Gastroenterology",
+        "rate": 2280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102784",
+        "name": "ENDOSCOPIC STRICTURE DILATION BUGGIE-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113656",
+        "name": "STEM CELL THERAPY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 2280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102785",
+        "name": "UGI ENDOSCOPY &amp; EVL(5B) UNDER ANAESTHESIA-PROFESSIONAL CHARGEE",
+        "type": "Professional Charges",
+        "dept": "Gastroenterology",
+        "rate": 5130.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102786",
+        "name": "GLUE INJECTION.-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102788",
+        "name": "ENDOSCOPIC ENDOLOOP APPLICATION-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 2850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102790",
+        "name": "ESOPHAGEAL METAL STENT PLACEMENT-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102792",
+        "name": "RESOLUTION CLIP-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102793",
+        "name": "ENDOSCOPIC SONOGRAPHY(DIAGNOSTIC) PROCEDURE CHARGE",
+        "type": "Consultations",
+        "dept": "Gastroenterology",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102794",
+        "name": "APC PROCEDURE CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 3990.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102795",
+        "name": "ENDOSCOPIC STRICTURE DILATION BUGGIE",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 2430.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102798",
+        "name": "ENDOSCOPIC HEMOCLIP 1",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 2280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102799",
+        "name": "ENDOSCOPIC HEMOCLIP-2",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102800",
+        "name": "ENDOSCOPIC HEMOCLIP-3",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 3990.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102801",
+        "name": "ENDOSCOPIC HEMOCLIP-4",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102802",
+        "name": "SIDE VIEW ENDOSCOPY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 2050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102803",
+        "name": "UGI ENDOSCOPY EMERGENCY EVL(5B)",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 5130.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102804",
+        "name": "UGI ENDOSCOPY WITH ANESTHESIA",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 2430.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102805",
+        "name": "ENDOSCOPIC SONOGRAPHY(DIAGNOSTIC)",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 630.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102806",
+        "name": "ENDOSCOPIC BALOON DILATION UNDER ANESTHESIA",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 4240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102807",
+        "name": "ENDOSCOPIC ENDOLOOP APPLICATION",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102808",
+        "name": "UGI ENDOSCOPY & EVL(5B) UNDER ANAESTHESIA",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 3520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102812",
+        "name": "RESOLUTION CLIP",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 10260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102813",
+        "name": "ESOPHAGEAL MANOMETRY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 2280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102815",
+        "name": "COMPREHENSIVE ALLERGY SKIN PRICK TEST",
+        "type": "Investigations",
+        "dept": "Pulmonary Function Lab",
+        "rate": 4040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102819",
+        "name": "EMERGENCY DIOGNOSTIC CHARGE",
+        "type": "Hospital services (others)",
+        "dept": "Emergency Medical Services",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102820",
+        "name": "URINE FOR NITRITE",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 180.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102821",
+        "name": "MICROSCOPY FOR CRYSTALS",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102822",
+        "name": "PERICARDIAL FLUID PHYSICAL",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 210.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102823",
+        "name": "URINE PUS CELL",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 210.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102824",
+        "name": "URINE-ALBUMIN",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 220.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102825",
+        "name": "SYNOVIAL FLUID (Physical)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 160.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102826",
+        "name": "PLEURAL FLUID PH",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102827",
+        "name": "ASCITIC FLUID FOR PHYSICAL",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 220.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102828",
+        "name": "PLEURAL FLUID PHYSICAL",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102829",
+        "name": "STRESS TMT ECHOCARDIOGRAPHY",
+        "type": "Investigations",
+        "dept": "Radiology",
+        "rate": 6620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102832",
+        "name": "FOB WITH BAL &amp; EBLB/TBLB/TBNA -PROCEDURE CHARGE",
+        "type": "Consultation fee",
+        "dept": "Pulmonary Function Lab",
+        "rate": 6990.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102833",
+        "name": "FOB WITH FOREIGN BODY REMOVAL(ADULT) -PROCEDURE CHARGE",
+        "type": "Professional Charges",
+        "dept": "Pulmonary Function Lab",
+        "rate": 11650.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102834",
+        "name": "DEXA FOR BODY COMPOSITION / FAT ANALYSIS TEST",
+        "type": "Investigations",
+        "dept": "Radiology",
+        "rate": 2700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102836",
+        "name": "DEXA SCAN FOR OSTEOPOROSIS ( TRIPLE SITE) (SPINE &amp;",
+        "type": "Investigations",
+        "dept": "Radiology",
+        "rate": 3970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102837",
+        "name": "DEXA SCAN FOR OSTEOPOROSIS (DUAL SITE) (SPINE &amp; BO",
+        "type": "Investigations",
+        "dept": "Radiology",
+        "rate": 3280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102838",
+        "name": "DEXA SCAN FOR SINGLE SITE HIP (PRE-OP/POST-OP/PROS",
+        "type": "Investigations",
+        "dept": "Radiology",
+        "rate": 1660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102841",
+        "name": "EGFR CREATININE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102842",
+        "name": "DRAINAGE FLUID FOR LIPASE*",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 870.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102843",
+        "name": "DRAIN FLUID FOR T.BILIRUBIN",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102847",
+        "name": "SPEECH THERAPY ( 15 DAYS)",
+        "type": "Audiometry",
+        "dept": "Audiology",
+        "rate": 10560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102848",
+        "name": "SPEECH THERAPY (1 MONTH)",
+        "type": "Audiometry",
+        "dept": "Audiology",
+        "rate": 18720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102854",
+        "name": "HAEMODIALYSIS RE-VISIT",
+        "type": "Non Invasive Procedure",
+        "dept": "Dialysis",
+        "rate": 5000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102857",
+        "name": "LAL-RENAL BIOPSY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 7560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102873",
+        "name": "ANTI PHOSPHOLIPID ANTIBODY - IGG",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102874",
+        "name": "ANTI PHOSPHOLIPID ANTIBODY - IGM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102877",
+        "name": "ANTI SMOOTH MUSCLE ANTIBODY (ASMA)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102886",
+        "name": "S.CERULOPLASMIN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102903",
+        "name": "AMP-ERYTHROPOIETIN (EPO)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102912",
+        "name": "CBNAAT (EXPERT MTB/RIF)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3180.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102926",
+        "name": "AMP-HLA B-27 - FLOWCYTOMETRY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102927",
+        "name": "AMP-H-TTG /DGP (TISSUE TRANSGLUTAMINASE DGP) SCREEN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102946",
+        "name": "METANEPHRINES - 24 HOURS URINE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102950",
+        "name": "OSMOLALITY - SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102951",
+        "name": "OSMOLALITY - SPOT URINE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102966",
+        "name": "AMP-TREPONEMA PALLIDUM HAEMAGGLUTINATION ASSAY (TPHA)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102970",
+        "name": "AMP-VITAMIN B6 (PYRIDOXAL PHOSPHATE)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 5340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102979",
+        "name": "RAN-THROMBOCHECK TOTAL PANEL",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 30240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102983",
+        "name": "RAN-ANTI PARIETAL CELL ANTIBODY(APCA)",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 4500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102984",
+        "name": "ACLS AMBULANCE CHARGE/KM(AFTER 5 KM)",
+        "type": "Ambulance Service",
+        "dept": "Ambulance Service",
+        "rate": 100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102986",
+        "name": "ACLS AMBULANCE VENTILATOR CHARGE/HOUR",
+        "type": "Ambulance Service",
+        "dept": "Ambulance Service",
+        "rate": 1050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102987",
+        "name": "ACLS AMBULANCE MONITOR CHARGE/HOUR",
+        "type": "Ambulance Service",
+        "dept": "Ambulance Service",
+        "rate": 330.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102988",
+        "name": "ACLS AMBULANCE SYRINGE PUMP CHARGE/HOUR",
+        "type": "Ambulance Service",
+        "dept": "Ambulance Service",
+        "rate": 240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102989",
+        "name": "ACLS AMBULANCE OXYGEN CHARGE/HOUR",
+        "type": "Ambulance Service",
+        "dept": "Ambulance Service",
+        "rate": 330.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102990",
+        "name": "ACLS AMBULANCE DOCTOR CHARGE(FOR 1ST HOUR)",
+        "type": "Ambulance Service",
+        "dept": "Ambulance Service",
+        "rate": 1050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102992",
+        "name": "ACLS AMBULANCE BIPAP CHARGE/HOUR",
+        "type": "Ambulance Service",
+        "dept": "Ambulance Service",
+        "rate": 810.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102995",
+        "name": "COMPREHENSIVE ALLERGY SKIN PRICK REPORTING CHARGE",
+        "type": "Consultation fee",
+        "dept": "Pulmonary Function Lab",
+        "rate": 1170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1102999",
+        "name": "ASPERGILLUS FUMIGATUS SKIN PRICK TEST REPORTING CHARGE",
+        "type": "Professional Charges",
+        "dept": "Pulmonary Function Lab",
+        "rate": 310.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1103000",
+        "name": "FOOD ALLERGY SKIN PRICK TEST",
+        "type": "Investigations",
+        "dept": "Allergy Department",
+        "rate": 1560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1103002",
+        "name": "ACLS AMBULANCE CHARGE(UP TO 5 KM)",
+        "type": "Ambulance Service",
+        "dept": "Ambulance Service",
+        "rate": 1620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1103003",
+        "name": "URINE FOR MICROALBUMIN(MICRAL-II)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1103180",
+        "name": "THERAPEUTIC PHLEBOTOMY CHARGES",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109066",
+        "name": "PLEURAL TAPPING DIAGNOSTIC",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109067",
+        "name": "PLEURAL TAPPING THERAPEUTIC",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 2390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109313",
+        "name": "MRI DORSAL WHOLE SPINE SCREENING",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 13450.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109318",
+        "name": "CAPD FLUID FOR C/S(Colorimetric method Antibiotic",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109435",
+        "name": "DORSAL LUMBER SPINE(P)",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 5910.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109773",
+        "name": "CAPD FLUID FOR CELL COUNT TC DLC",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109778",
+        "name": "ASCITIC FLUID FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109779",
+        "name": "NIPPLE DISCHARGE FLUID FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 870.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109785",
+        "name": "CAPD FLUID FOR AFB STAIN",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 310.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109789",
+        "name": "CAPD FLUID FOR GRAM S STAIN",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109843",
+        "name": "PRE OPERATIVE INVESTIGATION PANEL 1",
+        "type": "Profile",
+        "dept": "Apollo Health Check",
+        "rate": 4250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109844",
+        "name": "PRE OPERATIVE INVESTIGATION PANEL 2",
+        "type": "Profile",
+        "dept": "Apollo Health Check",
+        "rate": 7150.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109845",
+        "name": "PRE OPERATIVE INVESTIGATION PANEL 3",
+        "type": "Profile",
+        "dept": "Apollo Health Check",
+        "rate": 9790.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109877",
+        "name": "INTRAVENOUS UROGRAPHY",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 3650.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109878",
+        "name": "HYSTEROSALPINOGRAPHY",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 2500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109957",
+        "name": "MRI BRAIN CERVICAL SPINE SCREENING",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 12690.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109959",
+        "name": "H PYLORI",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 210.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109961",
+        "name": "CT ANGIOGRAPHY(P)",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 8880.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109978",
+        "name": "BIO-CHEMICAL ANALYSIS (PERICARDIAL FLUID)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 470.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109979",
+        "name": "BIO-CHEMICAL ANALYSIS (SYNOVIAL FLUID)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109980",
+        "name": "BIO-CHEMICAL ANALYSIS (PLEURAL FLUID)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109982",
+        "name": "PLEURAL FLUID FOR PROT AND FRACT",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109985",
+        "name": "GLUCOSE TOLERANCE TEST -V ( 75 gm Glucose)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1109988",
+        "name": "MRI LS SPINE WITH WHOLE SPINE SCREENING",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 13060.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110003",
+        "name": "MRI BRAIN AND WHOLE SPINE SCREENING",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 13470.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110007",
+        "name": "X-RAY LS SPINE LATERAL VIEW/FLEXTION AND EXTENSION VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 490.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110014",
+        "name": "T-TUBE CHOLANGIOGRAM",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 1610.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110025",
+        "name": "MRI-KUB",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 12840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110027",
+        "name": "MRI CERVICAL SPINE AND SCREENING OF BRAIN",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 12690.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110028",
+        "name": "MRI LUMBER SPINE AND WHOLE SPINE SCREENING",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 13450.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110029",
+        "name": "MRI-BRACHIAL PLEXUS",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 13450.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110050",
+        "name": "MRI BRAIN WITH MR ANGIO OF CIRCLE OF WILLIS",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 13870.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110051",
+        "name": "KUB SCREENING GB AND LIVER",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110072",
+        "name": "URINE SPOT ALBUMIN CREATNINE RATIO",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 810.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110096",
+        "name": "SPUTUM FOR AFB STAIN",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110430",
+        "name": "BRONCHIAL FLUID FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110432",
+        "name": "PERICARDIAL FLUID FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110433",
+        "name": "PERITONEAL FLUID FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110434",
+        "name": "PLEURAL FLUID FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110435",
+        "name": "SPUTUM FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110436",
+        "name": "SYNOVIAL FLUID FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 870.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110791",
+        "name": "XRAY HIP JOINT LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 510.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110812",
+        "name": "NAIL SCRAPING FOR FUNGUS",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110837",
+        "name": "PERICARDIAL FLUID CELL COUNT(TC DLC)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110881",
+        "name": "CAPD FLUID FOR FUNGAL STAIN",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110903",
+        "name": "RETRO URETHROGRAPHY",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 2690.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110925",
+        "name": "CSF FOR CELL COUNT(TC DLC)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1110928",
+        "name": "PLEURAL FLUID CELL COUNT(TC DLC)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1111782",
+        "name": "SCRUB TYPHUS ELISA",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1810.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1111861",
+        "name": "BRONCHO ALVEOLAR LAVAGE FLUID FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1112196",
+        "name": "GLUCOSE TOLERANCE TEST -IV PP( 75 gm GLUCOSE)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 230.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1112211",
+        "name": "CULTURE AND SENSITIVITY NIPPLE DISCHARGE",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 870.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1112547",
+        "name": "URINE FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1112657",
+        "name": "PBS FOR IMMATURE CELLS",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 540.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113148",
+        "name": "IITV/C-ARM",
+        "type": "Equipment",
+        "dept": "Wards Others",
+        "rate": 4000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113149",
+        "name": "MORCELLATOR",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 1400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113150",
+        "name": "NEURO DRILL MACHINE",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 6500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113151",
+        "name": "NEURO DRILL BIT",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 5000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113152",
+        "name": "ORTHO DRILL MACHINE",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 2400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113153",
+        "name": "ORTHO DRILL BIT",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 5000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113154",
+        "name": "ENT DRILL",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 1400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113155",
+        "name": "HAND INSTRUMENT",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 4000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113157",
+        "name": "URO- HAND INSTRUMENT",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 5500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113164",
+        "name": "LAP PORT.",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 7000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113165",
+        "name": "SERVOFLAME",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 1000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113166",
+        "name": "INSTRUMENT CHARGE (SKM)",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 10000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113168",
+        "name": "NEURO HAND INSTRUMENT",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 5500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113169",
+        "name": "BIS MONITOR",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114055",
+        "name": "CLOSE REDUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113170",
+        "name": "Cavitron Ultrasonic Surgical Aspirator (CUSA)",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 7000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113171",
+        "name": "HYSTEROSCOPE INSTRUMENT CHARGE",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 3000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113174",
+        "name": "FEMORAL ARTERIAL CANNULA",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 2595.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113175",
+        "name": "DEBRIDER(ENT)",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 5500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113177",
+        "name": "INITIATION OF NASAL CAPP",
+        "type": "Equipment",
+        "dept": "Medical",
+        "rate": 1900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113180",
+        "name": "INITIATION ON N-CPAP",
+        "type": "Equipment",
+        "dept": "Medical",
+        "rate": 1660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113183",
+        "name": "FLOWTON EXCEL SYSTEM/CALF LENGTH",
+        "type": "Equipment",
+        "dept": "Medical",
+        "rate": 950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113184",
+        "name": "FLOWTON EXCEL SYSTEM/THIGH LENGTH",
+        "type": "Equipment",
+        "dept": "Medical",
+        "rate": 950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113186",
+        "name": "ADMINISTRATION OF SURFACTANT (PAEDIATRIC)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 10680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113187",
+        "name": "BEDSIDE F.O. BRONCHOSCOPY CHARGE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 2090.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113190",
+        "name": "BONE MARROW ASPIRATION (PAEDIATRIC)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 4580.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113191",
+        "name": "BONE MARROW ASPIRATION BIOPSY",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113192",
+        "name": "BONE MARROW ASPIRATION BIOPSY PROCEDURE CHARGE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 5230.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113193",
+        "name": "BONE MARROW ASPIRATION NEEDLE + PROCEDURE CHARGE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113194",
+        "name": "BRONCHOSCOPY BAL+BRUSHING (BSP))",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 23750.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113195",
+        "name": "BURN DRESSING(BSP)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 4280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113196",
+        "name": "CENTRAL LINE (PAEDIATRIC)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 7630.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113197",
+        "name": "D.L.PROCEDURE(BSP)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 1900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113198",
+        "name": "DORSAL SLIT(BSP)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 3800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113200",
+        "name": "DRAINAGE FOR LIVER ABSCESS(BSP)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113201",
+        "name": "DRESSING & DEBRIDEMENTS(BSP)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 810.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113203",
+        "name": "DRESSING OF WOUND(BSP)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 2850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113204",
+        "name": "DVET-PAEDIATRIC(BSP)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 10680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113205",
+        "name": "ECHOCARDIOGRAPHIC(PERICARDIOCENTESIS)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 9500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113206",
+        "name": "EXCHANGE TRANSFUSION(BSP)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 10680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113207",
+        "name": "FNAC -PAEDIATRIC(BSP)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 3000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113208",
+        "name": "FOLLEYS CATHETERIZATION CHARGE(BSP)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 1670.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113210",
+        "name": "I & D (BSP)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113211",
+        "name": "I & D -PAEDIATRIC(BSP)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 4580.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113213",
+        "name": "ICP MONITORING CATHETER",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113215",
+        "name": "ICWD (PAEDIATRIC)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 10680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113216",
+        "name": "INCISION AND DRAINAGE OF DEEP NECK ABSCESS",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 12080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113217",
+        "name": "INITIATION OF CPAP (PAEDIATRIC)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 2290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113218",
+        "name": "INITIATION OF N CPAP-PROCEDURE CHARGE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 3800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113220",
+        "name": "INTUBATION &amp; VENTILATION",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113221",
+        "name": "INTUBATION & VENTILATION (PAEDIATRIC)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113222",
+        "name": "KNEE ASPIRATION RIGHT KNEE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 2850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113223",
+        "name": "KNEE TAPPING AND JOINT DRESSING",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 4180.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113224",
+        "name": "LP (PAEDIATRIC)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 3050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113225",
+        "name": "LP UNDER SEDATION",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 2090.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113227",
+        "name": "NASAL ENDOSCOPY(OPD)",
+        "type": "Consultation fee",
+        "dept": "Ear Nose and Throat",
+        "rate": 1050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113228",
+        "name": "NASAL PACKING-ANTERIOR-PROCEDURE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 4750.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113229",
+        "name": "NASAL PACKING-POSTERIOR-PROCEDURE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 4700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113231",
+        "name": "PARACENTESIS (PAEDIATRIC)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 2290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113232",
+        "name": "PHARYNGOLARYNGOSCOPY-BED SIDE PROCEDURE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 3800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113233",
+        "name": "PICC LINE (PERIPHERALLY PLACED INSERTED CENTRAL CATHETER)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 9160.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113234",
+        "name": "PIGTAIL CATHETER REMOVAL",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113235",
+        "name": "PIGTAIL CATHETER REMOVAL-PROCEDURE CHARGE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113236",
+        "name": "PIGTAIL DRAIN",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113237",
+        "name": "POP - SLAB",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113238",
+        "name": "POP(PLASTER OF PARIS)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 1050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113240",
+        "name": "RYLES TUBE INSERATION CHARGE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113241",
+        "name": "S.B.TUBE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113243",
+        "name": "SKIN BIOPSY(PAEDIATRIC)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113244",
+        "name": "SUPRA PUBIC CATHETERIZATION (BED SIDE)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 4180.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113245",
+        "name": "SYNOVIAL FLUID ASPIRATION",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 4180.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113249",
+        "name": "THORACO CENTESIS (PAEDIATRIC)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 3820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113251",
+        "name": "TRACHEOSTOMY- ADULT",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 8360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113252",
+        "name": "TRACHEOSTOMY-PAED",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 4750.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113253",
+        "name": "URETHRAL DILATATION WITH CATHETERIZATION",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 10450.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113599",
+        "name": "ANTERIOR CERVICAL MICRO DISECTOMY WITH INSTRUMENTATION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113600",
+        "name": "ARTIFICIAL DISC REPLACEMENT",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113601",
+        "name": "BRAIN TUMOUR EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 68400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113602",
+        "name": "CARPEL TUNNEL RELEASE-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113603",
+        "name": "CEREBRAL RESERVOIR",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113605",
+        "name": "COMPLEX BRAIN TUMOUR EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113606",
+        "name": "CRANIAL DEBRIDMENT -SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113607",
+        "name": "CRANIAL WOUND DEBRIDMENT / TOILETING",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113608",
+        "name": "CRANIOPLASTY ARTIFICIAL",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113609",
+        "name": "CRANIOPLASTY AUTOLOGUS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113610",
+        "name": "CRANIOTOMY WITH CLIPING OF INTRACRANIAL ANEURISM",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113611",
+        "name": "CSF RHINORRHORA NASAL ENDOSCOPIC MANAGEMENT",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113613",
+        "name": "DOUBLE BURR HOLE",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113615",
+        "name": "ENDOSCOPIC TRANSNASAL TRANSPHENOIDAL PIT TUMOUR EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113616",
+        "name": "EXCISION OF BRACHIAL NEUROFIBROMA & EXCISION OF SCALP MASS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113618",
+        "name": "EXCISION OF FRONTAL GLIOMA",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 74100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113620",
+        "name": "EXCISION OF OCCIPITO ENCEPHALITIS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113621",
+        "name": "EXCISION OF POSTERIOR FOSSA COMPLEX BRAIN TUMOUR-10331",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113623",
+        "name": "EXCISION OF SCALP TUMOUR",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113625",
+        "name": "EXICISION ADRENAL MASS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113626",
+        "name": "EXPLORATION AND F.B. REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113629",
+        "name": "INTRA MEDULLARY SPINAL CORD TUMOUR",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113631",
+        "name": "LOWER END EXTERIORISATION OF V.P. SHUNT (NEURO)-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113632",
+        "name": "LUMBAR SYMPATHETIC BLOCK",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113633",
+        "name": "LUMBER CSF DRAIN FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113634",
+        "name": "MEDIAN NERVE RELEASE AT CARPEL TUNNEL",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113635",
+        "name": "MICROSURGICAL EXCISION OF AVM",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113636",
+        "name": "MLSOC - MIDLINE SUB OCCIPITAL CRANIACTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113637",
+        "name": "NERVE BLOCK",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113638",
+        "name": "ODONTOIDECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113639",
+        "name": "OSTEOMA EXCISION-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 25080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113640",
+        "name": "OSTEOPLASTIC CRANIOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113641",
+        "name": "PERCEUTENEOUS PEDICALE SCREW+ROD FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 62700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113642",
+        "name": "PERCUTANEOUS SPINAL FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113643",
+        "name": "PERITONEAL SHUNT-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113644",
+        "name": "PITUITARY ADENOMA-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113646",
+        "name": "POSTERIOR CERVICAL DECOMRESSION WITH LAMINECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113647",
+        "name": "RIGHT FRONTIAL CRANIOTOMY AND EXCISION OF RIGHT FRONTIAL PARASAGITAL MENINGIOMA",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113651",
+        "name": "SCALP HAEMATOMA DRAINAGE-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113652",
+        "name": "SCALP MASS TUMOUR",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113654",
+        "name": "SKULL BONE TUMOUR(LARGE)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113657",
+        "name": "SUB-LABIAL TRANSPHOINADAL ENDOSCOPIC PITUITORY TUMOR EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 68400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113659",
+        "name": "V.P. SHUNT (NEURO)-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113660",
+        "name": "VERTIBROPLASTY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 31920.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113661",
+        "name": "VP SHUNT REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113663",
+        "name": "NEURO ENDOSCOPIC SKULL BASE SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113665",
+        "name": "NEURO ENDOSCOPIC SPINE SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113668",
+        "name": "MICRO ENDOSCOPIC LUMBAR DISCETOMY(MELD)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113670",
+        "name": "ORBITOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113671",
+        "name": "STEREOTATIC BRAIN BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113672",
+        "name": "LATERAL MASS CERVICAL SPINAL FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113673",
+        "name": "ANTERIOR CERVICAL CORPECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113676",
+        "name": "THORACOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 42290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113689",
+        "name": "MINIMALLY INVASIVE CARDIAC MYXOMA EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 231000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113706",
+        "name": "VASCULAR -ILLIAC PSEUDOANEURYSM REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 168000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113709",
+        "name": "EAR LOBULE REPAIR-ONE SIDE",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113710",
+        "name": "MASTOIDECTOMY-CORTICAL",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113711",
+        "name": "TYMPANOPLASTY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113714",
+        "name": "NASAL PACKING-ANTERIOR",
+        "type": "Invasive Procedures",
+        "dept": "Wards Others",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113717",
+        "name": "DIRECT LARYNGOSCOPY (D/L)EUA",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113719",
+        "name": "BRONCHOSCOPY(F.O) WITH BAL -SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113720",
+        "name": "TOTAL RADICAL PAROTIDECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113721",
+        "name": "THYROID LOBECTOMY.",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113722",
+        "name": "THYROIDECTOMY-HEMI",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113724",
+        "name": "MANDIBULECTOMY-HEMI",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113729",
+        "name": "EXCISION OF INFECTED THYROGIOSSAL CYST WITH SISTRUNK",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113732",
+        "name": "MASTOIDECTOMY-RADICAL",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113733",
+        "name": "MICRO LARYNGEAL SURGERY MLS-BENIGN LESION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113740",
+        "name": "NASAL ENDOSCOPY+BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 4830.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113741",
+        "name": "NASAL FOREIGN BODY REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 5130.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113742",
+        "name": "NASAL BONE FRACTURE REDUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113743",
+        "name": "BRONCHOSCOPY(F.O)+BAL+BRONCHIAL BRUSHING/BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 5130.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113749",
+        "name": "PHARYNGOLARYNGOSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 2850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113751",
+        "name": "NECK(CERVICAL) LYMPH NODE BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 6040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113752",
+        "name": "NECK DISSECTION-SOHND",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113753",
+        "name": "NECK DISSECTION-SELECTIVE",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113754",
+        "name": "EXCISION OF PREAURICULAR SINUS",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113759",
+        "name": "ORAL CAVITY WIDE EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113760",
+        "name": "MANDIBULECTOMY MARGINAL",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113761",
+        "name": "D/L SCOPY+BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113762",
+        "name": "CSF LEAK - NASAL ENDOSCOPIC MANAGEMENT",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113767",
+        "name": "MANDIBULECTOMY-SEGMENTAL",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113768",
+        "name": "NECK DISSECTION-MRND TYPE II",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113769",
+        "name": "PMMC FLAP RECONSTRUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113770",
+        "name": "ALVEOLECTOMY-LOWER",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113772",
+        "name": "AMELOBLASTOMA-EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113773",
+        "name": "ARCHBAR FIXATION & MMF",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113775",
+        "name": "BASE OF TONGUE(BOT) CARCINOMA-EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113777",
+        "name": "BRANCHIAL CYST/SINUS/FISTULA-EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113778",
+        "name": "BRONCHOSCOPY+FOREIGN BODY REMOVAL-ADULT",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113779",
+        "name": "BRONCHOSCOPY+FOREIGN BODY REMOVAL-PAEDIATRIC",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113788",
+        "name": "CYST/PAPILLOMA ORAL CAVITY-EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113791",
+        "name": "EAR F.B.REMOVAL G/A",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113792",
+        "name": "EAR F.B.REMOVAL L/A",
+        "type": "Consultation fee",
+        "dept": "Ear Nose and Throat",
+        "rate": 2280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113793",
+        "name": "EAR LOBULE REPAIR-BOTH SIDE",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113794",
+        "name": "Ear Minor Procedure",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113799",
+        "name": "ENDOSCOPIC ENDONASAL PITUITARY SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113800",
+        "name": "ENDOSCOPIC ENDONASAL SKULL BASE SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113801",
+        "name": "ENDOSCOPIC SPHENOPALATINE ARTERY LIGATION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113804",
+        "name": "EXPLORATION & HAEMOSTASIS OF TONGUE WOUND",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113806",
+        "name": "FACIAL TRANSLOCATION/MAXILLARY SWING",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113810",
+        "name": "HARD PALATE-EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810442",
+        "name": "FOB WITH BAL",
+        "type": "Non Invasive Procedure",
+        "dept": "Pulmonary Function Lab",
+        "rate": 3250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113822",
+        "name": "LATERAL TARSORHAPY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113826",
+        "name": "LIP-WIDE EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113830",
+        "name": "MAXILLARY BONE FRACTURE ORIF",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113834",
+        "name": "MICRO LARYNGEAL SURGERY(MLS)-LASER EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113835",
+        "name": "MICRO LARYNGEAL SURGERY(MLS)-MALIGNANT LESION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113836",
+        "name": "MICROVASCULAR FREE FLAP RECONSTRUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 68400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113838",
+        "name": "MYRINGOTOMY WITH GROMET INSERTION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113839",
+        "name": "NASAL ENDOSCOPIC DISSECTION & ELECTROCAUTERY IN EPISTAXIS)",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113841",
+        "name": "NASAL MINOR PROCEDURE",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113845",
+        "name": "NASOPHARYNGOSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 2850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113846",
+        "name": "NECK DISSECTION - CCND",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113847",
+        "name": "NECK DISSECTION LATERAL",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113850",
+        "name": "NECK DISSECTION-MRND TYPE I",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113851",
+        "name": "NECK DISSECTION-MRND TYPE III",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113853",
+        "name": "NECK INJURY-MAJOR SURGICAL REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113854",
+        "name": "NECK INJURY-MINOR SURGICAL REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113855",
+        "name": "OESOPHAGOSCOPY+BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113856",
+        "name": "ORAL PRE-MALIGNANT LESION-EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113861",
+        "name": "OSSICULAR RECONSTRUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113864",
+        "name": "PARATHYROIDECTOMY-MINIMALLY INVASIVE",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113865",
+        "name": "PAROTIDECTOMY-DEEP LOBE TUMOUR EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113866",
+        "name": "PAROTIDECTOMY-TOTAL CONSERVATIVE",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113871",
+        "name": "PHARYNGO-LARYNGO-OESOPHAGECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 85500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113874",
+        "name": "RANULA - TRANSORAL EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113878",
+        "name": "SCHWANNOMA OF(V N/VII N/IX N/X N/XII N)-EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113879",
+        "name": "SOFT PALATE TUMOUR WIDE EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113880",
+        "name": "SOFT TISSUE TUMOUR OF NECK-EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113881",
+        "name": "STEPEDECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113882",
+        "name": "STEPEDOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113885",
+        "name": "SUBMANDIBULAR GLAND BENIGN TUMOUR-EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113886",
+        "name": "SUBMANDIBULAR GLAND CARCINOMA-EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113890",
+        "name": "TEP-PRIMARY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 8550.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113893",
+        "name": "THYROIDECTOMY-TOTAL WITH TRACHEAL SLEEVE RESECTION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113902",
+        "name": "ZYGOMATIC BONE FRACTURE ORIF",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113927",
+        "name": "ORCHIDECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113928",
+        "name": "CYSTOLITHOLAPOXY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113932",
+        "name": "MINIPARK+DJS",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 25080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113934",
+        "name": "HoLEP",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 25080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113935",
+        "name": "CLOT EVACUALOTION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113937",
+        "name": "RENAL EXPLORATION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113941",
+        "name": "RENAL CYST DEROOFING",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113942",
+        "name": "CYSTOLITHOTOMY + OIU",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113944",
+        "name": "CYSTOSCOPIC + URETHRAL BALLOON DILATATION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810497",
+        "name": "CD4 COUNT",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3180.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113945",
+        "name": "DETORSION WITH FIXATION OF (L)TESTIS",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113946",
+        "name": "MEATOPLASTY+CALIBRATION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113951",
+        "name": "BUCCAL MUCOSAL GRAFT URETHROPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113952",
+        "name": "EXICISION OF CORD CYST WITH HYDROCELECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113953",
+        "name": "LAPAROSCOPIC ORCHIDECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113957",
+        "name": "DRAINAGE OF PSOAS ABSCESS+I & D",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113965",
+        "name": "LARGE ADRENAL TUMOUR EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113966",
+        "name": "EXCISION OF RENAL MASS",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113967",
+        "name": "CYSTOSCOPY+RGP+DJ STENTING",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113969",
+        "name": "B/L CYSTOSCOPY+RGP",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113975",
+        "name": "PERIPHERIC HAEMATOMA AND ABSCESS DRAINAGE",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113976",
+        "name": "EVERSION OF SCROTAL SAC",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113978",
+        "name": "EXCISION EPIDYMAL CYST",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113979",
+        "name": "ABDOMINAL FLAP COVER WITH WOUND DEBRIDEMENT",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113980",
+        "name": "ABDOMINOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113981",
+        "name": "C.F.FLAP+WOUND DEBRIMENT",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 27360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113982",
+        "name": "CRANIO MAXILLARY FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113985",
+        "name": "EXCISION OF ENUCLETION OF NASOLOBIAL DENTAL CYST",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113986",
+        "name": "EXCISION OF GANGLION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113987",
+        "name": "EXCISION OF MALIGNANT TUMOUR OVER SKIN",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113990",
+        "name": "FASCIO CUTANEOUS FLAP",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113991",
+        "name": "FASCIOTOMY (MULTIPLE LIMBS)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 25080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113992",
+        "name": "FASCIOTOMY (SINGLE LIMBS)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 15960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113994",
+        "name": "FTSG (MEDIUM)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113995",
+        "name": "FTSG (SMALL)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113996",
+        "name": "INJURY REPAIR-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113997",
+        "name": "INNER MAXILLARY FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1113998",
+        "name": "LOCAL ADVANCEMENT FLAP",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114002",
+        "name": "MAMMOPLASTY (ONE SIDE)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114003",
+        "name": "MULTIPLE CORN EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 10260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114004",
+        "name": "MULTIPLE TENDON REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114005",
+        "name": "MUSCLE FLAP",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114006",
+        "name": "MYOCUTANEOUS FLAP",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114007",
+        "name": "NERVE TUMOR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114009",
+        "name": "ORIF MANDIBLE WITH IMF",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114013",
+        "name": "REDUCTION NASAL BONE FRACTURE(PLASTIC SURGERY)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114015",
+        "name": "REPAIR OF TRANSECTED MUSCLE & TENDON",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114016",
+        "name": "SCROTOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114017",
+        "name": "SKIN FLAPS-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114018",
+        "name": "SKIN GRAFTING-MEDIUM",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114019",
+        "name": "SOFT TISSUE LADERATION REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114023",
+        "name": "TANGENTIAL EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114024",
+        "name": "TENDO ACHILLES INJURY REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114025",
+        "name": "TRANSPOSITION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114026",
+        "name": "TRANSPOSITION FLAP",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114027",
+        "name": "VASCULAR REPAIR SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114028",
+        "name": "VESSEL REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114029",
+        "name": "WEDGE BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114030",
+        "name": "WOUND DEBRIDEMENT AND REPAIR OF TISSUE",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114033",
+        "name": "WOUND EXPLORATION AND TENDON REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114044",
+        "name": "ANKLE ARTHODESIS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114045",
+        "name": "ARTHROSCOPIC CAPSULES ADHESIOLYSIS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114046",
+        "name": "ARTHROSCOPY SYNOGECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114049",
+        "name": "BIPOLAR HIP",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114051",
+        "name": "CANCELLOUS SCREW FIXATION(TIBIAL CONDYLES)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114052",
+        "name": "CANULATED AND CANCELLUS SCREW FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114053",
+        "name": "CAUDAL EPIDURAL INJECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114057",
+        "name": "CLOSE REDUCTION AND K WIRE FIXATION-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114059",
+        "name": "COLD ABSCESS DRAINAGE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114062",
+        "name": "DHS - ORTHO-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114065",
+        "name": "DISTAL HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114070",
+        "name": "EXCISION OF MULTIPLE DESMOID TUMOUR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114072",
+        "name": "EXPLORATION OF RADIAL NERVE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 27360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114073",
+        "name": "EXTERNAL FIXATION OF FEMUR AND TIBIA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114074",
+        "name": "EXTERNAL FIXATION -SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 15960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114075",
+        "name": "HEMI ARTROPLASTY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114076",
+        "name": "HEMI REPLACEMENT-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114077",
+        "name": "HIP JOINT EXPLORATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114079",
+        "name": "HUMERAL SHAFT # OR & OP-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114080",
+        "name": "I & D + DECOMPRESSION OF BONE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114081",
+        "name": "I & D DEEP ABSCESS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 10260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114083",
+        "name": "IM NAILING PFN",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114084",
+        "name": "IMPLANT REMOVAL TIBIA AND FIBULA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114089",
+        "name": "JESS FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114091",
+        "name": "LIGAMENTO AXIS WITH MINI EXFIX & K-WIRE FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114092",
+        "name": "LOCAL ANTIBIOTIC DEAD",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114093",
+        "name": "LRS REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114094",
+        "name": "MANIPULATION & CLOSED REDUCTION OF POSTARIOR FRATURE DISLOCATION OF HIP",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114095",
+        "name": "MANIPULATION & REDUCTION OF SHOULDER DISLOCATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114096",
+        "name": "MEDIAL PATELLOFEMORAL LIGAMENT (MPFL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114098",
+        "name": "OPEN BONE BIOPSY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 10260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114100",
+        "name": "OPEN REDUCTION RADIAL HEAD",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114102",
+        "name": "ORIF BBFA FRACTURE-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114104",
+        "name": "ORIF DISTEL RADIUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114105",
+        "name": "ORIF FRACTURE FIBULA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114106",
+        "name": "ORIF FRACTURE SCAPHOID",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114107",
+        "name": "ORIF FRACTURE TIBIA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114108",
+        "name": "ORIF LATERAL MALLEOLUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114109",
+        "name": "ORIF MEDIAL CANDYLE AND LATERAL CANDYLE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114110",
+        "name": "ORIF MEDIAL MELIOLUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114111",
+        "name": "ORIF METACARPAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114112",
+        "name": "ORIF PROXIMAL TIBIA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114113",
+        "name": "ORIF SINGLE PLATE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114115",
+        "name": "ORIF WITH PLATE AND SCREW",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114116",
+        "name": "OSTEOMYLITIS-R-EXPLORATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 7980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114120",
+        "name": "POSTERIOR INSTRUMENTATION + DECOMPRESSION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114122",
+        "name": "PROXIMAL FEMUR SCFE FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114126",
+        "name": "REDUCTION WITH K-WIRE FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114129",
+        "name": "REVISION HIP REPLACEMENT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114130",
+        "name": "ROTATOR CULF OF SHOULDER REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114131",
+        "name": "SCREW REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114132",
+        "name": "SEQUESTRECTOMY+LRS FIXATION+CORTICOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114133",
+        "name": "SYME AMPUTATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114134",
+        "name": "SYNOVIAL BIOPSY & KNEE CARAGE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114135",
+        "name": "T.BW FOR OLECRANON PROCESS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 15960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114138",
+        "name": "TBW OF GREATAR TRO KANTER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114140",
+        "name": "TENDON REPAIR-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114143",
+        "name": "TENS HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114149",
+        "name": "UNCEMENTED TOTAL HIP ARTHROPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114151",
+        "name": "VERTEBRAL BODY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114152",
+        "name": "WOUND DEBRIDMENT(ORTHO)-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114170",
+        "name": "CHOLEDOCHOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114171",
+        "name": "CHOLEDOLITHOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114178",
+        "name": "DRAINAGE OF ABSCESS &amp;amp; EXCISION OF PERITONEAL SINUS",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114195",
+        "name": "EXCISION OF GIST AND GASTROENTERIC ANASTOMOSIS",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114196",
+        "name": "EXCISION OF GIST WITH PARTIAL GASTRECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114203",
+        "name": "EXCISION OF LYMPH NODE BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114204",
+        "name": "EXCISION OF MULTIPLE LUMP",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114205",
+        "name": "EXCISION OF MULTIPLE SCALP TUMOUR",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114206",
+        "name": "EXCISION OF MULTIPLE SKIN TAG",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114217",
+        "name": "EXPLORATION AND DRILLING OF BONE",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114252",
+        "name": "HAEMORRHOIDOPEXY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114267",
+        "name": "LAP DEEROOFING LIVER CYST",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114270",
+        "name": "LAP PANCREATICO JEJUNOSTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114276",
+        "name": "LAPAROSCOPIC CAPD",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114295",
+        "name": "LAPAROTOMY WITH ADHESIOLYSIS",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 28500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114316",
+        "name": "PERI ANAL ABSCESS DRAIN",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 19330.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114318",
+        "name": "PERMA CATH REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 1200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114323",
+        "name": "PSOAS ABSCESS DRAIN",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114331",
+        "name": "REPAIR OF SCROTUM",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 7980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114337",
+        "name": "SIMPLE MASTECTROMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114601",
+        "name": "BIO-CHEMICAL ANALYSIS (CAPD FLUID)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114602",
+        "name": "BIO-CHEMICAL ANALYSIS (CSF)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114604",
+        "name": "BIO-CHEMICAL ANALYSIS (PUS ASPIRATED FLUID)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 490.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114605",
+        "name": "BIO-CHEMICAL ANALYSIS (ASPIRATE FLUID)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114607",
+        "name": "BIO-CHEMICAL ANALYSIS (ASCITIC FLUID)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 470.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114612",
+        "name": "BIO-CHEMICAL ANALYSIS (BRONCHO ALVEOLAR LAVAGE)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 490.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114617",
+        "name": "CATH STUDY",
+        "type": "Cath Lab Procedures",
+        "dept": "Cath Lab",
+        "rate": 36750.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114620",
+        "name": "PERICARDIAL SYNTHESIS",
+        "type": "Cath Lab Procedures",
+        "dept": "Cath Lab",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114621",
+        "name": "VERICOSE VEIN THERMAL ABLATION",
+        "type": "Cath Lab Procedures",
+        "dept": "Cath Lab",
+        "rate": 42000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114622",
+        "name": "IVC FILTER PLACEMENT/REMOVAL",
+        "type": "Cath Lab Procedures",
+        "dept": "Cath Lab",
+        "rate": 42000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114623",
+        "name": "FISTULOPLASTY",
+        "type": "Cath Lab Procedures",
+        "dept": "Cath Lab",
+        "rate": 17100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114630",
+        "name": "ANGIOPLASTY (PRIMARY) (PACKAGE)",
+        "type": "Package Charges",
+        "dept": "Cath Lab",
+        "rate": 131250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114633",
+        "name": "PPI (SINGLE CHAMBER) (PACKAGE)",
+        "type": "Package Charges",
+        "dept": "Cardiology",
+        "rate": 89250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114634",
+        "name": "PPI (DOUBLE CHAMBER) (PACKAGE)",
+        "type": "Package Charges",
+        "dept": "Cardiology",
+        "rate": 99750.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114638",
+        "name": "PERIPHERAL ANGIOGRAPHY (PACAKGE)",
+        "type": "Package Charges",
+        "dept": "Cardiology",
+        "rate": 14700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114677",
+        "name": "BRONCHO ALVEOLAR LAVAGE FOR CELL COUNT(TC DLC)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 410.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114678",
+        "name": "PUS ASPIRATED FLUID FOR CELL COUNT(TC DLC)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 410.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114679",
+        "name": "SYNOVIAL FLUID FOR CYTOLOGY",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114681",
+        "name": "PERITONEAL FLUID FOR CELL COUNT(TC DLC)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 410.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114682",
+        "name": "ASPIRATE FLUID FROM RENAL CORTICAL CYST FOR CELL COUNT(TC DLC)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 410.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114683",
+        "name": "CYST FLUID FOR CELL COUNT(TC DLC)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 410.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1114684",
+        "name": "SUBDURAL FLUID FOR CELL COUNT(TC DLC)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 410.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115684",
+        "name": "BREAST DISCHARGE FLUID FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 910.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115685",
+        "name": "BRONCHIAL WASHING FLUID FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115687",
+        "name": "CSF FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 870.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115688",
+        "name": "PUS FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115691",
+        "name": "CYST FLUID FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115692",
+        "name": "ASPIRATE FLUID FOR MALIGNANT CELL",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115697",
+        "name": "HPE LARGE 2 BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 2020.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115698",
+        "name": "HPE-LARGE 3 BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 2950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115699",
+        "name": "HPE-LARGE 4 BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 3680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115700",
+        "name": "HPE-LARGE 5 BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 4040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115701",
+        "name": "HPE-LARGE 6 BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 4960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115702",
+        "name": "HPE-LARGE 7 BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 5640.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115703",
+        "name": "HPE-RE (1 BLOCK)",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 1280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115704",
+        "name": "HPE SLIDE REVIEW",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115707",
+        "name": "ASCITIC FLUID FOR CELL BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115708",
+        "name": "PERITONEAL FLUID FOR CELL BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115709",
+        "name": "PERICARDIAL FLUID FOR CELL BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115710",
+        "name": "BRONCHEAL FLUID FOR CELL BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1115714",
+        "name": "BODY FLUID FOR CELL BLOCK",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1119285",
+        "name": "STANDARD Q COVID-19 AG TEST",
+        "type": "Non Invasive Procedure",
+        "dept": "Microbiology",
+        "rate": 310.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1119549",
+        "name": "SARS-COV-2 (CBNAT) TEST",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1119942",
+        "name": "INTERLEUKIN -6(IL-6)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 4530.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1120182",
+        "name": "GLUCOSE TOLERANCE TEST (0 - 2Hr, 75gm)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1120947",
+        "name": "HOMOCYSTEINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1890.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1121172",
+        "name": "Metro Cryptococcus Antigen detection CSF",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1121175",
+        "name": "Metro CSF HSV 1 2 Herpes Simplex Virus 1 2 IgG antibody",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2640.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1121179",
+        "name": "Metro ANCA reflex to MPO/PR3 (If ANCA positive then C ANCA or P ANCA will be tested as per pattern present",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1121180",
+        "name": "Metro ANA IFA",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2220.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1121481",
+        "name": "SARS-COV-2 IgG Antibody",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1121482",
+        "name": "SARS-COV-2 IgM Antibody",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1121598",
+        "name": "CAUDAL EPIDURAL STEROID INJECTION-PROFESSIONAL CHARGE",
+        "type": "Professional Charges",
+        "dept": "Anaesthesiology",
+        "rate": 8900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2806026",
+        "name": "ERCP PAPILLOTOMY",
+        "type": "Investigations",
+        "dept": "Gastroenterology",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2806107",
+        "name": "RAN-INTERLEUKIN 6",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4920.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2806515",
+        "name": "ESOPHAGEAL DILATATION BUGIE",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2806543",
+        "name": "REIMBURSEMENT PROCESSING CHARGE",
+        "type": "Medical Records",
+        "dept": "Medical Records",
+        "rate": 500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2806613",
+        "name": "CHEMOTHERAPY PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Oncology Medical",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2806747",
+        "name": "COLONSCOPY LEFT SIDE",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 1200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2806750",
+        "name": "VESTIBULAR FUNCTION TEST",
+        "type": "AUDIOMETRY",
+        "dept": "Audiology",
+        "rate": 3000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2806753",
+        "name": "CHEST TUBE INSERTION(BSP)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 2090.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2806964",
+        "name": "CT POLYTRAUMA",
+        "type": "Profile",
+        "dept": "C T Scan Radiology",
+        "rate": 13320.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2807073",
+        "name": "ANA REFLEX TEST",
+        "type": "Investigations",
+        "dept": "Transplantation immunology",
+        "rate": 4400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2807074",
+        "name": "ANA (ANTINUCLEAR ANTIBODY) BY IFA",
+        "type": "Investigations",
+        "dept": "Transplantation immunology",
+        "rate": 1760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2808817",
+        "name": "CHEST AP VIEW PORTABLE",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2808847",
+        "name": "BIOFIRE BLOOD PANEL",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 18860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2808851",
+        "name": "BIOFIRE ME PANEL",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 18860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809022",
+        "name": "CT GUIDED NAVIGATION",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 4280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809050",
+        "name": "PERITONEAL FLUID FOR PHYSICAL",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 180.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809051",
+        "name": "PERITONEAL FLUID FOR CHEMICAL",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 580.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809089",
+        "name": "LAL-RENAL BIOPSY WITH LM/IMF",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 4720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809105",
+        "name": "PERMENANT PACEMAKER IMPLANTATION DOUBLE CHAMBER",
+        "type": "Cath Lab Procedures",
+        "dept": "Cath Lab",
+        "rate": 99750.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809340",
+        "name": "HLA B27",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809516",
+        "name": "RAN-PLASMA METANEPHRINE FREE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 8100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809523",
+        "name": "DOPPLER STUDY OF RENAL ARTERY",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 2250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809525",
+        "name": "EMERGENCY DIALYSIS CHARGE",
+        "type": "Hospital services (others)",
+        "dept": "ADMINISTRATION",
+        "rate": 720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809527",
+        "name": "HEPATITIS B VIRUS CORE IgM ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809579",
+        "name": "ASCITIC FLUID FOR LIPASE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1030.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809677",
+        "name": "SCLARO THERAPY(BSP)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809884",
+        "name": "CSF FOR PROTEIN FRACT",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 540.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809894",
+        "name": "CSF-CHEMICAL",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809943",
+        "name": "LAPAROSCOPY ASSISTED ULTRA LOW ANTERIOR RESECTION",
+        "type": "Invasive Procedures",
+        "dept": "Gastroenterology",
+        "rate": 57000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809977",
+        "name": "XPERT PLUS EXTRA PULMONARY",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810038",
+        "name": "CSF FLUID PHYSICAL",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 190.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810054",
+        "name": "ASCITIC FLUID CHEMICAL",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810211",
+        "name": "USG GRAFT KIDNEY SCREENING",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 1500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810258",
+        "name": "BIOPSY AND IMMUNOFLUORESCENT ASSAY-HISTOPATH IgG IgA IgM C3 C1q FIBRINOGEN ON TISSUE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 5400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810295",
+        "name": "GAMMA INTERFERON(M.TUBERCULOSIS INIENFEON GAMMA RELEASE ASSAY)(IGRA)",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3960.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810547",
+        "name": "PROTEIN ELECTROPHORESIS SERUM SPEP FOR M BAND-ARYA WELLNESS",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4860.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810603",
+        "name": "ADA SYNOVIAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810729",
+        "name": "PTBD-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 1570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810815",
+        "name": "XRAY FOOT AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810944",
+        "name": "ABOVE KNEE SLAB APPLICATION",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 3330.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810945",
+        "name": "ABOVE KNEE CAST APPLICATION",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 4750.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2810989",
+        "name": "RAN-24 HRS URINARY COPPER",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2811009",
+        "name": "IGG SERUM-ARYA WELLNESS",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2811129",
+        "name": "NT PRO BNP FOR PLEURAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 3190.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2811635",
+        "name": "HBV(QUANTITATIVE)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 8050.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2811636",
+        "name": "GENEXPERT MTB",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 5670.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2811663",
+        "name": "TRACHEOSTOMY CLOSURE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 8360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2811746",
+        "name": "RAN-FIBRINOGEN DEGRADATION PRODUCTS FDP-SEMI QUANTITATIVE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2811823",
+        "name": "NASAL PACKING REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 6360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2812578",
+        "name": "CLAVICLE OBLIQUE",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2812711",
+        "name": "RAN-MAGNESIUM 24 HRS URINE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2812725",
+        "name": "ACE(ANGIOTENSIN CONVERTING ENZYME)-ARYA",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2812774",
+        "name": "KOH MOUNT(TISSUE)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2812815",
+        "name": "DRAIN FLUID AMYLASE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2812816",
+        "name": "DRAIN FLUID CULTURE",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2812850",
+        "name": "HEPATITIS B CORE TOTAL ANTIBODIES-HBcAB-ARYA WELLNESS CENTRE",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 1620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2813225",
+        "name": "APTT MIXING STUDY-ARYA WELLNESS CENTER",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2813247",
+        "name": "CRANIO ORBITAL ZYGOMATIC RESECTION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 36250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2814036",
+        "name": "INFRATEMPORAL FOSSA ITF AND TUMOUR SURGERY CLEARANCE",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 50750.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2814099",
+        "name": "SYMPATHETIC SKIN RESPONSE",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2814100",
+        "name": "R-R INTERVAL VARIATION",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2814150",
+        "name": "MRI BRAIN WITH MRI ANGIOGRAM OF CIRCE OF WILLIS WITH SCREENING WHOLE SPINE",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 15720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2814151",
+        "name": "MRI BRAIN WITH MRI ANGIOGRAM OF NECK AND SCREENING WHOLE SPINE",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 15720.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2814152",
+        "name": "MRI BRAIN WITH MRI ANGIOGRAM OF NECK VESSELS AND CIRCLE OF WILLIS AND MR VENOGRAM BRAIN",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 16970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2814153",
+        "name": "STROKE PROTOCOL MRI BRAIN",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 6920.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3010080",
+        "name": "PERICARDIAL FLUID ANALYSIS OF LDH",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1130.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3010109",
+        "name": "DRAIN FLUID CREATININE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3010112",
+        "name": "X-RAY CERVICAL SPINE LATERAL EXTENSION FLEXION VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3010705",
+        "name": "AICVD - AI based Cardiac Risk Score",
+        "type": "Investigations",
+        "dept": "CARDIOLOGY",
+        "rate": 250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3010996",
+        "name": "G6PD QUANTITATIVE BLOOD",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011058",
+        "name": "GENEXPERT MTB SPUTUM",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 5670.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011059",
+        "name": "GENEXPERT MTB PLEURAL FLUID",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 5670.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011061",
+        "name": "GENEXPERT MTB ASCITIC FLUID",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 5670.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011062",
+        "name": "GENEXPERT MTB TISSUE",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 5670.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011063",
+        "name": "GENEXPERT MTB PERICARDIAL FLUID",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 5390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011067",
+        "name": "GENEXPERT MTB PUS",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 5670.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011204",
+        "name": "X-RAY LS SPINE OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011208",
+        "name": "BRONCHOSCOPY AND FOREIGN BODY REMOVAL-ADULT-BSP",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011211",
+        "name": "BRONCHOSCOPY-FO WITH BAL AND BRONCHIAL BRUSHING OR BIOPSY-BSP",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 4750.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011212",
+        "name": "DIRECT LARYNGOSCOPY-DL-EUA-BSP",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 7600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011216",
+        "name": "OESOPHAGOSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 4230.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011221",
+        "name": "NECK CERVICAL LYMPH NODE BIPSY-BSP",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 8360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011255",
+        "name": "CULTURE AND SENSITIVITY BILE",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2110.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011360",
+        "name": "NERVE CONDUCTION STUDY-OUTSOURCE",
+        "type": "Outsource Investigations",
+        "dept": "Neurology",
+        "rate": 5670.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3011880",
+        "name": "PROTEIN CREATININE RATIO URINE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3012248",
+        "name": "RAN-CYCLOSPORINE EDTA HEPARIN WHOLE BLOOD",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3012250",
+        "name": "CULTURE AND SENSITIVITY(BLOOD RIGHT HAND).",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3013102",
+        "name": "ABDOMINAL VESSEL DOPPLER",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3013112",
+        "name": "CULTURE AND SENSITIVITY(BLOOD LEFT HAND)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3013196",
+        "name": "X-RAY COCCYX AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 640.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3013230",
+        "name": "X-RAY BOTH ANKLE LAT AND AXIAL",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 1680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3014094",
+        "name": "PERMA CATH REMOVAL(BS)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1430.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3014676",
+        "name": "FRENULOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 10880.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3014864",
+        "name": "ANCA-P-ANCA AND C-ANCA-ARYA WELLNESS CENTER",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 3660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3014871",
+        "name": "INTRATYMPANIC INJECTION OF STREOID",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3015406",
+        "name": "GRAM STAIN (LIVER ABSCESS FLUID)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3015481",
+        "name": "X-RAY KNEE AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3015964",
+        "name": "HBV DNA Quantitative BY COBAS TAQMAN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 13620.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3015965",
+        "name": "AD-HB Electrophoresis",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3015968",
+        "name": "AD-Testosterone Free",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3015997",
+        "name": "IGE SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3016004",
+        "name": "NASAL PACK REMOVAL- BSP",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3016301",
+        "name": "THYROGLOBULIN",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3060.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3016305",
+        "name": "AD-AFB CULTURE",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 2100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3016313",
+        "name": "IMMUNOFIXATION ELECTROPHORESIS",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 10080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3016315",
+        "name": "AD-TPHA",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3016318",
+        "name": "AD-BETA2 MICROGLOBULIN SERUM",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3016426",
+        "name": "X-RAY KNEE BOTH AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 1610.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3016639",
+        "name": "X RAY- ELBOW LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3016776",
+        "name": "X-RAY INDEX FINGER LATERAL VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3017033",
+        "name": "X-RAY DORSAL LUMBAR SPINE LATERAL EXTENSION FLEXION VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3017297",
+        "name": "BK VIRUS DNA QUANTITATIVE",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 10500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3017380",
+        "name": "AD-ANTI MULLERIAN HORMONE-AMH",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019086",
+        "name": "RAN-CLOSTRIDIUM DIFFICILE REAL TIME PCR",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 4800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019830",
+        "name": "ACHALASIA BALLOON DILATATION",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019831",
+        "name": "APC PROCEDURES",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 3990.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019832",
+        "name": "ASCITIC FLUID TAPPING DIAGNOSTIC",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 410.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019833",
+        "name": "ASCITIC FLUID TAPPING THERAPEUTIC",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019889",
+        "name": "CAPSULE ENDOSCOPY LEVEL 2",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019892",
+        "name": "CAPSULE ENDOSCOPY LEVEL 2-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019893",
+        "name": "CAPSULE ENDOSCOPY LEVEL 1",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 39900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019894",
+        "name": "CAPSULE ENDOSCOPY LEVEL 1-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019906",
+        "name": "COLONOSCOPY BEDSIDE",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 5130.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019907",
+        "name": "COLONOSCOPY BEDSIDE PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 5130.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019910",
+        "name": "CRE BALLOON DILATATION",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 9350.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019915",
+        "name": "ENDOSCOPIC POLY PECTOMY-LEVEL 1",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019916",
+        "name": "ENDOSCOPIC POLY PECTOMY-LEVEL 2",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019917",
+        "name": "ENDOSCOPIC POLY PECTOMY-LEVEL 3",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 7980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019918",
+        "name": "ENDOSCOPIC POLY PECTOMY-PROFESSIONAL CHARGE-LEVEL 1",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019919",
+        "name": "ENDOSCOPIC POLY PECTOMY-PROFESSIONAL CHARGE-LEVEL 2",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019920",
+        "name": "ENDOSCOPIC POLY PECTOMY-PROFESSIONAL CHARGE-LEVEL 3",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 7980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019923",
+        "name": "ENDOSCOPIC SONOGRAPHY WITH FNAC",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 14820.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019924",
+        "name": "ENDOSCOPIC-SCLEROTHERAPY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 3880.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019925",
+        "name": "ENDOSCOPIC-SCLEROTHERAPY-EMERGENCY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 5130.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019926",
+        "name": "ENDOSCOPIC-SCLEROTHERAPY-EMERGENCY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019927",
+        "name": "ERCP BILIARY METAL STENT PLACEMENT WITH STENT",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 74100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019928",
+        "name": "ERCP BILIARY METAL STENT PLACEMENT-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 27360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019929",
+        "name": "ERCP MECHANICAL LITHOTRYPSY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019930",
+        "name": "ERCP DIAGNOSTIC",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 10400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019932",
+        "name": "FIBROSCAN",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 1480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019933",
+        "name": "FOREIGN BODY REMOVAL LEVEL 2",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 5130.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019934",
+        "name": "FOREIGN BODY REMOVAL- ENDOSCOPIC",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 4220.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019935",
+        "name": "FOREIGN BODY REMOVAL LEVEL 2 PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 7980.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019936",
+        "name": "FOREIGN BODY REMOVAL LEVEL 1 PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019937",
+        "name": "INTRA-OPERATIVE ENDOSCOPY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019938",
+        "name": "INTRA-OPERATIVE ENDOSCOPY-PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019939",
+        "name": "OT CHARGE-ANY GASTRO PROCEDURE INCLUDING EQUIPMENT CHARGE",
+        "type": "Professional Charges",
+        "dept": "Gastroenterology",
+        "rate": 3420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3019940",
+        "name": "PH METRY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 5130.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3020000",
+        "name": "SIGMOIDOSCOPY-EMERGENCY BEDSIDE",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 2390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3020001",
+        "name": "UGI ENDOSCOPY AND EVL-5B",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3020002",
+        "name": "UGI ENDOSCOPY BED SIDE",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 2570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3020003",
+        "name": "UPPER-GI-ENDOSCOPY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 1250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3020358",
+        "name": "X-RAY DORSAL LUMBER SPINE LATERAL",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 490.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3020490",
+        "name": "BED CHARGE EMERGENCY(UP TO 6 HR)",
+        "type": "EMERGENCY SERVICES",
+        "dept": "Emergency Medical Services",
+        "rate": 640.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3020577",
+        "name": "ECHO SCREENING-EMERGENCY",
+        "type": "Investigations",
+        "dept": "Echo Lab",
+        "rate": 890.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3020790",
+        "name": "RAN-CD19",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 3900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3021096",
+        "name": "THOMAS SPLINT SKIN TRACTION APPLICATION CHARGE",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3021236",
+        "name": "IGA SERUM-ARYA WELLNESS",
+        "type": "Investigations",
+        "dept": "Lab Others",
+        "rate": 1440.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3023109",
+        "name": "PLEURODESIS-BSP",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3023243",
+        "name": "USG GUIDED STELLATE GANGLION BLOCK",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 11040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3023593",
+        "name": "CORONARY CT CALCIUM SCORING",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 4280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3023721",
+        "name": "CARDIOLOGY HEALTH PACKAGE",
+        "type": "Profile",
+        "dept": "CARDIOLOGY",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3023763",
+        "name": "ELLA DENIS Stent Placement",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 98040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3023764",
+        "name": "ELLA DENIS Stent Placement Professional Charge",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 11400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3023770",
+        "name": "DENGUE SCREENING",
+        "type": "Outsource Investigations",
+        "dept": "Lab Others",
+        "rate": 1920.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3024212",
+        "name": "GENEXPERT MTB CSF FLUID",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 5670.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3024381",
+        "name": "VIRAL MARKER PROFILE",
+        "type": "Profile",
+        "dept": "Microbiology",
+        "rate": 2660.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3024821",
+        "name": "ERCP AND CHOLIANGOSCOPY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 41040.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3024822",
+        "name": "ERCP AND CHOLIANGOSCOPY PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3024824",
+        "name": "ERCP AND CHOLIANGOSCOPY AND BIOPSY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 51300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3024825",
+        "name": "ERCP AND CHOLIANGOSCOPY AND BIOPSY PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025230",
+        "name": "DRESSING SMALL ER EMERGENCY",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025233",
+        "name": "SUTURING- SIMPLE SMALL-ER EMERGENCY",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025236",
+        "name": "FOLEYS CATHETERIZATION-ER EMERGENCY",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 330.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025237",
+        "name": "RYLES TUBE INSERTION(AMBULANCE) EMERGENCY",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 290.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025238",
+        "name": "FRACTURE DISLOCATION IMMOBILIZATION LOWER LIMB-ER EMERGENCY",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025248",
+        "name": "ASPIRATION OF ABDOMINAL FLUID ASCITIC TAP EMERGENCY",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025250",
+        "name": "ASPIRATION OF PLEURAL EFFUSION/PLEURAL TAP EMERGENCY",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025254",
+        "name": "CENTRAL LINE INSERTION EMERGENCY",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 1240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025356",
+        "name": "FOLEYS CATHETERIZATION-ER EMERGENCY PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Consultation",
+        "rate": 360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025576",
+        "name": "SODIUM-24 HR URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 3680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025832",
+        "name": "DRESSING LARGE ER EMERGENCY",
+        "type": "Non Invasive Procedure",
+        "dept": "Emergency Medical Services",
+        "rate": 480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025834",
+        "name": "SUTURING- SIMPLE LARGE-ER EMERGENCY",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 480.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025836",
+        "name": "FRACTURE DISLOCATION IMMOBILIZATION UPPER LIMB-ER EMERGENCY",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025848",
+        "name": "ERYLES TUBE INSERTION EMERGENCY",
+        "type": "Non Invasive Procedure",
+        "dept": "Emergency Medical Services",
+        "rate": 760.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3025855",
+        "name": "ARTERIAL LINE INSERTION EMERGENCY",
+        "type": "Consultation fee",
+        "dept": "Emergency Medical Services",
+        "rate": 950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3027772",
+        "name": "X RAY-SHOULDER(LT)AP/OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3027887",
+        "name": "ERCP AND CHOLIANGOSCOPY AND LASER LITHOTRIPSY 1",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 79800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3027888",
+        "name": "ERCP AND CHOLIANGOSCOPY AND LASER LITHOTRIPSY 1 PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 34200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3027889",
+        "name": "ERCP AND CHOLIANGOSCOPY AND LASER LITHOTRIPSY 2",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 96900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3027890",
+        "name": "ERCP AND CHOLIANGOSCOPY AND LASER LITHOTRIPSY 2 PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 45600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3027968",
+        "name": "X-RAY MANDIBLE AP AND OBLIQUE",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 740.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029099",
+        "name": "MEDORAH CLIP APPLICATION 5",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029100",
+        "name": "MEDORAH CLIP APPLICATION 5 PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 9120.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029104",
+        "name": "MEDORAH CLIP APPLICATION 1",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 6840.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029105",
+        "name": "MEDORAH CLIP APPLICATION 1 PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 2280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029106",
+        "name": "MEDORAH CLIP APPLICATION 2",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 13680.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029107",
+        "name": "MEDORAH CLIP APPLICATION 2 PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 4560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029108",
+        "name": "MEDORAH CLIP APPLICATION 3",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 19380.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029109",
+        "name": "MEDORAH CLIP APPLICATION 3 PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 5700.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029110",
+        "name": "MEDORAH CLIP APPLICATION 4",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 25080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029111",
+        "name": "MEDORAH CLIP APPLICATION 4 PROFESSIONAL CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 7410.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029920",
+        "name": "IMMUNOTHERAPY(SINGLE)",
+        "type": "Non Invasive Procedure",
+        "dept": "Oncology Medical",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029921",
+        "name": "IMMUNOTHERAPY AND CHEMOTHERAPY",
+        "type": "Non Invasive Procedure",
+        "dept": "Oncology Medical",
+        "rate": 16800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029943",
+        "name": "X-RAY (RT) HUMERUS AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 420.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3030022",
+        "name": "OT RECOVERY CHARGES",
+        "type": "Medical Administration",
+        "dept": "Medical",
+        "rate": 1000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3030332",
+        "name": "HOLTER MONITORING 48 HRS",
+        "type": "Investigations",
+        "dept": "Echo Lab",
+        "rate": 5580.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3032937",
+        "name": "HYDROGEN BREATH TEST PROCEDURE CHARGE",
+        "type": "Consultation fee",
+        "dept": "Gastroenterology",
+        "rate": 1600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3035083",
+        "name": "ENUCLEATION OF CYSTIC MEOPLASM OF PANCREAS",
+        "type": "Invasive Procedures",
+        "dept": "Gastroenterology",
+        "rate": 68400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9477",
+        "name": "DYNAMISATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1219",
+        "name": "ULTRASOUND KUB",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 1847.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "287",
+        "name": "INSULIN - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 77.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "55090",
+        "name": "PRE-DIALYSIS UREA-SERUM/PLASMA",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 91.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "55091",
+        "name": "POST-DIALYSIS UREA-SERUM/PLASMA",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 91.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "115",
+        "name": "URINE SUGAR",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 123.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "268",
+        "name": "GLUCOSE - PLASMA (FASTING)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "269",
+        "name": "GLUCOSE - PLASMA (POST PRANDIAL)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "270",
+        "name": "GLUCOSE - PLASMA (RANDOM)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "271",
+        "name": "GLUCOSE - SPOT URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 140.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "109",
+        "name": "URINE FOR PH",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 154.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "106",
+        "name": "URINE FOR DYSMORPHIC RBCS",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 169.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "19",
+        "name": "CLOTTING TIME [CT]",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 185.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6238",
+        "name": "CSF BODY FLUIDS (RBC WBC DC)(STANDARD METHOD)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 185.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8",
+        "name": "BLEEDING TIME",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5812",
+        "name": "ORAL GLUCOSE CHALLENGE TEST- GESTATIONAL",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "26",
+        "name": "ERYTHROCYTE SEDIMENTATION RATE (ESR)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 216.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "46",
+        "name": "HEMOGLOBIN (AUTOMATION)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 216.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "107",
+        "name": "URINE FOR EOSINOPHILS",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 216.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "29074",
+        "name": "URINE FOR ALBUMIN",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 230.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "25",
+        "name": "DIFFERENTIAL LEUCOCYTIC COUNT",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 231.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "55",
+        "name": "MCH",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 231.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "56",
+        "name": "MCHC",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 231.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "57",
+        "name": "MCV",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 231.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "63",
+        "name": "PACKED CELL VOLUME [PCV]",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 231.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "99",
+        "name": "TOTAL LEUCOCYTE COUNT (TLC)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 231.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "81",
+        "name": "RBC COUNT",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 246.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "114",
+        "name": "URINE ROUTINE",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 246.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "91",
+        "name": "STOOL FOR REDUCING SUBSTANCES",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 262.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "93",
+        "name": "STOOL ROUTINE",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 262.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "105",
+        "name": "URINE- BILE PIGMENT AND BILE SALT",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 262.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "85",
+        "name": "SICKLING TEST",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 277.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "862",
+        "name": "GRAM STAIN [OTHERS]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 277.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "866",
+        "name": "GRAM STAIN [PUS]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 277.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "867",
+        "name": "GRAM STAIN [SPUTUM]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 277.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8299",
+        "name": "GRAM STAIN [PERITONEAL FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 277.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "112",
+        "name": "URINE HEMOGLOBIN",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 293.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "231",
+        "name": "CREATININE - DIALYSIS FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 293.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "746",
+        "name": "ACID FAST STAIN [URINE]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 293.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "860",
+        "name": "GRAM STAIN [BAL]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 293.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "954",
+        "name": "BLOOD GROUPING AND TYPING",
+        "type": "Investigations",
+        "dept": "Blood Bank - 2 Services",
+        "rate": 293.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "149",
+        "name": "ALBUMIN - CSF",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 308.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10581",
+        "name": "RUT",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 308.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5295",
+        "name": "TILT TABLE STANDING",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 322.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5298",
+        "name": "TEACHING EXCERCISES - NECK",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 322.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5299",
+        "name": "TEACHING EXCERCISES - SHOULDER",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 322.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5300",
+        "name": "TEACHING EXCERCISES - BACK",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 322.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5301",
+        "name": "TEACHING EXCERCISES - KNEE",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 322.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "74",
+        "name": "PLATELET COUNT",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 323.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "92",
+        "name": "STOOL OCCULT BLOOD",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 323.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "102",
+        "name": "URINE FOR KETONES",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 323.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "104",
+        "name": "URINE- BENCE JONES PROTEINS",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 323.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "197",
+        "name": "BILIRUBIN, TOTAL - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 323.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "394",
+        "name": "UREA - FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 323.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "859",
+        "name": "FUNGAL STAIN [BAL]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 323.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8294",
+        "name": "GRAM STAIN [TRACHEAL SECRETION]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 323.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "54",
+        "name": "MANTOUX TEST",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 339.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "82",
+        "name": "RETICULOCYTE COUNT",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 339.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "146",
+        "name": "ALT(SGPT) - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 339.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "188",
+        "name": "AST (SGOT) - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 339.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "205",
+        "name": "CALCIUM - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 339.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "216",
+        "name": "CHLORIDE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 339.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "358",
+        "name": "PROTEIN, TOTAL - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 339.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "395",
+        "name": "UREA - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 339.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "439",
+        "name": "BILIRUBIN CONJUGATED (DIRECT) - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 339.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "745",
+        "name": "ACID FAST STAIN [SPUTUM]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 339.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "743",
+        "name": "ACID FAST STAIN [TIP]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 354.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "747",
+        "name": "ACID FAST STAIN [BAL]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 354.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "749",
+        "name": "ACID FAST STAIN [CSF]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 354.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "854",
+        "name": "FUNGAL STAIN [PUS]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 354.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "858",
+        "name": "FUNGAL STAIN[SPUTAM]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 354.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "863",
+        "name": "GRAM STAIN [TIP]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 354.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8315",
+        "name": "FUNGAL STAIN[PLEURAL FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 354.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8337",
+        "name": "ACID FAST STAIN [TRACHEAL SECRETION]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 354.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8340",
+        "name": "ACID FAST STAIN [PLEURAL FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 354.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8345",
+        "name": "ACID FAST STAIN [PERICARDIAL FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 354.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "11069",
+        "name": "BILIRUBIN-FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 360.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "64",
+        "name": "BLOOD PARASITES (MALARIA)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "148",
+        "name": "ALBUMIN - ASCITIC / PERITONEAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "151",
+        "name": "ALBUMIN - PLEURAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "152",
+        "name": "ALBUMIN - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "158",
+        "name": "ALKALINE PHOSPHATASE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "344",
+        "name": "POTASSIUM - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "357",
+        "name": "PROTEIN, TOTAL - PLEURAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "376",
+        "name": "SODIUM - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "399",
+        "name": "URIC ACID - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "870",
+        "name": "GRAM STAIN [URINE]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6246",
+        "name": "PARASITE INDEX",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8301",
+        "name": "GRAM STAIN [ASCITIC FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8338",
+        "name": "ACID FAST STAIN [ET]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 370.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "35",
+        "name": "FLUID CELL COUNT -SYNOVIAL",
+        "type": "Profile",
+        "dept": "Haematology",
+        "rate": 385.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "865",
+        "name": "GRAM STAIN [CSF]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 385.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5305",
+        "name": "INTERFERENTIAL THERAPY+HOT/COLD PACK",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 385.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6500",
+        "name": "PACKAGE13 - TWO MODALITY COMBINATION",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 385.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8300",
+        "name": "GRAM STAIN [SYNOVIAL FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 385.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8311",
+        "name": "FUNGAL STAIN[TRACHEAL SECRETION)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 385.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8317",
+        "name": "FUNGAL STAIN [SYNOVIAL LUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 385.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8342",
+        "name": "ACID FAST STAIN [SYNOVIAL LUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 385.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8343",
+        "name": "ACID FAST STAIN [ASCITIC FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 385.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1",
+        "name": "ABSOLUTE EOSINOPHIL COUNT",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3",
+        "name": "ABSOLUTE NEUTROPHIL COUNT",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "39",
+        "name": "FLUID CELL COUNT - PLEURAL",
+        "type": "Profile",
+        "dept": "Haematology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "40",
+        "name": "FLUID CELL COUNT -ASCITIC",
+        "type": "Profile",
+        "dept": "Haematology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "42",
+        "name": "FLUID CELL COUNT -PERITONEAL",
+        "type": "Profile",
+        "dept": "Haematology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "111",
+        "name": "URINE FOR UROBILINOGEN",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "335",
+        "name": "PORPHOBILINOGEN - SPOT URINE(QUALITATIVE SCREEN)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "398",
+        "name": "URIC ACID - 24 HR URINE",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "744",
+        "name": "ACID FAST STAIN [PUS]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "852",
+        "name": "FUNGAL STAIN [CSF]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "857",
+        "name": "FUNGAL STAIN[ URINE]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1209",
+        "name": "ULTRASOUND BREAST",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2848.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "904",
+        "name": "VDRL (QUALITATIVE) - CSF",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8313",
+        "name": "FUNGAL STAIN [STOOL]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8316",
+        "name": "FUNGAL STAIN [PERITONEAL FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8318",
+        "name": "FUNGAL STAIN [ASCITIC FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8321",
+        "name": "FUNGAL STAIN [PERICARDIAL FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "13522",
+        "name": "BETA- HCG",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 411.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "18",
+        "name": "CLOT RETRACTION TIME",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 416.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "147",
+        "name": "ALBUMIN(MICROALBUMINURIA):QUANTITATIVE-24HR URINE",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 431.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "352",
+        "name": "PROTEIN, TOTAL - ASCITIC / PERITONEAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 431.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "392",
+        "name": "GLUCOSE - FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 431.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "262",
+        "name": "GLUCOSE - ASCITIC / PERITONEAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 432.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "220",
+        "name": "CHOLESTEROL - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 447.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6501",
+        "name": "TRACTION",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 450.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6503",
+        "name": "LASER THERAPY",
+        "type": "Physiotherapy",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 450.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "4435",
+        "name": "BIO-CHEMICAL ANALYSIS(ASCITIC FLUID)",
+        "type": "Profile",
+        "dept": "BioChemistry",
+        "rate": 477.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1639",
+        "name": "ECG",
+        "type": "Investigations",
+        "dept": "E C G",
+        "rate": 508.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1744",
+        "name": "SPEECH AUDIOMETRY",
+        "type": "Audiometry",
+        "dept": "Audiology",
+        "rate": 513.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1294",
+        "name": "X-RAY RIGHT SHOULDER AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "28531",
+        "name": "X-RAY FOREARM AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "18431",
+        "name": "DIAGNOSTIC ASCITIC FLUID PARACENTESIS",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 524.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1242",
+        "name": "X-RAY BOTH KNEES LAT VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1247",
+        "name": "X-RAY CERVICAL SPINE RT. OBLIQUE",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1248",
+        "name": "X-RAY CHEST AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1283",
+        "name": "X-RAY LS SPINE LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5269",
+        "name": "X-RAY BOTH HANDS LAT VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5271",
+        "name": "X-RAY CHEST RIGHT LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5273",
+        "name": "X-RAY CERVICAL SPINE LATERAL - EXTENSION",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6443",
+        "name": "X-RAY LS SPINE AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 553.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "386",
+        "name": "TRIGLYCERIDES - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 554.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "422",
+        "name": "VLDL CHOLESTEROL - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 554.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "13287",
+        "name": "TRIGLYCERIDES FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 554.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "32387",
+        "name": "XRAY PELVIS BOTH HIPS AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 554.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "351",
+        "name": "PROTEIN, TOTAL - 24 HR URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1228",
+        "name": "X-RAY HIP INCLUDING PELVIS",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1230",
+        "name": "X-RAY ABDOMEN (KUB)",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1231",
+        "name": "X-RAY ABDOMEN ERECT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1239",
+        "name": "X-RAY BOTH HIPS AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1245",
+        "name": "X-RAY CERVICAL SPINE LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1252",
+        "name": "X-RAY CHEST PA",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1254",
+        "name": "X-RAY CLAVICLE AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1263",
+        "name": "X-RAY HAND AND WRIST AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1281",
+        "name": "X-RAY LUMBAR SPINE AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1288",
+        "name": "X-RAY MANDIBLE PA",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1290",
+        "name": "X-RAY NASAL BONES",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1291",
+        "name": "X-RAY NASOPHARYNX",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1292",
+        "name": "X-RAY PELVIS AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1293",
+        "name": "X-RAY PNS",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1297",
+        "name": "X-RAY SACRUM AND COCCYX",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5136",
+        "name": "BILIRUBIN SERUM(TOTAL AND CONJUGATED)",
+        "type": "Profile",
+        "dept": "BioChemistry",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5261",
+        "name": "X-RAY THIGH - AP OR LATERAL",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5262",
+        "name": "X-RAY SKULL LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5263",
+        "name": "X-RAY SKULL AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5270",
+        "name": "X-RAY BOTH HIPS - LAT VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5280",
+        "name": "X-RAY HANDS - AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5287",
+        "name": "X-RAY DORSAL SPINE AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5289",
+        "name": "X-RAY DORSAL SPINE LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6107",
+        "name": "TOTAL PROTEIN (ALBUMIN AND GLOBUMIN)",
+        "type": "Profile",
+        "dept": "BioChemistry",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8794",
+        "name": "X-RAY SKYLINE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 570.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "917",
+        "name": "WIDAL TEST",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 585.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "28536",
+        "name": "X-RAY HIP AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 590.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "65",
+        "name": "BLOOD PARASITES (MICROFILARIA)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 601.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8341",
+        "name": "ACID FAST STAIN [PERITONEAL FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 601.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5333",
+        "name": "UROFLOMETERY",
+        "type": "Investigations",
+        "dept": "Urology",
+        "rate": 609.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "396",
+        "name": "UREA - SPOT URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 616.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5592",
+        "name": "FNAC/FNAB",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 616.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1243",
+        "name": "X-RAY CERVICAL SPINE AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 630.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "20220",
+        "name": "X-RAY FOOT LATERAL",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 630.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "55835",
+        "name": "X-RAY SACRO-ILIAC JOINT AP VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 630.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "300",
+        "name": "LDL CHOLESTEROL - SERUM (DIRECT LDL)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 631.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1737",
+        "name": "IMPEDENCE AUDIOMETRY",
+        "type": "Audiometry",
+        "dept": "Audiology",
+        "rate": 642.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1738",
+        "name": "PURE TONE AUDIOMETRY",
+        "type": "Audiometry",
+        "dept": "Audiology",
+        "rate": 642.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "80",
+        "name": "PROTHROMBIN TIME WITH INR",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 647.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1224",
+        "name": "BED SIDE X-RAY CHEST AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 647.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1275",
+        "name": "X-RAY KUB",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 647.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "95",
+        "name": "SUDAN BLACK B",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 662.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "379",
+        "name": "TOTAL T3: TRI IODOTHYRONINE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 667.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "380",
+        "name": "TOTAL T4: THYROXINE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 667.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "390",
+        "name": "TSH: THYROID STIMULATING HORMONE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 667.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "206",
+        "name": "CALCIUM - SPOT URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 678.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "333",
+        "name": "PHOSPHORUS, INORGANIC - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 678.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "400",
+        "name": "URIC ACID - SPOT URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 678.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "258",
+        "name": "GGTP: GAMMA GLUTAMYL TRANSPEPTIDASE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 708.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "278",
+        "name": "HDL CHOLESTEROL - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 708.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "298",
+        "name": "LDH: LACTATE DEHYDROGENASE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 708.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "66",
+        "name": "PERIPHERAL BLOOD SMEAR (PBS)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 755.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "729",
+        "name": "TOXOPLASMA IGG ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 755.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6281",
+        "name": "TOXOPLASMA ANTIBODIES IG M",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 755.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "172",
+        "name": "AMYLASE - DUODENAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 770.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "956",
+        "name": "CROSSMATCHING AND GROUPING",
+        "type": "Blood Bank Procedure",
+        "dept": "Blood Bank - 1 Products",
+        "rate": 770.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "293",
+        "name": "LDH: LACTATE DEHYDROGENASE - ASCITIC / PERITONEAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 785.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "294",
+        "name": "LDH: LACTATE DEHYDROGENASE - CSF",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 785.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "297",
+        "name": "LDH: LACTATE DEHYDROGENASE - PLEURAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 785.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "785",
+        "name": "ASO TITRE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 785.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6279",
+        "name": "RA FACTOR",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 785.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1232",
+        "name": "X-RAY ANKLE AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1233",
+        "name": "X-RAY ARM (HUMERUS) AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1240",
+        "name": "X-RAY BOTH KNEES (AP)",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1244",
+        "name": "X-RAY CERVICAL SPINE AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1253",
+        "name": "X-RAY CHEST PA AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1256",
+        "name": "X-RAY ELBOW AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1258",
+        "name": "X-RAY FEMUR AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1259",
+        "name": "X-RAY FOOT AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1262",
+        "name": "X-RAY FOREARM AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1268",
+        "name": "X-RAY HIP JOINT (LEFT) AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1270",
+        "name": "X-RAY HUMERUS AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1271",
+        "name": "X-RAY (INDEX) SINGLE FINGER AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1274",
+        "name": "X-RAY KNEE (RIGHT) AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1276",
+        "name": "X-RAY LEFT SHOULDER",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1277",
+        "name": "X-RAY LEFT SHOULDER AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1282",
+        "name": "X-RAY LUMBAR SPINE AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1287",
+        "name": "X-RAY MANDIBLE AP + LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1289",
+        "name": "X-RAY MASTOIDS",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1295",
+        "name": "X-RAY RIGHT SHOULDER AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1299",
+        "name": "X-RAY SKULL AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1301",
+        "name": "X-RAY THORACIC SPINE AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1305",
+        "name": "X-RAY THORACO LUMBAR SPINE AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1309",
+        "name": "X-RAY WRIST AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5277",
+        "name": "X-RAY HIP JOINT (RIGHT) AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5279",
+        "name": "X-RAY HAND AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5284",
+        "name": "X-RAY LEG AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "153",
+        "name": "ALBUMIN(MICROALBUMINURIA):QUANTITATIVE-SPOT URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 821.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1845",
+        "name": "ASCITIC FLUID THERAPEUTIC",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 847.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1273",
+        "name": "X-RAY KNEE-LEFT AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 870.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "224",
+        "name": "CK (CPK): CREATINE KINASE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 893.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "233",
+        "name": "CREATININE - SPOT URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 893.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "288",
+        "name": "IRON - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 893.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "289",
+        "name": "IRON BINDING CAPACITY TOTAL - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 893.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "311",
+        "name": "MAGNESIUM - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 893.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "794",
+        "name": "C-REACTIVE PROTEIN (CRP)SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 893.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1235",
+        "name": "X-RAY BOTH FEET AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 893.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1237",
+        "name": "X-RAY BOTH HANDS AP",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 893.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1251",
+        "name": "X-RAY CHEST OBLIQUE VIEW",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 893.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1266",
+        "name": "X-RAY HEEL LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 893.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "4515",
+        "name": "HBSAG",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 893.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5288",
+        "name": "X-RAY DORSAL SPINE AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 893.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8351",
+        "name": "CULTURE AND SENSITIVITY [ET]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 898.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "377",
+        "name": "SODIUM - SPOT URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 909.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "251",
+        "name": "FREE T4 - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 924.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "322",
+        "name": "OSMOLALITY - SPOT URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 924.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "11234",
+        "name": "FREE T3 (FT3)-SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 924.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6468",
+        "name": "CT KUB",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 8613.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8349",
+        "name": "CULTURE AND SENSITIVITY [PUS]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 939.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8352",
+        "name": "CULTURE AND SENSITIVITY [SEMEN]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 939.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8685",
+        "name": "CULTURE AND SENSITIVITY [STOOL]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 939.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "254",
+        "name": "FSH: FOLLICLE STIMULATING HORMONE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "45424",
+        "name": "XRAY HEEL LATERAL AND AXIAL",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "175",
+        "name": "AMYLASE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "306",
+        "name": "LIPASE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "800",
+        "name": "CULTURE AND SENSITIVITY [URINE]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "811",
+        "name": "CULTURE AND SENSITIVITY [SPUTUM]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "812",
+        "name": "CULTURE AND SENSITIVITY [THROAT SWAB]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "813",
+        "name": "CULTURE AND SENSITIVITY [WOUND SWAB]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5606",
+        "name": "SMEAR FOR CYTOLOGY",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6307",
+        "name": "CULTURE AND SENSITIVITY [URINARY CATHTIP]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6308",
+        "name": "CULTURE AND SENSITIVITY [CENTRAL LINE TIP]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6558",
+        "name": "SLIDES PARAFFIN BLOCK FOR OPINION",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8350",
+        "name": "CULTURE AND SENSITIVITY [ TRACHEAL SECRETION]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8363",
+        "name": "CULTURE AND SENSIVITY[ VAGINAL SWAB ]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "13817",
+        "name": "CULTURE AND SENSITIVITY(TISSUE)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "32426",
+        "name": "XRAY DORSAL LUMBAR SPINE AP and LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 975.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "814",
+        "name": "CULTURE AND SENSITIVITY [EYE SWAB]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1001.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "997",
+        "name": "ANTI HCV ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1001.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5465",
+        "name": "RESUSCITATION",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 1026.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6412",
+        "name": "PFT (SPIROMETRY)",
+        "type": "Investigations",
+        "dept": "Pulmonary Function Lab",
+        "rate": 1026.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "168",
+        "name": "AMMONIA - PLASMA",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1047.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "171",
+        "name": "AMYLASE - ASCITIC FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1047.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "174",
+        "name": "AMYLASE - PLEURAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1047.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "217",
+        "name": "CHLORIDE - SPOT URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1047.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "345",
+        "name": "POTASSIUM - SPOT URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1047.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5",
+        "name": "ACTIVATED PARTIAL THROMBOPLASTIN TIME",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 1052.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5598",
+        "name": "FLUID / LAVAGE FOR CYTOLOGY",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 1060.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5508",
+        "name": "MYCOBACTERIUM TUBERCULOSIS IGG",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1078.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5509",
+        "name": "MYCOBACTERIUM TUBERCULOSIS IGM",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1078.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6144",
+        "name": "FRESH FROZEN PLASMA",
+        "type": "Non Invasive Procedure",
+        "dept": "Blood Bank - 1 Products",
+        "rate": 1100.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "381",
+        "name": "TOTAL TESTOSTERONE-SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1155.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5178",
+        "name": "LEUCOCYTE COUNT (TC AND DC)",
+        "type": "Profile",
+        "dept": "Haematology",
+        "rate": 1168.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "596",
+        "name": "CERVICAL/VAGINAL SMEAR",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 1170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3386",
+        "name": "DRESSING (MINOR)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 1200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "275",
+        "name": "BETA-HCG:QUANTITATIVE (ONCOLOGY) - SERUM/PLASMA",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1206.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "145",
+        "name": "ADA : ADENOSINE DEAMINASE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1232.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "274",
+        "name": "GLYCOSYLATED HEMOGLOBIN (HBA1C) - WHOLE BLOOD",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1232.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6519",
+        "name": "ADA : ADENOSINE DEAMINASE - PLEURAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1232.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6520",
+        "name": "ADA : ADENOSINE DEAMINASE - ASCITIC/PERITONEAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1232.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6521",
+        "name": "ADA : ADENOSINE DEAMINASE - FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1232.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8704",
+        "name": "ADA : ADENOSINE DEAMINASE - CSF",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1232.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8747",
+        "name": "ADA : ADENOSINE DEAMINASE - PERICARDIAL FLUID",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1232.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "782",
+        "name": "LEPTOSPIRA IGM ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1263.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "725",
+        "name": "WESTERN BLOT FOR HIV-I",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1278.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1849",
+        "name": "INTUBATION(BSP)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 1283.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "4120",
+        "name": "LIPID PROFILE TEST (FASTING)",
+        "type": "Profile",
+        "dept": "BioChemistry",
+        "rate": 1386.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "304",
+        "name": "LH: LEUTINIZING HORMONE - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1411.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6542",
+        "name": "ANTI TISSUE TRANSGLUTAMINASE IGA ELISA",
+        "type": "Investigations",
+        "dept": "Transplantation immunology",
+        "rate": 1450.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10",
+        "name": "BONE MARROW ASPIRATION (STANDARD METHOD + CYTOCHEMISTRY)",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 1463.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "4303",
+        "name": "SERUM ELECTROLYTES",
+        "type": "Profile",
+        "dept": "BioChemistry",
+        "rate": 1463.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8648",
+        "name": "BONE MARROW CORE BIOPSY ONLY",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 1463.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "37295",
+        "name": "SCRUB TYPHUS",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1463.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "44",
+        "name": "G6 PD SCREENING (DYE REDUCTION TEST)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1477.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "320",
+        "name": "OSMOLALITY - 24 HR URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1477.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "321",
+        "name": "OSMOLALITY - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1477.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "34631",
+        "name": "OT HANDLING CHARGES",
+        "type": "Medical Administration",
+        "dept": "Medical",
+        "rate": 1500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "53",
+        "name": "MALARIAL ANTIGEN DETECTION TEST",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "67",
+        "name": "PLASMA FIBRINOGEN",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 1539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "778",
+        "name": "HAV-IGM",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1246",
+        "name": "X-RAY CERVICAL SPINE LT. OBLIQUE",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 1539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8820",
+        "name": "OAE",
+        "type": "Audiometry",
+        "dept": "Audiology",
+        "rate": 1539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23395",
+        "name": "KNEE ASPIRATION-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 1539.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6278",
+        "name": "IGE (TOTAL)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1553.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "222",
+        "name": "CK (CPK) - MB ( CATALYTIC ) - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1571.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "411",
+        "name": "VALPROIC ACID - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1591.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6106",
+        "name": "PROSTATE SPECIFIC ANTIGEN (PSA TOTAL)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1604.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1241",
+        "name": "X-RAY BILATERAL KNEES AP AND LAT-STANDING",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 1616.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5259",
+        "name": "X-RAY TM JOINT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 1616.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6431",
+        "name": "ULTRASOUND SCREENING LOWER ABDOMEN",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 1616.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "248",
+        "name": "FERRITIN - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1630.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "291",
+        "name": "LACTATE - PLASMA",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1647.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "385",
+        "name": "TRANSFERRIN - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1647.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5490",
+        "name": "TORCH IGG ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1647.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5504",
+        "name": "TORCH IGM COMPLEX",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1647.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "11644",
+        "name": "LACTATE CSF",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1647.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "50621",
+        "name": "TRANSFERRIN SATURATION",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1647.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6460",
+        "name": "MRI SPINE-2 REGION SCREENING",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 1668.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6237",
+        "name": "CBC (HB,PCV,TC,DC)(AUTOMATION +STANDARD METHOD)",
+        "type": "Profile",
+        "dept": "Haematology",
+        "rate": 1693.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "228",
+        "name": "CORTISOL - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1719.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "347",
+        "name": "PROLACTIN - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1719.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "198",
+        "name": "BLOOD GAS ANALYSIS - ARTERIAL",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1724.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "350",
+        "name": "PROTEIN ELECTROPHORESIS FOR M BAND- SERUM",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 1724.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8694",
+        "name": "BLOOD GAS ANALYSIS - VENOUS",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1724.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6159",
+        "name": "Platelet concentrate(RDP)",
+        "type": "Non Invasive Procedure",
+        "dept": "Blood Bank - 1 Products",
+        "rate": 1800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5491",
+        "name": "HERPES SIMPLEX VIRUS IGM TYPE 2 ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1816.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5323",
+        "name": "ANA PROFILE-I",
+        "type": "Investigations",
+        "dept": "Transplantation immunology",
+        "rate": 1822.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1203",
+        "name": "ULTRASOUND - LOWER ABDOMEN (PELVIS)",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 1847.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1207",
+        "name": "ULTRASOUND - BRAIN (NEUROSONOGRAM)",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 1847.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1212",
+        "name": "ULTRASOUND OF CHEST",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 1847.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1234",
+        "name": "X-RAY BOTH ANKLE AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 1847.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1236",
+        "name": "X-RAY BOTH FEET AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 1847.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1238",
+        "name": "X-RAY BOTH HANDS AP AND LAT",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 1847.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6435",
+        "name": "ULTRASOUND SCREENING KIDNEYS",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 1847.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6437",
+        "name": "ULTRASOUND SCREENING KUB",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 1847.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "4178",
+        "name": "CARDIAC PROFILE",
+        "type": "Profile",
+        "dept": "Lab Others",
+        "rate": 1861.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "4285",
+        "name": "THYROID PROFILE - I(T3,T4 AND TSH)",
+        "type": "Profile",
+        "dept": "BioChemistry",
+        "rate": 1861.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6868",
+        "name": "PLEURAL BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Pulmonary Function Lab",
+        "rate": 1924.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22703",
+        "name": "CHEST TUBE(BSP)",
+        "type": "Consultation fee",
+        "dept": "Wards Others",
+        "rate": 1924.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8265",
+        "name": "MAGNESIUM - SPOT URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 1939.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "781",
+        "name": "ANTI HCV ELISA",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 1970.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1641",
+        "name": "ECHO SCREENING",
+        "type": "Investigations",
+        "dept": "Echo Lab",
+        "rate": 2032.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1202",
+        "name": "ULTRASOUND - UPPER ABDOMEN",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2078.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5582",
+        "name": "TWO SMALL SPECIMENS",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 2078.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1367",
+        "name": "TRANS-VAGINAL ULTRASOUND AND COLOR DOPPLER (TVUS)",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 2155.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "47508",
+        "name": "FUNGAL CULTURE",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2220.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "161",
+        "name": "ALPHA FETO PROTEIN - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 2258.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "801",
+        "name": "CULTURE AND SENSITIVITY [BLOOD]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2263.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "802",
+        "name": "CULTURE AND SENSITIVITY [C S F]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2371.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5492",
+        "name": "CULTURE AND SENSITIVITY [BAL]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2371.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8353",
+        "name": "CULTURE AND SENSITIVITY [PLEURAL FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2371.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8355",
+        "name": "CULTURE AND SENSITIVITY [SYNOVIAL FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2371.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8376",
+        "name": "FUNGUS CULTURE[BLOOD]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2371.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "27692",
+        "name": "CULTURE AND SENSITIVITY (BONE MARROW)",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2371.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1370",
+        "name": "COL.DOPPLER OF RENAL ARTERY AND ABDDOMINAL AORTA",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 2386.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1727",
+        "name": "ENDOSCOPIC FEEDING TUBE PLACEMENT",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 2432.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6301",
+        "name": "SERUM HSV TYPES 1 AND 2 IgG ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2432.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1215",
+        "name": "ULTRASOUND - FOLLICULAR STUDY",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2463.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1313",
+        "name": "BARIUM SWALLOW",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2463.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5523",
+        "name": "ULTRA SOUND OBSTETRIC",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2463.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "136",
+        "name": "VITAMIN D-SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 2489.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "280",
+        "name": "HB TYPING / ELECTROPHORESIS",
+        "type": "Investigations",
+        "dept": "Haematology",
+        "rate": 2494.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1204",
+        "name": "ULTRASOUND - WHOLE ABDOMEN",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2540.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1354",
+        "name": "ULTRASOUND THYROID",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2540.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1377",
+        "name": "PORTAL/SPLENIC VEIN DOPPLER",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2540.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1776",
+        "name": "NASAL ENDOSCOPY",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 2565.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6440",
+        "name": "ULTRASOUND GUIDED ABSCESS DRAINAGE",
+        "type": "Non Invasive Procedure",
+        "dept": "Ultrasound Radiology",
+        "rate": 2565.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "57233",
+        "name": "NEONATAL RESUSCITATION",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 2565.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8356",
+        "name": "CULTURE AND SENSITIVITY [ASCITIC FLUID]",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2579.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1839",
+        "name": "ULTRASOUND ORBIT",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 2617.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24",
+        "name": "D-DIMER",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 2707.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "200",
+        "name": "CA (CANCER ANTIGEN) 125 - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 2707.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "201",
+        "name": "CA (CANCER ANTIGEN) 15-3 - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 2707.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "202",
+        "name": "CA (CANCER ANTIGEN) 19-9 - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 2707.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "210",
+        "name": "CEA: CARCINO EMBRYONIC ANTIGEN - SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 2707.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "715",
+        "name": "HEPATITIS E VIRUS IGM ANTIBODIES",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 2848.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1210",
+        "name": "COLOR DOPPLER OF CAROTIDS",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 2848.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5525",
+        "name": "X-RAY BARIUM MEAL FOLLOW THROUGH",
+        "type": "Investigations",
+        "dept": "Fluoro Radiology",
+        "rate": 2910.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1366",
+        "name": "TRANS-RECTAL ULTRASOUND AND COLOR DOPPLER (TRUS)",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 3002.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6543",
+        "name": "THREE SMALL SPECIMENS",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 3016.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5631",
+        "name": "2D-ECHO WITH COLOUR DOPPLER",
+        "type": "Investigations",
+        "dept": "Echo Lab",
+        "rate": 3047.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1222",
+        "name": "ULTRASOUND PREG./FOETAL SCAN WITH DOP.",
+        "type": "Investigations",
+        "dept": "Ultrasound Radiology",
+        "rate": 3078.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1745",
+        "name": "SPEECH THERAPY",
+        "type": "Audiometry",
+        "dept": "Audiology",
+        "rate": 3078.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10578",
+        "name": "BED SIDE SIGMOIDOSCOPY",
+        "type": "Investigations",
+        "dept": "Gastroenterology",
+        "rate": 3078.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "932",
+        "name": "ANTI CCP (CYCLIC CITRULLINATED PEPTIDE)",
+        "type": "Investigations",
+        "dept": "Transplantation immunology",
+        "rate": 3104.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "13569",
+        "name": "ANTI MULLERIAN HORMONE (AMH)/MULLERIAN INHIBITING SUBSTANCE (MIS)-SERUM",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 3207.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1620",
+        "name": "DIGITAL EEG",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 3232.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1346",
+        "name": "VENOUS DOPPLER OF - SINGLE UPPER LIMB",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 3386.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1350",
+        "name": "ARTERIAL DOPPLER OF - SINGLE UPPER LIMB",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 3386.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "709",
+        "name": "CRYPTOCOCCUS ANTIGEN",
+        "type": "Investigations",
+        "dept": "Microbiology",
+        "rate": 3401.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1644",
+        "name": "CARDIAC STRESS TEST - (TMT)",
+        "type": "Investigations",
+        "dept": "TMT",
+        "rate": 3401.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5133",
+        "name": "NT-PRO BNP(N-TERMINAL PRO BRAIN NATRIURETIC PEPTIDE)",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 3515.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1310",
+        "name": "BARIUM ENEMA (ROUTINE)",
+        "type": "Investigations",
+        "dept": "Fluoro Radiology",
+        "rate": 3555.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3731",
+        "name": "INTRA-ARTICULAR HYDROCORTIZONE INJECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 3600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3739",
+        "name": "MANIPULATION AND AK CASTING - CTEV",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 3600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6721",
+        "name": "APPLICATION OF SKIN TRACTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 3600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23685",
+        "name": "MUA + INTRAARTICULAR INJECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 3600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23687",
+        "name": "MUA AND CAST APPLICATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 3600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "21349",
+        "name": "ECHOCARDIOGRAM PEDIATRIC",
+        "type": "Investigations",
+        "dept": "Echo Lab",
+        "rate": 3640.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "204",
+        "name": "CALCIUM - 24 HR URINE",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 3771.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1347",
+        "name": "VENOUS DOPPLER OF - SINGLE LOWER LIMB",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 3771.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1351",
+        "name": "ARTERIAL DOPPLER OF - SINGLE LOWER LIMB",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 3771.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6544",
+        "name": "FOUR SMALL SPECIMENS",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 3771.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10545",
+        "name": "CHEST TUBE INSERTION",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 3848.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "4258",
+        "name": "RENAL PACKAGE - I",
+        "type": "Profile",
+        "dept": "Lab Others",
+        "rate": 3882.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6545",
+        "name": "FIVE SMALL SPECIMENS",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 4141.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1143",
+        "name": "CT BRAIN WITHOUT CONTRAST",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 4156.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "15811",
+        "name": "MAMMOGRAPHY BOTH BREAST",
+        "type": "Investigations",
+        "dept": "X Ray",
+        "rate": 4172.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8848",
+        "name": "COL.DOP TRANS-RECTAL ULT.SND. AND COL.DOP TRUS AND BIOPSY",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 4233.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "57241",
+        "name": "AMBULATORY BP MONITOR",
+        "type": "Investigations",
+        "dept": "Echo Lab",
+        "rate": 4526.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2035",
+        "name": "MICROSCOPE",
+        "type": "Equipment",
+        "dept": "Operation Theatre",
+        "rate": 4617.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10576",
+        "name": "EMERGENCY UGI ENDOSCOPY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 4617.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6439",
+        "name": "ULTRASOUND GUIDED ASPIRATION/BIOPSY",
+        "type": "Non Invasive Procedure",
+        "dept": "Ultrasound Radiology",
+        "rate": 4694.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2356",
+        "name": "CHEST DRAINAGE",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 4800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3051",
+        "name": "BELOW KNEE FULL PLASTER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 4800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3387",
+        "name": "DRESSING UNDER GA (MAJOR)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 4800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6723",
+        "name": "BANDAGE AND STRAPPINGS FOR FRACTURES",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 4800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23695",
+        "name": "MUA SHOULDER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 4800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6139",
+        "name": "LEUCODEPLETED PACKED RED CELLS",
+        "type": "Blood Bank Procedure",
+        "dept": "Blood Bank - 1 Products",
+        "rate": 4928.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6140",
+        "name": "CONCENTRATED RED BLOOD CORPUSCLES/PACKED RED BLOOD CELLS",
+        "type": "Non Invasive Procedure",
+        "dept": "Blood Bank - 1 Products",
+        "rate": 4928.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6547",
+        "name": "ONE SMALL SPECIMEN AND ONE LARGE SPECIMEN",
+        "type": "Investigations",
+        "dept": "Histopathology",
+        "rate": 5079.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "4536",
+        "name": "PROCALCITONIN",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 5105.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23998",
+        "name": "POP(PLASTER OF (PARIS)-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 5130.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1348",
+        "name": "VENOUS DOPPLER OF - BOTH UPPER LIMBS",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 5233.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1352",
+        "name": "ARTERIAL DOPPLER OF - BOTH UPPER LIMBS",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 5233.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3624",
+        "name": "GLUE INJECTION",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 5387.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "4098",
+        "name": "ENDOSCOPIC VARICEAL LIGATION",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 5387.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "18422",
+        "name": "OESOPHAGAL METAL STENTING",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 5387.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1349",
+        "name": "VENOUS DOPPLER OF - BOTH LOWER LIMBS",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 5541.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1353",
+        "name": "ARTERIAL DOPPLER OF - BOTH LOWER LIMBS",
+        "type": "Investigations",
+        "dept": "Colour Doppler",
+        "rate": 5541.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5213",
+        "name": "CT 3D-LIMBS",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 5541.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1124",
+        "name": "CT PNS AXIAL AND CORONAL (PLAIN)",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 5695.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1136",
+        "name": "CT GUIDED BIOPSY",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 5772.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1646",
+        "name": "ECHO-TRANSESOPHAGEAL (TEE)",
+        "type": "Investigations",
+        "dept": "Echo Lab",
+        "rate": 5940.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2263",
+        "name": "BONE TRACTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2323",
+        "name": "CARPAL TUNNEL RELEASE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2327",
+        "name": "CAST OR PLASTER IMMOBILIZATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2537",
+        "name": "DILATATION MEATAL STRICTURE",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2545",
+        "name": "DISLOCATION HUMEROUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2702",
+        "name": "FOOT CORRECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2706",
+        "name": "FRACTURE CLOSED REDUCTION AND POP",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2709",
+        "name": "FRACTURE HAND (SINGLE/K-WIRE)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2858",
+        "name": "INCISION OF MUSCLE,TENDON, FASCIA AND BURSA - HAND",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2923",
+        "name": "AMPUTATION FINGER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2972",
+        "name": "APPLIANCE FOR LOWER LIMB",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3029",
+        "name": "ASPIRATION KNEE JOINT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3464",
+        "name": "EXCISION - CORN FINGER / TOE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6720",
+        "name": "APPLICATION OF POP CASTS FOR UPPER AND LOWER LIMBS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6722",
+        "name": "APPLICATION OF SKELETAL TRACTIONS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6724",
+        "name": "ASPIRATION AND INTRA ARTICULAR INJECTIONS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22578",
+        "name": "BILATERAL INJECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22593",
+        "name": "BILATERAL SYNVIX INJECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22694",
+        "name": "CHANGE OF PLASTER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22975",
+        "name": "DISTAL RADIUS K-WIRE FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23010",
+        "name": "ELBOW DISLOCATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23367",
+        "name": "INTRA ARTICULAR INJECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23386",
+        "name": "K WIR REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23608",
+        "name": "MANCAILATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23692",
+        "name": "MUA CAST APPLICATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23693",
+        "name": "MUA INJECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 6000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1129",
+        "name": "CT LOWER ABDOMEN/PELVIS",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 6003.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1147",
+        "name": "CT NECK",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 6003.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1149",
+        "name": "CT TEMPORAL BONES",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 6003.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "20161",
+        "name": "CT ORBITS WITHOUT CONTRAST",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 6003.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1139",
+        "name": "CT OF PARA NASAL SINUSES",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 6080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10577",
+        "name": "EMERGENCY COLONOSCOPY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 6156.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2259",
+        "name": "BONE MARROW ASPIRATION",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 6300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9511",
+        "name": "PCN(MATRIX)",
+        "type": "Non Invasive Procedure",
+        "dept": "Wards Others",
+        "rate": 6300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5218",
+        "name": "CT 3D KNEE/ANKLE/WRIST/HIPS/SHOULDER",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 6387.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5521",
+        "name": "CT CHEST HIGH RESOLUTION (HRCT)",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 6387.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "20153",
+        "name": "CT CHEST WITHOUT CONTRAST (FOR LUNGS)",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 6387.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2656",
+        "name": "FASCIOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 6413.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3344",
+        "name": "ANAL DILATION",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 6413.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9614",
+        "name": "MEATOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 6413.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1130",
+        "name": "CT CERVICAL SPINE",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 6541.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1132",
+        "name": "CT LUMBAR SPINE",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 6541.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5230",
+        "name": "CT DORSAL SPINE",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 6541.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1612",
+        "name": "VIDEO EEG - 1 HOUR",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 6772.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5234",
+        "name": "CT UPPER ABDOMEN",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 7080.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2622",
+        "name": "EPIDURAL INJECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3239",
+        "name": "COLLES FRACTURE FULL PLASTER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3481",
+        "name": "EXCISION - GRANULOMA",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3565",
+        "name": "EXTERNAL FIXATOR ADJUSTMENT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3583",
+        "name": "FACET JOINT INJECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3718",
+        "name": "INCISION DRAINAGE - ABSCESS - UNDER LA",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22782",
+        "name": "CURRETAGE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23667",
+        "name": "MOLE EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23691",
+        "name": "MUA ANKLE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23757",
+        "name": "OIRF FINGER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23827",
+        "name": "ORIF K-WIRE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "34120",
+        "name": "INCISION DRAINAGE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 7200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "13789",
+        "name": "ADEQUACY TEST IN PERITONEAL DIALYSIS",
+        "type": "Profile",
+        "dept": "BioChemistry",
+        "rate": 7249.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5139",
+        "name": "TACROLIMUS (FK506) WHOLE BLOOD",
+        "type": "Investigations",
+        "dept": "BioChemistry",
+        "rate": 7280.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2814",
+        "name": "HIP REDUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 7695.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2837",
+        "name": "IUCD INSERTION",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 7695.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6829",
+        "name": "ABSCESS DRAINAGE",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 7695.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23153",
+        "name": "FACETAL BLOCK INJECTION-23153",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 7695.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23733",
+        "name": "NERVE ROUTE BLOCK",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 7695.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24015",
+        "name": "PROSTATE BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 7695.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24294",
+        "name": "STERIOD INJECTION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 7695.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24577",
+        "name": "VULVAL BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 7695.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5226",
+        "name": "CT DUAL PHASE CT SCAN OF LIVER / PANCREAS/ KIDNEY (CONTRAST)",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 8157.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24289",
+        "name": "STENT RMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 8400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24525",
+        "name": "URS STENT REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 8400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1643",
+        "name": "DOBUTAMINE STRESS ECHO",
+        "type": "Investigations",
+        "dept": "Echo Lab",
+        "rate": 8465.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10079",
+        "name": "THIERSCH OPERATION",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 8978.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "26320",
+        "name": "D & C-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 8978.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3505",
+        "name": "EXCISION OF MOLE",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9234.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9057",
+        "name": "SCLEROTHERAPHY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 9234.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22679",
+        "name": "CERVICAL ENCIRCLAGE",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 9234.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2326",
+        "name": "CAST APPLICATION FOR WALKING FRAME",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2388",
+        "name": "CLOSED REDUCTION OF OTHER FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2390",
+        "name": "CLOSED REDUCTION OF FRACTURE OF LOWER LEG AND FOOT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2528",
+        "name": "DEQUIRVAINE RELEASE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2540",
+        "name": "DILATATION OF STRICTURE URETHRA UNDER GA",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2932",
+        "name": "AMPUTATION TOE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3070",
+        "name": "BIOPSY INGUINAL LYMPH NODE",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3187",
+        "name": "CAST METAL SPLINTS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3221",
+        "name": "CLOSED REDUCTION ABOVE KNEE LEFT HONER LIMB",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3461",
+        "name": "EXCISION - CARBUNCLE",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3465",
+        "name": "EXCISION - CYST",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3469",
+        "name": "EXCISION - DISTAL END ULNA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3492",
+        "name": "EXCISION - LIPOMA UNDER LA",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3534",
+        "name": "EXCISION - SINUS TRACT - ANTERIOR ABDOMINAL AND CHEST WALLS",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3537",
+        "name": "EXCISION - SUPERFICIAL LIPOMA",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3542",
+        "name": "EXCISION - UMBILICAL LESION",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3717",
+        "name": "INCISION DRAINAGE - ABSCESS - UNDER GA",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22765",
+        "name": "CRIF FRACTURE BOTH BONES",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22766",
+        "name": "CRIF PINNING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22767",
+        "name": "CRIF SHOULDER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22866",
+        "name": "CYSTO-URETHRAL DILATION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22985",
+        "name": "DORSAL SLINT",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23128",
+        "name": "EXPLORATION LOWER LIMB",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23615",
+        "name": "MANIPILATION +POP",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23694",
+        "name": "MUA K WIRE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "28821",
+        "name": "CLOSED REDUCTION AND CAST APPLICATION OF CALCANEAL FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 9600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5220",
+        "name": "CT ANGIO BRAIN (INTRACRANIAL VESSELS)",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 9850.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5235",
+        "name": "CT WHOLE ABDOMEN",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 9927.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5240",
+        "name": "CT TRIPLE PHASE SCAN OF LIVER / PANCREAS / KIDNEY WITH CONTRAST",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 9927.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6344",
+        "name": "VIDEO EEG - 4 HOURS",
+        "type": "Investigations",
+        "dept": "Neurology",
+        "rate": 10158.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3491",
+        "name": "EXCISION OF LIPOMA",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 10260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9636",
+        "name": "NASAL PACKING-POSTERIOR",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 10260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22456",
+        "name": "ADHESIOLYSIS-OPEN SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 10260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23992",
+        "name": "PLATE REMOVAL (ORTHO)-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 10260.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3603",
+        "name": "FOREIGN BODY REMOVAL VAGINA",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 10773.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3604",
+        "name": "FRACTIONAL ENDOMETRIAL CURETTAGE",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 10773.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10427",
+        "name": "FACET JOINT/ EPIDURAL INJECTIONS-10427",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 10773.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6838",
+        "name": "BIOPSY AXILLARY LYMPH NODE",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 10800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6839",
+        "name": "BIOPSY EXCISION OF LARGE LYMPH NODE",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 10800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5408",
+        "name": "MRI BRAIN SCREENING",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11158.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "19079",
+        "name": "MRI SHOULDER JOINT",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1167",
+        "name": "MRI CHEST WITH CONTRAST",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1171",
+        "name": "MRI EXTREMITIES- ONE REGION",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1172",
+        "name": "MRI ORBITS",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1190",
+        "name": "MRI SCAN PELVIS",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1192",
+        "name": "MRI NECK",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1195",
+        "name": "MRI LUMBAR SACRAL SPINE",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "1197",
+        "name": "MRI CERVICAL SPINE",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5363",
+        "name": "MRI UPPER ABDOMEN",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5366",
+        "name": "MRI SINGLE JOINT",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5368",
+        "name": "MRI SI JOINTS",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5374",
+        "name": "MRI PNS",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5383",
+        "name": "MRI MRCP AND UPPER ABDOMEN (WITHOUT CONTRAST)",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5384",
+        "name": "MRI DORSAL SPINE",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5398",
+        "name": "MRI BRAIN (INTRACRANIAL VESSELS WITHOUT CONTRAST)",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5404",
+        "name": "MRI BRAIN ROUTINE",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6459",
+        "name": "MRI WHOLE ABDOMEN",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "29794",
+        "name": "MR FISTULOGRAM",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 11235.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2521",
+        "name": "CYSTOURETHROSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2645",
+        "name": "EXTERNAL FIXATOR REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2682",
+        "name": "FIBULAR OSTEOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2700",
+        "name": "FLEXION RELEASE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2711",
+        "name": "FRACTURE HAND(MULTIPLE/MANIPULATION.POP)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2712",
+        "name": "FRACTURE HAND(SINGLE/ORIF)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2782",
+        "name": "GULLOTINE AMPUTATION OF KNEE.",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2854",
+        "name": "IMPLANT REMOVAL LEFT FOREARM",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2924",
+        "name": "AMPUTATION FOOT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2935",
+        "name": "AMPUTATION WITH DISARTICULATION OF TOES",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2990",
+        "name": "ARTHRODESIS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3037",
+        "name": "ASPIRATION SACRO ILIAC JOINT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3108",
+        "name": "BONE GRAFTING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3222",
+        "name": "CLOSED REDUCTION OF DISLOCATION OF JOINT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3258",
+        "name": "COMPOUND FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3292",
+        "name": "CURRETAGE BONE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3327",
+        "name": "DELAYED PRIMARY SUTURE",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3366",
+        "name": "DOUBLE J STENT UNILATERAL-IMPLANTATION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3479",
+        "name": "EXCISION - GANGLION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3598",
+        "name": "FIXATOR REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3703",
+        "name": "ILIZAROV REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6737",
+        "name": "CLOSE REDUCTION OF DISLOCATIONS DEEP",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8111",
+        "name": "URETHROSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22560",
+        "name": "BIL TRIGGER FINGER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22613",
+        "name": "BONE BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22719",
+        "name": "CLOSED MANIPULATION FOREARM",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22772",
+        "name": "CRPAL TUNNEL RELEASE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22860",
+        "name": "CYSTOSCOPY-EUA",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22881",
+        "name": "D.C.P. REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22890",
+        "name": "DCP REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23011",
+        "name": "ELBOW EXPLORATION + ADJUSTMENT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23084",
+        "name": "EXCISION BURSA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23094",
+        "name": "EXCISION OF BONE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23133",
+        "name": "EXPLORATION THIGH",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23366",
+        "name": "INTIATIONANDDRAINAGE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23397",
+        "name": "K-WIRE WRIST",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23678",
+        "name": "MTP FUSION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23696",
+        "name": "MUA WITH K WIRE FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23791",
+        "name": "ORIF BIG TOE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23825",
+        "name": "ORIF K- WIRE FIXATION.",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23924",
+        "name": "PENILE DEBRIDEMENT",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24136",
+        "name": "URSL+DJ STENTING(CR)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24211",
+        "name": "SCROTAL CYST EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24323",
+        "name": "SUPRAPUBIC CYSTOSTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24609",
+        "name": "WOUND EXPLROATION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 12000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3544",
+        "name": "EXCISION - VAGINAL SCAR",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6698",
+        "name": "EXCISION OF SMALL-SCARS,MOLES,SMALL CYSTS",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6770",
+        "name": "TRACHEOSTOMY-PAEDIATRIC",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6965",
+        "name": "TRACHEOSTOMY-ADULT",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22748",
+        "name": "CORN FOOT EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22786",
+        "name": "CYST EXCISION SCALP SMALL",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22873",
+        "name": "D AND C + POLYPECTOMMY",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22978",
+        "name": "DIVISION OF LOCAL FLAP",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23148",
+        "name": "EYE LID SUTURING",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23197",
+        "name": "FINGER CUT INJURY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23253",
+        "name": "GROIN FLAP DIVISION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23404",
+        "name": "LACERATION OF TONGUE",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24218",
+        "name": "SEBACIOUS CYST EXCISED",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24405",
+        "name": "TONGUE FLAP DIVISION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 12312.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "13830",
+        "name": "EUS GUIDED CYST GASTROSTOMY",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 12685.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5382",
+        "name": "MRI NECK (INTRACRANIAL VESSELS WITHOUT CONTRAST)",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 12825.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8127",
+        "name": "MEATOTOMY -SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 12825.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24123",
+        "name": "REVISION AMPUTATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 12825.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5397",
+        "name": "MRI BRAIN (INTRACRANIAL VESSELS WITH CONTRAST)",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 14236.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "49426",
+        "name": "MRI CERVICAL SPINE WITH WHOLE SPINE SCREENING",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 14310.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2370",
+        "name": "CIRCUMCISION",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2437",
+        "name": "CONGENITAL HYDROCELE",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2652",
+        "name": "FACETECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3393",
+        "name": "DYNAMIC COMPRESSION PLATE REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3443",
+        "name": "EXCISION - ACCESSORY DIGIT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3733",
+        "name": "KIDNER'S PROCEDURE FOR ACCESSORY NAVICULAR BONE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6738",
+        "name": "OPEN REDUCTION OF FRACTURE DISLOCATION AND INTERNAL FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9371",
+        "name": "BILATERAL VASECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22577",
+        "name": "BILATERAL INGUNIAL TOE NAIL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22637",
+        "name": "BURRSA EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23198",
+        "name": "FINGER DEFORMITY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23269",
+        "name": "HIP SCREW REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23760",
+        "name": "OPEN DRAINAGE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23813",
+        "name": "ORIF FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24162",
+        "name": "RIGHT HYDROCELE",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24512",
+        "name": "URETHRAL MEATOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 14400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5385",
+        "name": "MRI HIP JOINTS",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 14929.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6458",
+        "name": "MRI SPINE ANY REGION WITH WHOLE SPINE SEQUENCE(MOBIVIEW)",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 14929.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6461",
+        "name": "MRI SPINE-1 REGION SCREENING",
+        "type": "Investigations",
+        "dept": "MRI Radiology",
+        "rate": 14929.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2445",
+        "name": "CONTRACTURE RELEASE (SMALL)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2627",
+        "name": "ESCHAROTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2689",
+        "name": "FISSURECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3468",
+        "name": "EXCISION OF DERMOID CYST",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3661",
+        "name": "HERNIOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6634",
+        "name": "TESTICULAR BIOPSY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "7000",
+        "name": "MICRO LARYNGEAL SURGERY(MLS)-BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10370",
+        "name": "LUMBAR DRAIN",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10452",
+        "name": "CARPAL TUNNEL SURGERY-10452",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23209",
+        "name": "FLAP THINNING",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23394",
+        "name": "K-NAIL REMOVAL-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23900",
+        "name": "PATELLA RELOCATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24356",
+        "name": "TBW FOR PATELLA-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 15390.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3128",
+        "name": "EXCISION OF BREAST LUMP",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 16673.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "34239",
+        "name": "DJ STANTING -SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 16673.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3365",
+        "name": "DOUBLE J STENT BILATERAL -IMPLANTATION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 16800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23714",
+        "name": "NAILS REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 16800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2520",
+        "name": "CYSTOSCOPY DILATION-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 17955.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6743",
+        "name": "TENDON TRANSFER-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17955.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24032",
+        "name": "RADIAL HEAD EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 17955.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2256",
+        "name": "BONE CYST REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2257",
+        "name": "BONE FLAP REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2448",
+        "name": "CORING HIP",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2460",
+        "name": "CORONOIDECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2465",
+        "name": "CORRECTION OF TOE DEFORMITIES",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2470",
+        "name": "CORTICOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2708",
+        "name": "FRACTURE HAND (MULTIPLE/ORIEF)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2715",
+        "name": "FRACTURE MEDIAL MALLEOLUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2736",
+        "name": "FRONTAL SCALP MASS EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2793",
+        "name": "HAND SURGERY EXTRA DIGITS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2838",
+        "name": "ICD PLATING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2917",
+        "name": "AMPUTATION - ABOVE ELBOW",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2918",
+        "name": "AMPUTATION - BELOW ELBOW",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2925",
+        "name": "AMPUTATION FOREARM",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2927",
+        "name": "AMPUTATION HAND",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3105",
+        "name": "BONE CURRETAGE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3112",
+        "name": "BONE TUMOURS EXCISION SUPERFICIAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3257",
+        "name": "COMPOUND DISLOCATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3317",
+        "name": "CYSTOSCOPY WITH RETROGRADE PYELOGRAM",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3332",
+        "name": "DEPRESSED FRACTURE ELEVATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3333",
+        "name": "DERMOID CYSTS EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3451",
+        "name": "EXCISION - BONE TUMOURS SUPERFICIAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3473",
+        "name": "EXCISION - EXTERNAL ANGULAR DERMOID",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3476",
+        "name": "EXCISION - FIBROADENOMA",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3494",
+        "name": "EXCISION - LYMPHOMA",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3524",
+        "name": "EXCISION - RADIAL HEAD",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3543",
+        "name": "EXCISION - URETHAL CARUNCLE",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3560",
+        "name": "EXTERNAL FIXATOR - FEMUR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3564",
+        "name": "EXTERNAL FIXATOR - TIBIA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6727",
+        "name": "OPEN REDUCTION AND INTERNAL FIXATION OF FINGERS AND TOES",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6748",
+        "name": "ARTHRODESIS MINOR JOINTS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22428",
+        "name": "A O SCREWS REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22464",
+        "name": "AMP REMOVAL AND SPACER REPLACEMENT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22485",
+        "name": "ANKLE EXPLORATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22519",
+        "name": "ARTHROSCOPIC WASH OUT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22552",
+        "name": "BIG RIGHT TOE FUSION.",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22781",
+        "name": "CURATTAGE BONE GRAFT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22887",
+        "name": "DCP LOCKING PLATE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22888",
+        "name": "DCP RADIUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22892",
+        "name": "DCP ULNA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22902",
+        "name": "DEBRIDEMENT AND SUTURING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22939",
+        "name": "DHS REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23014",
+        "name": "ELLIS PALATE FIXATION WRIST",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23095",
+        "name": "EXCISION OF EXOSTOSIS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23188",
+        "name": "FEMUR RUSH NAIL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23195",
+        "name": "FIBULAR PLATING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23222",
+        "name": "FRACTURE PATELLA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23271",
+        "name": "HUMERUS DCP",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23314",
+        "name": "IL NAIL REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23349",
+        "name": "INTERLOCKING IMPLANT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23355",
+        "name": "INTERLOCKING NAILING FEMUR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23357",
+        "name": "INTERLOCKING PLATE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23359",
+        "name": "INTERLOCKING TIBIAL NAIL REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23764",
+        "name": "OPEN REDUCTIION AND INTERNAL FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23769",
+        "name": "OPEN REDUCTION AND INTERNAL FIXATION PATELLA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23771",
+        "name": "OPEN REDUCTION AND INTERNAL FIXATION ULNA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23811",
+        "name": "ORIF FINGER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23815",
+        "name": "ORIF FRACTURE PATELLA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23826",
+        "name": "ORIF KNEE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24138",
+        "name": "RGP/EXCHANGE STENT",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24518",
+        "name": "URETHROPLASTY PLANULOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "56001",
+        "name": "FRACTYRE RADIUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2850",
+        "name": "IMF",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 18468.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10502",
+        "name": "SPHINCTEROTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 18468.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24357",
+        "name": "T.B.W REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18468.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24476",
+        "name": "TUBECTOMY (OPEN)",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 18468.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24495",
+        "name": "ULNA PLATE REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 18468.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2660",
+        "name": "FEEDING JEJUNOSTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 19200.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6631",
+        "name": "MEATOPLASTY.",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 19238.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6991",
+        "name": "ADENOIDECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 19238.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8280",
+        "name": "MODIFIED REDICAL MASTECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 19238.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23850",
+        "name": "ORIF ULNA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 19238.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5212",
+        "name": "CT 3D-DORSAL SPINE",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 19982.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5258",
+        "name": "PLANNING C.T.",
+        "type": "Investigations",
+        "dept": "C T Scan Radiology",
+        "rate": 19982.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2648",
+        "name": "EXTRACRANIAL OSTEOTOMY-2648",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 20007.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22824",
+        "name": "CYSTOSCOPY + CLOT EVALUATION -SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 20007.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2416",
+        "name": "COLPOPERINEORRHAPHY",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "4015",
+        "name": "TURBT-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23582",
+        "name": "LSCS",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "43192",
+        "name": "A V FISTULA",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 20520.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3401",
+        "name": "EAR LOBE REPAIR - BILATERAL",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 21546.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "4100",
+        "name": "ERCP THERAPEUTIC",
+        "type": "Non Invasive Procedure",
+        "dept": "Gastroenterology",
+        "rate": 21546.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23291",
+        "name": "HYSTEROSCOPY AND POLYPECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 21546.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24600",
+        "name": "WOUND D EBRIDMENT SUTURING UNDER LOCAL",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 21546.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24607",
+        "name": "WOUND DEBRIDMENT",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 21546.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "27557",
+        "name": "LAP OVARIAN DRILLING-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 21546.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2500",
+        "name": "CURRETAGE BONE T4 FEMUR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2816",
+        "name": "HIP SCREW FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2847",
+        "name": "ILIZAROV FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3449",
+        "name": "EXCISION - BONE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3455",
+        "name": "EXCISION - BRANCHIAL CYST / FISTULA",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3532",
+        "name": "EXCISION - SEMILUNAR CARTILAGE OF KNEE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3701",
+        "name": "ILIZAROV RADIUS CORRECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22804",
+        "name": "CYSTO OPTICAL URETHEROTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22835",
+        "name": "CYSTOSCOPY BNI",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22859",
+        "name": "CYSTOSCOPY-CIRCUMCISSION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22868",
+        "name": "CYTO+INTERNAL URETHROTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23775",
+        "name": "OPTICAL URETHROTMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24104",
+        "name": "RENAL ABSCESS DRAINAGE",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24159",
+        "name": "RIGHT HIGH ORCHIDECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24514",
+        "name": "URETHRO LITHOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 21600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3373",
+        "name": "DRAINAGE - ISCHIORECTAL ABSCESS",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3376",
+        "name": "DRAINAGE - PELVIC ABSCESS",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 22800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2299",
+        "name": "CAESAREAN HYSTERECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2353",
+        "name": "CHEEK LESION EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2380",
+        "name": "CLEFT LIP UNILATERAL - REPAIR MINOR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2381",
+        "name": "CLEFT NUMBER 7 REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2391",
+        "name": "CLOSED REDUCTION OF ZYGOMATIC FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2443",
+        "name": "CONTRACTURE RELEASE (MEDIUM)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2507",
+        "name": "CYSTOLITHATRITY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3008",
+        "name": "ARTHROTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3381",
+        "name": "RETROPHARYNGEAL ABSCESS DRAINAGA-3381",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6656",
+        "name": "VENTRICULAR TAPPING-SURGERY-6656",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22701",
+        "name": "CHEEK MASS EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22944",
+        "name": "DIAGNOSTIC LAPAROSCOPY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23143",
+        "name": "EXTERNAL VENTRICULAR DRAINAGE (EVD)-SURGERY-23143",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23585",
+        "name": "LUMBAR BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23734",
+        "name": "NERVE/MUSCLE BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24044",
+        "name": "RAY AMPUTATION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24196",
+        "name": "SCAR REVISION OVER FACE",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24361",
+        "name": "TENDON SUTURING",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "42827",
+        "name": "RELEASE OF WEB SPACES",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 23085.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2313",
+        "name": "CAPSULOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2324",
+        "name": "CARPECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2368",
+        "name": "CHS FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2433",
+        "name": "COMPRESSION UNION OF FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2434",
+        "name": "CONDYLAR PLATING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2442",
+        "name": "CONTRACTURE RELEASE AND GRAFTING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2707",
+        "name": "FRACTURE HAND (MULTIPLE/KWIRE.DISTRACTOR)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2771",
+        "name": "GIRDLE STONE EXCISION ARTHROPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2815",
+        "name": "HIP RECONSTRUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2848",
+        "name": "ILIZAROV RING FIXATOR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2849",
+        "name": "IM NAILING FEMUR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2920",
+        "name": "AMPUTATION (MINOR)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2921",
+        "name": "AMPUTATION ABOVE KNEE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2929",
+        "name": "AMPUTATION METATARSAL BONES.",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2991",
+        "name": "ARTHRODESIS KNEE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3111",
+        "name": "BONE TUMOURS EXCISION DEEP",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3163",
+        "name": "CALCANEAL OSTEOTOMY(EXOSTOSIS EXCISION)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3260",
+        "name": "COMPRESSION PROCEDURES FOR FRACTURE NECK FEMUR AO",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3355",
+        "name": "DISARTICULATION - SHOULDER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3370",
+        "name": "DRAINAGE - GLUTEAL ABSCESS",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3391",
+        "name": "DWYERS CALCAENEAL OSTEOTOMY AND PMSTR-CTEV",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3395",
+        "name": "DYNAMIC COMPRESSION PLATING BOTH BONES FOREARM",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3396",
+        "name": "DYNAMIC COMPRESSION PLATING FEMUR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3397",
+        "name": "DYNAMIC COMPRESSION PLATING HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3398",
+        "name": "DYNAMIC COMPRESSION PLATING TIBIA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3400",
+        "name": "DYNAMIC HIP SCREW FOR PARA-ARTICULAR FEMUR FRACTURES",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3438",
+        "name": "EVANS CALCANEO CUBIOD FUSION AND PMSTR-CTEV",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3514",
+        "name": "EXCISION - PERI-URETHRAL SINUS",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3517",
+        "name": "EXCISION - PILONIDAL SINUS",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3525",
+        "name": "EXCISION - RENAL CYST",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3538",
+        "name": "EXCISION - THYROGLOSSAL CYST / FISTULA",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3558",
+        "name": "EXTERNAL FIXATION APPICATION - CTEV",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3606",
+        "name": "FRACTURE TIBIA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3667",
+        "name": "HIND QUARTER/ HEMIPELVECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3704",
+        "name": "ILIZAROV TIBIA CORRECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3746",
+        "name": "MODIFIED JONES - CLAW TOE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3751",
+        "name": "NON-UNION FRACTURES",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6599",
+        "name": "NEPHRECOTMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6615",
+        "name": "SUPRAPUBIC PROSTATECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6728",
+        "name": "OPEN REDUCTION OF LONG BONES OF UPPER AND LOWER LIMB NAILING AND EXTERNAL FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6729",
+        "name": "OPEN REDUCTION OF LONG BONES OF UPPER AND LOWER LIMB AO PROCEDURES",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6735",
+        "name": "FRACTURE NECK FEMUR MULTIPLE NAILING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6749",
+        "name": "ARTHRODESIS MAJR JOINTS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6755",
+        "name": "ARTHROGRAPHY AND OSTEOMEDULLOGRAPHY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6756",
+        "name": "ARTHROSCOPY DIAGNOSTIC",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6906",
+        "name": "RETROPERITONEOSCOPIC SURGERY FOR RENAL CYST",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8133",
+        "name": "ORCHIDOPEXY UNILATERAL",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8160",
+        "name": "AUSTIN MOOR PROSTHESIS - HIP REPLACEMENT(PARTIAL)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10267",
+        "name": "CORE DECOMPOSITION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22441",
+        "name": "AC JOINT PLATING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22444",
+        "name": "ACL ARTHOSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22467",
+        "name": "AMPUTATION FEMUER FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22484",
+        "name": "ANKLE BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22486",
+        "name": "ANKLE FUSION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22487",
+        "name": "ANKLE PLATE FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22497",
+        "name": "ANTERIOR SCELONOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22498",
+        "name": "AO NAIL REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22507",
+        "name": "ARTHOSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22539",
+        "name": "B/L INTERNALLOCKICKING TIBIA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22579",
+        "name": "BILATERAL LAMINECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22624",
+        "name": "BRACIAL BLOCK PLATE FIXACATION RIGHT SHOULDER.",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22638",
+        "name": "BUTTERS PLATING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22745",
+        "name": "CORE DECOMPRESION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22757",
+        "name": "CORRECTIVE OSTEOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22878",
+        "name": "D H S",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22882",
+        "name": "DACP HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22885",
+        "name": "DCP HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22889",
+        "name": "DCP RADIUS AND GRAFTING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22893",
+        "name": "DCP+BONE GRAFTING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22941",
+        "name": "DIAG ARTHROSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22972",
+        "name": "DISTAL FEMUR FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22976",
+        "name": "DISTAL TIBIA FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22987",
+        "name": "DYNAMIC HIP SCREW",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23022",
+        "name": "ENDER NAIL FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23078",
+        "name": "EXC SEGMENT HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23121",
+        "name": "EXP LAPAROTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23185",
+        "name": "FEMUR NAILING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23187",
+        "name": "FEMUR PLATING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23189",
+        "name": "FEMUR TIBIA NAILING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23190",
+        "name": "FENSTRATION DISCECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23214",
+        "name": "FRACTURE BOTH BONES",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23215",
+        "name": "FRACTURE FEMUR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23216",
+        "name": "FRACTURE HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23219",
+        "name": "FRACTURE OF SHAFT FEMUR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23221",
+        "name": "FRACTURE ORIF LEFT ANKLE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23224",
+        "name": "FRACTURE RIGHT RADIUS +OPEN REDUCTION AND INTERNAL FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23236",
+        "name": "GCT BONE GRAFTING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23237",
+        "name": "GCT LEFT KNEE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23265",
+        "name": "HIP ARTHROSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23267",
+        "name": "HIP DECOMPRESSION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23268",
+        "name": "HIP HEMI ARTHOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23272",
+        "name": "HUMERUS NAILING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23273",
+        "name": "HUMERUS PLATING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23304",
+        "name": "I T FRACTURE DHS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23315",
+        "name": "IL NAILING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23323",
+        "name": "INERLOKING NAIL TIBIA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23343",
+        "name": "INL REMOVAL + PLATE REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23348",
+        "name": "INTERLOCKING HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23364",
+        "name": "INTERTROCHANTRIC FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23546",
+        "name": "LIGAMENT REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23574",
+        "name": "LOCKING PLATE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23575",
+        "name": "LOOKYRODS REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23576",
+        "name": "LOOSE BODY REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23726",
+        "name": "NECK OF FEMUR FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23755",
+        "name": "OESTEOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23766",
+        "name": "OPEN REDUCTION AND INTERNAL FIXATION ANKLE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23767",
+        "name": "OPEN REDUCTION AND INTERNAL FIXATION HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23768",
+        "name": "OPEN REDUCTION AND INTERNAL FIXATION OF ELBOW",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23792",
+        "name": "ORIF BONE GRAFT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23799",
+        "name": "ORIF DCP HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23820",
+        "name": "ORIF HUMERUS PHILOS PLATE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23822",
+        "name": "ORIF IL NAIL AND DIGITAL RADIUS K WIRE FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23823",
+        "name": "ORIF INTERLOCKING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23824",
+        "name": "ORIF INTERLOCKING TIBIA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23831",
+        "name": "ORIF LMIPPO PLATING LOCKING PLATE FRACTURE + PROXIMAL TIBIA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23832",
+        "name": "ORIF LOCKING PLATE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23890",
+        "name": "PAROTIDECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24069",
+        "name": "REDO PYELOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24119",
+        "name": "RETROPERITONEAL RENAL ABSCESS",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24131",
+        "name": "REVISION URETHROPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24132",
+        "name": "RGP + TURP",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24133",
+        "name": "RGP + URS",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24137",
+        "name": "RGP URS STENTING",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24180",
+        "name": "RIGHT URS STENTING",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24278",
+        "name": "STAGE II URETHROPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24488",
+        "name": "TVT PROCEDURE",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24537",
+        "name": "VARICOELECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "43160",
+        "name": "DEBRIDEMENT AND CLOSED INTERLOCKING NAIL LEFT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "43173",
+        "name": "CLOSER INTERAL LOCKING NAIL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 24000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2377",
+        "name": "CLEFT LIP REVISION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 24624.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2585",
+        "name": "EAR RECONSTRUCTION BILATERAL LA MINOR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 24624.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2831",
+        "name": "HYSTEROTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 24624.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3346",
+        "name": "CERVICAL DILATATION",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 24624.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23299",
+        "name": "HYSTEROSCOPY WITH REMOVAL FIBROID POLYP",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 24624.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24040",
+        "name": "RADICAL ORCHIDECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 24624.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9497",
+        "name": "K-WIRE FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 25650.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23797",
+        "name": "ORIF CLAVICLE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 25650.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23821",
+        "name": "ORIF HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 25650.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23858",
+        "name": "ORIF ZYGOMA",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 25650.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "42825",
+        "name": "ABDOMINAL RECTOPEXY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 25650.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23793",
+        "name": "ORIF BONE GRAFT HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 26400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23796",
+        "name": "ORIF BOTH BONE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 26400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23812",
+        "name": "ORIF FORE ARM",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 26400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24292",
+        "name": "STENTING/URS",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 26400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24536",
+        "name": "VARICOELE",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 26400.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3482",
+        "name": "EXCISION OF GYNAECOMASTIA-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 26933.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2420",
+        "name": "COLPOSUSPENSION",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 27702.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23004",
+        "name": "ECTOPIC PROCEDURE",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 27702.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23447",
+        "name": "LAP HYSTRECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 27702.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23470",
+        "name": "LAP RUPTURED ECTOPIC",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 27702.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "27632",
+        "name": "PENIS REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 27702.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "27232",
+        "name": "URSL + DJ STENTING -SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28215.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2809",
+        "name": "HERNIOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 28800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3778",
+        "name": "UMBILICAL HERNIA",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 28800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22555",
+        "name": "BIL INGUINAL HERNIA REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 28800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23432",
+        "name": "LAP DONOR NEPHRECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 28800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2301",
+        "name": "CALCANEAL OSTEOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2312",
+        "name": "CAPSULORRAPHY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2325",
+        "name": "CARPECTOMY FUSION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2343",
+        "name": "CERVICAL RIB EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2344",
+        "name": "CERVICAL RIB EXCISION IN TOS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2563",
+        "name": "DORSAL SPINE FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2713",
+        "name": "FRACTURE L1 FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3007",
+        "name": "ARTHROSCOPY SHOULDER AND LOOSE BODY REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3045",
+        "name": "AUSTIN MOOR PROSTHESIS - HIP REPLACEMENT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3107",
+        "name": "BONE GRAFT AND ISLAND FLAP THUMB",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3162",
+        "name": "CALCAENEUM OSTEOTOMY - FLAT FOOT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3186",
+        "name": "CARTILAGE GRAFTING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3296",
+        "name": "CUTANEOUS URETEROSTOMY CLOSURE (BILATERAL)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3326",
+        "name": "DEFORMITY CORRECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3354",
+        "name": "DISARTICULATION - HIP",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3383",
+        "name": "DRAINAGE - SUBPHRENIC ABSCESS",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3399",
+        "name": "DYNAMIC HIP AND CONDYLAR SCREW FOR PARA ARTICULAR FEMUR FRACTURES",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3450",
+        "name": "EXCISION - BONE TUMOURS DEEP",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3548",
+        "name": "EXCISION - VARICOSE VEINS - SINGLE",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3559",
+        "name": "EXTERNAL FIXATION TIBIA - WITH FLAP ROTATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3655",
+        "name": "HERNIA (INCISIONAL) WITHOUT MESH",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3656",
+        "name": "HERNIA (INGUINAL) WITH MESH",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3658",
+        "name": "HERNIAL ABSCESS",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3697",
+        "name": "ILIZAROV FEMUR CORRECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3754",
+        "name": "OPEN REDUCTION AND INTERNAL FIXATION BIPLANAR FRACTRE ANKLE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6613",
+        "name": "REPAIR URINARY VAGINAL FISTULA",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6616",
+        "name": "RETROPUBIC PROSTATECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6624",
+        "name": "URETERIC REIMPLANT",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6626",
+        "name": "TRANSPLANT NEPHRECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6640",
+        "name": "VASICO VAGINAL FISTULA (VVF)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6641",
+        "name": "URETHROPLASTIC ONE STAGE PROCEDURE(RECONSTRUCTION)",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6646",
+        "name": "ORCHIDOPEXY BILATERAL",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6745",
+        "name": "ANTEROLATERAL CLEARANCE FOR TUBERCULOSIS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6759",
+        "name": "MYOCUTANEOUS AND FASCIOCUTANEOUS FLAT PROCEDURES FOR LIMBS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6905",
+        "name": "RETROPERITONEOSCOPIC OPERATION FOR HYDRONEPHROSIS",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "8180",
+        "name": "BRACHIAL PLEXUS EXPLORATION MICROSUTURING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9500",
+        "name": "PENILE IMPLANT",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22499",
+        "name": "AO SCREWS RIGHT HIP",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22561",
+        "name": "BIL VARICOCELE",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22563",
+        "name": "BILATERAL KNEE ARTHROSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22594",
+        "name": "BILATERAL TIBIA OSTEOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22631",
+        "name": "BRISTOW REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22659",
+        "name": "CAPSULOTOMY HIP",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22673",
+        "name": "CEMENTED BIPOLAR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22769",
+        "name": "CRIF WITH RECON NAILING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22884",
+        "name": "DCP BOTH BONES FOREARM",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22938",
+        "name": "DHS AND K WIRE FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23130",
+        "name": "EXPLORATION OF FOREIGN BODY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23174",
+        "name": "FEMORAL NAILING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23179",
+        "name": "FEMORAL SUPRA CONDYLAR FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23184",
+        "name": "FEMUR INTERLOCKING NAILING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23213",
+        "name": "FRACTURE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23223",
+        "name": "FRACTURE RIGHT BOTH BONES",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23305",
+        "name": "I T FRACTURE RECON FEMUR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23413",
+        "name": "LAP ADRENALECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23463",
+        "name": "LAP PARTIAL NEPHRECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23639",
+        "name": "MENISCAL CYST EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23745",
+        "name": "OBSTRUCTED UMBLICAL HERNIA REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23839",
+        "name": "ORIF PLATING LEFT HUMERUS + BONE GRAFTING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23983",
+        "name": "PILONIDAL SINUS EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24134",
+        "name": "RGP PCNL",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24135",
+        "name": "RGP REIMPLANT",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24140",
+        "name": "RGP/PCNL/STENTING",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24141",
+        "name": "RGP/PYELOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24170",
+        "name": "RIGHT PCNL AND LEFT STENTING",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24291",
+        "name": "STENTING PCNL",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24486",
+        "name": "TURP+INGUINAL EXPLORATION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24487",
+        "name": "TURP+ORCHIDECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24509",
+        "name": "URETHEROPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24520",
+        "name": "URETRIC RE-IMPLANT",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24608",
+        "name": "WOUND EXPLORATION",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "28820",
+        "name": "CALCANEAL FRACTURE OPEN REDUCTION BONE GRAFTING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2383",
+        "name": "CLEFT PALATE MINOR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2444",
+        "name": "CONTRACTURE RELEASE (LARGE)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2463",
+        "name": "CORRECTION OF DISPLACEMENT OF NASAL BONE OR SEPTUM",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2487",
+        "name": "CROSS FINGER FLAP",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2684",
+        "name": "FINGER TIP INJURY(SSG/FLAP)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3549",
+        "name": "EXCISION - VENOUS ULCER WITH SKIN GRAFTING",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3605",
+        "name": "FRACTURE NASAL BONES REDUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3666",
+        "name": "HIGH TIBIAL OSTEOTOMY (HTO)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6657",
+        "name": "ABSCESS TAPPING-SURGERY-6657",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6879",
+        "name": "LAPAROSCOPIC GASTROSTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "7004",
+        "name": "BENIGN TUMOUR EXCISIONS",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10252",
+        "name": "MAXILLECTOMY-PARTIAL PERORAL",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10311",
+        "name": "INTRACRANIAL PRESSURE MONITORING-10311",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22586",
+        "name": "B/L PCN",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22728",
+        "name": "COLUMELLA RECONSTRUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22911",
+        "name": "DEBRIDEMENT+AMPUTATION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22913",
+        "name": "DEBRIDEMENT+K-WIRE FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22918",
+        "name": "DEBRIDEMENT+TENDON REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22919",
+        "name": "DEBRIDEMENT-SUTURING",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23079",
+        "name": "EXCHANGE NAILING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23113",
+        "name": "EXCISION TUMOUR-EXCISION TUMOUR-23113",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23385",
+        "name": "JOINT NEVOUS EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23483",
+        "name": "LAPAROSCOPIC DIAGNOSTIC + HYSTEROSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Obstretics and Gynaecology",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23580",
+        "name": "LOWER LIP REDUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23646",
+        "name": "MICRO DISECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23732",
+        "name": "NERVE DECOMPRESSION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23877",
+        "name": "PALATOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24229",
+        "name": "SEPTOPLASTY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24242",
+        "name": "MANIPULATION AND AE SLAB APPLICATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24404",
+        "name": "TONGUE FLAP",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24602",
+        "name": "WOUND DEBRIDEMENT + COLLAGEN APPLICATION.",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24604",
+        "name": "WOUND DEBRIDEMENT + SUTURING",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24614",
+        "name": "Z PLASTY FLAP",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 30780.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2605",
+        "name": "ENDOLYMPHATIC SAC DECOMPRESSION.",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 32063.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6600",
+        "name": "NEPHROLITHOTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 32063.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6918",
+        "name": "LAP URETEROLITHOTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 32063.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10048",
+        "name": "EXCISION OF MESENTERIC CYST",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 32063.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23466",
+        "name": "LAP PYELOPLASTY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 33345.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23458",
+        "name": "LAP NEPHROURETHERECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 33858.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23468",
+        "name": "LAP RADICAL NEPHRECTOMY -SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 34628.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22431",
+        "name": "A.P.R",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 34800.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2310",
+        "name": "CAPSULAR SHIFT SHOULDER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2992",
+        "name": "ARTHRODESIS SHOULDER JOINT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2997",
+        "name": "ARTHROPLASTY OF HAND AND FINGER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2998",
+        "name": "ARTHROPLASTY WITH CHONDRAL GRAFT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3004",
+        "name": "ARTHROSCOPY AND MENISECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3005",
+        "name": "ARTHROSCOPY ELBOW",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3168",
+        "name": "CARBON FIBRE RESURFACING - FEMUR / PATELLA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3547",
+        "name": "EXCISION - VARICOSE VEINS - DOUBLE",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3654",
+        "name": "HERNIA (INCISIONAL) WITH MESH",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3659",
+        "name": "HERNIORAPHY INGUINAL WITH MESH BILATERAL",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6636",
+        "name": "PARTIAL NEPHRECTOMY OR NEPHROLITHOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6645",
+        "name": "TURP CYSTOLITHO TRIPSY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9476",
+        "name": "RADICAL PROSTECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10263",
+        "name": "BIPOLAR HEMIARTHOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22496",
+        "name": "ANTERIOR RESECTION",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22517",
+        "name": "ARTHOSCOPY KNEE AND ANKLE TENDON REPAIR.",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22553",
+        "name": "BIL ARTHROSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22695",
+        "name": "CHANNEL TURP AND ORCHIDECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22780",
+        "name": "CUFF REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22940",
+        "name": "DHS REMOVAL AND INTERLOCKING NAILING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23009",
+        "name": "ELBOW ARTHOSCOPY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23096",
+        "name": "EXCISION OF GCT + TUMOUR PROSTHESIS RIGHT LOWER LIMB.",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23186",
+        "name": "FEMUR NAILING/ORIF ANKLE",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23730",
+        "name": "NEPHRO URETRECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24483",
+        "name": "TURP BLADDER STONE",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24485",
+        "name": "TURP+HERNIA",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 36000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2341",
+        "name": "CERVICAL PLATE REMOVAL-2341",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2379",
+        "name": "CLEFT LIP UNILATERAL - REPAIR MAJOR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2531",
+        "name": "DERMAL ABRASION GA MINOR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2584",
+        "name": "EAR RECONSTRUCTION BILATERAL LA MAJOR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2780",
+        "name": "GROIN FLAP",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2807",
+        "name": "HEPATICO JEJUNOSTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3483",
+        "name": "EXCISION OF HAEMANGIOMA(LARGE)",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3497",
+        "name": "EXCISION - MANDIBLE SEGMENTAL",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3509",
+        "name": "PARATHYROID ADENOMA-MULTIPLE WITH MINI EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3579",
+        "name": "EYELID DEFECTS RECONSTRUCTION MINOR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3607",
+        "name": "FRACTURE ZYGOMA",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3648",
+        "name": "GLOSSECTOMY-HEMI",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6739",
+        "name": "NEUROLYSIS/NERVE SUTURE-6739",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6970",
+        "name": "EXPLORATION AND FB REMOVAL",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6971",
+        "name": "MYRINGOPLASTY -SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10454",
+        "name": "PERIPHERAL NERVE DECOMPRESSION-10454",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10564",
+        "name": "VERTEBROPLASTY-10564",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22756",
+        "name": "CORRECTION OF ULNAR CLAW HAND",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22777",
+        "name": "CTS RELEASE",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23159",
+        "name": "FACIAL IMPLANT",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23191",
+        "name": "FUNCTIONAL ENDOSCOPIC SINUS SURGERY(FESS)-LIMITED",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23456",
+        "name": "LAP NEPHRECTOMY -SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23735",
+        "name": "NEURO FIBROMA EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23816",
+        "name": "ORIF FRACTURE ZYGOMA",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23818",
+        "name": "ORIF DISTEL HUMERUS",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24079",
+        "name": "RELEASE OF SYNDACTYLY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24127",
+        "name": "REVISION SHUNT",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24449",
+        "name": "TRANS POSITIONAL FLAP",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24516",
+        "name": "URETHROPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24616",
+        "name": "ZYGOMA FRACTURE REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "26178",
+        "name": "REDO CRANIOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "26300",
+        "name": "PMMC(FLAP)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 38475.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3001",
+        "name": "ARTHROPLASTY WITH PROSTHESIS ( RECONSTRUCTION)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 42000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3200",
+        "name": "CERVICAL FIXATION / PLATING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 42000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22443",
+        "name": "ACETABULARM FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 42000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22514",
+        "name": "ARTHOSCOPY + MENISECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 42000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22544",
+        "name": "BANKARTS REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 42000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24524",
+        "name": "URS PCNL STENTING",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 42000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24540",
+        "name": "VASCULAR EXPLORATION",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 42000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6898",
+        "name": "LAPAROSCOPIC RECTOPEXY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 42323.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6887",
+        "name": "LAPAROSCOPIC CYSTOGASTROSTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 44888.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2374",
+        "name": "CLEFT LIP NOSE DEFORMITY MAJOR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2471",
+        "name": "COSMETIC RHINOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3138",
+        "name": "BURN GRAFTING (EXTENSIVE)",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3495",
+        "name": "EXCISION - MANDIBLE HEMIMANDIBULECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3767",
+        "name": "NECK DISSECTION-RND",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6658",
+        "name": "UROKINASE THEREPY FOR ICH-6658",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6663",
+        "name": "POSTERIOR CERVICAL DISSECTOMY-SURGERY-6663",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6664",
+        "name": "ANTERIOR CERVICAL DISSECTOMY-SURGERY-6664",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6666",
+        "name": "PERIPHERAL NEURECTOMY TRIGEMINAL- 6666",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6672",
+        "name": "ANTERIOR LATERAL DECOMPRESSION-SURGERY-6672",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6808",
+        "name": "EMBOLECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10308",
+        "name": "DEBRIDEMENT AND SUTURING OF SCALP LACERATION-10308",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10434",
+        "name": "MINI CRANIOTOMY-10434",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22599",
+        "name": "B/L VARICOCELECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22632",
+        "name": "BROCOLIFT + BLEPHACOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22724",
+        "name": "CLUB HAND RELEASE",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22920",
+        "name": "DEBRIDEMETN AND SSG",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23229",
+        "name": "FRONTAL MUCOCELE REPAIR-23229",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23238",
+        "name": "GENIOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23781",
+        "name": "ORBITAL FLOOR REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23836",
+        "name": "ORIF MAXILA",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23849",
+        "name": "ORIF DISTEL TIBIA",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24070",
+        "name": "RE-DO SPINE",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24113",
+        "name": "RESERVOIR PLACE",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24142",
+        "name": "RHINOPLASTY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24231",
+        "name": "SEPTORHINOPLASTY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24270",
+        "name": "SPINAL FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24276",
+        "name": "SSG AND DEBRIDEMENT",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24297",
+        "name": "STEROTIC BIOPSY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24603",
+        "name": "WOUND DEBRIDEMENT + SSG + SUTURING",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "27425",
+        "name": "THYROPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 46170.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2212",
+        "name": "ARTHROSCOPIC ACL RECONSTRUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 48000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2919",
+        "name": "AMPUTATION (MAJOR)",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 48000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9392",
+        "name": "ACL RECONSTRUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 48000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22445",
+        "name": "ACL RECONSTRUCION AND HASTINGS GRAFT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 48000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22448",
+        "name": "ACROMIONPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 48000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22543",
+        "name": "BANKART SHOULDER",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 48000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22572",
+        "name": "BILATERAL FEMUR NAILING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 48000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23175",
+        "name": "FEMORAL NAILING - TIBIA PLATING",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 48000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2338",
+        "name": "CERVICAL CORPECTOMY-2338",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2479",
+        "name": "CRANIOFACIAL SURGERY-2479",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2634",
+        "name": "ETHMOIDECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3142",
+        "name": "BURR-HOLE - CHRONIC SUBURAL HAEMATOMA-3142",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3484",
+        "name": "EXCISION - INTRADURAL SPINAL SOL-3484",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6671",
+        "name": "ANTERIOR CERVICAL SPINE SURGERY WITH FUSION-6671",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6859",
+        "name": "THYROIDECTOMY-TOTAL",
+        "type": "Invasive Procedures",
+        "dept": "Oncology Surgical",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10251",
+        "name": "MAXILLECTOMY-TOTAL",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10305",
+        "name": "SUBDURAL PERITONEAL SHUNT-10305",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10392",
+        "name": "SPINAL DECOMPRESSION-10392",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10404",
+        "name": "PERCUTANEOUS VEREBROPLASTY-PERCUTANEOUS VEREBROPLASTY-10404",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10430",
+        "name": "CERVICAL ANTERIOR DISCECTOMY AND NON-INSTRUMENTED FUSION-10430",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22618",
+        "name": "BRACHEAL PLEXIS TUMOR EXCISION-22618",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22770",
+        "name": "CRONIOPLASTY-22770",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23068",
+        "name": "EVACUATION OF HAEMATOMA-3068",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23596",
+        "name": "LUMBER DESECTOMY-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23656",
+        "name": "MICROSCOPIC DISCECTOMY(MLD)",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23728",
+        "name": "NEEDLE NERVE GRAFTING",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23789",
+        "name": "ORIF ACETABULAM",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24156",
+        "name": "CRAMIOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24373",
+        "name": "THORACIC LAMINECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "26314",
+        "name": "CRANIOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "26464",
+        "name": "LP SHUNT",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "33352",
+        "name": "PANCREATIC NECROSECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 53865.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24432",
+        "name": "TOTAL PENECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 54000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "52793",
+        "name": "BILATERAL JOINT REPLACEMENT - TKR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 54000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "53595",
+        "name": "BILATERAL JOINT REPLACEMENT-THR",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 54000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "49294",
+        "name": "MINIMALLY INVASIVE KEE REPLACEMENT",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 60000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9489",
+        "name": "TOTAL HIP REPLACEMENT(THR)-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 60021.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24427",
+        "name": "TOTAL KNEE REPLACEMENT(TKR)-SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 60021.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2496",
+        "name": "CSF SHUNT PROCEDURES-2496",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2529",
+        "name": "DERMAL ABRASION FACE",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2530",
+        "name": "DERMAL ABRASION GA MAJOR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3123",
+        "name": "BREAST - AUGUMENTATION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3259",
+        "name": "COMPOUND HEAD INJURY-3259",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3291",
+        "name": "CSF RHINORRHOEA ENDOSCOPIC-3291",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3324",
+        "name": "DECORTICATION (PLEURECTOMY)",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3480",
+        "name": "EXCISION - GLIOMA-3480",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3504",
+        "name": "EXCISION - MEDIASTINAL MASS",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3578",
+        "name": "EYELID DEFECTS RECONSTRUCTION MAJOR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3629",
+        "name": "GYNAECOMASTIA",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "4016",
+        "name": "MICRO LUMBER DISECTOMY-4016",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6761",
+        "name": "EXCISION OF LOBE-6761",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6818",
+        "name": "THYMECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9369",
+        "name": "FACE LIFT",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9446",
+        "name": "MAXILLARY OSTEOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9475",
+        "name": "GYNACOMESTIA",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10318",
+        "name": "TRANSPETROUS EXTRADURAL APPROACH TO SUPRATENTORIAL TUMOURS-10318",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10326",
+        "name": "TRANSCRANIAL APPROACH TO SELLAR OR SUPRASELLAR LESION-10326",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10328",
+        "name": "TRANSPHENOIDAL SURGERY FOR TUMOR-10328",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10387",
+        "name": "REMOVAL OF INTRADURAL EXTRAMEDULLARY SPINAL TUMOUR-10387",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10413",
+        "name": "LUMBAR DECOMPRESSION / LAMINECTOMY / LAMINOPLASTY-10413",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10437",
+        "name": "UN-TETHERING OF SPINAL CORD- SPINAL DYSRAPHISM-10437",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10449",
+        "name": "OPTIC NERVE DECOMPRESSION TRANSCRANIAL-10449",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10451",
+        "name": "CRANIAL NERVE DECOMPRESSION - OTHER-10451",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22621",
+        "name": "BRACHIAL PLEXUS",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22783",
+        "name": "CV JUNCTION-22783",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23497",
+        "name": "LATERAL MASS SCREW",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23613",
+        "name": "MANIBULAR OSTEOTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23648",
+        "name": "MICRO ENDO DISCECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24006",
+        "name": "POSTERIOR FOSSA SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24272",
+        "name": "SPINAL TUMOUR EXCISION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 61560.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2427",
+        "name": "LARYNGECTOMY-TOTAL",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3444",
+        "name": "ACOUSTIC NEUROMA-EXCISION-3444",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6677",
+        "name": "SPINAL TUMOURS (OTHERS)-6677",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10329",
+        "name": "MIDLINE APPROACH TO INTRINSIC CEREBELLAR TUMOUR-10329",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10331",
+        "name": "EXCISION OF POSTERIOR FOSSA LESION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10400",
+        "name": "POSTERIOR SPINAL FIXATION-10400",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10408",
+        "name": "SPINAL DECOMPRESSION ENDOSCOPE-10408",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10418",
+        "name": "LUMBAR FUSION-10418",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10428",
+        "name": "CERVICAL ANTERIOR DISCECTOMY-10428",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10466",
+        "name": "CRANIO-VERTEBRAL JUNCTION OCCIPITO-CERVICAL POSTERIOR FUSION-10466",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "11049",
+        "name": "ENDOSCOPIC LUMBER DISTECTOMY-11049",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22481",
+        "name": "ANEURYSM CLIPING-22481",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23985",
+        "name": "PITUITARY TRANSPHENOIDAL",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 69255.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9350",
+        "name": "COCHLEAR IMPLANT",
+        "type": "Invasive Procedures",
+        "dept": "Ear Nose and Throat",
+        "rate": 70538.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2189",
+        "name": "AORTIC VALVE REPLACEMENT",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2265",
+        "name": "BRACHIAL ARTERY REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2277",
+        "name": "BREAST REDUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2292",
+        "name": "BURST-ABDOMEN REPAIR",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2302",
+        "name": "CALDWELL-LUC SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2488",
+        "name": "CRUSH INJURY HAND FREE FLAP MICRO SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2542",
+        "name": "DISC REPLACEMENT-2542",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2610",
+        "name": "ENDOSCOPIC FENESTRATION OF VENTRICULAR CYST-2610",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2726",
+        "name": "FREE FLAP",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3012",
+        "name": "ASD / VSD (OPEN)",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3124",
+        "name": "BREAST - POST MASTECTOMY RECONSTRUCTION",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3230",
+        "name": "COARCTATION OF AORTA",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "5005",
+        "name": "MITRAL VALVE REPLACEMENT(MVR)",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10103",
+        "name": "RADICAL CHOLECYSTECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10306",
+        "name": "ELEVATION OF DEPRESSED SKULL FRACTURE-10306",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10314",
+        "name": "BURR HOLE BIOPSY OF INTRINSIC CEREBRAL TUMOUR IMAGE GUIDANCE-10314",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10315",
+        "name": "ENDOSCOPIC EXCISION / DRAINAGE OF VENTRICULAR LESION-10315",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10325",
+        "name": "ENDOSCOPE ASSISTED PITUITARY SURGERY-10325",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10340",
+        "name": "EXCISION OF AN INTRACRANIAL ABSCESS-10340",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10363",
+        "name": "INSERTION OF VENTRICULOPERITONEAL SHUNT-10363",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10365",
+        "name": "INSERTION OF LUMBO PERITONEAL SHUNT-10365",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10498",
+        "name": "VSD CLOSURE(SURGERY)",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22532",
+        "name": "AWAKE CRANIOTOMY-22532",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "22684",
+        "name": "CENTRAL HEPATECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23024",
+        "name": "ENDO NASAL CRANIOTOMY-23024",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23263",
+        "name": "HERNIOPLASTY + ABDOMINOPLASTY",
+        "type": "Invasive Procedures",
+        "dept": "Plastic and Cosmetic Surgery",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24205",
+        "name": "SCOLIOSIS CORRECTION",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 76950.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10361",
+        "name": "ENDOSCOPIC REPAIR OF CSF LEAK-10361",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 84645.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "24377",
+        "name": "THORACIC SPINE FIXATION",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 84645.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2839",
+        "name": "ICR FOR DORV/RSOV",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2965",
+        "name": "AORTOFEMORAL BYPASS",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3147",
+        "name": "CABG - NORMAL",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3601",
+        "name": "FONTANS PROCEDURE",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6800",
+        "name": "TETRALOGY OF FALLOT TOTAL CORRECTION",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6802",
+        "name": "TAPVC CORRECTION",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6806",
+        "name": "PERICARDIECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10336",
+        "name": "COMBINATION THERAPY FOR VESTIBULAR SCHWNNOMA-10336",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10347",
+        "name": "CRANIOTOMY AND EXCISION OF AVM-10347",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10351",
+        "name": "EXCISION OF INFRATENTORIAL CAVERNOMAS-10351",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10360",
+        "name": "CRANIAL REPAIR FOR CSF LEAK-CRANIAL REPAIR FOR CSF LEAK-10360",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10362",
+        "name": "COMBINED ENDOSCOPIC ASSISTED REPAIR OF CSF LEAK-10362",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10429",
+        "name": "CERVICAL ANTERIOR DISCECTOMY AND INSTRUMENTED FUSION-10429",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 92340.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2455",
+        "name": "CORONARY ANGIOPLASTY",
+        "type": "Cath Lab Procedures",
+        "dept": "Cath Lab",
+        "rate": 95000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "49298",
+        "name": "MINIMALLY INVASIVE KNEE REPLACEMENT BILATERAL",
+        "type": "Invasive Procedures",
+        "dept": "Orthopaedics",
+        "rate": 96000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2568",
+        "name": "DOUBLE VALVE REPLACEMENT -NORMAL",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 107730.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3053",
+        "name": "BENTALS PROCEDURE (REPLACEMENT FO AORTIC ARCH)",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 138510.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3159",
+        "name": "CABG WITH SINGLE VALVE SURGERY",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 138510.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6809",
+        "name": "ANEURYSM RESECTION AND GRAFTING",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 138510.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "26621",
+        "name": "AROTIC DISSECTION",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 138510.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "47277",
+        "name": "ASD DEVICE CLOSURE",
+        "type": "Cath Lab Procedures",
+        "dept": "Cath Lab",
+        "rate": 150000.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3154",
+        "name": "CABG WITH DVR",
+        "type": "Invasive Procedures",
+        "dept": "CTVS",
+        "rate": 153900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "9467",
+        "name": "DEEP BRAIN STIMULATION-9467",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 153900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10380",
+        "name": "SPINAL CORD STIMULATION-10380",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 153900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "10382",
+        "name": "STIMULATION - DBS",
+        "type": "Invasive Procedures",
+        "dept": "Neurosurgery",
+        "rate": 153900.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3750",
+        "name": "DONOR NEPHRECTOMY",
+        "type": "Invasive Procedures",
+        "dept": "Urology",
+        "rate": 157748.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "2090",
+        "name": "UHID Registration",
+        "type": "Registration",
+        "dept": "Registration",
+        "rate": 300.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "6563",
+        "name": "CONSULTATION - PHYSIOTHERAPY",
+        "type": "Consultation",
+        "dept": "Physiotherapy and Rehab Center",
+        "rate": 600.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "23473",
+        "name": "LAP UMBALICAL HERNIA",
+        "type": "Invasive Procedures",
+        "dept": "General Surgery",
+        "rate": 18240.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3073913",
+        "name": "Nurse Led Clinic Fees",
+        "type": "Miscellaneous",
+        "dept": "Medical",
+        "rate": 250.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    },
+    {
+        "id": "3111590",
+        "name": "Instrument Processing Fee",
+        "type": "CSSD",
+        "dept": "Medical",
+        "rate": 1500.0,
+        "aliasCode": "0",
+        "aliasName": "0",
+        "template": "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27"
+    }
+];
+const TARIFF_OIL_INDIA_EXCELCARE_2025_27 = TARIFF_EXCELCARE_OIL_INDIA_2025_27;
+const TARIFF_EXCELCARE_OIL_INDIA = TARIFF_EXCELCARE_OIL_INDIA_2025_27;
+
 const TARIFF_HDFC_ERGO_2024 = [
     {
         "id":  "1309",
@@ -700403,7 +728679,7 @@ const AGREEMENT_DETAILS = [
 
         "agreementName":  "OIL INDIA LIMITED IP AGREEMENT",
 
-        "tariffMapped":  "APOLLO EXCELCARE OIL INDIA  TARIFF 2025-27",
+        "tariffMapped":  "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27",
 
         "discountMapped":  "Refer to master discount schedule",
 
@@ -700425,7 +728701,7 @@ const AGREEMENT_DETAILS = [
 
         "agreementName":  "OIL INDIA LIMITED OP AGREEMENT",
 
-        "tariffMapped":  "APOLLO EXCELCARE OIL INDIA  TARIFF 2025-27",
+        "tariffMapped":  "APOLLO EXCELCARE OIL INDIA TARIFF 2025-27",
 
         "discountMapped":  "Refer to master discount schedule",
 
