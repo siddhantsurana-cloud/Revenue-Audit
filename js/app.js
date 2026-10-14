@@ -992,7 +992,13 @@
             safeForEach(TARIFF_EXCELCARE_GIPSA_2026, item => { mapExcelcareGipsa2026[item.id] = item; });
         }
         if (typeof TARIFF_EXCELCARE_OIL_INDIA_2025_27 !== 'undefined') {
-            safeForEach(TARIFF_EXCELCARE_OIL_INDIA_2025_27, item => { mapExcelcareOilIndia2025_27[item.id] = item; });
+            safeForEach(TARIFF_EXCELCARE_OIL_INDIA_2025_27, item => {
+                mapExcelcareOilIndia2025_27[item.id] = item;
+                const cleanId = String(item.id).replace(/^[#\s]+/, '').replace(/\.0+$/, '').trim();
+                if (cleanId && cleanId !== item.id) mapExcelcareOilIndia2025_27[cleanId] = item;
+                const unpadded = cleanId.replace(/^0+/, '');
+                if (unpadded && unpadded !== cleanId && unpadded !== item.id) mapExcelcareOilIndia2025_27[unpadded] = item;
+            });
         }
         if (typeof TARIFF_KOLKATA_SOC !== 'undefined') {
             safeForEach(TARIFF_KOLKATA_SOC, item => {
@@ -2082,7 +2088,7 @@
         const show2025 = isAllOrInt && (source === 'all' || source === 'soc2025');
         const showExcelcare = isAllOrEc && (source === 'all' || source === 'socexcelcare');
         const showExcelcareCash = isAllOrEc && (source === 'all' || source === 'socexcelcarecash');
-        const showExcelcareOilIndia = isAllOrEc && (source === 'all' || source === 'socexcelcareoilindia');
+        const showExcelcareOilIndia = (isAllOrEc && source === 'all') || source === 'socexcelcareoilindia';
         const showExcelcare2024 = isAllOrEc && (source === 'all' || source === 'socexcelcare2024');
         const show2026Master = isAllOrInt && (source === 'all' || source === 'gipsa' || source === 'tpa');
         const showHdfc = isAllOrEc && (source === 'all' || source === 'hdfcergo');
@@ -2108,12 +2114,16 @@
                 const aliasCodeString = (item.aliasCode || '').toLowerCase();
                 const aliasNameString = (item.aliasName || '').toLowerCase();
                 
-                const matchesAllWords = queryWords.every(word => 
-                    idString.includes(word) || 
-                    nameString.includes(word) ||
-                    aliasCodeString.includes(word) ||
-                    aliasNameString.includes(word)
-                );
+                const matchesAllWords = queryWords.every(word => {
+                    const cleanWord = word.replace(/^[#\s]+/, '').replace(/\.0+$/, '').trim();
+                    const unpaddedWord = cleanWord.replace(/^0+/, '');
+                    return idString.includes(word) || 
+                           nameString.includes(word) ||
+                           aliasCodeString.includes(word) ||
+                           aliasNameString.includes(word) ||
+                           (cleanWord && (idString.includes(cleanWord) || aliasCodeString.includes(cleanWord))) ||
+                           (unpaddedWord && (idString.includes(unpaddedWord) || aliasCodeString.includes(unpaddedWord)));
+                });
                 if (!matchesAllWords) return false;
             }
 
@@ -5617,6 +5627,7 @@
         const activeSourceType = auditSourceTypeSelect.value;
         const activeSourceVal = document.getElementById('audit-source-select').value;
         const mappingMethod = auditMappingMethodSelect.value;
+        const isOpAudit = auditTypeSelect ? auditTypeSelect.value === 'op' : (document.getElementById('audit-type-select')?.value === 'op');
 
         // Detect Agreement from the bill (first 25 rows) of first file for the top MOU display card
         let detectedAgreement = null;
@@ -5680,7 +5691,11 @@
             }
 
             const serviceIdRaw = String(rowToUse[colIdxToUse.serviceid] || '').trim();
-            const serviceId = serviceIdRaw.replace(/^[a-zA-Z]+-?/, '');
+            const serviceId = serviceIdRaw
+                .replace(/^[#\s]*[a-zA-Z]*-?\s*/, '')
+                .replace(/\.0+$/, '')
+                .trim();
+            const unpaddedServiceId = serviceId ? serviceId.replace(/^0+/, '') : '';
 
             const serviceName = String(rowToUse[colIdxToUse.servicename] || '').trim();
             const patientName = String(rowToUse[colIdxToUse.patient] || '').trim();
@@ -6079,12 +6094,12 @@
                             const cleanId = String(serviceIdRaw || serviceId || '').replace(/^[A-Za-z]+/, '').trim();
                             
                             // 1. Dynamic unit rate lookup from active SOC
-                            let baseMatch = activeSOCMap[cleanId] || activeSOCMap[serviceId];
+                            let baseMatch = activeSOCMap ? (activeSOCMap[cleanId] || activeSOCMap[serviceId] || activeSOCMap[serviceIdRaw] || (unpaddedServiceId ? activeSOCMap[unpaddedServiceId] : null)) : null;
                             if (!baseMatch) {
                                 baseMatch = lookupSOCItemByName(activeSOCMap, serviceName) || lookupSOCItemByName(activeSOCMap, nameUpper);
                             }
                             if (!baseMatch && typeof fallbackSOCMap !== 'undefined' && fallbackSOCMap) {
-                                baseMatch = fallbackSOCMap[cleanId] || fallbackSOCMap[serviceId] || lookupSOCItemByName(fallbackSOCMap, serviceName);
+                                baseMatch = fallbackSOCMap[cleanId] || fallbackSOCMap[serviceId] || fallbackSOCMap[serviceIdRaw] || (unpaddedServiceId ? fallbackSOCMap[unpaddedServiceId] : null) || lookupSOCItemByName(fallbackSOCMap, serviceName);
                             }
                             
                             let baseRate = baseMatch ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? baseMatch.gipsa_rate : baseMatch.tpa_rate) : baseMatch.rate) : null;
@@ -6195,7 +6210,7 @@
                                     explanation += ` Resolved Kolkata OT slab rate for ${durationMins} minutes [${normRoom}].`;
                                 } else {
                                     const activeSOCMap = getActiveSOCMap(activeSOC);
-                                    const match = activeSOCMap[serviceId];
+                                    const match = activeSOCMap ? (activeSOCMap[serviceId] || activeSOCMap[serviceIdRaw] || (unpaddedServiceId ? activeSOCMap[unpaddedServiceId] : null)) : null;
                                     if (match && match.rates) {
                                         let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
                                         if (match.rates && match.rates[normRoom] === undefined) {
@@ -6232,7 +6247,7 @@
                                     explanation += ` Resolved OT Charges dynamically: ${durationMins} minutes [Base: ₹${baseOT} + ₹${slabRate}/15m extra].`;
                                 } else {
                                     const activeSOCMap = getActiveSOCMap(activeSOC);
-                                    const match = activeSOCMap[serviceId];
+                                    const match = activeSOCMap ? (activeSOCMap[serviceId] || activeSOCMap[serviceIdRaw] || (unpaddedServiceId ? activeSOCMap[unpaddedServiceId] : null)) : null;
                                     expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
                                 }
                             }
@@ -6244,7 +6259,7 @@
                             // Standard SOC lookup
                             // Pass isKolkataHdfc so HDFC-tagged package entries are included
                             const activeSOCMap = getActiveSOCMap(activeSOC, isKolkataHdfc);
-                            const match = activeSOCMap[serviceId];
+                            const match = activeSOCMap ? (activeSOCMap[serviceId] || activeSOCMap[serviceIdRaw] || (unpaddedServiceId ? activeSOCMap[unpaddedServiceId] : null)) : null;
                             if (match) {
                                 if (activeSOCMap === mapKolkata || activeSOCMap === mapKolkataHdfc) {
                                     let normRoom = roomCategory ? roomCategory.toUpperCase().trim() : "";
@@ -6440,7 +6455,7 @@
                             }
                         }
 
-                        let fallbackMatch = fallbackSOCMap[serviceId];
+                        let fallbackMatch = fallbackSOCMap ? (fallbackSOCMap[serviceId] || fallbackSOCMap[serviceIdRaw] || (unpaddedServiceId ? fallbackSOCMap[unpaddedServiceId] : null)) : null;
                         let fallbackMatchedByDesc = false;
 
                         if (!fallbackMatch) {
@@ -6521,7 +6536,7 @@
                             explanation += ` Not found in Template; fetched ₹${expectedTariff} from ${activeYear} SOC` + (fallbackMatchedByDesc ? ` (Matched by Description: ${fallbackMatch.name})` : "") + ".";
                         } else {
                             // As a final fallback, check the 2026 GIPSA/TPA Master database (TARIFF_DATA)
-                            let masterMatch = map2026[serviceId];
+                            let masterMatch = map2026 ? (map2026[serviceId] || map2026[serviceIdRaw] || (unpaddedServiceId ? map2026[unpaddedServiceId] : null)) : null;
                             let masterMatchedByDesc = false;
                             if (!masterMatch) {
                                 const cleanBillName = nameUpper.trim();
@@ -7418,7 +7433,14 @@
                 const bill = (row.billNo || '').toLowerCase();
                 const id = (row.serviceId || '').toLowerCase();
                 const sname = (row.serviceName || '').toLowerCase();
-                if (!pat.includes(query) && !ip.includes(query) && !bill.includes(query) && !id.includes(query) && !sname.includes(query)) {
+                const cleanQuery = query.replace(/^[#\s]+/, '').replace(/\.0+$/, '').trim();
+                const unpaddedQuery = cleanQuery.replace(/^0+/, '');
+                const cleanId = id.replace(/^[#\s]+/, '').replace(/\.0+$/, '').trim();
+                const unpaddedId = cleanId.replace(/^0+/, '');
+                if (!pat.includes(query) && !ip.includes(query) && !bill.includes(query) && 
+                    !id.includes(query) && !sname.includes(query) &&
+                    (!cleanQuery || (!id.includes(cleanQuery) && !cleanId.includes(cleanQuery))) &&
+                    (!unpaddedQuery || (!id.includes(unpaddedQuery) && !unpaddedId.includes(unpaddedQuery)))) {
                     return false;
                 }
             }
@@ -10515,17 +10537,19 @@
         
         // Tier 1: Exact service code match
         if (serviceId && activeSOCMap) {
-            const cleanId = String(serviceId).trim().replace(/^[a-zA-Z]+-?/, '');
-            if (activeSOCMap[cleanId]) {
+            const rawId = String(serviceId).trim();
+            const cleanId = rawId.replace(/^[#\s]*[a-zA-Z]*-?\s*/, '').replace(/\.0+$/, '').trim();
+            const unpadded = cleanId ? cleanId.replace(/^0+/, '') : '';
+            const noHash = rawId.replace(/^[#\s]+/, '').replace(/\.0+$/, '').trim();
+            
+            const matchedItem = (cleanId && activeSOCMap[cleanId]) ||
+                                (activeSOCMap[rawId]) ||
+                                (unpadded && activeSOCMap[unpadded]) ||
+                                (noHash && activeSOCMap[noHash]);
+                                
+            if (matchedItem) {
                 return {
-                    item: activeSOCMap[cleanId],
-                    tier: "T1",
-                    explanation: "[SOC Match T1]"
-                };
-            }
-            if (activeSOCMap[serviceId]) {
-                return {
-                    item: activeSOCMap[serviceId],
+                    item: matchedItem,
                     tier: "T1",
                     explanation: "[SOC Match T1]"
                 };
