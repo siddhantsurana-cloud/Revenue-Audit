@@ -14154,7 +14154,7 @@
         const previewCountLabel = document.getElementById('soc-preview-count-label');
         if (previewCountLabel) previewCountLabel.textContent = recordsToDisplay.length.toLocaleString();
 
-        const slice = recordsToDisplay.slice(0, 100);
+        const slice = socPreviewLimit > 0 ? recordsToDisplay.slice(0, socPreviewLimit) : recordsToDisplay;
 
         if (slice.length === 0) {
             tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">No matching records found.</td></tr>`;
@@ -16625,12 +16625,56 @@ Claims & Billing Assurance Desk
         }
     }
 
+    let socPreviewLimit = 0; // 0 = Show All rows
+    let socExpandAllWards = false;
+
+    window.setSOCPreviewLimit = function(val) {
+        socPreviewLimit = parseInt(val, 10) || 0;
+        renderSOCPreviewTable();
+    };
+
+    window.toggleSOCWardRates = function(idx, badgeEl) {
+        const detailRow = document.getElementById(`soc-ward-row-${idx}`);
+        if (!detailRow) return;
+        const isHidden = detailRow.style.display === 'none';
+        detailRow.style.display = isHidden ? 'table-row' : 'none';
+        if (badgeEl) {
+            const count = badgeEl.getAttribute('data-ward-count') || '6';
+            badgeEl.innerHTML = `🏥 ${count} Wards ${isHidden ? '▴' : '▾'}`;
+            badgeEl.style.background = isHidden ? 'rgba(99, 102, 241, 0.32)' : 'rgba(99, 102, 241, 0.15)';
+            badgeEl.style.borderColor = isHidden ? '#818cf8' : 'rgba(99, 102, 241, 0.38)';
+        }
+    };
+
+    window.toggleAllSOCWardRates = function() {
+        socExpandAllWards = !socExpandAllWards;
+        const btn = document.getElementById('soc-toggle-all-wards-btn');
+        if (btn) {
+            btn.innerHTML = socExpandAllWards ? '🏥 Collapse All Wards' : '🏥 Expand All Wards';
+            btn.style.background = socExpandAllWards ? 'rgba(99, 102, 241, 0.3)' : 'rgba(99, 102, 241, 0.14)';
+        }
+        const rows = document.querySelectorAll('#ingest-preview-body tr.soc-ward-detail-row');
+        rows.forEach(r => { r.style.display = socExpandAllWards ? 'table-row' : 'none'; });
+        const badges = document.querySelectorAll('#ingest-preview-body .soc-ward-toggle-badge');
+        badges.forEach(b => {
+            const count = b.getAttribute('data-ward-count') || '6';
+            b.innerHTML = `🏥 ${count} Wards ${socExpandAllWards ? '▴' : '▾'}`;
+            b.style.background = socExpandAllWards ? 'rgba(99, 102, 241, 0.32)' : 'rgba(99, 102, 241, 0.15)';
+            b.style.borderColor = socExpandAllWards ? '#818cf8' : 'rgba(99, 102, 241, 0.38)';
+        });
+    };
+
+    function formatWardINR(val) {
+        const num = (val !== null && val !== undefined && !isNaN(Number(val))) ? Number(val) : 0;
+        return '₹' + num.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
     function renderSOCPreviewTable() {
         const tbody = document.getElementById('ingest-preview-body');
         const countLabel = document.getElementById('soc-preview-count-label');
+        const pageIndicator = document.getElementById('soc-preview-page-indicator');
         if (!tbody || !socParsedResult) return;
 
-        tbody.innerHTML = '';
         const allRecords = socParsedResult.records || [];
 
         let filtered = allRecords.filter(rec => {
@@ -16650,31 +16694,44 @@ Claims & Billing Assurance Desk
 
         if (countLabel) countLabel.textContent = filtered.length.toLocaleString('en-IN');
 
-        const previewSlice = filtered.slice(0, 150);
+        const previewSlice = socPreviewLimit > 0 ? filtered.slice(0, socPreviewLimit) : filtered;
+        if (pageIndicator) {
+            pageIndicator.textContent = previewSlice.length === filtered.length
+                ? `Showing all ${filtered.length.toLocaleString('en-IN')} records`
+                : `Showing ${previewSlice.length.toLocaleString('en-IN')} of ${filtered.length.toLocaleString('en-IN')} records`;
+        }
 
         if (previewSlice.length === 0) {
             tbody.innerHTML = `<tr><td colspan="6" style="padding: 2rem; text-align: center; color: var(--text-muted);">No records match the active filter/search.</td></tr>`;
             return;
         }
 
+        const rowsHtml = [];
         previewSlice.forEach((rec, idx) => {
-            const tr = document.createElement('tr');
-            tr.style.borderBottom = '1px solid var(--border)';
-
             const statusBadge = rec.validation_status === 'VALID' 
                 ? '<span style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.68rem;">VALID</span>'
                 : (rec.validation_status === 'WARNING'
                     ? `<span style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.68rem;" title="${(rec.validation_warnings || []).join('; ')}">WARN ⚠️</span>`
                     : `<span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.68rem;" title="${(rec.validation_errors || []).join('; ')}">ERROR ❌</span>`);
 
-            let rateDetails = `<div style="font-family: monospace; font-weight: 700; color: var(--primary); font-size: 0.8rem;">₹${(rec.standard_rate || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</div>`;
+            const wardTiers = [
+                { label: 'OPD / Daycare', val: rec.opd_rate },
+                { label: 'General Ward (4-Shr)', val: rec.sharing_4 },
+                { label: 'Semi Private (2-Shr)', val: rec.sharing_2 },
+                { label: 'Single Private', val: rec.single },
+                { label: 'Executive / Deluxe', val: rec.executive },
+                { label: 'Suite', val: rec.suite },
+                { label: 'ICU / Critical Care', val: rec.icu }
+            ].filter(t => t.val !== null && t.val !== undefined);
+
+            const wardCount = rec.has_room_rates ? 6 : 0;
+            let rateDetails = `<div style="font-family: monospace; font-weight: 700; color: var(--primary); font-size: 0.8rem;">${formatWardINR(rec.standard_rate || 0)}</div>`;
             if (rec.has_room_rates) {
-                const roomCount = Object.keys(rec.rates || {}).length;
                 rateDetails += `
-                    <div style="display: flex; gap: 3px; justify-content: flex-end; margin-top: 2px; flex-wrap: wrap;">
-                        <span style="background: rgba(99, 102, 241, 0.15); color: #818cf8; font-size: 0.65rem; padding: 1px 4px; border-radius: 3px; font-weight: 700;" title="GW: ₹${rec.sharing_4} | Semi: ₹${rec.sharing_2} | Pvt: ₹${rec.single} | Exec: ₹${rec.executive} | Suite: ₹${rec.suite} | ICU: ₹${rec.icu} | OPD: ₹${rec.opd_rate}">
-                            🏥 6 Wards
-                        </span>
+                    <div style="display: flex; gap: 3px; justify-content: flex-end; margin-top: 3px; flex-wrap: wrap;">
+                        <button type="button" class="soc-ward-toggle-badge" data-ward-count="${wardCount}" onclick="window.toggleSOCWardRates(${idx}, this)" style="background: ${socExpandAllWards ? 'rgba(99, 102, 241, 0.32)' : 'rgba(99, 102, 241, 0.15)'}; color: #818cf8; border: 1px solid ${socExpandAllWards ? '#818cf8' : 'rgba(99, 102, 241, 0.38)'}; font-size: 0.66rem; padding: 2px 6px; border-radius: 4px; font-weight: 700; cursor: pointer; transition: all 0.15s;" title="Click to view ward-wise rates (GW: ${formatWardINR(rec.sharing_4)} | Semi: ${formatWardINR(rec.sharing_2)} | Pvt: ${formatWardINR(rec.single)} | Exec: ${formatWardINR(rec.executive)} | Suite: ${formatWardINR(rec.suite)} | ICU: ${formatWardINR(rec.icu)} | OPD: ${formatWardINR(rec.opd_rate)})">
+                            🏥 ${wardCount} Wards ${socExpandAllWards ? '▴' : '▾'}
+                        </button>
                     </div>
                 `;
             }
@@ -16688,16 +16745,44 @@ Claims & Billing Assurance Desk
                 `;
             }
 
-            tr.innerHTML = `
-                <td style="padding: 0.45rem 0.5rem; text-align: center; color: var(--text-muted); font-size: 0.72rem;">${idx + 1}</td>
-                <td style="padding: 0.45rem 0.5rem;">${statusBadge}</td>
-                <td style="padding: 0.45rem 0.5rem; font-family: monospace; font-weight: 700; color: var(--text-main); font-size: 0.76rem;">${rec.id || '—'}</td>
-                <td style="padding: 0.45rem 0.5rem; color: var(--text-main); font-weight: 600; font-size: 0.78rem;">${rec.name || '—'}</td>
-                <td style="padding: 0.45rem 0.5rem; color: var(--text-muted); font-size: 0.72rem;">${rec.department || '—'}</td>
-                <td style="padding: 0.45rem 0.5rem; text-align: right;">${rateDetails}</td>
-            `;
-            tbody.appendChild(tr);
+            rowsHtml.push(`
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 0.45rem 0.5rem; text-align: center; color: var(--text-muted); font-size: 0.72rem;">${idx + 1}</td>
+                    <td style="padding: 0.45rem 0.5rem;">${statusBadge}</td>
+                    <td style="padding: 0.45rem 0.5rem; font-family: monospace; font-weight: 700; color: var(--text-main); font-size: 0.76rem;">${rec.id || '—'}</td>
+                    <td style="padding: 0.45rem 0.5rem; color: var(--text-main); font-weight: 600; font-size: 0.78rem;">${rec.name || '—'}</td>
+                    <td style="padding: 0.45rem 0.5rem; color: var(--text-muted); font-size: 0.72rem;">${rec.department || '—'}</td>
+                    <td style="padding: 0.45rem 0.5rem; text-align: right;">${rateDetails}</td>
+                </tr>
+            `);
+
+            if (rec.has_room_rates) {
+                const cardsHtml = wardTiers.map(t => `
+                    <div style="background: var(--bg-card); border: 1px solid rgba(99, 102, 241, 0.28); border-radius: 6px; padding: 0.32rem 0.55rem; display: flex; flex-direction: column; gap: 1px; min-width: 112px;">
+                        <span style="font-size: 0.63rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em;">${t.label}</span>
+                        <span style="font-family: monospace; font-size: 0.78rem; font-weight: 800; color: #a5b4fc;">${formatWardINR(t.val)}</span>
+                    </div>
+                `).join('');
+
+                rowsHtml.push(`
+                    <tr id="soc-ward-row-${idx}" class="soc-ward-detail-row" style="display: ${socExpandAllWards ? 'table-row' : 'none'}; background: rgba(99, 102, 241, 0.06); border-bottom: 1px solid var(--border);">
+                        <td colspan="6" style="padding: 0.5rem 0.85rem;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem; flex-wrap: wrap; gap: 0.4rem;">
+                                <span style="font-size: 0.7rem; font-weight: 800; color: #818cf8; display: flex; align-items: center; gap: 0.35rem;">
+                                    🏥 Ward-Wise Tariff Breakdown — <strong style="color: var(--text-main);">${rec.name || rec.id}</strong> <span style="color: var(--text-muted); font-family: monospace;">(${rec.id || '—'})</span>
+                                </span>
+                                <span style="font-size: 0.68rem; color: var(--text-muted);">Unit: <strong>${rec.unit || 'Per Quantity'}</strong>${rec.effective_from ? ` · Valid: ${rec.effective_from}${rec.effective_to ? ' to ' + rec.effective_to : ''}` : ''}</span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 0.4rem;">
+                                ${cardsHtml}
+                            </div>
+                        </td>
+                    </tr>
+                `);
+            }
         });
+
+        tbody.innerHTML = rowsHtml.join('');
     }
 
     async function commitSOCToTariffModule() {

@@ -1040,10 +1040,22 @@
             <!-- LIVE PREVIEW TABLE & CANONICAL JSON VIEWER -->
             <div class="grid-2col">
                 <!-- Extracted Records Table -->
-                <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; height: 380px; overflow: hidden; padding: 1rem 1.25rem;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem;">
-                        <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin: 0;">Extracted Canonical Records (<span id="soc-preview-count-label">0</span> displayed)</h4>
-                        <span style="font-size: 0.72rem; color: var(--text-muted);" id="soc-preview-page-indicator">Showing first 100 records</span>
+                <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; height: 540px; overflow: hidden; padding: 1rem 1.25rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem; flex-wrap: wrap; gap: 0.5rem;">
+                        <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin: 0;">Extracted Canonical Records (<span id="soc-preview-count-label">0</span> matched)</h4>
+                        <div style="display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap;">
+                            <button type="button" id="soc-toggle-all-wards-btn" onclick="window.toggleAllSOCWardRates()" class="export-btn" style="padding: 0.22rem 0.55rem; font-size: 0.7rem; font-weight: 700; background: rgba(99, 102, 241, 0.14); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.35); border-radius: 5px; cursor: pointer;" title="Expand or collapse ward-wise rate breakdown for all rows">
+                                🏥 Expand All Wards
+                            </button>
+                            <select id="soc-preview-limit-select" onchange="window.setSOCPreviewLimit(this.value)" class="form-control" style="font-size: 0.72rem; padding: 0.2rem 0.45rem; height: 26px; width: auto; background: var(--bg-page); color: var(--text-main); border: 1px solid var(--border); border-radius: 5px;">
+                                <option value="0" selected>Show All Rows</option>
+                                <option value="500">Show 500 Rows</option>
+                                <option value="1000">Show 1,000 Rows</option>
+                                <option value="2500">Show 2,500 Rows</option>
+                                <option value="5000">Show 5,000 Rows</option>
+                            </select>
+                            <span style="font-size: 0.72rem; color: var(--text-muted);" id="soc-preview-page-indicator">Showing all records</span>
+                        </div>
                     </div>
                     <div style="overflow-y: auto; flex-grow: 1; border: 1px solid var(--border); border-radius: 8px;">
                         <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.76rem;">
@@ -1065,7 +1077,7 @@
                 </div>
 
                 <!-- Canonical JSON & Master Actions -->
-                <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; height: 380px; padding: 1rem 1.25rem;">
+                <div class="controls-card" style="background-color: var(--bg-card); display: flex; flex-direction: column; gap: 0.75rem; height: 540px; padding: 1rem 1.25rem;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin: 0;">Canonical JSON Payload &amp; Actions</h4>
                         <span style="font-size: 0.72rem; color: var(--success); font-weight: 700;">Schema Draft-07 Compliant</span>
