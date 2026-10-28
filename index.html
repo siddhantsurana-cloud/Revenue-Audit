@@ -3010,6 +3010,47 @@
                                 </table>
                             </div>
                         </details>
+
+                        <!-- Section 4 -->
+                        <details style="background-color: var(--bg-page); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+                            <summary style="padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; color: var(--text-main); cursor: pointer; user-select: none; background: rgba(13, 148, 136, 0.05); display: flex; align-items: center; justify-content: space-between;">
+                                <span>4. Multi-Unit Central Audit Storage &amp; How Storage Functions Work</span>
+                                <span style="font-size: 0.7rem; color: var(--text-muted);">▼</span>
+                            </summary>
+                            <div style="padding: 1rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.6rem;">
+                                <p style="margin: 0;"><strong style="color: var(--text-main);">Zero Speed Impact Across 65+ Units:</strong> All line-item bill auditing runs 100% inside each auditor's local web browser memory (RAM). The central server only receives the final audited summary and exception records when an auditor clicks <strong style="color: var(--text-main);">Save Audit</strong> (<code style="color: var(--primary);">POST /api/save_audits</code>).</p>
+                                <div style="font-weight: 700; color: var(--text-main); margin-top: 0.25rem;">3 Deployment Options for Central Audit Result Storage:</div>
+                                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.35rem;">
+                                    <li><strong>Option A — Single Central Intranet Server (Recommended):</strong> Host one instance of <code style="color: var(--primary);">run_server.py</code> on an Apollo Central VM. All units open the central intranet URL, log into their Unit card, audit bills in-browser, and click <strong>Save Audit</strong>. All results are stored centrally in <code style="color: var(--primary);">revenue_audit.db</code> tagged by <code style="color: var(--primary);">businessUnit</code>.</li>
+                                    <li><strong>Option B — Distributed Unit Tools + Background Sync:</strong> Units with unstable connectivity run the tool locally (saving to local storage/SQLite first) and automatically push saved audits (<code style="color: var(--primary);">POST /api/save_audits</code>) to the Central Hub when connected.</li>
+                                    <li><strong>Option C — Enterprise SQL / BI Backend:</strong> Point <code style="color: var(--primary);">get_db_connection()</code> in <code style="color: var(--primary);">run_server.py</code> to PostgreSQL / Azure SQL for live PowerBI &amp; Corporate Revenue Assurance dashboards.</li>
+                                </ul>
+                                <div style="font-weight: 700; color: var(--text-main); margin-top: 0.25rem;">How to Configure &amp; Operate the Storage Functions:</div>
+                                <ol style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.35rem;">
+                                    <li><strong>Enable SQLite Mode (<code style="color: var(--primary);">config.json</code>):</strong> Set <code style="color: var(--primary);">"STORAGE_MODE": "sqlite"</code> and <code style="color: var(--primary);">"SQLITE_DB_PATH": "revenue_audit.db"</code> in <code style="color: var(--primary);">config.json</code>. On first run, <code style="color: var(--primary);">load_json_data()</code> in <code style="color: var(--primary);">run_server.py</code> automatically creates the <code style="color: var(--primary);">json_store</code> table and migrates existing JSON files.</li>
+                                    <li><strong>Client Save Function (<code style="color: var(--primary);">window.saveAudit()</code> in <code style="color: var(--primary);">js/app.js</code>):</strong> Serializes the audited bill summary, leakage/recovery totals, approval metadata, and rows, saves to browser <code style="color: var(--primary);">localStorage</code> (<code style="color: var(--primary);">brc_v2_saved_audits</code>), and calls <code style="color: var(--primary);">syncDatabaseToServer(db)</code> (<code style="color: var(--primary);">POST /api/save_audits</code>).</li>
+                                    <li><strong>Client Load Function (<code style="color: var(--primary);">loadDatabaseFromServer()</code> in <code style="color: var(--primary);">js/app.js</code>):</strong> Calls <code style="color: var(--primary);">GET /api/load_audits</code> on startup. Unit logins view only their own unit's audits (<code style="color: var(--primary);">businessUnit === currentUserUnit</code>), whereas Central Head Office (<code style="color: var(--primary);">unit = 'all'</code>) views all units' audits consolidated in the <strong>Audit Repository</strong> and <strong>Checking Console</strong>.</li>
+                                    <li><strong>1-Click Snapshot Backup:</strong> Use <strong style="color: var(--text-main);">Export Snapshot</strong> in the header or back up <code style="color: var(--primary);">data/central_hub.db</code> and <code style="color: var(--primary);">revenue_audit.db</code> directly.</li>
+                                </ol>
+                            </div>
+                        </details>
+
+                        <!-- Section 5 -->
+                        <details style="background-color: var(--bg-page); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+                            <summary style="padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; color: var(--text-main); cursor: pointer; user-select: none; background: rgba(13, 148, 136, 0.05); display: flex; align-items: center; justify-content: space-between;">
+                                <span>5. Unit-Wise Tariff Isolation vs. Central Rates (All Units / Selected Units)</span>
+                                <span style="font-size: 0.7rem; color: var(--text-muted);">▼</span>
+                            </summary>
+                            <div style="padding: 1rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.6rem;">
+                                <p style="margin: 0;">The Central Data Hub (<code style="color: var(--primary);">central_hub/</code>) enforces a <strong>3-Tier Hub-and-Spoke Tariff Governance Model</strong>:</p>
+                                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.35rem;">
+                                    <li><strong>1. Unit-Specific Tariffs (Single Unit Isolation):</strong> When an auditor signs into a hospital unit (e.g., <em>Excelcare</em>, <em>International</em>, <em>Kolkata</em>, <em>Chennai</em>), the browser calls <code style="color: var(--primary);">GET /api/hub/units/&lt;unit_code&gt;/bundle</code> and downloads <strong>only that unit's SOCs and Agreements</strong>. Other units' rate cards are strictly isolated and never visible.</li>
+                                    <li><strong>2. Central Rates for Selected Units (Regional / Multi-Unit Broadcast):</strong> When a corporate MOU or PSU rate card (e.g., <em>OIL India</em> or a Regional TPA) applies to a specific subset of hospitals, Head Office selects those specific target units (<code style="color: var(--primary);">target_units: ["international", "excelcare", ...]</code>) so only the ticked units receive that tariff/agreement.</li>
+                                    <li><strong>3. Central Rates for All Active Units (Pan-India Broadcast):</strong> When a national agreement or master rate schedule applies across all Apollo hospitals, Head Office deploys with <code style="color: var(--primary);">target_units: "ALL"</code> to broadcast the SOC or Agreement to all 65+ active units in one click.</li>
+                                    <li><strong>Priority &amp; Local Addendum Rule:</strong> Each agreement maps to SOC codes in priority order. If a unit has a local addendum SOC mapped as Priority 1 and a Central Rate SOC as Priority 2, the unit's specific rate takes precedence while falling back to the Central Rate or Unit Default SOC for remaining items.</li>
+                                </ul>
+                            </div>
+                        </details>
                     </div>
                 </div>
             </div>
