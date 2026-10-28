@@ -15889,7 +15889,10 @@ Claims & Billing Assurance Desk
             const isTimeBased = isPerHour || isPerDay || isPerMin || isSlab;
             const timeUnit = isPerHour ? 'hour' : (isPerDay ? 'day' : (isPerMin ? 'min' : (isSlab ? 'slab' : null)));
 
-            const baseRate = stdRate !== null ? stdRate : (gwRate !== null ? gwRate : (opdRate !== null ? opdRate : (pvtRate !== null ? pvtRate : 0.0)));
+            const providedRates = [stdRate, opdRate, ipdRate, gwRate, semiRate, pvtRate, execRate, suiteRate, icuRate].filter(r => r !== null && !isNaN(r));
+            const hasAnyRate = providedRates.length > 0;
+            const hasNegativeRate = providedRates.some(r => r < 0);
+            const allZeroRates = hasAnyRate && providedRates.every(r => r === 0);
 
             const errors = [];
             const warnings = [];
@@ -15897,9 +15900,9 @@ Claims & Billing Assurance Desk
             if (!id && !name) {
                 errors.push('Both Item Code and Service Name are missing');
             }
-            if (baseRate === null || isNaN(baseRate) || baseRate < 0) {
-                errors.push('Invalid or negative Standard Rate');
-            } else if (baseRate === 0 && !hasRoomRates) {
+            if (!hasAnyRate || hasNegativeRate) {
+                errors.push('Invalid, missing, or negative Rate');
+            } else if (allZeroRates) {
                 warnings.push('Rate is 0.00 (Zero-charge item)');
             }
 
@@ -15915,15 +15918,15 @@ Claims & Billing Assurance Desk
                 name: itemName,
                 category: cat,
                 department: dept,
-                standard_rate: baseRate,
-                opd_rate: opdRate !== null ? opdRate : baseRate,
-                ipd_rate: ipdRate !== null ? ipdRate : baseRate,
-                sharing_4: gwRate !== null ? gwRate : baseRate,
-                sharing_2: semiRate !== null ? semiRate : baseRate,
-                single: pvtRate !== null ? pvtRate : baseRate,
-                executive: execRate !== null ? execRate : baseRate,
-                suite: suiteRate !== null ? suiteRate : baseRate,
-                icu: icuRate !== null ? icuRate : baseRate,
+                standard_rate: stdRate,
+                opd_rate: opdRate,
+                ipd_rate: ipdRate,
+                sharing_4: gwRate,
+                sharing_2: semiRate,
+                single: pvtRate,
+                executive: execRate,
+                suite: suiteRate,
+                icu: icuRate,
                 rates: ratesMap,
                 has_room_rates: hasRoomRates,
                 currency: currency,
@@ -16335,52 +16338,39 @@ Claims & Billing Assurance Desk
         }
         mapping.id = bestCodeCol;
 
-        // 3. Find Best Rate Column (Scoring across all candidate columns)
-        let bestRateScore = -50;
-        let bestRateCol = -1;
-        for (let i = 0; i < lowerHeaders.length; i++) {
-            if (i === mapping.name || i === mapping.id) continue;
-            const score = scoreRateCandidate(i);
-            if (score > bestRateScore) {
-                bestRateScore = score;
-                bestRateCol = i;
-            }
-        }
-        mapping.standard_rate = bestRateCol;
-
-        // 4. Find Department and Category
+        // 3. Find Department and Category
         for (const alias of deptAliases) {
             const found = lowerHeaders.findIndex(h => h === alias || h.includes(alias));
-            if (found !== -1 && found !== mapping.name && found !== mapping.id && found !== mapping.standard_rate) {
+            if (found !== -1 && found !== mapping.name && found !== mapping.id) {
                 mapping.department = found;
                 break;
             }
         }
         for (const alias of catAliases) {
             const found = lowerHeaders.findIndex(h => h === alias || h.includes(alias));
-            if (found !== -1 && found !== mapping.name && found !== mapping.id && found !== mapping.standard_rate && found !== mapping.department) {
+            if (found !== -1 && found !== mapping.name && found !== mapping.id && found !== mapping.department) {
                 mapping.category = found;
                 break;
             }
         }
 
-        // 5. Find OPD / IPD if present
+        // 4. Find OPD / IPD if explicitly present in headers
         for (const alias of opdRateAliases) {
             const found = lowerHeaders.findIndex(h => h === alias || h.includes(alias));
-            if (found !== -1 && found !== mapping.standard_rate) {
+            if (found !== -1 && found !== mapping.name && found !== mapping.id && found !== mapping.department && found !== mapping.category) {
                 mapping.opd_rate = found;
                 break;
             }
         }
         for (const alias of ipdRateAliases) {
             const found = lowerHeaders.findIndex(h => h === alias || h.includes(alias));
-            if (found !== -1 && found !== mapping.standard_rate && found !== mapping.opd_rate) {
+            if (found !== -1 && found !== mapping.name && found !== mapping.id && found !== mapping.opd_rate) {
                 mapping.ipd_rate = found;
                 break;
             }
         }
 
-        // 6. Find Room Category Rates (GW, Semi-Private, Private, Executive, Suite, ICU)
+        // 5. Find Room Category Rates (GW, Semi-Private, Private, Executive, Suite, ICU)
         for (const alias of gwRateAliases) {
             const found = lowerHeaders.findIndex(h => h === alias || (h.includes(alias) && !h.includes('discount') && !h.includes('%') && !h.includes('diff') && !h.includes('semi')));
             if (found !== -1) { mapping.gw_rate = found; break; }
@@ -16406,6 +16396,28 @@ Claims & Billing Assurance Desk
             if (found !== -1) { mapping.icu_rate = found; break; }
         }
 
+        // 6. Find Best Base/Standard Rate Column (excluding columns already matched as specific ward/OPD rates)
+        const claimedRateCols = new Set(
+            [mapping.opd_rate, mapping.ipd_rate, mapping.gw_rate, mapping.semi_private_rate,
+             mapping.private_rate, mapping.executive_rate, mapping.suite_rate, mapping.icu_rate]
+            .filter(idx => idx !== undefined && idx >= 0)
+        );
+        let bestRateScore = -50;
+        let bestRateCol = -1;
+        for (let i = 0; i < lowerHeaders.length; i++) {
+            if (i === mapping.name || i === mapping.id || i === mapping.department || i === mapping.category) continue;
+            if (claimedRateCols.has(i)) continue;
+            const score = scoreRateCandidate(i);
+            if (score > bestRateScore) {
+                bestRateScore = score;
+                bestRateCol = i;
+            }
+        }
+        // Only assign standard_rate if a genuine unclaimed rate column was found (or if no ward/OPD columns exist at all)
+        if (bestRateCol !== -1 && (bestRateScore > 0 || claimedRateCols.size === 0)) {
+            mapping.standard_rate = bestRateCol;
+        }
+
         // 7. Find Time & Validity metadata (Unit/UOM, Effective Dates)
         for (const alias of unitAliases) {
             const found = lowerHeaders.findIndex(h => h === alias || h.includes(alias));
@@ -16420,14 +16432,11 @@ Claims & Billing Assurance Desk
             if (found !== -1) { mapping.effective_to = found; break; }
         }
 
-        // Fallbacks if nothing matched
+        // Fallbacks if nothing matched at all
         if (mapping.name === -1 && lowerHeaders.length > 1) mapping.name = 1;
         if (mapping.id === -1 && lowerHeaders.length > 0 && mapping.name !== 0) mapping.id = 0;
-        if (mapping.standard_rate === -1) {
-            if (mapping.gw_rate !== -1) mapping.standard_rate = mapping.gw_rate;
-            else if (mapping.opd_rate !== -1) mapping.standard_rate = mapping.opd_rate;
-            else if (mapping.private_rate !== -1) mapping.standard_rate = mapping.private_rate;
-            else mapping.standard_rate = lowerHeaders.length > 2 ? lowerHeaders.length - 1 : 0;
+        if (mapping.standard_rate === -1 && claimedRateCols.size === 0) {
+            mapping.standard_rate = lowerHeaders.length > 2 ? lowerHeaders.length - 1 : 0;
         }
 
         return mapping;
@@ -16665,8 +16674,8 @@ Claims & Billing Assurance Desk
     };
 
     function formatWardINR(val) {
-        const num = (val !== null && val !== undefined && !isNaN(Number(val))) ? Number(val) : 0;
-        return '₹' + num.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        if (val === null || val === undefined || val === '' || isNaN(Number(val))) return '';
+        return '₹' + Number(val).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
     function renderSOCPreviewTable() {
@@ -16715,6 +16724,7 @@ Claims & Billing Assurance Desk
                     : `<span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.68rem;" title="${(rec.validation_errors || []).join('; ')}">ERROR ❌</span>`);
 
             const wardTiers = [
+                { label: 'Base / Std Rate', val: rec.standard_rate },
                 { label: 'OPD / Daycare', val: rec.opd_rate },
                 { label: 'General Ward (4-Shr)', val: rec.sharing_4 },
                 { label: 'Semi Private (2-Shr)', val: rec.sharing_2 },
@@ -16722,14 +16732,22 @@ Claims & Billing Assurance Desk
                 { label: 'Executive / Deluxe', val: rec.executive },
                 { label: 'Suite', val: rec.suite },
                 { label: 'ICU / Critical Care', val: rec.icu }
-            ].filter(t => t.val !== null && t.val !== undefined);
+            ];
 
-            const wardCount = rec.has_room_rates ? 6 : 0;
-            let rateDetails = `<div style="font-family: monospace; font-weight: 700; color: var(--primary); font-size: 0.8rem;">${formatWardINR(rec.standard_rate || 0)}</div>`;
+            const populatedWardCount = [rec.sharing_4, rec.sharing_2, rec.single, rec.executive, rec.suite, rec.icu, rec.opd_rate]
+                .filter(v => v !== null && v !== undefined && v !== '').length;
+            const wardCount = populatedWardCount || 6;
+            const stdFormatted = formatWardINR(rec.standard_rate);
+            let rateDetails = stdFormatted
+                ? `<div style="font-family: monospace; font-weight: 700; color: var(--primary); font-size: 0.8rem;">${stdFormatted}</div>`
+                : `<div style="font-size: 0.7rem; color: var(--text-muted); font-style: italic;">—</div>`;
             if (rec.has_room_rates) {
+                const tooltipParts = wardTiers
+                    .filter(t => t.val !== null && t.val !== undefined && t.val !== '')
+                    .map(t => `${t.label}: ${formatWardINR(t.val)}`);
                 rateDetails += `
                     <div style="display: flex; gap: 3px; justify-content: flex-end; margin-top: 3px; flex-wrap: wrap;">
-                        <button type="button" class="soc-ward-toggle-badge" data-ward-count="${wardCount}" onclick="window.toggleSOCWardRates(${idx}, this)" style="background: ${socExpandAllWards ? 'rgba(99, 102, 241, 0.32)' : 'rgba(99, 102, 241, 0.15)'}; color: #818cf8; border: 1px solid ${socExpandAllWards ? '#818cf8' : 'rgba(99, 102, 241, 0.38)'}; font-size: 0.66rem; padding: 2px 6px; border-radius: 4px; font-weight: 700; cursor: pointer; transition: all 0.15s;" title="Click to view ward-wise rates (GW: ${formatWardINR(rec.sharing_4)} | Semi: ${formatWardINR(rec.sharing_2)} | Pvt: ${formatWardINR(rec.single)} | Exec: ${formatWardINR(rec.executive)} | Suite: ${formatWardINR(rec.suite)} | ICU: ${formatWardINR(rec.icu)} | OPD: ${formatWardINR(rec.opd_rate)})">
+                        <button type="button" class="soc-ward-toggle-badge" data-ward-count="${wardCount}" onclick="window.toggleSOCWardRates(${idx}, this)" style="background: ${socExpandAllWards ? 'rgba(99, 102, 241, 0.32)' : 'rgba(99, 102, 241, 0.15)'}; color: #818cf8; border: 1px solid ${socExpandAllWards ? '#818cf8' : 'rgba(99, 102, 241, 0.38)'}; font-size: 0.66rem; padding: 2px 6px; border-radius: 4px; font-weight: 700; cursor: pointer; transition: all 0.15s;" title="Click to view ward-wise rates (${tooltipParts.join(' | ')})">
                             🏥 ${wardCount} Wards ${socExpandAllWards ? '▴' : '▾'}
                         </button>
                     </div>
@@ -16802,24 +16820,24 @@ Claims & Billing Assurance Desk
                 name: rec.name,
                 category: rec.category || 'HOSPITAL_SERVICES',
                 department: rec.department || 'GENERAL',
-                rate: rec.standard_rate || 0,
-                standard_rate: rec.standard_rate || 0,
-                rate2026: rec.standard_rate || 0,
-                rate2021: rec.standard_rate || 0,
-                rate2023: rec.standard_rate || 0,
-                rate2024: rec.standard_rate || 0,
-                rate2025: rec.standard_rate || 0,
-                rateCash2026: rec.opd_rate || rec.standard_rate || 0,
-                rateExcelcare: rec.standard_rate || 0,
-                rateExcelcareCash: rec.opd_rate || rec.standard_rate || 0,
-                rateKolkata: rec.standard_rate || 0,
-                opd_rate: rec.opd_rate || rec.standard_rate || 0,
-                sharing_4: rec.sharing_4 || rec.standard_rate || 0,
-                sharing_2: rec.sharing_2 || rec.standard_rate || 0,
-                single: rec.single || rec.standard_rate || 0,
-                executive: rec.executive || rec.standard_rate || 0,
-                suite: rec.suite || rec.standard_rate || 0,
-                icu: rec.icu || rec.standard_rate || 0,
+                rate: rec.standard_rate ?? rec.sharing_4 ?? rec.opd_rate ?? rec.single ?? null,
+                standard_rate: rec.standard_rate ?? null,
+                rate2026: rec.standard_rate ?? rec.sharing_4 ?? null,
+                rate2021: rec.standard_rate ?? rec.sharing_4 ?? null,
+                rate2023: rec.standard_rate ?? rec.sharing_4 ?? null,
+                rate2024: rec.standard_rate ?? rec.sharing_4 ?? null,
+                rate2025: rec.standard_rate ?? rec.sharing_4 ?? null,
+                rateCash2026: rec.opd_rate ?? rec.standard_rate ?? null,
+                rateExcelcare: rec.standard_rate ?? rec.sharing_4 ?? null,
+                rateExcelcareCash: rec.opd_rate ?? rec.standard_rate ?? null,
+                rateKolkata: rec.standard_rate ?? rec.sharing_4 ?? null,
+                opd_rate: rec.opd_rate ?? null,
+                sharing_4: rec.sharing_4 ?? null,
+                sharing_2: rec.sharing_2 ?? null,
+                single: rec.single ?? null,
+                executive: rec.executive ?? null,
+                suite: rec.suite ?? null,
+                icu: rec.icu ?? null,
                 rates: rec.rates || {},
                 has_room_rates: rec.has_room_rates || false,
                 is_time_based: rec.is_time_based || false,
@@ -17010,14 +17028,14 @@ Claims & Billing Assurance Desk
             'Service Description': rec.name || '',
             'Department': rec.department || '',
             'Category': rec.category || '',
-            'Base Rate (₹)': rec.standard_rate !== null && rec.standard_rate !== undefined ? rec.standard_rate : 0.0,
-            'OPD Rate (₹)': rec.opd_rate !== null && rec.opd_rate !== undefined ? rec.opd_rate : 0.0,
-            'GW / 4-Sharing (₹)': rec.sharing_4 !== null && rec.sharing_4 !== undefined ? rec.sharing_4 : 0.0,
-            'Semi Private (₹)': rec.sharing_2 !== null && rec.sharing_2 !== undefined ? rec.sharing_2 : 0.0,
-            'Single Private (₹)': rec.single !== null && rec.single !== undefined ? rec.single : 0.0,
-            'Executive (₹)': rec.executive !== null && rec.executive !== undefined ? rec.executive : 0.0,
-            'Suite (₹)': rec.suite !== null && rec.suite !== undefined ? rec.suite : 0.0,
-            'ICU (₹)': rec.icu !== null && rec.icu !== undefined ? rec.icu : 0.0,
+            'Base Rate (₹)': rec.standard_rate !== null && rec.standard_rate !== undefined ? rec.standard_rate : '',
+            'OPD Rate (₹)': rec.opd_rate !== null && rec.opd_rate !== undefined ? rec.opd_rate : '',
+            'GW / 4-Sharing (₹)': rec.sharing_4 !== null && rec.sharing_4 !== undefined ? rec.sharing_4 : '',
+            'Semi Private (₹)': rec.sharing_2 !== null && rec.sharing_2 !== undefined ? rec.sharing_2 : '',
+            'Single Private (₹)': rec.single !== null && rec.single !== undefined ? rec.single : '',
+            'Executive (₹)': rec.executive !== null && rec.executive !== undefined ? rec.executive : '',
+            'Suite (₹)': rec.suite !== null && rec.suite !== undefined ? rec.suite : '',
+            'ICU (₹)': rec.icu !== null && rec.icu !== undefined ? rec.icu : '',
             'Billing Unit': rec.unit || 'Per Quantity',
             'Time-Based': rec.is_time_based ? `Yes (/${rec.time_unit || 'time'})` : 'No',
             'Effective From': rec.effective_from || '',
