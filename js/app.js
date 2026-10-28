@@ -6380,15 +6380,45 @@
                                     }
                                 } else {
                                     if (match.rates) {
-                                        const mappedCat = mapIOCLRoomCategory(roomCategory, cleanedRoom);
-                                        expectedTariff = match.rates[mappedCat];
-                                        if (expectedTariff === undefined || expectedTariff === null) {
-                                            expectedTariff = match.rate;
+                                        // Dynamic room rate resolution from rates dictionary (works for custom ingested or IOCL)
+                                        const rawCat = (roomCategory || '').trim().toUpperCase();
+                                        const rawClean = (cleanedRoom || '').trim().toUpperCase();
+                                        if (rawClean && match.rates[rawClean] !== undefined) {
+                                            expectedTariff = match.rates[rawClean];
+                                            explanation += ` Resolved room-specific rate (${rawClean}).`;
+                                        } else if (rawCat && match.rates[rawCat] !== undefined) {
+                                            expectedTariff = match.rates[rawCat];
+                                            explanation += ` Resolved room-specific rate (${rawCat}).`;
                                         } else {
-                                            explanation += ` Resolved IOCL room-specific rate (${mappedCat}).`;
+                                            const mappedCat = mapIOCLRoomCategory(roomCategory, cleanedRoom);
+                                            expectedTariff = match.rates[mappedCat];
+                                            if (expectedTariff === undefined || expectedTariff === null) {
+                                                expectedTariff = match.rate;
+                                            } else {
+                                                explanation += ` Resolved room-specific rate (${mappedCat}).`;
+                                            }
                                         }
                                     } else {
                                         expectedTariff = (activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate;
+                                    }
+                                }
+
+                                // Universal Time-Based Multiplier across all units & ingested SOCs
+                                if (expectedTariff !== null && match && !explanation.includes('[TIME-BASED]')) {
+                                    const socItemName = (match.name || '').toUpperCase();
+                                    const socUnit = String(match.unit || '').toUpperCase();
+                                    const isPerHour = match.time_unit === 'hour' || /\/\s*HOUR|PER\s+HOUR|CHG\/HR|CHG\s*\/\s*HOUR|\/\s*HR|\bHOURLY\b/.test(socItemName) || /\bHOUR|HR\b/.test(socUnit);
+                                    const isPerDay = match.time_unit === 'day' || /\/\s*DAY|PER\s+DAY|PER\s+NURSE\s+PER\s+DAY|\bDAILY\b/.test(socItemName) || /\bDAY\b/.test(socUnit);
+                                    const isPerMin = match.time_unit === 'min' || /\/\s*MIN|PER\s+MIN|\bMINUTELY\b/.test(socItemName) || /\bMIN\b/.test(socUnit);
+                                    
+                                    if ((isPerHour || isPerDay || isPerMin) && quantity > 1) {
+                                        const unitLabel = isPerMin ? 'min' : (isPerDay ? 'day' : 'hr');
+                                        const unitRate = expectedTariff;
+                                        expectedTariff = unitRate * quantity;
+                                        explanation += ` [TIME-BASED] ${quantity} ${unitLabel} × ₹${unitRate}/unit = ₹${expectedTariff}.`;
+                                    } else if (isPerHour || isPerDay || isPerMin) {
+                                        const unitLabel = isPerMin ? '/min' : (isPerDay ? '/day' : '/hr');
+                                        explanation += ` [TIME-BASED: unit rate ${unitLabel} – qty=${quantity}]`;
                                     }
                                 }
                             } else {
@@ -15806,8 +15836,60 @@ Claims & Billing Assurance Desk
             const dept = (mapping.department !== undefined && mapping.department >= 0 ? cleanString(row[mapping.department]) : '') || 'GENERAL';
             const cat = (mapping.category !== undefined && mapping.category >= 0 ? cleanString(row[mapping.category]) : '') || 'HOSPITAL_SERVICES';
             const stdRate = (mapping.standard_rate !== undefined && mapping.standard_rate >= 0) ? parseNumericRate(row[mapping.standard_rate]) : null;
-            const opdRate = (mapping.opd_rate !== undefined && mapping.opd_rate >= 0) ? parseNumericRate(row[mapping.opd_rate]) : stdRate;
-            const ipdRate = (mapping.ipd_rate !== undefined && mapping.ipd_rate >= 0) ? parseNumericRate(row[mapping.ipd_rate]) : stdRate;
+            const opdRate = (mapping.opd_rate !== undefined && mapping.opd_rate >= 0) ? parseNumericRate(row[mapping.opd_rate]) : null;
+            const ipdRate = (mapping.ipd_rate !== undefined && mapping.ipd_rate >= 0) ? parseNumericRate(row[mapping.ipd_rate]) : null;
+            
+            // Extract Room Category Rates
+            const gwRate = (mapping.gw_rate !== undefined && mapping.gw_rate >= 0) ? parseNumericRate(row[mapping.gw_rate]) : null;
+            const semiRate = (mapping.semi_private_rate !== undefined && mapping.semi_private_rate >= 0) ? parseNumericRate(row[mapping.semi_private_rate]) : null;
+            const pvtRate = (mapping.private_rate !== undefined && mapping.private_rate >= 0) ? parseNumericRate(row[mapping.private_rate]) : null;
+            const execRate = (mapping.executive_rate !== undefined && mapping.executive_rate >= 0) ? parseNumericRate(row[mapping.executive_rate]) : null;
+            const suiteRate = (mapping.suite_rate !== undefined && mapping.suite_rate >= 0) ? parseNumericRate(row[mapping.suite_rate]) : null;
+            const icuRate = (mapping.icu_rate !== undefined && mapping.icu_rate >= 0) ? parseNumericRate(row[mapping.icu_rate]) : null;
+            
+            // Extract Time & Validity metadata
+            const unitVal = (mapping.unit !== undefined && mapping.unit >= 0) ? cleanString(row[mapping.unit]) : '';
+            const effFromVal = (mapping.effective_from !== undefined && mapping.effective_from >= 0) ? cleanString(row[mapping.effective_from]) : '';
+            const effToVal = (mapping.effective_to !== undefined && mapping.effective_to >= 0) ? cleanString(row[mapping.effective_to]) : '';
+
+            // Construct rich room rates lookup dictionary
+            const ratesMap = {};
+            const hasRoomRates = (gwRate !== null || semiRate !== null || pvtRate !== null || execRate !== null || suiteRate !== null || icuRate !== null);
+            if (hasRoomRates) {
+                if (opdRate !== null) { ratesMap["OPD"] = opdRate; ratesMap["DAYCARE"] = opdRate; ratesMap["DAY CARE"] = opdRate; }
+                if (gwRate !== null) {
+                    ratesMap["GW"] = gwRate; ratesMap["4 SHARING"] = gwRate; ratesMap["4-SHARING"] = gwRate;
+                    ratesMap["GENERAL WARD"] = gwRate; ratesMap["STANDARD WARD"] = gwRate; ratesMap["STANDARD"] = gwRate;
+                }
+                if (semiRate !== null) {
+                    ratesMap["SEMI PRIVATE"] = semiRate; ratesMap["2 SHARING"] = semiRate; ratesMap["2-SHARING"] = semiRate;
+                    ratesMap["TWIN"] = semiRate; ratesMap["DOUBLE"] = semiRate;
+                }
+                if (pvtRate !== null) {
+                    ratesMap["PRIVATE"] = pvtRate; ratesMap["SINGLE ROOM"] = pvtRate; ratesMap["SINGLE PRIVATE"] = pvtRate; ratesMap["SINGLE"] = pvtRate;
+                }
+                if (execRate !== null) {
+                    ratesMap["EXECUTIVE"] = execRate; ratesMap["EXECUTIVE ROOM"] = execRate; ratesMap["DELUXE"] = execRate;
+                }
+                if (suiteRate !== null) {
+                    ratesMap["SUITE"] = suiteRate; ratesMap["SUITE ROOM"] = suiteRate;
+                }
+                if (icuRate !== null) {
+                    ratesMap["ICU"] = icuRate; ratesMap["ICCU"] = icuRate; ratesMap["CCU"] = icuRate; ratesMap["HDU"] = icuRate;
+                    ratesMap["NICU"] = icuRate; ratesMap["PICU"] = icuRate; ratesMap["KTU"] = icuRate; ratesMap["SDU"] = icuRate;
+                }
+            }
+
+            // Time variation analysis (hourly, daily, per minute, or tiered slabs)
+            const textToScan = `${name} ${unitVal} ${cat}`.toUpperCase();
+            const isPerHour = /\/\s*HOUR|PER\s*HOUR|CHG\s*\/\s*HR|\/\s*HR|\bHOURLY\b/i.test(textToScan);
+            const isPerDay = /\/\s*DAY|PER\s*DAY|\/\s*DAY|DAILY|PER\s*NURSE\s*PER\s*DAY/i.test(textToScan);
+            const isPerMin = /\/\s*MIN|PER\s*MIN|MINUTELY/i.test(textToScan);
+            const isSlab = /\b(?:1\s*TO\s*3|3\s*TO\s*6|6\s*TO\s*12|12\s*TO\s*23|HOURLY\s*SLAB|SLAB)\b/i.test(textToScan);
+            const isTimeBased = isPerHour || isPerDay || isPerMin || isSlab;
+            const timeUnit = isPerHour ? 'hour' : (isPerDay ? 'day' : (isPerMin ? 'min' : (isSlab ? 'slab' : null)));
+
+            const baseRate = stdRate !== null ? stdRate : (gwRate !== null ? gwRate : (opdRate !== null ? opdRate : (pvtRate !== null ? pvtRate : 0.0)));
 
             const errors = [];
             const warnings = [];
@@ -15815,9 +15897,9 @@ Claims & Billing Assurance Desk
             if (!id && !name) {
                 errors.push('Both Item Code and Service Name are missing');
             }
-            if (stdRate === null || isNaN(stdRate) || stdRate < 0) {
+            if (baseRate === null || isNaN(baseRate) || baseRate < 0) {
                 errors.push('Invalid or negative Standard Rate');
-            } else if (stdRate === 0) {
+            } else if (baseRate === 0 && !hasRoomRates) {
                 warnings.push('Rate is 0.00 (Zero-charge item)');
             }
 
@@ -15833,11 +15915,24 @@ Claims & Billing Assurance Desk
                 name: itemName,
                 category: cat,
                 department: dept,
-                standard_rate: stdRate !== null ? stdRate : 0.0,
-                opd_rate: opdRate !== null ? opdRate : (stdRate || 0.0),
-                ipd_rate: ipdRate !== null ? ipdRate : (stdRate || 0.0),
+                standard_rate: baseRate,
+                opd_rate: opdRate !== null ? opdRate : baseRate,
+                ipd_rate: ipdRate !== null ? ipdRate : baseRate,
+                sharing_4: gwRate !== null ? gwRate : baseRate,
+                sharing_2: semiRate !== null ? semiRate : baseRate,
+                single: pvtRate !== null ? pvtRate : baseRate,
+                executive: execRate !== null ? execRate : baseRate,
+                suite: suiteRate !== null ? suiteRate : baseRate,
+                icu: icuRate !== null ? icuRate : baseRate,
+                rates: ratesMap,
+                has_room_rates: hasRoomRates,
                 currency: currency,
-                unit: unit,
+                unit: unitVal || unit,
+                is_time_based: isTimeBased,
+                time_unit: timeUnit,
+                is_slab: isSlab,
+                effective_from: effFromVal || null,
+                effective_to: effToVal || null,
                 validation_status: errors.length > 0 ? 'INVALID' : (warnings.length > 0 ? 'WARNING' : 'VALID'),
                 validation_errors: errors,
                 validation_warnings: warnings,
@@ -16051,7 +16146,16 @@ Claims & Billing Assurance Desk
             category: -1,
             standard_rate: -1,
             opd_rate: -1,
-            ipd_rate: -1
+            ipd_rate: -1,
+            gw_rate: -1,
+            semi_private_rate: -1,
+            private_rate: -1,
+            executive_rate: -1,
+            suite_rate: -1,
+            icu_rate: -1,
+            unit: -1,
+            effective_from: -1,
+            effective_to: -1
         };
 
         const lowerHeaders = headers.map(h => String(h || '').toLowerCase().trim());
@@ -16084,8 +16188,17 @@ Claims & Billing Assurance Desk
             'rate_2025_26', 'rate_2026_27', 'rate_2024_25', 'final_tariff', 'final tariff',
             'tariff', 'standard rate', 'mrp', 'rate', 'price', 'amount', 'charge'
         ];
-        const opdRateAliases = ['opd_rate', 'opd rate', 'outpatient', 'opd'];
-        const ipdRateAliases = ['ipd_rate', 'ipd rate', 'inpatient', 'ipd', 'semi_private', 'private'];
+        const opdRateAliases = ['opd_rate', 'opd rate', 'outpatient', 'opd', 'daycare', 'day care'];
+        const ipdRateAliases = ['ipd_rate', 'ipd rate', 'inpatient', 'ipd'];
+        const gwRateAliases = ['gw', 'general ward', 'general_ward', '4 sharing', '4-sharing', 'sharing 4', 'sharing_4', 'standard ward', 'standard_ward', 'general'];
+        const semiRateAliases = ['semi private', 'semi-private', 'semi_private', '2 sharing', '2-sharing', 'sharing 2', 'sharing_2', 'twin', 'double', 'semi cabin', 'semi'];
+        const pvtRateAliases = ['private', 'single room', 'single_room', 'single private', 'single_private', 'single cabin', 'single', 'private room'];
+        const execRateAliases = ['executive', 'executive room', 'executive_room', 'deluxe cabin', 'deluxe', 'deluxe room'];
+        const suiteRateAliases = ['suite', 'suite room', 'suite_room', 'super deluxe', 'platinum suite', 'platinum'];
+        const icuRateAliases = ['icu', 'iccu', 'ccu', 'critical care', 'critical_care', 'critical', 'hdu', 'sdu', 'nicu', 'picu', 'ktu', 'intensive care'];
+        const unitAliases = ['unit', 'uom', 'billing unit', 'unit of measurement', 'charge unit', 'type of charge'];
+        const effFromAliases = ['effective from', 'effective_from', 'valid from', 'valid_from', 'start date', 'start_date', 'eff from', 'eff date'];
+        const effToAliases = ['effective to', 'effective_to', 'valid to', 'valid_to', 'end date', 'end_date', 'expiry date', 'expiry_date'];
 
         // Helper to score rate column candidates using actual data
         function scoreRateCandidate(colIdx) {
@@ -16267,11 +16380,54 @@ Claims & Billing Assurance Desk
             }
         }
 
+        // 6. Find Room Category Rates (GW, Semi-Private, Private, Executive, Suite, ICU)
+        for (const alias of gwRateAliases) {
+            const found = lowerHeaders.findIndex(h => h === alias || (h.includes(alias) && !h.includes('discount') && !h.includes('%') && !h.includes('diff') && !h.includes('semi')));
+            if (found !== -1) { mapping.gw_rate = found; break; }
+        }
+        for (const alias of semiRateAliases) {
+            const found = lowerHeaders.findIndex(h => h === alias || (h.includes(alias) && !h.includes('discount') && !h.includes('%') && !h.includes('diff')));
+            if (found !== -1) { mapping.semi_private_rate = found; break; }
+        }
+        for (const alias of pvtRateAliases) {
+            const found = lowerHeaders.findIndex(h => (h === alias || (h.includes(alias) && !h.includes('semi') && !h.includes('discount') && !h.includes('%') && !h.includes('diff'))));
+            if (found !== -1) { mapping.private_rate = found; break; }
+        }
+        for (const alias of execRateAliases) {
+            const found = lowerHeaders.findIndex(h => h === alias || (h.includes(alias) && !h.includes('discount') && !h.includes('%') && !h.includes('diff')));
+            if (found !== -1) { mapping.executive_rate = found; break; }
+        }
+        for (const alias of suiteRateAliases) {
+            const found = lowerHeaders.findIndex(h => h === alias || (h.includes(alias) && !h.includes('discount') && !h.includes('%') && !h.includes('diff')));
+            if (found !== -1) { mapping.suite_rate = found; break; }
+        }
+        for (const alias of icuRateAliases) {
+            const found = lowerHeaders.findIndex(h => h === alias || (h.includes(alias) && !h.includes('discount') && !h.includes('%') && !h.includes('diff')));
+            if (found !== -1) { mapping.icu_rate = found; break; }
+        }
+
+        // 7. Find Time & Validity metadata (Unit/UOM, Effective Dates)
+        for (const alias of unitAliases) {
+            const found = lowerHeaders.findIndex(h => h === alias || h.includes(alias));
+            if (found !== -1 && found !== mapping.name && found !== mapping.id) { mapping.unit = found; break; }
+        }
+        for (const alias of effFromAliases) {
+            const found = lowerHeaders.findIndex(h => h === alias || h.includes(alias));
+            if (found !== -1) { mapping.effective_from = found; break; }
+        }
+        for (const alias of effToAliases) {
+            const found = lowerHeaders.findIndex(h => h === alias || h.includes(alias));
+            if (found !== -1) { mapping.effective_to = found; break; }
+        }
+
         // Fallbacks if nothing matched
         if (mapping.name === -1 && lowerHeaders.length > 1) mapping.name = 1;
         if (mapping.id === -1 && lowerHeaders.length > 0 && mapping.name !== 0) mapping.id = 0;
         if (mapping.standard_rate === -1) {
-            mapping.standard_rate = lowerHeaders.length > 2 ? lowerHeaders.length - 1 : 0;
+            if (mapping.gw_rate !== -1) mapping.standard_rate = mapping.gw_rate;
+            else if (mapping.opd_rate !== -1) mapping.standard_rate = mapping.opd_rate;
+            else if (mapping.private_rate !== -1) mapping.standard_rate = mapping.private_rate;
+            else mapping.standard_rate = lowerHeaders.length > 2 ? lowerHeaders.length - 1 : 0;
         }
 
         return mapping;
@@ -16381,13 +16537,21 @@ Claims & Billing Assurance Desk
         grid.innerHTML = '';
 
         const standardFields = [
-            { key: 'id', label: 'Item Code (ID)' },
-            { key: 'name', label: 'Service Description' },
-            { key: 'department', label: 'Department' },
-            { key: 'category', label: 'Category' },
-            { key: 'standard_rate', label: 'Standard Rate (₹)' },
-            { key: 'opd_rate', label: 'OPD Rate (₹)' },
-            { key: 'ipd_rate', label: 'IPD Rate (₹)' }
+            { key: 'id', label: 'Item Code / Service ID *' },
+            { key: 'name', label: 'Service Description *' },
+            { key: 'department', label: 'Department / Specialty' },
+            { key: 'category', label: 'Category / Service Type' },
+            { key: 'standard_rate', label: 'Base / Standard Rate (₹) *' },
+            { key: 'opd_rate', label: 'OPD / Day Care Rate (₹)' },
+            { key: 'gw_rate', label: 'General Ward / 4 Sharing Rate (₹)' },
+            { key: 'semi_private_rate', label: 'Semi Private / 2 Sharing Rate (₹)' },
+            { key: 'private_rate', label: 'Single Private / Cabin Rate (₹)' },
+            { key: 'executive_rate', label: 'Executive Room Rate (₹)' },
+            { key: 'suite_rate', label: 'Suite Room Rate (₹)' },
+            { key: 'icu_rate', label: 'ICU / Critical Care Rate (₹)' },
+            { key: 'unit', label: 'Billing Unit / UOM (e.g. /hr, /day)' },
+            { key: 'effective_from', label: 'Effective From (Date)' },
+            { key: 'effective_to', label: 'Effective To (Date)' }
         ];
 
         const headers = result.raw_headers || socDetectedColumns || [];
@@ -16503,13 +16667,34 @@ Claims & Billing Assurance Desk
                     ? `<span style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.68rem;" title="${(rec.validation_warnings || []).join('; ')}">WARN ⚠️</span>`
                     : `<span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.68rem;" title="${(rec.validation_errors || []).join('; ')}">ERROR ❌</span>`);
 
+            let rateDetails = `<div style="font-family: monospace; font-weight: 700; color: var(--primary); font-size: 0.8rem;">₹${(rec.standard_rate || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</div>`;
+            if (rec.has_room_rates) {
+                const roomCount = Object.keys(rec.rates || {}).length;
+                rateDetails += `
+                    <div style="display: flex; gap: 3px; justify-content: flex-end; margin-top: 2px; flex-wrap: wrap;">
+                        <span style="background: rgba(99, 102, 241, 0.15); color: #818cf8; font-size: 0.65rem; padding: 1px 4px; border-radius: 3px; font-weight: 700;" title="GW: ₹${rec.sharing_4} | Semi: ₹${rec.sharing_2} | Pvt: ₹${rec.single} | Exec: ₹${rec.executive} | Suite: ₹${rec.suite} | ICU: ₹${rec.icu} | OPD: ₹${rec.opd_rate}">
+                            🏥 6 Wards
+                        </span>
+                    </div>
+                `;
+            }
+            if (rec.is_time_based) {
+                rateDetails += `
+                    <div style="display: flex; gap: 3px; justify-content: flex-end; margin-top: 2px;">
+                        <span style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; font-size: 0.65rem; padding: 1px 4px; border-radius: 3px; font-weight: 700;">
+                            ⏱ /${rec.time_unit || 'time'}
+                        </span>
+                    </div>
+                `;
+            }
+
             tr.innerHTML = `
                 <td style="padding: 0.45rem 0.5rem; text-align: center; color: var(--text-muted); font-size: 0.72rem;">${idx + 1}</td>
                 <td style="padding: 0.45rem 0.5rem;">${statusBadge}</td>
-                <td style="padding: 0.45rem 0.5rem; font-family: monospace; font-weight: 700; color: var(--text-main);">${rec.id || '—'}</td>
-                <td style="padding: 0.45rem 0.5rem; color: var(--text-main); font-weight: 600;">${rec.name || '—'}</td>
+                <td style="padding: 0.45rem 0.5rem; font-family: monospace; font-weight: 700; color: var(--text-main); font-size: 0.76rem;">${rec.id || '—'}</td>
+                <td style="padding: 0.45rem 0.5rem; color: var(--text-main); font-weight: 600; font-size: 0.78rem;">${rec.name || '—'}</td>
                 <td style="padding: 0.45rem 0.5rem; color: var(--text-muted); font-size: 0.72rem;">${rec.department || '—'}</td>
-                <td style="padding: 0.45rem 0.5rem; text-align: right; font-family: monospace; font-weight: 700; color: var(--primary);">₹${(rec.standard_rate || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+                <td style="padding: 0.45rem 0.5rem; text-align: right;">${rateDetails}</td>
             `;
             tbody.appendChild(tr);
         });
@@ -16528,9 +16713,12 @@ Claims & Billing Assurance Desk
         validRecords.forEach(rec => {
             const masterRec = {
                 id: rec.id,
+                code: rec.id,
                 name: rec.name,
                 category: rec.category || 'HOSPITAL_SERVICES',
                 department: rec.department || 'GENERAL',
+                rate: rec.standard_rate || 0,
+                standard_rate: rec.standard_rate || 0,
                 rate2026: rec.standard_rate || 0,
                 rate2021: rec.standard_rate || 0,
                 rate2023: rec.standard_rate || 0,
@@ -16540,6 +16728,21 @@ Claims & Billing Assurance Desk
                 rateExcelcare: rec.standard_rate || 0,
                 rateExcelcareCash: rec.opd_rate || rec.standard_rate || 0,
                 rateKolkata: rec.standard_rate || 0,
+                opd_rate: rec.opd_rate || rec.standard_rate || 0,
+                sharing_4: rec.sharing_4 || rec.standard_rate || 0,
+                sharing_2: rec.sharing_2 || rec.standard_rate || 0,
+                single: rec.single || rec.standard_rate || 0,
+                executive: rec.executive || rec.standard_rate || 0,
+                suite: rec.suite || rec.standard_rate || 0,
+                icu: rec.icu || rec.standard_rate || 0,
+                rates: rec.rates || {},
+                has_room_rates: rec.has_room_rates || false,
+                is_time_based: rec.is_time_based || false,
+                time_unit: rec.time_unit || null,
+                is_slab: rec.is_slab || false,
+                unit: rec.unit || 'Per Quantity',
+                effective_from: rec.effective_from || null,
+                effective_to: rec.effective_to || null,
                 source: targetName,
                 is_soc_imported: true,
                 imported_at: new Date().toISOString()
@@ -16556,6 +16759,28 @@ Claims & Billing Assurance Desk
             map2026[rec.id] = masterRec;
             mapExcelcare[rec.id] = masterRec;
             mapCash2026[rec.id] = masterRec;
+
+            // Register into Live Custom Ingested Maps so Audit Workspace can audit immediately
+            window.TARIFF_CUSTOM_INGESTED = window.TARIFF_CUSTOM_INGESTED || [];
+            window.mapCustomIngested = window.mapCustomIngested || {};
+            window.mapCustomIngested[rec.id] = masterRec;
+            const cleanId = String(rec.id).replace(/^[#\s]+/, '').replace(/\.0+$/, '').trim();
+            if (cleanId && cleanId !== rec.id) window.mapCustomIngested[cleanId] = masterRec;
+            const unpadded = cleanId.replace(/^0+/, '');
+            if (unpadded && unpadded !== cleanId && unpadded !== rec.id) window.mapCustomIngested[unpadded] = masterRec;
+
+            // Also synchronize with specific unit master if SOC target matches
+            const targetUpper = String(targetName || '').toUpperCase();
+            if (targetUpper.includes('GIPSA') && typeof mapExcelcareGipsa2026 !== 'undefined') {
+                mapExcelcareGipsa2026[rec.id] = masterRec;
+                if (cleanId) mapExcelcareGipsa2026[cleanId] = masterRec;
+                if (unpadded) mapExcelcareGipsa2026[unpadded] = masterRec;
+            }
+            if (targetUpper.includes('CASH') && typeof mapExcelcareCash !== 'undefined') {
+                mapExcelcareCash[rec.id] = masterRec;
+                if (cleanId) mapExcelcareCash[cleanId] = masterRec;
+                if (unpadded) mapExcelcareCash[unpadded] = masterRec;
+            }
         });
 
         const logEntry = {
@@ -16634,22 +16859,31 @@ Claims & Billing Assurance Desk
             'SERVICE_NAME',
             'DEPARTMENT',
             'CATEGORY',
-            'STANDARD_RATE',
+            'BASE_RATE',
             'OPD_RATE',
-            'IPD_RATE',
+            'GW_RATE',
+            'SEMI_PRIVATE_RATE',
+            'PRIVATE_RATE',
+            'EXECUTIVE_RATE',
+            'SUITE_RATE',
+            'ICU_RATE',
+            'BILLING_UNIT',
+            'EFFECTIVE_FROM',
+            'EFFECTIVE_TO',
             'REMARKS'
         ];
 
         const sampleRows = [
-            ['CONS001', 'OPD General Consultation', 'CONSULTATION', 'OPD', 500.0, 500.0, 500.0, 'Standard initial visit'],
-            ['CONS002', 'Specialist Consultation', 'CONSULTATION', 'OPD', 800.0, 800.0, 800.0, 'Specialist / Senior Consultant'],
-            ['LAB1001', 'Complete Blood Count (CBC)', 'PATHOLOGY', 'LABORATORY', 350.0, 350.0, 350.0, 'Routine hematology'],
-            ['LAB1002', 'Liver Function Test (LFT)', 'BIOCHEMISTRY', 'LABORATORY', 750.0, 750.0, 750.0, 'Full panel'],
-            ['RAD2001', 'Chest X-Ray PA View', 'RADIOLOGY', 'IMAGING', 450.0, 450.0, 450.0, 'Digital X-Ray'],
-            ['RAD2005', 'USG Whole Abdomen', 'RADIOLOGY', 'IMAGING', 1200.0, 1200.0, 1200.0, 'Color Doppler Ultrasound'],
-            ['SUR3001', 'Laparoscopic Appendectomy', 'SURGERY', 'IPD_PROCEDURE', 35000.0, 35000.0, 35000.0, 'Surgeon and OT charges'],
-            ['ICU4001', 'ICU Bed Charges Per Day', 'INTENSIVE CARE', 'ROOM_RENT', 5500.0, 5500.0, 5500.0, 'Critical care monitoring'],
-            ['BED001', 'Standard Private Room', 'WARD', 'ROOM_RENT', 2800.0, 2800.0, 2800.0, 'Single occupancy room']
+            ['CONS001', 'OPD General Consultation', 'CONSULTATION', 'OPD', 500.0, 500.0, 500.0, 500.0, 500.0, 500.0, 500.0, 500.0, 'Per Visit', '2026-04-01', '2027-03-31', 'Standard initial visit'],
+            ['CONS002', 'IPD Visit - Specialist', 'CONSULTATION', 'IPD', 1200.0, 1200.0, 1200.0, 1300.0, 1400.0, 1400.0, 1500.0, 1400.0, 'Per Visit', '2026-04-01', '2027-03-31', 'Specialist inpatient rounds'],
+            ['LAB1001', 'Complete Blood Count (CBC)', 'PATHOLOGY', 'LABORATORY', 350.0, 350.0, 350.0, 350.0, 350.0, 350.0, 350.0, 350.0, 'Per Test', '2026-04-01', '2027-03-31', 'Routine hematology'],
+            ['RAD2005', 'USG Whole Abdomen', 'RADIOLOGY', 'IMAGING', 1200.0, 1200.0, 1200.0, 1200.0, 1200.0, 1200.0, 1200.0, 1200.0, 'Per Scan', '2026-04-01', '2027-03-31', 'Color Doppler Ultrasound'],
+            ['SUR3001', 'Laparoscopic Appendectomy', 'SURGERY', 'IPD_PROCEDURE', 35000.0, 35000.0, 35000.0, 38500.0, 42000.0, 45000.0, 52000.0, 47000.0, 'Per Procedure', '2026-04-01', '2027-03-31', 'Surgeon and OT charges'],
+            ['BED001', 'Room Rent / Bed Charges', 'ACCOMMODATION', 'ROOM_RENT', 2900.0, 0.0, 2900.0, 5500.0, 7500.0, 9000.0, 15000.0, 8500.0, 'Per Day', '2026-04-01', '2027-03-31', 'Inpatient bed accommodation per day'],
+            ['NUR001', 'Nursing and Allied Charges', 'NURSING', 'ACCOMMODATION', 1000.0, 500.0, 1000.0, 1100.0, 1200.0, 1300.0, 1400.0, 1500.0, 'Per Day', '2026-04-01', '2027-03-31', 'Routine nursing care per day'],
+            ['DC001', 'Bed Charges (Daycare Hourly)', 'DAYCARE', 'ACCOMMODATION', 350.0, 350.0, 350.0, 350.0, 350.0, 350.0, 350.0, 350.0, 'Per Hour', '2026-04-01', '2027-03-31', 'Hourly observation daycare stay'],
+            ['TRI001', 'Triage Charge (1 to 3 Hours)', 'EMERGENCY', 'BED_CHARGES', 1600.0, 1600.0, 1600.0, 1600.0, 1600.0, 1600.0, 1600.0, 1600.0, '1-3 Hours Slab', '2026-04-01', '2027-03-31', 'Emergency triage observation tier 1'],
+            ['ICU4001', 'Ventilator Charges per Hour', 'INTENSIVE CARE', 'EQUIPMENT', 500.0, 500.0, 500.0, 500.0, 500.0, 500.0, 500.0, 500.0, 'Per Hour', '2026-04-01', '2027-03-31', 'Mechanical ventilation hourly']
         ];
 
         const wsData = [templateHeaders, ...sampleRows];
@@ -16691,9 +16925,18 @@ Claims & Billing Assurance Desk
             'Service Description': rec.name || '',
             'Department': rec.department || '',
             'Category': rec.category || '',
-            'Standard Rate (₹)': rec.standard_rate !== null && rec.standard_rate !== undefined ? rec.standard_rate : 0.0,
+            'Base Rate (₹)': rec.standard_rate !== null && rec.standard_rate !== undefined ? rec.standard_rate : 0.0,
             'OPD Rate (₹)': rec.opd_rate !== null && rec.opd_rate !== undefined ? rec.opd_rate : 0.0,
-            'IPD Rate (₹)': rec.ipd_rate !== null && rec.ipd_rate !== undefined ? rec.ipd_rate : 0.0,
+            'GW / 4-Sharing (₹)': rec.sharing_4 !== null && rec.sharing_4 !== undefined ? rec.sharing_4 : 0.0,
+            'Semi Private (₹)': rec.sharing_2 !== null && rec.sharing_2 !== undefined ? rec.sharing_2 : 0.0,
+            'Single Private (₹)': rec.single !== null && rec.single !== undefined ? rec.single : 0.0,
+            'Executive (₹)': rec.executive !== null && rec.executive !== undefined ? rec.executive : 0.0,
+            'Suite (₹)': rec.suite !== null && rec.suite !== undefined ? rec.suite : 0.0,
+            'ICU (₹)': rec.icu !== null && rec.icu !== undefined ? rec.icu : 0.0,
+            'Billing Unit': rec.unit || 'Per Quantity',
+            'Time-Based': rec.is_time_based ? `Yes (/${rec.time_unit || 'time'})` : 'No',
+            'Effective From': rec.effective_from || '',
+            'Effective To': rec.effective_to || '',
             'Validation Status': rec.validation_status || 'VALID',
             'Source Row': rec.source_row || (idx + 1),
             'Validation Issues': (rec.validation_errors || []).concat(rec.validation_warnings || []).join('; ')
