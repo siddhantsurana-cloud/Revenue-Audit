@@ -975,9 +975,21 @@
             safeForEach(TARIFF_EXCELCARE_2025, item => { mapExcelcare[item.id] = item; });
         }
         if (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined') {
-            safeForEach(TARIFF_EXCELCARE_CASH_2026_27, item => { mapExcelcareCash[item.id] = item; });
+            safeForEach(TARIFF_EXCELCARE_CASH_2026_27, item => {
+                mapExcelcareCash[item.id] = item;
+                const cleanId = String(item.id).replace(/^[#\s]+/, '').replace(/\.0+$/, '').trim();
+                if (cleanId && cleanId !== item.id) mapExcelcareCash[cleanId] = item;
+                const unpadded = cleanId.replace(/^0+/, '');
+                if (unpadded && unpadded !== cleanId && unpadded !== item.id) mapExcelcareCash[unpadded] = item;
+            });
         } else if (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined') {
-            safeForEach(TARIFF_EXCELCARE_CASH_2025, item => { mapExcelcareCash[item.id] = item; });
+            safeForEach(TARIFF_EXCELCARE_CASH_2025, item => {
+                mapExcelcareCash[item.id] = item;
+                const cleanId = String(item.id).replace(/^[#\s]+/, '').replace(/\.0+$/, '').trim();
+                if (cleanId && cleanId !== item.id) mapExcelcareCash[cleanId] = item;
+                const unpadded = cleanId.replace(/^0+/, '');
+                if (unpadded && unpadded !== cleanId && unpadded !== item.id) mapExcelcareCash[unpadded] = item;
+            });
         }
         if (typeof TARIFF_CASH_2025 !== 'undefined') {
             safeForEach(TARIFF_CASH_2025, item => { mapCash2025[item.id] = item; });
@@ -989,7 +1001,13 @@
             safeForEach(TARIFF_EXCELCARE_2024, item => { mapExcelcare2024[item.id] = item; });
         }
         if (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined') {
-            safeForEach(TARIFF_EXCELCARE_GIPSA_2026, item => { mapExcelcareGipsa2026[item.id] = item; });
+            safeForEach(TARIFF_EXCELCARE_GIPSA_2026, item => {
+                mapExcelcareGipsa2026[item.id] = item;
+                const cleanId = String(item.id).replace(/^[#\s]+/, '').replace(/\.0+$/, '').trim();
+                if (cleanId && cleanId !== item.id) mapExcelcareGipsa2026[cleanId] = item;
+                const unpadded = cleanId.replace(/^0+/, '');
+                if (unpadded && unpadded !== cleanId && unpadded !== item.id) mapExcelcareGipsa2026[unpadded] = item;
+            });
         }
         if (typeof TARIFF_EXCELCARE_OIL_INDIA_2025_27 !== 'undefined') {
             safeForEach(TARIFF_EXCELCARE_OIL_INDIA_2025_27, item => {
@@ -3306,6 +3324,7 @@
                 sourceSelect.innerHTML = `
                     <option value="excelcare_soc">Standard Excelcare SOC Template (Credit)</option>
                     <option value="excelcare_soc_cash">Standard Excelcare SOC Template (Cash)</option>
+                    <option value="excelcare_gipsa_2026">Excelcare GIPSA 2026 Template</option>
                     <option value="excelcare_oil_india">Oil India Tariff Template (Excelcare)</option>
                     <option value="hdfc_single" selected>HDFC ERGO Single/ICU/Exec Template</option>
                     <option value="hdfc_gen">HDFC ERGO General/4 Sharing Template</option>
@@ -4232,7 +4251,7 @@
             "DAYCARE": 1500
         };
         const is2024 = (activeSourceVal === "excelcare_2024" || activeSourceVal === "socexcelcare2024" || activeSourceVal === "excelcare_soc_2024");
-        const isGipsa26 = (activeSourceVal === "excelcare_gipsa_2026");
+        const isGipsa26 = (activeSourceVal === "excelcare_gipsa_2026" || activeSourceVal === "socexcelcaregipsa" || activeSourceVal === "TARIFF_EXCELCARE_GIPSA_2026" || (typeof activeSourceVal === "string" && activeSourceVal.toLowerCase().includes("excelcare_gipsa")));
         const isCash = (activeSourceVal === "excelcare_cash" || activeSourceVal === "excelcare_cash_2026_27" || activeSourceVal === "excelcare_cash_2026" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_soc_cash" || activeSourceVal === "socexcelcarecash");
         const rates = isCash ? ratesCash2026_27 : (isGipsa26 ? ratesGipsa2026 : (is2024 ? rates2024 : rates2025));
         const simpleRoom = toSimpleRoom(cleanedRoom);
@@ -4297,7 +4316,7 @@
             "PICU": 1000,
             "DAYCARE": 500
         };
-        const isGipsa26 = (activeSourceVal === "excelcare_gipsa_2026");
+        const isGipsa26 = (activeSourceVal === "excelcare_gipsa_2026" || activeSourceVal === "socexcelcaregipsa" || activeSourceVal === "TARIFF_EXCELCARE_GIPSA_2026" || (typeof activeSourceVal === "string" && activeSourceVal.toLowerCase().includes("excelcare_gipsa")));
         const isCash = (activeSourceVal === "excelcare_cash" || activeSourceVal === "excelcare_cash_2026_27" || activeSourceVal === "excelcare_cash_2026" || activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_soc_cash" || activeSourceVal === "socexcelcarecash");
         const rates = isCash ? ratesCash2026_27 : (isGipsa26 ? ratesGipsa2026 : ratesStandard);
         const simpleRoom = toSimpleRoom(cleanedRoom);
@@ -4308,23 +4327,58 @@
         if (!item) return null;
         if (isOP) {
             if (typeof item.opd_rate === 'number' && item.opd_rate > 0) return item.opd_rate;
+            if (item.rates && typeof item.rates === 'object') {
+                if (typeof item.rates["OPD"] === 'number' && item.rates["OPD"] > 0) return item.rates["OPD"];
+                if (typeof item.rates["DAYCARE"] === 'number' && item.rates["DAYCARE"] > 0) return item.rates["DAYCARE"];
+            }
             if (typeof item.rate === 'number' && item.rate > 0) return item.rate;
             if (typeof item.single === 'number' && item.single > 0) return item.single;
             if (typeof item.sharing_4 === 'number' && item.sharing_4 > 0) return item.sharing_4;
             return typeof item.rate === 'number' ? item.rate : null;
         }
-        const normRoom = (roomCategory || cleanedRoom || '').toUpperCase().trim();
+
+        const rawCat = (roomCategory || '').trim().toUpperCase();
+        const rawClean = (cleanedRoom || '').trim().toUpperCase();
+        const simpleRoom = toSimpleRoom(cleanedRoom || roomCategory || '').toUpperCase().trim();
+        const normRoom = (rawCat || rawClean || simpleRoom || '');
+
+        // 1. Direct dictionary match in item.rates
+        if (item.rates && typeof item.rates === 'object') {
+            if (rawClean && typeof item.rates[rawClean] === 'number' && item.rates[rawClean] > 0) return item.rates[rawClean];
+            if (rawCat && typeof item.rates[rawCat] === 'number' && item.rates[rawCat] > 0) return item.rates[rawCat];
+            if (simpleRoom && typeof item.rates[simpleRoom] === 'number' && item.rates[simpleRoom] > 0) return item.rates[simpleRoom];
+        }
+
+        // 2. Substring matching in priority order
+        // Suite
         if (normRoom.includes('SUITE') && typeof item.suite === 'number' && item.suite > 0) return item.suite;
-        if (normRoom.includes('EXECUTIVE') && typeof item.executive === 'number' && item.executive > 0) return item.executive;
-        if ((normRoom.includes('ICU') || normRoom.includes('ICCU') || normRoom.includes('CCU') || normRoom.includes('KTU') || normRoom.includes('SDU') || normRoom.includes('NICU') || normRoom.includes('PICU') || normRoom.includes('HDU')) && typeof item.icu === 'number' && item.icu > 0) return item.icu;
-        if ((normRoom.includes('SINGLE') || normRoom.includes('PRIVATE') || normRoom.includes('DAYCARE') || normRoom.includes('DAY CARE')) && typeof item.single === 'number' && item.single > 0) return item.single;
-        if ((normRoom.includes('2') || normRoom.includes('SEMI') || normRoom.includes('TWIN') || normRoom.includes('DOUBLE')) && typeof item.sharing_2 === 'number' && item.sharing_2 > 0) return item.sharing_2;
-        if ((normRoom.includes('4') || normRoom.includes('GENERAL') || normRoom.includes('WARD') || normRoom.includes('STANDARD')) && typeof item.sharing_4 === 'number' && item.sharing_4 > 0) return item.sharing_4;
+        // Executive / Deluxe
+        if ((normRoom.includes('EXECUTIVE') || normRoom.includes('DELUXE')) && typeof item.executive === 'number' && item.executive > 0) return item.executive;
+        // ICU / Critical Care / HDU / SDU / NICU / PICU / CCU / ICCU / KTU
+        if ((normRoom.includes('ICU') || normRoom.includes('ICCU') || normRoom.includes('CCU') || normRoom.includes('KTU') || normRoom.includes('SDU') || normRoom.includes('NICU') || normRoom.includes('PICU') || normRoom.includes('HDU') || normRoom.includes('CRITICAL')) && typeof item.icu === 'number' && item.icu > 0) return item.icu;
         
-        // Default to base standard rate or first non-zero room category rate
+        // Semi-Private / 2 Sharing / Twin / Double (MUST BE CHECKED BEFORE PRIVATE / SINGLE because "SEMI PRIVATE".includes("PRIVATE") is true!)
+        if ((normRoom.includes('SEMI') || normRoom.includes('2 BEDDED') || normRoom.includes('2-BEDDED') || normRoom.includes('2 SHARING') || normRoom.includes('2-SHARING') || normRoom.includes('TWIN') || normRoom.includes('DOUBLE')) && typeof item.sharing_2 === 'number' && item.sharing_2 > 0) return item.sharing_2;
+        
+        // Single / Private / Cabin / Day Care
+        if ((normRoom.includes('SINGLE') || normRoom.includes('PRIVATE') || normRoom.includes('CABIN') || normRoom.includes('DAYCARE') || normRoom.includes('DAY CARE')) && typeof item.single === 'number' && item.single > 0) return item.single;
+        
+        // General Ward / Standard Ward / 4 Sharing / GW
+        if ((normRoom.includes('4') || normRoom.includes('GENERAL') || normRoom.includes('WARD') || normRoom.includes('STANDARD') || normRoom.includes('GW')) && typeof item.sharing_4 === 'number' && item.sharing_4 > 0) return item.sharing_4;
+
+        // 3. Fallback: Search item.rates keys
+        if (item.rates && typeof item.rates === 'object') {
+            for (const k in item.rates) {
+                if (normRoom.includes(k) && typeof item.rates[k] === 'number' && item.rates[k] > 0) {
+                    return item.rates[k];
+                }
+            }
+        }
+
+        // 4. Default to base standard rate or first non-zero room category rate
         if (typeof item.rate === 'number' && item.rate > 0) return item.rate;
-        if (typeof item.single === 'number' && item.single > 0) return item.single;
         if (typeof item.sharing_4 === 'number' && item.sharing_4 > 0) return item.sharing_4;
+        if (typeof item.single === 'number' && item.single > 0) return item.single;
         if (typeof item.opd_rate === 'number' && item.opd_rate > 0) return item.opd_rate;
         return typeof item.rate === 'number' ? item.rate : null;
     }
@@ -6251,7 +6305,7 @@
                                     expectedTariff = match ? ((activeSOC === TARIFF_DATA) ? (isGipsa ? match.gipsa_rate : match.tpa_rate) : match.rate) : null;
                                 }
                             }
-                        } else if (serviceId === "3044188" || serviceId === "3044189" || nameUpper.includes("IP VISIT CHARGES") || nameUpper.includes("IPD VISIT")) {
+                        } else if ((serviceId === "3044188" || serviceId === "3044189" || nameUpper.includes("IP VISIT CHARGES") || nameUpper.includes("IPD VISIT")) && activeBU !== "excelcare" && activeSOC !== TARIFF_EXCELCARE_GIPSA_2026 && activeSourceVal !== "excelcare_gipsa_2026" && activeSOC !== TARIFF_EXCELCARE_CASH_2025 && (typeof TARIFF_EXCELCARE_CASH_2026_27 === 'undefined' || activeSOC !== TARIFF_EXCELCARE_CASH_2026_27)) {
                             const simpleRoom = toSimpleRoom(cleanedRoom);
                             expectedTariff = VISIT_CHARGES[cleanedRoom] || VISIT_CHARGES[simpleRoom];
                             explanation += ` Resolved Visit Charge for ${cleanedRoom}.`;
@@ -6318,10 +6372,11 @@
                                     }
                                     // ─────────────────────────────────────────────────────────────────
 
-                                } else if (activeSOCMap === mapExcelcareCash || (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2026_27) || (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2025)) {
+                                } else if (activeSOCMap === mapExcelcareCash || activeSOCMap === mapExcelcareGipsa2026 || (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2026_27) || (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2025) || (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_GIPSA_2026)) {
                                     expectedTariff = resolveExcelcareCashRate(match, isOpAudit, roomCategory, cleanedRoom);
                                     if (expectedTariff !== null) {
-                                        explanation += isOpAudit ? " Resolved Excelcare Cash OPD rate." : ` Resolved Excelcare Cash (${cleanedRoom || roomCategory || 'Standard'}) rate.`;
+                                        const socLabel = (activeSOCMap === mapExcelcareGipsa2026 || activeSOC === TARIFF_EXCELCARE_GIPSA_2026) ? "Excelcare GIPSA" : "Excelcare Cash";
+                                        explanation += isOpAudit ? ` Resolved ${socLabel} OPD rate.` : ` Resolved ${socLabel} (${cleanedRoom || roomCategory || 'Standard'}) rate.`;
                                     }
                                 } else {
                                     if (match.rates) {
@@ -6364,10 +6419,11 @@
 
                                 if (descMatches.length > 0) {
                                     const matchedItem = descMatches[0];
-                                    if (activeSOCMap === mapExcelcareCash || (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2026_27) || (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2025)) {
+                                    if (activeSOCMap === mapExcelcareCash || activeSOCMap === mapExcelcareGipsa2026 || (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2026_27) || (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2025) || (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_GIPSA_2026)) {
                                         expectedTariff = resolveExcelcareCashRate(matchedItem, isOpAudit, roomCategory, cleanedRoom);
                                         if (expectedTariff !== null) {
-                                            explanation += isOpAudit ? " Resolved Excelcare Cash OPD rate." : ` Resolved Excelcare Cash (${cleanedRoom || roomCategory || 'Standard'}) rate.`;
+                                            const socLabel = (activeSOCMap === mapExcelcareGipsa2026 || activeSOC === TARIFF_EXCELCARE_GIPSA_2026) ? "Excelcare GIPSA" : "Excelcare Cash";
+                                            explanation += isOpAudit ? ` Resolved ${socLabel} OPD rate.` : ` Resolved ${socLabel} (${cleanedRoom || roomCategory || 'Standard'}) rate.`;
                                         }
                                     } else if (matchedItem.rates) {
                                         const mappedCat = mapIOCLRoomCategory(roomCategory, cleanedRoom);
@@ -6514,10 +6570,11 @@
                                 } else {
                                     expectedTariff = null;
                                 }
-                            } else if (fallbackSOCMap === mapExcelcareCash || (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' && fallbackSOCArray === TARIFF_EXCELCARE_CASH_2026_27) || (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && fallbackSOCArray === TARIFF_EXCELCARE_CASH_2025)) {
+                            } else if (fallbackSOCMap === mapExcelcareCash || fallbackSOCMap === mapExcelcareGipsa2026 || (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' && fallbackSOCArray === TARIFF_EXCELCARE_CASH_2026_27) || (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && fallbackSOCArray === TARIFF_EXCELCARE_CASH_2025) || (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined' && fallbackSOCArray === TARIFF_EXCELCARE_GIPSA_2026)) {
                                 expectedTariff = resolveExcelcareCashRate(fallbackMatch, isOpAudit, roomCategory, cleanedRoom);
                                 if (expectedTariff !== null) {
-                                    explanation += isOpAudit ? " Resolved Excelcare Cash fallback OPD rate." : ` Resolved Excelcare Cash fallback (${cleanedRoom || roomCategory || 'Standard'}) rate.`;
+                                    const socLabel = (fallbackSOCMap === mapExcelcareGipsa2026 || fallbackSOCArray === TARIFF_EXCELCARE_GIPSA_2026) ? "Excelcare GIPSA" : "Excelcare Cash";
+                                    explanation += isOpAudit ? ` Resolved ${socLabel} fallback OPD rate.` : ` Resolved ${socLabel} fallback (${cleanedRoom || roomCategory || 'Standard'}) rate.`;
                                 }
                             } else {
                                 if (fallbackMatch.rates) {
@@ -10844,6 +10901,12 @@
                             }
                             resolvedRate = (foundRate !== null) ? foundRate : (match.rates["STANDARD"] !== undefined ? match.rates["STANDARD"] : null);
                         }
+                    }
+                } else if (activeSOCMap === mapExcelcareCash || activeSOCMap === mapExcelcareGipsa2026 || (typeof TARIFF_EXCELCARE_CASH_2026_27 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2026_27) || (typeof TARIFF_EXCELCARE_CASH_2025 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_CASH_2025) || (typeof TARIFF_EXCELCARE_GIPSA_2026 !== 'undefined' && activeSOC === TARIFF_EXCELCARE_GIPSA_2026)) {
+                    resolvedRate = resolveExcelcareCashRate(match, false, item.roomCategory, cleanRoom);
+                    if (resolvedRate !== null) {
+                        const socLabel = (activeSOCMap === mapExcelcareGipsa2026 || activeSOC === TARIFF_EXCELCARE_GIPSA_2026) ? "Excelcare GIPSA" : "Excelcare Cash";
+                        res.explanation += ` Resolved ${socLabel} (${cleanRoom || item.roomCategory || 'Standard'}) rate.`;
                     }
                 } else {
                     if (match.rates) {
