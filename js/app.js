@@ -3006,6 +3006,15 @@
             updateValidationSourceOptions();
         });
 
+        // Validation Source selector change listener
+        if (auditSourceSelect) {
+            auditSourceSelect.addEventListener('change', () => {
+                if (typeof updateAuditSourceBanner === 'function') {
+                    updateAuditSourceBanner();
+                }
+            });
+        }
+
         // Discount Master upload has been removed from UI
 
         // Tariff Mapping Method selector toggle
@@ -3276,6 +3285,108 @@
         document.getElementById('btn-submit-approval')?.addEventListener('click', submitApproval);
     }
 
+    function getActiveIngestedSOCMeta() {
+        let fileName = window.ACTIVE_CUSTOM_INGESTED_NAME;
+        let targetName = window.ACTIVE_CUSTOM_INGESTED_TARGET;
+        let count = window.ACTIVE_CUSTOM_INGESTED_COUNT;
+        
+        if (!fileName) {
+            try {
+                const raw = localStorage.getItem('brc_active_custom_ingested_meta');
+                if (raw) {
+                    const meta = JSON.parse(raw);
+                    if (meta && meta.file_name) {
+                        fileName = meta.file_name;
+                        targetName = meta.target_name || meta.file_name;
+                        count = meta.count || 0;
+                        window.ACTIVE_CUSTOM_INGESTED_NAME = fileName;
+                        window.ACTIVE_CUSTOM_INGESTED_TARGET = targetName;
+                        window.ACTIVE_CUSTOM_INGESTED_COUNT = count;
+                    }
+                }
+            } catch(e) {}
+        }
+        
+        if (!fileName) {
+            try {
+                const history = JSON.parse(localStorage.getItem('brc_soc_import_history') || '[]');
+                if (history.length > 0 && history[0].file_name) {
+                    fileName = history[0].file_name;
+                    targetName = history[0].target_tariff_name || history[0].file_name;
+                    count = history[0].valid_imported || 0;
+                    window.ACTIVE_CUSTOM_INGESTED_NAME = fileName;
+                    window.ACTIVE_CUSTOM_INGESTED_TARGET = targetName;
+                    window.ACTIVE_CUSTOM_INGESTED_COUNT = count;
+                }
+            } catch(e) {}
+        }
+
+        const actualItemsCount = (window.TARIFF_CUSTOM_INGESTED && window.TARIFF_CUSTOM_INGESTED.length > 0)
+            ? window.TARIFF_CUSTOM_INGESTED.length
+            : (count || 0);
+        
+        return {
+            hasActive: Boolean(fileName || actualItemsCount > 0),
+            fileName: fileName || (actualItemsCount > 0 ? 'Custom_Uploaded_Tariff.xlsx' : 'No Ingested SOC'),
+            targetName: targetName || fileName || 'Custom Tariff Schedule',
+            count: actualItemsCount
+        };
+    }
+
+    function getDeployedSOCMeta(unitCode) {
+        let deployments = [];
+        try {
+            const raw = localStorage.getItem('brc_central_deployments_v2');
+            if (raw) deployments = JSON.parse(raw);
+        } catch(e) {}
+        
+        return deployments.filter(dep => {
+            if (dep.target_scope === unitCode) return true;
+            if (dep.target_units && dep.target_units.includes(unitCode)) return true;
+            if (dep.target_scope === 'all') return true;
+            if (dep.target_scope === 'cluster_east' && ['guwahati', 'excelcare', 'kolkata', 'bhubaneswar', 'rourkela', 'ranchi', 'shillong', 'siliguri'].includes(unitCode)) return true;
+            return false;
+        });
+    }
+
+    function updateAuditSourceBanner() {
+        const banner = document.getElementById('audit-source-desc-banner');
+        const sourceSelect = document.getElementById('audit-source-select');
+        const buSelect = document.getElementById('audit-bu-select');
+        if (!banner || !sourceSelect || !buSelect) return;
+
+        const val = sourceSelect.value;
+        const selectedText = sourceSelect.options[sourceSelect.selectedIndex]?.text || '';
+        const buText = buSelect.options[buSelect.selectedIndex]?.text || '';
+        const meta = getActiveIngestedSOCMeta();
+
+        if (val === 'custom_ingested') {
+            banner.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.25rem;">
+                    <span style="background: rgba(16, 185, 129, 0.12); color: #10b981; padding: 0.2rem 0.55rem; border-radius: 5px; font-weight: 800; font-size: 0.72rem; border: 1px solid rgba(16, 185, 129, 0.3);">
+                        📄 Active Benchmark: <strong>${escapeHtml(meta.fileName)}</strong> (${meta.count.toLocaleString()} items)
+                    </span>
+                    <span style="font-size: 0.73rem; color: var(--text-muted);">Validating billing line items against your uploaded custom tariff schedule for ${escapeHtml(buText)}.</span>
+                </div>
+            `;
+        } else if (val === 'deployed_unit_soc') {
+            banner.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.25rem;">
+                    <span style="background: rgba(14, 165, 233, 0.12); color: #0284c7; padding: 0.2rem 0.55rem; border-radius: 5px; font-weight: 800; font-size: 0.72rem; border: 1px solid rgba(14, 165, 233, 0.3);">
+                        🚀 ${escapeHtml(selectedText)}
+                    </span>
+                    <span style="font-size: 0.73rem; color: var(--text-muted);">Validating billing line items against official deployed schedule for ${escapeHtml(buText)}.</span>
+                </div>
+            `;
+        } else {
+            banner.innerHTML = `
+                <span style="font-size: 0.73rem; color: var(--text-muted);">
+                    The selected validation benchmark <strong>${escapeHtml(selectedText)}</strong> will be used as the standard rate benchmark for ${escapeHtml(buText)}.
+                </span>
+            `;
+        }
+    }
+
     function updateValidationSourceOptions() {
         const bu = auditBuSelect.value;
         const type = auditSourceTypeSelect.value;
@@ -3287,6 +3398,26 @@
         const allUnits = (typeof window.getHospitalUnits === 'function') ? window.getHospitalUnits() : [];
         const unitObj = allUnits.find(u => u.code === bu) || { name: bu, shortName: bu };
         const hasDeployed = window.TARIFF_DEPLOYED_BY_UNIT && window.TARIFF_DEPLOYED_BY_UNIT[bu];
+        const deployedList = getDeployedSOCMeta(bu);
+        const ingestedMeta = getActiveIngestedSOCMeta();
+
+        // Build dynamic ingested option showing ACTUAL uploaded file name and item count
+        const ingestedLabel = ingestedMeta.hasActive
+            ? `📄 ${ingestedMeta.fileName} (${ingestedMeta.count.toLocaleString()} items · Ingested SOC)`
+            : `📄 Custom Ingested SOC (Active Session)`;
+        const ingestedOption = `<option value="custom_ingested">${escapeHtml(ingestedLabel)}</option>`;
+
+        // Build dynamic deployed option showing ACTUAL deployed file/schedule name
+        let deployedOptions = '';
+        if (deployedList.length > 0) {
+            deployedList.forEach((dep, idx) => {
+                const depFileName = dep.file_name || dep.soc_name || 'Deployed Master SOC';
+                const depCount = dep.total_records || (hasDeployed ? hasDeployed.length : 0);
+                deployedOptions += `<option value="deployed_unit_soc" ${idx === 0 ? 'selected' : ''}>🚀 ${escapeHtml(depFileName)} (${depCount.toLocaleString()} items · Deployed Master)</option>`;
+            });
+        } else if (hasDeployed && hasDeployed.length > 0) {
+            deployedOptions = `<option value="deployed_unit_soc" selected>🚀 Deployed Master SOC (${escapeHtml(unitObj.shortName || unitObj.name)}) - ${hasDeployed.length.toLocaleString()} items</option>`;
+        }
 
         if (bu === 'international') {
             if (type === 'soc') {
@@ -3299,26 +3430,30 @@
                     <option value="2023">2023-24 SOC (International)</option>
                     <option value="2021">2021-22 SOC (International)</option>
                     <option value="soc_2021_iocl">SOC - 2021-22_IOCL (International)</option>
-                    <option value="custom_ingested">Custom Ingested SOC (Session)</option>
+                    ${deployedOptions}
+                    ${ingestedOption}
                 `;
             } else {
                 sourceSelect.innerHTML = `
                     <option value="gipsa">2026 GIPSA Tariff Template</option>
                     <option value="tpa" selected>2024 TPA Deluxe Tariff Template</option>
                     <option value="hdfc_agreed_2026">HDFC ERGO Centrally Agreed (2026)</option>
-                    <option value="custom_ingested">Custom Ingested SOC (Session)</option>
+                    ${deployedOptions}
+                    ${ingestedOption}
                 `;
             }
         } else if (bu === 'kolkata') {
             if (type === 'soc') {
                 sourceSelect.innerHTML = `
                     <option value="sockolkata" selected>2023-24 SOC (Kolkata)</option>
-                    <option value="custom_ingested">Custom Ingested SOC (Session)</option>
+                    ${deployedOptions}
+                    ${ingestedOption}
                 `;
             } else {
                 sourceSelect.innerHTML = `
                     <option value="pkgkolkata" selected>2023-24 Packages (Kolkata)</option>
-                    <option value="custom_ingested">Custom Ingested SOC (Session)</option>
+                    ${deployedOptions}
+                    ${ingestedOption}
                 `;
             }
         } else if (bu === 'excelcare') {
@@ -3329,7 +3464,8 @@
                     <option value="excelcare_oil_india_2025_27">2025-27 Oil India (Excelcare)</option>
                     <option value="excelcare_gipsa_2026">SOC - GIPSA 2026 (Excelcare)</option>
                     <option value="excelcare_2024">2024-25 SOC (Excelcare)</option>
-                    <option value="custom_ingested">Custom Ingested SOC (Session)</option>
+                    ${deployedOptions}
+                    ${ingestedOption}
                 `;
             } else {
                 sourceSelect.innerHTML = `
@@ -3343,17 +3479,18 @@
                     <option value="hdfc_suite">HDFC ERGO Suite Template</option>
                     <option value="hdfc_daycare">HDFC ERGO Daycare Template</option>
                     <option value="hdfc_agreed_2026">HDFC ERGO Centrally Agreed (2026)</option>
-                    <option value="custom_ingested">Custom Ingested SOC (Session)</option>
+                    ${deployedOptions}
+                    ${ingestedOption}
                 `;
             }
         } else {
             // General Apollo Unit (e.g. Bhubaneswar, Delhi, Bangalore, etc.)
             let opts = '';
-            if (hasDeployed && hasDeployed.length > 0) {
-                opts += `<option value="deployed_unit_soc" selected>Deployed Master SOC (${escapeHtml(unitObj.shortName || unitObj.name)}) - ${hasDeployed.length} items</option>`;
+            if (deployedOptions) {
+                opts += deployedOptions;
             }
             opts += `
-                <option value="custom_ingested" ${!hasDeployed ? 'selected' : ''}>Custom Ingested SOC (Active Session)</option>
+                ${ingestedOption}
                 <option value="apollo_corp_master">Apollo Master Corporate Schedule (2026)</option>
                 <option value="hdfc_agreed_2026">HDFC ERGO Centrally Agreed (2026)</option>
             `;
@@ -3365,9 +3502,10 @@
         if (optionExists && currentSource) {
             sourceSelect.value = currentSource;
         } else {
-            // Otherwise fire change for default selected
             sourceSelect.dispatchEvent(new Event('change'));
         }
+
+        updateAuditSourceBanner();
     }
 
     function populateRoomMappingSelects() {
@@ -13226,6 +13364,19 @@
             if (raw) deployments = JSON.parse(raw);
         } catch(e) {}
 
+        // Restore active custom ingested file metadata
+        try {
+            const rawActive = localStorage.getItem('brc_active_custom_ingested_meta');
+            if (rawActive) {
+                const meta = JSON.parse(rawActive);
+                if (meta && meta.file_name) {
+                    window.ACTIVE_CUSTOM_INGESTED_NAME = meta.file_name;
+                    window.ACTIVE_CUSTOM_INGESTED_TARGET = meta.target_name || meta.file_name;
+                    window.ACTIVE_CUSTOM_INGESTED_COUNT = meta.count || 0;
+                }
+            }
+        } catch(e) {}
+
         deployments.forEach(dep => {
             if (dep.target_scope) {
                 try {
@@ -15801,9 +15952,11 @@ Claims & Billing Assurance Desk
         }
 
         const depId = 'DEP-AHEL-' + Date.now().toString().slice(-6);
+        const activeDeployFileName = socActiveFile ? socActiveFile.name : socName;
         const deployPayload = {
             deployment_id: depId,
             soc_name: socName,
+            file_name: activeDeployFileName,
             version: version,
             effective_date: effectiveDate,
             target_scope: targetScope,
@@ -15814,6 +15967,19 @@ Claims & Billing Assurance Desk
             deployed_at: new Date().toISOString(),
             status: 'ACTIVE_DEPLOYED'
         };
+
+        // Also track as active custom ingested schedule
+        window.ACTIVE_CUSTOM_INGESTED_NAME = activeDeployFileName;
+        window.ACTIVE_CUSTOM_INGESTED_TARGET = socName;
+        window.ACTIVE_CUSTOM_INGESTED_COUNT = records.length;
+        try {
+            localStorage.setItem('brc_active_custom_ingested_meta', JSON.stringify({
+                file_name: activeDeployFileName,
+                target_name: socName,
+                count: records.length,
+                committed_at: new Date().toISOString()
+            }));
+        } catch(e) {}
 
         // Bind records into unit-specific in-memory maps
         window.TARIFF_DEPLOYED_BY_UNIT = window.TARIFF_DEPLOYED_BY_UNIT || {};
@@ -17163,6 +17329,19 @@ Claims & Billing Assurance Desk
 
         window.TARIFF_CUSTOM_INGESTED = window.TARIFF_CUSTOM_INGESTED || [];
         window.mapCustomIngested = window.mapCustomIngested || {};
+
+        const activeFileName = socActiveFile ? socActiveFile.name : targetName;
+        window.ACTIVE_CUSTOM_INGESTED_NAME = activeFileName;
+        window.ACTIVE_CUSTOM_INGESTED_TARGET = targetName;
+        window.ACTIVE_CUSTOM_INGESTED_COUNT = validRecords.length;
+        try {
+            localStorage.setItem('brc_active_custom_ingested_meta', JSON.stringify({
+                file_name: activeFileName,
+                target_name: targetName,
+                count: validRecords.length,
+                committed_at: new Date().toISOString()
+            }));
+        } catch(e) {}
 
         const targetUpper = String(targetName || '').toUpperCase();
 
