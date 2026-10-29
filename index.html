@@ -906,12 +906,16 @@
                     </select>
                 </div>
                 <div class="input-group" style="padding: 0; margin: 0;">
-                    <label for="soc-target-name-input" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Target SOC / Tariff Name</label>
-                    <input type="text" id="soc-target-name-input" class="form-control" placeholder="e.g. Apollo Master Corporate Schedule" style="font-size: 0.82rem; padding: 0.45rem 0.65rem;">
+                    <label for="soc-target-name-input" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">SOC Name</label>
+                    <input type="text" id="soc-target-name-input" class="form-control" placeholder="e.g. Apollo Master SOC" style="font-size: 0.82rem; padding: 0.45rem 0.65rem;">
                 </div>
                 <div class="input-group" style="padding: 0; margin: 0;">
-                    <label for="soc-version-input" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">SOC Release Version / Control</label>
-                    <input type="text" id="soc-version-input" class="form-control" value="SOC-AHEL-2026-v2.6" placeholder="e.g. SOC-AHEL-2026-v2.6" style="font-size: 0.82rem; padding: 0.45rem 0.65rem;">
+                    <label for="soc-version-input" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Version (e.g. 1, 2, 3...)</label>
+                    <input type="text" id="soc-version-input" class="form-control" value="v2" placeholder="e.g. 1, 2, 3 or v2.6" style="font-size: 0.82rem; padding: 0.45rem 0.65rem;">
+                </div>
+                <div class="input-group" style="padding: 0; margin: 0;">
+                    <label for="soc-effective-date" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Effective Date</label>
+                    <input type="date" id="soc-effective-date" class="form-control" style="font-size: 0.82rem; padding: 0.45rem 0.65rem;">
                 </div>
                 <div class="input-group" style="padding: 0; margin: 0;">
                     <label for="soc-currency-select" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Currency &amp; Rate Unit</label>
@@ -1188,8 +1192,8 @@
                     <input type="date" id="deploy-effective-date" class="form-control" style="font-size: 0.82rem; padding: 0.5rem 0.65rem;">
                 </div>
                 <div class="input-group" style="padding: 0; margin: 0;">
-                    <label for="deploy-version-tag" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">SOC Release Version</label>
-                    <input type="text" id="deploy-version-tag" class="form-control" value="SOC-AHEL-2026-v2.6" placeholder="e.g. SOC-AHEL-2026-v2.6" style="font-size: 0.82rem; padding: 0.5rem 0.65rem;">
+                    <label for="deploy-version-tag" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Version (e.g. 1, 2, 3...)</label>
+                    <input type="text" id="deploy-version-tag" class="form-control" value="v2" placeholder="e.g. 1, 2, 3 or v2.6" style="font-size: 0.82rem; padding: 0.5rem 0.65rem;">
                 </div>
                 <div>
                     <button id="btn-deploy-to-units" onclick="window.deployMasterSOCToUnits()" class="export-btn" style="background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; font-weight: 800; font-size: 0.85rem; padding: 0.65rem 1.4rem; border-radius: 8px; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; white-space: nowrap;">

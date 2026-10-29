@@ -3285,6 +3285,51 @@
         document.getElementById('btn-submit-approval')?.addEventListener('click', submitApproval);
     }
 
+    // Simple & Clean SOC Display Formatter: [SOC Name] · [Version] · [Date] ([Count] items)
+    function formatSOCDisplayTitle(name, version, date, count, isDeployed) {
+        let cleanName = (name || '').trim();
+        if (!cleanName || cleanName.toUpperCase() === 'IMPORTED_SOC' || cleanName.toUpperCase() === 'CUSTOM_SOC') {
+            cleanName = isDeployed ? 'Master SOC' : 'Ingested SOC';
+        }
+
+        let cleanVer = (version || '').trim();
+        if (cleanVer) {
+            if (/^\d+(\.\d+)*$/.test(cleanVer)) {
+                cleanVer = 'v' + cleanVer;
+            } else if (cleanVer.toLowerCase().startsWith('soc-')) {
+                const m = cleanVer.match(/v\d+(\.\d+)*/i);
+                if (m) {
+                    cleanVer = m[0].toLowerCase();
+                }
+            }
+        }
+
+        let cleanDate = '';
+        if (date) {
+            try {
+                const d = new Date(date);
+                if (!isNaN(d.getTime())) {
+                    const day = String(d.getDate()).padStart(2, '0');
+                    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                    const mon = months[d.getMonth()];
+                    const yr = d.getFullYear();
+                    cleanDate = `${day}-${mon}-${yr}`;
+                }
+            } catch(e) {}
+        }
+
+        const parts = [];
+        if (cleanName) parts.push(cleanName);
+        if (cleanVer) parts.push(cleanVer);
+        if (cleanDate) parts.push(cleanDate);
+
+        const prefix = isDeployed ? '🚀 ' : '📄 ';
+        const coreText = parts.length > 0 ? parts.join(' · ') : (isDeployed ? 'Master SOC' : 'Ingested SOC');
+        const countText = (count !== undefined && count !== null) ? ` (${Number(count).toLocaleString()} items)` : '';
+
+        return prefix + coreText + countText;
+    }
+
     function getActiveIngestedSOCMeta() {
         let fileName = window.ACTIVE_CUSTOM_INGESTED_NAME;
         let targetName = window.ACTIVE_CUSTOM_INGESTED_TARGET;
@@ -3330,11 +3375,21 @@
             ? window.TARIFF_CUSTOM_INGESTED.length
             : (count || 0);
         
+        let effDate = null;
+        try {
+            const raw = localStorage.getItem('brc_active_custom_ingested_meta');
+            if (raw) {
+                const m = JSON.parse(raw);
+                if (m) effDate = m.effective_date || m.committed_at;
+            }
+        } catch(e) {}
+
         return {
             hasActive: Boolean(fileName || actualItemsCount > 0),
             fileName: fileName || (actualItemsCount > 0 ? 'Custom_Uploaded_Tariff.xlsx' : 'No Ingested SOC'),
             targetName: targetName || fileName || 'Custom Tariff Schedule',
-            version: version || 'SOC-AHEL-2026-v2.6',
+            version: version || 'v2',
+            effectiveDate: effDate || new Date().toISOString().split('T')[0],
             count: actualItemsCount
         };
     }
@@ -3367,17 +3422,17 @@
         const meta = getActiveIngestedSOCMeta();
 
         if (val === 'custom_ingested') {
-            const cleanTitle = selectedText.replace(/^📄\s*/, '').replace(/\s*\([^)]+\)$/, '');
+            const cleanTitle = selectedText.replace(/^[\s\u{1F680}\u{1F4C4}]+\s*/u, '');
             banner.innerHTML = `
                 <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.25rem;">
                     <span style="background: rgba(16, 185, 129, 0.12); color: #10b981; padding: 0.2rem 0.55rem; border-radius: 5px; font-weight: 800; font-size: 0.72rem; border: 1px solid rgba(16, 185, 129, 0.3);">
-                        📄 Active Benchmark: <strong>${escapeHtml(cleanTitle)}</strong> (${meta.count.toLocaleString()} items)
+                        📄 Active Benchmark: <strong>${escapeHtml(cleanTitle)}</strong>
                     </span>
                     <span style="font-size: 0.73rem; color: var(--text-muted);">Validating billing line items against custom ingested schedule for ${escapeHtml(buText)}.</span>
                 </div>
             `;
         } else if (val.startsWith('deployed_') || val === 'deployed_unit_soc') {
-            const cleanTitle = selectedText.replace(/^🚀\s*/, '').replace(/\s*\([^)]+\)$/, '');
+            const cleanTitle = selectedText.replace(/^[\s\u{1F680}\u{1F4C4}]+\s*/u, '');
             banner.innerHTML = `
                 <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.25rem;">
                     <span style="background: rgba(14, 165, 233, 0.12); color: #0284c7; padding: 0.2rem 0.55rem; border-radius: 5px; font-weight: 800; font-size: 0.72rem; border: 1px solid rgba(14, 165, 233, 0.3);">
@@ -3409,50 +3464,31 @@
         const deployedList = getDeployedSOCMeta(bu);
         const ingestedMeta = getActiveIngestedSOCMeta();
 
-        // Build dynamic ingested option showing ACTUAL SOC Release Version, Name and item count
+        // Build dynamic ingested option: SOC Name · Version · Date (Count items)
         let ingestedLabel = '';
         if (ingestedMeta.hasActive) {
-            const isGenericIngested = !ingestedMeta.targetName || ['IMPORTED_SOC', 'SOC', 'TARIFF', 'CUSTOM_SOC'].includes(ingestedMeta.targetName.toUpperCase());
-            if (ingestedMeta.version && !isGenericIngested && ingestedMeta.targetName !== ingestedMeta.version) {
-                ingestedLabel = `📄 [${ingestedMeta.version}] ${ingestedMeta.targetName} (${ingestedMeta.count.toLocaleString()} items · Ingested SOC)`;
-            } else if (ingestedMeta.version && isGenericIngested) {
-                ingestedLabel = `📄 ${ingestedMeta.version} · ${ingestedMeta.fileName} (${ingestedMeta.count.toLocaleString()} items · Ingested SOC)`;
-            } else {
-                ingestedLabel = `📄 ${ingestedMeta.fileName} (${ingestedMeta.count.toLocaleString()} items · Ingested SOC)`;
-            }
+            const dispName = (ingestedMeta.targetName && ingestedMeta.targetName !== 'IMPORTED_SOC') ? ingestedMeta.targetName : (ingestedMeta.fileName || 'Ingested SOC');
+            ingestedLabel = formatSOCDisplayTitle(dispName, ingestedMeta.version || 'v2', ingestedMeta.effectiveDate || new Date(), ingestedMeta.count, false);
         } else {
             ingestedLabel = `📄 Custom Ingested SOC (Active Session)`;
         }
         const ingestedOption = `<option value="custom_ingested">${escapeHtml(ingestedLabel)}</option>`;
 
-        // Build dynamic deployed option prioritizing SOC Release Version and distinct SOC Name
+        // Build dynamic deployed options: SOC Name · Version · Date (Count items)
         let deployedOptions = '';
         if (deployedList.length > 0) {
             deployedList.forEach((dep, idx) => {
-                const depVersion = (dep.version || dep.release_version || '').trim();
-                const depSocName = (dep.soc_name || dep.file_name || '').trim();
+                const depVersion = dep.version || dep.release_version || 'v2';
+                const depSocName = dep.soc_name || (dep.file_name ? dep.file_name.replace(/\.[^/.]+$/, '') : (unitObj.shortName || unitObj.name));
+                const depDate = dep.effective_date || dep.deployed_at || new Date();
                 const depCount = dep.total_records || (hasDeployed ? hasDeployed.length : 0);
                 
-                let displayTitle = '';
-                const isGenericName = !depSocName || ['SOC', 'IMPORTED_SOC', 'CUSTOM_SOC', 'TARIFF'].includes(depSocName.toUpperCase());
-                
-                if (depVersion && !isGenericName && depSocName !== depVersion) {
-                    displayTitle = `🚀 [${depVersion}] ${depSocName} (${depCount.toLocaleString()} items · Deployed Master)`;
-                } else if (depVersion) {
-                    displayTitle = `🚀 ${depVersion} (${depCount.toLocaleString()} items · Deployed Master)`;
-                } else if (!isGenericName) {
-                    displayTitle = `🚀 ${depSocName} (${depCount.toLocaleString()} items · Deployed Master)`;
-                } else if (dep.file_name) {
-                    displayTitle = `🚀 ${dep.file_name} (${depCount.toLocaleString()} items · Deployed Master)`;
-                } else {
-                    displayTitle = `🚀 Deployed Master SOC (${depCount.toLocaleString()} items)`;
-                }
-
+                const displayTitle = formatSOCDisplayTitle(depSocName, depVersion, depDate, depCount, true);
                 const optVal = dep.deployment_id ? `deployed_${dep.deployment_id}` : 'deployed_unit_soc';
                 deployedOptions += `<option value="${escapeHtml(optVal)}" data-dep-id="${escapeHtml(dep.deployment_id || '')}" ${idx === 0 ? 'selected' : ''}>${escapeHtml(displayTitle)}</option>`;
             });
         } else if (hasDeployed && hasDeployed.length > 0) {
-            deployedOptions = `<option value="deployed_unit_soc" selected>🚀 Deployed Master SOC (${escapeHtml(unitObj.shortName || unitObj.name)}) - ${hasDeployed.length.toLocaleString()} items</option>`;
+            deployedOptions = `<option value="deployed_unit_soc" selected>${escapeHtml(formatSOCDisplayTitle(unitObj.shortName || unitObj.name, 'v2', new Date(), hasDeployed.length, true))}</option>`;
         }
 
         if (bu === 'international') {
@@ -15642,9 +15678,20 @@ Claims & Billing Assurance Desk
         const viewLogsBtn = document.getElementById('btn-soc-view-logs');
         const downloadTemplateBtn = document.getElementById('btn-soc-download-template');
 
-        // Version Control two-way synchronization
+        // Default date values
+        const todayStr = new Date().toISOString().split('T')[0];
+        const socEffDateInput = document.getElementById('soc-effective-date');
+        const deployEffDateInput = document.getElementById('deploy-effective-date');
+        if (socEffDateInput && !socEffDateInput.value) socEffDateInput.value = todayStr;
+        if (deployEffDateInput && !deployEffDateInput.value) deployEffDateInput.value = todayStr;
+
+        // Version & Date two-way synchronization
         const socVersionInputEl = document.getElementById('soc-version-input');
         const deployVersionTagEl = document.getElementById('deploy-version-tag');
+        if (socEffDateInput && deployEffDateInput) {
+            socEffDateInput.addEventListener('change', () => { deployEffDateInput.value = socEffDateInput.value; });
+            deployEffDateInput.addEventListener('change', () => { socEffDateInput.value = deployEffDateInput.value; });
+        }
         if (socVersionInputEl && deployVersionTagEl) {
             socVersionInputEl.addEventListener('input', () => {
                 deployVersionTagEl.value = socVersionInputEl.value;
@@ -15989,11 +16036,10 @@ Claims & Billing Assurance Desk
                 <tr style="border-bottom: 1px solid var(--border); transition: background 0.15s;">
                     <td style="padding: 0.5rem 0.75rem; font-family: monospace; font-weight: 700; color: var(--primary); font-size: 0.75rem;">${escapeHtml(dep.deployment_id || 'DEP-AHEL')}</td>
                     <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--text-main); font-size: 0.78rem;">
-                        <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
-                            ${dep.version ? `<span style="background: rgba(16, 185, 129, 0.15); color: var(--success); font-family: monospace; font-size: 0.72rem; padding: 0.1rem 0.35rem; border-radius: 4px; font-weight: 800;">${escapeHtml(dep.version)}</span>` : ''}
-                            <span>${escapeHtml(dep.soc_name || dep.file_name || 'MASTER_SOC')}</span>
+                        <div style="font-weight: 800; color: var(--text-main); font-size: 0.82rem;">
+                            ${escapeHtml(formatSOCDisplayTitle(dep.soc_name, dep.version, dep.effective_date || dep.deployed_at, null, false))}
                         </div>
-                        ${dep.file_name && dep.file_name !== dep.soc_name ? `<div style="font-size: 0.69rem; color: var(--text-muted); font-weight: 500;">Source: ${escapeHtml(dep.file_name)}</div>` : ''}
+                        ${dep.file_name ? `<div style="font-size: 0.69rem; color: var(--text-muted);">File: ${escapeHtml(dep.file_name)}</div>` : ''}
                     </td>
                     <td style="padding: 0.5rem 0.75rem; font-size: 0.76rem; color: var(--text-muted);"><span style="background: var(--bg-page); border: 1px solid var(--border); padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 600;">${escapeHtml(dep.target_scope_title || dep.target_scope || 'All 65+ Units')}</span></td>
                     <td style="padding: 0.5rem 0.75rem; text-align: right; font-weight: 700; color: var(--success); font-size: 0.78rem;">${(dep.total_records || 0).toLocaleString()} items</td>
@@ -16030,12 +16076,9 @@ Claims & Billing Assurance Desk
         const scopeSelect = document.getElementById('deploy-target-scope-select');
         const targetScope = scopeSelect ? scopeSelect.value : 'all';
         const effectiveDate = document.getElementById('deploy-effective-date')?.value || new Date().toISOString().split('T')[0];
-        const version = document.getElementById('deploy-version-tag')?.value.trim() || document.getElementById('soc-version-input')?.value.trim() || 'SOC-AHEL-2026-v2.6';
+        const version = document.getElementById('deploy-version-tag')?.value.trim() || document.getElementById('soc-version-input')?.value.trim() || 'v2';
         let rawSocName = document.getElementById('soc-target-name-input')?.value.trim();
-        let socName = rawSocName;
-        if (!socName || socName.toUpperCase() === 'SOC' || socName.toUpperCase() === 'IMPORTED_SOC') {
-            socName = socActiveFile ? socActiveFile.name.replace(/\.[^/.]+$/, '') : version;
-        }
+        let socName = rawSocName || (socActiveFile ? socActiveFile.name.replace(/\.[^/.]+$/, '') : 'Apollo Master SOC');
 
         // Resolve target units
         const allUnits = (typeof window.getHospitalUnits === 'function') ? window.getHospitalUnits() : [];
@@ -17449,8 +17492,9 @@ Claims & Billing Assurance Desk
         }
 
         const validRecords = socParsedResult.valid_records;
-        const targetName = document.getElementById('soc-target-name-input')?.value.trim() || socActiveFile?.name || 'IMPORTED_SOC';
-        const socVersion = document.getElementById('soc-version-input')?.value.trim() || document.getElementById('deploy-version-tag')?.value.trim() || 'SOC-AHEL-2026-v2.6';
+        const targetName = document.getElementById('soc-target-name-input')?.value.trim() || (socActiveFile ? socActiveFile.name.replace(/\.[^/.]+$/, '') : 'Apollo Master SOC');
+        const socVersion = document.getElementById('soc-version-input')?.value.trim() || document.getElementById('deploy-version-tag')?.value.trim() || 'v2';
+        const socEffDate = document.getElementById('soc-effective-date')?.value || document.getElementById('deploy-effective-date')?.value || new Date().toISOString().split('T')[0];
 
         let insertedCount = 0;
         
@@ -17473,6 +17517,7 @@ Claims & Billing Assurance Desk
                 file_name: activeFileName,
                 target_name: targetName,
                 version: socVersion,
+                effective_date: socEffDate,
                 count: validRecords.length,
                 committed_at: new Date().toISOString()
             }));
