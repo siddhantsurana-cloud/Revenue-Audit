@@ -1169,7 +1169,11 @@
             </div>
 
             <!-- Deployment Configuration Grid -->
-            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 1rem; align-items: end; margin-bottom: 1.25rem;">
+            <div style="display: grid; grid-template-columns: 1.4fr 1.6fr 1fr 0.9fr auto; gap: 1rem; align-items: end; margin-bottom: 1.25rem;">
+                <div class="input-group" style="padding: 0; margin: 0;">
+                    <label for="deploy-soc-name-input" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">SOC Name</label>
+                    <input type="text" id="deploy-soc-name-input" class="form-control" placeholder="e.g. Apollo Master SOC" style="font-size: 0.82rem; padding: 0.5rem 0.65rem;">
+                </div>
                 <div class="input-group" style="padding: 0; margin: 0;">
                     <label for="deploy-target-scope-select" style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Target Hospital Unit(s) Deployment Scope</label>
                     <select id="deploy-target-scope-select" class="form-control" style="font-size: 0.82rem; padding: 0.5rem 0.65rem; font-weight: 600;">
@@ -1668,10 +1672,7 @@
                     </div>
                 </div>
 
-                <!-- Validation Source Help Text -->
-                <div id="audit-source-desc-banner" style="font-size: 0.75rem; color: var(--text-muted); font-style: italic; line-height: 1.4;">
-                    The selected SOC or Tariff Template will be used as the billing validation benchmark. This audit does not compare GIPSA, TPA, Insurance, Corporate, or other tariff schedules against each other.
-                </div>
+
             </div>
 
             <!-- Room-wise Tariff Mapping Grid (hidden by default) -->

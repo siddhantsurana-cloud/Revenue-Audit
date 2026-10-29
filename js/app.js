@@ -3411,43 +3411,9 @@
     }
 
     function updateAuditSourceBanner() {
+        // Redundant banner removed to keep Audit Workspace controls clean and clutter-free
         const banner = document.getElementById('audit-source-desc-banner');
-        const sourceSelect = document.getElementById('audit-source-select');
-        const buSelect = document.getElementById('audit-bu-select');
-        if (!banner || !sourceSelect || !buSelect) return;
-
-        const val = sourceSelect.value;
-        const selectedText = sourceSelect.options[sourceSelect.selectedIndex]?.text || '';
-        const buText = buSelect.options[buSelect.selectedIndex]?.text || '';
-        const meta = getActiveIngestedSOCMeta();
-
-        if (val === 'custom_ingested') {
-            const cleanTitle = selectedText.replace(/^[\s\u{1F680}\u{1F4C4}]+\s*/u, '');
-            banner.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.25rem;">
-                    <span style="background: rgba(16, 185, 129, 0.12); color: #10b981; padding: 0.2rem 0.55rem; border-radius: 5px; font-weight: 800; font-size: 0.72rem; border: 1px solid rgba(16, 185, 129, 0.3);">
-                        📄 Active Benchmark: <strong>${escapeHtml(cleanTitle)}</strong>
-                    </span>
-                    <span style="font-size: 0.73rem; color: var(--text-muted);">Validating billing line items against custom ingested schedule for ${escapeHtml(buText)}.</span>
-                </div>
-            `;
-        } else if (val.startsWith('deployed_') || val === 'deployed_unit_soc') {
-            const cleanTitle = selectedText.replace(/^[\s\u{1F680}\u{1F4C4}]+\s*/u, '');
-            banner.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.25rem;">
-                    <span style="background: rgba(14, 165, 233, 0.12); color: #0284c7; padding: 0.2rem 0.55rem; border-radius: 5px; font-weight: 800; font-size: 0.72rem; border: 1px solid rgba(14, 165, 233, 0.3);">
-                        🚀 Active Benchmark: <strong>${escapeHtml(cleanTitle)}</strong>
-                    </span>
-                    <span style="font-size: 0.73rem; color: var(--text-muted);">Validating billing line items against official deployed master version for ${escapeHtml(buText)}.</span>
-                </div>
-            `;
-        } else {
-            banner.innerHTML = `
-                <span style="font-size: 0.73rem; color: var(--text-muted);">
-                    The selected validation benchmark <strong>${escapeHtml(selectedText)}</strong> will be used as the standard rate benchmark for ${escapeHtml(buText)}.
-                </span>
-            `;
-        }
+        if (banner) banner.remove();
     }
 
     function updateValidationSourceOptions() {
@@ -15685,7 +15651,14 @@ Claims & Billing Assurance Desk
         if (socEffDateInput && !socEffDateInput.value) socEffDateInput.value = todayStr;
         if (deployEffDateInput && !deployEffDateInput.value) deployEffDateInput.value = todayStr;
 
-        // Version & Date two-way synchronization
+        // SOC Name, Version & Date two-way synchronization between Ingestor and Deployment Hub
+        const socTargetNameInputEl = document.getElementById('soc-target-name-input');
+        const deploySocNameInputEl = document.getElementById('deploy-soc-name-input');
+        if (socTargetNameInputEl && deploySocNameInputEl) {
+            socTargetNameInputEl.addEventListener('input', () => { deploySocNameInputEl.value = socTargetNameInputEl.value; });
+            deploySocNameInputEl.addEventListener('input', () => { socTargetNameInputEl.value = deploySocNameInputEl.value; });
+        }
+
         const socVersionInputEl = document.getElementById('soc-version-input');
         const deployVersionTagEl = document.getElementById('deploy-version-tag');
         if (socEffDateInput && deployEffDateInput) {
@@ -16077,7 +16050,7 @@ Claims & Billing Assurance Desk
         const targetScope = scopeSelect ? scopeSelect.value : 'all';
         const effectiveDate = document.getElementById('deploy-effective-date')?.value || new Date().toISOString().split('T')[0];
         const version = document.getElementById('deploy-version-tag')?.value.trim() || document.getElementById('soc-version-input')?.value.trim() || 'v2';
-        let rawSocName = document.getElementById('soc-target-name-input')?.value.trim();
+        let rawSocName = document.getElementById('deploy-soc-name-input')?.value.trim() || document.getElementById('soc-target-name-input')?.value.trim();
         let socName = rawSocName || (socActiveFile ? socActiveFile.name.replace(/\.[^/.]+$/, '') : 'Apollo Master SOC');
 
         // Resolve target units
@@ -16305,8 +16278,13 @@ Claims & Billing Assurance Desk
         }
 
         const targetNameInput = document.getElementById('soc-target-name-input');
+        const deploySocNameInput = document.getElementById('deploy-soc-name-input');
+        const cleanName = file.name.replace(/\.[^/.]+$/, "").replace(/[_.-]+/g, " ").trim();
         if (targetNameInput && (!targetNameInput.value || targetNameInput.value === 'APOLLO_MASTER_SOC_2026' || targetNameInput.value === 'IMPORTED_SOC' || targetNameInput.value.toUpperCase() === 'SOC')) {
-            targetNameInput.value = file.name.replace(/\.[^/.]+$/, "").replace(/[_.-]+/g, " ").trim();
+            targetNameInput.value = cleanName;
+        }
+        if (deploySocNameInput && (!deploySocNameInput.value || deploySocNameInput.value === 'APOLLO_MASTER_SOC_2026' || deploySocNameInput.value === 'IMPORTED_SOC' || deploySocNameInput.value.toUpperCase() === 'SOC')) {
+            deploySocNameInput.value = cleanName;
         }
 
         const socVersionInput = document.getElementById('soc-version-input');
