@@ -1186,6 +1186,14 @@
         updateValidationSourceOptions();
         populateRoomMappingSelects();
 
+        // Load deployed unit tariffs from storage and synchronize all unit selectors
+        if (typeof window.loadDeployedTariffsFromStorage === 'function') {
+            window.loadDeployedTariffsFromStorage();
+        }
+        if (typeof window.syncUnitDropdowns === 'function') {
+            window.syncUnitDropdowns();
+        }
+
         // Setup Event Listeners
         setupEventListeners();
         setupAuditEventListeners();
@@ -3276,6 +3284,10 @@
         
         sourceSelect.innerHTML = '';
         
+        const allUnits = (typeof window.getHospitalUnits === 'function') ? window.getHospitalUnits() : [];
+        const unitObj = allUnits.find(u => u.code === bu) || { name: bu, shortName: bu };
+        const hasDeployed = window.TARIFF_DEPLOYED_BY_UNIT && window.TARIFF_DEPLOYED_BY_UNIT[bu];
+
         if (bu === 'international') {
             if (type === 'soc') {
                 sourceSelect.innerHTML = `
@@ -3309,8 +3321,7 @@
                     <option value="custom_ingested">Custom Ingested SOC (Session)</option>
                 `;
             }
-        } else {
-            // excelcare
+        } else if (bu === 'excelcare') {
             if (type === 'soc') {
                 sourceSelect.innerHTML = `
                     <option value="excelcare_2025" selected>2025-26 SOC (Excelcare)</option>
@@ -3335,6 +3346,18 @@
                     <option value="custom_ingested">Custom Ingested SOC (Session)</option>
                 `;
             }
+        } else {
+            // General Apollo Unit (e.g. Bhubaneswar, Delhi, Bangalore, etc.)
+            let opts = '';
+            if (hasDeployed && hasDeployed.length > 0) {
+                opts += `<option value="deployed_unit_soc" selected>Deployed Master SOC (${escapeHtml(unitObj.shortName || unitObj.name)}) - ${hasDeployed.length} items</option>`;
+            }
+            opts += `
+                <option value="custom_ingested" ${!hasDeployed ? 'selected' : ''}>Custom Ingested SOC (Active Session)</option>
+                <option value="apollo_corp_master">Apollo Master Corporate Schedule (2026)</option>
+                <option value="hdfc_agreed_2026">HDFC ERGO Centrally Agreed (2026)</option>
+            `;
+            sourceSelect.innerHTML = opts;
         }
         
         // Restore selected value if still exists in the new options list
@@ -5991,7 +6014,11 @@
                             activeSOC = TARIFF_EXCELCARE_GIPSA_2026;
                             explanation = `Room-wise: ${cleanedRoom} -> Excelcare GIPSA 2026.`;
                         } else {
-                            if (activeBU === "kolkata") {
+                            if (activeSourceVal === "deployed_unit_soc" || (activeBU !== "international" && activeBU !== "excelcare" && activeBU !== "kolkata" && window.TARIFF_DEPLOYED_BY_UNIT && window.TARIFF_DEPLOYED_BY_UNIT[activeBU])) {
+                                activeSOC = (window.TARIFF_DEPLOYED_BY_UNIT && window.TARIFF_DEPLOYED_BY_UNIT[activeBU]) || window.TARIFF_CUSTOM_INGESTED || TARIFF_DATA;
+                                activeSOCMap = (window.MAP_DEPLOYED_BY_UNIT && window.MAP_DEPLOYED_BY_UNIT[activeBU]) || window.mapCustomIngested || map2026;
+                                explanation = `Audited against Deployed Unit Schedule (${activeBU.toUpperCase()}).`;
+                            } else if (activeBU === "kolkata") {
                                 activeSOC = TARIFF_KOLKATA_SOC;
                             } else {
                                 const isEcCash = (activeSourceVal === "excelcare_cash_2025" || activeSourceVal === "excelcare_cash_2026" || activeSourceVal === "excelcare_cash_2026_27" || activeSourceVal === "socexcelcarecash");
@@ -13189,6 +13216,42 @@
         });
     };
 
+    window.loadDeployedTariffsFromStorage = function() {
+        window.TARIFF_DEPLOYED_BY_UNIT = window.TARIFF_DEPLOYED_BY_UNIT || {};
+        window.MAP_DEPLOYED_BY_UNIT = window.MAP_DEPLOYED_BY_UNIT || {};
+
+        let deployments = [];
+        try {
+            const raw = localStorage.getItem('brc_central_deployments_v2');
+            if (raw) deployments = JSON.parse(raw);
+        } catch(e) {}
+
+        deployments.forEach(dep => {
+            if (dep.target_scope) {
+                try {
+                    const cached = localStorage.getItem('brc_deployed_unit_' + dep.target_scope);
+                    if (cached) {
+                        const parsed = JSON.parse(cached);
+                        if (parsed && parsed.records && parsed.records.length > 0) {
+                            (dep.target_units || [dep.target_scope]).forEach(uCode => {
+                                window.TARIFF_DEPLOYED_BY_UNIT[uCode] = parsed.records;
+                                const uMap = {};
+                                parsed.records.forEach(r => {
+                                    uMap[r.id] = r;
+                                    const clean = String(r.id).replace(/^[#\s]+/, '').replace(/\.0+$/, '').trim();
+                                    if (clean) uMap[clean] = r;
+                                    const unpad = clean.replace(/^0+/, '');
+                                    if (unpad) uMap[unpad] = r;
+                                });
+                                window.MAP_DEPLOYED_BY_UNIT[uCode] = uMap;
+                            });
+                        }
+                    }
+                } catch(e) {}
+            }
+        });
+    };
+
     window.syncUnitDropdowns = function() {
         const units = (typeof window.getHospitalUnits === 'function') ? window.getHospitalUnits() : [];
         if (!units || units.length === 0) return;
@@ -13231,15 +13294,39 @@
         const masterBuSelect = document.getElementById('master-bu-select');
         if (masterBuSelect) {
             const curVal = masterBuSelect.value;
-            masterBuSelect.innerHTML = '';
+            masterBuSelect.innerHTML = '<option value="all">🌐 All Hospital Units</option>';
             units.forEach(u => {
-                const opt = document.createElement('option');
-                opt.value = u.code;
-                opt.textContent = `${u.icon || '🏥'} ${u.shortName || u.name}`;
-                masterBuSelect.appendChild(opt);
+                if (u.code !== 'all') {
+                    const opt = document.createElement('option');
+                    opt.value = u.code;
+                    const hasDeployed = window.TARIFF_DEPLOYED_BY_UNIT && window.TARIFF_DEPLOYED_BY_UNIT[u.code];
+                    opt.textContent = `${u.icon || '🏥'} ${u.shortName || u.name}${hasDeployed ? ' (Deployed SOC)' : ''}`;
+                    masterBuSelect.appendChild(opt);
+                }
             });
             if (curVal && Array.from(masterBuSelect.options).some(o => o.value === curVal)) {
                 masterBuSelect.value = curVal;
+            }
+        }
+
+        // 3B. Sync #audit-bu-select (Audit Workspace Business Unit dropdown)
+        const auditBuSelect = document.getElementById('audit-bu-select');
+        if (auditBuSelect) {
+            const curVal = auditBuSelect.value;
+            auditBuSelect.innerHTML = '';
+            units.forEach(u => {
+                if (u.code !== 'all') {
+                    const opt = document.createElement('option');
+                    opt.value = u.code;
+                    const hasDeployed = window.TARIFF_DEPLOYED_BY_UNIT && window.TARIFF_DEPLOYED_BY_UNIT[u.code];
+                    opt.textContent = `${u.icon || '🏥'} ${u.shortName || u.name}${hasDeployed ? ' (Deployed SOC)' : ''}`;
+                    auditBuSelect.appendChild(opt);
+                }
+            });
+            if (curVal && Array.from(auditBuSelect.options).some(o => o.value === curVal)) {
+                auditBuSelect.value = curVal;
+            } else if (Array.from(auditBuSelect.options).some(o => o.value === 'bhubaneswar')) {
+                // If previous wasn't found, keep default
             }
         }
 
@@ -15491,6 +15578,131 @@ Claims & Billing Assurance Desk
         });
     }
 
+    window.deleteCentralDeployment = function(deploymentId) {
+        let deployments = [];
+        try {
+            const raw = localStorage.getItem('brc_central_deployments_v2');
+            if (raw) deployments = JSON.parse(raw);
+        } catch(e) {}
+
+        const dep = deployments.find(d => d.deployment_id === deploymentId);
+        if (!dep) {
+            showToast('Deployment record not found.', 'warning');
+            return;
+        }
+
+        const confirmMsg = `Are you sure you want to delete and decommission deployment "${dep.soc_name}" from ${dep.target_scope_title}?\n\nThis will unload its items from the active audit benchmarks and master repository.`;
+        if (!confirm(confirmMsg)) {
+            return;
+        }
+
+        // 1. Remove from localStorage deployments
+        deployments = deployments.filter(d => d.deployment_id !== deploymentId);
+        localStorage.setItem('brc_central_deployments_v2', JSON.stringify(deployments));
+
+        // 2. Remove from unit-specific memory and localStorage caches
+        if (dep.target_units && window.TARIFF_DEPLOYED_BY_UNIT) {
+            dep.target_units.forEach(uCode => {
+                delete window.TARIFF_DEPLOYED_BY_UNIT[uCode];
+                if (window.MAP_DEPLOYED_BY_UNIT) {
+                    delete window.MAP_DEPLOYED_BY_UNIT[uCode];
+                }
+                try {
+                    localStorage.removeItem('brc_deployed_unit_' + uCode);
+                } catch(e) {}
+            });
+        }
+        try {
+            localStorage.removeItem('brc_deployed_unit_' + dep.target_scope);
+        } catch(e) {}
+
+        // 3. Remove from UNIFIED_TARIFFS
+        if (dep.soc_name) {
+            UNIFIED_TARIFFS = UNIFIED_TARIFFS.filter(t => t.source !== dep.soc_name);
+        }
+
+        // 4. Refresh UI
+        renderCentralDeploymentTable();
+        if (typeof window.syncUnitDropdowns === 'function') {
+            window.syncUnitDropdowns();
+        }
+        if (typeof updateValidationSourceOptions === 'function') {
+            updateValidationSourceOptions();
+        }
+        if (typeof applyFiltersAndSort === 'function') {
+            applyFiltersAndSort();
+        }
+
+        showToast(`Successfully deleted deployment "${dep.soc_name}" and unloaded tariff items!`, 'success');
+    };
+
+    window.switchToAuditWorkspaceWithTariff = function(targetUnit) {
+        let unitToSet = targetUnit;
+        if (!unitToSet) {
+            const sel = document.getElementById('deploy-target-scope-select');
+            unitToSet = (sel && sel.value !== 'all' && !sel.value.startsWith('cluster_')) ? sel.value : 'bhubaneswar';
+        }
+
+        if (typeof switchTab === 'function') {
+            switchTab('audit');
+        }
+
+        const auditBu = document.getElementById('audit-bu-select');
+        if (auditBu) {
+            if (Array.from(auditBu.options).some(o => o.value === unitToSet)) {
+                auditBu.value = unitToSet;
+                auditBu.dispatchEvent(new Event('change'));
+            }
+        }
+
+        const src = document.getElementById('audit-source-select');
+        if (src) {
+            if (Array.from(src.options).some(o => o.value === 'deployed_unit_soc')) {
+                src.value = 'deployed_unit_soc';
+            } else if (Array.from(src.options).some(o => o.value === 'custom_ingested')) {
+                src.value = 'custom_ingested';
+            }
+            src.dispatchEvent(new Event('change'));
+        }
+
+        showToast(`Switched to Audit Workspace for ${unitToSet.toUpperCase()}. Ready to drop billing files!`, 'success');
+    };
+
+    window.resetSOCIngestor = function() {
+        socActiveFile = null;
+        socParsedResult = null;
+
+        const fileInput = document.getElementById('ingester-file-input');
+        if (fileInput) fileInput.value = '';
+
+        const previewBody = document.getElementById('ingest-preview-body');
+        if (previewBody) previewBody.innerHTML = '';
+
+        const jsonPreview = document.getElementById('ingest-json-preview');
+        if (jsonPreview) jsonPreview.value = '';
+
+        const mappingGrid = document.getElementById('soc-mapping-grid');
+        if (mappingGrid) mappingGrid.innerHTML = '';
+
+        const resultsContainer = document.getElementById('ingester-results-container');
+        if (resultsContainer) resultsContainer.style.display = 'none';
+
+        const successCard = document.getElementById('ingest-success-card');
+        if (successCard) successCard.style.display = 'none';
+
+        const dropzone = document.getElementById('ingester-dropzone');
+        if (dropzone) {
+            dropzone.style.display = 'flex';
+            const title = document.getElementById('soc-dropzone-title');
+            if (title) title.textContent = 'Upload SOC Document (Excel, PDF, or CSV)';
+        }
+
+        const warningBanner = document.getElementById('soc-scanned-warning');
+        if (warningBanner) warningBanner.style.display = 'none';
+
+        showToast('Tariff Ingestor staging reset. Ready for new document upload.', 'info');
+    };
+
     function renderCentralDeploymentTable() {
         const tbody = document.getElementById('central-deployment-tbody');
         const countBadge = document.getElementById('deployment-active-count-badge');
@@ -15503,7 +15715,7 @@ Claims & Billing Assurance Desk
         } catch(e) {}
 
         if (!deployments || !Array.isArray(deployments) || deployments.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">No central multi-unit deployments dispatched yet. Select target scope and deploy master SOC.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">No central multi-unit deployments dispatched yet. Select target scope and deploy master SOC.</td></tr>';
             if (countBadge) countBadge.textContent = '0 Deployments Active';
             return;
         }
@@ -15513,6 +15725,7 @@ Claims & Billing Assurance Desk
         let html = '';
         deployments.slice().reverse().forEach(dep => {
             const dateStr = dep.deployed_at ? new Date(dep.deployed_at).toLocaleString('en-IN') : '—';
+            const targetCode = (dep.target_scope !== 'all' && !dep.target_scope.startsWith('cluster_')) ? dep.target_scope : (dep.target_units && dep.target_units.length > 0 ? dep.target_units[0] : 'bhubaneswar');
             html += `
                 <tr style="border-bottom: 1px solid var(--border); transition: background 0.15s;">
                     <td style="padding: 0.5rem 0.75rem; font-family: monospace; font-weight: 700; color: var(--primary); font-size: 0.75rem;">${escapeHtml(dep.deployment_id || 'DEP-AHEL')}</td>
@@ -15522,6 +15735,10 @@ Claims & Billing Assurance Desk
                     <td style="padding: 0.5rem 0.75rem; font-size: 0.75rem; color: var(--text-muted);">${escapeHtml(dep.deployed_by || 'Corporate Admin')}</td>
                     <td style="padding: 0.5rem 0.75rem; font-size: 0.74rem; color: var(--text-muted);">${dateStr}</td>
                     <td style="padding: 0.5rem 0.75rem; text-align: center;"><span style="background: rgba(16, 185, 129, 0.15); color: var(--success); font-weight: 800; font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.3);">DEPLOYED &amp; ACTIVE</span></td>
+                    <td style="padding: 0.5rem 0.75rem; text-align: right; white-space: nowrap;">
+                        <button type="button" onclick="window.switchToAuditWorkspaceWithTariff('${escapeHtml(targetCode)}')" class="export-btn" style="padding: 0.2rem 0.5rem; font-size: 0.72rem; background: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.3); margin-right: 0.35rem;" title="Audit bills against this unit in workspace">🎯 Audit</button>
+                        <button type="button" onclick="window.deleteCentralDeployment('${escapeHtml(dep.deployment_id)}')" class="export-btn" style="padding: 0.2rem 0.5rem; font-size: 0.72rem; background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.3);" title="Decommission & delete this tariff deployment">🗑️ Delete</button>
+                    </td>
                 </tr>
             `;
         });
@@ -15598,7 +15815,65 @@ Claims & Billing Assurance Desk
             status: 'ACTIVE_DEPLOYED'
         };
 
-        // Save to localStorage
+        // Bind records into unit-specific in-memory maps
+        window.TARIFF_DEPLOYED_BY_UNIT = window.TARIFF_DEPLOYED_BY_UNIT || {};
+        window.MAP_DEPLOYED_BY_UNIT = window.MAP_DEPLOYED_BY_UNIT || {};
+
+        resolvedUnits.forEach(uCode => {
+            window.TARIFF_DEPLOYED_BY_UNIT[uCode] = records;
+            const uMap = {};
+            records.forEach(r => {
+                uMap[r.id] = r;
+                const clean = String(r.id).replace(/^[#\s]+/, '').replace(/\.0+$/, '').trim();
+                if (clean) uMap[clean] = r;
+                const unpad = clean.replace(/^0+/, '');
+                if (unpad) uMap[unpad] = r;
+            });
+            window.MAP_DEPLOYED_BY_UNIT[uCode] = uMap;
+        });
+
+        // Also merge into UNIFIED_TARIFFS for Master Repository search
+        const depTariffIndex = new Map();
+        for (let i = 0; i < UNIFIED_TARIFFS.length; i++) {
+            depTariffIndex.set(String(UNIFIED_TARIFFS[i].id).trim(), i);
+        }
+        records.forEach(rec => {
+            const key = String(rec.id).trim();
+            const masterRec = {
+                id: rec.id,
+                code: rec.id,
+                name: rec.name,
+                category: rec.category || 'HOSPITAL_SERVICES',
+                department: rec.department || 'GENERAL',
+                rate: rec.standard_rate ?? rec.sharing_4 ?? rec.opd_rate ?? null,
+                standard_rate: rec.standard_rate ?? null,
+                opd_rate: rec.opd_rate ?? null,
+                sharing_4: rec.sharing_4 ?? null,
+                sharing_2: rec.sharing_2 ?? null,
+                single: rec.single ?? null,
+                executive: rec.executive ?? null,
+                suite: rec.suite ?? null,
+                icu: rec.icu ?? null,
+                rates: rec.rates || {},
+                has_room_rates: rec.has_room_rates || false,
+                is_time_based: rec.is_time_based || false,
+                time_unit: rec.time_unit || null,
+                target_scope: targetScope,
+                target_units: resolvedUnits,
+                source: socName,
+                is_soc_imported: true,
+                deployed_at: new Date().toISOString()
+            };
+            const existingIdx = depTariffIndex.get(key);
+            if (existingIdx !== undefined) {
+                UNIFIED_TARIFFS[existingIdx] = { ...UNIFIED_TARIFFS[existingIdx], ...masterRec };
+            } else {
+                depTariffIndex.set(key, UNIFIED_TARIFFS.length);
+                UNIFIED_TARIFFS.push(masterRec);
+            }
+        });
+
+        // Save deployment record to localStorage
         let existing = [];
         try {
             const raw = localStorage.getItem('brc_central_deployments_v2');
@@ -15606,6 +15881,41 @@ Claims & Billing Assurance Desk
         } catch(e) {}
         existing.push(deployPayload);
         localStorage.setItem('brc_central_deployments_v2', JSON.stringify(existing));
+
+        // Save lightweight deployment cache to localStorage for offline persistence
+        try {
+            localStorage.setItem('brc_deployed_unit_' + targetScope, JSON.stringify({
+                deployment_id: depId,
+                soc_name: socName,
+                target_scope: targetScope,
+                target_units: resolvedUnits,
+                records: records.slice(0, 2000), // cache first 2,000 records
+                total_records: records.length
+            }));
+        } catch(e) {
+            console.warn("Could not cache full deployment payload to localStorage:", e);
+        }
+
+        // Synchronize all unit dropdowns so target unit(s) immediately appear
+        if (typeof window.syncUnitDropdowns === 'function') {
+            window.syncUnitDropdowns();
+        }
+
+        // Clear staging DOM table to prevent memory lag
+        const previewBody = document.getElementById('ingest-preview-body');
+        if (previewBody) previewBody.innerHTML = '';
+
+        const resultsContainer = document.getElementById('ingester-results-container');
+        if (resultsContainer) resultsContainer.style.display = 'none';
+
+        const successCard = document.getElementById('ingest-success-card');
+        const successTitle = document.getElementById('ingest-success-title');
+        const successDesc = document.getElementById('ingest-success-desc');
+        if (successCard) {
+            if (successTitle) successTitle.textContent = `Master Schedule "${socName}" Deployed Successfully!`;
+            if (successDesc) successDesc.textContent = `${records.length.toLocaleString('en-IN')} line items deployed to ${scopeTitle}. Unit list and audit workspace now updated.`;
+            successCard.style.display = 'block';
+        }
 
         // Sync to server if running
         try {
@@ -16634,11 +16944,12 @@ Claims & Billing Assurance Desk
         }
     }
 
-    let socPreviewLimit = 0; // 0 = Show All rows
+    let socPreviewLimit = 100; // 0 = Show All rows
     let socExpandAllWards = false;
 
     window.setSOCPreviewLimit = function(val) {
-        socPreviewLimit = parseInt(val, 10) || 0;
+        socPreviewLimit = parseInt(val, 10);
+        socPreviewCurrentPage = 1;
         renderSOCPreviewTable();
     };
 
@@ -16678,10 +16989,28 @@ Claims & Billing Assurance Desk
         return '₹' + Number(val).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
+    let socPreviewCurrentPage = 1;
+    let socPreviewPageLimit = 100;
+
+    window.changeSOCPreviewPageSize = function() {
+        const sel = document.getElementById('soc-preview-page-size');
+        socPreviewPageLimit = sel ? parseInt(sel.value, 10) : 100;
+        socPreviewCurrentPage = 1;
+        renderSOCPreviewTable();
+    };
+
+    window.changeSOCPreviewPage = function(delta) {
+        socPreviewCurrentPage += delta;
+        if (socPreviewCurrentPage < 1) socPreviewCurrentPage = 1;
+        renderSOCPreviewTable();
+    };
+
     function renderSOCPreviewTable() {
         const tbody = document.getElementById('ingest-preview-body');
         const countLabel = document.getElementById('soc-preview-count-label');
         const pageIndicator = document.getElementById('soc-preview-page-indicator');
+        const prevBtn = document.getElementById('soc-preview-prev-btn');
+        const nextBtn = document.getElementById('soc-preview-next-btn');
         if (!tbody || !socParsedResult) return;
 
         const allRecords = socParsedResult.records || [];
@@ -16703,12 +17032,24 @@ Claims & Billing Assurance Desk
 
         if (countLabel) countLabel.textContent = filtered.length.toLocaleString('en-IN');
 
-        const previewSlice = socPreviewLimit > 0 ? filtered.slice(0, socPreviewLimit) : filtered;
+        const limit = (socPreviewPageLimit === 0) ? Math.min(filtered.length, 500) : socPreviewPageLimit;
+        const totalPages = Math.max(1, Math.ceil(filtered.length / (limit || 100)));
+        if (socPreviewCurrentPage > totalPages) socPreviewCurrentPage = totalPages;
+        if (socPreviewCurrentPage < 1) socPreviewCurrentPage = 1;
+
+        const startIdx = (socPreviewCurrentPage - 1) * limit;
+        const endIdx = (socPreviewPageLimit === 0) ? limit : Math.min(startIdx + limit, filtered.length);
+        const previewSlice = filtered.slice(startIdx, endIdx);
+
         if (pageIndicator) {
-            pageIndicator.textContent = previewSlice.length === filtered.length
-                ? `Showing all ${filtered.length.toLocaleString('en-IN')} records`
-                : `Showing ${previewSlice.length.toLocaleString('en-IN')} of ${filtered.length.toLocaleString('en-IN')} records`;
+            if (socPreviewPageLimit === 0 && filtered.length > 500) {
+                pageIndicator.textContent = `Showing first 500 of ${filtered.length.toLocaleString('en-IN')} (Capped for speed)`;
+            } else {
+                pageIndicator.textContent = `Page ${socPreviewCurrentPage} of ${totalPages} (${(startIdx + 1).toLocaleString('en-IN')}-${endIdx.toLocaleString('en-IN')} of ${filtered.length.toLocaleString('en-IN')})`;
+            }
         }
+        if (prevBtn) prevBtn.disabled = (socPreviewCurrentPage <= 1);
+        if (nextBtn) nextBtn.disabled = (socPreviewCurrentPage >= totalPages || socPreviewPageLimit === 0);
 
         if (previewSlice.length === 0) {
             tbody.innerHTML = `<tr><td colspan="6" style="padding: 2rem; text-align: center; color: var(--text-muted);">No records match the active filter/search.</td></tr>`;
@@ -16813,7 +17154,20 @@ Claims & Billing Assurance Desk
         const targetName = document.getElementById('soc-target-name-input')?.value || socActiveFile?.name || 'IMPORTED_SOC';
 
         let insertedCount = 0;
-        validRecords.forEach(rec => {
+        
+        // Build fast O(1) index map of UNIFIED_TARIFFS to eliminate O(N^2) browser freezing
+        const tariffIndexMap = new Map();
+        for (let i = 0; i < UNIFIED_TARIFFS.length; i++) {
+            tariffIndexMap.set(String(UNIFIED_TARIFFS[i].id).trim(), i);
+        }
+
+        window.TARIFF_CUSTOM_INGESTED = window.TARIFF_CUSTOM_INGESTED || [];
+        window.mapCustomIngested = window.mapCustomIngested || {};
+
+        const targetUpper = String(targetName || '').toUpperCase();
+
+        for (let i = 0; i < validRecords.length; i++) {
+            const rec = validRecords[i];
             const masterRec = {
                 id: rec.id,
                 code: rec.id,
@@ -16851,10 +17205,12 @@ Claims & Billing Assurance Desk
                 imported_at: new Date().toISOString()
             };
 
-            const existingIdx = UNIFIED_TARIFFS.findIndex(t => t.id === rec.id);
-            if (existingIdx >= 0) {
+            const key = String(rec.id).trim();
+            const existingIdx = tariffIndexMap.get(key);
+            if (existingIdx !== undefined) {
                 UNIFIED_TARIFFS[existingIdx] = { ...UNIFIED_TARIFFS[existingIdx], ...masterRec };
             } else {
+                tariffIndexMap.set(key, UNIFIED_TARIFFS.length);
                 UNIFIED_TARIFFS.push(masterRec);
                 insertedCount++;
             }
@@ -16863,17 +17219,13 @@ Claims & Billing Assurance Desk
             mapExcelcare[rec.id] = masterRec;
             mapCash2026[rec.id] = masterRec;
 
-            // Register into Live Custom Ingested Maps so Audit Workspace can audit immediately
-            window.TARIFF_CUSTOM_INGESTED = window.TARIFF_CUSTOM_INGESTED || [];
-            window.mapCustomIngested = window.mapCustomIngested || {};
+            window.TARIFF_CUSTOM_INGESTED.push(masterRec);
             window.mapCustomIngested[rec.id] = masterRec;
             const cleanId = String(rec.id).replace(/^[#\s]+/, '').replace(/\.0+$/, '').trim();
             if (cleanId && cleanId !== rec.id) window.mapCustomIngested[cleanId] = masterRec;
             const unpadded = cleanId.replace(/^0+/, '');
             if (unpadded && unpadded !== cleanId && unpadded !== rec.id) window.mapCustomIngested[unpadded] = masterRec;
 
-            // Also synchronize with specific unit master if SOC target matches
-            const targetUpper = String(targetName || '').toUpperCase();
             if (targetUpper.includes('GIPSA') && typeof mapExcelcareGipsa2026 !== 'undefined') {
                 mapExcelcareGipsa2026[rec.id] = masterRec;
                 if (cleanId) mapExcelcareGipsa2026[cleanId] = masterRec;
@@ -16884,7 +17236,7 @@ Claims & Billing Assurance Desk
                 if (cleanId) mapExcelcareCash[cleanId] = masterRec;
                 if (unpadded) mapExcelcareCash[unpadded] = masterRec;
             }
-        });
+        }
 
         const logEntry = {
             id: 'SOC_' + Date.now(),
@@ -16923,7 +17275,29 @@ Claims & Billing Assurance Desk
             updateDashboardView();
         }
 
-        showToast(`Successfully committed ${validRecords.length} line items into the master Tariff Repository!`, 'success');
+        // Clear staging DOM table to prevent memory leak and lag
+        const previewBody = document.getElementById('ingest-preview-body');
+        if (previewBody) previewBody.innerHTML = '';
+        
+        // Hide staging container & show clean success card
+        const resultsContainer = document.getElementById('ingester-results-container');
+        if (resultsContainer) resultsContainer.style.display = 'none';
+
+        const successCard = document.getElementById('ingest-success-card');
+        const successTitle = document.getElementById('ingest-success-title');
+        const successDesc = document.getElementById('ingest-success-desc');
+        if (successCard) {
+            if (successTitle) successTitle.textContent = `Tariff "${targetName}" Successfully Committed!`;
+            if (successDesc) successDesc.textContent = `${validRecords.length.toLocaleString('en-IN')} line items committed into active Master Repository. Ingestor staging reset to keep application fast and responsive.`;
+            successCard.style.display = 'block';
+        }
+
+        // Keep dropdowns in sync
+        if (typeof window.syncUnitDropdowns === 'function') {
+            window.syncUnitDropdowns();
+        }
+
+        showToast(`Successfully committed ${validRecords.length.toLocaleString('en-IN')} line items into the Master Tariff Repository!`, 'success');
     }
 
     function downloadSOCJson() {
@@ -17125,6 +17499,25 @@ Claims & Billing Assurance Desk
                     `;
                 });
 
+                let customRowsHtml = '';
+                history.forEach((h, idx) => {
+                    const dateStr = new Date(h.timestamp).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+                    customRowsHtml += `
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 0.6rem; text-align: center; color: var(--text-muted); font-size: 0.75rem;">${idx + 1}</td>
+                            <td style="padding: 0.6rem; font-weight: 700; color: var(--text-main); font-size: 0.8rem;">${escapeHtml(h.file_name)}</td>
+                            <td style="padding: 0.6rem; font-family: monospace; color: var(--accent, #6366f1); font-size: 0.75rem;">${escapeHtml(h.target_tariff_name || 'MASTER')}</td>
+                            <td style="padding: 0.6rem; text-align: right; color: var(--success); font-weight: 800; font-family: monospace;">+${h.valid_imported}</td>
+                            <td style="padding: 0.6rem; text-align: right; color: var(--danger); font-family: monospace;">${h.invalid_skipped || 0}</td>
+                            <td style="padding: 0.6rem; font-size: 0.72rem; color: var(--text-muted);">${dateStr}</td>
+                            <td style="padding: 0.6rem; font-size: 0.72rem; color: var(--text-muted);">${escapeHtml(h.user)}</td>
+                            <td style="padding: 0.6rem; text-align: right;">
+                                <button type="button" onclick="window.deleteCommittedSOC('${escapeHtml(h.id)}')" class="export-btn" style="padding: 0.2rem 0.5rem; font-size: 0.72rem; background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.3);" title="Delete committed tariff and unload line items">🗑️ Delete</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+
                 body.innerHTML = `
                     <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.78rem;">
                         <thead>
@@ -17136,10 +17529,11 @@ Claims & Billing Assurance Desk
                                 <th style="padding: 0.6rem; text-align: right;">Skipped</th>
                                 <th style="padding: 0.6rem;">Date / Time</th>
                                 <th style="padding: 0.6rem;">User</th>
+                                <th style="padding: 0.6rem; text-align: right;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            ${rowsHtml}
+                            ${customRowsHtml}
                         </tbody>
                     </table>
                 `;
@@ -18446,3 +18840,35 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
     };
 
     document.addEventListener('DOMContentLoaded', init);
+
+// Delete committed session SOC and unload its records
+window.deleteCommittedSOC = function(importId) {
+    let history = [];
+    try {
+        history = JSON.parse(localStorage.getItem('brc_soc_import_history') || '[]');
+    } catch(e) {}
+
+    const entry = history.find(h => h.id === importId);
+    if (!entry) return;
+
+    if (!confirm(`Delete committed import "${entry.file_name}" (${entry.valid_imported} items)?\n\nThis will unload these items from the active Master Tariff Repository.`)) {
+        return;
+    }
+
+    history = history.filter(h => h.id !== importId);
+    localStorage.setItem('brc_soc_import_history', JSON.stringify(history));
+
+    if (entry.target_tariff_name || entry.file_name) {
+        const target = entry.target_tariff_name || entry.file_name;
+        UNIFIED_TARIFFS = UNIFIED_TARIFFS.filter(t => t.source !== target);
+    }
+
+    window.TARIFF_CUSTOM_INGESTED = [];
+    window.mapCustomIngested = {};
+
+    openSOCImportLogsModal();
+    if (typeof applyFiltersAndSort === 'function') {
+        applyFiltersAndSort();
+    }
+    showToast(`Committed tariff "${entry.file_name}" deleted and unloaded.`, 'success');
+};

@@ -965,6 +965,31 @@
         </div>
 
         <!-- RESULTS CONTAINER -->
+        <!-- INGESTION & DEPLOYMENT SUCCESS BANNER CARD -->
+        <div id="ingest-success-card" class="controls-card" style="display: none; background: rgba(16, 185, 129, 0.08); border: 2px solid #10b981; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+                        <span style="font-size: 1.35rem;">✅</span>
+                        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin: 0;" id="ingest-success-title">Tariff Schedule Successfully Committed!</h3>
+                    </div>
+                    <p style="margin: 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;" id="ingest-success-desc">
+                        Line items have been processed and merged into the active Master Tariff Repository.
+                    </p>
+                </div>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <button type="button" onclick="window.switchToAuditWorkspaceWithTariff()" class="export-btn" style="background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; font-weight: 800; font-size: 0.82rem; padding: 0.55rem 1.1rem; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6z"/></svg>
+                        <span>Audit in Workspace</span>
+                    </button>
+                    <button type="button" onclick="window.resetSOCIngestor()" class="export-btn" style="background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border); font-weight: 700; font-size: 0.82rem; padding: 0.55rem 1rem; border-radius: 8px; cursor: pointer;">
+                        ➕ Upload Another SOC
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULTS CONTAINER -->
         <div id="ingester-results-container" style="display: none; flex-direction: column; gap: 1.25rem;">
             
             <!-- METRICS SUMMARY BAR -->
@@ -998,6 +1023,12 @@
                     <div style="margin-top: 0.25rem;">
                         <button id="btn-toggle-mapping-modal" style="background: none; border: none; color: var(--accent, #6366f1); font-size: 0.72rem; font-weight: 700; cursor: pointer; text-decoration: underline; padding: 0;">
                             Configure Column Mappings ➔
+                        </button>
+                    </div>
+                    <div style="margin-top: 0.35rem;">
+                        <button type="button" id="btn-soc-reset-staging" onclick="window.resetSOCIngestor()" class="export-btn" style="background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.3); font-weight: 700; font-size: 0.7rem; padding: 0.2rem 0.5rem; display: inline-flex; align-items: center; gap: 0.3rem; cursor: pointer;" title="Discard current parsed file and reset ingestor">
+                            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                            <span>Discard Staging</span>
                         </button>
                     </div>
                 </div>
@@ -1048,13 +1079,17 @@
                                 🏥 Expand All Wards
                             </button>
                             <select id="soc-preview-limit-select" onchange="window.setSOCPreviewLimit(this.value)" class="form-control" style="font-size: 0.72rem; padding: 0.2rem 0.45rem; height: 26px; width: auto; background: var(--bg-page); color: var(--text-main); border: 1px solid var(--border); border-radius: 5px;">
-                                <option value="0" selected>Show All Rows</option>
+                                <option value="100" selected>Show 100 Rows (Fast)</option>
+                                <option value="250">Show 250 Rows</option>
                                 <option value="500">Show 500 Rows</option>
                                 <option value="1000">Show 1,000 Rows</option>
-                                <option value="2500">Show 2,500 Rows</option>
-                                <option value="5000">Show 5,000 Rows</option>
+                                <option value="0">Show All Rows (Caution)</option>
                             </select>
-                            <span style="font-size: 0.72rem; color: var(--text-muted);" id="soc-preview-page-indicator">Showing all records</span>
+                            <div style="display: flex; align-items: center; gap: 0.3rem;">
+                                <button type="button" id="soc-preview-prev-btn" onclick="window.changeSOCPreviewPage(-1)" class="export-btn" style="padding: 0.15rem 0.45rem; font-size: 0.7rem; background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; cursor: pointer;" title="Previous Page">◀</button>
+                                <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;" id="soc-preview-page-indicator">Page 1 of 1</span>
+                                <button type="button" id="soc-preview-next-btn" onclick="window.changeSOCPreviewPage(1)" class="export-btn" style="padding: 0.15rem 0.45rem; font-size: 0.7rem; background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; cursor: pointer;" title="Next Page">▶</button>
+                            </div>
                         </div>
                     </div>
                     <div style="overflow-y: auto; flex-grow: 1; border: 1px solid var(--border); border-radius: 8px;">
@@ -1180,6 +1215,7 @@
                                 <th style="padding: 0.5rem 0.75rem;">Deployed By</th>
                                 <th style="padding: 0.5rem 0.75rem;">Timestamp</th>
                                 <th style="padding: 0.5rem 0.75rem; text-align: center;">Cluster Status</th>
+                                <th style="padding: 0.5rem 0.75rem; text-align: right;">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="central-deployment-tbody">
