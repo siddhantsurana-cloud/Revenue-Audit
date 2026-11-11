@@ -12774,28 +12774,10 @@
                         </div>
                     </div>
 
-                    <!-- Pilot / Simulation Mode -->
-                    <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:1.25rem;">
-                        <div style="font-size:0.78rem; font-weight:800; color:#e2e8f0; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.6rem;">
-                            Instant Pilot / Test Verification:
-                        </div>
-                        <div style="font-size:0.8rem; color:#94a3b8; margin-bottom:0.9rem;">
-                            Test the multi-unit audit console as an authenticated Apollo employee:
-                        </div>
-                        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.6rem;">
-                            <button type="button" onclick="window.simulateSSOLogin('Auditor', 'excelcare', 'auditor.guwahati@apollohospitals.com')" style="background:#1e293b; border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:0.65rem 0.5rem; text-align:center; color:#ffffff; cursor:pointer;">
-                                <div style="font-weight:700; font-size:0.82rem;">🩺 Auditor</div>
-                                <div style="font-size:0.68rem; color:#38bdf8;">Excelcare Hub</div>
-                            </button>
-                            <button type="button" onclick="window.simulateSSOLogin('Approver', 'kolkata', 'reviewer.kolkata@apollohospitals.com')" style="background:#1e293b; border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:0.65rem 0.5rem; text-align:center; color:#ffffff; cursor:pointer;">
-                                <div style="font-weight:700; font-size:0.82rem;">📋 Approver</div>
-                                <div style="font-size:0.68rem; color:#a78bfa;">Kolkata Unit</div>
-                            </button>
-                            <button type="button" onclick="window.simulateSSOLogin('Administrator', 'all', 'admin.corporate@apollohospitals.com')" style="background:#1e293b; border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:0.65rem 0.5rem; text-align:center; color:#ffffff; cursor:pointer;">
-                                <div style="font-weight:700; font-size:0.82rem;">🛡️ Corporate HO</div>
-                                <div style="font-size:0.68rem; color:#34d399;">Master 65+ Units</div>
-                            </button>
-                        </div>
+                    <!-- IT Status Notice -->
+                    <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:1.1rem; display:flex; align-items:center; justify-content:space-between; gap:1rem;">
+                        <span style="font-size:0.78rem; color:#94a3b8;">Pending Azure AD registration by Apollo IT? Please sign in using your assigned Auditor or Administrator credentials on the main screen.</span>
+                        <button type="button" onclick="document.getElementById('apollo-azure-ad-modal').style.display='none'" style="background:transparent; border:1px solid #475569; color:#cbd5e1; padding:0.5rem 1rem; border-radius:6px; font-size:0.8rem; font-weight:700; cursor:pointer; white-space:nowrap;">Close</button>
                     </div>
                 </div>
             </div>
@@ -12819,23 +12801,6 @@
         localStorage.setItem('apollo_azure_ad_sso_config', JSON.stringify(cfg));
         showToast('Azure AD SSO configuration saved successfully!', 'success');
         document.getElementById('apollo-azure-ad-modal').style.display = 'none';
-    };
-
-    window.simulateSSOLogin = function(role, unit, email) {
-        const user = {
-            username: email.split('@')[0],
-            displayName: email.split('@')[0].replace('.', ' ').toUpperCase(),
-            email: email,
-            role: role,
-            unit: unit,
-            authProvider: 'Microsoft Azure AD (Simulated Pilot)'
-        };
-        localStorage.setItem('brc_v2_logged_in_user', JSON.stringify(user));
-        if (document.getElementById('apollo-azure-ad-modal')) {
-            document.getElementById('apollo-azure-ad-modal').style.display = 'none';
-        }
-        checkUserLoginState();
-        showToast(`Authenticated as ${user.displayName} via Apollo Azure AD SSO (${role})`, 'success');
     };
 
     function checkUserLoginState() {
