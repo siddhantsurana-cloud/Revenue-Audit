@@ -12600,6 +12600,59 @@
     // =========================================================================
     // APOLLO ENTERPRISE AZURE AD / MICROSOFT ENTRA ID SINGLE SIGN-ON (SSO) MODULE
     // =========================================================================
+    function resolveUserUnitAndRoleFromEmail(email, name, fallbackRole, fallbackUnit) {
+        let matchedUnit = (fallbackUnit && fallbackUnit !== 'all') ? fallbackUnit : null;
+        let matchedRole = fallbackRole || null;
+        const cleanEmail = (email || '').toLowerCase().trim();
+        
+        // 1. Direct match from configured user accounts directory
+        const credsList = window.userCredentials || [];
+        for (const u of credsList) {
+            if (u.email && u.email.toLowerCase().trim() === cleanEmail) {
+                matchedUnit = u.unit;
+                matchedRole = u.role;
+                break;
+            }
+        }
+        
+        // 2. Intelligent directory mapping from Apollo email/department identifiers
+        if (!matchedUnit || matchedUnit === 'all') {
+            if (cleanEmail.includes('kolkata') || cleanEmail.includes('kol.')) {
+                matchedUnit = 'kolkata';
+            } else if (cleanEmail.includes('intl') || cleanEmail.includes('international')) {
+                matchedUnit = 'international';
+            } else if (cleanEmail.includes('excelcare') || cleanEmail.includes('guwahati')) {
+                matchedUnit = 'excelcare';
+            } else if (cleanEmail.includes('bhubaneswar')) {
+                matchedUnit = 'bhubaneswar';
+            } else if (cleanEmail.includes('chennai')) {
+                matchedUnit = 'chennai_greams';
+            } else if (cleanEmail.includes('hyd') || cleanEmail.includes('hyderabad')) {
+                matchedUnit = 'hyd_jubilee';
+            } else if (cleanEmail.includes('delhi') || cleanEmail.includes('indraprastha')) {
+                matchedUnit = 'delhi_indraprastha';
+            } else if (cleanEmail.includes('blr') || cleanEmail.includes('bangalore')) {
+                matchedUnit = 'blr_bannerghatta';
+            } else if (cleanEmail.includes('admin') || cleanEmail.includes('ho@') || cleanEmail.includes('corporate')) {
+                matchedUnit = 'all';
+            } else {
+                matchedUnit = 'excelcare'; // Default designated hospital hub
+            }
+        }
+        
+        if (!matchedRole) {
+            if (cleanEmail.includes('admin') || cleanEmail.includes('ho@') || cleanEmail.includes('corporate')) {
+                matchedRole = 'Administrator';
+            } else if (cleanEmail.includes('approv') || cleanEmail.includes('review') || cleanEmail.includes('lead')) {
+                matchedRole = 'Approver';
+            } else {
+                matchedRole = 'Auditor';
+            }
+        }
+        
+        return { unit: matchedUnit, role: matchedRole };
+    }
+
     function checkSSORedirectParams() {
         try {
             const urlParams = new URLSearchParams(window.location.search);
@@ -12609,20 +12662,19 @@
             if (urlParams.get('sso') === 'azure_ad' && urlParams.get('status') === 'authenticated') {
                 const email = urlParams.get('email') || 'apollo.auditor@apollohospitals.com';
                 const name = urlParams.get('name') || email.split('@')[0];
-                const role = urlParams.get('role') || 'Auditor';
-                const unit = urlParams.get('unit') || 'excelcare';
+                const resolved = resolveUserUnitAndRoleFromEmail(email, name, urlParams.get('role'), urlParams.get('unit'));
                 
                 const ssoUser = {
                     username: email.split('@')[0],
                     displayName: name,
                     email: email,
-                    role: role,
-                    unit: unit,
+                    role: resolved.role,
+                    unit: resolved.unit,
                     authProvider: 'Microsoft Azure AD (SAML 2.0)'
                 };
                 localStorage.setItem('brc_v2_logged_in_user', JSON.stringify(ssoUser));
                 window.history.replaceState({}, document.title, window.location.pathname);
-                showToast(`Signed in via Apollo Azure AD SSO as ${name} (${role})`, 'success');
+                showToast(`Signed in via Microsoft as ${name} · ${resolved.unit.toUpperCase()} (${resolved.role})`, 'success');
                 return true;
             }
             
@@ -12639,23 +12691,24 @@
                         const name = payloadJson.name || email.split('@')[0];
                         
                         // Infer role from directory groups/roles if present
-                        let detectedRole = 'Auditor';
+                        let detectedRole = null;
                         if (payloadJson.roles && Array.isArray(payloadJson.roles)) {
                             if (payloadJson.roles.includes('Administrator') || payloadJson.roles.includes('Admin')) detectedRole = 'Administrator';
                             else if (payloadJson.roles.includes('Approver')) detectedRole = 'Approver';
                         }
                         
+                        const resolved = resolveUserUnitAndRoleFromEmail(email, name, detectedRole, payloadJson.unit);
                         const ssoUser = {
                             username: email.split('@')[0],
                             displayName: name,
                             email: email,
-                            role: detectedRole,
-                            unit: 'excelcare',
+                            role: resolved.role,
+                            unit: resolved.unit,
                             authProvider: 'Microsoft Azure AD (OpenID Connect)'
                         };
                         localStorage.setItem('brc_v2_logged_in_user', JSON.stringify(ssoUser));
                         window.history.replaceState({}, document.title, window.location.pathname);
-                        showToast(`Signed in via Apollo Azure AD SSO as ${name}`, 'success');
+                        showToast(`Signed in via Microsoft as ${name} · ${resolved.unit.toUpperCase()} (${resolved.role})`, 'success');
                         return true;
                     } catch (e) {
                         console.warn('Error decoding Azure AD id_token:', e);
