@@ -12670,8 +12670,11 @@
 
     window.loginWithAzureAD = async function() {
         let azureConfig = null;
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 400);
         try {
-            const res = await fetch('/api/auth/azure_ad_config');
+            const res = await fetch('/api/auth/azure_ad_config', { signal: controller.signal });
+            clearTimeout(timeoutId);
             if (res.ok) {
                 const data = await res.json();
                 if (data.status === 'success') {
@@ -12679,6 +12682,7 @@
                 }
             }
         } catch (e) {
+            clearTimeout(timeoutId);
             // Server offline or static deployment
         }
 
@@ -12708,8 +12712,11 @@
         if (!modal) {
             modal = document.createElement('div');
             modal.id = 'apollo-azure-ad-modal';
-            modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,19,41,0.88); z-index:99999; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(6px); padding:1rem;';
+            modal.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(11,19,41,0.92); z-index:200005; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(8px); padding:1rem; box-sizing:border-box;';
             document.body.appendChild(modal);
+        } else {
+            modal.style.zIndex = '200005';
+            modal.style.display = 'flex';
         }
 
         const currentOrigin = window.location.origin + window.location.pathname;
@@ -12717,7 +12724,7 @@
         const clientVal = (existingConfig && existingConfig.client_id && !existingConfig.client_id.includes('<')) ? existingConfig.client_id : '';
 
         modal.innerHTML = `
-            <div style="background:#0f172a; border:1px solid rgba(255,255,255,0.15); border-radius:14px; max-width:620px; width:100%; box-shadow:0 25px 50px -12px rgba(0,0,0,0.5); overflow:hidden; font-family:inherit; color:#f8fafc;">
+            <div style="background:#0f172a; border:1px solid rgba(255,255,255,0.18); border-radius:14px; max-width:620px; width:100%; box-shadow:0 25px 60px -10px rgba(0,0,0,0.7); overflow:hidden; font-family:inherit; color:#f8fafc; z-index:200010; position:relative;">
                 <!-- Header -->
                 <div style="background:linear-gradient(135deg, #1e293b, #0f172a); padding:1.25rem 1.5rem; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:space-between;">
                     <div style="display:flex; align-items:center; gap:0.75rem;">
@@ -12728,11 +12735,12 @@
                             <path fill="#ffba08" d="M12 12h10v10H12z"/>
                         </svg>
                         <div>
-                            <h3 style="margin:0; font-size:1.05rem; font-weight:800; color:#ffffff;">Apollo Microsoft Azure AD / Entra ID SSO</h3>
+                            <h3 style="margin:0; font-size:1.05rem; font-weight:800; color:#ffffff;">Sign in via Microsoft (Azure AD)</h3>
                             <div style="font-size:0.75rem; color:#94a3b8; margin-top:2px;">Enterprise Single Sign-On Architecture · Baseline v2.5.0</div>
                         </div>
                     </div>
-                    <button type="button" onclick="document.getElementById('apollo-azure-ad-modal').style.display='none'" style="background:none; border:none; color:#94a3b8; font-size:1.5rem; cursor:pointer; padding:0.2rem 0.5rem; line-height:1;">&times;</button>
+                    <button type="button" onclick="document.getElementById('apollo-azure-ad-modal').style.display='none'" style="background:none; border:none; color:#94a3b8; font-size:1.6rem; cursor:pointer; padding:0.2rem 0.5rem; line-height:1;" title="Close dialog">&times;</button>
+                </div>
                 </div>
 
                 <!-- Body -->
@@ -13075,6 +13083,16 @@
                 } else {
                     loginRole.disabled = false;
                 }
+            });
+        }
+
+        // Setup Microsoft Single Sign-On Button
+        const btnAzureSSO = document.getElementById('btn-azure-ad-sso');
+        if (btnAzureSSO) {
+            btnAzureSSO.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.loginWithAzureAD();
             });
         }
 
