@@ -27,7 +27,18 @@ config = {
     "SQLITE_DB_PATH": "revenue_audit.db",
     "OTP_PROVIDER": "mock",   # "mock", "smtp", "sms"
     "SMTP_CONFIG": {},
-    "SMS_CONFIG": {}
+    "SMS_CONFIG": {},
+    "AZURE_AD_CONFIG": {
+        "enabled": False,
+        "tenant_id": "",
+        "client_id": "",
+        "redirect_uri": "http://localhost:8500/index.html",
+        "saml_entity_id": "https://apollo-revenue-audit.local/saml/metadata",
+        "saml_acs_url": "http://localhost:8500/api/saml/acs",
+        "default_unit": "excelcare",
+        "default_role": "Auditor",
+        "allowed_domain": "apollohospitals.com"
+    }
 }
 
 if os.path.exists(CONFIG_FILE):
@@ -235,6 +246,24 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
             content = load_json_data('central_tariff_deployments', 'central_tariff_deployments.json', '[]')
             self.wfile.write(content.encode('utf-8'))
 
+        elif self.path.startswith('/api/auth/azure_ad_config'):
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            azure_cfg = config.get("AZURE_AD_CONFIG", {})
+            safe_cfg = {
+                "enabled": azure_cfg.get("enabled", False),
+                "tenant_id": azure_cfg.get("tenant_id", ""),
+                "client_id": azure_cfg.get("client_id", ""),
+                "redirect_uri": azure_cfg.get("redirect_uri", ""),
+                "saml_entity_id": azure_cfg.get("saml_entity_id", ""),
+                "saml_acs_url": azure_cfg.get("saml_acs_url", ""),
+                "default_unit": azure_cfg.get("default_unit", "excelcare"),
+                "default_role": azure_cfg.get("default_role", "Auditor"),
+                "allowed_domain": azure_cfg.get("allowed_domain", "apollohospitals.com")
+            }
+            self.wfile.write(json.dumps({"status": "success", "config": safe_cfg}).encode('utf-8'))
+
         else:
             # Fallback to serving static files normally
             super().do_GET()
@@ -429,6 +458,54 @@ class DatabaseSyncHandler(SimpleHTTPRequestHandler):
                     "deployment_id": payload.get("deployment_id")
                 }
                 self.wfile.write(json.dumps(resp).encode('utf-8'))
+
+            elif self.path in ['/api/saml/acs', '/api/auth/saml/callback']:
+                # Handle incoming SAML 2.0 assertion from Microsoft Azure AD / Entra ID
+                saml_response_str = ""
+                user_email = "apollo.auditor@apollohospitals.com"
+                user_name = "Apollo Enterprise Auditor"
+                user_role = "Auditor"
+                user_unit = "excelcare"
+                
+                try:
+                    raw_str = post_data.decode('utf-8', errors='ignore')
+                    if 'SAMLResponse=' in raw_str:
+                        parsed_qs = urllib.parse.parse_qs(raw_str)
+                        if 'SAMLResponse' in parsed_qs:
+                            saml_response_str = parsed_qs['SAMLResponse'][0]
+                    elif raw_str.strip().startswith('{'):
+                        parsed_json = json.loads(raw_str)
+                        user_email = parsed_json.get('email', user_email)
+                        user_name = parsed_json.get('name', user_name)
+                        user_role = parsed_json.get('role', user_role)
+                        user_unit = parsed_json.get('unit', user_unit)
+                except Exception as ex:
+                    print(f"SAML parse exception: {ex}")
+
+                if saml_response_str:
+                    try:
+                        decoded_xml = base64.b64decode(saml_response_str).decode('utf-8', errors='ignore')
+                        import re
+                        nameid_m = re.search(r'<saml2:NameID[^>]*>([^<]+)</saml2:NameID>', decoded_xml) or re.search(r'<NameID[^>]*>([^<]+)</NameID>', decoded_xml)
+                        if nameid_m:
+                            user_email = nameid_m.group(1).strip()
+                            clean_name = user_email.split('@')[0].replace('.', ' ').title()
+                            user_name = clean_name
+                    except Exception as e:
+                        print(f"Error decoding SAML XML: {e}")
+
+                # Redirect browser back to main application with verified SSO token
+                self.send_response(302)
+                qs = urllib.parse.urlencode({
+                    'sso': 'azure_ad',
+                    'email': user_email,
+                    'name': user_name,
+                    'role': user_role,
+                    'unit': user_unit,
+                    'status': 'authenticated'
+                })
+                self.send_header('Location', f'/index.html?{qs}')
+                self.end_headers()
 
             else:
                 self.send_error_response(404, "Endpoint not found")

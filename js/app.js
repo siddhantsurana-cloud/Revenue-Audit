@@ -641,7 +641,7 @@
                 
                 // Update version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'TEST VERSION: V2.6.0 ENTERPRISE';
+                if (vBadge) vBadge.textContent = 'TEST VERSION: V2.5.0 ENTERPRISE';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'TESTING';
@@ -652,11 +652,11 @@
                     vTitle.style.color = '#d97706';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        VERSION V2.6.0 - ENTERPRISE COCKPIT
+                        VERSION V2.5.0 - ENTERPRISE COCKPIT
                     `;
                 }
                 
-                showToast('Switched to Test Sandbox Environment (V2.6.0 Enterprise). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
+                showToast('Switched to Test Sandbox Environment (V2.5.0 Enterprise). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
             } else {
                 // Update badge to Production mode
                 envBadge.style.color = 'var(--primary)';
@@ -673,7 +673,7 @@
                 
                 // Reset version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V2.6.0 ENTERPRISE';
+                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V2.5.0 ENTERPRISE';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'LOCKED';
@@ -684,11 +684,11 @@
                     vTitle.style.color = 'var(--success)';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        VERSION V2.6.0 - ENTERPRISE COCKPIT
+                        VERSION V2.5.0 - ENTERPRISE COCKPIT
                     `;
                 }
                 
-                showToast('Switched back to Production Environment (V2.6.0 Enterprise).', 'success');
+                showToast('Switched back to Production Environment (V2.5.0 Enterprise).', 'success');
             }
             
             // Reload all audits and overrides state from correct storage namespace!
@@ -1233,7 +1233,7 @@
         // Draw startup database dashboard charts
         updateDatabaseDashboard();
 
-        // Initialize Enterprise v2.6.0 Utilities (Column Customizer, Command Palette, Keyboard Shortcuts, Telemetry)
+        // Initialize Enterprise v2.5.0 Utilities (Column Customizer, Command Palette, Keyboard Shortcuts, Telemetry)
         if (typeof initColumnCustomizer === 'function') {
             initColumnCustomizer();
         }
@@ -12508,7 +12508,7 @@
         }
     }
 
-    const CREDS_CACHE_VERSION = 'V2.6.0';
+    const CREDS_CACHE_VERSION = 'V2.5.0';
 
     async function initUserCredentials() {
         const defaultFallback = [
@@ -12596,7 +12596,242 @@
         });
     }
 
+    
+    // =========================================================================
+    // APOLLO ENTERPRISE AZURE AD / MICROSOFT ENTRA ID SINGLE SIGN-ON (SSO) MODULE
+    // =========================================================================
+    function checkSSORedirectParams() {
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            const hash = window.location.hash;
+            
+            // 1. Check for server SAML ACS / backend callback
+            if (urlParams.get('sso') === 'azure_ad' && urlParams.get('status') === 'authenticated') {
+                const email = urlParams.get('email') || 'apollo.auditor@apollohospitals.com';
+                const name = urlParams.get('name') || email.split('@')[0];
+                const role = urlParams.get('role') || 'Auditor';
+                const unit = urlParams.get('unit') || 'excelcare';
+                
+                const ssoUser = {
+                    username: email.split('@')[0],
+                    displayName: name,
+                    email: email,
+                    role: role,
+                    unit: unit,
+                    authProvider: 'Microsoft Azure AD (SAML 2.0)'
+                };
+                localStorage.setItem('brc_v2_logged_in_user', JSON.stringify(ssoUser));
+                window.history.replaceState({}, document.title, window.location.pathname);
+                showToast(`Signed in via Apollo Azure AD SSO as ${name} (${role})`, 'success');
+                return true;
+            }
+            
+            // 2. Check for MSAL / Azure AD OAuth2 Token in URL Hash
+            if (hash && (hash.includes('id_token=') || hash.includes('access_token='))) {
+                const hashParams = new URLSearchParams(hash.substring(1));
+                const idToken = hashParams.get('id_token');
+                if (idToken) {
+                    try {
+                        const payloadBase64 = idToken.split('.')[1];
+                        const normalizedBase64 = payloadBase64.replace(/-/g, '+').replace(/_/g, '/');
+                        const payloadJson = JSON.parse(decodeURIComponent(escape(atob(normalizedBase64))));
+                        const email = payloadJson.email || payloadJson.preferred_username || payloadJson.upn || 'apollo.user@apollohospitals.com';
+                        const name = payloadJson.name || email.split('@')[0];
+                        
+                        // Infer role from directory groups/roles if present
+                        let detectedRole = 'Auditor';
+                        if (payloadJson.roles && Array.isArray(payloadJson.roles)) {
+                            if (payloadJson.roles.includes('Administrator') || payloadJson.roles.includes('Admin')) detectedRole = 'Administrator';
+                            else if (payloadJson.roles.includes('Approver')) detectedRole = 'Approver';
+                        }
+                        
+                        const ssoUser = {
+                            username: email.split('@')[0],
+                            displayName: name,
+                            email: email,
+                            role: detectedRole,
+                            unit: 'excelcare',
+                            authProvider: 'Microsoft Azure AD (OpenID Connect)'
+                        };
+                        localStorage.setItem('brc_v2_logged_in_user', JSON.stringify(ssoUser));
+                        window.history.replaceState({}, document.title, window.location.pathname);
+                        showToast(`Signed in via Apollo Azure AD SSO as ${name}`, 'success');
+                        return true;
+                    } catch (e) {
+                        console.warn('Error decoding Azure AD id_token:', e);
+                    }
+                }
+            }
+        } catch (err) {
+            console.warn('SSO redirect check exception:', err);
+        }
+        return false;
+    }
+
+    window.loginWithAzureAD = async function() {
+        let azureConfig = null;
+        try {
+            const res = await fetch('/api/auth/azure_ad_config');
+            if (res.ok) {
+                const data = await res.json();
+                if (data.status === 'success') {
+                    azureConfig = data.config;
+                }
+            }
+        } catch (e) {
+            // Server offline or static deployment
+        }
+
+        if (!azureConfig || !azureConfig.enabled) {
+            const localCfg = safeJsonParse(localStorage.getItem('apollo_azure_ad_sso_config'), null);
+            if (localCfg && localCfg.enabled) {
+                azureConfig = localCfg;
+            }
+        }
+
+        if (azureConfig && azureConfig.enabled && azureConfig.tenant_id && azureConfig.client_id && !azureConfig.client_id.includes('<')) {
+            const tenant = encodeURIComponent(azureConfig.tenant_id.trim());
+            const client = encodeURIComponent(azureConfig.client_id.trim());
+            const redirectUri = window.location.origin + window.location.pathname;
+            const authUrl = `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/authorize?client_id=${client}&response_type=id_token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=openid%20profile%20email&response_mode=fragment&nonce=${Date.now()}`;
+            showToast('Redirecting to Apollo Microsoft Azure AD SSO portal...', 'info');
+            window.location.href = authUrl;
+            return;
+        }
+
+        // Show enterprise setup & simulated login modal
+        window.showAzureADSetupModal(azureConfig);
+    };
+
+    window.showAzureADSetupModal = function(existingConfig) {
+        let modal = document.getElementById('apollo-azure-ad-modal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'apollo-azure-ad-modal';
+            modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,19,41,0.88); z-index:99999; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(6px); padding:1rem;';
+            document.body.appendChild(modal);
+        }
+
+        const currentOrigin = window.location.origin + window.location.pathname;
+        const tenantVal = (existingConfig && existingConfig.tenant_id && !existingConfig.tenant_id.includes('<')) ? existingConfig.tenant_id : '';
+        const clientVal = (existingConfig && existingConfig.client_id && !existingConfig.client_id.includes('<')) ? existingConfig.client_id : '';
+
+        modal.innerHTML = `
+            <div style="background:#0f172a; border:1px solid rgba(255,255,255,0.15); border-radius:14px; max-width:620px; width:100%; box-shadow:0 25px 50px -12px rgba(0,0,0,0.5); overflow:hidden; font-family:inherit; color:#f8fafc;">
+                <!-- Header -->
+                <div style="background:linear-gradient(135deg, #1e293b, #0f172a); padding:1.25rem 1.5rem; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:space-between;">
+                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                        <svg width="24" height="24" viewBox="0 0 23 23">
+                            <path fill="#f35325" d="M1 1h10v10H1z"/>
+                            <path fill="#81bc06" d="M12 1h10v10H12z"/>
+                            <path fill="#05a6f0" d="M1 12h10v10H1z"/>
+                            <path fill="#ffba08" d="M12 12h10v10H12z"/>
+                        </svg>
+                        <div>
+                            <h3 style="margin:0; font-size:1.05rem; font-weight:800; color:#ffffff;">Apollo Microsoft Azure AD / Entra ID SSO</h3>
+                            <div style="font-size:0.75rem; color:#94a3b8; margin-top:2px;">Enterprise Single Sign-On Architecture · Baseline v2.5.0</div>
+                        </div>
+                    </div>
+                    <button type="button" onclick="document.getElementById('apollo-azure-ad-modal').style.display='none'" style="background:none; border:none; color:#94a3b8; font-size:1.5rem; cursor:pointer; padding:0.2rem 0.5rem; line-height:1;">&times;</button>
+                </div>
+
+                <!-- Body -->
+                <div style="padding:1.5rem; max-height:75vh; overflow-y:auto;">
+                    <div style="background:rgba(13,148,136,0.12); border:1px solid rgba(13,148,136,0.3); border-radius:8px; padding:0.85rem 1rem; margin-bottom:1.25rem; font-size:0.82rem; line-height:1.45; color:#ccfbf1;">
+                        <strong>Enterprise SAML 2.0 & OIDC Ready:</strong> When Apollo IT registers this app in Azure AD, provide the <strong>Redirect / ACS URI</strong> below. Paste your Tenant ID and Client ID here to connect live authentication.
+                    </div>
+
+                    <!-- Configuration Fields -->
+                    <div style="display:flex; flex-direction:column; gap:0.9rem; margin-bottom:1.5rem;">
+                        <div>
+                            <label style="display:block; font-size:0.75rem; font-weight:700; color:#94a3b8; margin-bottom:0.35rem; text-transform:uppercase;">App Redirect URI / Assertion Consumer Service (ACS)</label>
+                            <input type="text" id="sso-redirect-display" value="${currentOrigin}" readonly style="width:100%; padding:0.55rem 0.75rem; background:#1e293b; border:1px solid #334155; border-radius:6px; color:#38bdf8; font-family:monospace; font-size:0.8rem; box-sizing:border-box;">
+                        </div>
+
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+                            <div>
+                                <label style="display:block; font-size:0.75rem; font-weight:700; color:#94a3b8; margin-bottom:0.35rem; text-transform:uppercase;">Azure Tenant ID</label>
+                                <input type="text" id="sso-tenant-input" value="${tenantVal}" placeholder="e.g. 72f988bf-86f1-41af-91ab-2d7cd011db47" style="width:100%; padding:0.55rem 0.75rem; background:#020617; border:1px solid #334155; border-radius:6px; color:#ffffff; font-size:0.82rem; box-sizing:border-box;">
+                            </div>
+                            <div>
+                                <label style="display:block; font-size:0.75rem; font-weight:700; color:#94a3b8; margin-bottom:0.35rem; text-transform:uppercase;">Azure App Client ID</label>
+                                <input type="text" id="sso-client-input" value="${clientVal}" placeholder="e.g. 00000000-0000-0000-0000-000000000000" style="width:100%; padding:0.55rem 0.75rem; background:#020617; border:1px solid #334155; border-radius:6px; color:#ffffff; font-size:0.82rem; box-sizing:border-box;">
+                            </div>
+                        </div>
+
+                        <div style="display:flex; justify-content:flex-end;">
+                            <button type="button" onclick="window.saveLocalAzureADConfig()" style="background:#0d9488; color:#ffffff; border:none; padding:0.55rem 1.1rem; border-radius:6px; font-size:0.82rem; font-weight:700; cursor:pointer;">
+                                Save Azure AD Settings
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pilot / Simulation Mode -->
+                    <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:1.25rem;">
+                        <div style="font-size:0.78rem; font-weight:800; color:#e2e8f0; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.6rem;">
+                            Instant Pilot / Test Verification:
+                        </div>
+                        <div style="font-size:0.8rem; color:#94a3b8; margin-bottom:0.9rem;">
+                            Test the multi-unit audit console as an authenticated Apollo employee:
+                        </div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.6rem;">
+                            <button type="button" onclick="window.simulateSSOLogin('Auditor', 'excelcare', 'auditor.guwahati@apollohospitals.com')" style="background:#1e293b; border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:0.65rem 0.5rem; text-align:center; color:#ffffff; cursor:pointer;">
+                                <div style="font-weight:700; font-size:0.82rem;">🩺 Auditor</div>
+                                <div style="font-size:0.68rem; color:#38bdf8;">Excelcare Hub</div>
+                            </button>
+                            <button type="button" onclick="window.simulateSSOLogin('Approver', 'kolkata', 'reviewer.kolkata@apollohospitals.com')" style="background:#1e293b; border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:0.65rem 0.5rem; text-align:center; color:#ffffff; cursor:pointer;">
+                                <div style="font-weight:700; font-size:0.82rem;">📋 Approver</div>
+                                <div style="font-size:0.68rem; color:#a78bfa;">Kolkata Unit</div>
+                            </button>
+                            <button type="button" onclick="window.simulateSSOLogin('Administrator', 'all', 'admin.corporate@apollohospitals.com')" style="background:#1e293b; border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:0.65rem 0.5rem; text-align:center; color:#ffffff; cursor:pointer;">
+                                <div style="font-weight:700; font-size:0.82rem;">🛡️ Corporate HO</div>
+                                <div style="font-size:0.68rem; color:#34d399;">Master 65+ Units</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        modal.style.display = 'flex';
+    };
+
+    window.saveLocalAzureADConfig = function() {
+        const tenant = document.getElementById('sso-tenant-input').value.trim();
+        const client = document.getElementById('sso-client-input').value.trim();
+        if (!tenant || !client) {
+            showToast('Please enter both Azure Tenant ID and Client ID.', 'warning');
+            return;
+        }
+        const cfg = {
+            enabled: true,
+            tenant_id: tenant,
+            client_id: client,
+            redirect_uri: window.location.origin + window.location.pathname
+        };
+        localStorage.setItem('apollo_azure_ad_sso_config', JSON.stringify(cfg));
+        showToast('Azure AD SSO configuration saved successfully!', 'success');
+        document.getElementById('apollo-azure-ad-modal').style.display = 'none';
+    };
+
+    window.simulateSSOLogin = function(role, unit, email) {
+        const user = {
+            username: email.split('@')[0],
+            displayName: email.split('@')[0].replace('.', ' ').toUpperCase(),
+            email: email,
+            role: role,
+            unit: unit,
+            authProvider: 'Microsoft Azure AD (Simulated Pilot)'
+        };
+        localStorage.setItem('brc_v2_logged_in_user', JSON.stringify(user));
+        if (document.getElementById('apollo-azure-ad-modal')) {
+            document.getElementById('apollo-azure-ad-modal').style.display = 'none';
+        }
+        checkUserLoginState();
+        showToast(`Authenticated as ${user.displayName} via Apollo Azure AD SSO (${role})`, 'success');
+    };
+
     function checkUserLoginState() {
+        checkSSORedirectParams();
         const savedSession = localStorage.getItem('brc_v2_logged_in_user');
         const loginPanel = document.getElementById('full-page-login');
         
@@ -15608,7 +15843,7 @@ Claims & Billing Assurance Desk
     }
 
     /* ==========================================================================
-       ENTERPRISE STATEMENT OF CHARGES (SOC) DATA PROCESSING MODULE (v2.6.0)
+       ENTERPRISE STATEMENT OF CHARGES (SOC) DATA PROCESSING MODULE (v2.5.0)
        ========================================================================== */
 
     let socActiveFile = null;
@@ -16292,8 +16527,8 @@ Claims & Billing Assurance Desk
         const vMatch = file.name.match(/v\d+(\.\d+)*/i) || file.name.match(/\d{4}-v\d+(\.\d+)*/i);
         if (vMatch) {
             const detectedV = 'SOC-AHEL-2026-' + vMatch[0].toLowerCase();
-            if (socVersionInput && (!socVersionInput.value || socVersionInput.value === 'SOC-AHEL-2026-v2.6')) socVersionInput.value = detectedV;
-            if (deployVersionTag && (!deployVersionTag.value || deployVersionTag.value === 'SOC-AHEL-2026-v2.6')) deployVersionTag.value = detectedV;
+            if (socVersionInput && (!socVersionInput.value || socVersionInput.value === 'SOC-AHEL-2026-v2.5')) socVersionInput.value = detectedV;
+            if (deployVersionTag && (!deployVersionTag.value || deployVersionTag.value === 'SOC-AHEL-2026-v2.5')) deployVersionTag.value = detectedV;
         }
 
         await processSOCFile(file);
@@ -16584,7 +16819,7 @@ Claims & Billing Assurance Desk
         });
 
         const standardJson = {
-            schema_version: '2.6.0',
+            schema_version: '2.5.0',
             metadata: {
                 source_file: file.name,
                 document_type: 'EXCEL',
@@ -16733,7 +16968,7 @@ Claims & Billing Assurance Desk
             }
 
             const standardJson = {
-                schema_version: '2.6.0',
+                schema_version: '2.5.0',
                 metadata: {
                     source_file: file.name,
                     document_type: 'PDF',
@@ -17883,7 +18118,7 @@ Claims & Billing Assurance Desk
     window.initIngesterPanel = initIngesterPanel;
 
     /* ==========================================================================
-       ENTERPRISE V2.6.0 SUITE: COMMAND PALETTE, SHORTCUTS, WORKFLOW STEPPER, 
+       ENTERPRISE V2.5.0 SUITE: COMMAND PALETTE, SHORTCUTS, WORKFLOW STEPPER, 
        SOC TELEMETRY, & APOLLO FORMAL DISPUTE LETTERHEAD ENGINE
        ========================================================================== */
 
@@ -18455,7 +18690,7 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
     };
 
     /* ==========================================================================
-       ENTERPRISE V2.6.0 MODULES:
+       ENTERPRISE V2.5.0 MODULES:
        1. AUDIT COLUMN CUSTOMIZER & DENSITY PINNING ENGINE
        2. STICKY AGGREGATE SUMMARY FOOTER ENGINE
        3. SPLIT-PANE COMPARATIVE DIFF DRAWER ENGINE
@@ -19033,7 +19268,7 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
             const snapshot = {
                 metadata: {
                     app: 'Apollo Revenue Assurance & Central Tariff Governance Platform',
-                    version: '2.6.0-Enterprise',
+                    version: '2.5.0-Enterprise',
                     export_timestamp: new Date().toISOString(),
                     exported_by: (typeof window.currentUserRole !== 'undefined' ? window.currentUserRole : 'Enterprise Auditor')
                 },
@@ -19129,7 +19364,7 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
 
         const testPayload = {
             platform: 'Apollo Revenue Assurance & Central Tariff Governance',
-            version: 'v2.6.0 Enterprise',
+            version: 'v2.5.0 Enterprise',
             timestamp: new Date().toISOString(),
             nonce: Math.random().toString(36).substring(2)
         };
@@ -19154,7 +19389,7 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
     });
 
     window.forcePurgeAppCache = async function() {
-        showToast('Purging client caches and fetching latest V2.6.0 Enterprise build...', 'info');
+        showToast('Purging client caches and fetching latest V2.5.0 Enterprise build...', 'info');
         try {
             localStorage.clear();
             sessionStorage.clear();

@@ -1,0 +1,20 @@
+{
+  "name": "apollo-revenue-assurance",
+  "version": "2.5.0",
+  "description": "Apollo Hospitals Enterprise Revenue Assurance & Tariff Audit Engine",
+  "main": "index.html",
+  "scripts": {
+    "start": "python run_server.py",
+    "test": "node tests/audit_engine_speed_test.js"
+  },
+  "keywords": [
+    "apollo-hospitals",
+    "revenue-assurance",
+    "tariff-audit",
+    "healthcare-billing",
+    "enterprise-audit"
+  ],
+  "author": "Apollo Hospitals Enterprise Revenue Assurance Team",
+  "license": "UNLICENSED",
+  "private": true
+}

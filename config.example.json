@@ -2,6 +2,20 @@
   "STORAGE_MODE": "local",
   "SQLITE_DB_PATH": "revenue_audit.db",
   "OTP_PROVIDER": "mock",
+  "AZURE_AD_CONFIG": {
+    "enabled": false,
+    "provider": "azure_ad",
+    "tenant_id": "<APOLLO_AZURE_TENANT_ID>",
+    "client_id": "<APOLLO_APP_CLIENT_ID>",
+    "client_secret": "<OPTIONAL_CLIENT_SECRET>",
+    "redirect_uri": "https://<HOST>/index.html",
+    "saml_entity_id": "https://<HOST>/saml/metadata",
+    "saml_acs_url": "https://<HOST>/api/saml/acs",
+    "idp_metadata_url": "https://login.microsoftonline.com/<TENANT_ID>/federationmetadata/2007-06/federationmetadata.xml",
+    "default_unit": "excelcare",
+    "default_role": "Auditor",
+    "allowed_domain": "apollohospitals.com"
+  },
   "SMTP_CONFIG": {
     "host": "smtp.office365.com",
     "port": 587,

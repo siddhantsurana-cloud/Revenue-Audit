@@ -2,6 +2,7 @@
   "name": "Apollo Revenue Assurance Platform",
   "short_name": "Apollo RA",
   "description": "Apollo Revenue Assurance & Agreement Intelligence Platform",
+  "version": "2.5.0",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0b1329",
