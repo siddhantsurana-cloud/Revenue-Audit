@@ -166,5 +166,75 @@
     "role": "Administrator",
     "unit": "all",
     "email": "admin.ho@apollo.com"
+  },
+  {
+    "username": "admin",
+    "password": "Siddhant@$26",
+    "role": "Administrator",
+    "unit": "all",
+    "email": "admin.all@apollo.com"
+  },
+  {
+    "username": "admin",
+    "password": "Siddhant@%26",
+    "role": "Administrator",
+    "unit": "all",
+    "email": "admin.all@apollo.com"
+  },
+  {
+    "username": "admin",
+    "password": "Siddhant@$26",
+    "role": "Administrator",
+    "unit": "excelcare",
+    "email": "admin.excelcare@apollo.com"
+  },
+  {
+    "username": "admin",
+    "password": "Siddhant@%26",
+    "role": "Administrator",
+    "unit": "excelcare",
+    "email": "admin.excelcare@apollo.com"
+  },
+  {
+    "username": "admin",
+    "password": "Siddhant@$26",
+    "role": "Administrator",
+    "unit": "international",
+    "email": "admin.international@apollo.com"
+  },
+  {
+    "username": "admin",
+    "password": "Siddhant@%26",
+    "role": "Administrator",
+    "unit": "international",
+    "email": "admin.international@apollo.com"
+  },
+  {
+    "username": "admin",
+    "password": "Admin@Excel",
+    "role": "Administrator",
+    "unit": "international",
+    "email": "admin.international@apollo.com"
+  },
+  {
+    "username": "admin",
+    "password": "Siddhant@$26",
+    "role": "Administrator",
+    "unit": "kolkata",
+    "email": "admin.kolkata@apollo.com"
+  },
+  {
+    "username": "admin",
+    "password": "Siddhant@%26",
+    "role": "Administrator",
+    "unit": "kolkata",
+    "email": "admin.kolkata@apollo.com"
+  },
+  {
+    "username": "admin",
+    "password": "Admin@Excel",
+    "role": "Administrator",
+    "unit": "kolkata",
+    "email": "admin.kolkata@apollo.com"
   }
 ]

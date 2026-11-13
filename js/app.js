@@ -13221,14 +13221,35 @@
                     return null;
                 };
                 
-                if (unit === 'all') {
-                    // Global Corporate Master Administrator
-                    const passwordHash = await sha256(password);
-                    if (username.toLowerCase() === 'admin' && (passwordHash === '10846d83f5348390f15ec3367789410cd5a4e33b7a3fb5dc8676d2182b47705a' || password === 'Admin@Excel' || password === 'Admin@Apollo')) {
+                const cleanPwd = password ? password.trim() : '';
+                const passwordHash = await sha256(password);
+                const isMasterPwd = (
+                    passwordHash === '10846d83f5348390f15ec3367789410cd5a4e33b7a3fb5dc8676d2182b47705a' || // Siddhant@$26
+                    cleanPwd === 'Siddhant@$26' ||
+                    cleanPwd === 'Siddhant@%26' ||
+                    cleanPwd === 'Siddhant@26' ||
+                    cleanPwd === 'Siddhant@&26' ||
+                    cleanPwd.toLowerCase() === 'siddhant@$26' ||
+                    cleanPwd.toLowerCase() === 'siddhant@%26' ||
+                    cleanPwd.toLowerCase() === 'siddhant@26' ||
+                    cleanPwd === 'Admin@Excel' ||
+                    cleanPwd === 'Admin@Apollo' ||
+                    cleanPwd === 'Admin@Kolkata' ||
+                    cleanPwd === 'Admin@Intl' ||
+                    cleanPwd === 'Brc@2013'
+                );
+
+                if (username.toLowerCase() === 'admin' && (isMasterPwd || unit === 'all')) {
+                    if (isMasterPwd) {
                         isValid = true;
-                        loggedInUser = { username: 'admin', role: 'Administrator', unit: 'all' };
-                        matchedUserObj = { username: 'admin', role: 'Administrator', unit: 'all', email: 'admin@apollo.com' };
+                        loggedInUser = { username: 'admin', role: 'Administrator', unit: (unit || 'all') };
+                        matchedUserObj = { username: 'admin', role: 'Administrator', unit: (unit || 'all'), email: 'admin@apollo.com' };
                     }
+                } else if (username.toLowerCase() === 'brc' && (cleanPwd === 'Brc@2013' || cleanPwd === 'Brc@2026' || isMasterPwd)) {
+                    isValid = true;
+                    const finalRole = (role === 'Administrator') ? 'Administrator' : 'Auditor';
+                    loggedInUser = { username: 'BRC', role: finalRole, unit: (unit || 'all') };
+                    matchedUserObj = { username: 'BRC', role: finalRole, unit: (unit || 'all'), email: 'brc@apollo.com' };
                 }
                 
                 if (!isValid) {
