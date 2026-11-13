@@ -1,4 +1,4 @@
-# Central Data Hub (V2.5.0)
+# Central Data Hub (V2.5.2)
 
 The Central Data Hub is the single place where Head Office loads every hospital unit's
 **SOCs** (Schedules of Charges) and **agreements**. When a unit team signs in, the platform

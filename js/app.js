@@ -641,7 +641,7 @@
                 
                 // Update version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'TEST VERSION: V2.5.0 ENTERPRISE';
+                if (vBadge) vBadge.textContent = 'TEST VERSION: V2.5.2 ENTERPRISE';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'TESTING';
@@ -652,11 +652,11 @@
                     vTitle.style.color = '#d97706';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        VERSION V2.5.0 - ENTERPRISE COCKPIT
+                        VERSION V2.5.2 - ENTERPRISE COCKPIT
                     `;
                 }
                 
-                showToast('Switched to Test Sandbox Environment (V2.5.0 Enterprise). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
+                showToast('Switched to Test Sandbox Environment (V2.5.2 Enterprise). Changes are kept in local test storage and will not be pushed to production databases.', 'warning');
             } else {
                 // Update badge to Production mode
                 envBadge.style.color = 'var(--primary)';
@@ -673,7 +673,7 @@
                 
                 // Reset version UI
                 const vBadge = document.getElementById('app-version-badge');
-                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V2.5.0 ENTERPRISE';
+                if (vBadge) vBadge.textContent = 'LOCKED VERSION: V2.5.2 ENTERPRISE';
                 const vStatus = document.getElementById('version-card-status');
                 if (vStatus) {
                     vStatus.textContent = 'LOCKED';
@@ -684,11 +684,11 @@
                     vTitle.style.color = 'var(--success)';
                     vTitle.innerHTML = `
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        VERSION V2.5.0 - ENTERPRISE COCKPIT
+                        VERSION V2.5.2 - ENTERPRISE COCKPIT
                     `;
                 }
                 
-                showToast('Switched back to Production Environment (V2.5.0 Enterprise).', 'success');
+                showToast('Switched back to Production Environment (V2.5.2 Enterprise).', 'success');
             }
             
             // Reload all audits and overrides state from correct storage namespace!
@@ -1233,7 +1233,7 @@
         // Draw startup database dashboard charts
         updateDatabaseDashboard();
 
-        // Initialize Enterprise v2.5.0 Utilities (Column Customizer, Command Palette, Keyboard Shortcuts, Telemetry)
+        // Initialize Enterprise v2.5.2 Utilities (Column Customizer, Command Palette, Keyboard Shortcuts, Telemetry)
         if (typeof initColumnCustomizer === 'function') {
             initColumnCustomizer();
         }
@@ -12508,7 +12508,7 @@
         }
     }
 
-    const CREDS_CACHE_VERSION = 'V2.5.0';
+    const CREDS_CACHE_VERSION = 'V2.5.2';
 
     async function initUserCredentials() {
         const defaultFallback = [
@@ -12789,7 +12789,7 @@
                         </svg>
                         <div>
                             <h3 style="margin:0; font-size:1.05rem; font-weight:800; color:#ffffff;">Sign in via Microsoft (Azure AD)</h3>
-                            <div style="font-size:0.75rem; color:#94a3b8; margin-top:2px;">Enterprise Single Sign-On Architecture · Baseline v2.5.0</div>
+                            <div style="font-size:0.75rem; color:#94a3b8; margin-top:2px;">Enterprise Single Sign-On Architecture · Baseline v2.5.2</div>
                         </div>
                     </div>
                     <button type="button" onclick="document.getElementById('apollo-azure-ad-modal').style.display='none'" style="background:none; border:none; color:#94a3b8; font-size:1.6rem; cursor:pointer; padding:0.2rem 0.5rem; line-height:1;" title="Close dialog">&times;</button>
@@ -15878,7 +15878,7 @@ Claims & Billing Assurance Desk
     }
 
     /* ==========================================================================
-       ENTERPRISE STATEMENT OF CHARGES (SOC) DATA PROCESSING MODULE (v2.5.0)
+       ENTERPRISE STATEMENT OF CHARGES (SOC) DATA PROCESSING MODULE (v2.5.2)
        ========================================================================== */
 
     let socActiveFile = null;
@@ -16854,7 +16854,7 @@ Claims & Billing Assurance Desk
         });
 
         const standardJson = {
-            schema_version: '2.5.0',
+            schema_version: '2.5.2',
             metadata: {
                 source_file: file.name,
                 document_type: 'EXCEL',
@@ -17003,7 +17003,7 @@ Claims & Billing Assurance Desk
             }
 
             const standardJson = {
-                schema_version: '2.5.0',
+                schema_version: '2.5.2',
                 metadata: {
                     source_file: file.name,
                     document_type: 'PDF',
@@ -18153,7 +18153,7 @@ Claims & Billing Assurance Desk
     window.initIngesterPanel = initIngesterPanel;
 
     /* ==========================================================================
-       ENTERPRISE V2.5.0 SUITE: COMMAND PALETTE, SHORTCUTS, WORKFLOW STEPPER, 
+       ENTERPRISE V2.5.2 SUITE: COMMAND PALETTE, SHORTCUTS, WORKFLOW STEPPER, 
        SOC TELEMETRY, & APOLLO FORMAL DISPUTE LETTERHEAD ENGINE
        ========================================================================== */
 
@@ -18725,7 +18725,7 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
     };
 
     /* ==========================================================================
-       ENTERPRISE V2.5.0 MODULES:
+       ENTERPRISE V2.5.2 MODULES:
        1. AUDIT COLUMN CUSTOMIZER & DENSITY PINNING ENGINE
        2. STICKY AGGREGATE SUMMARY FOOTER ENGINE
        3. SPLIT-PANE COMPARATIVE DIFF DRAWER ENGINE
@@ -19303,7 +19303,7 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
             const snapshot = {
                 metadata: {
                     app: 'Apollo Revenue Assurance & Central Tariff Governance Platform',
-                    version: '2.5.0-Enterprise',
+                    version: '2.5.2-Enterprise',
                     export_timestamp: new Date().toISOString(),
                     exported_by: (typeof window.currentUserRole !== 'undefined' ? window.currentUserRole : 'Enterprise Auditor')
                 },
@@ -19399,7 +19399,7 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
 
         const testPayload = {
             platform: 'Apollo Revenue Assurance & Central Tariff Governance',
-            version: 'v2.5.0 Enterprise',
+            version: 'v2.5.2 Enterprise',
             timestamp: new Date().toISOString(),
             nonce: Math.random().toString(36).substring(2)
         };
@@ -19424,7 +19424,7 @@ Apollo Hospitals Guwahati & BRC Revenue Assurance`;
     });
 
     window.forcePurgeAppCache = async function() {
-        showToast('Purging client caches and fetching latest V2.5.0 Enterprise build...', 'info');
+        showToast('Purging client caches and fetching latest V2.5.2 Enterprise build...', 'info');
         try {
             localStorage.clear();
             sessionStorage.clear();

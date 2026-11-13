@@ -1,6 +1,6 @@
 # Apollo Hospitals Enterprise Handover & Azure AD Setup Guide
 ### Application: Revenue Assurance & Tariff Intelligence Engine
-### Baseline Version: `v2.5.0 Enterprise Multi-Unit`
+### Baseline Version: `v2.5.2 Enterprise Multi-Unit`
 
 This document provides complete instructions for transferring the GitHub repository to the **Apollo Hospitals GitHub Organization** and subsequently configuring **Microsoft Azure AD / Microsoft Entra ID Single Sign-On (SSO)**.
 

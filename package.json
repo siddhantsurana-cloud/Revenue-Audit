@@ -1,6 +1,6 @@
 {
   "name": "apollo-revenue-assurance",
-  "version": "2.5.0",
+  "version": "2.5.2",
   "description": "Apollo Hospitals Enterprise Revenue Assurance & Tariff Audit Engine",
   "main": "index.html",
   "scripts": {

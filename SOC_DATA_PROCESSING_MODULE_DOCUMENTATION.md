@@ -1,7 +1,7 @@
 # Enterprise SOC Data Processing Module
 ## Architecture, Data Pipeline, Integration, and Developer Handover Documentation
 **Apollo Hospitals BRC Guwahati — Revenue Assurance & Tariff Intelligence System**
-*Release Version: v2.5.1 Enterprise / Future v3.0 Quantum Ready*
+*Release Version: v2.5.2 Enterprise / Future v3.0 Quantum Ready*
 
 ---
 

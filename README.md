@@ -1,7 +1,7 @@
 # Apollo Hospitals — Enterprise Revenue Assurance & Tariff Intelligence Engine
-### Baseline Version: `v2.5.0 Enterprise Multi-Unit`
+### Baseline Version: `v2.5.2 Enterprise Multi-Unit`
 
-[![Build Status](https://img.shields.io/badge/build-v2.5.0--Enterprise-teal.svg)](#)
+[![Build Status](https://img.shields.io/badge/build-v2.5.2--Enterprise-teal.svg)](#)
 [![Security Architecture](https://img.shields.io/badge/security-SAML%202.0%20%7C%20Azure%20AD%20SSO-blue.svg)](#)
 [![Compliance](https://img.shields.io/badge/audit-NABH%20%7C%20ISO%2027001%20Ready-green.svg)](#)
 
@@ -41,12 +41,12 @@ flowchart TD
 
 ---
 
-## Baseline Version `v2.5.0` Specifications
+## Baseline Version `v2.5.2` Specifications
 
 | Attribute | Specification |
 | :--- | :--- |
-| **Baseline Version** | `v2.5.0 Enterprise Multi-Unit` |
-| **Release Build** | `V2.5.0_ENTERPRISE_BASELINE_20261111` |
+| **Baseline Version** | `v2.5.2 Enterprise Multi-Unit` |
+| **Release Build** | `V2.5.2_ENTERPRISE_BASELINE_20261113` |
 | **Architecture** | Client-Side High-Throughput Stream Processor + Lightweight Python/REST Backend |
 | **Authentication Modes** | 1. Microsoft Azure AD / Entra ID Single Sign-On (SAML 2.0 & OIDC)<br>2. Local RBAC (Auditor, Approver, Administrator, Viewer) with 2FA/OTP |
 | **Supported Formats** | Excel (`.xlsx`, `.xls`), CSV, JSON, Tabular HIS Dumps |
@@ -98,7 +98,7 @@ For complete transfer and Azure AD setup instructions, refer to [APOLLO_HANDOVER
 ---
 
 ## Repository Transfer Checklist for Apollo IT
-- [x] Baseline Version standardized to `v2.5.0 Enterprise`.
+- [x] Baseline Version standardized to `v2.5.2 Enterprise`.
 - [x] Automated CI/CD Push Integrity Guard updated for Apollo Organization.
 - [x] SAML 2.0 ACS and Azure AD OAuth2 callback endpoints active.
 - [x] Test data and multi-ward master tariff files verified in `Test Data/`.
