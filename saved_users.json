@@ -110,5 +110,61 @@
     "role": "Administrator",
     "unit": "kolkata",
     "email": "kol_admin@apollo.com"
+  },
+  {
+    "username": "BRC",
+    "password": "Brc@2013",
+    "role": "Administrator",
+    "unit": "excelcare",
+    "email": "brc.admin.excelcare@apollo.com"
+  },
+  {
+    "username": "BRC",
+    "password": "Brc@2013",
+    "role": "Administrator",
+    "unit": "international",
+    "email": "brc.admin.international@apollo.com"
+  },
+  {
+    "username": "BRC",
+    "password": "Brc@2013",
+    "role": "Administrator",
+    "unit": "kolkata",
+    "email": "brc.admin.kolkata@apollo.com"
+  },
+  {
+    "username": "BRC",
+    "password": "Brc@2013",
+    "role": "Auditor",
+    "unit": "all",
+    "email": "brc.auditor@apollo.com"
+  },
+  {
+    "username": "BRC",
+    "password": "Brc@2013",
+    "role": "Administrator",
+    "unit": "all",
+    "email": "brc.administrator@apollo.com"
+  },
+  {
+    "username": "BRC",
+    "password": "Brc@2013",
+    "role": "Approver",
+    "unit": "all",
+    "email": "brc.approver@apollo.com"
+  },
+  {
+    "username": "BRC",
+    "password": "Brc@2013",
+    "role": "Viewer",
+    "unit": "all",
+    "email": "brc.viewer@apollo.com"
+  },
+  {
+    "username": "admin",
+    "password": "Admin@Excel",
+    "role": "Administrator",
+    "unit": "all",
+    "email": "admin.ho@apollo.com"
   }
 ]

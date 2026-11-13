@@ -4763,9 +4763,11 @@
         const usernameInput = document.getElementById('login-username-input');
         const passwordInput = document.getElementById('login-password-input');
         const unitSelect = document.getElementById('login-hospital-unit');
+        const roleSelect = document.getElementById('login-role');
         
         if (unitSelect) unitSelect.value = unitCode;
         if (usernameInput) usernameInput.value = username;
+        if (roleSelect && role) roleSelect.value = role;
         if (passwordInput) {
             passwordInput.focus();
             passwordInput.placeholder = 'Enter password for ' + username;
