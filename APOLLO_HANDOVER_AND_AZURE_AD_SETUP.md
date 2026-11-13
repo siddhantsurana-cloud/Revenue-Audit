@@ -15,9 +15,9 @@ Transferring the repository preserves all commit history, release tags, branches
 - **Target Organization Owner**: An Apollo Organization administrator must have permission to create repositories within the Apollo GitHub Organization (e.g., `apollo-hospitals` or designated corporate org).
 
 ### Step 2: Initiating Transfer on GitHub
-1. Navigate to the repository on GitHub:
+1. Navigate to the repository settings on GitHub:
    ```text
-   https://github.com/siddhantsurana-cloud/Revenue-Audit
+   https://github.com/<source-account>/Revenue-Audit
    ```
 2. Click **Settings** in the top navigation bar.
 3. Scroll to the bottom to the **Danger Zone** section.

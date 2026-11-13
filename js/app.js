@@ -12794,7 +12794,6 @@
                     </div>
                     <button type="button" onclick="document.getElementById('apollo-azure-ad-modal').style.display='none'" style="background:none; border:none; color:#94a3b8; font-size:1.6rem; cursor:pointer; padding:0.2rem 0.5rem; line-height:1;" title="Close dialog">&times;</button>
                 </div>
-                </div>
 
                 <!-- Body -->
                 <div style="padding:1.5rem; max-height:75vh; overflow-y:auto;">
@@ -13211,7 +13210,7 @@
                 };
                 
                 if (unit === 'all') {
-                    // Global Website Master Admin (CA Siddhant Surana only)
+                    // Global Corporate Master Administrator
                     const passwordHash = await sha256(password);
                     if (username.toLowerCase() === 'admin' && passwordHash === '10846d83f5348390f15ec3367789410cd5a4e33b7a3fb5dc8676d2182b47705a') {
                         isValid = true;

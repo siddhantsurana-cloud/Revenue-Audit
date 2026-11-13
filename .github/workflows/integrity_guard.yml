@@ -16,7 +16,7 @@ jobs:
           echo "Repository Owner: ${{ github.repository_owner }}"
           
           # Allow repository owner, organization members, or configured admins
-          if [ "${{ github.actor }}" = "${{ github.repository_owner }}" ] || [ "${{ github.actor }}" = "siddhantsurana-cloud" ] || [ -n "${{ secrets.ALLOWED_ACTORS }}" ]; then
+          if [ "${{ github.actor }}" = "${{ github.repository_owner }}" ] || [ -n "${{ secrets.ALLOWED_ACTORS }}" ]; then
             echo "Push authorized for actor: ${{ github.actor }}"
           else
             echo "Push from ${{ github.actor }} verified against repository access policies."

@@ -1,8 +1,8 @@
 # Multi-Unit Central Audit Storage & Tariff Broadcast Governance Guide
 **Platform**: Apollo Healthcare Revenue Assurance & Central Tariff Governance Platform  
 **Release**: Enterprise V2.5.2 (Central Data Hub)  
-**Author & Architect**: Siddhant Surana `<Siddhant@bihanico.in>`  
-**Attribution**: Powered by BRC • Engineered by BRC_SID.AI
+**Architecture & Governance**: Enterprise Revenue Assurance Team `<revenue.assurance@apollohospitals.com>`  
+**Attribution**: Apollo Enterprise Revenue Assurance Platform
 
 ---
 
